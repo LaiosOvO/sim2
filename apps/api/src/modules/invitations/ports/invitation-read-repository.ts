@@ -28,6 +28,31 @@ export interface PendingInvitationRecord {
   grants: readonly PendingInvitationGrantRecord[]
 }
 
+/**
+ * Management-list row, intentionally matching the existing workspace
+ * invitation wire contract. Unlike PendingInvitationRecord, this response
+ * includes the acceptance token because existing cancel/resend UI consumes it.
+ */
+export interface WorkspaceInvitationRecord {
+  id: string
+  kind: InvitationKind
+  email: string
+  token: string
+  status: string
+  expiresAt: Date
+  createdAt: Date
+  updatedAt: Date
+  organizationId: string | null
+  membershipIntent: InvitationMembershipIntent
+  inviterId: string
+  workspaceId: string
+  permission: InvitationWorkspacePermission
+}
+
 export interface InvitationReadRepository {
   listPendingForEmail(email: string): Promise<readonly PendingInvitationRecord[]>
+}
+
+export interface WorkspaceInvitationReadRepository {
+  listForAccessibleWorkspaces(userId: string): Promise<readonly WorkspaceInvitationRecord[]>
 }

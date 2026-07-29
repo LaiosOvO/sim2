@@ -48,8 +48,9 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 ## 尚未完成：原生读模型
 
 兼容读取平面解决 Next 编译边界，但不是 22 条接口的最终后端实现。当前 backend 状态为
-4 条 native（API-0137 invitations、API-0294 stars、API-1057 workspace members、
-API-1060 Polaris personal profile）和 18 条 legacy-origin-compatibility。完成本 Ticket 仍需：
+5 条 native（API-0137 invitee invitations、API-0294 stars、API-1057 workspace members、
+API-1060 Polaris personal profile、API-1124 workspace invitation management）和 17 条
+legacy-origin-compatibility。完成本 Ticket 仍需：
 
 1. 按领域建立 organization/workspace/user read repository ports；
 2. 在独立 API 内实现 tenant authorization，不再依赖旧服务二次验证；
@@ -63,17 +64,17 @@ API-1060 Polaris personal profile）和 18 条 legacy-origin-compatibility。完
 | Gate | 结果 |
 | --- | --- |
 | Inventory/coverage | 22/22，C/A/D/I 无遗漏、无重复 |
-| W2 API tests | 56 passed、1 disposable PostgreSQL test 默认跳过 |
+| W2 API tests | 60 passed、1 disposable PostgreSQL test 默认跳过 |
 | W2 Next proxy tests | 25/25 |
-| API Contract tests | 9/9 |
+| API Contract tests | 10/10 |
 | API/auth/contracts type-check | 通过 |
 | Next facade isolated build | 22 entries；最大 1,485 gzip bytes |
 | Next facade forbidden marker | 0 |
-| Platform Contract | 50 schemas；生成产物 clean |
+| Platform Contract | 52 schemas；生成产物 clean |
 | API validation audit | 991/991 contract-backed；non-contract 0 |
 | Identity boundary | 3 boundaries / 9 files；0 provider/DB 反向依赖 |
-| Target structure | 44 roots / 34 required files |
-| Target cycles | 22 packages / 114 source nodes；0 cycle |
+| Target structure | 44 roots / 36 required files |
+| Target cycles | 22 packages / 116 source nodes；0 cycle |
 
 旧 route 同目录的 8 个测试随实现移出 Next 一并删除；覆盖职责已迁到独立 API 的
 22 路差分/鉴权/集成测试和 HTTP legacy adapter 测试。原生 adapter 替换时必须补回
@@ -88,7 +89,11 @@ pending/unexpired filter、batched grant hydration 和 token 不泄露。
 `API-1060` 将 Polaris personal profile 迁入 provider-neutral Identity Biz/API Module，并
 通过目标 `0275` migration 建立 `external_identity` read model。真实 fixture 验证 migration、
 多 provider 排序、identifier 白名单和 `rawProfile` 不泄露；Biz 不含 Feishu/DB 依赖。
-其余 18 条仍必须补相应的数据库/Provider integration gate。
+
+`API-1124` 复用 Invitations Module，但将 invitee token-free port 与 workspace management
+token-bearing port 分开。真实 fixture 验证显式 workspace 权限、组织 owner/admin 派生权限、
+无权限空结果和 archived workspace 排除。其余 17 条仍必须补相应的数据库/Provider
+integration gate。
 
 ## Acceptance criteria
 

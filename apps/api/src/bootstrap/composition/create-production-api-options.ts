@@ -7,7 +7,10 @@ import {
   type EnvironmentModule,
 } from '@/modules/environment/application/create-environment-module'
 import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
-import type { InvitationReadRepository } from '@/modules/invitations'
+import type {
+  InvitationReadRepository,
+  WorkspaceInvitationReadRepository,
+} from '@/modules/invitations'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
 import type { WorkspaceMemberReadRepository } from '@/modules/workspaces'
@@ -66,7 +69,12 @@ async function createTenantRead(
     { createRoutedTenantReadBackend, createUnavailableTenantReadBackend },
     { createHttpLegacyTenantReadBackend },
     { createGitHubStarsHandler },
-    { createListMyInvitationsHandler, createListMyInvitationsUseCase },
+    {
+      createListMyInvitationsHandler,
+      createListMyInvitationsUseCase,
+      createListWorkspaceInvitationsHandler,
+      createListWorkspaceInvitationsUseCase,
+    },
     { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
@@ -84,8 +92,11 @@ async function createTenantRead(
     ? createHttpLegacyTenantReadBackend({ baseUrl })
     : createUnavailableTenantReadBackend()
   const githubToken = process.env.GITHUB_TOKEN?.trim()
-  let invitationRepository: InvitationReadRepository = {
+  let invitationRepository: InvitationReadRepository & WorkspaceInvitationReadRepository = {
     async listPendingForEmail() {
+      throw new Error('Invitation database is not configured')
+    },
+    async listForAccessibleWorkspaces() {
       throw new Error('Invitation database is not configured')
     },
   }
@@ -128,7 +139,7 @@ async function createTenantRead(
     accessResolver = createDrizzleAccessResolver()
   }
   const nativeHandlers: Record<
-    'API-0137' | 'API-0294' | 'API-1057' | 'API-1060',
+    'API-0137' | 'API-0294' | 'API-1057' | 'API-1060' | 'API-1124',
     NativeTenantReadHandler
   > = {
     'API-0137': createListMyInvitationsHandler(
@@ -148,6 +159,9 @@ async function createTenantRead(
         access: accessResolver,
         profiles: createPersonalIdentityProfileService(personalIdentityRepository),
       })
+    ),
+    'API-1124': createListWorkspaceInvitationsHandler(
+      createListWorkspaceInvitationsUseCase(invitationRepository)
     ),
   }
   return createTenantReadModule({

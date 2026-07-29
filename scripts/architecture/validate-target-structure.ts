@@ -77,6 +77,8 @@ const requiredFiles = [
   'apps/api/src/middleware/authentication/composition/create-production-request-authenticator.ts',
   'apps/api/src/modules/identity/index.ts',
   'apps/api/src/modules/invitations/index.ts',
+  'apps/api/src/modules/invitations/application/list-workspace-invitations.ts',
+  'apps/api/src/modules/invitations/interface/create-list-workspace-invitations-handler.ts',
   'apps/api/src/modules/workspaces/index.ts',
   'apps/api/src/modules/tenant-read/application/create-tenant-read-module.ts',
   'apps/api/src/modules/tenant-read/application/create-routed-tenant-read-backend.ts',

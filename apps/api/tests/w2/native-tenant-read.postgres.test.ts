@@ -75,7 +75,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         status invitation_status not null,
         token text not null,
         expires_at timestamp not null,
-        created_at timestamp not null
+        created_at timestamp not null,
+        updated_at timestamp not null
       )`,
       `create table invitation_workspace_grant (
         id text primary key,
@@ -108,25 +109,30 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
        values ('membership-admin', 'org-admin-1', 'organization-1', 'admin')`,
       `insert into invitation (
          id, kind, email, inviter_id, organization_id, membership_intent,
-         role, status, token, expires_at, created_at
+         role, status, token, expires_at, created_at, updated_at
        ) values
          ('invitation-visible', 'workspace', 'Ada@Example.com', 'inviter-1',
           'organization-1', 'external', 'member', 'pending', 'secret-visible',
-          '2099-08-01T00:00:00Z', '2026-07-30T00:00:00Z'),
+          '2099-08-01T00:00:00Z', '2026-07-30T00:00:00Z',
+          '2026-07-31T00:00:00Z'),
          ('invitation-expired', 'workspace', 'ada@example.com', 'inviter-1',
           'organization-1', 'external', 'member', 'pending', 'secret-expired',
-          '2000-01-01T00:00:00Z', '2026-07-29T00:00:00Z'),
+          '2000-01-01T00:00:00Z', '2026-07-29T00:00:00Z',
+          '2026-07-30T00:00:00Z'),
          ('invitation-accepted', 'workspace', 'ada@example.com', 'inviter-1',
           'organization-1', 'external', 'member', 'accepted', 'secret-accepted',
-          '2099-08-01T00:00:00Z', '2026-07-28T00:00:00Z'),
+          '2099-08-01T00:00:00Z', '2026-07-28T00:00:00Z',
+          '2026-07-29T00:00:00Z'),
          ('invitation-other-user', 'workspace', 'other@example.com', 'inviter-1',
           'organization-1', 'external', 'member', 'pending', 'secret-other',
-          '2099-08-01T00:00:00Z', '2026-07-27T00:00:00Z')`,
+          '2099-08-01T00:00:00Z', '2026-07-27T00:00:00Z',
+          '2026-07-28T00:00:00Z')`,
       `insert into invitation_workspace_grant (
          id, invitation_id, workspace_id, permission
-       ) values (
-         'grant-1', 'invitation-visible', 'workspace-1', 'write'
-       )`,
+       ) values
+         ('grant-1', 'invitation-visible', 'workspace-1', 'write'),
+         ('grant-2', 'invitation-accepted', 'workspace-denied', 'read'),
+         ('grant-3', 'invitation-expired', 'workspace-archived', 'admin')`,
     ]) {
       await db.execute(sql.raw(statement))
     }
@@ -188,6 +194,68 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       },
     ])
     expect(JSON.stringify(invitations)).not.toContain('secret-')
+
+    const invitationRepository = createDrizzleInvitationReadRepository()
+    const viewerWorkspaceInvitations =
+      await invitationRepository.listForAccessibleWorkspaces('viewer-1')
+    expect(viewerWorkspaceInvitations).toEqual([
+      {
+        id: 'invitation-visible',
+        kind: 'workspace',
+        email: 'Ada@Example.com',
+        token: 'secret-visible',
+        status: 'pending',
+        expiresAt: new Date('2099-08-01T00:00:00.000Z'),
+        createdAt: new Date('2026-07-30T00:00:00.000Z'),
+        updatedAt: new Date('2026-07-31T00:00:00.000Z'),
+        organizationId: 'organization-1',
+        membershipIntent: 'external',
+        inviterId: 'inviter-1',
+        workspaceId: 'workspace-1',
+        permission: 'write',
+      },
+    ])
+    await expect(invitationRepository.listForAccessibleWorkspaces('inviter-1')).resolves.toEqual([])
+
+    const adminWorkspaceInvitations =
+      await invitationRepository.listForAccessibleWorkspaces('org-admin-1')
+    expect(
+      [...adminWorkspaceInvitations].sort((left, right) => left.id.localeCompare(right.id))
+    ).toEqual([
+      {
+        id: 'invitation-accepted',
+        kind: 'workspace',
+        email: 'ada@example.com',
+        token: 'secret-accepted',
+        status: 'accepted',
+        expiresAt: new Date('2099-08-01T00:00:00.000Z'),
+        createdAt: new Date('2026-07-28T00:00:00.000Z'),
+        updatedAt: new Date('2026-07-29T00:00:00.000Z'),
+        organizationId: 'organization-1',
+        membershipIntent: 'external',
+        inviterId: 'inviter-1',
+        workspaceId: 'workspace-denied',
+        permission: 'read',
+      },
+      {
+        id: 'invitation-visible',
+        kind: 'workspace',
+        email: 'Ada@Example.com',
+        token: 'secret-visible',
+        status: 'pending',
+        expiresAt: new Date('2099-08-01T00:00:00.000Z'),
+        createdAt: new Date('2026-07-30T00:00:00.000Z'),
+        updatedAt: new Date('2026-07-31T00:00:00.000Z'),
+        organizationId: 'organization-1',
+        membershipIntent: 'external',
+        inviterId: 'inviter-1',
+        workspaceId: 'workspace-1',
+        permission: 'write',
+      },
+    ])
+    expect(adminWorkspaceInvitations.map((row) => row.workspaceId)).not.toContain(
+      'workspace-archived'
+    )
 
     const access = createDrizzleAccessResolver()
     await expect(access.workspacePermission('viewer-1', 'workspace-1')).resolves.toBe('read')

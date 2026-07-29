@@ -266,7 +266,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/invitations',
     domain: 'workspaces',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    backend: 'native',
     requiredTests,
   },
 ] as const satisfies readonly W2TenantReadRouteContract[]

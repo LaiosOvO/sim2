@@ -1,17 +1,28 @@
 import { db } from '@sim/db'
-import { invitation, invitationWorkspaceGrant, organization, user, workspace } from '@sim/db/schema'
+import {
+  invitation,
+  invitationWorkspaceGrant,
+  member,
+  organization,
+  permissions,
+  user,
+  workspace,
+} from '@sim/db/schema'
+import { isOrgAdminRole } from '@sim/platform-authz/workspace'
 import { normalizeEmail } from '@sim/utils/string'
-import { and, eq, inArray, sql } from 'drizzle-orm'
+import { and, eq, inArray, isNull, sql } from 'drizzle-orm'
 import type {
   InvitationReadRepository,
   PendingInvitationGrantRecord,
+  WorkspaceInvitationReadRepository,
 } from '@/modules/invitations/ports/invitation-read-repository'
 
 /**
  * PostgreSQL invitation read adapter. The base rows and grants are fetched in
  * two batches; no token column is selected and no per-invitation query occurs.
  */
-export function createDrizzleInvitationReadRepository(): InvitationReadRepository {
+export function createDrizzleInvitationReadRepository(): InvitationReadRepository &
+  WorkspaceInvitationReadRepository {
   return {
     async listPendingForEmail(email) {
       const rows = await db
@@ -74,6 +85,70 @@ export function createDrizzleInvitationReadRepository(): InvitationReadRepositor
         ...row,
         grants: grantsByInvitation.get(row.id) ?? [],
       }))
+    },
+
+    async listForAccessibleWorkspaces(userId) {
+      const explicitRows = await db
+        .select({ workspaceId: workspace.id })
+        .from(permissions)
+        .innerJoin(workspace, eq(permissions.entityId, workspace.id))
+        .where(
+          and(
+            eq(permissions.userId, userId),
+            eq(permissions.entityType, 'workspace'),
+            isNull(workspace.archivedAt)
+          )
+        )
+
+      const [membership] = await db
+        .select({
+          organizationId: member.organizationId,
+          role: member.role,
+        })
+        .from(member)
+        .where(eq(member.userId, userId))
+        .limit(1)
+
+      const derivedRows =
+        membership && isOrgAdminRole(membership.role)
+          ? await db
+              .select({ workspaceId: workspace.id })
+              .from(workspace)
+              .where(
+                and(
+                  eq(workspace.organizationId, membership.organizationId),
+                  isNull(workspace.archivedAt)
+                )
+              )
+          : []
+
+      const workspaceIds = [
+        ...new Set([
+          ...explicitRows.map((row) => row.workspaceId),
+          ...derivedRows.map((row) => row.workspaceId),
+        ]),
+      ]
+      if (workspaceIds.length === 0) return []
+
+      return db
+        .select({
+          id: invitation.id,
+          kind: invitation.kind,
+          email: invitation.email,
+          token: invitation.token,
+          status: invitation.status,
+          expiresAt: invitation.expiresAt,
+          createdAt: invitation.createdAt,
+          updatedAt: invitation.updatedAt,
+          organizationId: invitation.organizationId,
+          membershipIntent: invitation.membershipIntent,
+          inviterId: invitation.inviterId,
+          workspaceId: invitationWorkspaceGrant.workspaceId,
+          permission: invitationWorkspaceGrant.permission,
+        })
+        .from(invitationWorkspaceGrant)
+        .innerJoin(invitation, eq(invitation.id, invitationWorkspaceGrant.invitationId))
+        .where(inArray(invitationWorkspaceGrant.workspaceId, workspaceIds))
     },
   }
 }

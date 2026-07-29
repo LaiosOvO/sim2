@@ -291,6 +291,28 @@ packages/db/
 Biz 通过 opaque `identifiers` 表达外部身份；Feishu alias、SDK 与同步生命周期属于 Infra，
 旧 wire alias 只允许出现在 API compatibility mapping。
 
+当前 Invitations read slices 的具体目录为：
+
+```text
+apps/api/src/modules/invitations/
+├─ interface/
+│  ├─ create-list-my-invitations-handler.ts
+│  └─ create-list-workspace-invitations-handler.ts
+├─ application/
+│  ├─ list-my-invitations.ts
+│  └─ list-workspace-invitations.ts
+├─ ports/
+│  └─ invitation-read-repository.ts
+└─ index.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+└─ drizzle-invitation-read-repository.ts
+```
+
+`InvitationReadRepository` 与 `WorkspaceInvitationReadRepository` 是两个窄 port；前者禁止
+token，后者只为旧 management wire 保留 token。后续 W3 invitation command 使用独立
+command ports/transactions，不能扩张这两个 read ports。
+
 ### 4.4 `apps/worker`：执行闭包
 
 ```text

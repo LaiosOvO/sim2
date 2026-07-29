@@ -63,12 +63,16 @@ export type {
   InvitationDetailsV1,
   InvitationGrantV1,
   ListMyInvitationsResponseV1,
+  ListWorkspaceInvitationsResponseV1,
+  WorkspaceInvitationRowV1,
   WorkspacePermissionV1,
 } from './invitations'
 export {
   invitationDetailsV1Schema,
   invitationGrantV1Schema,
   listMyInvitationsResponseV1Schema,
+  listWorkspaceInvitationsResponseV1Schema,
+  workspaceInvitationRowV1Schema,
   workspacePermissionV1Schema,
 } from './invitations'
 export type { PageRequest } from './pagination'

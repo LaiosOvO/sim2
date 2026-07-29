@@ -1022,6 +1022,35 @@ Node 22.19+ ingress role，只归一化事件并投递幂等 job；Sandbox 是 W
 不能被 WS callback 直接 import。Bun 保留为 install/build/test/script 工具，不能替代
 isolated-vm 所要求的 Node native ABI/child-worker 生产运行时。
 
+### 19.14 W2 原生 Workspace Invitation Management Read
+
+第五条原生替换是 `API-1124 GET /api/workspaces/invitations`。Sim2 与 Polaris route 同实现，
+但它不能与已迁移的 API-0137 共用一个宽 read model：API-0137 是 invitee-facing
+pending/unexpired list，token 从 port 类型层消失；API-1124 是 workspace 管理列表，旧
+cancel/resend UI 需要 token，而且查询没有 pending/unexpired 过滤。
+
+目标 Invitations Module 因此新增独立 `WorkspaceInvitationReadRepository`、
+`list-workspace-invitations` application use case 和 HTTP handler。两个 port 共享一个
+Drizzle adapter，但 application DTO 不共享。API-1124 的 V1 schema 精确列出旧 select 的
+13 个 wire 字段并剥离未知字段，保留 `401 Unauthorized`、空列表 200 和
+`500 Failed to fetch invitations`。
+
+Adapter 保留旧 `listAccessibleWorkspaceRowsForUser` 语义：先取 active workspace 的显式
+permission；再读取用户唯一组织 membership，owner/admin 派生该组织 active workspaces；
+去重后按 invitation grants 过滤。没有可访问 workspace 时直接返回空数组，不能退化成全表
+查询。真实 PostgreSQL fixture 验证普通 viewer 只见显式 workspace、组织 admin 可见两个
+active workspace、无权限 inviter 为零行、archived workspace 即使残留显式 permission
+也不可见。
+
+当前 W2 为 native 5/22、legacy 17/22；API 72 passed（1 个 disposable DB test 默认跳过），
+W2 focused 60 passed，API Contract 10/10，Platform Contract 52 schemas。API entry
+23.36 KiB，Invitation adapter lazy chunk 4.25 KiB；Next 22 facade 最大仍为 1,485 gzip
+bytes；目标图 22 packages/116 source nodes、0 cycle；全仓 TypeScript 43/43 tasks 通过。
+
+同目录 `POST /api/workspaces/invitations/batch` 是 W3 command。它包含邮件、审计、billing、
+seat reconciliation、transaction 和 lock 语义，不因 read adapter 已迁移而提前合并，也
+不能把旧 `invitations/core` 巨型闭包重新导入当前 API read path。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1104,3 +1133,6 @@ isolated-vm 所要求的 Node native ABI/child-worker 生产运行时。
   external identity read-model migration、provider-neutral Biz contract 和 identity
   boundary gate，真实 Postgres 执行迁移并验证 alias 白名单/敏感字段不泄露；当前 native
   4/22、legacy 18/22。
+- 将 `API-1124 workspace invitations` 切为原生 Invitations management read；分离
+  invitee token-free 与 management token-bearing ports，以真实 Postgres 验证明示/派生
+  workspace 可见性和归档排除；当前 native 5/22、legacy 17/22。

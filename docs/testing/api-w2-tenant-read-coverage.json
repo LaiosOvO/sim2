@@ -232,7 +232,7 @@
       "apiModule": "apps/api/src/modules/tenant-read",
       "nextFacade": "apps/sim/app/api/workspaces/invitations/route.ts",
       "tests": ["contract", "auth", "differential", "integration"],
-      "backend": "legacy-origin-compatibility"
+      "backend": "native"
     }
   ]
 }

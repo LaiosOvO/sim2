@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { authenticatedRequestContextSchema, requestAuthenticationResultSchema } from '../src/auth'
 import { apiErrorEnvelopeSchema } from '../src/errors'
-import { listMyInvitationsResponseV1Schema } from '../src/invitations'
+import {
+  listMyInvitationsResponseV1Schema,
+  listWorkspaceInvitationsResponseV1Schema,
+} from '../src/invitations'
 import { pageRequestSchema } from '../src/pagination'
 import { traceContextSchema } from '../src/tracing'
 import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
@@ -129,7 +132,7 @@ describe('API contract compatibility', () => {
       w2TenantReadRouteContracts
         .filter((route) => route.backend === 'native')
         .map((route) => route.inventoryId)
-    ).toEqual(['API-0137', 'API-0294', 'API-1057', 'API-1060'])
+    ).toEqual(['API-0137', 'API-0294', 'API-1057', 'API-1060', 'API-1124'])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',
@@ -169,6 +172,32 @@ describe('API contract compatibility', () => {
     })
 
     expect(parsed.invitations[0]).not.toHaveProperty('token')
+  })
+
+  it('keeps the existing token only in the workspace invitation management contract', () => {
+    const parsed = listWorkspaceInvitationsResponseV1Schema.parse({
+      invitations: [
+        {
+          id: 'invitation-1',
+          kind: 'workspace',
+          email: 'invitee@example.com',
+          token: 'legacy-management-token',
+          status: 'pending',
+          expiresAt: '2026-08-06T00:00:00.000Z',
+          createdAt: '2026-07-30T00:00:00.000Z',
+          updatedAt: '2026-07-31T00:00:00.000Z',
+          organizationId: 'organization-1',
+          membershipIntent: 'external',
+          inviterId: 'user-1',
+          workspaceId: 'workspace-1',
+          permission: 'write',
+          rawSecret: 'must-be-stripped',
+        },
+      ],
+    })
+
+    expect(parsed.invitations[0]?.token).toBe('legacy-management-token')
+    expect(parsed.invitations[0]).not.toHaveProperty('rawSecret')
   })
 
   it('defines the lightweight workspace member response without permission internals', () => {

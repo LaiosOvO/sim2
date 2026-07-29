@@ -981,8 +981,9 @@ packages/*
 - The standalone API owns W2 route selection, authentication policy, request identity, observability,
   and a backend port. Backend selection is recorded per inventory ID; `API-0137 /api/invitations`,
   `API-0294 /api/stars`, `API-1057 /api/workspaces/[id]/members`, and Polaris
-  `API-1060 /api/workspaces/[id]/personal-profile` are native, while the other 18 routes currently
-  target a fixed pre-refactor legacy origin.
+  `API-1060 /api/workspaces/[id]/personal-profile`, plus
+  `API-1124 /api/workspaces/invitations` are native, while the other 17 routes currently target a
+  fixed pre-refactor legacy origin.
 - The invitations Module owns a token-free V1 response contract, application use case and repository
   port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
   differential fixture for email normalization, pending/unexpired filtering and grant hydration.
@@ -1002,8 +1003,13 @@ packages/*
   Feishu ingress remains an independent Node 22.19+ backend role and does not invoke Sandbox
   directly; Sandbox production workers remain Node because the isolated-vm native runtime is not a
   supported Bun execution boundary.
+- Workspace invitation management has a separate native read port from the invitee-facing
+  invitation list. API-0137 remains token-free and pending/unexpired; API-1124 preserves the
+  existing management token and all-status behavior while restricting rows to explicit active
+  workspace access or organization owner/admin-derived active workspace access. Archived
+  workspaces and users with no accessible workspace return no rows.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 18 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 17 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope

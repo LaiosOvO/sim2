@@ -18,6 +18,8 @@
     "InvitationGrantV1",
     "InvitationDetailsV1",
     "ListMyInvitationsResponseV1",
+    "WorkspaceInvitationRowV1",
+    "ListWorkspaceInvitationsResponseV1",
     "PageRequest",
     "TraceContext",
     "SessionRequestContext",

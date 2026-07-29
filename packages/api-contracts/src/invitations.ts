@@ -28,7 +28,31 @@ export const listMyInvitationsResponseV1Schema = z.object({
   invitations: z.array(invitationDetailsV1Schema),
 })
 
+export const workspaceInvitationRowV1Schema = z.object({
+  id: z.string().min(1),
+  kind: z.enum(['organization', 'workspace']),
+  email: z.string(),
+  token: z.string().min(1),
+  status: z.string().min(1),
+  expiresAt: z.iso.datetime(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+  organizationId: z.string().nullable(),
+  membershipIntent: z.enum(['internal', 'external']),
+  inviterId: z.string().min(1),
+  workspaceId: z.string().min(1),
+  permission: workspacePermissionV1Schema,
+})
+
+export const listWorkspaceInvitationsResponseV1Schema = z.object({
+  invitations: z.array(workspaceInvitationRowV1Schema),
+})
+
 export type WorkspacePermissionV1 = z.infer<typeof workspacePermissionV1Schema>
 export type InvitationGrantV1 = z.infer<typeof invitationGrantV1Schema>
 export type InvitationDetailsV1 = z.infer<typeof invitationDetailsV1Schema>
 export type ListMyInvitationsResponseV1 = z.infer<typeof listMyInvitationsResponseV1Schema>
+export type WorkspaceInvitationRowV1 = z.infer<typeof workspaceInvitationRowV1Schema>
+export type ListWorkspaceInvitationsResponseV1 = z.infer<
+  typeof listWorkspaceInvitationsResponseV1Schema
+>
