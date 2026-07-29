@@ -15,6 +15,24 @@ Sandbox，但会直接调用 webhook processor，后者可进入 workflow execut
 Web 请求、Executor 与 Sandbox 形成同进程故障域和导入闭包。Web 健康不代表 Bot 已连接，
 Sandbox/Executor 压力也可能影响长连接。
 
+Polaris 当前的静态依赖链已经能复现这项耦合，不需要飞书事件真的触发 Sandbox：
+
+```text
+instrumentation-node.ts
+  -> lib/polaris/integrations/feishu/ws-trigger.ts
+  -> lib/webhooks/processor.ts
+  -> background/webhook-execution.ts
+  -> lib/workflows/executor/execution-core.ts
+  -> executor/execution/executor.ts
+  -> executor/orchestrators/loop.ts
+  -> lib/execution/isolated-vm.ts
+```
+
+其中 `ws-trigger.ts` 既维护连接生命周期，又负责业务卡片动作、审批、channel wait 和
+workflow dispatch，形成了一个浅 interface、大 implementation 的协调器。目标不是把这段
+implementation 原样搬进另一个进程，而是在飞书 ingress 与 workflow admission 之间建立
+窄 seam。
+
 本地代码 Sandbox 还明确要求 Node：宿主检查 `node --version`，再用
 `node --no-node-snapshot` 启动 `isolated-vm-worker.cjs`。强行改为 Bun 会引入 native ABI、
 IPC 和 V8 行为风险，且对前端编译问题没有帮助。
@@ -26,9 +44,9 @@ IPC 和 V8 行为风险，且对前端编译问题没有帮助。
   完全不支持 Bun”。这只是构造级探针，不代表生产长连接、自动重连、代理、TLS 和信号
   处理已经获得 Bun 兼容性保证。
 - `isolated-vm` 6.0.2 的 package engine 明确是 Node `>=22.0.0`。同一安装产物在
-  Node 22.20.0 下加载后得到 `Isolate` constructor；在 Bun 1.3.11 下执行到
-  `require('isolated-vm')` 后提前结束，后续语句不执行。它不能作为 Bun 进程内 native
-  addon 使用。
+  Node 22.20.0 下加载后得到 `Isolate` constructor；在 Bun 1.3.11 下执行
+  `require('isolated-vm')` 会明确失败：安装产物使用 Node module ABI 127，而该 Bun
+  兼容层要求 ABI 137。它不能作为 Bun 进程内 native addon 使用。
 
 所以 Node 决策既来自当前部署事实，也来自 Sandbox 的确定性兼容边界；不依赖于对飞书
 SDK 的猜测。
@@ -36,6 +54,8 @@ SDK 的猜测。
 ## Decision
 
 1. Bun 是 monorepo 的 package manager、script runner、build tool 和 test launcher。
+   `bun run dev` 只是外层脚本入口；Polaris 的 `apps/sim` 开发脚本实际执行
+   `node --import tsx scripts/dev-node.ts`，并继续由 Node 启动 Next。
 2. Next Web、独立 API、Worker、飞书 persistent connection 与 local Sandbox 的生产
    runtime 固定为 Node.js 22.19+。
 3. `apps/worker` 的同一构建产物提供独立 deployment role：
@@ -74,6 +94,9 @@ adapter 使用 fake credential source、fake WS client 和 in-memory job sink。
   只有受控消费者。
 - Web/API 正常而飞书离线时，readiness 与告警会明确区分故障域。
 - Sandbox 的 Node/native 约束被收口到后端，不影响浏览器 bundle。
+- 不把 `ws-trigger.ts` 的现有大协调器原样迁移。连接生命周期、事件归一化、幂等 admission
+  与审批/channel-wait 消费分别通过窄 interface 组合，workflow execution 只在队列消费者
+  一侧出现。
 
 ## Rejected alternatives
 

@@ -929,6 +929,15 @@ packages/*
 - Meegle is an Infra Extension. PM owns project semantics; Operations owns sync job lifecycle and retry/audit state.
 - Feishu is one Infra Extension that can satisfy directory, authentication, external identity resolution, messaging, notification, approval, document, and trigger capabilities.
 - Feishu persistent connection ingress is not a Sandbox capability. A Node-based `feishu-ingress` Worker role owns connection reconcile and health, then emits normalized, idempotent jobs without importing Executor or Sandbox.
+- The Polaris donor currently couples these concerns through the static chain
+  `instrumentation-node -> FeishuWsTrigger -> webhook processor -> webhook execution ->
+  Executor -> LoopOrchestrator -> isolated-vm`. The migration must break this chain at durable
+  trigger admission; moving the existing coordinator unchanged into Worker does not satisfy the
+  seam.
+- `bun run dev` is only an outer script invocation: the donor explicitly starts Next through Node.
+  Node 22.20.0 loads the installed `isolated-vm` 6.0.2 addon, while Bun 1.3.11 rejects that same
+  binary because its Node module ABI does not match. Feishu `WSClient` construction succeeds in
+  both runtimes, so Feishu is not the reason for the Node production contract.
 - HR, PM, Approval, Delivery, and Identity never import Feishu or Meegle concrete implementations.
 - The extension SDK is extracted from working adapters and remains minimal; provider DTOs and business aggregates are excluded.
 - The normative API inventory covers 1,126 paths and 1,377 handlers, including Sim2-only, Polaris-only, common, and diverged routes.
