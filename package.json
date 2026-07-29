@@ -36,6 +36,7 @@
     "check:contract-browser-build": "bun run scripts/architecture/build-isolation/check-contract-browser-build.ts",
     "check:contract-purity": "bun run scripts/architecture/import-boundaries/check-contract-purity.ts",
     "check:identity-boundary": "bun run scripts/architecture/import-boundaries/check-identity-module-boundary.ts",
+    "check:workspaces-boundary": "bun run scripts/architecture/import-boundaries/check-workspaces-module-boundary.ts",
     "check:auth-verifier-isolation": "bun run scripts/architecture/build-isolation/check-auth-verifier-isolation.ts",
     "check:w1-api-coverage": "bun run scripts/api/check-w1-route-coverage.ts",
     "check:w1-api-performance": "bun run scripts/architecture/performance/check-api-w1-performance.ts",

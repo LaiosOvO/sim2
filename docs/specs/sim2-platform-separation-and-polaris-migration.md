@@ -983,9 +983,10 @@ packages/*
   `API-0235 /api/organizations/[id]/roster`,
   `API-0241 /api/organizations/[id]/workspaces`,
   `API-0243 /api/permission-groups/user`, `API-0294 /api/stars`,
+  `API-1041 /api/workspaces/[id]/host-context`,
   `API-1057 /api/workspaces/[id]/members`, and Polaris
   `API-1060 /api/workspaces/[id]/personal-profile`, plus
-  `API-1124 /api/workspaces/invitations` are native, while the other 14 routes currently target a
+  `API-1124 /api/workspaces/invitations` are native, while the other 13 routes currently target a
   fixed pre-refactor legacy origin.
 - The invitations Module owns a token-free V1 response contract, application use case and repository
   port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
@@ -1030,8 +1031,16 @@ packages/*
   parser, Billing barrel, or runtime registry. Group resolution preserves explicit-member,
   empty/all-members, default precedence and oldest-created tie-breaking within the workspace's
   owning organization.
+- The Workspaces Module owns API-1041 through one host-context snapshot port. The port hides active
+  workspace identity, owning-organization membership, payer subscription, and billing-block reads;
+  application code derives the versioned public projection. Organization workspaces use their
+  exact organization payer, personal workspaces use `billedAccountUserId`, and neither path consults
+  the session active organization. The native chain imports no React cache, Next runtime, legacy
+  workspace helper, or Billing Core. API-1011 credit availability and API-1122 usage gate must reuse
+  this seam rather than rebuilding payer selection. A dedicated Workspaces boundary gate enforces
+  the Module/adapter/contract import allowlists.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 14 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 13 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope

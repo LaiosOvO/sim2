@@ -62,8 +62,12 @@ import {
   personalExternalIdentityV1Schema,
   personalProfileResponseV1Schema,
   personalWorkspaceProfileV1Schema,
+  workspaceHostContextV1Schema,
   workspaceIdV1Schema,
   workspaceMemberV1Schema,
+  workspaceModeV1Schema,
+  workspaceOwnerBillingV1Schema,
+  workspacePermissionLevelV1Schema,
 } from '@sim/api-contracts/workspaces'
 import { debugCommandV1Schema, debugSessionV1Schema } from '@sim/execution-contracts/debug'
 import { executionEventV1Schema } from '@sim/execution-contracts/events'
@@ -139,6 +143,10 @@ const schemas: Record<string, JsonSchemaProvider> = {
   WorkspaceIdV1: workspaceIdV1Schema,
   WorkspaceMemberV1: workspaceMemberV1Schema,
   ListWorkspaceMembersResponseV1: listWorkspaceMembersResponseV1Schema,
+  WorkspaceModeV1: workspaceModeV1Schema,
+  WorkspacePermissionLevelV1: workspacePermissionLevelV1Schema,
+  WorkspaceOwnerBillingV1: workspaceOwnerBillingV1Schema,
+  WorkspaceHostContextV1: workspaceHostContextV1Schema,
   PersonalExternalIdentityV1: personalExternalIdentityV1Schema,
   PersonalAccountProfileV1: personalAccountProfileV1Schema,
   PersonalWorkspaceProfileV1: personalWorkspaceProfileV1Schema,

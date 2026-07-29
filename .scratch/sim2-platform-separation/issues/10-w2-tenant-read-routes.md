@@ -48,10 +48,10 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 ## 尚未完成：原生读模型
 
 兼容读取平面解决 Next 编译边界，但不是 22 条接口的最终后端实现。当前 backend 状态为
-8 条 native（API-0137 invitee invitations、API-0235 organization roster、
+9 条 native（API-0137 invitee invitations、API-0235 organization roster、
 API-0241 organization workspaces、API-0243 user permission group、API-0294 stars、
-API-1057 workspace members、API-1060 Polaris personal profile、API-1124 workspace
-invitation management）和 14 条
+API-1041 workspace host context、API-1057 workspace members、API-1060 Polaris personal
+profile、API-1124 workspace invitation management）和 13 条
 legacy-origin-compatibility。完成本 Ticket 仍需：
 
 1. 按领域建立 organization/workspace/user read repository ports；
@@ -66,17 +66,17 @@ legacy-origin-compatibility。完成本 Ticket 仍需：
 | Gate | 结果 |
 | --- | --- |
 | Inventory/coverage | 22/22，C/A/D/I 无遗漏、无重复 |
-| W2 API tests | 78 passed、1 disposable PostgreSQL test 默认跳过 |
+| W2 API tests | 84 passed、1 disposable PostgreSQL test 默认跳过 |
 | W2 Next proxy tests | 25/25 |
-| API Contract tests | 13/13 |
+| API Contract tests | 14/14 |
 | API/auth/contracts type-check | 通过 |
 | Next facade isolated build | 22 entries；最大 1,485 gzip bytes |
 | Next facade forbidden marker | 0 |
-| Platform Contract | 65 schemas；生成产物 clean |
+| Platform Contract | 69 schemas；生成产物 clean |
 | API validation audit | 991/991 contract-backed；non-contract 0 |
 | Identity boundary | 3 boundaries / 9 files；0 provider/DB 反向依赖 |
-| Target structure | 50 roots / 51 required files |
-| Target cycles | 22 packages / 137 source nodes；0 cycle |
+| Target structure | 50 roots / 56 required files |
+| Target cycles | 22 packages / 141 source nodes；0 cycle |
 
 旧 route 同目录的 8 个测试随实现移出 Next 一并删除；覆盖职责已迁到独立 API 的
 22 路差分/鉴权/集成测试和 HTTP legacy adapter 测试。原生 adapter 替换时必须补回
@@ -110,8 +110,17 @@ workspace 排除、stale invitation 状态更新以及跨 organization grant 不
 与运行时环境逻辑；新 contract normalizer 是纯数据函数，application 只消费 workspace access、
 organization entitlement 与 winner read port。真实 fixture 验证 explicit member group >
 empty/all-members group > default group 的优先级、oldest tie-break 与 owning organization
-scope，不再 import 旧 EE permission-check。其余 14 条仍
-必须补相应的数据库/Provider integration gate。
+scope，不再 import 旧 EE permission-check。
+
+`API-1041` 将 workspace host identity、viewer effective permission 与 owner billing
+projection 收进 Workspaces Module。单一 snapshot port 隐藏 active workspace、owning
+organization membership、payer subscription 和 billing block 读取；application 保留
+organization/personal payer、enterprise > team > pro、paid status/block 与 billing interval
+规则。真实 fixture 验证 organization newest subscription、personal plan priority、owner/
+personal block source 与 archived concealment，且不 import React cache 或旧 Billing Core。
+专用 boundary gate 固定 7 个 Workspaces Module 文件、1 个 adapter 和 1 个纯 contract 的
+允许依赖。
+其余 13 条仍必须补相应的数据库/Provider integration gate。
 
 ## Acceptance criteria
 

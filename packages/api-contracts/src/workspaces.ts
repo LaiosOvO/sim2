@@ -12,6 +12,40 @@ export const listWorkspaceMembersResponseV1Schema = z.object({
   members: z.array(workspaceMemberV1Schema),
 })
 
+export const workspaceModeV1Schema = z.enum(['personal', 'organization', 'grandfathered_shared'])
+
+export const workspacePermissionLevelV1Schema = z.enum(['admin', 'write', 'read'])
+
+export const workspaceOwnerBillingV1Schema = z.object({
+  plan: z.string(),
+  status: z.string().nullable(),
+  isPaid: z.boolean(),
+  isPro: z.boolean(),
+  isTeam: z.boolean(),
+  isEnterprise: z.boolean(),
+  isOrgScoped: z.boolean(),
+  organizationId: z.string().nullable(),
+  billingInterval: z.enum(['month', 'year']),
+  billingBlocked: z.boolean(),
+  billingBlockedReason: z.enum(['payment_failed', 'dispute']).nullable(),
+})
+
+export const workspaceHostContextV1Schema = z.object({
+  workspace: z.object({
+    id: workspaceIdV1Schema,
+    name: z.string().min(1),
+    workspaceMode: workspaceModeV1Schema,
+    billedAccountUserId: z.string().min(1),
+  }),
+  hostOrganizationId: z.string().min(1).nullable(),
+  ownerBilling: workspaceOwnerBillingV1Schema,
+  viewer: z.object({
+    permission: workspacePermissionLevelV1Schema,
+    isHostOrganizationMember: z.boolean(),
+    isHostOrganizationAdmin: z.boolean(),
+  }),
+})
+
 export const personalExternalIdentityV1Schema = z.object({
   id: z.string(),
   providerKey: z.string(),
@@ -51,6 +85,10 @@ export const personalProfileResponseV1Schema = z.object({
 
 export type WorkspaceMemberV1 = z.infer<typeof workspaceMemberV1Schema>
 export type ListWorkspaceMembersResponseV1 = z.infer<typeof listWorkspaceMembersResponseV1Schema>
+export type WorkspaceModeV1 = z.infer<typeof workspaceModeV1Schema>
+export type WorkspacePermissionLevelV1 = z.infer<typeof workspacePermissionLevelV1Schema>
+export type WorkspaceOwnerBillingV1 = z.infer<typeof workspaceOwnerBillingV1Schema>
+export type WorkspaceHostContextV1 = z.infer<typeof workspaceHostContextV1Schema>
 export type PersonalExternalIdentityV1 = z.infer<typeof personalExternalIdentityV1Schema>
 export type PersonalAccountProfileV1 = z.infer<typeof personalAccountProfileV1Schema>
 export type PersonalWorkspaceProfileV1 = z.infer<typeof personalWorkspaceProfileV1Schema>

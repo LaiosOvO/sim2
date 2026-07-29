@@ -3487,6 +3487,264 @@
         ],
         "additionalProperties": false
       },
+      "WorkspaceModeV1": {
+        "type": "string",
+        "enum": [
+          "personal",
+          "organization",
+          "grandfathered_shared"
+        ]
+      },
+      "WorkspacePermissionLevelV1": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "write",
+          "read"
+        ]
+      },
+      "WorkspaceOwnerBillingV1": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "string"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isPaid": {
+            "type": "boolean"
+          },
+          "isPro": {
+            "type": "boolean"
+          },
+          "isTeam": {
+            "type": "boolean"
+          },
+          "isEnterprise": {
+            "type": "boolean"
+          },
+          "isOrgScoped": {
+            "type": "boolean"
+          },
+          "organizationId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "billingInterval": {
+            "type": "string",
+            "enum": [
+              "month",
+              "year"
+            ]
+          },
+          "billingBlocked": {
+            "type": "boolean"
+          },
+          "billingBlockedReason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "payment_failed",
+                  "dispute"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "plan",
+          "status",
+          "isPaid",
+          "isPro",
+          "isTeam",
+          "isEnterprise",
+          "isOrgScoped",
+          "organizationId",
+          "billingInterval",
+          "billingBlocked",
+          "billingBlockedReason"
+        ],
+        "additionalProperties": false
+      },
+      "WorkspaceHostContextV1": {
+        "type": "object",
+        "properties": {
+          "workspace": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "workspaceMode": {
+                "type": "string",
+                "enum": [
+                  "personal",
+                  "organization",
+                  "grandfathered_shared"
+                ]
+              },
+              "billedAccountUserId": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "workspaceMode",
+              "billedAccountUserId"
+            ],
+            "additionalProperties": false
+          },
+          "hostOrganizationId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ownerBilling": {
+            "type": "object",
+            "properties": {
+              "plan": {
+                "type": "string"
+              },
+              "status": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "isPaid": {
+                "type": "boolean"
+              },
+              "isPro": {
+                "type": "boolean"
+              },
+              "isTeam": {
+                "type": "boolean"
+              },
+              "isEnterprise": {
+                "type": "boolean"
+              },
+              "isOrgScoped": {
+                "type": "boolean"
+              },
+              "organizationId": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "billingInterval": {
+                "type": "string",
+                "enum": [
+                  "month",
+                  "year"
+                ]
+              },
+              "billingBlocked": {
+                "type": "boolean"
+              },
+              "billingBlockedReason": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "payment_failed",
+                      "dispute"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "plan",
+              "status",
+              "isPaid",
+              "isPro",
+              "isTeam",
+              "isEnterprise",
+              "isOrgScoped",
+              "organizationId",
+              "billingInterval",
+              "billingBlocked",
+              "billingBlockedReason"
+            ],
+            "additionalProperties": false
+          },
+          "viewer": {
+            "type": "object",
+            "properties": {
+              "permission": {
+                "type": "string",
+                "enum": [
+                  "admin",
+                  "write",
+                  "read"
+                ]
+              },
+              "isHostOrganizationMember": {
+                "type": "boolean"
+              },
+              "isHostOrganizationAdmin": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "permission",
+              "isHostOrganizationMember",
+              "isHostOrganizationAdmin"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "workspace",
+          "hostOrganizationId",
+          "ownerBilling",
+          "viewer"
+        ],
+        "additionalProperties": false
+      },
       "PersonalExternalIdentityV1": {
         "type": "object",
         "properties": {

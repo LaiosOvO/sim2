@@ -291,6 +291,36 @@ packages/db/
 Biz 通过 opaque `identifiers` 表达外部身份；Feishu alias、SDK 与同步生命周期属于 Infra，
 旧 wire alias 只允许出现在 API compatibility mapping。
 
+当前 Workspaces read slices 的具体目录为：
+
+```text
+apps/api/src/modules/workspaces/
+├─ interface/
+│  ├─ create-get-workspace-host-context-handler.ts
+│  └─ create-list-workspace-members-handler.ts
+├─ application/
+│  ├─ get-workspace-host-context.ts
+│  └─ list-workspace-members.ts
+├─ ports/
+│  ├─ workspace-host-context-read-repository.ts
+│  └─ workspace-member-read-repository.ts
+└─ index.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+├─ drizzle-workspace-host-context-read-repository.ts
+└─ drizzle-workspace-member-read-repository.ts
+
+packages/api-contracts/src/
+└─ workspaces.ts
+```
+
+Host-context snapshot port 隐藏 workspace、host membership、payer subscription 与 billing
+block 的多表读取；application 才负责公开 paid flags、billing interval 与 viewer projection。
+它不依赖 React cache、Next、旧 Billing Core 或 session active organization。后续
+credit-availability/usage-gate 应消费这一深模块的稳定 host/payer seam，不能重新横跨旧 helper。
+`scripts/architecture/import-boundaries/check-workspaces-module-boundary.ts` 对 Module、adapter
+与 contract 分层设置 allowlist，阻止这些依赖回流。
+
 当前 Invitations read slices 的具体目录为：
 
 ```text

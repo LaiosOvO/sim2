@@ -20,7 +20,10 @@ import type {
 import type { UserPermissionGroupReadRepository } from '@/modules/permission-groups'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
-import type { WorkspaceMemberReadRepository } from '@/modules/workspaces'
+import type {
+  WorkspaceHostContextReadRepository,
+  WorkspaceMemberReadRepository,
+} from '@/modules/workspaces'
 
 function unavailableEnvironmentModule(): EnvironmentModule {
   return {
@@ -89,7 +92,12 @@ async function createTenantRead(
       createListOrganizationWorkspacesUseCase,
     },
     { createGetUserPermissionGroupHandler, createGetUserPermissionGroupUseCase },
-    { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
+    {
+      createGetWorkspaceHostContextHandler,
+      createGetWorkspaceHostContextUseCase,
+      createListWorkspaceMembersHandler,
+      createListWorkspaceMembersUseCase,
+    },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
   ] = await Promise.all([
@@ -119,6 +127,11 @@ async function createTenantRead(
   let workspaceMemberRepository: WorkspaceMemberReadRepository = {
     async listActiveMembers() {
       throw new Error('Workspace database is not configured')
+    },
+  }
+  let workspaceHostContextRepository: WorkspaceHostContextReadRepository = {
+    async readForViewer() {
+      throw new Error('Workspace host-context database is not configured')
     },
   }
   let organizationWorkspaceRepository: OrganizationWorkspaceReadRepository = {
@@ -178,6 +191,7 @@ async function createTenantRead(
       { createDrizzleOrganizationRosterReadRepository },
       { createDrizzleOrganizationInvitationHousekeeping },
       { createDrizzleUserPermissionGroupReadRepository },
+      { createDrizzleWorkspaceHostContextReadRepository },
       { createDrizzleAccessResolver },
       { readAccessControlRuntimeConfig },
     ] = await Promise.all([
@@ -195,6 +209,9 @@ async function createTenantRead(
       import(
         '@/infrastructure/postgres/repositories/drizzle-user-permission-group-read-repository'
       ),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
+      ),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
       import('@/config/enterprise-runtime'),
     ])
@@ -205,6 +222,7 @@ async function createTenantRead(
     organizationRosterRepository = createDrizzleOrganizationRosterReadRepository()
     organizationInvitationHousekeeping = createDrizzleOrganizationInvitationHousekeeping()
     userPermissionGroupRepository = createDrizzleUserPermissionGroupReadRepository()
+    workspaceHostContextRepository = createDrizzleWorkspaceHostContextReadRepository()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
       readAccessControlRuntimeConfig()
     )
@@ -216,6 +234,7 @@ async function createTenantRead(
     | 'API-0241'
     | 'API-0243'
     | 'API-0294'
+    | 'API-1041'
     | 'API-1057'
     | 'API-1060'
     | 'API-1124',
@@ -248,6 +267,12 @@ async function createTenantRead(
     'API-0294': createGitHubStarsHandler({
       ...(githubToken ? { token: githubToken } : {}),
     }),
+    'API-1041': createGetWorkspaceHostContextHandler(
+      createGetWorkspaceHostContextUseCase({
+        access: accessResolver,
+        repository: workspaceHostContextRepository,
+      })
+    ),
     'API-1057': createListWorkspaceMembersHandler(
       createListWorkspaceMembersUseCase({
         access: accessResolver,

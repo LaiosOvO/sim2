@@ -1137,6 +1137,34 @@ W2 focused 78 passed，API Contract 13/13，Platform Contract 65 schemas。API e
 最大仍为 1,485 gzip bytes；目标图 22 packages/137 source nodes、0 cycle；全仓 TypeScript
 43/43 tasks 通过。
 
+### 19.18 W2 原生 Workspace Host Context 与 Billing 读取闭包收敛
+
+第九条原生替换是 `API-1041 GET /api/workspaces/[id]/host-context`。Sim2 与 Polaris donor
+SHA-256 相同。旧 route 只有 29 行，但其 `getWorkspaceHostContextForViewer` helper 同时
+import React `cache`、workspace permission DB utility、organization settings access 与 Billing
+workspace payer/access。因而一条轻量 metadata route 仍绑定 Next/React 和整个旧 Billing
+读取闭包。
+
+目标 Workspaces Module 将外部 interface 收敛为
+`GetWorkspaceHostContextUseCase.execute`，并以单一 `WorkspaceHostContextReadRepository`
+snapshot 隐藏 active workspace、owning-organization membership、payer subscription 与
+billing-block 多表读取。Application 从 effective workspace permission 和 snapshot 生成纯
+V1 DTO；session active organization 不参与任何 host/payer 决策。
+
+兼容规则包括 organization workspace 使用 exact organization payer、personal workspace
+使用 `billedAccountUserId`、personal plan priority 为 enterprise > team > pro、organization
+subscription 按 `period_start DESC, id DESC`、`active/past_due` entitlement、owner/personal
+block source，以及 column > metadata > month 的 billing interval。真实 disposable
+PostgreSQL 16 fixture 同时验证 organization newest、personal priority、block reason 与
+archived concealment。
+
+当前 W2 为 native 9/22、legacy 13/22；API 96 passed（1 个 disposable DB test 默认跳过），
+W2 focused 84 passed，API Contract 14/14，Platform Contract 69 schemas。API entry
+27.22 KiB；host-context adapter/Workspaces module chunks 分别为 3.48/6.98 KiB；Next 22
+facade 最大仍为 1,485 gzip bytes；目标图 22 packages/141 source nodes、0 cycle；全仓
+TypeScript 43/43 tasks 通过。专用 boundary gate 检查 7 个 Workspaces Module 文件、1 个
+adapter 和 1 个 contract，0 violation；目标结构为 50 roots / 56 required files。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1233,3 +1261,7 @@ W2 focused 78 passed，API Contract 13/13，Platform Contract 65 schemas。API e
   normalizer 与窄 group-winner port 切断旧 EE permission-check 对 Executor/Block/Provider
   的编译闭包，并以真实 Postgres 验证 explicit > empty > default、oldest tie-break 与
   owning-organization scope；当前 native 8/22、legacy 14/22。
+- 将 `API-1041 workspace host context` 切为原生 Workspaces Module；以单一 snapshot port
+  收敛 workspace/host membership/payer subscription/billing block，切断 React cache 与旧
+  Billing Core，并以真实 Postgres 验证 org newest、personal plan priority、block source 与
+  archived concealment；新增专用 Workspaces boundary gate；当前 native 9/22、legacy 13/22。

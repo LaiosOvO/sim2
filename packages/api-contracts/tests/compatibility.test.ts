@@ -19,6 +19,7 @@ import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../
 import {
   listWorkspaceMembersResponseV1Schema,
   personalProfileResponseV1Schema,
+  workspaceHostContextV1Schema,
 } from '../src/workspaces'
 
 describe('API contract compatibility', () => {
@@ -146,6 +147,7 @@ describe('API contract compatibility', () => {
       'API-0241',
       'API-0243',
       'API-0294',
+      'API-1041',
       'API-1057',
       'API-1060',
       'API-1124',
@@ -232,6 +234,41 @@ describe('API contract compatibility', () => {
     expect(parsed).toEqual({
       members: [{ userId: 'user-1', name: 'Ada', image: null }],
     })
+  })
+
+  it('keeps workspace host context free of subscription persistence fields', () => {
+    const parsed = workspaceHostContextV1Schema.parse({
+      workspace: {
+        id: 'workspace-1',
+        name: 'Platform',
+        workspaceMode: 'organization',
+        billedAccountUserId: 'owner-1',
+        ownerId: 'lifecycle-owner-must-not-cross',
+      },
+      hostOrganizationId: 'organization-1',
+      ownerBilling: {
+        plan: 'enterprise',
+        status: 'active',
+        isPaid: true,
+        isPro: false,
+        isTeam: false,
+        isEnterprise: true,
+        isOrgScoped: true,
+        organizationId: 'organization-1',
+        billingInterval: 'year',
+        billingBlocked: false,
+        billingBlockedReason: null,
+        stripeSubscriptionId: 'must-not-cross',
+      },
+      viewer: {
+        permission: 'read',
+        isHostOrganizationMember: false,
+        isHostOrganizationAdmin: false,
+      },
+    })
+
+    expect(parsed.workspace).not.toHaveProperty('ownerId')
+    expect(parsed.ownerBilling).not.toHaveProperty('stripeSubscriptionId')
   })
 
   it('defines the organization workspace picker response without persistence fields', () => {

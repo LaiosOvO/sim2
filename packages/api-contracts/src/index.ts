@@ -133,7 +133,11 @@ export type {
   PersonalExternalIdentityV1,
   PersonalProfileResponseV1,
   PersonalWorkspaceProfileV1,
+  WorkspaceHostContextV1,
   WorkspaceMemberV1,
+  WorkspaceModeV1,
+  WorkspaceOwnerBillingV1,
+  WorkspacePermissionLevelV1,
 } from './workspaces'
 export {
   listWorkspaceMembersResponseV1Schema,
@@ -141,6 +145,10 @@ export {
   personalExternalIdentityV1Schema,
   personalProfileResponseV1Schema,
   personalWorkspaceProfileV1Schema,
+  workspaceHostContextV1Schema,
   workspaceIdV1Schema,
   workspaceMemberV1Schema,
+  workspaceModeV1Schema,
+  workspaceOwnerBillingV1Schema,
+  workspacePermissionLevelV1Schema,
 } from './workspaces'

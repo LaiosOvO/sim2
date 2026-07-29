@@ -20,6 +20,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { createDrizzleOrganizationWorkspaceReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleUserPermissionGroupReadRepository },
+      { createDrizzleWorkspaceHostContextReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
@@ -38,6 +39,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
       import(
         '@/infrastructure/postgres/repositories/drizzle-user-permission-group-read-repository'
+      ),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
       ),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
@@ -64,7 +68,10 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       `create table workspace (
         id text primary key,
         name text not null,
+        owner_id text not null references "user"(id),
         organization_id text references organization(id),
+        workspace_mode text not null,
+        billed_account_user_id text not null references "user"(id),
         archived_at timestamp
       )`,
       `create table permission_group (
@@ -106,13 +113,17 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       `create table user_stats (
         id text primary key,
         user_id text not null references "user"(id),
-        billing_blocked boolean not null default false
+        billing_blocked boolean not null default false,
+        billing_blocked_reason text
       )`,
       `create table subscription (
         id text primary key,
         plan text not null,
         reference_id text not null,
-        status text
+        status text,
+        period_start timestamp,
+        billing_interval text,
+        metadata jsonb
       )`,
       `create table invitation (
         id text primary key,
@@ -151,11 +162,18 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
        values
          ('organization-1', 'Platform'),
          ('organization-other', 'Other')`,
-      `insert into workspace (id, name, organization_id, archived_at) values
-         ('workspace-1', 'Runtime', 'organization-1', null),
-         ('workspace-denied', 'Secret', 'organization-1', null),
-         ('workspace-archived', 'Archive', 'organization-1', '2026-07-01T00:00:00Z'),
-         ('workspace-other', 'Other Secret', 'organization-other', null)`,
+      `insert into workspace (
+         id, name, owner_id, organization_id, workspace_mode, billed_account_user_id, archived_at
+       ) values
+         ('workspace-1', 'Runtime', 'org-owner-1', 'organization-1', 'organization',
+          'org-owner-1', null),
+         ('workspace-denied', 'Secret', 'org-owner-1', 'organization-1', 'organization',
+          'org-owner-1', null),
+         ('workspace-archived', 'Archive', 'org-owner-1', 'organization-1', 'organization',
+          'org-owner-1', '2026-07-01T00:00:00Z'),
+         ('workspace-other', 'Other Secret', 'inviter-1', 'organization-other', 'organization',
+          'inviter-1', null),
+         ('workspace-personal', 'Personal', 'member-1', null, 'personal', 'member-1', null)`,
       `insert into permissions (
          id, user_id, entity_type, entity_id, permission_type, created_at
        ) values
@@ -163,6 +181,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
           '2026-07-08T00:00:00Z'),
          ('permission-member', 'member-1', 'workspace', 'workspace-1', 'write',
           '2026-07-09T00:00:00Z'),
+         ('permission-personal-viewer', 'viewer-1', 'workspace', 'workspace-personal', 'read',
+          '2026-07-10T00:00:00Z'),
          ('permission-archived', 'viewer-1', 'workspace', 'workspace-archived', 'admin',
           '2026-07-07T00:00:00Z')`,
       `insert into member (id, user_id, organization_id, role, created_at) values
@@ -195,10 +215,23 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
        ) values
          ('group-member-explicit-old', 'group-explicit-old', 'organization-1', 'viewer-1'),
          ('group-member-explicit-new', 'group-explicit-new', 'organization-1', 'viewer-1')`,
-      `insert into user_stats (id, user_id, billing_blocked)
-       values ('stats-owner', 'org-owner-1', false)`,
-      `insert into subscription (id, plan, reference_id, status)
-       values ('subscription-1', 'enterprise', 'organization-1', 'active')`,
+      `insert into user_stats (id, user_id, billing_blocked, billing_blocked_reason)
+       values
+         ('stats-owner', 'org-owner-1', false, null),
+         ('stats-personal', 'member-1', true, 'dispute')`,
+      `insert into subscription (
+         id, plan, reference_id, status, period_start, billing_interval, metadata
+       ) values
+         ('subscription-org-old', 'enterprise', 'organization-1', 'active',
+          '2026-06-01T00:00:00Z', 'month', null),
+         ('subscription-1', 'enterprise', 'organization-1', 'past_due',
+          '2026-07-01T00:00:00Z', 'year', null),
+         ('subscription-personal-pro', 'pro_6000', 'member-1', 'active',
+          '2026-07-01T00:00:00Z', null, '{"billingInterval":"year"}'),
+         ('subscription-personal-team', 'team_6000', 'member-1', 'active',
+          '2026-07-02T00:00:00Z', null, null),
+         ('subscription-personal-enterprise', 'enterprise', 'member-1', 'active',
+          '2026-07-03T00:00:00Z', 'month', null)`,
       `insert into invitation (
          id, kind, email, inviter_id, organization_id, membership_intent,
          role, status, token, expires_at, created_at, updated_at
@@ -354,6 +387,48 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
     await expect(access.workspacePermission('org-admin-1', 'workspace-1')).resolves.toBe('admin')
     await expect(access.workspacePermission('viewer-1', 'workspace-denied')).resolves.toBeNull()
     await expect(access.workspacePermission('viewer-1', 'workspace-archived')).resolves.toBeNull()
+
+    const hostContexts = createDrizzleWorkspaceHostContextReadRepository()
+    await expect(hostContexts.readForViewer('workspace-1', 'viewer-1')).resolves.toEqual({
+      workspace: {
+        id: 'workspace-1',
+        name: 'Runtime',
+        workspaceMode: 'organization',
+        billedAccountUserId: 'org-owner-1',
+        organizationId: 'organization-1',
+      },
+      viewerOrganizationRole: null,
+      subscription: {
+        plan: 'enterprise',
+        status: 'past_due',
+        billingInterval: 'year',
+        metadata: null,
+      },
+      billingBlocked: false,
+      billingBlockedReason: null,
+    })
+    await expect(hostContexts.readForViewer('workspace-1', 'org-admin-1')).resolves.toMatchObject({
+      viewerOrganizationRole: 'admin',
+    })
+    await expect(hostContexts.readForViewer('workspace-personal', 'viewer-1')).resolves.toEqual({
+      workspace: {
+        id: 'workspace-personal',
+        name: 'Personal',
+        workspaceMode: 'personal',
+        billedAccountUserId: 'member-1',
+        organizationId: null,
+      },
+      viewerOrganizationRole: null,
+      subscription: {
+        plan: 'enterprise',
+        status: 'active',
+        billingInterval: 'month',
+        metadata: null,
+      },
+      billingBlocked: true,
+      billingBlockedReason: 'dispute',
+    })
+    await expect(hostContexts.readForViewer('workspace-archived', 'viewer-1')).resolves.toBeNull()
 
     const organizationWorkspaces =
       await createDrizzleOrganizationWorkspaceReadRepository().listByOrganization('organization-1')
