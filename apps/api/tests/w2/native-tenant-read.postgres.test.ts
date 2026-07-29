@@ -8,7 +8,7 @@ if (process.env.SIM_REQUIRE_POSTGRES_TEST === '1' && !disposableDatabaseEnabled)
 }
 
 describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () => {
-  it('executes invitation, workspace authorization, and member reads against PostgreSQL', async () => {
+  it('executes native W2 repository reads against PostgreSQL', async () => {
     const [
       { db },
       { readFile },
@@ -22,6 +22,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { createDrizzleOrganizationWorkspaceReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleUserPermissionGroupReadRepository },
+      { createDrizzleWorkspaceExecutionMetricsReadRepository },
       { createDrizzleWorkspaceHostContextReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzleAccessResolver },
@@ -43,6 +44,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
       import(
         '@/infrastructure/postgres/repositories/drizzle-user-permission-group-read-repository'
+      ),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-workspace-execution-metrics-read-repository'
       ),
       import(
         '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
@@ -79,6 +83,30 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         workspace_mode text not null,
         billed_account_user_id text not null references "user"(id),
         archived_at timestamp
+      )`,
+      `create table workflow (
+        id text primary key,
+        user_id text not null,
+        workspace_id text,
+        folder_id text,
+        name text not null
+      )`,
+      `create table workflow_execution_logs (
+        id text primary key,
+        workflow_id text,
+        execution_id text not null,
+        level text not null,
+        trigger text not null,
+        started_at timestamp not null,
+        ended_at timestamp,
+        total_duration_ms integer
+      )`,
+      `create table paused_executions (
+        id text primary key,
+        execution_id text not null,
+        total_pause_count integer not null,
+        resumed_count integer not null default 0,
+        status text not null default 'paused'
       )`,
       `create table permission_group (
         id text primary key,
@@ -209,6 +237,25 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
           '2026-07-10T00:00:00Z'),
          ('permission-archived', 'viewer-1', 'workspace', 'workspace-archived', 'admin',
           '2026-07-07T00:00:00Z')`,
+      `insert into workflow (id, user_id, workspace_id, folder_id, name) values
+         ('metrics-workflow-a', 'viewer-1', 'workspace-1', 'folder-a', 'Metrics A'),
+         ('metrics-workflow-b', 'viewer-1', 'workspace-1', 'folder-b', 'Metrics B'),
+         ('metrics-workflow-other', 'inviter-1', 'workspace-other', 'folder-a', 'Other')`,
+      `insert into workflow_execution_logs (
+         id, workflow_id, execution_id, level, trigger, started_at, ended_at, total_duration_ms
+       ) values
+         ('metrics-log-error', 'metrics-workflow-a', 'metrics-execution-error', 'error', 'manual',
+          '2026-07-30T10:00:00Z', '2026-07-30T10:01:00Z', 100),
+         ('metrics-log-info', 'metrics-workflow-a', 'metrics-execution-info', 'info', 'cron',
+          '2026-07-30T11:00:00Z', '2026-07-30T11:01:00Z', 200),
+         ('metrics-log-pending', 'metrics-workflow-b', 'metrics-execution-pending', 'info',
+          'manual', '2026-07-30T11:30:00Z', null, null),
+         ('metrics-log-other', 'metrics-workflow-other', 'metrics-execution-other', 'info',
+          'manual', '2026-07-30T11:45:00Z', null, 300)`,
+      `insert into paused_executions (
+         id, execution_id, total_pause_count, resumed_count, status
+       ) values
+         ('metrics-pause', 'metrics-execution-pending', 1, 0, 'paused')`,
       `insert into member (id, user_id, organization_id, role, created_at) values
          ('membership-admin', 'org-admin-1', 'organization-1', 'admin',
           '2026-07-04T00:00:00Z'),
@@ -467,6 +514,63 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       billingBlockedReason: 'dispute',
     })
     await expect(hostContexts.readForViewer('workspace-archived', 'viewer-1')).resolves.toBeNull()
+
+    const executionMetrics = createDrizzleWorkspaceExecutionMetricsReadRepository()
+    await expect(
+      executionMetrics.listWorkflows({
+        workspaceId: 'workspace-1',
+        folderIds: ['folder-a'],
+      })
+    ).resolves.toEqual([{ id: 'metrics-workflow-a', name: 'Metrics A' }])
+    await expect(
+      executionMetrics.listWorkflows({
+        workspaceId: 'workspace-1',
+        workflowIds: ['metrics-workflow-other'],
+      })
+    ).resolves.toEqual([])
+    await expect(
+      executionMetrics.readBounds({
+        workflowIds: ['metrics-workflow-a'],
+        triggers: ['manual'],
+        levels: ['error'],
+      })
+    ).resolves.toEqual({
+      minDate: new Date('2026-07-30T10:00:00.000Z'),
+      maxDate: new Date('2026-07-30T10:00:00.000Z'),
+    })
+    await expect(
+      executionMetrics.readBounds({
+        workflowIds: ['metrics-workflow-b'],
+        levels: ['pending'],
+      })
+    ).resolves.toEqual({
+      minDate: new Date('2026-07-30T11:30:00.000Z'),
+      maxDate: new Date('2026-07-30T11:30:00.000Z'),
+    })
+    await expect(
+      executionMetrics.listSamples({
+        workflowIds: ['metrics-workflow-a'],
+        triggers: ['manual'],
+        levels: ['error'],
+        start: new Date('2026-07-30T09:00:00.000Z'),
+        end: new Date('2026-07-30T10:00:00.000Z'),
+      })
+    ).resolves.toEqual([
+      {
+        workflowId: 'metrics-workflow-a',
+        level: 'error',
+        startedAt: new Date('2026-07-30T10:00:00.000Z'),
+        totalDurationMs: 100,
+      },
+    ])
+    await expect(
+      executionMetrics.listSamples({
+        workflowIds: ['metrics-workflow-a'],
+        triggers: [],
+        start: new Date('2026-07-30T09:00:00.000Z'),
+        end: new Date('2026-07-30T12:00:00.000Z'),
+      })
+    ).resolves.toEqual([])
 
     const organizationWorkspaces =
       await createDrizzleOrganizationWorkspaceReadRepository().listByOrganization('organization-1')

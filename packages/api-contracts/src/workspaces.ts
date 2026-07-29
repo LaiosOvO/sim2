@@ -46,6 +46,40 @@ export const workspaceHostContextV1Schema = z.object({
   }),
 })
 
+export const workspaceExecutionMetricsQueryV1Schema = z.object({
+  startTime: z.string().optional(),
+  endTime: z.string().optional(),
+  segments: z.coerce.number().min(1).max(200).default(72),
+  workflowIds: z.string().optional(),
+  folderIds: z.string().optional(),
+  triggers: z.string().optional(),
+  level: z.string().optional(),
+  allTime: z.enum(['true', 'false']).optional().default('false'),
+})
+
+export const workspaceExecutionMetricSegmentV1Schema = z.object({
+  timestamp: z.string(),
+  totalExecutions: z.number().int().nonnegative(),
+  successfulExecutions: z.number().int().nonnegative(),
+  avgDurationMs: z.number().nonnegative(),
+  p50Ms: z.number().nonnegative(),
+  p90Ms: z.number().nonnegative(),
+  p99Ms: z.number().nonnegative(),
+})
+
+export const workspaceExecutionMetricsWorkflowV1Schema = z.object({
+  workflowId: z.string(),
+  workflowName: z.string(),
+  segments: z.array(workspaceExecutionMetricSegmentV1Schema),
+})
+
+export const workspaceExecutionMetricsResponseV1Schema = z.object({
+  workflows: z.array(workspaceExecutionMetricsWorkflowV1Schema),
+  startTime: z.string(),
+  endTime: z.string(),
+  segmentMs: z.number().nonnegative(),
+})
+
 export const personalExternalIdentityV1Schema = z.object({
   id: z.string(),
   providerKey: z.string(),
@@ -89,6 +123,18 @@ export type WorkspaceModeV1 = z.infer<typeof workspaceModeV1Schema>
 export type WorkspacePermissionLevelV1 = z.infer<typeof workspacePermissionLevelV1Schema>
 export type WorkspaceOwnerBillingV1 = z.infer<typeof workspaceOwnerBillingV1Schema>
 export type WorkspaceHostContextV1 = z.infer<typeof workspaceHostContextV1Schema>
+export type WorkspaceExecutionMetricsQueryV1 = z.infer<
+  typeof workspaceExecutionMetricsQueryV1Schema
+>
+export type WorkspaceExecutionMetricSegmentV1 = z.infer<
+  typeof workspaceExecutionMetricSegmentV1Schema
+>
+export type WorkspaceExecutionMetricsWorkflowV1 = z.infer<
+  typeof workspaceExecutionMetricsWorkflowV1Schema
+>
+export type WorkspaceExecutionMetricsResponseV1 = z.infer<
+  typeof workspaceExecutionMetricsResponseV1Schema
+>
 export type PersonalExternalIdentityV1 = z.infer<typeof personalExternalIdentityV1Schema>
 export type PersonalAccountProfileV1 = z.infer<typeof personalAccountProfileV1Schema>
 export type PersonalWorkspaceProfileV1 = z.infer<typeof personalWorkspaceProfileV1Schema>

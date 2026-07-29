@@ -48,11 +48,11 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 ## 尚未完成：原生读模型
 
 兼容读取平面解决 Next 编译边界，但不是 22 条接口的最终后端实现。当前 backend 状态为
-10 条 native（API-0137 invitee invitations、API-0209 data drain runs、
+11 条 native（API-0137 invitee invitations、API-0209 data drain runs、
 API-0235 organization roster、
 API-0241 organization workspaces、API-0243 user permission group、API-0294 stars、
-API-1041 workspace host context、API-1057 workspace members、API-1060 Polaris personal
-profile、API-1124 workspace invitation management）和 12 条
+API-1041 workspace host context、API-1057 workspace members、API-1058 workspace execution
+metrics、API-1060 Polaris personal profile、API-1124 workspace invitation management）和 11 条
 legacy-origin-compatibility。完成本 Ticket 仍需：
 
 1. 按领域建立 organization/workspace/user read repository ports；
@@ -67,18 +67,19 @@ legacy-origin-compatibility。完成本 Ticket 仍需：
 | Gate | 结果 |
 | --- | --- |
 | Inventory/coverage | 22/22，C/A/D/I 无遗漏、无重复 |
-| W2 API tests | 92 passed、1 disposable PostgreSQL test 默认跳过 |
+| W2 API tests | 100 passed、1 disposable PostgreSQL test 默认跳过 |
 | W2 Next proxy tests | 25/25 |
-| API Contract tests | 15/15 |
+| API Contract tests | 16/16 |
 | Full repository type-check | 43/43 tasks |
 | Next facade isolated build | 22 entries；最大 1,485 gzip bytes |
 | Next facade forbidden marker | 0 |
-| Platform Contract | 76 schemas；生成产物 clean |
+| Platform Contract | 80 schemas；生成产物 clean |
 | API validation audit | 991/991 contract-backed；non-contract 0 |
 | Identity boundary | 3 boundaries / 9 files；0 provider/DB 反向依赖 |
 | Data Drains boundary | 5 module files / 2 adapters / 1 contract；0 violation |
-| Target structure | 53 roots / 66 required files |
-| Target cycles | 22 packages / 150 source nodes；0 cycle |
+| Workspaces boundary | 10 module files / 3 adapters / 1 contract；0 violation |
+| Target structure | 53 roots / 70 required files |
+| Target cycles | 22 packages / 154 source nodes；0 cycle |
 
 旧 route 同目录的 8 个测试随实现移出 Next 一并删除；覆盖职责已迁到独立 API 的
 22 路差分/鉴权/集成测试和 HTTP legacy adapter 测试。原生 adapter 替换时必须补回
@@ -131,7 +132,14 @@ Executor 与 Sandbox 回流；真实 fixture 验证 newest-first、limit、跨 o
 与 owner billing-block。API-1011/API-1122 暂不复制旧 `checkAttributedUsageLimits`，必须先
 建立 billing attribution/ledger/limit-policy read-model foundation。
 
-其余 12 条仍必须补相应的数据库/Provider integration gate。
+`API-1058` 将 253 行 workspace execution metrics route 收进 Workspaces Module。
+Application 拥有 query normalization、all-time bounds、bucket、success/avg/percentile
+projection；三方法 read port 隐藏 workspace-scoped workflow、filtered bounds 与 sample
+查询。真实 fixture 验证 folder/workflow/trigger/level/pending filter、跨 workspace scope、
+空 filter 以及 aggregate timestamp UTC 解码；Workspaces boundary 扩展为覆盖全部 3 个
+PostgreSQL adapters。
+
+其余 11 条仍必须补相应的数据库/Provider integration gate。
 
 ## Acceptance criteria
 

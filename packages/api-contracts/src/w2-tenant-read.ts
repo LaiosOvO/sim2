@@ -238,7 +238,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/metrics/executions',
     domain: 'workspaces',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    backend: 'native',
     requiredTests,
   },
   {

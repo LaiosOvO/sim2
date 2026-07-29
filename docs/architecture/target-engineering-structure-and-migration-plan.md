@@ -297,17 +297,21 @@ Biz 通过 opaque `identifiers` 表达外部身份；Feishu alias、SDK 与同�
 ```text
 apps/api/src/modules/workspaces/
 ├─ interface/
+│  ├─ create-get-workspace-execution-metrics-handler.ts
 │  ├─ create-get-workspace-host-context-handler.ts
 │  └─ create-list-workspace-members-handler.ts
 ├─ application/
+│  ├─ get-workspace-execution-metrics.ts
 │  ├─ get-workspace-host-context.ts
 │  └─ list-workspace-members.ts
 ├─ ports/
+│  ├─ workspace-execution-metrics-read-repository.ts
 │  ├─ workspace-host-context-read-repository.ts
 │  └─ workspace-member-read-repository.ts
 └─ index.ts
 
 apps/api/src/infrastructure/postgres/repositories/
+├─ drizzle-workspace-execution-metrics-read-repository.ts
 ├─ drizzle-workspace-host-context-read-repository.ts
 └─ drizzle-workspace-member-read-repository.ts
 
@@ -321,6 +325,13 @@ block 的多表读取；application 才负责公开 paid flags、billing interva
 credit-availability/usage-gate 应消费这一深模块的稳定 host/payer seam，不能重新横跨旧 helper。
 `scripts/architecture/import-boundaries/check-workspaces-module-boundary.ts` 对 Module、adapter
 与 contract 分层设置 allowlist，阻止这些依赖回流。
+
+Execution-metrics use case 拥有 query normalization、默认/全量时间范围、bucket 和
+percentile projection；repository interface 只公开 workspace-scoped workflows、filtered
+bounds 与 samples 三个操作。Drizzle adapter 才能看到 workflow/log/paused-execution
+schema，并在边界统一解码 PostgreSQL 无时区 aggregate。它不读取 execution payload，
+也不依赖 Executor、Runtime Registry 或 Sandbox。Workspaces boundary gate 必须同时检查
+上述 10 个 Module 文件、3 个 adapters 和纯 contract，不能只保护 host-context。
 
 当前 Data Drains 读取竖切片的具体目录为：
 

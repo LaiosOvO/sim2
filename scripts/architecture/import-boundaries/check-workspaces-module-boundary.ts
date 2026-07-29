@@ -4,10 +4,11 @@ import path from 'node:path'
 
 const root = path.resolve(import.meta.dir, '..', '..', '..')
 const moduleDirectory = path.join(root, 'apps/api/src/modules/workspaces')
-const adapterPath = path.join(
-  root,
-  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository.ts'
-)
+const adapterPaths = [
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-execution-metrics-read-repository.ts',
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository.ts',
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository.ts',
+].map((file) => path.join(root, file))
 const contractPath = path.join(root, 'packages/api-contracts/src/workspaces.ts')
 const importPattern = /\b(?:from\s+|import\s*\(\s*|require\s*\(\s*)['"]([^'"]+)['"]/g
 
@@ -58,10 +59,20 @@ async function main(): Promise<void> {
     }
   }
 
-  const adapter = await readFile(adapterPath, 'utf8')
-  for (const marker of ['react', 'next/', '@/lib/', 'billing/core', 'executor', 'registry']) {
-    if (adapter.toLowerCase().includes(marker.toLowerCase())) {
-      failures.push(`${path.relative(root, adapterPath)}: forbidden adapter marker ${marker}`)
+  for (const adapterPath of adapterPaths) {
+    const adapter = await readFile(adapterPath, 'utf8')
+    for (const marker of [
+      'react',
+      'next/',
+      '@/lib/',
+      'billing/core',
+      'executor',
+      'registry',
+      'sandbox',
+    ]) {
+      if (adapter.toLowerCase().includes(marker.toLowerCase())) {
+        failures.push(`${path.relative(root, adapterPath)}: forbidden adapter marker ${marker}`)
+      }
     }
   }
 
@@ -79,7 +90,7 @@ async function main(): Promise<void> {
   }
 
   console.log(
-    `Workspaces module boundary OK: ${moduleFiles.length} module files, 1 adapter, 1 contract`
+    `Workspaces module boundary OK: ${moduleFiles.length} module files, ${adapterPaths.length} adapters, 1 contract`
   )
 }
 

@@ -50,6 +50,7 @@
 - [Phase 4 W2 原生 User Permission Group 检查点](./handoffs/phase-4-w2-native-user-permission-group.md)
 - [Phase 4 W2 原生 Workspace Host Context 检查点](./handoffs/phase-4-w2-native-workspace-host-context.md)
 - [Phase 4 W2 原生 Data Drain Runs 检查点](./handoffs/phase-4-w2-native-data-drain-runs.md)
+- [Phase 4 W2 原生 Workspace Execution Metrics 检查点](./handoffs/phase-4-w2-native-workspace-execution-metrics.md)
 
 ## 阅读顺序
 

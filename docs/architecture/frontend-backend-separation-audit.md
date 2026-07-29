@@ -1196,6 +1196,34 @@ organization pool、member cap、daily refresh、goodwill/on-demand limit 与不
 当前不复制这套 600+ 行 Billing Core；先建立独立、版本化的 attribution/ledger/limit-policy
 read-model foundation，再用 donor/native differential fixture 原生切流。
 
+### 19.20 W2 原生 Workspace Execution Metrics 与时间聚合边界
+
+第十一条原生替换是
+`API-1058 GET /api/workspaces/[id]/metrics/executions`。Sim2 与 Polaris donor route
+SHA-256 相同。旧 route 有 253 行，在一个 Next handler 内同时执行 query coercion、
+workspace access、workflow filters、execution-log/paused-execution join、all-time bounds、
+时间分桶、success count、average 和 percentile projection。
+
+目标 Workspaces Module 将公开 interface 收敛为
+`GetWorkspaceExecutionMetricsUseCase.execute`。Application 拥有所有可纯测的 query/time/
+bucket/percentile 规则；`WorkspaceExecutionMetricsReadRepository` 只公开 workspace-scoped
+workflow list、filtered bounds 和 filtered samples 三个操作。Drizzle adapter 不选择
+execution payload，只读取构建统计所需的 workflowId/level/time/duration 与 paused state。
+
+真实 disposable PostgreSQL 16 fixture 验证 workspace/folder/workflow scope、
+trigger/error/pending filters、空 filter 和 bounds。首轮真实测试发现 raw
+`MIN/MAX(timestamp)` 返回无时区字符串，而普通 Drizzle timestamp 返回 `Date`；在
+Asia/Shanghai 进程两者会相差 8 小时。新 adapter 在 persistence boundary 将无时区 aggregate
+按 UTC 解码，使 all-time bounds 与 sample 时间轴一致。
+
+当前 W2 为 native 11/22、legacy 11/22；API 112 passed（1 skipped），W2 focused
+100 passed（1 skipped），API Contract 16/16，Platform Contract 80 schemas。API build
+共 1,042 modules，entry 30.24 KiB；Workspaces module/metrics adapter chunks 为
+14.50/3.86 KiB；Next 22 facade 最大仍为 1,485 gzip bytes。目标结构 53 roots/70 files，
+目标图 22 packages/154 source nodes、0 cycle，全仓 TypeScript 43/43 tasks 通过。
+Workspaces boundary 现在检查 10 个 Module 文件、3 个 adapters 和 1 个 contract，
+0 violation。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1301,3 +1329,7 @@ read-model foundation，再用 donor/native differential fixture 原生切流。
   Executor/Sandbox，并以真实 Postgres 验证 plan/block/tenant/limit；新增专用 boundary
   gate；当前 native 10/22、legacy 12/22。API-1011/API-1122 延后到 Billing read-model
   foundation 建立后迁移。
+- 将 `API-1058 workspace execution metrics` 切为原生 Workspaces read model；用三方法
+  port 隐藏 workflow/log/paused SQL，在 Application 内保留 all-time、bucket、success 与
+  percentile 语义；真实 Postgres 同时发现并固定 aggregate timestamp UTC 边界；当前
+  native 11/22、legacy 11/22，Workspaces boundary 扩展为覆盖 3 个 adapters。

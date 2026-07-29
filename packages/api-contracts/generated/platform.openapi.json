@@ -4009,6 +4009,245 @@
         ],
         "additionalProperties": false
       },
+      "WorkspaceExecutionMetricsQueryV1": {
+        "type": "object",
+        "properties": {
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "segments": {
+            "default": 72,
+            "type": "number",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "workflowIds": {
+            "type": "string"
+          },
+          "folderIds": {
+            "type": "string"
+          },
+          "triggers": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
+          "allTime": {
+            "default": "false",
+            "type": "string",
+            "enum": [
+              "true",
+              "false"
+            ]
+          }
+        },
+        "required": [
+          "segments",
+          "allTime"
+        ],
+        "additionalProperties": false
+      },
+      "WorkspaceExecutionMetricSegmentV1": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "totalExecutions": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "successfulExecutions": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "avgDurationMs": {
+            "type": "number",
+            "minimum": 0
+          },
+          "p50Ms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "p90Ms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "p99Ms": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "timestamp",
+          "totalExecutions",
+          "successfulExecutions",
+          "avgDurationMs",
+          "p50Ms",
+          "p90Ms",
+          "p99Ms"
+        ],
+        "additionalProperties": false
+      },
+      "WorkspaceExecutionMetricsWorkflowV1": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string"
+          },
+          "workflowName": {
+            "type": "string"
+          },
+          "segments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "string"
+                },
+                "totalExecutions": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "successfulExecutions": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "avgDurationMs": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "p50Ms": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "p90Ms": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "p99Ms": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "timestamp",
+                "totalExecutions",
+                "successfulExecutions",
+                "avgDurationMs",
+                "p50Ms",
+                "p90Ms",
+                "p99Ms"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "workflowId",
+          "workflowName",
+          "segments"
+        ],
+        "additionalProperties": false
+      },
+      "WorkspaceExecutionMetricsResponseV1": {
+        "type": "object",
+        "properties": {
+          "workflows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "workflowId": {
+                  "type": "string"
+                },
+                "workflowName": {
+                  "type": "string"
+                },
+                "segments": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "timestamp": {
+                        "type": "string"
+                      },
+                      "totalExecutions": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "successfulExecutions": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "avgDurationMs": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "p50Ms": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "p90Ms": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "p99Ms": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "timestamp",
+                      "totalExecutions",
+                      "successfulExecutions",
+                      "avgDurationMs",
+                      "p50Ms",
+                      "p90Ms",
+                      "p99Ms"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "workflowId",
+                "workflowName",
+                "segments"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "segmentMs": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "workflows",
+          "startTime",
+          "endTime",
+          "segmentMs"
+        ],
+        "additionalProperties": false
+      },
       "PersonalExternalIdentityV1": {
         "type": "object",
         "properties": {

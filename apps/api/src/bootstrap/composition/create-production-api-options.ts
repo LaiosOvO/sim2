@@ -23,6 +23,7 @@ import type { UserPermissionGroupReadRepository } from '@/modules/permission-gro
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
 import type {
+  WorkspaceExecutionMetricsReadRepository,
   WorkspaceHostContextReadRepository,
   WorkspaceMemberReadRepository,
 } from '@/modules/workspaces'
@@ -97,6 +98,8 @@ async function createTenantRead(
     },
     { createGetUserPermissionGroupHandler, createGetUserPermissionGroupUseCase },
     {
+      createGetWorkspaceExecutionMetricsHandler,
+      createGetWorkspaceExecutionMetricsUseCase,
       createGetWorkspaceHostContextHandler,
       createGetWorkspaceHostContextUseCase,
       createListWorkspaceMembersHandler,
@@ -147,6 +150,17 @@ async function createTenantRead(
   let workspaceHostContextRepository: WorkspaceHostContextReadRepository = {
     async readForViewer() {
       throw new Error('Workspace host-context database is not configured')
+    },
+  }
+  let workspaceExecutionMetricsRepository: WorkspaceExecutionMetricsReadRepository = {
+    async listWorkflows() {
+      throw new Error('Workspace execution metrics database is not configured')
+    },
+    async readBounds() {
+      throw new Error('Workspace execution metrics database is not configured')
+    },
+    async listSamples() {
+      throw new Error('Workspace execution metrics database is not configured')
     },
   }
   let organizationWorkspaceRepository: OrganizationWorkspaceReadRepository = {
@@ -208,6 +222,7 @@ async function createTenantRead(
       { createDrizzleOrganizationRosterReadRepository },
       { createDrizzleOrganizationInvitationHousekeeping },
       { createDrizzleUserPermissionGroupReadRepository },
+      { createDrizzleWorkspaceExecutionMetricsReadRepository },
       { createDrizzleWorkspaceHostContextReadRepository },
       { createDrizzleAccessResolver },
       { readAccessControlRuntimeConfig },
@@ -229,6 +244,9 @@ async function createTenantRead(
         '@/infrastructure/postgres/repositories/drizzle-user-permission-group-read-repository'
       ),
       import(
+        '@/infrastructure/postgres/repositories/drizzle-workspace-execution-metrics-read-repository'
+      ),
+      import(
         '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
       ),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
@@ -243,6 +261,7 @@ async function createTenantRead(
     organizationRosterRepository = createDrizzleOrganizationRosterReadRepository()
     organizationInvitationHousekeeping = createDrizzleOrganizationInvitationHousekeeping()
     userPermissionGroupRepository = createDrizzleUserPermissionGroupReadRepository()
+    workspaceExecutionMetricsRepository = createDrizzleWorkspaceExecutionMetricsReadRepository()
     workspaceHostContextRepository = createDrizzleWorkspaceHostContextReadRepository()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
       readAccessControlRuntimeConfig()
@@ -258,6 +277,7 @@ async function createTenantRead(
     | 'API-0294'
     | 'API-1041'
     | 'API-1057'
+    | 'API-1058'
     | 'API-1060'
     | 'API-1124',
     NativeTenantReadHandler
@@ -307,6 +327,12 @@ async function createTenantRead(
       createListWorkspaceMembersUseCase({
         access: accessResolver,
         repository: workspaceMemberRepository,
+      })
+    ),
+    'API-1058': createGetWorkspaceExecutionMetricsHandler(
+      createGetWorkspaceExecutionMetricsUseCase({
+        access: accessResolver,
+        repository: workspaceExecutionMetricsRepository,
       })
     ),
     'API-1060': createGetPersonalProfileHandler(

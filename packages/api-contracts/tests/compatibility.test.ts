@@ -23,6 +23,8 @@ import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../
 import {
   listWorkspaceMembersResponseV1Schema,
   personalProfileResponseV1Schema,
+  workspaceExecutionMetricsQueryV1Schema,
+  workspaceExecutionMetricsResponseV1Schema,
   workspaceHostContextV1Schema,
 } from '../src/workspaces'
 
@@ -154,6 +156,7 @@ describe('API contract compatibility', () => {
       'API-0294',
       'API-1041',
       'API-1057',
+      'API-1058',
       'API-1060',
       'API-1124',
     ])
@@ -301,6 +304,50 @@ describe('API contract compatibility', () => {
 
     expect(parsed.workspace).not.toHaveProperty('ownerId')
     expect(parsed.ownerBilling).not.toHaveProperty('stripeSubscriptionId')
+  })
+
+  it('bounds workspace execution metrics queries and strips persistence-only fields', () => {
+    expect(workspaceExecutionMetricsQueryV1Schema.parse({})).toEqual({
+      segments: 72,
+      allTime: 'false',
+    })
+    expect(
+      workspaceExecutionMetricsQueryV1Schema.parse({
+        segments: '200',
+        allTime: 'true',
+      })
+    ).toMatchObject({ segments: 200, allTime: 'true' })
+    expect(() => workspaceExecutionMetricsQueryV1Schema.parse({ segments: '201' })).toThrow()
+
+    const parsed = workspaceExecutionMetricsResponseV1Schema.parse({
+      workflows: [
+        {
+          workflowId: 'workflow-1',
+          workflowName: 'Release',
+          databaseWorkspaceId: 'must-not-cross',
+          segments: [
+            {
+              timestamp: '2026-07-30T10:00:00.000Z',
+              totalExecutions: 2,
+              successfulExecutions: 1,
+              avgDurationMs: 150,
+              p50Ms: 100,
+              p90Ms: 100,
+              p99Ms: 100,
+              rawDurations: [100, 200],
+            },
+          ],
+        },
+      ],
+      startTime: '2026-07-30T10:00:00.000Z',
+      endTime: '2026-07-30T12:00:00.000Z',
+      segmentMs: 3_600_000,
+      queryPlan: 'must-not-cross',
+    })
+
+    expect(parsed).not.toHaveProperty('queryPlan')
+    expect(parsed.workflows[0]).not.toHaveProperty('databaseWorkspaceId')
+    expect(parsed.workflows[0]?.segments[0]).not.toHaveProperty('rawDurations')
   })
 
   it('defines the organization workspace picker response without persistence fields', () => {
