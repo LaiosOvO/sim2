@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_groups",
-      "legacyIds": ["google-groups"],
+      "legacyIds": [
+        "google-groups"
+      ],
       "provider": "google_groups",
       "version": "1",
       "display": {

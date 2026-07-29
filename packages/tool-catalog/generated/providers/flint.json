@@ -16,7 +16,11 @@
         "icon": "FlintIcon",
         "bgColor": "#F6F54F"
       },
-      "capabilities": ["flint_create_task", "flint_generate_pages", "flint_get_task"],
+      "capabilities": [
+        "flint_create_task",
+        "flint_generate_pages",
+        "flint_get_task"
+      ],
       "inputs": [
         {
           "key": "operation",

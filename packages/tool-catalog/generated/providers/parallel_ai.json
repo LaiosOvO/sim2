@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "parallel_ai",
-      "legacyIds": ["parallel-ai"],
+      "legacyIds": [
+        "parallel-ai"
+      ],
       "provider": "parallel_ai",
       "version": "1",
       "display": {
@@ -16,7 +18,11 @@
         "icon": "ParallelIcon",
         "bgColor": "#1D1C1A"
       },
-      "capabilities": ["parallel_search", "parallel_extract", "parallel_deep_research"],
+      "capabilities": [
+        "parallel_search",
+        "parallel_extract",
+        "parallel_deep_research"
+      ],
       "inputs": [
         {
           "key": "operation",

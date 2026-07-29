@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_vault",
-      "legacyIds": ["google-vault"],
+      "legacyIds": [
+        "google-vault"
+      ],
       "provider": "google_vault",
       "version": "1",
       "display": {

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_drive",
-      "legacyIds": ["google-drive"],
+      "legacyIds": [
+        "google-drive"
+      ],
       "provider": "google_drive",
       "version": "1",
       "display": {

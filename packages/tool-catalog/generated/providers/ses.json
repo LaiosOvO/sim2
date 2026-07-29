@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "ses",
-      "legacyIds": ["aws-ses"],
+      "legacyIds": [
+        "aws-ses"
+      ],
       "provider": "ses",
       "version": "1",
       "display": {

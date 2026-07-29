@@ -16,7 +16,9 @@
         "icon": "DropcontactIcon",
         "bgColor": "#0ABA9F"
       },
-      "capabilities": ["dropcontact_enrich_contact"],
+      "capabilities": [
+        "dropcontact_enrich_contact"
+      ],
       "inputs": [
         {
           "key": "operation",

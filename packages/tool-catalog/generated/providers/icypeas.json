@@ -16,7 +16,10 @@
         "icon": "IcypeasIcon",
         "bgColor": "#d4d4d4"
       },
-      "capabilities": ["icypeas_find_email", "icypeas_verify_email"],
+      "capabilities": [
+        "icypeas_find_email",
+        "icypeas_verify_email"
+      ],
       "inputs": [
         {
           "key": "operation",

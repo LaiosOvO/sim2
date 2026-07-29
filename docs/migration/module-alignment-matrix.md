@@ -61,7 +61,7 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 | `apps/sim/blocks` UI | `apps/sim/features/workflow-canvas/blocks` | S | 只移植浏览器渲染与编辑行为 |
 | `apps/sim/blocks` runtime | `apps/worker/src/runtime/blocks` | S | 移植执行绑定，禁止 Web import |
 | `apps/sim/tools` metadata | `packages/tool-catalog/generated/providers/*` | S | 由 BlockConfig capability 提取，重新生成并运行 231 项 UI differential check |
-| `apps/sim/tools` runtime | `apps/worker/src/runtime/tools` + `extensions/infra/*` | S | 按 Provider 适配，保留稳定 tool ID |
+| `apps/sim/tools` runtime | `apps/worker/src/runtime/providers/*` + `extensions/infra/*` | S | 按 Provider 适配，保留稳定 tool ID；首个 Notion add-database-row 已迁移，legacy ID 指向 v2 canonical ID |
 | `apps/sim/triggers` metadata | `packages/tool-catalog/generated/providers/*`（后续扩展 trigger kind） | S | 保留稳定 trigger ID；Ticket 06 前不允许浏览器读取 runtime trigger registry |
 | `apps/sim/triggers` runtime | `apps/worker/src/runtime/triggers` + `apps/api/src/modules/webhooks` | S | 执行在 Worker，公网 admission 在 API |
 | `apps/sim/executor` | `apps/worker/src/execution` | S | 移植执行语义、snapshot、resume、cancel |

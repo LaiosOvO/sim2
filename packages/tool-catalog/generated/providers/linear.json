@@ -594,7 +594,10 @@
     {
       "catalogVersion": 1,
       "id": "linear_v2",
-      "legacyIds": ["linear", "linear-v2"],
+      "legacyIds": [
+        "linear",
+        "linear-v2"
+      ],
       "provider": "linear",
       "version": "2",
       "display": {

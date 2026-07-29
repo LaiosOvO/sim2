@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_pagespeed",
-      "legacyIds": ["google-pagespeed"],
+      "legacyIds": [
+        "google-pagespeed"
+      ],
       "provider": "google_pagespeed",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "GooglePagespeedIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["google_pagespeed_analyze"],
+      "capabilities": [
+        "google_pagespeed_analyze"
+      ],
       "inputs": [
         {
           "key": "url",

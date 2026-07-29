@@ -16,7 +16,9 @@
         "icon": "EnrichmentIcon",
         "bgColor": "#9333EA"
       },
-      "capabilities": ["enrichment_run"],
+      "capabilities": [
+        "enrichment_run"
+      ],
       "inputs": [
         {
           "key": "operation",

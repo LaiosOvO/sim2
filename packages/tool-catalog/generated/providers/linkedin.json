@@ -16,7 +16,10 @@
         "icon": "LinkedInIcon",
         "bgColor": "#0072B1"
       },
-      "capabilities": ["linkedin_share_post", "linkedin_get_profile"],
+      "capabilities": [
+        "linkedin_share_post",
+        "linkedin_get_profile"
+      ],
       "inputs": [
         {
           "key": "operation",

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "dynamodb",
-      "legacyIds": ["amazon-dynamodb"],
+      "legacyIds": [
+        "amazon-dynamodb"
+      ],
       "provider": "dynamodb",
       "version": "1",
       "display": {

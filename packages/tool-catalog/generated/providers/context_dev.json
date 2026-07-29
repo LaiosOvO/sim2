@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "context_dev",
-      "legacyIds": ["context-dev"],
+      "legacyIds": [
+        "context-dev"
+      ],
       "provider": "context_dev",
       "version": "1",
       "display": {

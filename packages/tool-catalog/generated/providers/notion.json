@@ -228,7 +228,10 @@
     {
       "catalogVersion": 1,
       "id": "notion_v2",
-      "legacyIds": ["notion", "notion-v2"],
+      "legacyIds": [
+        "notion",
+        "notion-v2"
+      ],
       "provider": "notion",
       "version": "2",
       "display": {

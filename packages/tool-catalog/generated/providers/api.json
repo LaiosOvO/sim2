@@ -16,7 +16,9 @@
         "icon": "ApiIcon",
         "bgColor": "#2F55FF"
       },
-      "capabilities": ["http_request"],
+      "capabilities": [
+        "http_request"
+      ],
       "inputs": [
         {
           "key": "url",

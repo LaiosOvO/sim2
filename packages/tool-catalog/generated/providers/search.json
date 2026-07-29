@@ -16,7 +16,9 @@
         "icon": "SearchIcon",
         "bgColor": "#3B82F6"
       },
-      "capabilities": ["search_tool"],
+      "capabilities": [
+        "search_tool"
+      ],
       "inputs": [
         {
           "key": "query",

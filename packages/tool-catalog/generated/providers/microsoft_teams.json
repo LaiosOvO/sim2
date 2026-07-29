@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "microsoft_teams",
-      "legacyIds": ["microsoft-teams"],
+      "legacyIds": [
+        "microsoft-teams"
+      ],
       "provider": "microsoft_teams",
       "version": "1",
       "display": {

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_search",
-      "legacyIds": ["google-search"],
+      "legacyIds": [
+        "google-search"
+      ],
       "provider": "google_search",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "GoogleIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["google_search"],
+      "capabilities": [
+        "google_search"
+      ],
       "inputs": [
         {
           "key": "query",

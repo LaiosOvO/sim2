@@ -16,7 +16,9 @@
         "icon": "AirweaveIcon",
         "bgColor": "#6366F1"
       },
-      "capabilities": ["airweave_search"],
+      "capabilities": [
+        "airweave_search"
+      ],
       "inputs": [
         {
           "key": "collectionId",

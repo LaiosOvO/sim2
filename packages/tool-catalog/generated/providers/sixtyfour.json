@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "sixtyfour",
-      "legacyIds": ["sixtyfour-ai"],
+      "legacyIds": [
+        "sixtyfour-ai"
+      ],
       "provider": "sixtyfour",
       "version": "1",
       "display": {

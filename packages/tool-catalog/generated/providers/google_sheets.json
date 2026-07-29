@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_sheets",
-      "legacyIds": ["google-sheets"],
+      "legacyIds": [
+        "google-sheets"
+      ],
       "provider": "google_sheets",
       "version": "1",
       "display": {
@@ -106,7 +108,10 @@
     {
       "catalogVersion": 1,
       "id": "google_sheets_v2",
-      "legacyIds": ["google-sheets", "google-sheets-v2"],
+      "legacyIds": [
+        "google-sheets",
+        "google-sheets-v2"
+      ],
       "provider": "google_sheets",
       "version": "2",
       "display": {

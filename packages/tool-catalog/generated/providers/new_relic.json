@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "new_relic",
-      "legacyIds": ["new-relic"],
+      "legacyIds": [
+        "new-relic"
+      ],
       "provider": "new_relic",
       "version": "1",
       "display": {

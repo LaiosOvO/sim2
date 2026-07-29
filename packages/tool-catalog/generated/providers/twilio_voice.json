@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "twilio_voice",
-      "legacyIds": ["twilio-voice"],
+      "legacyIds": [
+        "twilio-voice"
+      ],
       "provider": "twilio_voice",
       "version": "1",
       "display": {

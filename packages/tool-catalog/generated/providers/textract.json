@@ -16,7 +16,9 @@
         "icon": "TextractIcon",
         "bgColor": "linear-gradient(135deg, #055F4E 0%, #56C0A7 100%)"
       },
-      "capabilities": ["textract_parser"],
+      "capabilities": [
+        "textract_parser"
+      ],
       "inputs": [
         {
           "key": "processingMode",
@@ -89,7 +91,10 @@
     {
       "catalogVersion": 1,
       "id": "textract_v2",
-      "legacyIds": ["aws-textract", "textract-v2"],
+      "legacyIds": [
+        "aws-textract",
+        "textract-v2"
+      ],
       "provider": "textract",
       "version": "2",
       "display": {
@@ -99,7 +104,11 @@
         "icon": "TextractIcon",
         "bgColor": "linear-gradient(135deg, #055F4E 0%, #56C0A7 100%)"
       },
-      "capabilities": ["textract_parser_v2", "textract_analyze_expense", "textract_analyze_id"],
+      "capabilities": [
+        "textract_parser_v2",
+        "textract_analyze_expense",
+        "textract_analyze_id"
+      ],
       "inputs": [
         {
           "key": "operation",

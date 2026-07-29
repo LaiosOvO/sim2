@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "sqs",
-      "legacyIds": ["amazon-sqs"],
+      "legacyIds": [
+        "amazon-sqs"
+      ],
       "provider": "sqs",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "SQSIcon",
         "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
       },
-      "capabilities": ["sqs_send"],
+      "capabilities": [
+        "sqs_send"
+      ],
       "inputs": [
         {
           "key": "operation",

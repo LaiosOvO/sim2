@@ -16,7 +16,9 @@
         "icon": "EyeIcon",
         "bgColor": "#4D5FFF"
       },
-      "capabilities": ["vision_tool"],
+      "capabilities": [
+        "vision_tool"
+      ],
       "inputs": [
         {
           "key": "imageFile",
@@ -59,7 +61,9 @@
     {
       "catalogVersion": 1,
       "id": "vision_v2",
-      "legacyIds": ["vision-v2"],
+      "legacyIds": [
+        "vision-v2"
+      ],
       "provider": "vision",
       "version": "2",
       "display": {
@@ -67,7 +71,9 @@
         "description": "Analyze images with vision models",
         "category": "blocks"
       },
-      "capabilities": ["vision_tool_v2"],
+      "capabilities": [
+        "vision_tool_v2"
+      ],
       "inputs": [
         {
           "key": "imageFile",

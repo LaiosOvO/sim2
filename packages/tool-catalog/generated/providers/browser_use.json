@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "browser_use",
-      "legacyIds": ["browser-use"],
+      "legacyIds": [
+        "browser-use"
+      ],
       "provider": "browser_use",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "BrowserUseIcon",
         "bgColor": "#181C1E"
       },
-      "capabilities": ["browser_use_run_task"],
+      "capabilities": [
+        "browser_use_run_task"
+      ],
       "inputs": [
         {
           "key": "task",

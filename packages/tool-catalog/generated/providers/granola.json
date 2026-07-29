@@ -16,7 +16,11 @@
         "icon": "GranolaIcon",
         "bgColor": "#B2C147"
       },
-      "capabilities": ["granola_list_notes", "granola_get_note", "granola_list_folders"],
+      "capabilities": [
+        "granola_list_notes",
+        "granola_get_note",
+        "granola_list_folders"
+      ],
       "inputs": [
         {
           "key": "operation",

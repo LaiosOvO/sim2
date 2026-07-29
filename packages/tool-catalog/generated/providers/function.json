@@ -16,7 +16,9 @@
         "icon": "CodeIcon",
         "bgColor": "#FF402F"
       },
-      "capabilities": ["function_execute"],
+      "capabilities": [
+        "function_execute"
+      ],
       "inputs": [
         {
           "key": "language",

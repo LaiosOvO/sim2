@@ -16,7 +16,9 @@
         "icon": "DuckDuckGoIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["duckduckgo_search"],
+      "capabilities": [
+        "duckduckgo_search"
+      ],
       "inputs": [
         {
           "key": "query",

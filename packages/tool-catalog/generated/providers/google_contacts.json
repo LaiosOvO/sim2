@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_contacts",
-      "legacyIds": ["google-contacts"],
+      "legacyIds": [
+        "google-contacts"
+      ],
       "provider": "google_contacts",
       "version": "1",
       "display": {

@@ -16,7 +16,11 @@
         "icon": "ArxivIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["arxiv_search", "arxiv_get_paper", "arxiv_get_author_papers"],
+      "capabilities": [
+        "arxiv_search",
+        "arxiv_get_paper",
+        "arxiv_get_author_papers"
+      ],
       "inputs": [
         {
           "key": "operation",

@@ -16,7 +16,10 @@
         "icon": "BrandfetchIcon",
         "bgColor": "#000000"
       },
-      "capabilities": ["brandfetch_get_brand", "brandfetch_search"],
+      "capabilities": [
+        "brandfetch_get_brand",
+        "brandfetch_search"
+      ],
       "inputs": [
         {
           "key": "operation",

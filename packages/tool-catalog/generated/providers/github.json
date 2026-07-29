@@ -1053,7 +1053,10 @@
     {
       "catalogVersion": 1,
       "id": "github_v2",
-      "legacyIds": ["github", "github-v2"],
+      "legacyIds": [
+        "github",
+        "github-v2"
+      ],
       "provider": "github",
       "version": "2",
       "display": {

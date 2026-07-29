@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "iam",
-      "legacyIds": ["aws-iam"],
+      "legacyIds": [
+        "aws-iam"
+      ],
       "provider": "iam",
       "version": "1",
       "display": {

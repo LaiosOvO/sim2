@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "emailbison",
-      "legacyIds": ["email-bison"],
+      "legacyIds": [
+        "email-bison"
+      ],
       "provider": "emailbison",
       "version": "1",
       "display": {

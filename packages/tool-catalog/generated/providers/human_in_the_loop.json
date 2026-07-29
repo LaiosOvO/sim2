@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "human_in_the_loop",
-      "legacyIds": ["human-in-the-loop"],
+      "legacyIds": [
+        "human-in-the-loop"
+      ],
       "provider": "human_in_the_loop",
       "version": "1",
       "display": {

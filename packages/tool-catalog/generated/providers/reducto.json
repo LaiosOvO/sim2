@@ -16,7 +16,9 @@
         "icon": "ReductoIcon",
         "bgColor": "#5c0c5c"
       },
-      "capabilities": ["reducto_parser"],
+      "capabilities": [
+        "reducto_parser"
+      ],
       "inputs": [
         {
           "key": "fileUpload",
@@ -53,7 +55,10 @@
     {
       "catalogVersion": 1,
       "id": "reducto_v2",
-      "legacyIds": ["reducto", "reducto-v2"],
+      "legacyIds": [
+        "reducto",
+        "reducto-v2"
+      ],
       "provider": "reducto",
       "version": "2",
       "display": {
@@ -63,7 +68,9 @@
         "icon": "ReductoIcon",
         "bgColor": "#5c0c5c"
       },
-      "capabilities": ["reducto_parser_v2"],
+      "capabilities": [
+        "reducto_parser_v2"
+      ],
       "inputs": []
     }
   ]

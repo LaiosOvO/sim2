@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "sap_s4hana",
-      "legacyIds": ["sap-s4hana"],
+      "legacyIds": [
+        "sap-s4hana"
+      ],
       "provider": "sap_s4hana",
       "version": "1",
       "display": {

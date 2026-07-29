@@ -16,7 +16,9 @@
         "icon": "WorkflowIcon",
         "bgColor": "#6366F1"
       },
-      "capabilities": ["workflow_executor"],
+      "capabilities": [
+        "workflow_executor"
+      ],
       "inputs": [
         {
           "key": "workflowId",

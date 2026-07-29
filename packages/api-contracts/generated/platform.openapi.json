@@ -49,7 +49,12 @@
                 ]
               }
             },
-            "required": ["code", "message", "status", "retryable"],
+            "required": [
+              "code",
+              "message",
+              "status",
+              "retryable"
+            ],
             "additionalProperties": false
           },
           "traceId": {
@@ -59,7 +64,10 @@
             "pattern": "^[0-9a-f]+$"
           }
         },
-        "required": ["contractVersion", "error"],
+        "required": [
+          "contractVersion",
+          "error"
+        ],
         "additionalProperties": false
       },
       "RequestIdentity": {
@@ -87,10 +95,19 @@
           },
           "authenticationMethod": {
             "type": "string",
-            "enum": ["session", "api-key", "oauth", "service"]
+            "enum": [
+              "session",
+              "api-key",
+              "oauth",
+              "service"
+            ]
           }
         },
-        "required": ["actorId", "permissions", "authenticationMethod"],
+        "required": [
+          "actorId",
+          "permissions",
+          "authenticationMethod"
+        ],
         "additionalProperties": false
       },
       "PageRequest": {
@@ -108,7 +125,9 @@
             "maximum": 200
           }
         },
-        "required": ["limit"],
+        "required": [
+          "limit"
+        ],
         "additionalProperties": false
       },
       "TraceContext": {
@@ -140,7 +159,12 @@
             "maxLength": 128
           }
         },
-        "required": ["traceId", "spanId", "traceFlags", "correlationId"],
+        "required": [
+          "traceId",
+          "spanId",
+          "traceFlags",
+          "correlationId"
+        ],
         "additionalProperties": false
       },
       "ExecutionJobV1": {
@@ -168,7 +192,11 @@
           },
           "kind": {
             "type": "string",
-            "enum": ["run", "replay", "debug"]
+            "enum": [
+              "run",
+              "replay",
+              "debug"
+            ]
           },
           "requestedAt": {
             "type": "string",
@@ -204,7 +232,12 @@
                 "maxLength": 128
               }
             },
-            "required": ["traceId", "spanId", "traceFlags", "correlationId"],
+            "required": [
+              "traceId",
+              "spanId",
+              "traceFlags",
+              "correlationId"
+            ],
             "additionalProperties": false
           },
           "payload": {
@@ -305,7 +338,13 @@
               },
               "status": {
                 "type": "string",
-                "enum": ["queued", "running", "completed", "failed", "skipped"]
+                "enum": [
+                  "queued",
+                  "running",
+                  "completed",
+                  "failed",
+                  "skipped"
+                ]
               }
             },
             "required": [
@@ -462,6 +501,180 @@
           }
         ]
       },
+      "RuntimeToolInvocationV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "toolId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "credentialRef": {
+            "type": "string",
+            "minLength": 1
+          },
+          "params": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "contractVersion",
+          "toolId",
+          "params"
+        ],
+        "additionalProperties": false
+      },
+      "RuntimeToolExecutionErrorV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "RUNTIME_JOB_PAYLOAD_INVALID",
+              "RUNTIME_TOOL_NOT_FOUND",
+              "RUNTIME_PROVIDER_NOT_FOUND",
+              "RUNTIME_PROVIDER_EXPORT_INVALID",
+              "RUNTIME_TOOL_INPUT_INVALID",
+              "RUNTIME_CREDENTIAL_NOT_FOUND",
+              "RUNTIME_PROVIDER_EXECUTION_FAILED"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requestedToolId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "providerId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "contractVersion",
+          "code",
+          "message",
+          "requestedToolId"
+        ],
+        "additionalProperties": false
+      },
+      "RuntimeToolExecutionResultV1": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "contractVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "ok": {
+                "type": "boolean",
+                "const": true
+              },
+              "requestedToolId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "toolId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "providerId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "output": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {}
+              }
+            },
+            "required": [
+              "contractVersion",
+              "ok",
+              "requestedToolId",
+              "toolId",
+              "providerId",
+              "output"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "contractVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "ok": {
+                "type": "boolean",
+                "const": false
+              },
+              "error": {
+                "type": "object",
+                "properties": {
+                  "contractVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "enum": [
+                      "RUNTIME_JOB_PAYLOAD_INVALID",
+                      "RUNTIME_TOOL_NOT_FOUND",
+                      "RUNTIME_PROVIDER_NOT_FOUND",
+                      "RUNTIME_PROVIDER_EXPORT_INVALID",
+                      "RUNTIME_TOOL_INPUT_INVALID",
+                      "RUNTIME_CREDENTIAL_NOT_FOUND",
+                      "RUNTIME_PROVIDER_EXECUTION_FAILED"
+                    ]
+                  },
+                  "message": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requestedToolId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "providerId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "contractVersion",
+                  "code",
+                  "message",
+                  "requestedToolId"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "contractVersion",
+              "ok",
+              "error"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
       "DebugSessionV1": {
         "type": "object",
         "properties": {
@@ -492,7 +705,15 @@
           },
           "state": {
             "type": "string",
-            "enum": ["created", "running", "paused", "completed", "failed", "cancelled", "expired"]
+            "enum": [
+              "created",
+              "running",
+              "paused",
+              "completed",
+              "failed",
+              "cancelled",
+              "expired"
+            ]
           },
           "currentNodeId": {
             "anyOf": [
@@ -554,10 +775,20 @@
           },
           "command": {
             "type": "string",
-            "enum": ["continue", "step", "cancel"]
+            "enum": [
+              "continue",
+              "step",
+              "cancel"
+            ]
           }
         },
-        "required": ["contractVersion", "commandId", "sessionId", "expectedVersion", "command"],
+        "required": [
+          "contractVersion",
+          "commandId",
+          "sessionId",
+          "expectedVersion",
+          "command"
+        ],
         "additionalProperties": false
       },
       "ToolCatalogItemV1": {
@@ -602,9 +833,16 @@
               },
               "icon": {
                 "type": "string"
+              },
+              "bgColor": {
+                "type": "string"
               }
             },
-            "required": ["name", "description", "category"],
+            "required": [
+              "name",
+              "description",
+              "category"
+            ],
             "additionalProperties": false
           },
           "capabilities": {
@@ -629,7 +867,14 @@
                 },
                 "type": {
                   "type": "string",
-                  "enum": ["string", "number", "boolean", "json", "file", "credential"]
+                  "enum": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "json",
+                    "file",
+                    "credential"
+                  ]
                 },
                 "required": {
                   "type": "boolean"
@@ -638,7 +883,12 @@
                   "type": "string"
                 }
               },
-              "required": ["key", "label", "type", "required"],
+              "required": [
+                "key",
+                "label",
+                "type",
+                "required"
+              ],
               "additionalProperties": false
             }
           }
@@ -710,9 +960,16 @@
                     },
                     "icon": {
                       "type": "string"
+                    },
+                    "bgColor": {
+                      "type": "string"
                     }
                   },
-                  "required": ["name", "description", "category"],
+                  "required": [
+                    "name",
+                    "description",
+                    "category"
+                  ],
                   "additionalProperties": false
                 },
                 "capabilities": {
@@ -737,7 +994,14 @@
                       },
                       "type": {
                         "type": "string",
-                        "enum": ["string", "number", "boolean", "json", "file", "credential"]
+                        "enum": [
+                          "string",
+                          "number",
+                          "boolean",
+                          "json",
+                          "file",
+                          "credential"
+                        ]
                       },
                       "required": {
                         "type": "boolean"
@@ -746,7 +1010,12 @@
                         "type": "string"
                       }
                     },
-                    "required": ["key", "label", "type", "required"],
+                    "required": [
+                      "key",
+                      "label",
+                      "type",
+                      "required"
+                    ],
                     "additionalProperties": false
                   }
                 }
@@ -776,7 +1045,12 @@
             ]
           }
         },
-        "required": ["catalogVersion", "catalogHash", "items", "nextCursor"],
+        "required": [
+          "catalogVersion",
+          "catalogHash",
+          "items",
+          "nextCursor"
+        ],
         "additionalProperties": false
       }
     }

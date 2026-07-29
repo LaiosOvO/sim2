@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "video_generator",
-      "legacyIds": ["video-generator"],
+      "legacyIds": [
+        "video-generator"
+      ],
       "provider": "video_generator",
       "version": "1",
       "display": {
@@ -16,7 +18,13 @@
         "icon": "VideoIcon",
         "bgColor": "#181C1E"
       },
-      "capabilities": ["video_runway", "video_veo", "video_luma", "video_minimax", "video_falai"],
+      "capabilities": [
+        "video_runway",
+        "video_veo",
+        "video_luma",
+        "video_minimax",
+        "video_falai"
+      ],
       "inputs": [
         {
           "key": "provider",
@@ -281,7 +289,9 @@
     {
       "catalogVersion": 1,
       "id": "video_generator_v2",
-      "legacyIds": ["video-generator-v2"],
+      "legacyIds": [
+        "video-generator-v2"
+      ],
       "provider": "video_generator",
       "version": "2",
       "display": {
@@ -289,7 +299,13 @@
         "description": "",
         "category": "blocks"
       },
-      "capabilities": ["video_runway", "video_veo", "video_luma", "video_minimax", "video_falai"],
+      "capabilities": [
+        "video_runway",
+        "video_veo",
+        "video_luma",
+        "video_minimax",
+        "video_falai"
+      ],
       "inputs": [
         {
           "key": "provider",
@@ -560,7 +576,9 @@
     {
       "catalogVersion": 1,
       "id": "video_generator_v3",
-      "legacyIds": ["video-generator-v3"],
+      "legacyIds": [
+        "video-generator-v3"
+      ],
       "provider": "video_generator",
       "version": "3",
       "display": {

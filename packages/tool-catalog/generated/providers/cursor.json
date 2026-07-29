@@ -138,7 +138,10 @@
     {
       "catalogVersion": 1,
       "id": "cursor_v2",
-      "legacyIds": ["cursor", "cursor-v2"],
+      "legacyIds": [
+        "cursor",
+        "cursor-v2"
+      ],
       "provider": "cursor",
       "version": "2",
       "display": {

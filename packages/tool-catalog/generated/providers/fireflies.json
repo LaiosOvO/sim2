@@ -193,7 +193,10 @@
     {
       "catalogVersion": 1,
       "id": "fireflies_v2",
-      "legacyIds": ["fireflies", "fireflies-v2"],
+      "legacyIds": [
+        "fireflies",
+        "fireflies-v2"
+      ],
       "provider": "fireflies",
       "version": "2",
       "display": {

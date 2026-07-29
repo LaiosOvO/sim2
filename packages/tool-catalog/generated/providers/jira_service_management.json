@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "jira_service_management",
-      "legacyIds": ["jira-service-management"],
+      "legacyIds": [
+        "jira-service-management"
+      ],
       "provider": "jira_service_management",
       "version": "1",
       "display": {

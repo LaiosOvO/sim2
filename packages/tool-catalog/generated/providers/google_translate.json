@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_translate",
-      "legacyIds": ["google-translate"],
+      "legacyIds": [
+        "google-translate"
+      ],
       "provider": "google_translate",
       "version": "1",
       "display": {
@@ -16,7 +18,10 @@
         "icon": "GoogleTranslateIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["google_translate_text", "google_translate_detect"],
+      "capabilities": [
+        "google_translate_text",
+        "google_translate_detect"
+      ],
       "inputs": [
         {
           "key": "operation",

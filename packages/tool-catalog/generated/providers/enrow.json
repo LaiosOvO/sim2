@@ -16,7 +16,10 @@
         "icon": "EnrowIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["enrow_find_email", "enrow_verify_email"],
+      "capabilities": [
+        "enrow_find_email",
+        "enrow_verify_email"
+      ],
       "inputs": [
         {
           "key": "operation",

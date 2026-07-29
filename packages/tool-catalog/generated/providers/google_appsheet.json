@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_appsheet",
-      "legacyIds": ["google-appsheet"],
+      "legacyIds": [
+        "google-appsheet"
+      ],
       "provider": "google_appsheet",
       "version": "1",
       "display": {

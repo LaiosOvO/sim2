@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "peopledatalabs",
-      "legacyIds": ["people-data-labs"],
+      "legacyIds": [
+        "people-data-labs"
+      ],
       "provider": "peopledatalabs",
       "version": "1",
       "display": {

@@ -20,6 +20,10 @@
     "./jobs": {
       "types": "./src/jobs.ts",
       "default": "./src/jobs.ts"
+    },
+    "./runtime-tools": {
+      "types": "./src/runtime-tools.ts",
+      "default": "./src/runtime-tools.ts"
     }
   },
   "scripts": {

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "calcom",
-      "legacyIds": ["cal-com"],
+      "legacyIds": [
+        "cal-com"
+      ],
       "provider": "calcom",
       "version": "1",
       "display": {

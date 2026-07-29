@@ -16,7 +16,10 @@
         "icon": "StagehandIcon",
         "bgColor": "#FFC83C"
       },
-      "capabilities": ["stagehand_extract", "stagehand_agent"],
+      "capabilities": [
+        "stagehand_extract",
+        "stagehand_agent"
+      ],
       "inputs": [
         {
           "key": "operation",

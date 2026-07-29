@@ -16,7 +16,12 @@
         "icon": "TavilyIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["tavily_search", "tavily_extract", "tavily_crawl", "tavily_map"],
+      "capabilities": [
+        "tavily_search",
+        "tavily_extract",
+        "tavily_crawl",
+        "tavily_map"
+      ],
       "inputs": [
         {
           "key": "operation",

@@ -54,7 +54,9 @@
     {
       "catalogVersion": 1,
       "id": "router_v2",
-      "legacyIds": ["router-v2"],
+      "legacyIds": [
+        "router-v2"
+      ],
       "provider": "router",
       "version": "2",
       "display": {

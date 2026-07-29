@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_ads",
-      "legacyIds": ["google-ads"],
+      "legacyIds": [
+        "google-ads"
+      ],
       "provider": "google_ads",
       "version": "1",
       "display": {

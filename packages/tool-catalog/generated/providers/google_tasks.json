@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_tasks",
-      "legacyIds": ["google-tasks"],
+      "legacyIds": [
+        "google-tasks"
+      ],
       "provider": "google_tasks",
       "version": "1",
       "display": {

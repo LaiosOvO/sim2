@@ -191,7 +191,9 @@
     },
     {
       "id": "api_trigger",
-      "legacyIds": ["api-trigger"],
+      "legacyIds": [
+        "api-trigger"
+      ],
       "provider": "api_trigger",
       "version": "1",
       "display": {
@@ -242,7 +244,9 @@
     },
     {
       "id": "appconfig",
-      "legacyIds": ["aws-appconfig"],
+      "legacyIds": [
+        "aws-appconfig"
+      ],
       "provider": "appconfig",
       "version": "1",
       "display": {
@@ -344,7 +348,9 @@
     },
     {
       "id": "azure_devops",
-      "legacyIds": ["azure-devops"],
+      "legacyIds": [
+        "azure-devops"
+      ],
       "provider": "azure_devops",
       "version": "1",
       "display": {
@@ -412,7 +418,9 @@
     },
     {
       "id": "brightdata",
-      "legacyIds": ["bright-data"],
+      "legacyIds": [
+        "bright-data"
+      ],
       "provider": "brightdata",
       "version": "1",
       "display": {
@@ -429,7 +437,9 @@
     },
     {
       "id": "browser_use",
-      "legacyIds": ["browser-use"],
+      "legacyIds": [
+        "browser-use"
+      ],
       "provider": "browser_use",
       "version": "1",
       "display": {
@@ -463,7 +473,9 @@
     },
     {
       "id": "calcom",
-      "legacyIds": ["cal-com"],
+      "legacyIds": [
+        "cal-com"
+      ],
       "provider": "calcom",
       "version": "1",
       "display": {
@@ -497,7 +509,9 @@
     },
     {
       "id": "chat_trigger",
-      "legacyIds": ["chat-trigger"],
+      "legacyIds": [
+        "chat-trigger"
+      ],
       "provider": "chat_trigger",
       "version": "1",
       "display": {
@@ -701,7 +715,10 @@
     },
     {
       "id": "confluence_v2",
-      "legacyIds": ["confluence", "confluence-v2"],
+      "legacyIds": [
+        "confluence",
+        "confluence-v2"
+      ],
       "provider": "confluence",
       "version": "2",
       "display": {
@@ -718,7 +735,9 @@
     },
     {
       "id": "context_dev",
-      "legacyIds": ["context-dev"],
+      "legacyIds": [
+        "context-dev"
+      ],
       "provider": "context_dev",
       "version": "1",
       "display": {
@@ -803,7 +822,10 @@
     },
     {
       "id": "cursor_v2",
-      "legacyIds": ["cursor", "cursor-v2"],
+      "legacyIds": [
+        "cursor",
+        "cursor-v2"
+      ],
       "provider": "cursor",
       "version": "2",
       "display": {
@@ -1075,7 +1097,9 @@
     },
     {
       "id": "dynamodb",
-      "legacyIds": ["amazon-dynamodb"],
+      "legacyIds": [
+        "amazon-dynamodb"
+      ],
       "provider": "dynamodb",
       "version": "1",
       "display": {
@@ -1126,7 +1150,9 @@
     },
     {
       "id": "emailbison",
-      "legacyIds": ["email-bison"],
+      "legacyIds": [
+        "email-bison"
+      ],
       "provider": "emailbison",
       "version": "1",
       "display": {
@@ -1262,7 +1288,10 @@
     },
     {
       "id": "extend_v2",
-      "legacyIds": ["extend", "extend-v2"],
+      "legacyIds": [
+        "extend",
+        "extend-v2"
+      ],
       "provider": "extend",
       "version": "2",
       "display": {
@@ -1313,7 +1342,9 @@
     },
     {
       "id": "file_v2",
-      "legacyIds": ["file-v2"],
+      "legacyIds": [
+        "file-v2"
+      ],
       "provider": "file",
       "version": "2",
       "display": {
@@ -1328,7 +1359,9 @@
     },
     {
       "id": "file_v3",
-      "legacyIds": ["file-v3"],
+      "legacyIds": [
+        "file-v3"
+      ],
       "provider": "file",
       "version": "3",
       "display": {
@@ -1345,7 +1378,9 @@
     },
     {
       "id": "file_v4",
-      "legacyIds": ["file-v4"],
+      "legacyIds": [
+        "file-v4"
+      ],
       "provider": "file",
       "version": "4",
       "display": {
@@ -1360,7 +1395,9 @@
     },
     {
       "id": "file_v5",
-      "legacyIds": ["file-v5"],
+      "legacyIds": [
+        "file-v5"
+      ],
       "provider": "file",
       "version": "5",
       "display": {
@@ -1426,7 +1463,10 @@
     },
     {
       "id": "fireflies_v2",
-      "legacyIds": ["fireflies", "fireflies-v2"],
+      "legacyIds": [
+        "fireflies",
+        "fireflies-v2"
+      ],
       "provider": "fireflies",
       "version": "2",
       "display": {
@@ -1494,7 +1534,9 @@
     },
     {
       "id": "generic_webhook",
-      "legacyIds": ["generic-webhook"],
+      "legacyIds": [
+        "generic-webhook"
+      ],
       "provider": "generic_webhook",
       "version": "1",
       "display": {
@@ -1528,7 +1570,10 @@
     },
     {
       "id": "github_v2",
-      "legacyIds": ["github", "github-v2"],
+      "legacyIds": [
+        "github",
+        "github-v2"
+      ],
       "provider": "github",
       "version": "2",
       "display": {
@@ -1579,7 +1624,10 @@
     },
     {
       "id": "gmail_v2",
-      "legacyIds": ["gmail", "gmail-v2"],
+      "legacyIds": [
+        "gmail",
+        "gmail-v2"
+      ],
       "provider": "gmail",
       "version": "2",
       "display": {
@@ -1613,7 +1661,9 @@
     },
     {
       "id": "google_ads",
-      "legacyIds": ["google-ads"],
+      "legacyIds": [
+        "google-ads"
+      ],
       "provider": "google_ads",
       "version": "1",
       "display": {
@@ -1630,7 +1680,9 @@
     },
     {
       "id": "google_appsheet",
-      "legacyIds": ["google-appsheet"],
+      "legacyIds": [
+        "google-appsheet"
+      ],
       "provider": "google_appsheet",
       "version": "1",
       "display": {
@@ -1647,7 +1699,9 @@
     },
     {
       "id": "google_bigquery",
-      "legacyIds": ["google-bigquery"],
+      "legacyIds": [
+        "google-bigquery"
+      ],
       "provider": "google_bigquery",
       "version": "1",
       "display": {
@@ -1664,7 +1718,9 @@
     },
     {
       "id": "google_books",
-      "legacyIds": ["google-books"],
+      "legacyIds": [
+        "google-books"
+      ],
       "provider": "google_books",
       "version": "1",
       "display": {
@@ -1681,7 +1737,9 @@
     },
     {
       "id": "google_calendar",
-      "legacyIds": ["google-calendar"],
+      "legacyIds": [
+        "google-calendar"
+      ],
       "provider": "google_calendar",
       "version": "1",
       "display": {
@@ -1698,7 +1756,10 @@
     },
     {
       "id": "google_calendar_v2",
-      "legacyIds": ["google-calendar", "google-calendar-v2"],
+      "legacyIds": [
+        "google-calendar",
+        "google-calendar-v2"
+      ],
       "provider": "google_calendar",
       "version": "2",
       "display": {
@@ -1715,7 +1776,9 @@
     },
     {
       "id": "google_contacts",
-      "legacyIds": ["google-contacts"],
+      "legacyIds": [
+        "google-contacts"
+      ],
       "provider": "google_contacts",
       "version": "1",
       "display": {
@@ -1732,7 +1795,9 @@
     },
     {
       "id": "google_docs",
-      "legacyIds": ["google-docs"],
+      "legacyIds": [
+        "google-docs"
+      ],
       "provider": "google_docs",
       "version": "1",
       "display": {
@@ -1749,7 +1814,9 @@
     },
     {
       "id": "google_drive",
-      "legacyIds": ["google-drive"],
+      "legacyIds": [
+        "google-drive"
+      ],
       "provider": "google_drive",
       "version": "1",
       "display": {
@@ -1766,7 +1833,9 @@
     },
     {
       "id": "google_forms",
-      "legacyIds": ["google-forms"],
+      "legacyIds": [
+        "google-forms"
+      ],
       "provider": "google_forms",
       "version": "1",
       "display": {
@@ -1783,7 +1852,9 @@
     },
     {
       "id": "google_groups",
-      "legacyIds": ["google-groups"],
+      "legacyIds": [
+        "google-groups"
+      ],
       "provider": "google_groups",
       "version": "1",
       "display": {
@@ -1800,7 +1871,9 @@
     },
     {
       "id": "google_maps",
-      "legacyIds": ["google-maps"],
+      "legacyIds": [
+        "google-maps"
+      ],
       "provider": "google_maps",
       "version": "1",
       "display": {
@@ -1817,7 +1890,9 @@
     },
     {
       "id": "google_meet",
-      "legacyIds": ["google-meet"],
+      "legacyIds": [
+        "google-meet"
+      ],
       "provider": "google_meet",
       "version": "1",
       "display": {
@@ -1834,7 +1909,9 @@
     },
     {
       "id": "google_pagespeed",
-      "legacyIds": ["google-pagespeed"],
+      "legacyIds": [
+        "google-pagespeed"
+      ],
       "provider": "google_pagespeed",
       "version": "1",
       "display": {
@@ -1851,7 +1928,9 @@
     },
     {
       "id": "google_search",
-      "legacyIds": ["google-search"],
+      "legacyIds": [
+        "google-search"
+      ],
       "provider": "google_search",
       "version": "1",
       "display": {
@@ -1868,7 +1947,9 @@
     },
     {
       "id": "google_sheets",
-      "legacyIds": ["google-sheets"],
+      "legacyIds": [
+        "google-sheets"
+      ],
       "provider": "google_sheets",
       "version": "1",
       "display": {
@@ -1885,7 +1966,10 @@
     },
     {
       "id": "google_sheets_v2",
-      "legacyIds": ["google-sheets", "google-sheets-v2"],
+      "legacyIds": [
+        "google-sheets",
+        "google-sheets-v2"
+      ],
       "provider": "google_sheets",
       "version": "2",
       "display": {
@@ -1902,7 +1986,9 @@
     },
     {
       "id": "google_slides",
-      "legacyIds": ["google-slides"],
+      "legacyIds": [
+        "google-slides"
+      ],
       "provider": "google_slides",
       "version": "1",
       "display": {
@@ -1919,7 +2005,10 @@
     },
     {
       "id": "google_slides_v2",
-      "legacyIds": ["google-slides", "google-slides-v2"],
+      "legacyIds": [
+        "google-slides",
+        "google-slides-v2"
+      ],
       "provider": "google_slides",
       "version": "2",
       "display": {
@@ -1936,7 +2025,9 @@
     },
     {
       "id": "google_tasks",
-      "legacyIds": ["google-tasks"],
+      "legacyIds": [
+        "google-tasks"
+      ],
       "provider": "google_tasks",
       "version": "1",
       "display": {
@@ -1953,7 +2044,9 @@
     },
     {
       "id": "google_translate",
-      "legacyIds": ["google-translate"],
+      "legacyIds": [
+        "google-translate"
+      ],
       "provider": "google_translate",
       "version": "1",
       "display": {
@@ -1970,7 +2063,9 @@
     },
     {
       "id": "google_vault",
-      "legacyIds": ["google-vault"],
+      "legacyIds": [
+        "google-vault"
+      ],
       "provider": "google_vault",
       "version": "1",
       "display": {
@@ -2021,7 +2116,10 @@
     },
     {
       "id": "grain_v2",
-      "legacyIds": ["grain", "grain-v2"],
+      "legacyIds": [
+        "grain",
+        "grain-v2"
+      ],
       "provider": "grain",
       "version": "2",
       "display": {
@@ -2140,7 +2238,9 @@
     },
     {
       "id": "huggingface",
-      "legacyIds": ["hugging-face"],
+      "legacyIds": [
+        "hugging-face"
+      ],
       "provider": "huggingface",
       "version": "1",
       "display": {
@@ -2157,7 +2257,9 @@
     },
     {
       "id": "human_in_the_loop",
-      "legacyIds": ["human-in-the-loop"],
+      "legacyIds": [
+        "human-in-the-loop"
+      ],
       "provider": "human_in_the_loop",
       "version": "1",
       "display": {
@@ -2174,7 +2276,9 @@
     },
     {
       "id": "hunter",
-      "legacyIds": ["hunter-io"],
+      "legacyIds": [
+        "hunter-io"
+      ],
       "provider": "hunter",
       "version": "1",
       "display": {
@@ -2191,7 +2295,9 @@
     },
     {
       "id": "iam",
-      "legacyIds": ["aws-iam"],
+      "legacyIds": [
+        "aws-iam"
+      ],
       "provider": "iam",
       "version": "1",
       "display": {
@@ -2225,7 +2331,10 @@
     },
     {
       "id": "identity_center",
-      "legacyIds": ["aws-identity-center", "identity-center"],
+      "legacyIds": [
+        "aws-identity-center",
+        "identity-center"
+      ],
       "provider": "identity_center",
       "version": "1",
       "display": {
@@ -2242,7 +2351,9 @@
     },
     {
       "id": "image_generator",
-      "legacyIds": ["image-generator"],
+      "legacyIds": [
+        "image-generator"
+      ],
       "provider": "image_generator",
       "version": "1",
       "display": {
@@ -2259,7 +2370,9 @@
     },
     {
       "id": "image_generator_v2",
-      "legacyIds": ["image-generator-v2"],
+      "legacyIds": [
+        "image-generator-v2"
+      ],
       "provider": "image_generator",
       "version": "2",
       "display": {
@@ -2293,7 +2406,9 @@
     },
     {
       "id": "incidentio",
-      "legacyIds": ["incident-io"],
+      "legacyIds": [
+        "incident-io"
+      ],
       "provider": "incidentio",
       "version": "1",
       "display": {
@@ -2327,7 +2442,9 @@
     },
     {
       "id": "input_trigger",
-      "legacyIds": ["input-trigger"],
+      "legacyIds": [
+        "input-trigger"
+      ],
       "provider": "input_trigger",
       "version": "1",
       "display": {
@@ -2395,7 +2512,10 @@
     },
     {
       "id": "intercom_v2",
-      "legacyIds": ["intercom", "intercom-v2"],
+      "legacyIds": [
+        "intercom",
+        "intercom-v2"
+      ],
       "provider": "intercom",
       "version": "2",
       "display": {
@@ -2446,7 +2566,9 @@
     },
     {
       "id": "jira_service_management",
-      "legacyIds": ["jira-service-management"],
+      "legacyIds": [
+        "jira-service-management"
+      ],
       "provider": "jira_service_management",
       "version": "1",
       "display": {
@@ -2497,7 +2619,10 @@
     },
     {
       "id": "kalshi_v2",
-      "legacyIds": ["kalshi", "kalshi-v2"],
+      "legacyIds": [
+        "kalshi",
+        "kalshi-v2"
+      ],
       "provider": "kalshi",
       "version": "2",
       "display": {
@@ -2650,7 +2775,10 @@
     },
     {
       "id": "linear_v2",
-      "legacyIds": ["linear", "linear-v2"],
+      "legacyIds": [
+        "linear",
+        "linear-v2"
+      ],
       "provider": "linear",
       "version": "2",
       "display": {
@@ -2735,7 +2863,9 @@
     },
     {
       "id": "logs_v2",
-      "legacyIds": ["logs-v2"],
+      "legacyIds": [
+        "logs-v2"
+      ],
       "provider": "logs",
       "version": "2",
       "display": {
@@ -2820,7 +2950,10 @@
     },
     {
       "id": "managed_agent",
-      "legacyIds": ["claude-managed-agents", "managed-agent"],
+      "legacyIds": [
+        "claude-managed-agents",
+        "managed-agent"
+      ],
       "provider": "managed_agent",
       "version": "1",
       "display": {
@@ -2837,7 +2970,9 @@
     },
     {
       "id": "manual_trigger",
-      "legacyIds": ["manual-trigger"],
+      "legacyIds": [
+        "manual-trigger"
+      ],
       "provider": "manual_trigger",
       "version": "1",
       "display": {
@@ -2905,7 +3040,10 @@
     },
     {
       "id": "microsoft_ad",
-      "legacyIds": ["azure-ad", "microsoft-ad"],
+      "legacyIds": [
+        "azure-ad",
+        "microsoft-ad"
+      ],
       "provider": "microsoft_ad",
       "version": "1",
       "display": {
@@ -2922,7 +3060,9 @@
     },
     {
       "id": "microsoft_dataverse",
-      "legacyIds": ["microsoft-dataverse"],
+      "legacyIds": [
+        "microsoft-dataverse"
+      ],
       "provider": "microsoft_dataverse",
       "version": "1",
       "display": {
@@ -2939,7 +3079,9 @@
     },
     {
       "id": "microsoft_excel",
-      "legacyIds": ["microsoft-excel"],
+      "legacyIds": [
+        "microsoft-excel"
+      ],
       "provider": "microsoft_excel",
       "version": "1",
       "display": {
@@ -2956,7 +3098,10 @@
     },
     {
       "id": "microsoft_excel_v2",
-      "legacyIds": ["microsoft-excel", "microsoft-excel-v2"],
+      "legacyIds": [
+        "microsoft-excel",
+        "microsoft-excel-v2"
+      ],
       "provider": "microsoft_excel",
       "version": "2",
       "display": {
@@ -2973,7 +3118,9 @@
     },
     {
       "id": "microsoft_planner",
-      "legacyIds": ["microsoft-planner"],
+      "legacyIds": [
+        "microsoft-planner"
+      ],
       "provider": "microsoft_planner",
       "version": "1",
       "display": {
@@ -2990,7 +3137,9 @@
     },
     {
       "id": "microsoft_teams",
-      "legacyIds": ["microsoft-teams"],
+      "legacyIds": [
+        "microsoft-teams"
+      ],
       "provider": "microsoft_teams",
       "version": "1",
       "display": {
@@ -3024,7 +3173,9 @@
     },
     {
       "id": "mistral_parse",
-      "legacyIds": ["mistral-parse"],
+      "legacyIds": [
+        "mistral-parse"
+      ],
       "provider": "mistral_parse",
       "version": "1",
       "display": {
@@ -3041,7 +3192,9 @@
     },
     {
       "id": "mistral_parse_v2",
-      "legacyIds": ["mistral-parse-v2"],
+      "legacyIds": [
+        "mistral-parse-v2"
+      ],
       "provider": "mistral_parse",
       "version": "2",
       "display": {
@@ -3056,7 +3209,10 @@
     },
     {
       "id": "mistral_parse_v3",
-      "legacyIds": ["mistral-parse-v3", "mistral-parser"],
+      "legacyIds": [
+        "mistral-parse-v3",
+        "mistral-parser"
+      ],
       "provider": "mistral_parse",
       "version": "3",
       "display": {
@@ -3175,7 +3331,9 @@
     },
     {
       "id": "new_relic",
-      "legacyIds": ["new-relic"],
+      "legacyIds": [
+        "new-relic"
+      ],
       "provider": "new_relic",
       "version": "1",
       "display": {
@@ -3226,7 +3384,10 @@
     },
     {
       "id": "notion_v2",
-      "legacyIds": ["notion", "notion-v2"],
+      "legacyIds": [
+        "notion",
+        "notion-v2"
+      ],
       "provider": "notion",
       "version": "2",
       "display": {
@@ -3294,7 +3455,9 @@
     },
     {
       "id": "onepassword",
-      "legacyIds": ["1password"],
+      "legacyIds": [
+        "1password"
+      ],
       "provider": "onepassword",
       "version": "1",
       "display": {
@@ -3311,7 +3474,9 @@
     },
     {
       "id": "openai",
-      "legacyIds": ["embeddings"],
+      "legacyIds": [
+        "embeddings"
+      ],
       "provider": "openai",
       "version": "1",
       "display": {
@@ -3362,7 +3527,9 @@
     },
     {
       "id": "parallel_ai",
-      "legacyIds": ["parallel-ai"],
+      "legacyIds": [
+        "parallel-ai"
+      ],
       "provider": "parallel_ai",
       "version": "1",
       "display": {
@@ -3379,7 +3546,9 @@
     },
     {
       "id": "peopledatalabs",
-      "legacyIds": ["people-data-labs"],
+      "legacyIds": [
+        "people-data-labs"
+      ],
       "provider": "peopledatalabs",
       "version": "1",
       "display": {
@@ -3583,7 +3752,10 @@
     },
     {
       "id": "pulse_v2",
-      "legacyIds": ["pulse", "pulse-v2"],
+      "legacyIds": [
+        "pulse",
+        "pulse-v2"
+      ],
       "provider": "pulse",
       "version": "2",
       "display": {
@@ -3685,7 +3857,9 @@
     },
     {
       "id": "rds",
-      "legacyIds": ["amazon-rds"],
+      "legacyIds": [
+        "amazon-rds"
+      ],
       "provider": "rds",
       "version": "1",
       "display": {
@@ -3753,7 +3927,10 @@
     },
     {
       "id": "reducto_v2",
-      "legacyIds": ["reducto", "reducto-v2"],
+      "legacyIds": [
+        "reducto",
+        "reducto-v2"
+      ],
       "provider": "reducto",
       "version": "2",
       "display": {
@@ -3889,7 +4066,9 @@
     },
     {
       "id": "router_v2",
-      "legacyIds": ["router-v2"],
+      "legacyIds": [
+        "router-v2"
+      ],
       "provider": "router",
       "version": "2",
       "display": {
@@ -3957,7 +4136,9 @@
     },
     {
       "id": "sap_concur",
-      "legacyIds": ["sap-concur"],
+      "legacyIds": [
+        "sap-concur"
+      ],
       "provider": "sap_concur",
       "version": "1",
       "display": {
@@ -3974,7 +4155,9 @@
     },
     {
       "id": "sap_s4hana",
-      "legacyIds": ["sap-s4hana"],
+      "legacyIds": [
+        "sap-s4hana"
+      ],
       "provider": "sap_s4hana",
       "version": "1",
       "display": {
@@ -4025,7 +4208,10 @@
     },
     {
       "id": "secrets_manager",
-      "legacyIds": ["aws-secrets-manager", "secrets-manager"],
+      "legacyIds": [
+        "aws-secrets-manager",
+        "secrets-manager"
+      ],
       "provider": "secrets_manager",
       "version": "1",
       "display": {
@@ -4127,7 +4313,9 @@
     },
     {
       "id": "ses",
-      "legacyIds": ["aws-ses"],
+      "legacyIds": [
+        "aws-ses"
+      ],
       "provider": "ses",
       "version": "1",
       "display": {
@@ -4178,7 +4366,10 @@
     },
     {
       "id": "sharepoint_v2",
-      "legacyIds": ["sharepoint", "sharepoint-v2"],
+      "legacyIds": [
+        "sharepoint",
+        "sharepoint-v2"
+      ],
       "provider": "sharepoint",
       "version": "2",
       "display": {
@@ -4212,7 +4403,9 @@
     },
     {
       "id": "sim_workspace_event",
-      "legacyIds": ["sim-workspace-event"],
+      "legacyIds": [
+        "sim-workspace-event"
+      ],
       "provider": "sim_workspace_event",
       "version": "1",
       "display": {
@@ -4246,7 +4439,9 @@
     },
     {
       "id": "sixtyfour",
-      "legacyIds": ["sixtyfour-ai"],
+      "legacyIds": [
+        "sixtyfour-ai"
+      ],
       "provider": "sixtyfour",
       "version": "1",
       "display": {
@@ -4280,7 +4475,9 @@
     },
     {
       "id": "slack_v2",
-      "legacyIds": ["slack-v2"],
+      "legacyIds": [
+        "slack-v2"
+      ],
       "provider": "slack",
       "version": "2",
       "display": {
@@ -4346,7 +4543,9 @@
     },
     {
       "id": "sqs",
-      "legacyIds": ["amazon-sqs"],
+      "legacyIds": [
+        "amazon-sqs"
+      ],
       "provider": "sqs",
       "version": "1",
       "display": {
@@ -4414,7 +4613,9 @@
     },
     {
       "id": "start_trigger",
-      "legacyIds": ["start-trigger"],
+      "legacyIds": [
+        "start-trigger"
+      ],
       "provider": "start_trigger",
       "version": "1",
       "display": {
@@ -4465,7 +4666,9 @@
     },
     {
       "id": "sts",
-      "legacyIds": ["aws-sts"],
+      "legacyIds": [
+        "aws-sts"
+      ],
       "provider": "sts",
       "version": "1",
       "display": {
@@ -4499,7 +4702,9 @@
     },
     {
       "id": "stt_v2",
-      "legacyIds": ["stt-v2"],
+      "legacyIds": [
+        "stt-v2"
+      ],
       "provider": "stt",
       "version": "2",
       "display": {
@@ -4633,7 +4838,10 @@
     },
     {
       "id": "textract_v2",
-      "legacyIds": ["aws-textract", "textract-v2"],
+      "legacyIds": [
+        "aws-textract",
+        "textract-v2"
+      ],
       "provider": "textract",
       "version": "2",
       "display": {
@@ -4752,7 +4960,9 @@
     },
     {
       "id": "trigger_dev",
-      "legacyIds": ["trigger-dev"],
+      "legacyIds": [
+        "trigger-dev"
+      ],
       "provider": "trigger_dev",
       "version": "1",
       "display": {
@@ -4786,7 +4996,9 @@
     },
     {
       "id": "twilio_sms",
-      "legacyIds": ["twilio-sms"],
+      "legacyIds": [
+        "twilio-sms"
+      ],
       "provider": "twilio_sms",
       "version": "1",
       "display": {
@@ -4803,7 +5015,9 @@
     },
     {
       "id": "twilio_voice",
-      "legacyIds": ["twilio-voice"],
+      "legacyIds": [
+        "twilio-voice"
+      ],
       "provider": "twilio_voice",
       "version": "1",
       "display": {
@@ -4922,7 +5136,9 @@
     },
     {
       "id": "video_generator",
-      "legacyIds": ["video-generator"],
+      "legacyIds": [
+        "video-generator"
+      ],
       "provider": "video_generator",
       "version": "1",
       "display": {
@@ -4939,7 +5155,9 @@
     },
     {
       "id": "video_generator_v2",
-      "legacyIds": ["video-generator-v2"],
+      "legacyIds": [
+        "video-generator-v2"
+      ],
       "provider": "video_generator",
       "version": "2",
       "display": {
@@ -4954,7 +5172,9 @@
     },
     {
       "id": "video_generator_v3",
-      "legacyIds": ["video-generator-v3"],
+      "legacyIds": [
+        "video-generator-v3"
+      ],
       "provider": "video_generator",
       "version": "3",
       "display": {
@@ -4988,7 +5208,9 @@
     },
     {
       "id": "vision_v2",
-      "legacyIds": ["vision-v2"],
+      "legacyIds": [
+        "vision-v2"
+      ],
       "provider": "vision",
       "version": "2",
       "display": {
@@ -5054,7 +5276,9 @@
     },
     {
       "id": "webhook_request",
-      "legacyIds": ["webhook-request"],
+      "legacyIds": [
+        "webhook-request"
+      ],
       "provider": "webhook_request",
       "version": "1",
       "display": {
@@ -5173,7 +5397,9 @@
     },
     {
       "id": "workflow_input",
-      "legacyIds": ["workflow-input"],
+      "legacyIds": [
+        "workflow-input"
+      ],
       "provider": "workflow_input",
       "version": "1",
       "display": {

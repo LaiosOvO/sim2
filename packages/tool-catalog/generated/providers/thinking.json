@@ -16,7 +16,9 @@
         "icon": "BrainIcon",
         "bgColor": "#181C1E"
       },
-      "capabilities": ["thinking_tool"],
+      "capabilities": [
+        "thinking_tool"
+      ],
       "inputs": [
         {
           "key": "thought",

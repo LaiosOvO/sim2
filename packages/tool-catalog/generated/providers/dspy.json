@@ -16,7 +16,11 @@
         "icon": "DsPyIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["dspy_predict", "dspy_chain_of_thought", "dspy_react"],
+      "capabilities": [
+        "dspy_predict",
+        "dspy_chain_of_thought",
+        "dspy_react"
+      ],
       "inputs": [
         {
           "key": "operation",

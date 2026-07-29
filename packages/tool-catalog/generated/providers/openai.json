@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "openai",
-      "legacyIds": ["embeddings"],
+      "legacyIds": [
+        "embeddings"
+      ],
       "provider": "openai",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "OpenAIIcon",
         "bgColor": "#000000"
       },
-      "capabilities": ["openai_embeddings"],
+      "capabilities": [
+        "openai_embeddings"
+      ],
       "inputs": [
         {
           "key": "input",

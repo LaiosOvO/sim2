@@ -16,7 +16,10 @@
         "icon": "ZeroBounceIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["zerobounce_verify_email", "zerobounce_get_credits"],
+      "capabilities": [
+        "zerobounce_verify_email",
+        "zerobounce_get_credits"
+      ],
       "inputs": [
         {
           "key": "operation",

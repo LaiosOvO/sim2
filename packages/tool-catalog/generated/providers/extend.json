@@ -16,7 +16,9 @@
         "icon": "ExtendIcon",
         "bgColor": "#000000"
       },
-      "capabilities": ["extend_parser"],
+      "capabilities": [
+        "extend_parser"
+      ],
       "inputs": [
         {
           "key": "fileUpload",
@@ -59,7 +61,10 @@
     {
       "catalogVersion": 1,
       "id": "extend_v2",
-      "legacyIds": ["extend", "extend-v2"],
+      "legacyIds": [
+        "extend",
+        "extend-v2"
+      ],
       "provider": "extend",
       "version": "2",
       "display": {
@@ -69,7 +74,9 @@
         "icon": "ExtendIcon",
         "bgColor": "#000000"
       },
-      "capabilities": ["extend_parser_v2"],
+      "capabilities": [
+        "extend_parser_v2"
+      ],
       "inputs": []
     }
   ]

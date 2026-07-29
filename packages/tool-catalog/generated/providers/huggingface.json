@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "huggingface",
-      "legacyIds": ["hugging-face"],
+      "legacyIds": [
+        "hugging-face"
+      ],
       "provider": "huggingface",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "HuggingFaceIcon",
         "bgColor": "#0B0F19"
       },
-      "capabilities": ["huggingface_chat"],
+      "capabilities": [
+        "huggingface_chat"
+      ],
       "inputs": [
         {
           "key": "systemPrompt",

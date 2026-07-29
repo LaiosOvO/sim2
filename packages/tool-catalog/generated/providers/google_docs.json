@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_docs",
-      "legacyIds": ["google-docs"],
+      "legacyIds": [
+        "google-docs"
+      ],
       "provider": "google_docs",
       "version": "1",
       "display": {

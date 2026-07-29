@@ -16,7 +16,11 @@
         "icon": "LemlistIcon",
         "bgColor": "#316BFF"
       },
-      "capabilities": ["lemlist_get_activities", "lemlist_get_lead", "lemlist_send_email"],
+      "capabilities": [
+        "lemlist_get_activities",
+        "lemlist_get_lead",
+        "lemlist_send_email"
+      ],
       "inputs": [
         {
           "key": "operation",

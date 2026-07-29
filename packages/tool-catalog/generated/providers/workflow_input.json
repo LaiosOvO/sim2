@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "workflow_input",
-      "legacyIds": ["workflow-input"],
+      "legacyIds": [
+        "workflow-input"
+      ],
       "provider": "workflow_input",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "WorkflowIcon",
         "bgColor": "#6366F1"
       },
-      "capabilities": ["workflow_executor"],
+      "capabilities": [
+        "workflow_executor"
+      ],
       "inputs": [
         {
           "key": "workflowId",

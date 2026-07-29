@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "hunter",
-      "legacyIds": ["hunter-io"],
+      "legacyIds": [
+        "hunter-io"
+      ],
       "provider": "hunter",
       "version": "1",
       "display": {

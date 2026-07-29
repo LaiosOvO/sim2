@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "appconfig",
-      "legacyIds": ["aws-appconfig"],
+      "legacyIds": [
+        "aws-appconfig"
+      ],
       "provider": "appconfig",
       "version": "1",
       "display": {

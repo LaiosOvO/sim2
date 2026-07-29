@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "sts",
-      "legacyIds": ["aws-sts"],
+      "legacyIds": [
+        "aws-sts"
+      ],
       "provider": "sts",
       "version": "1",
       "display": {

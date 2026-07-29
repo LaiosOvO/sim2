@@ -16,7 +16,10 @@
         "icon": "MillionVerifierIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["millionverifier_verify_email", "millionverifier_get_credits"],
+      "capabilities": [
+        "millionverifier_verify_email",
+        "millionverifier_get_credits"
+      ],
       "inputs": [
         {
           "key": "operation",

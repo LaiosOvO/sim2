@@ -3,6 +3,10 @@ import { describe, expect, it } from 'vitest'
 import { debugCommandV1Schema, debugSessionV1Schema } from '../src/debug'
 import { executionEventV1Schema } from '../src/events'
 import { executionJobV1Schema } from '../src/jobs'
+import {
+  runtimeToolExecutionResultV1Schema,
+  runtimeToolInvocationV1Schema,
+} from '../src/runtime-tools'
 
 describe('Web to API to Worker wire contracts', () => {
   it('preserves trace context through a serialized execution job', () => {
@@ -68,5 +72,49 @@ describe('Web to API to Worker wire contracts', () => {
     })
 
     expect(session.currentNodeId).toBeNull()
+  })
+
+  it('keeps runtime tool credentials as opaque references', () => {
+    const invocation = runtimeToolInvocationV1Schema.parse({
+      contractVersion: 1,
+      toolId: 'notion_add_database_row',
+      credentialRef: 'credential-1',
+      params: { databaseId: 'database-1', properties: { Name: 'Task' } },
+      accessToken: 'must-be-stripped',
+    })
+
+    expect(invocation).toEqual({
+      contractVersion: 1,
+      toolId: 'notion_add_database_row',
+      credentialRef: 'credential-1',
+      params: { databaseId: 'database-1', properties: { Name: 'Task' } },
+    })
+  })
+
+  it('version-checks runtime registry failures', () => {
+    const result = runtimeToolExecutionResultV1Schema.parse({
+      contractVersion: 1,
+      ok: false,
+      error: {
+        contractVersion: 1,
+        code: 'RUNTIME_TOOL_NOT_FOUND',
+        message: 'Unknown runtime tool',
+        requestedToolId: 'missing_tool',
+      },
+    })
+
+    expect(result.ok).toBe(false)
+    expect(() =>
+      runtimeToolExecutionResultV1Schema.parse({
+        contractVersion: 2,
+        ok: false,
+        error: {
+          contractVersion: 2,
+          code: 'RUNTIME_TOOL_NOT_FOUND',
+          message: 'Unknown runtime tool',
+          requestedToolId: 'missing_tool',
+        },
+      })
+    ).toThrow()
   })
 })

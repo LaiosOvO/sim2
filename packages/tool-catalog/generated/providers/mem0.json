@@ -16,7 +16,11 @@
         "icon": "Mem0Icon",
         "bgColor": "#181C1E"
       },
-      "capabilities": ["mem0_add_memories", "mem0_search_memories", "mem0_get_memories"],
+      "capabilities": [
+        "mem0_add_memories",
+        "mem0_search_memories",
+        "mem0_get_memories"
+      ],
       "inputs": [
         {
           "key": "operation",

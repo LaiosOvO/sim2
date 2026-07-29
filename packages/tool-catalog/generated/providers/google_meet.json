@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_meet",
-      "legacyIds": ["google-meet"],
+      "legacyIds": [
+        "google-meet"
+      ],
       "provider": "google_meet",
       "version": "1",
       "display": {

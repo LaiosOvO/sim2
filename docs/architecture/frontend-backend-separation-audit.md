@@ -757,6 +757,40 @@ Executor、267 个可达 execution/sandbox、200 个可达 runtime tools/blocks/
 结论只能是“两个消费者已切断”，不能声称“整页运行时闭包已清零”；后续 Runtime Registry、
 Replay/Debug、Auth/DB 与其他画布消费者迁移必须继续降低全局 ratchet。
 
+### 19.6 Worker-only Runtime Registry 与懒加载 Provider
+
+首个 Worker runtime seam 已以 Notion add-database-row 建立。Runtime Registry 的公开
+接口只有 capability 查询、执行和已加载 Provider 诊断；声明表只保存 provider、
+canonical tool ID 和 alias，不包含 UI metadata。`notion_add_database_row_v2` 是 canonical
+ID，历史 `notion_add_database_row` 仍可从 execution job 执行。
+
+执行链为：
+
+```text
+ExecutionJobV1
+  -> RuntimeToolInvocationV1（toolId、credentialRef、params）
+  -> Worker Runtime Registry
+  -> lazy Notion Provider chunk
+  -> RuntimeCredentialResolver port
+  -> Notion transport adapter
+  -> RuntimeToolExecutionResultV1
+```
+
+job 不接受 access token 字段；契约的 strip policy 会丢弃这类额外顶层字段。Provider
+只能通过 Worker 注入的 credential port 取得 bearer token。缺失 tool/provider、错误
+Provider export、参数错误、credential 缺失和执行失败都有 contract version 1 的结构化
+错误，不再依赖字符串异常判断。
+
+Registry 与 Catalog 没有运行时 import。CI 读取纯 declaration 和生成后的 Catalog shard，
+确认 1 个 runtime declaration 的 canonical/legacy 两个 capability ID 都存在。Worker
+使用 split build：共 3 个输出，启动 entry 约 0.49 MB，不含 Notion Provider marker；
+Provider 独立 chunk 约 3.92 KB。Worker package 不暴露 exports，Registry public entry
+只能由 Worker composition root 导入。全浏览器闭包复核后 `api-or-worker` 仍为 0。
+
+这个 seam 证明目标结构可行，但还不表示旧 `apps/sim/tools/registry.ts` 已退休。当前只迁移
+一个代表性 tool；余下工具要按 provider 波次迁移并逐步切换 Executor 调用方，直到旧
+Registry 不再属于生产执行路径。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -798,3 +832,9 @@ Replay/Debug、Auth/DB 与其他画布消费者迁移必须继续降低全局 ra
   独立 browser bundle 为 14,425 bytes gzip，Runtime/Executor/Provider marker 为 0。
 - 记录局部 Catalog seam 已切断但全局客户端闭包计数未下降，防止把消费者级改造误报为
   整页性能完成。
+- 建立 Worker-only Runtime Registry、versioned runtime-tool job/result/error contract 与
+  composition-only import gate。
+- 迁移首个 Notion runtime adapter，兼容 `notion_add_database_row` 历史 ID；credential
+  只通过 Worker port 解析。
+- Worker split build 将 Notion Provider 隔离为 3.92 KB lazy chunk，启动 entry 不含
+  Provider marker；Catalog/Registry 仅做生成期一致性比对。

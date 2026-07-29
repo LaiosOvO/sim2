@@ -16,7 +16,9 @@
         "icon": "PulseIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["pulse_parser"],
+      "capabilities": [
+        "pulse_parser"
+      ],
       "inputs": [
         {
           "key": "fileUpload",
@@ -59,7 +61,10 @@
     {
       "catalogVersion": 1,
       "id": "pulse_v2",
-      "legacyIds": ["pulse", "pulse-v2"],
+      "legacyIds": [
+        "pulse",
+        "pulse-v2"
+      ],
       "provider": "pulse",
       "version": "2",
       "display": {
@@ -69,7 +74,9 @@
         "icon": "PulseIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["pulse_parser_v2"],
+      "capabilities": [
+        "pulse_parser_v2"
+      ],
       "inputs": []
     }
   ]

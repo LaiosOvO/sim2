@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "start_trigger",
-      "legacyIds": ["start-trigger"],
+      "legacyIds": [
+        "start-trigger"
+      ],
       "provider": "start_trigger",
       "version": "1",
       "display": {

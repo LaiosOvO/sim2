@@ -6,7 +6,10 @@
     {
       "catalogVersion": 1,
       "id": "microsoft_ad",
-      "legacyIds": ["azure-ad", "microsoft-ad"],
+      "legacyIds": [
+        "azure-ad",
+        "microsoft-ad"
+      ],
       "provider": "microsoft_ad",
       "version": "1",
       "display": {

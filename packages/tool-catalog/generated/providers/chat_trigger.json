@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "chat_trigger",
-      "legacyIds": ["chat-trigger"],
+      "legacyIds": [
+        "chat-trigger"
+      ],
       "provider": "chat_trigger",
       "version": "1",
       "display": {

@@ -612,7 +612,9 @@
     {
       "catalogVersion": 1,
       "id": "slack_v2",
-      "legacyIds": ["slack-v2"],
+      "legacyIds": [
+        "slack-v2"
+      ],
       "provider": "slack",
       "version": "2",
       "display": {

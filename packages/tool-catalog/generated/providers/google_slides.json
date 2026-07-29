@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_slides",
-      "legacyIds": ["google-slides"],
+      "legacyIds": [
+        "google-slides"
+      ],
       "provider": "google_slides",
       "version": "1",
       "display": {
@@ -1432,7 +1434,10 @@
     {
       "catalogVersion": 1,
       "id": "google_slides_v2",
-      "legacyIds": ["google-slides", "google-slides-v2"],
+      "legacyIds": [
+        "google-slides",
+        "google-slides-v2"
+      ],
       "provider": "google_slides",
       "version": "2",
       "display": {

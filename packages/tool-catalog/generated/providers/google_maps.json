@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_maps",
-      "legacyIds": ["google-maps"],
+      "legacyIds": [
+        "google-maps"
+      ],
       "provider": "google_maps",
       "version": "1",
       "display": {

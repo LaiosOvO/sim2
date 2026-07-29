@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "microsoft_dataverse",
-      "legacyIds": ["microsoft-dataverse"],
+      "legacyIds": [
+        "microsoft-dataverse"
+      ],
       "provider": "microsoft_dataverse",
       "version": "1",
       "display": {

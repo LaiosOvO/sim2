@@ -16,7 +16,9 @@
         "icon": "SerperIcon",
         "bgColor": "#2B3543"
       },
-      "capabilities": ["serper_search"],
+      "capabilities": [
+        "serper_search"
+      ],
       "inputs": [
         {
           "key": "query",

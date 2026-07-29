@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "sap_concur",
-      "legacyIds": ["sap-concur"],
+      "legacyIds": [
+        "sap-concur"
+      ],
       "provider": "sap_concur",
       "version": "1",
       "display": {

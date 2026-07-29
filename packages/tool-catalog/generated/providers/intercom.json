@@ -517,7 +517,10 @@
     {
       "catalogVersion": 1,
       "id": "intercom_v2",
-      "legacyIds": ["intercom", "intercom-v2"],
+      "legacyIds": [
+        "intercom",
+        "intercom-v2"
+      ],
       "provider": "intercom",
       "version": "2",
       "display": {

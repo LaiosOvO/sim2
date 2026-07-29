@@ -8,6 +8,11 @@ import { traceContextSchema } from '@sim/api-contracts/tracing'
 import { debugCommandV1Schema, debugSessionV1Schema } from '@sim/execution-contracts/debug'
 import { executionEventV1Schema } from '@sim/execution-contracts/events'
 import { executionJobV1Schema } from '@sim/execution-contracts/jobs'
+import {
+  runtimeToolExecutionErrorV1Schema,
+  runtimeToolExecutionResultV1Schema,
+  runtimeToolInvocationV1Schema,
+} from '@sim/execution-contracts/runtime-tools'
 import { toolCatalogItemV1Schema, toolCatalogPageV1Schema } from '@sim/tool-catalog'
 
 interface JsonSchemaProvider {
@@ -26,6 +31,9 @@ const schemas: Record<string, JsonSchemaProvider> = {
   TraceContext: traceContextSchema,
   ExecutionJobV1: executionJobV1Schema,
   ExecutionEventV1: executionEventV1Schema,
+  RuntimeToolInvocationV1: runtimeToolInvocationV1Schema,
+  RuntimeToolExecutionErrorV1: runtimeToolExecutionErrorV1Schema,
+  RuntimeToolExecutionResultV1: runtimeToolExecutionResultV1Schema,
   DebugSessionV1: debugSessionV1Schema,
   DebugCommandV1: debugCommandV1Schema,
   ToolCatalogItemV1: toolCatalogItemV1Schema,

@@ -16,7 +16,10 @@
         "icon": "NeverBounceIcon",
         "bgColor": "#064AF4"
       },
-      "capabilities": ["neverbounce_verify_email", "neverbounce_get_credits"],
+      "capabilities": [
+        "neverbounce_verify_email",
+        "neverbounce_get_credits"
+      ],
       "inputs": [
         {
           "key": "operation",

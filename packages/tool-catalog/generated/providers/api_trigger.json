@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "api_trigger",
-      "legacyIds": ["api-trigger"],
+      "legacyIds": [
+        "api-trigger"
+      ],
       "provider": "api_trigger",
       "version": "1",
       "display": {

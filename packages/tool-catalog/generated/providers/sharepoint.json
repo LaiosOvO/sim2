@@ -208,7 +208,10 @@
     {
       "catalogVersion": 1,
       "id": "sharepoint_v2",
-      "legacyIds": ["sharepoint", "sharepoint-v2"],
+      "legacyIds": [
+        "sharepoint",
+        "sharepoint-v2"
+      ],
       "provider": "sharepoint",
       "version": "2",
       "display": {

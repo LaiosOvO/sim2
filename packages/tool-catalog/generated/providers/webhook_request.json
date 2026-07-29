@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "webhook_request",
-      "legacyIds": ["webhook-request"],
+      "legacyIds": [
+        "webhook-request"
+      ],
       "provider": "webhook_request",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "WebhookIcon",
         "bgColor": "#10B981"
       },
-      "capabilities": ["webhook_request"],
+      "capabilities": [
+        "webhook_request"
+      ],
       "inputs": [
         {
           "key": "url",

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "generic_webhook",
-      "legacyIds": ["generic-webhook"],
+      "legacyIds": [
+        "generic-webhook"
+      ],
       "provider": "generic_webhook",
       "version": "1",
       "display": {

@@ -6,7 +6,10 @@
     {
       "catalogVersion": 1,
       "id": "identity_center",
-      "legacyIds": ["aws-identity-center", "identity-center"],
+      "legacyIds": [
+        "aws-identity-center",
+        "identity-center"
+      ],
       "provider": "identity_center",
       "version": "1",
       "display": {

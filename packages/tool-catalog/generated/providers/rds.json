@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "rds",
-      "legacyIds": ["amazon-rds"],
+      "legacyIds": [
+        "amazon-rds"
+      ],
       "provider": "rds",
       "version": "1",
       "display": {

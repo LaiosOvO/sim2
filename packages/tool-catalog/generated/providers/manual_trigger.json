@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "manual_trigger",
-      "legacyIds": ["manual-trigger"],
+      "legacyIds": [
+        "manual-trigger"
+      ],
       "provider": "manual_trigger",
       "version": "1",
       "display": {

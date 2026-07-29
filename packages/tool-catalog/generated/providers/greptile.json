@@ -16,7 +16,11 @@
         "icon": "GreptileIcon",
         "bgColor": "#181C1E"
       },
-      "capabilities": ["greptile_query", "greptile_index_repo", "greptile_status"],
+      "capabilities": [
+        "greptile_query",
+        "greptile_index_repo",
+        "greptile_status"
+      ],
       "inputs": [
         {
           "key": "operation",

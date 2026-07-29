@@ -153,7 +153,10 @@
     {
       "catalogVersion": 1,
       "id": "confluence_v2",
-      "legacyIds": ["confluence", "confluence-v2"],
+      "legacyIds": [
+        "confluence",
+        "confluence-v2"
+      ],
       "provider": "confluence",
       "version": "2",
       "display": {

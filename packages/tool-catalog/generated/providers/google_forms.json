@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_forms",
-      "legacyIds": ["google-forms"],
+      "legacyIds": [
+        "google-forms"
+      ],
       "provider": "google_forms",
       "version": "1",
       "display": {

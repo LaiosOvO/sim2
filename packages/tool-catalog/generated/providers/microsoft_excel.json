@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "microsoft_excel",
-      "legacyIds": ["microsoft-excel"],
+      "legacyIds": [
+        "microsoft-excel"
+      ],
       "provider": "microsoft_excel",
       "version": "1",
       "display": {
@@ -183,7 +185,10 @@
     {
       "catalogVersion": 1,
       "id": "microsoft_excel_v2",
-      "legacyIds": ["microsoft-excel", "microsoft-excel-v2"],
+      "legacyIds": [
+        "microsoft-excel",
+        "microsoft-excel-v2"
+      ],
       "provider": "microsoft_excel",
       "version": "2",
       "display": {

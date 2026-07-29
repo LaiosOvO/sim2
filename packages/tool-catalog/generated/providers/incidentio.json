@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "incidentio",
-      "legacyIds": ["incident-io"],
+      "legacyIds": [
+        "incident-io"
+      ],
       "provider": "incidentio",
       "version": "1",
       "display": {

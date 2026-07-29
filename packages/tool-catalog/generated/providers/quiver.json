@@ -16,7 +16,11 @@
         "icon": "QuiverIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["quiver_text_to_svg", "quiver_image_to_svg", "quiver_list_models"],
+      "capabilities": [
+        "quiver_text_to_svg",
+        "quiver_image_to_svg",
+        "quiver_list_models"
+      ],
       "inputs": [
         {
           "key": "operation",

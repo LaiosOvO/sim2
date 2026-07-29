@@ -137,7 +137,9 @@
     {
       "catalogVersion": 1,
       "id": "stt_v2",
-      "legacyIds": ["stt-v2"],
+      "legacyIds": [
+        "stt-v2"
+      ],
       "provider": "stt",
       "version": "2",
       "display": {

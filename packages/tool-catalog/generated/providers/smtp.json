@@ -16,7 +16,9 @@
         "icon": "SmtpIcon",
         "bgColor": "#2D3748"
       },
-      "capabilities": ["smtp_send_mail"],
+      "capabilities": [
+        "smtp_send_mail"
+      ],
       "inputs": [
         {
           "key": "smtpHost",

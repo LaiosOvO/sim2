@@ -16,7 +16,9 @@
         "icon": "ShieldCheckIcon",
         "bgColor": "#3D642D"
       },
-      "capabilities": ["guardrails_validate"],
+      "capabilities": [
+        "guardrails_validate"
+      ],
       "inputs": [
         {
           "key": "input",

@@ -16,7 +16,11 @@
         "icon": "QdrantIcon",
         "bgColor": "#1A223F"
       },
-      "capabilities": ["qdrant_upsert_points", "qdrant_search_vector", "qdrant_fetch_points"],
+      "capabilities": [
+        "qdrant_upsert_points",
+        "qdrant_search_vector",
+        "qdrant_fetch_points"
+      ],
       "inputs": [
         {
           "key": "operation",

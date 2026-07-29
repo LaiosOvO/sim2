@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "twilio_sms",
-      "legacyIds": ["twilio-sms"],
+      "legacyIds": [
+        "twilio-sms"
+      ],
       "provider": "twilio_sms",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "TwilioIcon",
         "bgColor": "#F22F46"
       },
-      "capabilities": ["twilio_send_sms"],
+      "capabilities": [
+        "twilio_send_sms"
+      ],
       "inputs": [
         {
           "key": "phoneNumbers",

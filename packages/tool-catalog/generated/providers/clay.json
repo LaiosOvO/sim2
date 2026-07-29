@@ -16,7 +16,9 @@
         "icon": "ClayIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["clay_populate"],
+      "capabilities": [
+        "clay_populate"
+      ],
       "inputs": [
         {
           "key": "webhookURL",

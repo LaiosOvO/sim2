@@ -16,7 +16,9 @@
         "icon": "DocumentIcon",
         "bgColor": "#40916C"
       },
-      "capabilities": ["file_parser"],
+      "capabilities": [
+        "file_parser"
+      ],
       "inputs": [
         {
           "key": "inputMethod",
@@ -41,7 +43,9 @@
     {
       "catalogVersion": 1,
       "id": "file_v2",
-      "legacyIds": ["file-v2"],
+      "legacyIds": [
+        "file-v2"
+      ],
       "provider": "file",
       "version": "2",
       "display": {
@@ -49,7 +53,9 @@
         "description": "Read and parse multiple files",
         "category": "blocks"
       },
-      "capabilities": ["file_parser_v2"],
+      "capabilities": [
+        "file_parser_v2"
+      ],
       "inputs": [
         {
           "key": "file",
@@ -68,7 +74,9 @@
     {
       "catalogVersion": 1,
       "id": "file_v3",
-      "legacyIds": ["file-v3"],
+      "legacyIds": [
+        "file-v3"
+      ],
       "provider": "file",
       "version": "3",
       "display": {
@@ -78,7 +86,12 @@
         "icon": "DocumentIcon",
         "bgColor": "#40916C"
       },
-      "capabilities": ["file_parser_v3", "file_get", "file_write", "file_append"],
+      "capabilities": [
+        "file_parser_v3",
+        "file_get",
+        "file_write",
+        "file_append"
+      ],
       "inputs": [
         {
           "key": "operation",
@@ -151,7 +164,9 @@
     {
       "catalogVersion": 1,
       "id": "file_v4",
-      "legacyIds": ["file-v4"],
+      "legacyIds": [
+        "file-v4"
+      ],
       "provider": "file",
       "version": "4",
       "display": {
@@ -159,7 +174,12 @@
         "description": "Read, fetch, write, and append files",
         "category": "blocks"
       },
-      "capabilities": ["file_fetch", "file_read", "file_write", "file_append"],
+      "capabilities": [
+        "file_fetch",
+        "file_read",
+        "file_write",
+        "file_append"
+      ],
       "inputs": [
         {
           "key": "operation",
@@ -233,7 +253,9 @@
     {
       "catalogVersion": 1,
       "id": "file_v5",
-      "legacyIds": ["file-v5"],
+      "legacyIds": [
+        "file-v5"
+      ],
       "provider": "file",
       "version": "5",
       "display": {

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "brightdata",
-      "legacyIds": ["bright-data"],
+      "legacyIds": [
+        "bright-data"
+      ],
       "provider": "brightdata",
       "version": "1",
       "display": {

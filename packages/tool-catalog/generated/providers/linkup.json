@@ -16,7 +16,9 @@
         "icon": "LinkupIcon",
         "bgColor": "#D6D3C7"
       },
-      "capabilities": ["linkup_search"],
+      "capabilities": [
+        "linkup_search"
+      ],
       "inputs": [
         {
           "key": "q",

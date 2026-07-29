@@ -16,7 +16,12 @@
         "icon": "BrainIcon",
         "bgColor": "#F64F9E"
       },
-      "capabilities": ["memory_add", "memory_get", "memory_get_all", "memory_delete"],
+      "capabilities": [
+        "memory_add",
+        "memory_get",
+        "memory_get_all",
+        "memory_delete"
+      ],
       "inputs": [
         {
           "key": "operation",

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "image_generator",
-      "legacyIds": ["image-generator"],
+      "legacyIds": [
+        "image-generator"
+      ],
       "provider": "image_generator",
       "version": "1",
       "display": {
@@ -16,7 +18,9 @@
         "icon": "ImageIcon",
         "bgColor": "#4D5FFF"
       },
-      "capabilities": ["openai_image"],
+      "capabilities": [
+        "openai_image"
+      ],
       "inputs": [
         {
           "key": "model",
@@ -101,7 +105,9 @@
     {
       "catalogVersion": 1,
       "id": "image_generator_v2",
-      "legacyIds": ["image-generator-v2"],
+      "legacyIds": [
+        "image-generator-v2"
+      ],
       "provider": "image_generator",
       "version": "2",
       "display": {
@@ -111,7 +117,9 @@
         "icon": "ImageIcon",
         "bgColor": "#4D5FFF"
       },
-      "capabilities": ["image_generate"],
+      "capabilities": [
+        "image_generate"
+      ],
       "inputs": [
         {
           "key": "provider",

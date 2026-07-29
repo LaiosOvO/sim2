@@ -16,7 +16,10 @@
         "icon": "PerplexityIcon",
         "bgColor": "#20808D"
       },
-      "capabilities": ["perplexity_chat", "perplexity_search"],
+      "capabilities": [
+        "perplexity_chat",
+        "perplexity_search"
+      ],
       "inputs": [
         {
           "key": "operation",

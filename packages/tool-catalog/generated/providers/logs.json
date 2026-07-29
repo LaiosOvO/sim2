@@ -16,7 +16,11 @@
         "icon": "Library",
         "bgColor": "#EAB308"
       },
-      "capabilities": ["logs_query", "logs_get", "logs_get_execution"],
+      "capabilities": [
+        "logs_query",
+        "logs_get",
+        "logs_get_execution"
+      ],
       "inputs": [
         {
           "key": "operation",
@@ -107,7 +111,9 @@
     {
       "catalogVersion": 1,
       "id": "logs_v2",
-      "legacyIds": ["logs-v2"],
+      "legacyIds": [
+        "logs-v2"
+      ],
       "provider": "logs",
       "version": "2",
       "display": {
@@ -117,7 +123,10 @@
         "icon": "Library",
         "bgColor": "#EAB308"
       },
-      "capabilities": ["logs_query_runs", "logs_get_run_details"],
+      "capabilities": [
+        "logs_query_runs",
+        "logs_get_run_details"
+      ],
       "inputs": [
         {
           "key": "operation",

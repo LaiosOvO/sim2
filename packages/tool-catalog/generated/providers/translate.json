@@ -16,7 +16,9 @@
         "icon": "TranslateIcon",
         "bgColor": "#FF4B4B"
       },
-      "capabilities": ["llm_chat"],
+      "capabilities": [
+        "llm_chat"
+      ],
       "inputs": [
         {
           "key": "context",

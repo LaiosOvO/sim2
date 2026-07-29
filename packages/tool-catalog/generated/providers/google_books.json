@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_books",
-      "legacyIds": ["google-books"],
+      "legacyIds": [
+        "google-books"
+      ],
       "provider": "google_books",
       "version": "1",
       "display": {
@@ -16,7 +18,10 @@
         "icon": "GoogleBooksIcon",
         "bgColor": "#FFFFFF"
       },
-      "capabilities": ["google_books_volume_search", "google_books_volume_details"],
+      "capabilities": [
+        "google_books_volume_search",
+        "google_books_volume_details"
+      ],
       "inputs": [
         {
           "key": "operation",

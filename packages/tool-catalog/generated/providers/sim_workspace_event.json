@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "sim_workspace_event",
-      "legacyIds": ["sim-workspace-event"],
+      "legacyIds": [
+        "sim-workspace-event"
+      ],
       "provider": "sim_workspace_event",
       "version": "1",
       "display": {

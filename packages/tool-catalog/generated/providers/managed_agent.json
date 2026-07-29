@@ -6,7 +6,10 @@
     {
       "catalogVersion": 1,
       "id": "managed_agent",
-      "legacyIds": ["claude-managed-agents", "managed-agent"],
+      "legacyIds": [
+        "claude-managed-agents",
+        "managed-agent"
+      ],
       "provider": "managed_agent",
       "version": "1",
       "display": {
@@ -16,7 +19,9 @@
         "icon": "ClaudeIcon",
         "bgColor": "#DA7756"
       },
-      "capabilities": ["managed_agent_run_session"],
+      "capabilities": [
+        "managed_agent_run_session"
+      ],
       "inputs": [
         {
           "key": "credential",

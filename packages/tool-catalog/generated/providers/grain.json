@@ -153,7 +153,10 @@
     {
       "catalogVersion": 1,
       "id": "grain_v2",
-      "legacyIds": ["grain", "grain-v2"],
+      "legacyIds": [
+        "grain",
+        "grain-v2"
+      ],
       "provider": "grain",
       "version": "2",
       "display": {

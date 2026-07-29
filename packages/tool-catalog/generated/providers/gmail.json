@@ -217,7 +217,10 @@
     {
       "catalogVersion": 1,
       "id": "gmail_v2",
-      "legacyIds": ["gmail", "gmail-v2"],
+      "legacyIds": [
+        "gmail",
+        "gmail-v2"
+      ],
       "provider": "gmail",
       "version": "2",
       "display": {

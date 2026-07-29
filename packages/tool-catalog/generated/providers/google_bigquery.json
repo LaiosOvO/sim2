@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "google_bigquery",
-      "legacyIds": ["google-bigquery"],
+      "legacyIds": [
+        "google-bigquery"
+      ],
       "provider": "google_bigquery",
       "version": "1",
       "display": {

@@ -6,7 +6,9 @@
     {
       "catalogVersion": 1,
       "id": "azure_devops",
-      "legacyIds": ["azure-devops"],
+      "legacyIds": [
+        "azure-devops"
+      ],
       "provider": "azure_devops",
       "version": "1",
       "display": {

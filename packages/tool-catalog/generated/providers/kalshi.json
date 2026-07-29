@@ -292,7 +292,10 @@
     {
       "catalogVersion": 1,
       "id": "kalshi_v2",
-      "legacyIds": ["kalshi", "kalshi-v2"],
+      "legacyIds": [
+        "kalshi",
+        "kalshi-v2"
+      ],
       "provider": "kalshi",
       "version": "2",
       "display": {

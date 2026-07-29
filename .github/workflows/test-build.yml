@@ -138,6 +138,15 @@ jobs:
       - name: Verify migrated canvas catalog consumers
         run: bun run check:catalog-consumers
 
+      - name: Verify Runtime Registry catalog consistency
+        run: bun run check:runtime-catalog
+
+      - name: Enforce Worker-only Runtime Registry boundary
+        run: bun run check:runtime-registry-boundary
+
+      - name: Verify lazy Runtime Provider build
+        run: bun run check:runtime-registry-lazy-build
+
       - name: Verify browser contract build isolation
         run: bun run check:contract-browser-build
 

@@ -16,7 +16,10 @@
         "icon": "JinaAIIcon",
         "bgColor": "#333333"
       },
-      "capabilities": ["jina_read_url", "jina_search"],
+      "capabilities": [
+        "jina_read_url",
+        "jina_search"
+      ],
       "inputs": [
         {
           "key": "operation",
