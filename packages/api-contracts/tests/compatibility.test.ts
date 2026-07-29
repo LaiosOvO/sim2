@@ -10,6 +10,10 @@ import {
   listOrganizationWorkspacesResponseV1Schema,
 } from '../src/organizations'
 import { pageRequestSchema } from '../src/pagination'
+import {
+  getUserPermissionGroupResponseV1Schema,
+  normalizePermissionGroupConfigV1,
+} from '../src/permission-groups'
 import { traceContextSchema } from '../src/tracing'
 import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
 import {
@@ -136,7 +140,16 @@ describe('API contract compatibility', () => {
       w2TenantReadRouteContracts
         .filter((route) => route.backend === 'native')
         .map((route) => route.inventoryId)
-    ).toEqual(['API-0137', 'API-0235', 'API-0241', 'API-0294', 'API-1057', 'API-1060', 'API-1124'])
+    ).toEqual([
+      'API-0137',
+      'API-0235',
+      'API-0241',
+      'API-0243',
+      'API-0294',
+      'API-1057',
+      'API-1060',
+      'API-1124',
+    ])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',
@@ -276,6 +289,32 @@ describe('API contract compatibility', () => {
 
     expect(parsed.data.members[0]).not.toHaveProperty('organizationId')
     expect(parsed.data.pendingInvitations[0]).not.toHaveProperty('token')
+  })
+
+  it('normalizes permission group defaults and filters invalid auth modes', () => {
+    const config = normalizePermissionGroupConfigV1({
+      disableSkills: true,
+      deniedTools: ['slack_canvas', 42],
+      allowedFileShareAuthTypes: ['password', 'invalid'],
+      persistenceOnly: 'strip',
+    })
+    const parsed = getUserPermissionGroupResponseV1Schema.parse({
+      permissionGroupId: 'group-1',
+      groupName: 'Restricted',
+      config,
+      entitled: true,
+      organizationId: 'organization-1',
+      isOrgAdmin: false,
+      persistenceOnly: 'strip',
+    })
+
+    expect(parsed.config).toMatchObject({
+      disableSkills: true,
+      disableCustomTools: false,
+      deniedTools: ['slack_canvas'],
+      allowedFileShareAuthTypes: ['password'],
+    })
+    expect(parsed).not.toHaveProperty('persistenceOnly')
   })
 
   it('keeps raw provider profiles outside the personal profile response', () => {

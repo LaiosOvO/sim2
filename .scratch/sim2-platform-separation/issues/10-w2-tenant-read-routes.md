@@ -48,9 +48,10 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 ## 尚未完成：原生读模型
 
 兼容读取平面解决 Next 编译边界，但不是 22 条接口的最终后端实现。当前 backend 状态为
-7 条 native（API-0137 invitee invitations、API-0235 organization roster、
-API-0241 organization workspaces、API-0294 stars、API-1057 workspace members、
-API-1060 Polaris personal profile、API-1124 workspace invitation management）和 15 条
+8 条 native（API-0137 invitee invitations、API-0235 organization roster、
+API-0241 organization workspaces、API-0243 user permission group、API-0294 stars、
+API-1057 workspace members、API-1060 Polaris personal profile、API-1124 workspace
+invitation management）和 14 条
 legacy-origin-compatibility。完成本 Ticket 仍需：
 
 1. 按领域建立 organization/workspace/user read repository ports；
@@ -65,17 +66,17 @@ legacy-origin-compatibility。完成本 Ticket 仍需：
 | Gate | 结果 |
 | --- | --- |
 | Inventory/coverage | 22/22，C/A/D/I 无遗漏、无重复 |
-| W2 API tests | 72 passed、1 disposable PostgreSQL test 默认跳过 |
+| W2 API tests | 78 passed、1 disposable PostgreSQL test 默认跳过 |
 | W2 Next proxy tests | 25/25 |
-| API Contract tests | 12/12 |
+| API Contract tests | 13/13 |
 | API/auth/contracts type-check | 通过 |
 | Next facade isolated build | 22 entries；最大 1,485 gzip bytes |
 | Next facade forbidden marker | 0 |
-| Platform Contract | 61 schemas；生成产物 clean |
+| Platform Contract | 65 schemas；生成产物 clean |
 | API validation audit | 991/991 contract-backed；non-contract 0 |
 | Identity boundary | 3 boundaries / 9 files；0 provider/DB 反向依赖 |
-| Target structure | 47 roots / 47 required files |
-| Target cycles | 22 packages / 131 source nodes；0 cycle |
+| Target structure | 50 roots / 51 required files |
+| Target cycles | 22 packages / 137 source nodes；0 cycle |
 
 旧 route 同目录的 8 个测试随实现移出 Next 一并删除；覆盖职责已迁到独立 API 的
 22 路差分/鉴权/集成测试和 HTTP legacy adapter 测试。原生 adapter 替换时必须补回
@@ -102,7 +103,14 @@ entitlement port。真实 fixture 覆盖 active enterprise、owner billing-block
 `API-0235` 将 organization roster 的 member/admin projection 收进 Organizations Module，
 把过期邀请更新隔离为显式 best-effort housekeeping port，并用一个 admin snapshot interface
 隐藏 members/workspaces/permissions/invitations/grants 的批量读取。真实 fixture 验证归档
-workspace 排除、stale invitation 状态更新以及跨 organization grant 不泄露。其余 15 条仍
+workspace 排除、stale invitation 状态更新以及跨 organization grant 不泄露。
+
+`API-0243` 将 user permission-group config 收进独立 Permission Groups Module。旧 route
+为读取 metadata/config 直接进入 EE `permission-check`，继而可达 Executor、Block、Provider
+与运行时环境逻辑；新 contract normalizer 是纯数据函数，application 只消费 workspace access、
+organization entitlement 与 winner read port。真实 fixture 验证 explicit member group >
+empty/all-members group > default group 的优先级、oldest tie-break 与 owning organization
+scope，不再 import 旧 EE permission-check。其余 14 条仍
 必须补相应的数据库/Provider integration gate。
 
 ## Acceptance criteria

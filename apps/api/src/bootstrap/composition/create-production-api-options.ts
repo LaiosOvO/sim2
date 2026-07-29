@@ -17,6 +17,7 @@ import type {
   OrganizationRosterReadRepository,
   OrganizationWorkspaceReadRepository,
 } from '@/modules/organizations'
+import type { UserPermissionGroupReadRepository } from '@/modules/permission-groups'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
 import type { WorkspaceMemberReadRepository } from '@/modules/workspaces'
@@ -87,6 +88,7 @@ async function createTenantRead(
       createListOrganizationWorkspacesHandler,
       createListOrganizationWorkspacesUseCase,
     },
+    { createGetUserPermissionGroupHandler, createGetUserPermissionGroupUseCase },
     { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
@@ -97,6 +99,7 @@ async function createTenantRead(
     import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
     import('@/modules/invitations'),
     import('@/modules/organizations'),
+    import('@/modules/permission-groups'),
     import('@/modules/workspaces'),
     import('@/modules/identity'),
     import('@sim/biz-identity'),
@@ -141,6 +144,14 @@ async function createTenantRead(
       return false
     },
   }
+  let userPermissionGroupRepository: UserPermissionGroupReadRepository = {
+    async findActiveWorkspace() {
+      throw new Error('Permission group database is not configured')
+    },
+    async resolveForUser() {
+      throw new Error('Permission group database is not configured')
+    },
+  }
   let personalIdentityRepository: PersonalIdentityProfileRepository = {
     async findForUser() {
       return null
@@ -166,6 +177,7 @@ async function createTenantRead(
       { createDrizzleOrganizationAccessControlEntitlementReader },
       { createDrizzleOrganizationRosterReadRepository },
       { createDrizzleOrganizationInvitationHousekeeping },
+      { createDrizzleUserPermissionGroupReadRepository },
       { createDrizzleAccessResolver },
       { readAccessControlRuntimeConfig },
     ] = await Promise.all([
@@ -180,6 +192,9 @@ async function createTenantRead(
       ),
       import('@/infrastructure/postgres/repositories/drizzle-organization-roster-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-organization-invitation-housekeeping'),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-user-permission-group-read-repository'
+      ),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
       import('@/config/enterprise-runtime'),
     ])
@@ -189,13 +204,21 @@ async function createTenantRead(
     organizationWorkspaceRepository = createDrizzleOrganizationWorkspaceReadRepository()
     organizationRosterRepository = createDrizzleOrganizationRosterReadRepository()
     organizationInvitationHousekeeping = createDrizzleOrganizationInvitationHousekeeping()
+    userPermissionGroupRepository = createDrizzleUserPermissionGroupReadRepository()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
       readAccessControlRuntimeConfig()
     )
     accessResolver = createDrizzleAccessResolver()
   }
   const nativeHandlers: Record<
-    'API-0137' | 'API-0235' | 'API-0241' | 'API-0294' | 'API-1057' | 'API-1060' | 'API-1124',
+    | 'API-0137'
+    | 'API-0235'
+    | 'API-0241'
+    | 'API-0243'
+    | 'API-0294'
+    | 'API-1057'
+    | 'API-1060'
+    | 'API-1124',
     NativeTenantReadHandler
   > = {
     'API-0137': createListMyInvitationsHandler(
@@ -213,6 +236,13 @@ async function createTenantRead(
         access: accessResolver,
         entitlement: organizationEntitlement,
         repository: organizationWorkspaceRepository,
+      })
+    ),
+    'API-0243': createGetUserPermissionGroupHandler(
+      createGetUserPermissionGroupUseCase({
+        access: accessResolver,
+        entitlement: organizationEntitlement,
+        repository: userPermissionGroupRepository,
       })
     ),
     'API-0294': createGitHubStarsHandler({

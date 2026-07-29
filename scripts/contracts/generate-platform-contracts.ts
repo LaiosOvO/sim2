@@ -44,6 +44,12 @@ import {
   organizationWorkspaceRefV1Schema,
 } from '@sim/api-contracts/organizations'
 import { pageRequestSchema } from '@sim/api-contracts/pagination'
+import {
+  getUserPermissionGroupResponseV1Schema,
+  permissionGroupConfigV1Schema,
+  permissionGroupShareAuthTypeV1Schema,
+  userPermissionGroupWorkspaceIdV1Schema,
+} from '@sim/api-contracts/permission-groups'
 import { traceContextSchema } from '@sim/api-contracts/tracing'
 import {
   w2TenantReadBackendSchema,
@@ -114,6 +120,10 @@ const schemas: Record<string, JsonSchemaProvider> = {
   OrganizationRosterPendingInvitationV1: organizationRosterPendingInvitationV1Schema,
   OrganizationRosterV1: organizationRosterV1Schema,
   GetOrganizationRosterResponseV1: getOrganizationRosterResponseV1Schema,
+  PermissionGroupShareAuthTypeV1: permissionGroupShareAuthTypeV1Schema,
+  PermissionGroupConfigV1: permissionGroupConfigV1Schema,
+  UserPermissionGroupWorkspaceIdV1: userPermissionGroupWorkspaceIdV1Schema,
+  GetUserPermissionGroupResponseV1: getUserPermissionGroupResponseV1Schema,
   PageRequest: pageRequestSchema,
   TraceContext: traceContextSchema,
   SessionRequestContext: sessionRequestContextSchema,

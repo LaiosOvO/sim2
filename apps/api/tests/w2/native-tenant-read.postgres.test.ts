@@ -19,6 +19,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { createDrizzleOrganizationRosterReadRepository },
       { createDrizzleOrganizationWorkspaceReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
+      { createDrizzleUserPermissionGroupReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
@@ -35,6 +36,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         '@/infrastructure/postgres/repositories/drizzle-organization-workspace-read-repository'
       ),
       import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-user-permission-group-read-repository'
+      ),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
     ])
@@ -62,6 +66,27 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         name text not null,
         organization_id text references organization(id),
         archived_at timestamp
+      )`,
+      `create table permission_group (
+        id text primary key,
+        organization_id text not null references organization(id),
+        name text not null,
+        config jsonb not null default '{}',
+        created_by text not null references "user"(id),
+        created_at timestamp not null default now(),
+        is_default boolean not null default false
+      )`,
+      `create table permission_group_workspace (
+        id text primary key,
+        permission_group_id text not null references permission_group(id),
+        workspace_id text not null references workspace(id),
+        organization_id text not null references organization(id)
+      )`,
+      `create table permission_group_member (
+        id text primary key,
+        permission_group_id text not null references permission_group(id),
+        organization_id text not null references organization(id),
+        user_id text not null references "user"(id)
       )`,
       `create table permissions (
         id text primary key,
@@ -145,6 +170,31 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
           '2026-07-04T00:00:00Z'),
          ('membership-owner', 'org-owner-1', 'organization-1', 'owner',
           '2026-07-05T00:00:00Z')`,
+      `insert into permission_group (
+         id, organization_id, name, config, created_by, created_at, is_default
+       ) values
+         ('group-explicit-old', 'organization-1', 'Explicit Old',
+          '{"disableSkills":true}', 'org-owner-1', '2026-07-01T00:00:00Z', false),
+         ('group-explicit-new', 'organization-1', 'Explicit New',
+          '{"disableMcpTools":true}', 'org-owner-1', '2026-07-02T00:00:00Z', false),
+         ('group-all-members', 'organization-1', 'All Members',
+          '{"hideFilesTab":true}', 'org-owner-1', '2026-07-03T00:00:00Z', false),
+         ('group-default', 'organization-1', 'Default',
+          '{"disableCustomTools":true}', 'org-owner-1', '2026-07-04T00:00:00Z', true)`,
+      `insert into permission_group_workspace (
+         id, permission_group_id, workspace_id, organization_id
+       ) values
+         ('group-workspace-explicit-old', 'group-explicit-old', 'workspace-1',
+          'organization-1'),
+         ('group-workspace-explicit-new', 'group-explicit-new', 'workspace-1',
+          'organization-1'),
+         ('group-workspace-all-members', 'group-all-members', 'workspace-1',
+          'organization-1')`,
+      `insert into permission_group_member (
+         id, permission_group_id, organization_id, user_id
+       ) values
+         ('group-member-explicit-old', 'group-explicit-old', 'organization-1', 'viewer-1'),
+         ('group-member-explicit-new', 'group-explicit-new', 'organization-1', 'viewer-1')`,
       `insert into user_stats (id, user_id, billing_blocked)
        values ('stats-owner', 'org-owner-1', false)`,
       `insert into subscription (id, plan, reference_id, status)
@@ -459,5 +509,35 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       sql`select status from invitation where id = 'invitation-expired'`
     )
     expect(expiredInvitation[0]?.status).toBe('expired')
+
+    const permissionGroups = createDrizzleUserPermissionGroupReadRepository()
+    await expect(permissionGroups.findActiveWorkspace('workspace-1')).resolves.toEqual({
+      organizationId: 'organization-1',
+    })
+    await expect(permissionGroups.findActiveWorkspace('workspace-archived')).resolves.toBeNull()
+    await expect(
+      permissionGroups.resolveForUser('viewer-1', 'organization-1', 'workspace-1')
+    ).resolves.toEqual({
+      permissionGroupId: 'group-explicit-old',
+      groupName: 'Explicit Old',
+      config: { disableSkills: true },
+    })
+    await expect(
+      permissionGroups.resolveForUser('member-1', 'organization-1', 'workspace-1')
+    ).resolves.toEqual({
+      permissionGroupId: 'group-all-members',
+      groupName: 'All Members',
+      config: { hideFilesTab: true },
+    })
+    await expect(
+      permissionGroups.resolveForUser('viewer-1', 'organization-1', 'workspace-denied')
+    ).resolves.toEqual({
+      permissionGroupId: 'group-default',
+      groupName: 'Default',
+      config: { disableCustomTools: true },
+    })
+    await expect(
+      permissionGroups.resolveForUser('viewer-1', 'organization-other', 'workspace-other')
+    ).resolves.toBeNull()
   })
 })

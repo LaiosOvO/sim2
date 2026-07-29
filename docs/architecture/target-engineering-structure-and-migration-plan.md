@@ -349,6 +349,31 @@ membership projection，不能误套 admin + enterprise gate；其 admin snapsho
 members/workspaces/permissions/invitations/grants 的批量读取。GET 中兼容保留的 stale
 invitation update 必须走显式 best-effort housekeeping port，后续可替换为周期 job。
 
+当前 Permission Groups 读取竖切片目录为：
+
+```text
+apps/api/src/modules/permission-groups/
+├─ interface/
+│  └─ create-get-user-permission-group-handler.ts
+├─ application/
+│  └─ get-user-permission-group.ts
+├─ ports/
+│  └─ user-permission-group-read-repository.ts
+└─ index.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+└─ drizzle-user-permission-group-read-repository.ts
+
+packages/api-contracts/src/
+└─ permission-groups.ts
+```
+
+浏览器兼容消费者只能依赖 `permission-groups.ts` 中的 schema、DTO 与纯 config normalizer。
+Application 只编排 active workspace、统一 access resolver、organization entitlement 和 group
+winner port；旧 EE `permission-check` 同时承载的 Executor types、Block access、Provider model
+解析与环境 enforcement 不得进入此 Module。这样 permission-group metadata 是一个深模块：
+稳定的小接口隐藏 group precedence、tenant scope、JSON 默认值和 PostgreSQL 查询细节。
+
 ### 4.4 `apps/worker`：执行闭包
 
 ```text

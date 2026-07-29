@@ -1514,6 +1514,400 @@
         ],
         "additionalProperties": false
       },
+      "PermissionGroupShareAuthTypeV1": {
+        "type": "string",
+        "enum": [
+          "public",
+          "password",
+          "email",
+          "sso"
+        ]
+      },
+      "PermissionGroupConfigV1": {
+        "type": "object",
+        "properties": {
+          "allowedIntegrations": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "allowedModelProviders": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "deniedModels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "deniedTools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hideTraceSpans": {
+            "type": "boolean"
+          },
+          "hideKnowledgeBaseTab": {
+            "type": "boolean"
+          },
+          "hideTablesTab": {
+            "type": "boolean"
+          },
+          "hideCopilot": {
+            "type": "boolean"
+          },
+          "hideIntegrationsTab": {
+            "type": "boolean"
+          },
+          "hideSecretsTab": {
+            "type": "boolean"
+          },
+          "hideApiKeysTab": {
+            "type": "boolean"
+          },
+          "hideInboxTab": {
+            "type": "boolean"
+          },
+          "hideFilesTab": {
+            "type": "boolean"
+          },
+          "disableMcpTools": {
+            "type": "boolean"
+          },
+          "disableCustomTools": {
+            "type": "boolean"
+          },
+          "disableSkills": {
+            "type": "boolean"
+          },
+          "disableInvitations": {
+            "type": "boolean"
+          },
+          "disablePublicApi": {
+            "type": "boolean"
+          },
+          "disablePublicFileSharing": {
+            "type": "boolean"
+          },
+          "allowedFileShareAuthTypes": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "public",
+                    "password",
+                    "email",
+                    "sso"
+                  ]
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hideDeployApi": {
+            "type": "boolean"
+          },
+          "hideDeployMcp": {
+            "type": "boolean"
+          },
+          "hideDeployChatbot": {
+            "type": "boolean"
+          },
+          "allowedChatDeployAuthTypes": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "public",
+                    "password",
+                    "email",
+                    "sso"
+                  ]
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "allowedIntegrations",
+          "allowedModelProviders",
+          "deniedModels",
+          "deniedTools",
+          "hideTraceSpans",
+          "hideKnowledgeBaseTab",
+          "hideTablesTab",
+          "hideCopilot",
+          "hideIntegrationsTab",
+          "hideSecretsTab",
+          "hideApiKeysTab",
+          "hideInboxTab",
+          "hideFilesTab",
+          "disableMcpTools",
+          "disableCustomTools",
+          "disableSkills",
+          "disableInvitations",
+          "disablePublicApi",
+          "disablePublicFileSharing",
+          "allowedFileShareAuthTypes",
+          "hideDeployApi",
+          "hideDeployMcp",
+          "hideDeployChatbot",
+          "allowedChatDeployAuthTypes"
+        ],
+        "additionalProperties": false
+      },
+      "UserPermissionGroupWorkspaceIdV1": {
+        "type": "string",
+        "minLength": 1
+      },
+      "GetUserPermissionGroupResponseV1": {
+        "type": "object",
+        "properties": {
+          "permissionGroupId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "groupName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "config": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "allowedIntegrations": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "allowedModelProviders": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "deniedModels": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "deniedTools": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "hideTraceSpans": {
+                    "type": "boolean"
+                  },
+                  "hideKnowledgeBaseTab": {
+                    "type": "boolean"
+                  },
+                  "hideTablesTab": {
+                    "type": "boolean"
+                  },
+                  "hideCopilot": {
+                    "type": "boolean"
+                  },
+                  "hideIntegrationsTab": {
+                    "type": "boolean"
+                  },
+                  "hideSecretsTab": {
+                    "type": "boolean"
+                  },
+                  "hideApiKeysTab": {
+                    "type": "boolean"
+                  },
+                  "hideInboxTab": {
+                    "type": "boolean"
+                  },
+                  "hideFilesTab": {
+                    "type": "boolean"
+                  },
+                  "disableMcpTools": {
+                    "type": "boolean"
+                  },
+                  "disableCustomTools": {
+                    "type": "boolean"
+                  },
+                  "disableSkills": {
+                    "type": "boolean"
+                  },
+                  "disableInvitations": {
+                    "type": "boolean"
+                  },
+                  "disablePublicApi": {
+                    "type": "boolean"
+                  },
+                  "disablePublicFileSharing": {
+                    "type": "boolean"
+                  },
+                  "allowedFileShareAuthTypes": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "public",
+                            "password",
+                            "email",
+                            "sso"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "hideDeployApi": {
+                    "type": "boolean"
+                  },
+                  "hideDeployMcp": {
+                    "type": "boolean"
+                  },
+                  "hideDeployChatbot": {
+                    "type": "boolean"
+                  },
+                  "allowedChatDeployAuthTypes": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "public",
+                            "password",
+                            "email",
+                            "sso"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "allowedIntegrations",
+                  "allowedModelProviders",
+                  "deniedModels",
+                  "deniedTools",
+                  "hideTraceSpans",
+                  "hideKnowledgeBaseTab",
+                  "hideTablesTab",
+                  "hideCopilot",
+                  "hideIntegrationsTab",
+                  "hideSecretsTab",
+                  "hideApiKeysTab",
+                  "hideInboxTab",
+                  "hideFilesTab",
+                  "disableMcpTools",
+                  "disableCustomTools",
+                  "disableSkills",
+                  "disableInvitations",
+                  "disablePublicApi",
+                  "disablePublicFileSharing",
+                  "allowedFileShareAuthTypes",
+                  "hideDeployApi",
+                  "hideDeployMcp",
+                  "hideDeployChatbot",
+                  "allowedChatDeployAuthTypes"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "entitled": {
+            "type": "boolean"
+          },
+          "organizationId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isOrgAdmin": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "permissionGroupId",
+          "groupName",
+          "config",
+          "entitled",
+          "organizationId",
+          "isOrgAdmin"
+        ],
+        "additionalProperties": false
+      },
       "PageRequest": {
         "type": "object",
         "properties": {

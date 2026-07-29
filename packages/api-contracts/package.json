@@ -37,6 +37,10 @@
       "types": "./src/organizations.ts",
       "default": "./src/organizations.ts"
     },
+    "./permission-groups": {
+      "types": "./src/permission-groups.ts",
+      "default": "./src/permission-groups.ts"
+    },
     "./pagination": {
       "types": "./src/pagination.ts",
       "default": "./src/pagination.ts"

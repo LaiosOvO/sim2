@@ -47,6 +47,7 @@
 - [Phase 4 W2 原生 Workspace Invitations 检查点](./handoffs/phase-4-w2-native-workspace-invitations.md)
 - [Phase 4 W2 原生 Organization Workspaces 检查点](./handoffs/phase-4-w2-native-organization-workspaces.md)
 - [Phase 4 W2 原生 Organization Roster 检查点](./handoffs/phase-4-w2-native-organization-roster.md)
+- [Phase 4 W2 原生 User Permission Group 检查点](./handoffs/phase-4-w2-native-user-permission-group.md)
 
 ## 阅读顺序
 

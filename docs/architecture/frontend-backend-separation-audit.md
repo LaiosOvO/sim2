@@ -1111,6 +1111,32 @@ W2 focused 72 passed，API Contract 12/12，Platform Contract 61 schemas。API e
 1,485 gzip bytes；目标图 22 packages/131 source nodes、0 cycle；全仓 TypeScript 43/43
 tasks 通过。
 
+### 19.17 W2 原生 User Permission Group 与 Executor 闭包切断
+
+第八条原生替换是 `API-0243 GET /api/permission-groups/user`。Sim2 与 Polaris donor
+SHA-256 相同。旧 route 只是返回 permission-group metadata/config，却直接 import Billing
+barrel、workspace permission utility 与 EE `permission-check`；后者还 import Executor types、
+Block access、Provider model parser、环境 flags 和多种 command enforcement error。这正是
+“前端只取一点 metadata，却把服务端工具/执行系统拖入编译闭包”的具体证据。
+
+目标 Permission Groups Module 将外部 interface 收敛为一个
+`GetUserPermissionGroupUseCase.execute`。HTTP 层保持 session、query、404/403 与 requestId
+语义；application 按 active workspace、effective access、personal workspace、owning
+organization role、enterprise entitlement、group winner 的顺序短路。配置默认值与
+auth-type 清洗在 `packages/api-contracts/src/permission-groups.ts` 的纯函数完成，不接触 DB、
+Executor、Registry 或环境变量。
+
+PostgreSQL adapter 只实现两个窄查询：active workspace context，以及在 owning organization
+内解析 group winner。优先级严格保持 explicit member group > zero-member/all-members group >
+organization default，冲突按 `created_at ASC, id ASC` 取最老记录。真实 disposable PostgreSQL
+16 fixture 同时验证三层优先级、oldest tie-break 与跨 organization 隔离。
+
+当前 W2 为 native 8/22、legacy 14/22；API 90 passed（1 个 disposable DB test 默认跳过），
+W2 focused 78 passed，API Contract 13/13，Platform Contract 65 schemas。API entry
+26.55 KiB；permission-group adapter/module chunks 分别为 2.37/8.38 KiB；Next 22 facade
+最大仍为 1,485 gzip bytes；目标图 22 packages/137 source nodes、0 cycle；全仓 TypeScript
+43/43 tasks 通过。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1203,3 +1229,7 @@ tasks 通过。
   projection、external grouping 和 invitation hydration 藏在单一 use-case interface 后，
   把 GET stale update 隔离为显式 best-effort housekeeping port，并以真实 Postgres 验证
   archive/cross-organization grant 隔离；当前 native 7/22、legacy 15/22。
+- 将 `API-0243 user permission group` 切为原生 Permission Groups Module；用纯 contract
+  normalizer 与窄 group-winner port 切断旧 EE permission-check 对 Executor/Block/Provider
+  的编译闭包，并以真实 Postgres 验证 explicit > empty > default、oldest tie-break 与
+  owning-organization scope；当前 native 8/22、legacy 14/22。

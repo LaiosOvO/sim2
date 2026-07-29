@@ -111,7 +111,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/permission-groups/user',
     domain: 'permission-groups',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    backend: 'native',
     requiredTests,
   },
   {

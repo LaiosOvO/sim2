@@ -98,6 +98,19 @@ export {
 } from './organizations'
 export type { PageRequest } from './pagination'
 export { cursorSchema, pageRequestSchema, pageSchema } from './pagination'
+export type {
+  GetUserPermissionGroupResponseV1,
+  PermissionGroupConfigV1,
+  PermissionGroupShareAuthTypeV1,
+} from './permission-groups'
+export {
+  defaultPermissionGroupConfigV1,
+  getUserPermissionGroupResponseV1Schema,
+  normalizePermissionGroupConfigV1,
+  permissionGroupConfigV1Schema,
+  permissionGroupShareAuthTypeV1Schema,
+  userPermissionGroupWorkspaceIdV1Schema,
+} from './permission-groups'
 export type { TraceContext } from './tracing'
 export { parseTraceContext, traceContextSchema } from './tracing'
 export { API_CONTRACTS_VERSION } from './version'
