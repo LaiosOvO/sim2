@@ -105,6 +105,7 @@
     "@radix-ui/react-tabs": "^1.1.2",
     "@react-email/components": "1.0.12",
     "@react-email/render": "2.1.0",
+    "@sim/api-contracts": "workspace:*",
     "@sim/audit": "workspace:*",
     "@sim/browser-protocol": "workspace:*",
     "@sim/desktop-bridge": "workspace:*",

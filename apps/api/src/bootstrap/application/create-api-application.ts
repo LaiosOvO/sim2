@@ -1,3 +1,5 @@
+import { API_CONTRACTS_VERSION, apiErrorEnvelopeSchema } from '@sim/api-contracts'
+
 export interface ApiApplication {
   handle(request: Request): Promise<Response>
 }
@@ -15,13 +17,17 @@ export function createApiApplication(options: ApiApplicationOptions = {}): ApiAp
 
   return {
     async handle() {
-      return Response.json(
-        {
-          error: 'not_found',
-          service: serviceName,
+      const body = apiErrorEnvelopeSchema.parse({
+        contractVersion: API_CONTRACTS_VERSION,
+        error: {
+          code: 'not_found',
+          message: 'Route not found',
+          status: 404,
+          retryable: false,
+          details: { service: serviceName },
         },
-        { status: 404 }
-      )
+      })
+      return Response.json(body, { status: 404 })
     },
   }
 }

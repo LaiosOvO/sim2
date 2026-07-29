@@ -80,6 +80,11 @@ Phase 1 已将证据固化为以下可重复资产：
 不是允许长期保留的目标；新建 `features`、`api-client`、`browser`、`catalog` 路径从第一天起
 执行零预算。
 
+补充外部 runtime 虚拟节点后，另有 233 个 Client root 可达 server crypto 或 Provider SDK；
+最短链为 `generated-password-input.tsx -> lib/core/security/encryption.ts`。扫描器会把
+`node:crypto`、`isolated-vm`、E2B、Daytona、飞书 Node SDK、AWS/Google Cloud SDK、
+Anthropic/OpenAI SDK 都作为服务端运行时节点传播，避免 workspace 之外的依赖被误当作安全。
+
 ## 4. 注册表规模
 
 ### 4.1 底座与 Polaris 对比
@@ -702,6 +707,25 @@ build 和 test。飞书长连接不是 Sandbox 能力，目标是将其迁入独
 Worker role，只负责连接、归一化、去重和 job admission，与 execution/Sandbox role 分开
 部署和健康检查。
 
+### 19.4 Contract seam 与浏览器体积
+
+Phase 2 的第一条真实 seam 已完成：
+
+- `api-contracts` 拥有 error、pagination、identity 和 trace wire schema；
+- `execution-contracts` 只通过 `api-contracts` 复用 trace，拥有 job/event/debug schema；
+- `tool-catalog` 的 contract primitive 只包含序列化 metadata；
+- `polaris-extension-sdk` 只包含 extension descriptor/lifecycle，不包含 Feishu/Meegle DTO；
+- Web、API、Worker 都使用同一个 `TraceContext`，但只有 API/Worker 在信任边界执行 Zod
+  runtime validation。
+
+第一次实现让 Web 直接调用 Zod schema，单入口 browser build 达到 269,728 bytes。改成
+type-only import、将校验留在 API/Worker 后，产物降为 200 bytes，且不包含 Zod、
+Executor、Registry、Sandbox、Provider SDK 或 Node marker。这个结果确认“共享类型”不等于
+“共享运行时实现”：浏览器契约入口也必须保持 type/runtime 双出口意识。
+
+契约 CI 现包括 pure-package gate、target module cycle gate、OpenAPI/manifest clean-tree
+生成检查和 16 KB browser adapter budget。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -733,3 +757,7 @@ Worker role，只负责连接、归一化、去重和 job admission，与 execut
   间接执行耦合。
 - 固定 Node.js 22.19+ 为 API/Worker/飞书长连接/isolated-vm 的生产 runtime，Bun 仅用于
   包管理、构建、测试和脚本。
+- 建立浏览器传递闭包 ratchet、Server Crypto/Provider SDK 虚拟节点、性能与 chunk 基线。
+- 建立 10 个平台契约 schema、可重复 OpenAPI/版本产物和 Web→API→Worker trace seam。
+- 将 Web trace adapter 从运行时 Zod import 收紧为 type-only，browser build 从
+  269,728 bytes 降至 200 bytes。

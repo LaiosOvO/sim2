@@ -8,17 +8,38 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"
+    },
+    "./errors": {
+      "types": "./src/errors.ts",
+      "default": "./src/errors.ts"
+    },
+    "./identity": {
+      "types": "./src/identity.ts",
+      "default": "./src/identity.ts"
+    },
+    "./pagination": {
+      "types": "./src/pagination.ts",
+      "default": "./src/pagination.ts"
+    },
+    "./tracing": {
+      "types": "./src/tracing.ts",
+      "default": "./src/tracing.ts"
     }
   },
   "scripts": {
+    "test": "vitest run",
     "type-check": "tsc --noEmit",
     "lint": "biome check --write --unsafe .",
     "lint:check": "biome check .",
     "format": "biome format --write .",
     "format:check": "biome format ."
   },
+  "dependencies": {
+    "zod": "4.3.6"
+  },
   "devDependencies": {
     "@sim/tsconfig": "workspace:*",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.0"
   }
 }

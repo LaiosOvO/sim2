@@ -94,7 +94,8 @@
     "clientRootsReachingExecutor": 297,
     "clientRootsReachingExecutionOrSandbox": 267,
     "clientRootsReachingRuntimeToolsBlocksOrTriggers": 200,
-    "clientRootsReachingDatabaseAuthOrSecrets": 71
+    "clientRootsReachingDatabaseAuthOrSecrets": 71,
+    "clientRootsReachingServerCryptoOrProviderSdk": 233
   },
   "targetBudgets": {
     "ordinaryColdCompileMs": 10000,

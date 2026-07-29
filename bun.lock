@@ -32,6 +32,8 @@
       "name": "@sim/api",
       "version": "0.1.0",
       "dependencies": {
+        "@sim/api-contracts": "workspace:*",
+        "@sim/execution-contracts": "workspace:*",
         "@sim/logger": "workspace:*",
       },
       "devDependencies": {
@@ -228,6 +230,7 @@
         "@radix-ui/react-tabs": "^1.1.2",
         "@react-email/components": "1.0.12",
         "@react-email/render": "2.1.0",
+        "@sim/api-contracts": "workspace:*",
         "@sim/audit": "workspace:*",
         "@sim/browser-protocol": "workspace:*",
         "@sim/desktop-bridge": "workspace:*",
@@ -392,6 +395,7 @@
       "name": "@sim/worker",
       "version": "0.1.0",
       "dependencies": {
+        "@sim/execution-contracts": "workspace:*",
         "@sim/logger": "workspace:*",
       },
       "devDependencies": {
@@ -517,9 +521,13 @@
     "packages/api-contracts": {
       "name": "@sim/api-contracts",
       "version": "0.1.0",
+      "dependencies": {
+        "zod": "4.3.6",
+      },
       "devDependencies": {
         "@sim/tsconfig": "workspace:*",
         "typescript": "^7.0.2",
+        "vitest": "^4.1.0",
       },
     },
     "packages/audit": {
@@ -670,9 +678,14 @@
     "packages/execution-contracts": {
       "name": "@sim/execution-contracts",
       "version": "0.1.0",
+      "dependencies": {
+        "@sim/api-contracts": "workspace:*",
+        "zod": "4.3.6",
+      },
       "devDependencies": {
         "@sim/tsconfig": "workspace:*",
         "typescript": "^7.0.2",
+        "vitest": "^4.1.0",
       },
     },
     "packages/logger": {
@@ -776,9 +789,13 @@
     "packages/tool-catalog": {
       "name": "@sim/tool-catalog",
       "version": "0.1.0",
+      "dependencies": {
+        "zod": "4.3.6",
+      },
       "devDependencies": {
         "@sim/tsconfig": "workspace:*",
         "typescript": "^7.0.2",
+        "vitest": "^4.1.0",
       },
     },
     "packages/ts-sdk": {

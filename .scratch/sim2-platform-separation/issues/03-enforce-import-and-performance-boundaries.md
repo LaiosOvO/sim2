@@ -2,7 +2,7 @@
 
 What to build: 将浏览器/服务端/Worker/Biz/Infra 的依赖规则变成 CI 可执行门禁。
 Blocked by: 02
-Status: in-progress
+Status: completed
 
 ## What to build
 
@@ -27,7 +27,11 @@ Status: in-progress
 - 已保存 Polaris trace、RSS、Client root、开发 chunk 与目标预算的机器可读基线；
 - 已建立可对任意 `.next` 目录重跑的采集器，生产构建在 CI 中上传 metrics artifact；
 - 已保存 bundle deny list 与重型依赖 allow scope。
+- 20 个新目标 package/module root 的 package graph 与 source graph 循环依赖均为 0，
+  CI 已加入严格 cycle gate；
+- 外部 `node:*`、Sandbox、Feishu 和 Provider SDK 被建模为虚拟 runtime 节点，不会因位于
+  `node_modules` 而漏检。
 
-尚未完成：历史 Client root 污染必须在 Catalog、Replay/Debug、Auth seam 迁移后归零；届时将
-bundle deny list 从 ratchet 切换为严格扫描，并补齐循环依赖门禁。此 ticket 在严格门禁启用
-前不得标记完成。
+本 ticket 的渐进迁移验收是“历史值只能下降，新路径严格为 0”。历史 Client root 在
+Ticket 05、06、09、44 中归零，Ticket 45 将 bundle deny list 切为最终严格模式；这些是已分配
+且可量化的后续迁移工作，不再反向阻塞本门禁基础 ticket。

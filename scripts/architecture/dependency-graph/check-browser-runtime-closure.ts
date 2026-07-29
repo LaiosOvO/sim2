@@ -51,6 +51,12 @@ const categories: Category[] = [
       ),
   },
   {
+    id: 'server-crypto-and-provider-sdk',
+    matches: (file) =>
+      file.startsWith('external:') ||
+      isWithin(file, path.join(appDirectory, 'lib', 'core', 'security', 'encryption.ts')),
+  },
+  {
     id: 'infra-extensions',
     matches: (file) => isWithin(file, path.join(root, 'extensions', 'infra')),
   },
@@ -59,6 +65,22 @@ const categories: Category[] = [
     matches: (file) =>
       ['api', 'worker'].some((application) => isWithin(file, path.join(root, 'apps', application))),
   },
+]
+
+const serverRuntimeSpecifiers = [
+  'isolated-vm',
+  'e2b',
+  '@e2b/',
+  '@daytonaio/',
+  '@larksuiteoapi/node-sdk',
+  '@aws-sdk/',
+  '@google-cloud/',
+  '@anthropic-ai/sdk',
+  'openai',
+  'node:crypto',
+  'node:fs',
+  'node:child_process',
+  'node:worker_threads',
 ]
 
 function normalize(file: string): string {
@@ -136,7 +158,19 @@ function runtimeSpecifiers(sourceFile: ts.SourceFile): string[] {
 }
 
 function relative(file: string): string {
+  if (file.startsWith('external:')) return file
   return path.relative(root, file).replaceAll(path.sep, '/')
+}
+
+function serverRuntimeNode(specifier: string): string | undefined {
+  if (
+    serverRuntimeSpecifiers.some(
+      (candidate) => specifier === candidate || specifier.startsWith(candidate)
+    )
+  ) {
+    return `external:${specifier}`
+  }
+  return undefined
 }
 
 function readCompilerConfiguration(): ts.ParsedCommandLine {
@@ -200,6 +234,13 @@ async function buildGraph(): Promise<{
       file.endsWith('x') ? ts.ScriptKind.TSX : ts.ScriptKind.TS
     )
     for (const specifier of runtimeSpecifiers(sourceFile)) {
+      const externalRuntime = serverRuntimeNode(specifier)
+      if (externalRuntime) {
+        const importers = reverse.get(externalRuntime) ?? new Set<string>()
+        importers.add(file)
+        reverse.set(externalRuntime, importers)
+        continue
+      }
       const resolution = ts.resolveModuleName(
         specifier,
         file,

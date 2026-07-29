@@ -28,6 +28,7 @@
       "!**/public/fallback-*.js",
       "!**/apps/docs/.source",
       "!**/apps/desktop/release",
+      "!**/packages/api-contracts/generated",
       "!**/venv",
       "!**/.venv",
       "!**/uploads",

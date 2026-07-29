@@ -19,6 +19,8 @@
     "format:check": "biome format ."
   },
   "dependencies": {
+    "@sim/api-contracts": "workspace:*",
+    "@sim/execution-contracts": "workspace:*",
     "@sim/logger": "workspace:*"
   },
   "devDependencies": {

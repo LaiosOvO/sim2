@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "apiContractsVersion": 1,
+  "executionContractsVersion": 1,
+  "toolCatalogVersion": 1,
+  "schemas": [
+    "ApiErrorEnvelope",
+    "RequestIdentity",
+    "PageRequest",
+    "TraceContext",
+    "ExecutionJobV1",
+    "ExecutionEventV1",
+    "DebugSessionV1",
+    "DebugCommandV1",
+    "ToolCatalogItemV1",
+    "ToolCatalogPageV1"
+  ],
+  "unknownFieldPolicy": "strip additive unknown fields at every versioned wire boundary",
+  "typescriptTypes": "derived from the committed Zod schemas with z.infer"
+}

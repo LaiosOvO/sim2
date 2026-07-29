@@ -39,6 +39,7 @@
 - 可达 execution/sandbox：267；
 - 可达 runtime Tool/Block/Trigger：200；
 - 可达 database/auth/secrets：71；
+- 可达 server crypto/Provider SDK：233；
 - Polaris 活跃 trace 的最新快照：281 次 compile、累计 4,922.1 秒、19 次内存阈值重启；
 - 一方 Blocks 与 Tools 开发 chunk 分别约 1.43 MB 与 0.91 MB gzip。
 

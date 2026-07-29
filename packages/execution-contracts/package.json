@@ -8,17 +8,35 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"
+    },
+    "./debug": {
+      "types": "./src/debug.ts",
+      "default": "./src/debug.ts"
+    },
+    "./events": {
+      "types": "./src/events.ts",
+      "default": "./src/events.ts"
+    },
+    "./jobs": {
+      "types": "./src/jobs.ts",
+      "default": "./src/jobs.ts"
     }
   },
   "scripts": {
+    "test": "vitest run",
     "type-check": "tsc --noEmit",
     "lint": "biome check --write --unsafe .",
     "lint:check": "biome check .",
     "format": "biome format --write .",
     "format:check": "biome format ."
   },
+  "dependencies": {
+    "@sim/api-contracts": "workspace:*",
+    "zod": "4.3.6"
+  },
   "devDependencies": {
     "@sim/tsconfig": "workspace:*",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.0"
   }
 }

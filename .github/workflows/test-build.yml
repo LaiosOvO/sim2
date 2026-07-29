@@ -120,8 +120,20 @@ jobs:
       - name: Enforce monorepo boundaries
         run: bun run check:boundaries
 
+      - name: Reject target module cycles
+        run: bun run check:target-module-cycles
+
       - name: Validate refactor target structure
         run: bun run check:target-structure
+
+      - name: Verify platform contract artifacts
+        run: bun run contracts:check
+
+      - name: Verify browser contract build isolation
+        run: bun run check:contract-browser-build
+
+      - name: Verify contract package purity
+        run: bun run check:contract-purity
 
       - name: API contract boundary audit
         run: bun run check:api-validation:strict
@@ -149,6 +161,9 @@ jobs:
 
       - name: Browser runtime closure ratchet
         run: bun run check:browser-runtime-closure
+
+      - name: Validate browser bundle policy
+        run: bun run check:browser-bundle-policy
 
       - name: Bare-icon theme-safety audit
         run: bun run check:bare-icons

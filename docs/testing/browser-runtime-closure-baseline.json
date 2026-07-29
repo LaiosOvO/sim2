@@ -7,6 +7,7 @@
     "execution-and-sandbox": 267,
     "runtime-tools-blocks-triggers": 200,
     "database-auth-secrets": 71,
+    "server-crypto-and-provider-sdk": 233,
     "infra-extensions": 0,
     "api-or-worker": 0
   },
