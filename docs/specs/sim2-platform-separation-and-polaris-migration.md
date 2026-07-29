@@ -979,11 +979,15 @@ packages/*
 - Those 22 Next routes are generated lightweight facades and pass isolated build checks with a largest
   entry of 1,485 gzip bytes and zero DB/Auth runtime/Executor/Registry markers.
 - The standalone API owns W2 route selection, authentication policy, request identity, observability,
-  and a backend port. Backend selection is recorded per inventory ID; `API-0294 /api/stars` is native,
-  while the other 21 routes currently target a fixed pre-refactor legacy origin.
-- W2 native read repositories, standalone tenant authorization, real database differential fixtures,
-  and removal of the legacy-origin dependency remain incomplete; the normative per-route status is
-  `docs/testing/api-w2-tenant-read-coverage.json`.
+  and a backend port. Backend selection is recorded per inventory ID; `API-0137 /api/invitations` and
+  `API-0294 /api/stars` are native, while the other 20 routes currently target a fixed pre-refactor
+  legacy origin.
+- The invitations Module owns a token-free V1 response contract, application use case and repository
+  port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
+  differential fixture for email normalization, pending/unexpired filtering and grant hydration.
+- Remaining W2 native read repositories, workspace/organization tenant authorization, real database
+  fixtures for the other 20 routes, and removal of the legacy-origin dependency are incomplete; the
+  normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope
 

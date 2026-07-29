@@ -2,7 +2,7 @@
 
 What to build: 迁移 W2 中 workspace/organization/user/access 相关的 22 条低风险只读接口。
 Blocked by: 09
-Status: compatibility-plane-complete / native-read-model-pending
+Status: compatibility-plane-complete / native-read-model-in-progress
 
 ## 精确范围
 
@@ -48,7 +48,8 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 ## 尚未完成：原生读模型
 
 兼容读取平面解决 Next 编译边界，但不是 22 条接口的最终后端实现。当前 backend 状态为
-1 条 native（API-0294 stars）和 21 条 legacy-origin-compatibility。完成本 Ticket 仍需：
+2 条 native（API-0137 invitations、API-0294 stars）和 20 条
+legacy-origin-compatibility。完成本 Ticket 仍需：
 
 1. 按领域建立 organization/workspace/user read repository ports；
 2. 在独立 API 内实现 tenant authorization，不再依赖旧服务二次验证；
@@ -62,19 +63,23 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 | Gate | 结果 |
 | --- | --- |
 | Inventory/coverage | 22/22，C/A/D/I 无遗漏、无重复 |
-| W2 API tests | 41/41 |
+| W2 API tests | 46 passed；1 disposable PostgreSQL test 默认跳过 |
 | W2 Next proxy tests | 25/25 |
-| API Contract tests | 6/6 |
+| API Contract tests | 7/7 |
 | API/auth/contracts type-check | 通过 |
 | Next facade isolated build | 22 entries；最大 1,485 gzip bytes |
 | Next facade forbidden marker | 0 |
-| Platform Contract | 39 schemas；生成产物 clean |
+| Platform Contract | 43 schemas；生成产物 clean |
 | API validation audit | 991/991 contract-backed；non-contract 0 |
-| Target cycles | 22 packages / 96 source nodes；0 cycle |
+| Target cycles | 22 packages / 102 source nodes；0 cycle |
 
 旧 route 同目录的 8 个测试随实现移出 Next 一并删除；覆盖职责已迁到独立 API 的
 22 路差分/鉴权/集成测试和 HTTP legacy adapter 测试。原生 adapter 替换时必须补回
 真实 repository 行为测试，不能把当前 fake backend 差分测试当成最终数据层证据。
+
+`API-0137` 已补真实 disposable PostgreSQL 16 fixture，覆盖 invitee email normalization、
+pending/unexpired filter、batched grant hydration 和 token 不泄露。其余 20 条仍必须各自
+补相应的数据库/Provider integration gate。
 
 ## Acceptance criteria
 

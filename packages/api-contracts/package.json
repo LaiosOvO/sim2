@@ -29,6 +29,10 @@
       "types": "./src/identity.ts",
       "default": "./src/identity.ts"
     },
+    "./invitations": {
+      "types": "./src/invitations.ts",
+      "default": "./src/invitations.ts"
+    },
     "./pagination": {
       "types": "./src/pagination.ts",
       "default": "./src/pagination.ts"

@@ -74,7 +74,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/invitations',
     domain: 'invitations',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    backend: 'native',
     requiredTests,
   },
   {

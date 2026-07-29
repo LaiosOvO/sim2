@@ -5,7 +5,9 @@ import {
   type EnvironmentModule,
 } from '@/modules/environment/application/create-environment-module'
 import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
+import type { InvitationReadRepository } from '@/modules/invitations'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
+import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
 
 function unavailableEnvironmentModule(): EnvironmentModule {
   return {
@@ -61,25 +63,42 @@ async function createTenantRead(
     { createRoutedTenantReadBackend, createUnavailableTenantReadBackend },
     { createHttpLegacyTenantReadBackend },
     { createGitHubStarsHandler },
+    { createListMyInvitationsHandler, createListMyInvitationsUseCase },
   ] = await Promise.all([
     import('@/modules/tenant-read/application/create-tenant-read-module'),
     import('@/modules/tenant-read/application/create-routed-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/http-legacy-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
+    import('@/modules/invitations'),
   ])
   const fallback = baseUrl
     ? createHttpLegacyTenantReadBackend({ baseUrl })
     : createUnavailableTenantReadBackend()
   const githubToken = process.env.GITHUB_TOKEN?.trim()
+  let invitationRepository: InvitationReadRepository = {
+    async listPendingForEmail() {
+      throw new Error('Invitation database is not configured')
+    },
+  }
+  if (process.env.DATABASE_URL) {
+    const { createDrizzleInvitationReadRepository } = await import(
+      '@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'
+    )
+    invitationRepository = createDrizzleInvitationReadRepository()
+  }
+  const nativeHandlers: Record<'API-0137' | 'API-0294', NativeTenantReadHandler> = {
+    'API-0137': createListMyInvitationsHandler(
+      createListMyInvitationsUseCase(invitationRepository)
+    ),
+    'API-0294': createGitHubStarsHandler({
+      ...(githubToken ? { token: githubToken } : {}),
+    }),
+  }
   return createTenantReadModule({
     authentication,
     backend: createRoutedTenantReadBackend({
       fallback,
-      nativeHandlers: {
-        'API-0294': createGitHubStarsHandler({
-          ...(githubToken ? { token: githubToken } : {}),
-        }),
-      },
+      nativeHandlers,
     }),
   })
 }
@@ -105,14 +124,16 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
   const secret = process.env.BETTER_AUTH_SECRET?.trim()
   const baseURL = process.env.BETTER_AUTH_URL?.trim() ?? process.env.NEXT_PUBLIC_APP_URL?.trim()
   const encryptionKey = process.env.ENCRYPTION_KEY?.trim()
-  const configured = Boolean(
-    process.env.DATABASE_URL && secret && baseURL && /^[0-9a-f]{64}$/i.test(encryptionKey ?? '')
-  )
+  const authenticationConfigured = Boolean(process.env.DATABASE_URL && secret && baseURL)
+  const environmentConfigured =
+    authenticationConfigured && /^[0-9a-f]{64}$/i.test(encryptionKey ?? '')
   const tenantReadConfigured = Boolean(process.env.SIM_LEGACY_API_BASE_URL?.trim())
   const authentication =
-    configured || tenantReadConfigured ? await createAuthentication(secret, baseURL) : undefined
+    authenticationConfigured || tenantReadConfigured
+      ? await createAuthentication(secret, baseURL)
+      : undefined
   const tenantRead = await createTenantRead(authentication)
-  if (!configured) return unconfiguredOptions(executionAdmission, tenantRead)
+  if (!environmentConfigured) return unconfiguredOptions(executionAdmission, tenantRead)
   if (!authentication) throw new Error('Authentication composition is unavailable')
 
   const [

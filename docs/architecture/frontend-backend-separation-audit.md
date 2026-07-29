@@ -942,6 +942,30 @@ Platform Contract 39 schemas，API entry 20.64 KiB，目标图 22 packages/96 so
 DNS 断言阻断，全仓 build 被跨卷 `EXDEV` 与 sandbox bundle AggregateError 阻断。相关路径
 未在本检查点修改，不能把这些环境失败算成 W2 回归，也不能宣称完整 Next build 已通过。
 
+### 19.11 W2 原生 Invitations Module
+
+第二条原生替换是 `API-0137 GET /api/invitations`。旧 route 直接把 Next、session、
+invitation core 和 DB hydration 放在同一编译闭包；新路径由 W2 transport router 进入独立
+Invitations Module，再通过 application use case 和 `InvitationReadRepository` port 绑定
+PostgreSQL adapter。Module 目录按 `interface/application/ports/index.ts` 分层，Composition
+Root 是唯一 adapter 绑定点。
+
+Invitee read port 从类型层不提供 acceptance token，Drizzle select 也没有 token 列。V1
+wire contract 会剥离未知 token 字段，application 只逐字段映射允许输出的内容。旧
+`hydrateInvitation` 对每条邀请分别读取 grants、organization 和 inviter；新 adapter 使用
+一批 invitation + join 和一批 grants + workspace，将 N+1 收敛为两批查询。
+
+真实 PostgreSQL 16 disposable fixture 已验证 trim/lower email、pending + unexpired 过滤、
+排除其他用户/accepted/expired、organization/inviter/grant hydration 和 token 不泄露。
+测试必须显式设置 `SIM_TEST_DATABASE_DISPOSABLE=1`，避免测试 DDL 误触长期数据库；本地临时
+Docker container 在 1/1 通过后已销毁。
+
+这一批还拆开了错误的配置耦合：tenant-read session authentication 只要求 DB + Better Auth
+secret/base URL，不再要求 Environment Module 的 `ENCRYPTION_KEY`。否则一个不相关的加密
+模块未配置会迫使邀请读取退回 legacy origin。当前 W2 状态为 native 2/22、legacy 20/22；
+API 58 passed（常规运行跳过 1 个 disposable DB test），API Contract 7/7，Platform
+Contract 43 schemas，目标图 22 packages/102 source nodes、0 cycle。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1014,3 +1038,6 @@ DNS 断言阻断，全仓 build 被跨卷 `EXDEV` 与 sandbox bundle AggregateEr
   repository、tenant authorization 和真实数据层差分仍是 Ticket 10 的剩余工作。
 - 建立按 inventory ID 逐路切换的 native/legacy backend，完成首条原生
   `API-0294 /api/stars`；当前 native 1/22、legacy 21/22。
+- 建立独立 Invitations Module 与 token-free V1 contract，把 `API-0137 /api/invitations`
+  切为原生两批 PostgreSQL 查询；真实 disposable Postgres fixture 1/1，当前 native
+  2/22、legacy 20/22。

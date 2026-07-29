@@ -22,7 +22,7 @@
       "apiModule": "apps/api/src/modules/tenant-read",
       "nextFacade": "apps/sim/app/api/invitations/route.ts",
       "tests": ["contract", "auth", "differential", "integration"],
-      "backend": "legacy-origin-compatibility"
+      "backend": "native"
     },
     {
       "inventoryId": "API-0209",

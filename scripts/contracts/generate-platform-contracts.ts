@@ -24,6 +24,12 @@ import {
 } from '@sim/api-contracts/environment'
 import { apiErrorEnvelopeSchema } from '@sim/api-contracts/errors'
 import { requestIdentitySchema } from '@sim/api-contracts/identity'
+import {
+  invitationDetailsV1Schema,
+  invitationGrantV1Schema,
+  listMyInvitationsResponseV1Schema,
+  workspacePermissionV1Schema,
+} from '@sim/api-contracts/invitations'
 import { pageRequestSchema } from '@sim/api-contracts/pagination'
 import { traceContextSchema } from '@sim/api-contracts/tracing'
 import {
@@ -71,6 +77,10 @@ const schemas: Record<string, JsonSchemaProvider> = {
   PersonalEnvironmentResponse: personalEnvironmentResponseSchema,
   EnvironmentSaveResponse: environmentSaveResponseSchema,
   RequestIdentity: requestIdentitySchema,
+  WorkspacePermissionV1: workspacePermissionV1Schema,
+  InvitationGrantV1: invitationGrantV1Schema,
+  InvitationDetailsV1: invitationDetailsV1Schema,
+  ListMyInvitationsResponseV1: listMyInvitationsResponseV1Schema,
   PageRequest: pageRequestSchema,
   TraceContext: traceContextSchema,
   SessionRequestContext: sessionRequestContextSchema,

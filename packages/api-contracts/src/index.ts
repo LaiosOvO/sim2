@@ -59,6 +59,18 @@ export type { ApiError, ApiErrorEnvelope } from './errors'
 export { apiErrorEnvelopeSchema, apiErrorSchema } from './errors'
 export type { RequestIdentity } from './identity'
 export { requestIdentitySchema } from './identity'
+export type {
+  InvitationDetailsV1,
+  InvitationGrantV1,
+  ListMyInvitationsResponseV1,
+  WorkspacePermissionV1,
+} from './invitations'
+export {
+  invitationDetailsV1Schema,
+  invitationGrantV1Schema,
+  listMyInvitationsResponseV1Schema,
+  workspacePermissionV1Schema,
+} from './invitations'
 export type { PageRequest } from './pagination'
 export { cursorSchema, pageRequestSchema, pageSchema } from './pagination'
 export type { TraceContext } from './tracing'
