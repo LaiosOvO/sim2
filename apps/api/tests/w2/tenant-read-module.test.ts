@@ -154,6 +154,26 @@ describe('W2 tenant-read compatibility module', () => {
     expect(backend.forward).not.toHaveBeenCalled()
   })
 
+  it('preserves route-specific session failure wording for native workspace reads', async () => {
+    const application = createApiApplication({
+      tenantRead: createTenantReadModule({
+        authentication: authenticator(),
+        backend: {
+          async forward() {
+            throw new Error('must not be called')
+          },
+        },
+      }),
+    })
+
+    const response = await application.handle(
+      new Request('http://api.test/api/workspaces/workspace-1/members')
+    )
+
+    expect(response.status).toBe(401)
+    expect(await response.json()).toEqual({ error: 'Authentication required' })
+  })
+
   it.each([
     ['x-api-key', 'api-key-valid'],
     ['authorization', 'Bearer internal-valid'],

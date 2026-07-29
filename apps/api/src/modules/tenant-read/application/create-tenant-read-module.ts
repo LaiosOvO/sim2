@@ -58,9 +58,14 @@ function authenticationPolicy(mode: W2TenantReadAuthMode): RequestAuthentication
   return undefined
 }
 
-function authenticationFailure(status: number): Response {
+function authenticationFailure(status: number, route: W2TenantReadRouteContract): Response {
   return Response.json(
-    { error: status === 503 ? 'Service unavailable' : 'Unauthorized' },
+    {
+      error:
+        status === 503
+          ? 'Service unavailable'
+          : (route.authenticationFailureMessage ?? 'Unauthorized'),
+    },
     { status }
   )
 }
@@ -99,13 +104,13 @@ export function createTenantReadModule(
       const policy = authenticationPolicy(route.authMode)
       let authenticationContext: AuthenticatedRequestContext | undefined
       if (policy) {
-        if (!dependencies.authentication) return authenticationFailure(503)
+        if (!dependencies.authentication) return authenticationFailure(503, route)
         const authentication = await dependencies.authentication.authenticate({
           request,
           requestId: context.requestId,
           policy,
         })
-        if (!authentication.ok) return authenticationFailure(authentication.error.status)
+        if (!authentication.ok) return authenticationFailure(authentication.error.status, route)
         authenticationContext = authentication.context
       }
 

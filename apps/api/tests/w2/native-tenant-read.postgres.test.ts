@@ -11,14 +11,18 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
   it('executes invitation, workspace authorization, and member reads against PostgreSQL', async () => {
     const [
       { db },
+      { readFile },
       { sql },
       { createDrizzleInvitationReadRepository },
+      { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
       import('@sim/db'),
+      import('node:fs/promises'),
       import('drizzle-orm'),
       import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
+      import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
     ])
@@ -32,7 +36,10 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         id text primary key,
         name text not null,
         email text not null,
-        image text
+        email_verified boolean not null default true,
+        image text,
+        role text default 'user',
+        created_at timestamp not null default now()
       )`,
       `create table organization (
         id text primary key,
@@ -76,11 +83,17 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         workspace_id text not null references workspace(id),
         permission permission_type not null
       )`,
-      `insert into "user" (id, name, email, image) values
-         ('inviter-1', 'Grace', 'grace@example.com', null),
-         ('viewer-1', 'Viewer', 'viewer@example.com', null),
-         ('member-1', 'Ada', 'ada@member.example.com', 'https://cdn.test/ada.png'),
-         ('org-admin-1', 'Olivia', 'olivia@example.com', null)`,
+      `insert into "user" (
+         id, name, email, email_verified, image, role, created_at
+       ) values
+         ('inviter-1', 'Grace', 'grace@example.com', true, null, 'user',
+          '2026-07-01T00:00:00Z'),
+         ('viewer-1', 'Viewer', 'viewer@example.com', true, null, 'user',
+          '2026-07-02T00:00:00Z'),
+         ('member-1', 'Ada', 'ada@member.example.com', true,
+          'https://cdn.test/ada.png', 'user', '2026-07-03T00:00:00Z'),
+         ('org-admin-1', 'Olivia', 'olivia@example.com', true, null, 'admin',
+          '2026-07-04T00:00:00Z')`,
       `insert into organization (id, name)
        values ('organization-1', 'Platform')`,
       `insert into workspace (id, name, organization_id, archived_at) values
@@ -117,6 +130,36 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
     ]) {
       await db.execute(sql.raw(statement))
     }
+
+    const migration = await readFile(
+      new URL(
+        '../../../../packages/db/migrations/0275_polaris_external_identity_read_model.sql',
+        import.meta.url
+      ),
+      'utf8'
+    )
+    for (const statement of migration.split('--> statement-breakpoint')) {
+      if (statement.trim()) await db.execute(sql.raw(statement))
+    }
+    await db.execute(sql`
+      insert into external_identity (
+        id, organization_id, user_id, provider_key, tenant_key,
+        external_subject_id, provider_user_id, open_id, union_id,
+        email, login_name, display_name, status, raw_profile, last_synced_at
+      ) values
+        (
+          'identity-directory', 'organization-1', 'viewer-1', 'directory', 'tenant-z',
+          'directory-subject', null, null, null, 'viewer@example.com', 'viewer',
+          'Viewer Directory', 'active', '{"secret":"must-not-leak"}',
+          '2026-07-29T00:00:00Z'
+        ),
+        (
+          'identity-feishu', 'organization-1', 'viewer-1', 'feishu', 'tenant-a',
+          'feishu-subject', 'provider-user-1', 'open-1', 'union-1',
+          'viewer@example.com', 'viewer', 'Viewer Feishu', 'active',
+          '{"accessToken":"must-not-leak"}', '2026-07-30T00:00:00Z'
+        )
+    `)
 
     const invitations =
       await createDrizzleInvitationReadRepository().listPendingForEmail('  ADA@example.COM ')
@@ -167,5 +210,57 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       },
     ])
     expect(members.map((member) => member.userId)).not.toContain('org-admin-1')
+
+    const personalProfile = await createDrizzlePersonalIdentityProfileRepository().findForUser(
+      'workspace-1',
+      'viewer-1'
+    )
+    expect(personalProfile).toEqual({
+      account: {
+        id: 'viewer-1',
+        name: 'Viewer',
+        email: 'viewer@example.com',
+        emailVerified: true,
+        image: null,
+        role: 'user',
+        createdAt: new Date('2026-07-02T00:00:00.000Z'),
+      },
+      workspace: {
+        id: 'workspace-1',
+        name: 'Runtime',
+        organizationId: 'organization-1',
+      },
+      identities: [
+        {
+          id: 'identity-directory',
+          providerKey: 'directory',
+          tenantKey: 'tenant-z',
+          externalSubjectId: 'directory-subject',
+          identifiers: {},
+          email: 'viewer@example.com',
+          loginName: 'viewer',
+          displayName: 'Viewer Directory',
+          status: 'active',
+          lastSyncedAt: new Date('2026-07-29T00:00:00.000Z'),
+        },
+        {
+          id: 'identity-feishu',
+          providerKey: 'feishu',
+          tenantKey: 'tenant-a',
+          externalSubjectId: 'feishu-subject',
+          identifiers: {
+            providerUserId: 'provider-user-1',
+            openId: 'open-1',
+            unionId: 'union-1',
+          },
+          email: 'viewer@example.com',
+          loginName: 'viewer',
+          displayName: 'Viewer Feishu',
+          status: 'active',
+          lastSyncedAt: new Date('2026-07-30T00:00:00.000Z'),
+        },
+      ],
+    })
+    expect(JSON.stringify(personalProfile)).not.toContain('must-not-leak')
   })
 })

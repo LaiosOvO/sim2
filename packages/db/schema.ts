@@ -1574,6 +1574,74 @@ export const invitation = pgTable(
   })
 )
 
+/**
+ * Provider-neutral link between a platform user and an external directory or
+ * authentication subject. Biz modules reference userId; provider-specific IDs
+ * stay in Identity infrastructure.
+ */
+export const externalIdentity = pgTable(
+  'external_identity',
+  {
+    id: text('id').primaryKey(),
+    organizationId: text('organization_id')
+      .notNull()
+      .references(() => organization.id, { onDelete: 'cascade' }),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    providerKey: text('provider_key').notNull(),
+    tenantKey: text('tenant_key').notNull().default('default'),
+    externalSubjectId: text('external_subject_id').notNull(),
+    providerUserId: text('provider_user_id'),
+    openId: text('open_id'),
+    unionId: text('union_id'),
+    email: text('email'),
+    loginName: text('login_name'),
+    displayName: text('display_name').notNull(),
+    status: text('status').notNull().default('active'),
+    rawProfile: jsonb('raw_profile').$type<Record<string, unknown>>().notNull().default({}),
+    lastSyncedAt: timestamp('last_synced_at').notNull().defaultNow(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    subjectUnique: uniqueIndex('external_identity_subject_unique').on(
+      table.organizationId,
+      table.providerKey,
+      table.tenantKey,
+      table.externalSubjectId
+    ),
+    organizationUserIdx: index('external_identity_organization_user_idx').on(
+      table.organizationId,
+      table.userId
+    ),
+    providerUserIdx: index('external_identity_provider_user_idx').on(
+      table.organizationId,
+      table.providerKey,
+      table.providerUserId
+    ),
+    openIdIdx: index('external_identity_open_id_idx').on(
+      table.organizationId,
+      table.providerKey,
+      table.openId
+    ),
+    unionIdIdx: index('external_identity_union_id_idx').on(
+      table.organizationId,
+      table.providerKey,
+      table.unionId
+    ),
+    providerUserUnique: uniqueIndex('external_identity_provider_user_unique')
+      .on(table.organizationId, table.providerKey, table.tenantKey, table.providerUserId)
+      .where(sql`${table.providerUserId} IS NOT NULL`),
+    openIdUnique: uniqueIndex('external_identity_open_id_unique')
+      .on(table.organizationId, table.providerKey, table.tenantKey, table.openId)
+      .where(sql`${table.openId} IS NOT NULL`),
+    unionIdUnique: uniqueIndex('external_identity_union_id_unique')
+      .on(table.organizationId, table.providerKey, table.tenantKey, table.unionId)
+      .where(sql`${table.unionId} IS NOT NULL`),
+  })
+)
+
 export const workspaceModeEnum = pgEnum('workspace_mode', [
   'personal',
   'organization',

@@ -5,7 +5,10 @@ import { listMyInvitationsResponseV1Schema } from '../src/invitations'
 import { pageRequestSchema } from '../src/pagination'
 import { traceContextSchema } from '../src/tracing'
 import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
-import { listWorkspaceMembersResponseV1Schema } from '../src/workspaces'
+import {
+  listWorkspaceMembersResponseV1Schema,
+  personalProfileResponseV1Schema,
+} from '../src/workspaces'
 
 describe('API contract compatibility', () => {
   it('accepts omitted and nullable error details', () => {
@@ -126,7 +129,7 @@ describe('API contract compatibility', () => {
       w2TenantReadRouteContracts
         .filter((route) => route.backend === 'native')
         .map((route) => route.inventoryId)
-    ).toEqual(['API-0137', 'API-0294', 'API-1057'])
+    ).toEqual(['API-0137', 'API-0294', 'API-1057', 'API-1060'])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',
@@ -183,5 +186,43 @@ describe('API contract compatibility', () => {
     expect(parsed).toEqual({
       members: [{ userId: 'user-1', name: 'Ada', image: null }],
     })
+  })
+
+  it('keeps raw provider profiles outside the personal profile response', () => {
+    const parsed = personalProfileResponseV1Schema.parse({
+      account: {
+        id: 'user-1',
+        name: 'Ada',
+        email: 'ada@example.com',
+        emailVerified: true,
+        image: null,
+        role: 'user',
+        createdAt: '2026-07-30T00:00:00.000Z',
+      },
+      workspace: {
+        id: 'workspace-1',
+        name: 'Platform',
+        organizationId: 'organization-1',
+      },
+      identities: [
+        {
+          id: 'identity-1',
+          providerKey: 'feishu',
+          tenantKey: 'tenant-1',
+          externalSubjectId: 'subject-1',
+          providerUserId: 'provider-user-1',
+          openId: 'open-1',
+          unionId: 'union-1',
+          email: 'ada@example.com',
+          loginName: 'ada',
+          displayName: 'Ada',
+          status: 'active',
+          lastSyncedAt: '2026-07-30T00:00:00.000Z',
+          rawProfile: { accessToken: 'must-not-cross-the-contract' },
+        },
+      ],
+    })
+
+    expect(parsed.identities[0]).not.toHaveProperty('rawProfile')
   })
 })

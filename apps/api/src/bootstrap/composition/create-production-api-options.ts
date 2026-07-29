@@ -1,5 +1,6 @@
 import type { RequestAccessResolver } from '@sim/auth/authorization'
 import type { RequestAuthenticator } from '@sim/auth/request-context'
+import type { PersonalIdentityProfileRepository } from '@sim/biz-identity'
 import type { ApiApplicationOptions } from '@/bootstrap/application/create-api-application'
 import {
   createEnvironmentModule,
@@ -67,6 +68,8 @@ async function createTenantRead(
     { createGitHubStarsHandler },
     { createListMyInvitationsHandler, createListMyInvitationsUseCase },
     { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
+    { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
+    { createPersonalIdentityProfileService },
   ] = await Promise.all([
     import('@/modules/tenant-read/application/create-tenant-read-module'),
     import('@/modules/tenant-read/application/create-routed-tenant-read-backend'),
@@ -74,6 +77,8 @@ async function createTenantRead(
     import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
     import('@/modules/invitations'),
     import('@/modules/workspaces'),
+    import('@/modules/identity'),
+    import('@sim/biz-identity'),
   ])
   const fallback = baseUrl
     ? createHttpLegacyTenantReadBackend({ baseUrl })
@@ -87,6 +92,11 @@ async function createTenantRead(
   let workspaceMemberRepository: WorkspaceMemberReadRepository = {
     async listActiveMembers() {
       throw new Error('Workspace database is not configured')
+    },
+  }
+  let personalIdentityRepository: PersonalIdentityProfileRepository = {
+    async findForUser() {
+      return null
     },
   }
   let accessResolver: RequestAccessResolver = {
@@ -104,17 +114,23 @@ async function createTenantRead(
     const [
       { createDrizzleInvitationReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
+      { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
       import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
+      import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
     ])
     invitationRepository = createDrizzleInvitationReadRepository()
     workspaceMemberRepository = createDrizzleWorkspaceMemberReadRepository()
+    personalIdentityRepository = createDrizzlePersonalIdentityProfileRepository()
     accessResolver = createDrizzleAccessResolver()
   }
-  const nativeHandlers: Record<'API-0137' | 'API-0294' | 'API-1057', NativeTenantReadHandler> = {
+  const nativeHandlers: Record<
+    'API-0137' | 'API-0294' | 'API-1057' | 'API-1060',
+    NativeTenantReadHandler
+  > = {
     'API-0137': createListMyInvitationsHandler(
       createListMyInvitationsUseCase(invitationRepository)
     ),
@@ -125,6 +141,12 @@ async function createTenantRead(
       createListWorkspaceMembersUseCase({
         access: accessResolver,
         repository: workspaceMemberRepository,
+      })
+    ),
+    'API-1060': createGetPersonalProfileHandler(
+      createGetPersonalProfileUseCase({
+        access: accessResolver,
+        profiles: createPersonalIdentityProfileService(personalIdentityRepository),
       })
     ),
   }

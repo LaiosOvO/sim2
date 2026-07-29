@@ -980,8 +980,9 @@ packages/*
   entry of 1,485 gzip bytes and zero DB/Auth runtime/Executor/Registry markers.
 - The standalone API owns W2 route selection, authentication policy, request identity, observability,
   and a backend port. Backend selection is recorded per inventory ID; `API-0137 /api/invitations`,
-  `API-0294 /api/stars`, and `API-1057 /api/workspaces/[id]/members` are native, while the other 19
-  routes currently target a fixed pre-refactor legacy origin.
+  `API-0294 /api/stars`, `API-1057 /api/workspaces/[id]/members`, and Polaris
+  `API-1060 /api/workspaces/[id]/personal-profile` are native, while the other 18 routes currently
+  target a fixed pre-refactor legacy origin.
 - The invitations Module owns a token-free V1 response contract, application use case and repository
   port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
   differential fixture for email normalization, pending/unexpired filtering and grant hydration.
@@ -989,8 +990,20 @@ packages/*
   authorization. Its real PostgreSQL fixture proves explicit permission, organization-admin
   inheritance, cross-workspace/archived denial, and that derived admins are not added to the explicit
   member display list.
+- The Identity Module owns the Polaris personal-profile V1 contract. Its Biz model carries provider
+  aliases as opaque identifiers and imports no Feishu SDK, database, application, or infrastructure
+  code. The API compatibility boundary alone restores legacy `providerUserId/openId/unionId` fields.
+- Target migration `0275_polaris_external_identity_read_model.sql` introduces the missing
+  `external_identity` read model without reusing Polaris migration numbers that conflict with Sim2
+  history. A disposable PostgreSQL 16 test executes the migration and proves alias whitelisting,
+  stable provider ordering, tenant scoping, and `rawProfile` non-disclosure.
+- Identity-provider configuration, directory synchronization, credential reconcile, Feishu
+  persistent connection ingress, and identity lifecycle writes are not part of this read slice.
+  Feishu ingress remains an independent Node 22.19+ backend role and does not invoke Sandbox
+  directly; Sandbox production workers remain Node because the isolated-vm native runtime is not a
+  supported Bun execution boundary.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 19 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 18 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope

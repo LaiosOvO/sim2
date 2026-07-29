@@ -43,6 +43,7 @@
 - [Phase 4 W2 原生路由与 Stars 检查点](./handoffs/phase-4-w2-native-stars.md)
 - [Phase 4 W2 原生邀请读取检查点](./handoffs/phase-4-w2-native-invitations.md)
 - [Phase 4 W2 原生 Workspace Members 检查点](./handoffs/phase-4-w2-native-workspace-members.md)
+- [Phase 4 W2 原生 Polaris Personal Profile 检查点](./handoffs/phase-4-w2-native-polaris-personal-profile.md)
 
 ## 阅读顺序
 

@@ -2081,6 +2081,10 @@
               "legacy-cron"
             ]
           },
+          "authenticationFailureMessage": {
+            "type": "string",
+            "minLength": 1
+          },
           "backend": {
             "type": "string",
             "enum": [
@@ -2189,6 +2193,356 @@
         },
         "required": [
           "members"
+        ],
+        "additionalProperties": false
+      },
+      "PersonalExternalIdentityV1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "providerKey": {
+            "type": "string"
+          },
+          "tenantKey": {
+            "type": "string"
+          },
+          "externalSubjectId": {
+            "type": "string"
+          },
+          "providerUserId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "openId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "unionId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "loginName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "lastSyncedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "providerKey",
+          "tenantKey",
+          "externalSubjectId",
+          "providerUserId",
+          "openId",
+          "unionId",
+          "email",
+          "loginName",
+          "displayName",
+          "status",
+          "lastSyncedAt"
+        ],
+        "additionalProperties": false
+      },
+      "PersonalAccountProfileV1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "image": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "role": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "emailVerified",
+          "image",
+          "role",
+          "createdAt"
+        ],
+        "additionalProperties": false
+      },
+      "PersonalWorkspaceProfileV1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "organizationId"
+        ],
+        "additionalProperties": false
+      },
+      "PersonalProfileResponseV1": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "emailVerified": {
+                "type": "boolean"
+              },
+              "image": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "role": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "createdAt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "email",
+              "emailVerified",
+              "image",
+              "role",
+              "createdAt"
+            ],
+            "additionalProperties": false
+          },
+          "workspace": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "organizationId": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "organizationId"
+            ],
+            "additionalProperties": false
+          },
+          "identities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "providerKey": {
+                  "type": "string"
+                },
+                "tenantKey": {
+                  "type": "string"
+                },
+                "externalSubjectId": {
+                  "type": "string"
+                },
+                "providerUserId": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "openId": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "unionId": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "email": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "loginName": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "lastSyncedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "providerKey",
+                "tenantKey",
+                "externalSubjectId",
+                "providerUserId",
+                "openId",
+                "unionId",
+                "email",
+                "loginName",
+                "displayName",
+                "status",
+                "lastSyncedAt"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "account",
+          "workspace",
+          "identities"
         ],
         "additionalProperties": false
       },

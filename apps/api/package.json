@@ -23,6 +23,7 @@
     "@sim/api-contracts": "workspace:*",
     "@sim/audit": "workspace:*",
     "@sim/auth": "workspace:*",
+    "@sim/biz-identity": "workspace:*",
     "@sim/db": "workspace:*",
     "@sim/execution-contracts": "workspace:*",
     "@sim/logger": "workspace:*",

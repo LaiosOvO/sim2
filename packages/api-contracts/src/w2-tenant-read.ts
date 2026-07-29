@@ -49,6 +49,7 @@ export const w2TenantReadRouteContractSchema = z.object({
     'workspaces',
   ]),
   authMode: w2TenantReadAuthModeSchema,
+  authenticationFailureMessage: z.string().min(1).optional(),
   backend: w2TenantReadBackendSchema,
   requiredTests: z
     .tuple([
@@ -227,6 +228,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/members',
     domain: 'workspaces',
     authMode: 'session',
+    authenticationFailureMessage: 'Authentication required',
     backend: 'native',
     requiredTests,
   },
@@ -245,7 +247,8 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/personal-profile',
     domain: 'workspaces',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    authenticationFailureMessage: 'Authentication required',
+    backend: 'native',
     requiredTests,
   },
   {

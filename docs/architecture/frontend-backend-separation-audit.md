@@ -985,6 +985,43 @@ PostgreSQL 16 fixture 证明组织管理员可以派生 `admin` 并读取列表�
 63 passed（1 个 disposable DB test 默认跳过），API Contract 8/8，Platform Contract
 46 schemas，目标图 22 packages/108 source nodes、0 cycle。
 
+### 19.13 W2 原生 Polaris Personal Profile 与 Identity 边界
+
+第四条原生替换是 Polaris-only
+`API-1060 GET /api/workspaces/[id]/personal-profile`。Donor route 原来同时依赖 session、
+workspace access helper、Polaris identity service 和 `externalIdentity` DB schema。目标
+Sim2 没有该表，因此本次不能只复制 handler：先在目标 Drizzle 历史上生成
+`0275_polaris_external_identity_read_model.sql`，再建立 Identity Biz service、API
+interface/application/port 和 PostgreSQL adapter。
+
+没有复制 Polaris 的 0273/0278/0289 migration 编号，因为 Sim2 的 0273 已有不同历史。
+目标 0275 合并 donor 演进后的最终 read-model 字段与 conditional unique indexes，只迁移
+本接口需要的 `external_identity`；identity provider 配置、sync run、credential reconcile
+和生命周期写入继续留给后续 Identity/Feishu Infra Ticket。
+
+Biz identity 对 provider alias 使用 `identifiers: Record<string,string>`，不出现
+`openId/unionId`，也不 import Feishu/Lark SDK、DB、API 或 Infra。Drizzle adapter 负责从
+兼容列生成通用 identifier map；API transport 为保持旧 Polaris wire 才恢复
+`providerUserId/openId/unionId`。`check:identity-boundary` 将这个规则固化为 3 层、9 文件的
+import/source gate，避免后续 donor 同步重新产生 Biz → Feishu 直接耦合。
+
+错误语义按 donor `withRouteHandler` 保留：无 session 为 401；workspace denied 为带
+request ID 的 typed 403；profile 缺失或 repository 异常为带 request ID 的 generic 500。
+V1 schema 白名单保证 `rawProfile` 不出现在响应。
+
+Disposable PostgreSQL 16 测试真正执行目标 0275 migration，并验证 workspace/org/user
+scoping、多 provider 排序、alias 白名单和 secret raw profile 不泄露。测试首次执行时发现
+把结构类型对象直接交给 `Object.entries` 会在运行时保留整行字段；修复为三个 alias 的显式
+白名单后 1/1 通过。当前 W2 为 native 4/22、legacy 18/22；API 68 passed（1 个 disposable
+DB test 默认跳过），W2 focused 56 passed，API Contract 9/9，Platform Contract 50 schemas，
+API entry 23.0 KiB，Identity adapter lazy chunk 2.89 KiB，目标图 22 packages/114 source
+nodes、0 cycle；全仓 TypeScript 43/43 tasks 通过。
+
+这条 read path 不需要飞书长连接或 Sandbox。飞书 Bot persistent connection 后续属于独立
+Node 22.19+ ingress role，只归一化事件并投递幂等 job；Sandbox 是 Worker 下游的执行能力，
+不能被 WS callback 直接 import。Bun 保留为 install/build/test/script 工具，不能替代
+isolated-vm 所要求的 Node native ABI/child-worker 生产运行时。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1063,3 +1100,7 @@ PostgreSQL 16 fixture 证明组织管理员可以派生 `admin` 并读取列表�
 - 建立 Workspaces Module 与轻量 member V1 contract，把 `API-1057` 切为原生查询；复用
   workspace authorization seam，并以真实 Postgres 验证组织管理员继承不污染显式成员
   列表；当前 native 3/22、legacy 19/22。
+- 将 Polaris `API-1060 personal-profile` 切为原生 Identity Module；新增目标 0275
+  external identity read-model migration、provider-neutral Biz contract 和 identity
+  boundary gate，真实 Postgres 执行迁移并验证 alias 白名单/敏感字段不泄露；当前 native
+  4/22、legacy 18/22。

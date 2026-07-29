@@ -229,6 +229,7 @@ apps/api/
 │  │  ├─ credentials/
 │  │  ├─ files/
 │  │  ├─ folders/
+│  │  ├─ identity/
 │  │  ├─ integrations/
 │  │  ├─ invitations/
 │  │  ├─ knowledge/
@@ -260,6 +261,35 @@ apps/api/
 
 PM、HR 等 Biz 实现不复制到 `apps/api/src/modules`。这里仅保存 HTTP transport 和
 composition；真正业务规则位于 `extensions/biz`。
+
+当前 `API-1060 personal-profile` 迁移已经落地以下首个 Identity 竖切片；后续 Identity
+接口沿这些文件夹扩展，不再把 Provider client 放进 Biz：
+
+```text
+apps/api/src/modules/identity/
+├─ interface/
+│  └─ create-get-personal-profile-handler.ts
+├─ application/
+│  └─ get-personal-profile.ts
+├─ ports/
+│  └─ personal-profile-reader.ts
+└─ index.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+└─ drizzle-personal-identity-profile-repository.ts
+
+extensions/biz/identity/src/
+├─ personal-profile.ts
+└─ index.ts
+
+packages/db/
+├─ schema.ts
+└─ migrations/
+   └─ 0275_polaris_external_identity_read_model.sql
+```
+
+Biz 通过 opaque `identifiers` 表达外部身份；Feishu alias、SDK 与同步生命周期属于 Infra，
+旧 wire alias 只允许出现在 API compatibility mapping。
 
 ### 4.4 `apps/worker`：执行闭包
 

@@ -39,6 +39,10 @@ import {
 } from '@sim/api-contracts/w2-tenant-read'
 import {
   listWorkspaceMembersResponseV1Schema,
+  personalAccountProfileV1Schema,
+  personalExternalIdentityV1Schema,
+  personalProfileResponseV1Schema,
+  personalWorkspaceProfileV1Schema,
   workspaceIdV1Schema,
   workspaceMemberV1Schema,
 } from '@sim/api-contracts/workspaces'
@@ -101,6 +105,10 @@ const schemas: Record<string, JsonSchemaProvider> = {
   WorkspaceIdV1: workspaceIdV1Schema,
   WorkspaceMemberV1: workspaceMemberV1Schema,
   ListWorkspaceMembersResponseV1: listWorkspaceMembersResponseV1Schema,
+  PersonalExternalIdentityV1: personalExternalIdentityV1Schema,
+  PersonalAccountProfileV1: personalAccountProfileV1Schema,
+  PersonalWorkspaceProfileV1: personalWorkspaceProfileV1Schema,
+  PersonalProfileResponseV1: personalProfileResponseV1Schema,
   ExecutionJobV1: executionJobV1Schema,
   ExecutionEventV1: executionEventV1Schema,
   ExecutionJobAdmissionResponseV1: executionJobAdmissionResponseV1Schema,
