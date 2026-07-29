@@ -68,7 +68,12 @@ async function main(): Promise<void> {
     },
     null,
     2
-  )}\n`
+  )
+    .replace(/"methods": \[\s+"GET"\s+\]/g, '"methods": ["GET"]')
+    .replace(
+      /"tests": \[\s+"contract",\s+"auth",\s+"differential",\s+"integration"\s+\]/g,
+      '"tests": ["contract", "auth", "differential", "integration"]'
+    )}\n`
   const coveragePath = path.join(root, 'docs', 'testing', 'api-w2-tenant-read-coverage.json')
   const proxyIncludes = [
     ...outputs.map(({ relativePath }) =>
