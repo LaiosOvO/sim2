@@ -10,15 +10,26 @@
 - [目标工程结构与迁移规划](./architecture/target-engineering-structure-and-migration-plan.md)
 - [API 全量兼容与迁移清单](./architecture/api-migration-inventory.md)
 - [Infra/Biz Extension Topology ADR](./architecture/decisions/ADR-0003-infra-biz-extension-topology.md)
+- [Node Runtime 与飞书长连接隔离 ADR](./architecture/decisions/ADR-0004-node-runtime-and-feishu-ingress-isolation.md)
 
 ## 主线同步与能力对齐
 
 - [Sim2 主线同步与 Polaris 能力迁移对齐表](./migration/module-alignment-matrix.md)
 - [当前 upstream/donor 基线](./migration/upstream-sync-state.json)
 
+## 测试与性能基线
+
+- [浏览器运行时闭包基线](./testing/browser-runtime-closure-baseline.json)
+- [性能与构建产物基线](./testing/performance-baseline.json)
+- [浏览器 Bundle 策略](./testing/browser-bundle-policy.json)
+
 ## Goal
 
 - [Sim2 Refactor Goal Prompt](./goals/sim2-refactor-goal-prompt.md)
+
+## 实施检查点
+
+- [Phase 1 工程拓扑与边界门禁检查点](./handoffs/phase-1-foundation-checkpoint.md)
 
 ## 阅读顺序
 

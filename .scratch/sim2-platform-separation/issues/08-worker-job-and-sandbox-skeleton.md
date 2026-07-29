@@ -15,6 +15,7 @@ Status: ready-for-agent
 - Sandbox 网络、文件、CPU/内存/时间限制和 secret injection 有策略与审计。
 - Web/API contract 包不导出 Sandbox 实现；客户端闭包不含 Sandbox SDK。
 - Worker 与 Sandbox 可分别部署并有健康检查。
+- Worker 构建产物在 Node.js 22.19+ 启动；生产 entrypoint 不使用 Bun。
 
 ## Blocked by
 

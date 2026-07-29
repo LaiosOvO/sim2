@@ -13,6 +13,8 @@ Status: ready-for-agent
 - 五个 ID 精确覆盖 W6 剩余接口；与 Ticket 30 合并恰为 11 条。
 - pause/resume 重复投递、版本冲突、过期、取消、Worker 重启恢复有测试。
 - Sandbox 限权、资源预算、网络策略、secret、产物上传与清理测试通过。
+- isolated-vm adapter 以 Node child process 和固定 native ABI 运行；测试证明 Bun 不是
+  local Sandbox 的生产 runtime。
 - W6 全量 C/A/D/I/E/P/R/S 及适用 B 测试通过。
 
 ## Blocked by

@@ -120,6 +120,9 @@ jobs:
       - name: Enforce monorepo boundaries
         run: bun run check:boundaries
 
+      - name: Validate refactor target structure
+        run: bun run check:target-structure
+
       - name: API contract boundary audit
         run: bun run check:api-validation:strict
 
@@ -143,6 +146,9 @@ jobs:
 
       - name: Client boundary import audit
         run: bun run check:client-boundary
+
+      - name: Browser runtime closure ratchet
+        run: bun run check:browser-runtime-closure
 
       - name: Bare-icon theme-safety audit
         run: bun run check:bare-icons
@@ -304,3 +310,13 @@ jobs:
           # check build only — measured 105s cold vs 22s warm locally.
           NEXT_TURBOPACK_BUILD_CACHE: '1'
         run: bunx turbo run build --filter=sim
+
+      - name: Collect Next build and chunk metrics
+        run: bun run measure:next-baseline --next-dir apps/sim/.next > apps/sim/.next/refactor-build-metrics.json
+
+      - name: Upload Next build metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build-metrics
+          path: apps/sim/.next/refactor-build-metrics.json
+          if-no-files-found: error

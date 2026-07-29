@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "target": "apps/sim browser output",
+  "forbiddenRuntimeMarkers": [
+    "isolated-vm",
+    "@e2b/",
+    "@daytonaio/",
+    "@larksuiteoapi/node-sdk",
+    "apps/sim/executor/",
+    "apps/sim/tools/registry",
+    "apps/sim/lib/execution/",
+    "packages/runtime-secrets/"
+  ],
+  "allowedHeavyChunks": [
+    {
+      "marker": "monaco-editor",
+      "scope": "workflow editor and debug UI only"
+    },
+    {
+      "marker": "mermaid",
+      "scope": "diagram rendering routes only"
+    }
+  ],
+  "budgets": {
+    "ordinaryPageIncrementalClientGzipBytes": 307200,
+    "editorIncrementalClientGzipBytes": 1048576
+  },
+  "enforcement": {
+    "current": "dependency-closure-ratchet",
+    "strictBundleScanActivation": "after browser catalog and replay/debug seams reach zero runtime imports"
+  }
+}

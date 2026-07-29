@@ -267,6 +267,8 @@ composition；真正业务规则位于 `extensions/biz`。
 apps/worker/
 ├─ src/
 │  ├─ bootstrap/
+│  ├─ ingress/
+│  │  └─ feishu-persistent-connection/
 │  ├─ jobs/
 │  │  ├─ workflow-execution/
 │  │  ├─ debug-session-command/
@@ -299,6 +301,17 @@ apps/worker/
 │  └─ integration-runtime/
 └─ package.json
 ```
+
+生产运行时固定为 Node.js 22.19+。Bun 继续负责 workspace package manager、脚本、构建和
+测试，但不是 API/Worker 的生产 runtime contract。Worker 同一构建产物至少提供两个独立
+role：
+
+- `execution`：Executor、Runtime Registry、Sandbox job；
+- `feishu-ingress`：飞书 WSClient、credential reconcile、事件归一化与 ingress job
+  admission。
+
+两个 role 不共享进程、readiness 或扩缩容。`feishu-ingress` 不允许 import
+`execution/`、`runtime/registry/` 或 `sandbox/`。
 
 ### 4.5 `extensions/biz`
 
@@ -516,6 +529,18 @@ Module 只依赖自己需要的 Directory、Messaging、Approval 或 Document po
 
 `channels` 的收件箱、幂等、业务路由和等待订阅属于后端业务/平台能力；Feishu 签名验证、
 事件格式归一化和消息发送属于 Infra。
+
+Polaris 当前由 `instrumentation-node.ts` 在 Next Node 进程启动
+`@larksuiteoapi/node-sdk` 的 `WSClient`，并从长连接 handler 直接调用 webhook processor。
+这使长连接通过执行分发链与 Executor/Sandbox 处在同一进程闭包，但并不表示飞书协议依赖
+Sandbox。迁移后：
+
+1. `extensions/infra/feishu-channel/src/triggers` 实现 `start/stop/status/reconcile` 深
+   Module；
+2. `apps/worker/src/ingress/feishu-persistent-connection` 作为 composition 与进程入口；
+3. 入站消息先归一化、去重并持久化，再提交 workflow trigger job；
+4. 卡片动作只等待 durable claim/queue acknowledgement，执行异步继续；
+5. 飞书 readiness 与 Web/API/Execution/Sandbox readiness 分开报告。
 
 ### 5.5 Extension SDK
 

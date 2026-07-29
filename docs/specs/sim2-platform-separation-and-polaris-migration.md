@@ -58,6 +58,10 @@ Mirror、Adapt、Split、Retired 策略把 changed paths 映射到目标 Module�
 本节是规范性工程目录。实施不得另建同义目录；如代码事实要求调整，必须先修改本 Spec、
 Module Alignment Matrix 和相关 ADR。
 
+目录按 ownership 落地：Phase 1 建立可构建的 application/package/extension Module root；
+内部叶目录在其拥有的行为迁入时创建。不得仅用空目录或批量 `.gitkeep` 冒充已实现 Module，
+但后续 ticket 不得偏离本节规定的唯一目标路径。
+
 ### Repository Root
 
 ```text
@@ -365,6 +369,8 @@ apps/worker/
 │  │  ├─ trigger-dev/
 │  │  ├─ lifecycle/
 │  │  └─ readiness/
+│  ├─ ingress/
+│  │  └─ feishu-persistent-connection/
 │  ├─ jobs/
 │  │  ├─ workflow-execution/
 │  │  ├─ debug-session-command/
@@ -426,6 +432,11 @@ apps/worker/
 ├─ scripts/
 └─ package.json
 ```
+
+`apps/worker` 由同一构建产物提供可独立部署的 role。`execution` role 消费执行与 Sandbox
+job；`feishu-ingress` role 只维持飞书长连接、归一化事件并提交幂等 ingress job。两个
+role 使用独立 deployment、readiness、扩缩容和重启策略，不在同一进程共享
+Executor、Runtime Registry 或 Sandbox pool。
 
 ### Existing Sim2 Applications
 
@@ -891,6 +902,8 @@ packages/*
 
 - The target inherits Sim2 history and periodically synchronizes Sim2 main; Polaris remains a behavior and test donor.
 - The first phase uses TypeScript for Web, API, Worker, workflow execution, and sandbox orchestration. Go is not used to rewrite the execution plane.
+- Bun is the package manager, script runner, build tool, and test launcher; it is not the production runtime contract for API, Worker, Feishu persistent connections, or local Sandbox execution.
+- API and Worker production processes use Node.js 22.19 or newer. Local isolated-vm execution uses a dedicated Node child process with `--no-node-snapshot`; remote E2B/Daytona images pin a compatible Node version.
 - The Web application remains on Next and Turbopack in the first phase. A Vite move would be a later framework migration, not an in-place bundler swap.
 - API and Worker are independent applications from the beginning, while legacy Next handlers migrate gradually through compatibility facades.
 - The API is a modular monolith. HTTP transport, middleware, composition, and observability do not own business rules.
@@ -904,6 +917,7 @@ packages/*
 - Composition Root is the only place that binds a Biz capability interface to an Infra Adapter.
 - Meegle is an Infra Extension. PM owns project semantics; Operations owns sync job lifecycle and retry/audit state.
 - Feishu is one Infra Extension that can satisfy directory, authentication, external identity resolution, messaging, notification, approval, document, and trigger capabilities.
+- Feishu persistent connection ingress is not a Sandbox capability. A Node-based `feishu-ingress` Worker role owns connection reconcile and health, then emits normalized, idempotent jobs without importing Executor or Sandbox.
 - HR, PM, Approval, Delivery, and Identity never import Feishu or Meegle concrete implementations.
 - The extension SDK is extracted from working adapters and remains minimal; provider DTOs and business aggregates are excluded.
 - The normative API inventory covers 1,126 paths and 1,377 handlers, including Sim2-only, Polaris-only, common, and diverged routes.
@@ -931,11 +945,13 @@ packages/*
 - Provider Adapters receive contract tests, recorded fixtures, credential isolation, timeout, rate-limit, retry, and error-mapping tests.
 - Workflow execution is tested through the job/execution interface for queue duplication, retry, cancel, timeout, resume, snapshot compatibility, and cleanup.
 - SandboxExecution is tested once as a common interface and separately for each actual Adapter.
+- Runtime compatibility tests execute the API and Worker build artifacts under Node, execute the local isolated-vm worker under the pinned Node version, and fail if production entrypoints invoke Bun.
 - Replay/Debug uses golden fixtures for legacy block executions and recursive trace spans.
 - Replay/Debug covers start modes, input overrides, safe/live behavior, breakpoints, step, continue, cancel, refresh recovery, version conflicts, duplicate commands, and stream reconnect.
 - Safe replay tests assert zero external Provider effects.
 - Biz Modules receive domain state-machine and application-interface tests using fake capability Adapters.
 - Feishu and Meegle integration tests run outside Biz tests and prove their capability Adapter contracts.
+- Feishu persistent-connection tests cover connect, reconnect, credential rotation, duplicate event delivery, fast card acknowledgement, DB outage recovery, independent readiness, and the absence of Executor/Sandbox imports.
 - Import graph tests fail when Web reaches runtime registry, executor, sandbox, database, server auth/encryption, or Provider SDK code.
 - Bundle and compile performance tests use a fixed machine profile, fixed workflow fixture, and fixed catalog dataset.
 - Upstream synchronization tests are selected from changed-path mappings and always include stable Integration ID compatibility.

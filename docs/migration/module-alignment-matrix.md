@@ -151,12 +151,14 @@ upstream 不能覆盖，但 upstream contract/type 变化必须通过本表的 S
 | `lib/polaris/events` | Operations/Delivery application layer | D | event log、notification orchestration | 新建第二套通用 event framework |
 | `lib/polaris/channels` | Biz channel use case + Feishu Infra | D/S | mailbox、wait subscription、route、idempotency | 将 Feishu normalization 留在 Biz |
 | `lib/polaris/integrations/feishu` | `extensions/infra/feishu-channel` | D | auth/directory/message/approval/doc/webhook | 复制到每个 Biz |
+| `instrumentation-node.ts` + `lib/polaris/integrations/feishu/ws-trigger.ts` | `extensions/infra/feishu-channel/src/triggers` + `apps/worker/src/ingress/feishu-persistent-connection` | D/S | Node WSClient、credential reconcile、连接健康、事件归一化和 job admission | 继续挂在 Next instrumentation，或直接 import Executor/Sandbox |
 | `tools/feishu`, Feishu blocks/triggers | Feishu Infra + Catalog + Worker runtime | D/S | 全部 Feishu runtime 与 metadata | Web 导入 server runner |
 | `lib/polaris/integrations/meegle` | `extensions/infra/meegle-connector` | D | auth/client/capability/hierarchy/errors | 放回 `biz/pm/meegle` |
 | `lib/polaris/delivery/meegle` | Meegle Infra + PM policy + Operations SyncJob | D/S | 拆 transport、mapping、orchestration | 整目录搬迁 |
 | `packages/feishu-channel` | `extensions/infra/feishu-channel` | D | 复用已测试 client/normalization | 再造重复 client |
 | `packages/meegle-connector` | `extensions/infra/meegle-connector` | D | 复用 client/transport/types/tests | Biz 导入 concrete package |
 | `packages/polaris-extension-sdk` | `packages/polaris-extension-sdk` | D | 从首个真实 adapter 提取最小生命周期 | 先设计巨型 SDK |
+| `lib/execution/isolated-vm.ts` + `isolated-vm-worker.cjs` | `apps/worker/src/sandbox/isolated-vm` | S | Node child process、native ABI、pool、broker、取消与资源限制 | 用 Bun 直接加载 isolated-vm native worker |
 | `components/polaris/access` | `apps/sim/features/administration` | D | Access UI | UI 定义授权真相 |
 | `components/polaris/pm` | `apps/sim/features/pm` | D | PM UI | 直接 import Biz repository/Infra |
 | `components/polaris/hr` | `apps/sim/features/hr` | D | HR UI | 直接 import Feishu/DB |

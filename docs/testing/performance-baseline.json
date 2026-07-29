@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-30T02:48:59+08:00",
+  "baselineKind": "read-only-polaris-development-observation",
+  "source": {
+    "repository": "D:/polaris",
+    "nextDirectory": "apps/sim/.next/dev",
+    "mode": "next-development-turbopack",
+    "collector": "scripts/architecture/bundle-budget/collect-next-baseline.ts",
+    "notes": "The donor dev server was active. This snapshot is evidence of the legacy graph, not a target budget."
+  },
+  "trace": {
+    "traceBytes": 43108768,
+    "eventCount": 190821,
+    "compilePathCount": 281,
+    "compilePathTotalMs": 4922133.6,
+    "peakRssBytes": 19020701696,
+    "peakHeapUsedBytes": 8651292832,
+    "memoryThresholdRestarts": 19,
+    "developmentServerStarts": 19,
+    "longestCompilePaths": [
+      {
+        "trigger": "/api/mothership/events",
+        "durationMs": 303909
+      },
+      {
+        "trigger": "/workspace/[workspaceId]/home",
+        "durationMs": 272430.6
+      },
+      {
+        "trigger": "/api/workspaces/[id]/pm/projects",
+        "durationMs": 250545.1
+      },
+      {
+        "trigger": "/api/organizations/[id]/whitelabel",
+        "durationMs": 199598.3
+      },
+      {
+        "trigger": "/api/users/me/settings",
+        "durationMs": 150287.5
+      },
+      {
+        "trigger": "/api/knowledge",
+        "durationMs": 135907.7
+      },
+      {
+        "trigger": "/api/providers/base/models",
+        "durationMs": 112766.9
+      },
+      {
+        "trigger": "/api/logs/stats",
+        "durationMs": 91071
+      },
+      {
+        "trigger": "/api/logs",
+        "durationMs": 90927.1
+      },
+      {
+        "trigger": "/workspace/[workspaceId]/w/[workflowId]",
+        "durationMs": 84031.5
+      }
+    ]
+  },
+  "chunks": {
+    "scope": "all emitted development JavaScript and CSS; not route-deduplicated",
+    "fileCount": 1475,
+    "rawBytes": 264241331,
+    "gzipBytes": 38280310,
+    "largestFirstPartyChunks": [
+      {
+        "file": "static/chunks/apps_sim_blocks_blocks_1nh1_bx._.js",
+        "rawBytes": 10092861,
+        "gzipBytes": 1434630
+      },
+      {
+        "file": "static/chunks/apps_sim_tools_0v6y0ap._.js",
+        "rawBytes": 9516230,
+        "gzipBytes": 911810
+      },
+      {
+        "file": "static/chunks/apps_sim_components_icons_tsx_1n_kv3v._.js",
+        "rawBytes": 1557693,
+        "gzipBytes": 317969
+      },
+      {
+        "file": "static/chunks/apps_sim_lib_0r7r7-b._.js",
+        "rawBytes": 983773,
+        "gzipBytes": 189061
+      }
+    ]
+  },
+  "dependencyClosure": {
+    "clientRootCount": 588,
+    "clientRootsReachingExecutor": 297,
+    "clientRootsReachingExecutionOrSandbox": 267,
+    "clientRootsReachingRuntimeToolsBlocksOrTriggers": 200,
+    "clientRootsReachingDatabaseAuthOrSecrets": 71
+  },
+  "targetBudgets": {
+    "ordinaryColdCompileMs": 10000,
+    "hotUpdateMs": 1000,
+    "editorColdCompileMs": 20000,
+    "stableDevelopmentRssBytes": 4294967296,
+    "ordinaryPageIncrementalClientGzipBytes": 307200,
+    "firstCatalogResponseBytes": 153600,
+    "browserRootsReachingServerRuntime": 0
+  }
+}

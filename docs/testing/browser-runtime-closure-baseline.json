@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-30",
+  "source": "apps/sim TypeScript runtime import graph",
+  "maxClientRootsByCategory": {
+    "executor": 297,
+    "execution-and-sandbox": 267,
+    "runtime-tools-blocks-triggers": 200,
+    "database-auth-secrets": 71,
+    "infra-extensions": 0,
+    "api-or-worker": 0
+  },
+  "target": 0,
+  "policy": "Existing counts are a non-regression ratchet. New browser-facing feature, api-client, browser, and catalog roots have a zero budget."
+}

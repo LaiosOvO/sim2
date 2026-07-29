@@ -6,7 +6,9 @@
   "license": "Apache-2.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "extensions/biz/*",
+    "extensions/infra/*"
   ],
   "bin": {
     "sim": "./scripts/setup/index.ts"
@@ -27,6 +29,9 @@
     "lint:all": "turbo run lint && bun run lint:helm",
     "check": "turbo run format:check",
     "check:boundaries": "bun run scripts/check-monorepo-boundaries.ts",
+    "check:browser-runtime-closure": "bun run scripts/architecture/dependency-graph/check-browser-runtime-closure.ts --check",
+    "check:target-structure": "bun run scripts/architecture/validate-target-structure.ts",
+    "measure:next-baseline": "bun run scripts/architecture/bundle-budget/collect-next-baseline.ts",
     "check:api-validation": "bun run scripts/check-api-validation-contracts.ts --check",
     "check:api-validation:strict": "bun run scripts/check-api-validation-contracts.ts --check --enforce-boundary-baseline",
     "check:realtime-prune": "bun run scripts/check-realtime-prune-graph.ts",
@@ -92,6 +97,7 @@
     "@next/swc-linux-x64-gnu": "16.2.11"
   },
   "devDependencies": {
+    "@typescript/typescript6": "^6.0.2",
     "@biomejs/biome": "2.0.0-beta.5",
     "@clack/prompts": "1.7.0",
     "@octokit/rest": "^21.0.0",

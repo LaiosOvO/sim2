@@ -4,7 +4,7 @@
 > 首次记录：2026-07-30
 > 审计范围：`D:\workspace\workflow\sim2`（底座）与 `D:\polaris`（二开平台）
 > 输入材料：用户提供的《项目问题.md》、仓库源码、Next.js 开发 trace
-> 当前阶段：只读审计与边界确认，尚未开始实现
+> 当前阶段：Phase 1 工程拓扑、运行时矩阵与边界门禁实施
 
 ## 1. 文档用途
 
@@ -57,6 +57,28 @@ client/server seam 失效：
 | `/api/logs` | 90.9 秒 |
 
 这与“打开一个接口可能需要两分钟”的现象一致，并且能由编译图和内存压力解释。
+
+上面的数字是首次审计快照。2026-07-30 02:48（Asia/Shanghai）再次以只读方式采集仍在运行的
+Polaris 开发产物时，trace 已增长到 190,821 个 event、281 次 `compile-path`、累计
+4,922.1 秒编译、19 次内存阈值重启；峰值 RSS 为 19,020,701,696 bytes，峰值 heap used
+为 8,651,292,832 bytes。开发静态产物共有 1,475 个 JavaScript/CSS 文件，原始体积
+264,241,331 bytes，逐文件 gzip 合计 38,280,310 bytes。其中 Blocks、Tools 和 Icons
+三个一方开发 chunk 分别达到约 1.43 MB、0.91 MB 和 0.32 MB gzip。开发产物总和不能当成
+单路由 bundle，但它清楚说明重型注册表已经成为独立的大 chunk。
+
+Phase 1 已将证据固化为以下可重复资产：
+
+- `docs/testing/performance-baseline.json`：trace、route compile、RSS、chunk 与目标预算；
+- `docs/testing/browser-runtime-closure-baseline.json`：588 个 Client root 的传递闭包 ratchet；
+- `docs/testing/browser-bundle-policy.json`：最终 bundle deny list、重型依赖 allow scope 与预算；
+- `scripts/architecture/bundle-budget/collect-next-baseline.ts`：从任意 `.next` 目录重新采集；
+- `scripts/architecture/dependency-graph/check-browser-runtime-closure.ts`：输出最短污染链并在 CI
+  阻止债务增加。
+
+当前闭包基线为：297 个 Client root 可达 Executor、267 个可达 execution/sandbox、200 个
+可达运行时 Tool/Block/Trigger、71 个可达 database/auth/secrets。它们是待归零的历史债务，
+不是允许长期保留的目标；新建 `features`、`api-client`、`browser`、`catalog` 路径从第一天起
+执行零预算。
 
 ## 4. 注册表规模
 
@@ -658,6 +680,28 @@ transport 留在 Infra，把 PM/HR/Delivery 所需能力抽成 Biz port，并只
 下一节点计算、单步/继续循环和幂等状态全部迁入 API/Worker；浏览器只保存
 `debugSessionId` 和安全状态投影。
 
+### 19.3 飞书长连接、Node 与 Sandbox 的真实关系
+
+代码和部署文件确认：
+
+- Polaris 的 `apps/sim/package.json` 虽通过 `bun run dev` 进入脚本，但 `dev` 实际执行
+  `node --import tsx scripts/dev-node.ts`，脚本又用 Node 的 `process.execPath` 启动 Next；
+- `instrumentation-node.ts` 在 Next Node 进程动态启动飞书 `WSClient`；
+- `ws-trigger.ts` 使用 `@larksuiteoapi/node-sdk`，每 15 秒从数据库 reconcile 应维持的
+  credential connections，再直接调用 webhook processor；
+- 长连接没有 import Sandbox，但 webhook processor 会进入 workflow dispatch，因此当前
+  进程闭包把飞书 ingress、Next、Executor 和 Sandbox 串在一起；
+- 本地 Sandbox 明确执行 `node --version` 检查，并以
+  `node --no-node-snapshot isolated-vm-worker.cjs` 启动 child process；
+- production Dockerfile 按 Node ABI 重编译 `isolated-vm`，最终使用
+  `CMD ["node", "apps/sim/bootstrap.js"]`。
+
+结论：不能把“Bun 是 package manager”误写成“生产服务运行在 Bun”。API、Worker、飞书
+长连接与本地 Sandbox 的生产 runtime 固定为 Node.js 22.19+；Bun 用于 install、script、
+build 和 test。飞书长连接不是 Sandbox 能力，目标是将其迁入独立 `feishu-ingress`
+Worker role，只负责连接、归一化、去重和 job admission，与 execution/Sandbox role 分开
+部署和健康检查。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -685,3 +729,7 @@ transport 留在 Infra，把 PM/HR/Delivery 所需能力抽成 Biz port，并只
 - 记录 Next 16 当前使用 Turbopack、不能原位替换为 Vite 的技术结论；
 - 建立 Sim2 upstream Module Alignment Matrix、同步基线和 Polaris 能力迁移表；
 - 在目标 worktree 发布正式本地 Spec。
+- 确认飞书长连接并不依赖 Sandbox；记录当前 Next instrumentation → webhook processor 的
+  间接执行耦合。
+- 固定 Node.js 22.19+ 为 API/Worker/飞书长连接/isolated-vm 的生产 runtime，Bun 仅用于
+  包管理、构建、测试和脚本。

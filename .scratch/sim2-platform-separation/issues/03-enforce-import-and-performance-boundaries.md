@@ -2,7 +2,7 @@
 
 What to build: 将浏览器/服务端/Worker/Biz/Infra 的依赖规则变成 CI 可执行门禁。
 Blocked by: 02
-Status: ready-for-agent
+Status: in-progress
 
 ## What to build
 
@@ -19,3 +19,15 @@ Status: ready-for-agent
 ## Blocked by
 
 02。
+
+## Implementation evidence
+
+- 已建立 browser runtime closure 扫描与 CI ratchet，能输出每类服务端污染的最短链；
+- 已建立 Biz/Infra/App/Package 直接与动态导入边界；
+- 已保存 Polaris trace、RSS、Client root、开发 chunk 与目标预算的机器可读基线；
+- 已建立可对任意 `.next` 目录重跑的采集器，生产构建在 CI 中上传 metrics artifact；
+- 已保存 bundle deny list 与重型依赖 allow scope。
+
+尚未完成：历史 Client root 污染必须在 Catalog、Replay/Debug、Auth seam 迁移后归零；届时将
+bundle deny list 从 ratchet 切换为严格扫描，并补齐循环依赖门禁。此 ticket 在严格门禁启用
+前不得标记完成。
