@@ -33,6 +33,10 @@
       "types": "./src/invitations.ts",
       "default": "./src/invitations.ts"
     },
+    "./organizations": {
+      "types": "./src/organizations.ts",
+      "default": "./src/organizations.ts"
+    },
     "./pagination": {
       "types": "./src/pagination.ts",
       "default": "./src/pagination.ts"

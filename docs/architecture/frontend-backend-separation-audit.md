@@ -1051,6 +1051,36 @@ bytes；目标图 22 packages/116 source nodes、0 cycle；全仓 TypeScript 43/
 seat reconciliation、transaction 和 lock 语义，不因 read adapter 已迁移而提前合并，也
 不能把旧 `invitations/core` 巨型闭包重新导入当前 API read path。
 
+### 19.15 W2 原生 Organization Workspaces 与企业权益边界
+
+第六条原生替换是 `API-0241 GET /api/organizations/[id]/workspaces`。旧 route 表面只返回
+`id/name`，实际经 permission-group utils 同时加载 organization role、Billing entitlement、
+环境 flag、Drizzle 和 NextResponse。直接复制会把一个两字段查询重新做成跨模块编译闭包。
+
+目标 Organizations Module 使用 `interface/application/ports/index.ts` 布局。Application
+先通过统一 `RequestAccessResolver.organizationRole` 要求 owner/admin，再调用窄
+`OrganizationAccessControlEntitlementReader`，最后调用
+`OrganizationWorkspaceReadRepository`。它不 import Billing、DB、环境变量或 Next。
+
+生产 entitlement adapter 精确保留旧 `isOrganizationOnEnterprisePlan` 顺序：
+
+1. billing 关闭直接放行；
+2. billing 开启但 self-host 显式启用 Access Control 时放行；
+3. hosted/billing 模式检查 organization owner 的 billing-block；
+4. 未 blocked 时要求 referenceId 为 organization 的 active enterprise subscription；
+5. 数据库异常 fail closed。
+
+旧 `listOrganizationWorkspaces` 仅按 organizationId 查询并按 name 排序，没有 archived
+过滤。虽然这可能与其他 active-workspace 列表不一致，本差分阶段明确保留，不能借重构静默
+改 wire。真实 PostgreSQL fixture 覆盖 Archive/Runtime/Secret 排序、enterprise active、
+owner blocked、self-host override 和 billing-disabled 分支。
+
+当前 W2 为 native 6/22、legacy 16/22；API 78 passed（1 个 disposable DB test 默认跳过），
+W2 focused 66 passed，API Contract 11/11，Platform Contract 55 schemas。API entry
+24.56 KiB；organization workspace/entitlement/config lazy chunks 分别为
+0.64/1.83/0.87 KiB；Next 22 facade 最大仍为 1,485 gzip bytes；目标图 22 packages/125
+source nodes、0 cycle；全仓 TypeScript 43/43 tasks 通过。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1136,3 +1166,6 @@ seat reconciliation、transaction 和 lock 语义，不因 read adapter 已迁�
 - 将 `API-1124 workspace invitations` 切为原生 Invitations management read；分离
   invitee token-free 与 management token-bearing ports，以真实 Postgres 验证明示/派生
   workspace 可见性和归档排除；当前 native 5/22、legacy 17/22。
+- 将 `API-0241 organization workspaces` 切为原生 Organizations Module；拆出 admin
+  authorization、enterprise entitlement 和 workspace read ports，以真实 Postgres 验证
+  cloud/self-host/billing-block 分支及 archived 兼容；当前 native 6/22、legacy 16/22。

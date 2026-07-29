@@ -313,6 +313,34 @@ apps/api/src/infrastructure/postgres/repositories/
 token，后者只为旧 management wire 保留 token。后续 W3 invitation command 使用独立
 command ports/transactions，不能扩张这两个 read ports。
 
+当前 Organizations 首个竖切片目录为：
+
+```text
+apps/api/src/modules/organizations/
+├─ interface/
+│  └─ create-list-organization-workspaces-handler.ts
+├─ application/
+│  └─ list-organization-workspaces.ts
+├─ ports/
+│  ├─ organization-access-control-entitlement-reader.ts
+│  └─ organization-workspace-read-repository.ts
+└─ index.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+├─ drizzle-organization-access-control-entitlement-reader.ts
+└─ drizzle-organization-workspace-read-repository.ts
+
+apps/api/src/config/
+└─ enterprise-runtime.ts
+
+packages/api-contracts/src/
+└─ organizations.ts
+```
+
+Organization application 只能消费 role、entitlement 和 read repository ports。Billing plan、
+owner block、self-host env 与 Drizzle 留在 adapter/composition；后续 roster 复用 Module
+目录但使用 membership projection，不能误套 admin + enterprise gate。
+
 ### 4.4 `apps/worker`：执行闭包
 
 ```text

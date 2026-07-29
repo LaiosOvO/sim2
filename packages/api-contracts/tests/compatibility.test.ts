@@ -5,6 +5,7 @@ import {
   listMyInvitationsResponseV1Schema,
   listWorkspaceInvitationsResponseV1Schema,
 } from '../src/invitations'
+import { listOrganizationWorkspacesResponseV1Schema } from '../src/organizations'
 import { pageRequestSchema } from '../src/pagination'
 import { traceContextSchema } from '../src/tracing'
 import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
@@ -132,7 +133,7 @@ describe('API contract compatibility', () => {
       w2TenantReadRouteContracts
         .filter((route) => route.backend === 'native')
         .map((route) => route.inventoryId)
-    ).toEqual(['API-0137', 'API-0294', 'API-1057', 'API-1060', 'API-1124'])
+    ).toEqual(['API-0137', 'API-0241', 'API-0294', 'API-1057', 'API-1060', 'API-1124'])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',
@@ -214,6 +215,23 @@ describe('API contract compatibility', () => {
 
     expect(parsed).toEqual({
       members: [{ userId: 'user-1', name: 'Ada', image: null }],
+    })
+  })
+
+  it('defines the organization workspace picker response without persistence fields', () => {
+    const parsed = listOrganizationWorkspacesResponseV1Schema.parse({
+      workspaces: [
+        {
+          id: 'workspace-1',
+          name: 'Platform',
+          organizationId: 'organization-1',
+          archivedAt: null,
+        },
+      ],
+    })
+
+    expect(parsed).toEqual({
+      workspaces: [{ id: 'workspace-1', name: 'Platform' }],
     })
   })
 

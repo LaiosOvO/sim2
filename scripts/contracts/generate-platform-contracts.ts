@@ -32,6 +32,11 @@ import {
   workspaceInvitationRowV1Schema,
   workspacePermissionV1Schema,
 } from '@sim/api-contracts/invitations'
+import {
+  listOrganizationWorkspacesResponseV1Schema,
+  organizationIdV1Schema,
+  organizationWorkspaceRefV1Schema,
+} from '@sim/api-contracts/organizations'
 import { pageRequestSchema } from '@sim/api-contracts/pagination'
 import { traceContextSchema } from '@sim/api-contracts/tracing'
 import {
@@ -94,6 +99,9 @@ const schemas: Record<string, JsonSchemaProvider> = {
   ListMyInvitationsResponseV1: listMyInvitationsResponseV1Schema,
   WorkspaceInvitationRowV1: workspaceInvitationRowV1Schema,
   ListWorkspaceInvitationsResponseV1: listWorkspaceInvitationsResponseV1Schema,
+  OrganizationIdV1: organizationIdV1Schema,
+  OrganizationWorkspaceRefV1: organizationWorkspaceRefV1Schema,
+  ListOrganizationWorkspacesResponseV1: listOrganizationWorkspacesResponseV1Schema,
   PageRequest: pageRequestSchema,
   TraceContext: traceContextSchema,
   SessionRequestContext: sessionRequestContextSchema,

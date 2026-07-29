@@ -45,6 +45,7 @@
 - [Phase 4 W2 原生 Workspace Members 检查点](./handoffs/phase-4-w2-native-workspace-members.md)
 - [Phase 4 W2 原生 Polaris Personal Profile 检查点](./handoffs/phase-4-w2-native-polaris-personal-profile.md)
 - [Phase 4 W2 原生 Workspace Invitations 检查点](./handoffs/phase-4-w2-native-workspace-invitations.md)
+- [Phase 4 W2 原生 Organization Workspaces 检查点](./handoffs/phase-4-w2-native-organization-workspaces.md)
 
 ## 阅读顺序
 

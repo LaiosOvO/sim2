@@ -14,6 +14,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { readFile },
       { sql },
       { createDrizzleInvitationReadRepository },
+      { createDrizzleOrganizationAccessControlEntitlementReader },
+      { createDrizzleOrganizationWorkspaceReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzleAccessResolver },
@@ -22,6 +24,12 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import('node:fs/promises'),
       import('drizzle-orm'),
       import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-organization-access-control-entitlement-reader'
+      ),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-organization-workspace-read-repository'
+      ),
       import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
@@ -64,6 +72,17 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         organization_id text not null references organization(id),
         role text not null
       )`,
+      `create table user_stats (
+        id text primary key,
+        user_id text not null references "user"(id),
+        billing_blocked boolean not null default false
+      )`,
+      `create table subscription (
+        id text primary key,
+        plan text not null,
+        reference_id text not null,
+        status text
+      )`,
       `create table invitation (
         id text primary key,
         kind invitation_kind not null,
@@ -94,7 +113,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('member-1', 'Ada', 'ada@member.example.com', true,
           'https://cdn.test/ada.png', 'user', '2026-07-03T00:00:00Z'),
          ('org-admin-1', 'Olivia', 'olivia@example.com', true, null, 'admin',
-          '2026-07-04T00:00:00Z')`,
+          '2026-07-04T00:00:00Z'),
+         ('org-owner-1', 'Oscar', 'oscar@example.com', true, null, 'admin',
+          '2026-07-05T00:00:00Z')`,
       `insert into organization (id, name)
        values ('organization-1', 'Platform')`,
       `insert into workspace (id, name, organization_id, archived_at) values
@@ -105,8 +126,13 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('permission-viewer', 'viewer-1', 'workspace', 'workspace-1', 'read'),
          ('permission-member', 'member-1', 'workspace', 'workspace-1', 'write'),
          ('permission-archived', 'viewer-1', 'workspace', 'workspace-archived', 'admin')`,
-      `insert into member (id, user_id, organization_id, role)
-       values ('membership-admin', 'org-admin-1', 'organization-1', 'admin')`,
+      `insert into member (id, user_id, organization_id, role) values
+         ('membership-admin', 'org-admin-1', 'organization-1', 'admin'),
+         ('membership-owner', 'org-owner-1', 'organization-1', 'owner')`,
+      `insert into user_stats (id, user_id, billing_blocked)
+       values ('stats-owner', 'org-owner-1', false)`,
+      `insert into subscription (id, plan, reference_id, status)
+       values ('subscription-1', 'enterprise', 'organization-1', 'active')`,
       `insert into invitation (
          id, kind, email, inviter_id, organization_id, membership_intent,
          role, status, token, expires_at, created_at, updated_at
@@ -262,6 +288,37 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
     await expect(access.workspacePermission('org-admin-1', 'workspace-1')).resolves.toBe('admin')
     await expect(access.workspacePermission('viewer-1', 'workspace-denied')).resolves.toBeNull()
     await expect(access.workspacePermission('viewer-1', 'workspace-archived')).resolves.toBeNull()
+
+    const organizationWorkspaces =
+      await createDrizzleOrganizationWorkspaceReadRepository().listByOrganization('organization-1')
+    expect(organizationWorkspaces).toEqual([
+      { id: 'workspace-archived', name: 'Archive' },
+      { id: 'workspace-1', name: 'Runtime' },
+      { id: 'workspace-denied', name: 'Secret' },
+    ])
+
+    const cloudEntitlement = createDrizzleOrganizationAccessControlEntitlementReader({
+      billingEnabled: true,
+      accessControlEnabled: false,
+      hosted: true,
+    })
+    await expect(cloudEntitlement.isEntitled('organization-1')).resolves.toBe(true)
+    await db.execute(sql`update user_stats set billing_blocked = true where id = 'stats-owner'`)
+    await expect(cloudEntitlement.isEntitled('organization-1')).resolves.toBe(false)
+    await expect(
+      createDrizzleOrganizationAccessControlEntitlementReader({
+        billingEnabled: true,
+        accessControlEnabled: true,
+        hosted: false,
+      }).isEntitled('organization-1')
+    ).resolves.toBe(true)
+    await expect(
+      createDrizzleOrganizationAccessControlEntitlementReader({
+        billingEnabled: false,
+        accessControlEnabled: false,
+        hosted: false,
+      }).isEntitled('organization-without-subscription')
+    ).resolves.toBe(true)
 
     const members =
       await createDrizzleWorkspaceMemberReadRepository().listActiveMembers('workspace-1')

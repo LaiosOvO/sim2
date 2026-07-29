@@ -11,6 +11,10 @@ import type {
   InvitationReadRepository,
   WorkspaceInvitationReadRepository,
 } from '@/modules/invitations'
+import type {
+  OrganizationAccessControlEntitlementReader,
+  OrganizationWorkspaceReadRepository,
+} from '@/modules/organizations'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
 import type { WorkspaceMemberReadRepository } from '@/modules/workspaces'
@@ -75,6 +79,7 @@ async function createTenantRead(
       createListWorkspaceInvitationsHandler,
       createListWorkspaceInvitationsUseCase,
     },
+    { createListOrganizationWorkspacesHandler, createListOrganizationWorkspacesUseCase },
     { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
@@ -84,6 +89,7 @@ async function createTenantRead(
     import('@/modules/tenant-read/infrastructure/http-legacy-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
     import('@/modules/invitations'),
+    import('@/modules/organizations'),
     import('@/modules/workspaces'),
     import('@/modules/identity'),
     import('@sim/biz-identity'),
@@ -103,6 +109,16 @@ async function createTenantRead(
   let workspaceMemberRepository: WorkspaceMemberReadRepository = {
     async listActiveMembers() {
       throw new Error('Workspace database is not configured')
+    },
+  }
+  let organizationWorkspaceRepository: OrganizationWorkspaceReadRepository = {
+    async listByOrganization() {
+      throw new Error('Organization database is not configured')
+    },
+  }
+  let organizationEntitlement: OrganizationAccessControlEntitlementReader = {
+    async isEntitled() {
+      return false
     },
   }
   let personalIdentityRepository: PersonalIdentityProfileRepository = {
@@ -126,24 +142,45 @@ async function createTenantRead(
       { createDrizzleInvitationReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
+      { createDrizzleOrganizationWorkspaceReadRepository },
+      { createDrizzleOrganizationAccessControlEntitlementReader },
       { createDrizzleAccessResolver },
+      { readAccessControlRuntimeConfig },
     ] = await Promise.all([
       import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-organization-workspace-read-repository'
+      ),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-organization-access-control-entitlement-reader'
+      ),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
+      import('@/config/enterprise-runtime'),
     ])
     invitationRepository = createDrizzleInvitationReadRepository()
     workspaceMemberRepository = createDrizzleWorkspaceMemberReadRepository()
     personalIdentityRepository = createDrizzlePersonalIdentityProfileRepository()
+    organizationWorkspaceRepository = createDrizzleOrganizationWorkspaceReadRepository()
+    organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
+      readAccessControlRuntimeConfig()
+    )
     accessResolver = createDrizzleAccessResolver()
   }
   const nativeHandlers: Record<
-    'API-0137' | 'API-0294' | 'API-1057' | 'API-1060' | 'API-1124',
+    'API-0137' | 'API-0241' | 'API-0294' | 'API-1057' | 'API-1060' | 'API-1124',
     NativeTenantReadHandler
   > = {
     'API-0137': createListMyInvitationsHandler(
       createListMyInvitationsUseCase(invitationRepository)
+    ),
+    'API-0241': createListOrganizationWorkspacesHandler(
+      createListOrganizationWorkspacesUseCase({
+        access: accessResolver,
+        entitlement: organizationEntitlement,
+        repository: organizationWorkspaceRepository,
+      })
     ),
     'API-0294': createGitHubStarsHandler({
       ...(githubToken ? { token: githubToken } : {}),

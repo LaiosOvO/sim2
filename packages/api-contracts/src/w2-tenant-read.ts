@@ -102,7 +102,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/organizations/[id]/workspaces',
     domain: 'organizations',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    backend: 'native',
     requiredTests,
   },
   {

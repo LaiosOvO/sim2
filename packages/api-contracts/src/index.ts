@@ -75,6 +75,15 @@ export {
   workspaceInvitationRowV1Schema,
   workspacePermissionV1Schema,
 } from './invitations'
+export type {
+  ListOrganizationWorkspacesResponseV1,
+  OrganizationWorkspaceRefV1,
+} from './organizations'
+export {
+  listOrganizationWorkspacesResponseV1Schema,
+  organizationIdV1Schema,
+  organizationWorkspaceRefV1Schema,
+} from './organizations'
 export type { PageRequest } from './pagination'
 export { cursorSchema, pageRequestSchema, pageSchema } from './pagination'
 export type { TraceContext } from './tracing'
