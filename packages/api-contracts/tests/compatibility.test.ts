@@ -120,6 +120,9 @@ describe('API contract compatibility', () => {
   it('freezes the exact W2 tenant-read route set and test obligations', () => {
     expect(w2TenantReadRouteContracts).toHaveLength(22)
     expect(new Set(w2TenantReadRouteContracts.map((route) => route.inventoryId)).size).toBe(22)
+    expect(w2TenantReadRouteContracts.filter((route) => route.backend === 'native')).toEqual([
+      expect.objectContaining({ inventoryId: 'API-0294' }),
+    ])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',

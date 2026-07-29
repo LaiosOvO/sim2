@@ -27,6 +27,7 @@ import { requestIdentitySchema } from '@sim/api-contracts/identity'
 import { pageRequestSchema } from '@sim/api-contracts/pagination'
 import { traceContextSchema } from '@sim/api-contracts/tracing'
 import {
+  w2TenantReadBackendSchema,
   w2TenantReadRouteContractSchema,
   w2TenantReadRouteIdSchema,
 } from '@sim/api-contracts/w2-tenant-read'
@@ -80,6 +81,7 @@ const schemas: Record<string, JsonSchemaProvider> = {
   AuthenticationError: authenticationErrorSchema,
   RequestAuthenticationResult: requestAuthenticationResultSchema,
   W2TenantReadRouteId: w2TenantReadRouteIdSchema,
+  W2TenantReadBackend: w2TenantReadBackendSchema,
   W2TenantReadRouteContract: w2TenantReadRouteContractSchema,
   ExecutionJobV1: executionJobV1Schema,
   ExecutionEventV1: executionEventV1Schema,

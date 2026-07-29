@@ -1689,6 +1689,13 @@
           "API-1124"
         ]
       },
+      "W2TenantReadBackend": {
+        "type": "string",
+        "enum": [
+          "native",
+          "legacy-origin-compatibility"
+        ]
+      },
       "W2TenantReadRouteContract": {
         "type": "object",
         "properties": {
@@ -1749,6 +1756,13 @@
               "legacy-cron"
             ]
           },
+          "backend": {
+            "type": "string",
+            "enum": [
+              "native",
+              "legacy-origin-compatibility"
+            ]
+          },
           "requiredTests": {
             "readOnly": true,
             "type": "array",
@@ -1778,6 +1792,7 @@
           "pathTemplate",
           "domain",
           "authMode",
+          "backend",
           "requiredTests"
         ],
         "additionalProperties": false

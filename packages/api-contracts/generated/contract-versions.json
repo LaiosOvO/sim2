@@ -24,6 +24,7 @@
     "AuthenticationError",
     "RequestAuthenticationResult",
     "W2TenantReadRouteId",
+    "W2TenantReadBackend",
     "W2TenantReadRouteContract",
     "ExecutionJobV1",
     "ExecutionEventV1",

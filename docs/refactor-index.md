@@ -40,6 +40,7 @@
 - [Phase 3 Worker Job 与 Sandbox 骨架检查点](./handoffs/phase-3-worker-sandbox-skeleton.md)
 - [Phase 3 认证与请求上下文 seam 检查点](./handoffs/phase-3-auth-request-context.md)
 - [Phase 4 W2 租户只读兼容平面检查点](./handoffs/phase-4-w2-tenant-read-compatibility.md)
+- [Phase 4 W2 原生路由与 Stars 检查点](./handoffs/phase-4-w2-native-stars.md)
 
 ## 阅读顺序
 

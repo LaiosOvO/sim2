@@ -63,7 +63,7 @@ async function main(): Promise<void> {
         apiModule: 'apps/api/src/modules/tenant-read',
         nextFacade: relativePath.replaceAll('\\', '/'),
         tests: route.requiredTests,
-        backend: 'legacy-origin-compatibility',
+        backend: route.backend,
       })),
     },
     null,

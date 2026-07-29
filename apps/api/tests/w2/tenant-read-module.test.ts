@@ -6,7 +6,7 @@ import { createRequestAuthenticator } from '@sim/auth/request-context'
 import { describe, expect, it, vi } from 'vitest'
 import { createApiApplication } from '@/bootstrap/application/create-api-application'
 import { createTenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
-import type { TenantReadCompatibilityBackend } from '@/modules/tenant-read/application/ports'
+import type { TenantReadBackend } from '@/modules/tenant-read/application/ports'
 
 function concretePath(pathTemplate: string): string {
   return pathTemplate.replaceAll('[id]', 'workspace-1').replaceAll('[drainId]', 'drain-1')
@@ -83,20 +83,28 @@ describe('W2 tenant-read compatibility module', () => {
     'preserves $inventoryId wire output through the independent API',
     async (route) => {
       const path = concretePath(route.pathTemplate)
-      const backend: TenantReadCompatibilityBackend = {
-        async forward({ request, requestId, route: selectedRoute }) {
+      const backend: TenantReadBackend = {
+        async forward({ request, requestId, route: selectedRoute, authenticationContext }) {
           expect(request.method).toBe('GET')
           expect(new URL(request.url).pathname).toBe(path)
           expect(new URL(request.url).search).toBe('?cursor=next')
           expect(requestId).toBe(`request-${route.inventoryId}`)
           expect(selectedRoute.inventoryId).toBe(route.inventoryId)
-          return new Response(`legacy:${route.inventoryId}:body`, {
-            status: 206,
-            headers: {
-              'content-type': 'application/octet-stream',
-              'x-legacy-response': route.inventoryId,
-            },
-          })
+          if (['public', 'legacy-cron'].includes(route.authMode)) {
+            expect(authenticationContext).toBeUndefined()
+          } else {
+            expect(authenticationContext?.actor.id).toBe('user-1')
+          }
+          return {
+            backend: route.backend,
+            response: new Response(`legacy:${route.inventoryId}:body`, {
+              status: 206,
+              headers: {
+                'content-type': 'application/octet-stream',
+                'x-legacy-response': route.inventoryId,
+              },
+            }),
+          }
         },
       }
       const application = createApiApplication({
@@ -119,15 +127,19 @@ describe('W2 tenant-read compatibility module', () => {
       expect(await response.text()).toBe(`legacy:${route.inventoryId}:body`)
       expect(response.headers.get('content-type')).toBe('application/octet-stream')
       expect(response.headers.get('x-legacy-response')).toBe(route.inventoryId)
-      expect(response.headers.get('x-sim-api-module')).toBe('tenant-read-compatibility')
+      expect(response.headers.get('x-sim-api-module')).toBe('tenant-read')
       expect(response.headers.get('x-sim-api-inventory-id')).toBe(route.inventoryId)
-      expect(response.headers.get('x-sim-api-backend')).toBe('legacy-origin')
+      expect(response.headers.get('x-sim-api-backend')).toBe(route.backend)
       expect(response.headers.get('x-request-id')).toBe(`request-${route.inventoryId}`)
     }
   )
 
   it('authenticates a protected route before invoking the compatibility backend', async () => {
-    const backend = { forward: vi.fn() }
+    const backend: TenantReadBackend = {
+      forward: vi.fn(async () => {
+        throw new Error('must not be called')
+      }),
+    }
     const authentication = authenticator()
     const authenticate = vi.spyOn(authentication, 'authenticate')
     const application = createApiApplication({
@@ -146,9 +158,12 @@ describe('W2 tenant-read compatibility module', () => {
     ['x-api-key', 'api-key-valid'],
     ['authorization', 'Bearer internal-valid'],
   ])('accepts %s credentials on the hybrid usage-limits route', async (header, value) => {
-    const backend: TenantReadCompatibilityBackend = {
+    const backend: TenantReadBackend = {
       async forward() {
-        return Response.json({ allowed: true })
+        return {
+          backend: 'legacy-origin-compatibility',
+          response: Response.json({ allowed: true }),
+        }
       },
     }
     const application = createApiApplication({
@@ -172,9 +187,13 @@ describe('W2 tenant-read compatibility module', () => {
     ['/api/stars', 'API-0294'],
     ['/api/workspace-events/poll', 'API-1006'],
   ])('leaves %s public or legacy-cron verification with the legacy backend', async (path, id) => {
-    const authentication = { authenticate: vi.fn() }
-    const backend: TenantReadCompatibilityBackend = {
-      forward: vi.fn(async () => Response.json({ id })),
+    const authentication = authenticator()
+    const authenticate = vi.spyOn(authentication, 'authenticate')
+    const backend: TenantReadBackend = {
+      forward: vi.fn(async () => ({
+        backend: 'legacy-origin-compatibility' as const,
+        response: Response.json({ id }),
+      })),
     }
     const application = createApiApplication({
       tenantRead: createTenantReadModule({ authentication, backend }),
@@ -183,7 +202,7 @@ describe('W2 tenant-read compatibility module', () => {
     const response = await application.handle(new Request(`http://api.test${path}`))
 
     expect(response.status).toBe(200)
-    expect(authentication.authenticate).not.toHaveBeenCalled()
+    expect(authenticate).not.toHaveBeenCalled()
     expect(backend.forward).toHaveBeenCalledOnce()
   })
 
@@ -207,14 +226,36 @@ describe('W2 tenant-read compatibility module', () => {
 
     expect(response.status).toBe(503)
     expect(response.headers.get('retry-after')).toBe('1')
+    expect(response.headers.get('x-sim-api-backend')).toBe('legacy-origin-compatibility')
     expect(await response.json()).toEqual({ error: 'Tenant read backend unavailable' })
+  })
+
+  it('preserves native backend attribution when a native handler fails', async () => {
+    const application = createApiApplication({
+      tenantRead: createTenantReadModule({
+        backend: {
+          async forward() {
+            throw new Error('native unavailable')
+          },
+        },
+      }),
+    })
+
+    const response = await application.handle(new Request('http://api.test/api/stars'))
+
+    expect(response.status).toBe(503)
+    expect(response.headers.get('x-sim-api-backend')).toBe('native')
   })
 
   it('does not claim unrelated routes', async () => {
     const application = createApiApplication({
       tenantRead: createTenantReadModule({
         authentication: authenticator(),
-        backend: { forward: vi.fn() },
+        backend: {
+          async forward() {
+            throw new Error('must not be called')
+          },
+        },
       }),
     })
 

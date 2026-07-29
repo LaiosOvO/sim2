@@ -75,6 +75,9 @@ async function main(): Promise<void> {
   }
 
   const inventoryById = new Map(inventory.map((row) => [row.inventoryId, row]))
+  const contractById = new Map(
+    w2TenantReadRouteContracts.map((route) => [route.inventoryId, route])
+  )
   const coverageIds = new Set<string>()
   for (const route of coverage.routes) {
     if (coverageIds.has(route.inventoryId))
@@ -88,6 +91,9 @@ async function main(): Promise<void> {
     if (route.path !== inventoryRow.path) failures.push(`${route.inventoryId}: path mismatch`)
     if (JSON.stringify(route.methods) !== JSON.stringify(inventoryRow.methods)) {
       failures.push(`${route.inventoryId}: methods mismatch`)
+    }
+    if (route.backend !== contractById.get(route.inventoryId)?.backend) {
+      failures.push(`${route.inventoryId}: backend status mismatch`)
     }
     for (const test of requiredTests) {
       if (!route.tests.includes(test)) failures.push(`${route.inventoryId}: missing ${test}`)

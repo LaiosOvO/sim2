@@ -53,17 +53,34 @@ async function createAuthentication(
 }
 
 async function createTenantRead(
-  authentication: RequestAuthenticator
-): Promise<TenantReadModule | undefined> {
+  authentication: RequestAuthenticator | undefined
+): Promise<TenantReadModule> {
   const baseUrl = process.env.SIM_LEGACY_API_BASE_URL?.trim()
-  if (!baseUrl) return undefined
-  const [{ createTenantReadModule }, { createHttpLegacyTenantReadBackend }] = await Promise.all([
+  const [
+    { createTenantReadModule },
+    { createRoutedTenantReadBackend, createUnavailableTenantReadBackend },
+    { createHttpLegacyTenantReadBackend },
+    { createGitHubStarsHandler },
+  ] = await Promise.all([
     import('@/modules/tenant-read/application/create-tenant-read-module'),
+    import('@/modules/tenant-read/application/create-routed-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/http-legacy-tenant-read-backend'),
+    import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
   ])
+  const fallback = baseUrl
+    ? createHttpLegacyTenantReadBackend({ baseUrl })
+    : createUnavailableTenantReadBackend()
+  const githubToken = process.env.GITHUB_TOKEN?.trim()
   return createTenantReadModule({
     authentication,
-    backend: createHttpLegacyTenantReadBackend({ baseUrl }),
+    backend: createRoutedTenantReadBackend({
+      fallback,
+      nativeHandlers: {
+        'API-0294': createGitHubStarsHandler({
+          ...(githubToken ? { token: githubToken } : {}),
+        }),
+      },
+    }),
   })
 }
 
@@ -94,8 +111,7 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
   const tenantReadConfigured = Boolean(process.env.SIM_LEGACY_API_BASE_URL?.trim())
   const authentication =
     configured || tenantReadConfigured ? await createAuthentication(secret, baseURL) : undefined
-  const tenantRead =
-    tenantReadConfigured && authentication ? await createTenantRead(authentication) : undefined
+  const tenantRead = await createTenantRead(authentication)
   if (!configured) return unconfiguredOptions(executionAdmission, tenantRead)
   if (!authentication) throw new Error('Authentication composition is unavailable')
 

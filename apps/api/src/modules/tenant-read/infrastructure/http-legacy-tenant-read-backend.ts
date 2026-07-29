@@ -1,4 +1,4 @@
-import type { TenantReadCompatibilityBackend } from '@/modules/tenant-read/application/ports'
+import type { TenantReadBackend } from '@/modules/tenant-read/application/ports'
 
 export interface HttpLegacyTenantReadBackendOptions {
   baseUrl: string
@@ -18,7 +18,7 @@ function forwardHeaders(request: Request, requestId: string): Headers {
 
 export function createHttpLegacyTenantReadBackend(
   options: HttpLegacyTenantReadBackendOptions
-): TenantReadCompatibilityBackend {
+): TenantReadBackend {
   const fetcher = options.fetcher ?? fetch
   const timeoutMs = options.timeoutMs ?? 10_000
   return {
@@ -34,11 +34,14 @@ export function createHttpLegacyTenantReadBackend(
         redirect: 'manual',
         signal: AbortSignal.any([request.signal, AbortSignal.timeout(timeoutMs)]),
       })
-      return new Response(response.body, {
-        status: response.status,
-        statusText: response.statusText,
-        headers: response.headers,
-      })
+      return {
+        backend: 'legacy-origin-compatibility',
+        response: new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: response.headers,
+        }),
+      }
     },
   }
 }

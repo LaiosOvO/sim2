@@ -4,6 +4,9 @@
 > Ticket：10  
 > 状态：Next 解耦完成；原生 read model 尚未完成
 
+> 后续进度：`phase-4-w2-native-stars.md` 已将 API-0294 切为 native；本文保留兼容平面
+> 建成时的 0/22 native 历史证据。
+
 ## 结果
 
 W2 的第一组 22 条租户/成员只读接口已经从 Next 服务端实现中抽离。原路径保持不变，

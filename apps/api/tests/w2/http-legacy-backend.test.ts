@@ -23,7 +23,7 @@ describe('W2 HTTP legacy tenant-read backend', () => {
       fetcher,
     })
 
-    const response = await backend.forward({
+    const result = await backend.forward({
       request: new Request(
         'http://api.internal:3002/api/workspaces/workspace-1/members?cursor=next',
         {
@@ -41,10 +41,13 @@ describe('W2 HTTP legacy tenant-read backend', () => {
         pathTemplate: '/api/workspaces/[id]/members',
         domain: 'workspaces',
         authMode: 'session',
+        backend: 'legacy-origin-compatibility',
         requiredTests: ['contract', 'auth', 'differential', 'integration'],
       },
     })
 
+    expect(result.backend).toBe('legacy-origin-compatibility')
+    const { response } = result
     expect(response.status).toBe(207)
     expect(response.headers.get('x-legacy-response')).toBe('preserved')
     expect(await response.text()).toBe('legacy-bytes')
@@ -67,6 +70,7 @@ describe('W2 HTTP legacy tenant-read backend', () => {
           pathTemplate: '/api/invitations',
           domain: 'invitations',
           authMode: 'session',
+          backend: 'legacy-origin-compatibility',
           requiredTests: ['contract', 'auth', 'differential', 'integration'],
         },
       })

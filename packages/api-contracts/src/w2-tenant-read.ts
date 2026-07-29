@@ -8,6 +8,8 @@ export const w2TenantReadAuthModeSchema = z.enum([
   'legacy-cron',
 ])
 
+export const w2TenantReadBackendSchema = z.enum(['native', 'legacy-origin-compatibility'])
+
 export const w2TenantReadRouteIdSchema = z.enum([
   'API-0137',
   'API-0209',
@@ -47,6 +49,7 @@ export const w2TenantReadRouteContractSchema = z.object({
     'workspaces',
   ]),
   authMode: w2TenantReadAuthModeSchema,
+  backend: w2TenantReadBackendSchema,
   requiredTests: z
     .tuple([
       z.literal('contract'),
@@ -58,6 +61,7 @@ export const w2TenantReadRouteContractSchema = z.object({
 })
 
 export type W2TenantReadAuthMode = z.infer<typeof w2TenantReadAuthModeSchema>
+export type W2TenantReadBackend = z.infer<typeof w2TenantReadBackendSchema>
 export type W2TenantReadRouteId = z.infer<typeof w2TenantReadRouteIdSchema>
 export type W2TenantReadRouteContract = z.infer<typeof w2TenantReadRouteContractSchema>
 
@@ -70,6 +74,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/invitations',
     domain: 'invitations',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -78,6 +83,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/organizations/[id]/data-drains/[drainId]/runs',
     domain: 'organizations',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -86,6 +92,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/organizations/[id]/roster',
     domain: 'organizations',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -94,6 +101,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/organizations/[id]/workspaces',
     domain: 'organizations',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -102,6 +110,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/permission-groups/user',
     domain: 'permission-groups',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -110,6 +119,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/stars',
     domain: 'stars',
     authMode: 'public',
+    backend: 'native',
     requiredTests,
   },
   {
@@ -118,6 +128,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/users/me/usage-limits',
     domain: 'users',
     authMode: 'hybrid-all',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -126,6 +137,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/users/me/usage-logs',
     domain: 'users',
     authMode: 'session-internal',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -134,6 +146,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspace-events/poll',
     domain: 'workspace-events',
     authMode: 'legacy-cron',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -142,6 +155,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/background-work',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -150,6 +164,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/credit-availability',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -158,6 +173,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/fork/availability',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -166,6 +182,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/fork/diff',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -174,6 +191,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/fork/lineage',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -182,6 +200,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/fork/resources',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -190,6 +209,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/host-context',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -198,6 +218,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/inbox/tasks',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -206,6 +227,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/members',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -214,6 +236,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/metrics/executions',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -222,6 +245,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/personal-profile',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -230,6 +254,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/usage-gate',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
   {
@@ -238,6 +263,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/invitations',
     domain: 'workspaces',
     authMode: 'session',
+    backend: 'legacy-origin-compatibility',
     requiredTests,
   },
 ] as const satisfies readonly W2TenantReadRouteContract[]

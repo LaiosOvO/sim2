@@ -926,10 +926,21 @@ tenant authorization 暂时仍由旧实现承担。
 真实 DB fixture 验证 tenant isolation、pagination/filter、not-found 和旧/新 wire 差分。
 在 22/22 backend 都标记为 native 之前，不得移除旧 origin，也不得将 Ticket 10 标为完成。
 
-当前 W2 API 31/31、Next proxy 25/25、API Contract 6/6；Platform Contract 为 38 schemas。
+兼容平面检查点的 W2 API 为 31/31、Next proxy 25/25、API Contract 6/6；当时 Platform
+Contract 为 38 schemas。
 API validation audit 在 Windows path normalization 修复后为 991/991 contract-backed、
 non-contract 0；它只把明确 import 并调用版本化 W1/W2 proxy 的门面视为外部契约代理，不
 放宽其他 route。目标图为 22 packages/94 source nodes、0 cycle。
+
+第一条原生替换随后落在 `API-0294 /api/stars`。Routed backend 按 inventory ID 选择
+handler，backend 状态进入版本化 contract 和生成 coverage。Stars 保留未知 query 400、
+GitHub header、可选 token、一小时缓存、数字格式和 Provider 故障 fallback。没有 legacy
+origin 的 production composition 中，stars 返回 200/native，其余受保护路由因没有认证和
+fallback 返回 503。当前状态为 native 1/22、legacy 21/22；W2 API 41/41、全 API 53/53，
+Platform Contract 39 schemas，API entry 20.64 KiB，目标图 22 packages/96 source nodes。
+全仓 TypeScript 43/43 packages 通过；Windows 全仓测试仍被 Desktop POSIX file-mode 和本机
+DNS 断言阻断，全仓 build 被跨卷 `EXDEV` 与 sandbox bundle AggregateError 阻断。相关路径
+未在本检查点修改，不能把这些环境失败算成 W2 回归，也不能宣称完整 Next build 已通过。
 
 ## 20. 更新日志
 
@@ -1001,3 +1012,5 @@ non-contract 0；它只把明确 import 并调用版本化 W1/W2 proxy 的门面
   W2 API 31/31、Next proxy 25/25，Platform Contract 扩展到 38 schemas。
 - 明确记录 22 路当前仍使用固定 legacy origin；只有 Next 编译解耦完成，原生 read
   repository、tenant authorization 和真实数据层差分仍是 Ticket 10 的剩余工作。
+- 建立按 inventory ID 逐路切换的 native/legacy backend，完成首条原生
+  `API-0294 /api/stars`；当前 native 1/22、legacy 21/22。

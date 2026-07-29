@@ -66,11 +66,13 @@ export { parseTraceContext, traceContextSchema } from './tracing'
 export { API_CONTRACTS_VERSION } from './version'
 export type {
   W2TenantReadAuthMode,
+  W2TenantReadBackend,
   W2TenantReadRouteContract,
   W2TenantReadRouteId,
 } from './w2-tenant-read'
 export {
   w2TenantReadAuthModeSchema,
+  w2TenantReadBackendSchema,
   w2TenantReadRouteContractSchema,
   w2TenantReadRouteContracts,
   w2TenantReadRouteIdSchema,
