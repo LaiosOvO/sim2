@@ -23,6 +23,8 @@
     "AuthenticatedRequestContext",
     "AuthenticationError",
     "RequestAuthenticationResult",
+    "W2TenantReadRouteId",
+    "W2TenantReadRouteContract",
     "ExecutionJobV1",
     "ExecutionEventV1",
     "ExecutionJobAdmissionResponseV1",

@@ -1,0 +1,247 @@
+import { z } from 'zod'
+
+export const w2TenantReadAuthModeSchema = z.enum([
+  'session',
+  'hybrid-all',
+  'session-internal',
+  'public',
+  'legacy-cron',
+])
+
+export const w2TenantReadRouteIdSchema = z.enum([
+  'API-0137',
+  'API-0209',
+  'API-0235',
+  'API-0241',
+  'API-0243',
+  'API-0294',
+  'API-0885',
+  'API-0887',
+  'API-1006',
+  'API-1009',
+  'API-1011',
+  'API-1031',
+  'API-1032',
+  'API-1034',
+  'API-1037',
+  'API-1041',
+  'API-1056',
+  'API-1057',
+  'API-1058',
+  'API-1060',
+  'API-1122',
+  'API-1124',
+])
+
+export const w2TenantReadRouteContractSchema = z.object({
+  inventoryId: w2TenantReadRouteIdSchema,
+  method: z.literal('GET'),
+  pathTemplate: z.string().startsWith('/api/'),
+  domain: z.enum([
+    'invitations',
+    'organizations',
+    'permission-groups',
+    'stars',
+    'users',
+    'workspace-events',
+    'workspaces',
+  ]),
+  authMode: w2TenantReadAuthModeSchema,
+  requiredTests: z
+    .tuple([
+      z.literal('contract'),
+      z.literal('auth'),
+      z.literal('differential'),
+      z.literal('integration'),
+    ])
+    .readonly(),
+})
+
+export type W2TenantReadAuthMode = z.infer<typeof w2TenantReadAuthModeSchema>
+export type W2TenantReadRouteId = z.infer<typeof w2TenantReadRouteIdSchema>
+export type W2TenantReadRouteContract = z.infer<typeof w2TenantReadRouteContractSchema>
+
+const requiredTests = ['contract', 'auth', 'differential', 'integration'] as const
+
+export const w2TenantReadRouteContracts = [
+  {
+    inventoryId: 'API-0137',
+    method: 'GET',
+    pathTemplate: '/api/invitations',
+    domain: 'invitations',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0209',
+    method: 'GET',
+    pathTemplate: '/api/organizations/[id]/data-drains/[drainId]/runs',
+    domain: 'organizations',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0235',
+    method: 'GET',
+    pathTemplate: '/api/organizations/[id]/roster',
+    domain: 'organizations',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0241',
+    method: 'GET',
+    pathTemplate: '/api/organizations/[id]/workspaces',
+    domain: 'organizations',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0243',
+    method: 'GET',
+    pathTemplate: '/api/permission-groups/user',
+    domain: 'permission-groups',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0294',
+    method: 'GET',
+    pathTemplate: '/api/stars',
+    domain: 'stars',
+    authMode: 'public',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0885',
+    method: 'GET',
+    pathTemplate: '/api/users/me/usage-limits',
+    domain: 'users',
+    authMode: 'hybrid-all',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-0887',
+    method: 'GET',
+    pathTemplate: '/api/users/me/usage-logs',
+    domain: 'users',
+    authMode: 'session-internal',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1006',
+    method: 'GET',
+    pathTemplate: '/api/workspace-events/poll',
+    domain: 'workspace-events',
+    authMode: 'legacy-cron',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1009',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/background-work',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1011',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/credit-availability',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1031',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/fork/availability',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1032',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/fork/diff',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1034',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/fork/lineage',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1037',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/fork/resources',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1041',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/host-context',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1056',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/inbox/tasks',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1057',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/members',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1058',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/metrics/executions',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1060',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/personal-profile',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1122',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/[id]/usage-gate',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+  {
+    inventoryId: 'API-1124',
+    method: 'GET',
+    pathTemplate: '/api/workspaces/invitations',
+    domain: 'workspaces',
+    authMode: 'session',
+    requiredTests,
+  },
+] as const satisfies readonly W2TenantReadRouteContract[]
+
+for (const contract of w2TenantReadRouteContracts) {
+  w2TenantReadRouteContractSchema.parse(contract)
+}

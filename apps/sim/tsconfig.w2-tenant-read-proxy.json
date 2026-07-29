@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "app/api/invitations/route.ts",
+    "app/api/organizations/[id]/data-drains/[drainId]/runs/route.ts",
+    "app/api/organizations/[id]/roster/route.ts",
+    "app/api/organizations/[id]/workspaces/route.ts",
+    "app/api/permission-groups/user/route.ts",
+    "app/api/stars/route.ts",
+    "app/api/users/me/usage-limits/route.ts",
+    "app/api/users/me/usage-logs/route.ts",
+    "app/api/workspace-events/poll/route.ts",
+    "app/api/workspaces/[id]/background-work/route.ts",
+    "app/api/workspaces/[id]/credit-availability/route.ts",
+    "app/api/workspaces/[id]/fork/availability/route.ts",
+    "app/api/workspaces/[id]/fork/diff/route.ts",
+    "app/api/workspaces/[id]/fork/lineage/route.ts",
+    "app/api/workspaces/[id]/fork/resources/route.ts",
+    "app/api/workspaces/[id]/host-context/route.ts",
+    "app/api/workspaces/[id]/inbox/tasks/route.ts",
+    "app/api/workspaces/[id]/members/route.ts",
+    "app/api/workspaces/[id]/metrics/executions/route.ts",
+    "app/api/workspaces/[id]/personal-profile/route.ts",
+    "app/api/workspaces/[id]/usage-gate/route.ts",
+    "app/api/workspaces/invitations/route.ts",
+    "lib/api-proxy/w2-tenant-read.ts",
+    "lib/api-proxy/w2-tenant-read.test.ts"
+  ],
+  "exclude": ["node_modules", ".next", "dist"]
+}

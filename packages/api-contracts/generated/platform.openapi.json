@@ -1662,6 +1662,126 @@
           }
         ]
       },
+      "W2TenantReadRouteId": {
+        "type": "string",
+        "enum": [
+          "API-0137",
+          "API-0209",
+          "API-0235",
+          "API-0241",
+          "API-0243",
+          "API-0294",
+          "API-0885",
+          "API-0887",
+          "API-1006",
+          "API-1009",
+          "API-1011",
+          "API-1031",
+          "API-1032",
+          "API-1034",
+          "API-1037",
+          "API-1041",
+          "API-1056",
+          "API-1057",
+          "API-1058",
+          "API-1060",
+          "API-1122",
+          "API-1124"
+        ]
+      },
+      "W2TenantReadRouteContract": {
+        "type": "object",
+        "properties": {
+          "inventoryId": {
+            "type": "string",
+            "enum": [
+              "API-0137",
+              "API-0209",
+              "API-0235",
+              "API-0241",
+              "API-0243",
+              "API-0294",
+              "API-0885",
+              "API-0887",
+              "API-1006",
+              "API-1009",
+              "API-1011",
+              "API-1031",
+              "API-1032",
+              "API-1034",
+              "API-1037",
+              "API-1041",
+              "API-1056",
+              "API-1057",
+              "API-1058",
+              "API-1060",
+              "API-1122",
+              "API-1124"
+            ]
+          },
+          "method": {
+            "type": "string",
+            "const": "GET"
+          },
+          "pathTemplate": {
+            "type": "string",
+            "pattern": "^\\/api\\/.*"
+          },
+          "domain": {
+            "type": "string",
+            "enum": [
+              "invitations",
+              "organizations",
+              "permission-groups",
+              "stars",
+              "users",
+              "workspace-events",
+              "workspaces"
+            ]
+          },
+          "authMode": {
+            "type": "string",
+            "enum": [
+              "session",
+              "hybrid-all",
+              "session-internal",
+              "public",
+              "legacy-cron"
+            ]
+          },
+          "requiredTests": {
+            "readOnly": true,
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "const": "contract"
+              },
+              {
+                "type": "string",
+                "const": "auth"
+              },
+              {
+                "type": "string",
+                "const": "differential"
+              },
+              {
+                "type": "string",
+                "const": "integration"
+              }
+            ]
+          }
+        },
+        "required": [
+          "inventoryId",
+          "method",
+          "pathTemplate",
+          "domain",
+          "authMode",
+          "requiredTests"
+        ],
+        "additionalProperties": false
+      },
       "ExecutionJobV1": {
         "type": "object",
         "properties": {

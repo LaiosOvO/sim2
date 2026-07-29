@@ -165,6 +165,18 @@ jobs:
       - name: Verify W1 API cold-start budget
         run: bun run check:w1-api-performance
 
+      - name: Verify generated W2 tenant-read facades
+        run: bun run w2:tenant:check
+
+      - name: Verify W2 tenant-read API coverage
+        run: bun run check:w2-tenant-read-coverage
+
+      - name: Verify W2 tenant-read facade isolation
+        run: bun run check:w2-tenant-read-facades
+
+      - name: Type-check W2 tenant-read facade graph
+        run: bun run check:w2-tenant-read-proxy-types
+
       - name: Verify standalone Node API liveness
         run: bun run check:api-standalone
 

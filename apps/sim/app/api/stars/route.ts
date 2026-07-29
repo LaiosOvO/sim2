@@ -1,14 +1,7 @@
-import { type NextRequest, NextResponse } from 'next/server'
-import { noInputSchema } from '@/lib/api/contracts/primitives'
-import { validationErrorResponse } from '@/lib/api/server'
-import { withRouteHandler } from '@/lib/core/utils/with-route-handler'
-import { getGitHubStars } from '@/lib/github/stars'
+import { proxyW2TenantReadRequest } from '@/lib/api-proxy/w2-tenant-read'
 
-export const GET = withRouteHandler(async (request: NextRequest) => {
-  const queryValidation = noInputSchema.safeParse(
-    Object.fromEntries(request.nextUrl.searchParams.entries())
-  )
-  if (!queryValidation.success) return validationErrorResponse(queryValidation.error)
+export const dynamic = 'force-dynamic'
 
-  return NextResponse.json({ stars: await getGitHubStars() })
-})
+export function GET(request: Request): Promise<Response> {
+  return proxyW2TenantReadRequest(request, 'API-0294')
+}

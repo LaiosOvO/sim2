@@ -9,8 +9,8 @@ const QUERY_HOOKS_DIR = path.join(ROOT, 'apps/sim/hooks/queries')
 const SELECTOR_HOOKS_DIR = path.join(ROOT, 'apps/sim/hooks/selectors')
 
 const BASELINE = {
-  totalRoutes: 990,
-  zodRoutes: 990,
+  totalRoutes: 991,
+  zodRoutes: 991,
   nonZodRoutes: 0,
 } as const
 
@@ -146,6 +146,8 @@ const RAW_JSON_BASELINE_ROUTES = new Set([
 ])
 
 const CONTRACT_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api\/contracts(?:\/[^'"]*)?['"]/
+const VERSIONED_PROXY_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api-proxy\/(?:w1|w2-tenant-read)['"]/
+const VERSIONED_PROXY_CALL_PATTERN = /\bproxy(?:W1Request|W2TenantReadRequest)\(/
 const SERVER_VALIDATION_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api\/server(?:\/validation)?['"]/
 const SCHEMA_PARSE_PATTERN = /\b\w+Schema\.(?:safeParse|parse)\(/
 const CONTRACT_SERVER_HELPER_PATTERN = /\bparseToolRequest\(/
@@ -739,12 +741,15 @@ function hasZodUsage(relativePath: string, content: string): boolean {
   ) {
     return true
   }
+  if (VERSIONED_PROXY_IMPORT_PATTERN.test(content) && VERSIONED_PROXY_CALL_PATTERN.test(content)) {
+    return true
+  }
 
   return INDIRECT_ZOD_ROUTES.has(relativePath)
 }
 
 function auditRoute(filePath: string, content: string): RouteAudit {
-  const relativePath = path.relative(ROOT, filePath)
+  const relativePath = path.relative(ROOT, filePath).replaceAll('\\', '/')
   const schemaConstructorCount = [...content.matchAll(ZOD_SCHEMA_CONSTRUCTOR_PATTERN)].length
 
   return {

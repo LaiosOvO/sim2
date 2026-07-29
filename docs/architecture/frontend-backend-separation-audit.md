@@ -898,6 +898,39 @@ Sandbox、UI、Feishu marker 为 0；API startup entry 为 18.89 KiB。W1 Node �
 这不是 OAuth/SSO/Auth HTTP 路由迁移完成。Ticket 09 只建立消费 seam；session 创建与吊销、
 OAuth callback、SSO 注册、API key 管理等仍按 W7/API inventory 迁移。
 
+### 19.10 W2 租户只读兼容平面
+
+Ticket 10 的第一个检查点选择 W2 中顶级领域属于 workspaces、organizations、users、
+invitations、permission-groups、workspace-events、stars 的 22 条 GET。该选择器由独立
+inventory checker 复算，版本化契约、coverage report 和生成门面必须同时保持 22/22，
+否则 CI 失败。
+
+22 个 Next route 原来合计约 1,600 行，并直接到达 DB、auth、fork/metrics/inbox 等服务端
+实现。现在每个 route 是 7 行生成式 facade，合计 154 行；route diff 删除 1,663 行、新增
+104 行，净减少 1,559 行。共享代理只转发 path/query/Cookie/API key/Authorization 和
+request ID，不运行 Zod、Better Auth、Drizzle、Executor 或 Registry。独立构建 22 个门面，
+最大产物 1,485 gzip bytes，所有 server-only forbidden marker 为 0。
+
+独立 API 新增 tenant-read deep module，拥有路由匹配、认证 policy、错误映射、观测标签和
+backend port。当前 production adapter 将请求转发到固定的 pre-refactor legacy origin；
+旧响应的状态码、body、content type 和业务 header 不改写。API 失败可由显式 flag 回滚到
+旧 origin，`api|legacy|off` 三种模式可控，两个代理层都拒绝 same-origin 递归。
+
+鉴权不是统一粗暴设为 session：17 条为 session，usage-limits 为 session/API key/internal
+hybrid，usage-logs 为 session/internal，stars 为 public，workspace-events poll 为
+legacy-cron。前三类先经过 Ticket 09 authenticator；public/cron 特殊验证与所有路由的最终
+tenant authorization 暂时仍由旧实现承担。
+
+这意味着“Next 编译解耦”已经完成，但“独立 API 原生查询”尚未完成。compatibility backend
+后面要按 inventory ID 替换成 organization/workspace/user read repository adapters，并用
+真实 DB fixture 验证 tenant isolation、pagination/filter、not-found 和旧/新 wire 差分。
+在 22/22 backend 都标记为 native 之前，不得移除旧 origin，也不得将 Ticket 10 标为完成。
+
+当前 W2 API 31/31、Next proxy 25/25、API Contract 6/6；Platform Contract 为 38 schemas。
+API validation audit 在 Windows path normalization 修复后为 991/991 contract-backed、
+non-contract 0；它只把明确 import 并调用版本化 W1/W2 proxy 的门面视为外部契约代理，不
+放宽其他 route。目标图为 22 packages/94 source nodes、0 cycle。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -964,3 +997,7 @@ OAuth callback、SSO 注册、API key 管理等仍按 W7/API inventory 迁移。
   valid/revoked session identity/error 一致。
 - Auth core 独立构建为 65,660 gzip bytes，Executor/Registry/MCP/Sandbox/UI/Feishu
   marker 为 0；Platform Contract 扩展到 36 schemas。
+- 完成 W2 租户/成员只读 22 路的兼容平面：生成式 Next facade 最大 1,485 gzip bytes，
+  W2 API 31/31、Next proxy 25/25，Platform Contract 扩展到 38 schemas。
+- 明确记录 22 路当前仍使用固定 legacy origin；只有 Next 编译解耦完成，原生 read
+  repository、tenant authorization 和真实数据层差分仍是 Ticket 10 的剩余工作。

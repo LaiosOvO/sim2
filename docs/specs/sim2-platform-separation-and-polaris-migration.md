@@ -906,6 +906,10 @@ packages/*
 - API and Worker production processes use Node.js 22.19 or newer. Local isolated-vm execution uses a dedicated Node child process with `--no-node-snapshot`; remote E2B/Daytona images pin a compatible Node version.
 - The Web application remains on Next and Turbopack in the first phase. A Vite move would be a later framework migration, not an in-place bundler swap.
 - API and Worker are independent applications from the beginning, while legacy Next handlers migrate gradually through compatibility facades.
+- Compatibility-facade completion and native-backend completion are tracked separately. A route wave
+  may first remove Next compile coupling through a fixed legacy-origin backend port, but it is not
+  considered natively migrated until authorization, repositories, and differential fixtures execute
+  inside the independent API.
 - The API is a modular monolith. HTTP transport, middleware, composition, and observability do not own business rules.
 - API routes authenticate before body validation through one versioned request-context seam. Session,
   API key, public token, and internal identities are explicit policies; hybrid policies have no default
@@ -966,6 +970,19 @@ packages/*
 - Upstream synchronization tests are selected from changed-path mappings and always include stable Integration ID compatibility.
 - Critical user journeys receive E2E coverage; the plan does not create one fragile UI E2E for every API path.
 - Every migration wave includes a feature-flag rollback exercise and observability check.
+
+## Current Migration Checkpoint
+
+- W1 has three native independent API routes with lightweight Next compatibility facades.
+- W2 tenant-read has an exact first slice of 22 GET routes across workspaces, organizations, users,
+  invitations, permission-groups, workspace-events, and stars.
+- Those 22 Next routes are generated lightweight facades and pass isolated build checks with a largest
+  entry of 1,485 gzip bytes and zero DB/Auth runtime/Executor/Registry markers.
+- The standalone API owns W2 route selection, authentication policy, request identity, observability,
+  and a backend port. The current backend port targets a fixed pre-refactor legacy origin.
+- W2 native read repositories, standalone tenant authorization, real database differential fixtures,
+  and removal of the legacy-origin dependency remain incomplete; the normative per-route status is
+  `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope
 

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "wave": "W2",
+  "selector": {
+    "domains": [
+      "workspaces",
+      "organizations",
+      "users",
+      "invitations",
+      "permission-groups",
+      "workspace-events",
+      "stars"
+    ]
+  },
+  "inventoryCount": 22,
+  "routes": [
+    {
+      "inventoryId": "API-0137",
+      "methods": ["GET"],
+      "path": "/api/invitations",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/invitations/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0209",
+      "methods": ["GET"],
+      "path": "/api/organizations/[id]/data-drains/[drainId]/runs",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/organizations/[id]/data-drains/[drainId]/runs/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0235",
+      "methods": ["GET"],
+      "path": "/api/organizations/[id]/roster",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/organizations/[id]/roster/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0241",
+      "methods": ["GET"],
+      "path": "/api/organizations/[id]/workspaces",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/organizations/[id]/workspaces/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0243",
+      "methods": ["GET"],
+      "path": "/api/permission-groups/user",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/permission-groups/user/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0294",
+      "methods": ["GET"],
+      "path": "/api/stars",
+      "authMode": "public",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/stars/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0885",
+      "methods": ["GET"],
+      "path": "/api/users/me/usage-limits",
+      "authMode": "hybrid-all",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/users/me/usage-limits/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-0887",
+      "methods": ["GET"],
+      "path": "/api/users/me/usage-logs",
+      "authMode": "session-internal",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/users/me/usage-logs/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1006",
+      "methods": ["GET"],
+      "path": "/api/workspace-events/poll",
+      "authMode": "legacy-cron",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspace-events/poll/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1009",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/background-work",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/background-work/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1011",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/credit-availability",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/credit-availability/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1031",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/fork/availability",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/fork/availability/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1032",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/fork/diff",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/fork/diff/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1034",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/fork/lineage",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/fork/lineage/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1037",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/fork/resources",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/fork/resources/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1041",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/host-context",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/host-context/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1056",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/inbox/tasks",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/inbox/tasks/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1057",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/members",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/members/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1058",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/metrics/executions",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/metrics/executions/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1060",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/personal-profile",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/personal-profile/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1122",
+      "methods": ["GET"],
+      "path": "/api/workspaces/[id]/usage-gate",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/[id]/usage-gate/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    },
+    {
+      "inventoryId": "API-1124",
+      "methods": ["GET"],
+      "path": "/api/workspaces/invitations",
+      "authMode": "session",
+      "apiModule": "apps/api/src/modules/tenant-read",
+      "nextFacade": "apps/sim/app/api/workspaces/invitations/route.ts",
+      "tests": ["contract", "auth", "differential", "integration"],
+      "backend": "legacy-origin-compatibility"
+    }
+  ]
+}

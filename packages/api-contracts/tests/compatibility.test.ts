@@ -3,6 +3,7 @@ import { authenticatedRequestContextSchema, requestAuthenticationResultSchema } 
 import { apiErrorEnvelopeSchema } from '../src/errors'
 import { pageRequestSchema } from '../src/pagination'
 import { traceContextSchema } from '../src/tracing'
+import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
 
 describe('API contract compatibility', () => {
   it('accepts omitted and nullable error details', () => {
@@ -114,5 +115,18 @@ describe('API contract compatibility', () => {
         retryable: false,
       },
     })
+  })
+
+  it('freezes the exact W2 tenant-read route set and test obligations', () => {
+    expect(w2TenantReadRouteContracts).toHaveLength(22)
+    expect(new Set(w2TenantReadRouteContracts.map((route) => route.inventoryId)).size).toBe(22)
+    for (const route of w2TenantReadRouteContracts) {
+      expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
+        'contract',
+        'auth',
+        'differential',
+        'integration',
+      ])
+    }
   })
 })

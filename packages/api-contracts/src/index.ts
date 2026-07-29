@@ -64,3 +64,14 @@ export { cursorSchema, pageRequestSchema, pageSchema } from './pagination'
 export type { TraceContext } from './tracing'
 export { parseTraceContext, traceContextSchema } from './tracing'
 export { API_CONTRACTS_VERSION } from './version'
+export type {
+  W2TenantReadAuthMode,
+  W2TenantReadRouteContract,
+  W2TenantReadRouteId,
+} from './w2-tenant-read'
+export {
+  w2TenantReadAuthModeSchema,
+  w2TenantReadRouteContractSchema,
+  w2TenantReadRouteContracts,
+  w2TenantReadRouteIdSchema,
+} from './w2-tenant-read'

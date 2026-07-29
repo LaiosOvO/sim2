@@ -24,6 +24,7 @@
 - [浏览器 Bundle 策略](./testing/browser-bundle-policy.json)
 - [W1 API 路由覆盖](./testing/api-w1-route-coverage.json)
 - [W1 API Node 冷启动基线](./testing/api-w1-performance-baseline.json)
+- [W2 租户只读接口覆盖](./testing/api-w2-tenant-read-coverage.json)
 
 ## Goal
 
@@ -38,6 +39,7 @@
 - [Phase 3 W1 独立 API 检查点](./handoffs/phase-3-w1-api.md)
 - [Phase 3 Worker Job 与 Sandbox 骨架检查点](./handoffs/phase-3-worker-sandbox-skeleton.md)
 - [Phase 3 认证与请求上下文 seam 检查点](./handoffs/phase-3-auth-request-context.md)
+- [Phase 4 W2 租户只读兼容平面检查点](./handoffs/phase-4-w2-tenant-read-compatibility.md)
 
 ## 阅读顺序
 

@@ -36,6 +36,10 @@
     "./tracing": {
       "types": "./src/tracing.ts",
       "default": "./src/tracing.ts"
+    },
+    "./w2-tenant-read": {
+      "types": "./src/w2-tenant-read.ts",
+      "default": "./src/w2-tenant-read.ts"
     }
   },
   "scripts": {

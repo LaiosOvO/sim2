@@ -8,6 +8,7 @@ import {
   type StatusModule,
 } from '@/modules/status/application/create-status-module'
 import { createSystemModule } from '@/modules/system/application/create-system-module'
+import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 
 export interface ApiApplication {
   handle(request: Request): Promise<Response>
@@ -18,6 +19,7 @@ export interface ApiApplicationOptions {
   now?: () => Date
   environment?: EnvironmentModule
   executionAdmission?: ExecutionAdmissionModule
+  tenantRead?: TenantReadModule
   status?: StatusModule
   readinessChecks?: Readonly<Record<string, () => Promise<boolean>>>
 }
@@ -42,6 +44,7 @@ export function createApiApplication(options: ApiApplicationOptions = {}): ApiAp
     system,
     status,
     ...(options.environment ? [options.environment] : []),
+    ...(options.tenantRead ? [options.tenantRead] : []),
     ...(options.executionAdmission ? [options.executionAdmission] : []),
   ]
 
