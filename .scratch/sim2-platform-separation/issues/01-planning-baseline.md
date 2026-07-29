@@ -2,7 +2,7 @@
 
 What to build: 固化正式 Spec、1,126 API 清单、目标工程目录、模块对齐表、upstream 状态与本 ticket 图。
 Blocked by: 无
-Status: in-progress
+Status: completed
 
 ## What to build
 
@@ -16,7 +16,8 @@ Status: in-progress
 - 本目录所有 blocker 存在且依赖图无环。
 - 文档通过 Markdown/code-fence/JSON/`git diff --check` 校验并完成 Phase 0 commit/push。
 
-当前证据：本地校验与 commit 已完成；GitHub 凭据失效，远端 push 尚未完成。
+当前证据：Phase 0 commit `98a10537d` 已完成并推送到
+`origin/codex/frontend-backend-refactor`。
 
 ## Blocked by
 

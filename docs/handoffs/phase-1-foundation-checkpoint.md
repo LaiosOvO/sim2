@@ -1,7 +1,7 @@
 # Phase 1 工程拓扑与边界门禁检查点
 
 > 日期：2026-07-30
-> 状态：本地验证完成，完整 Next 冷构建与远端 push 待外部条件恢复
+> 状态：本地验证与远端 push 完成，完整 Next 冷构建待 workflow_dispatch 验证
 
 ## 本检查点已落地
 
@@ -50,7 +50,9 @@ runtime。
 1. 现有 Client 污染要在 Tool Catalog、Auth seam、Replay/Debug 迁移中归零；
 2. bundle deny list 在上述闭包归零后切换为严格门禁；
 3. 完整 Next 冷构建预计峰值约 51 GB，由既有 `Build App` CI job 验证；
-4. GitHub 凭证当前无效，Phase 0/1 本地提交在重新登录前无法 push。
+4. Phase 0 `98a10537d` 与 Phase 1 `1cb2be8a5` 已推送到
+   `origin/codex/frontend-backend-refactor`；远端没有自动触发 branch workflow，需要显式
+   dispatch `Test and Build`。
 
 ## 下一实施入口
 
