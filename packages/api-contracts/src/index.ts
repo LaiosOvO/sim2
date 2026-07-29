@@ -1,4 +1,30 @@
 export type {
+  ApiKeyRequestContext,
+  AuthenticatedActor,
+  AuthenticatedRequestContext,
+  AuthenticationError,
+  AuthenticationErrorCode,
+  AuthenticationMethod,
+  InternalRequestContext,
+  PublicTokenRequestContext,
+  RequestAuthenticationResult,
+  SessionRequestContext,
+} from './auth'
+export {
+  apiKeyRequestContextSchema,
+  authenticatedActorSchema,
+  authenticatedRequestContextSchema,
+  authenticationErrorCodeSchema,
+  authenticationErrorSchema,
+  authenticationMethodSchema,
+  internalRequestContextSchema,
+  publicTokenRequestContextSchema,
+  requestAuthenticationFailureSchema,
+  requestAuthenticationResultSchema,
+  requestAuthenticationSuccessSchema,
+  sessionRequestContextSchema,
+} from './auth'
+export type {
   ApiVersionResponse,
   HealthResponse,
   PublicStatusResponse,

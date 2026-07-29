@@ -1,11 +1,10 @@
+import type { AuthenticatedRequestContext } from '@sim/api-contracts/auth'
+import type { RequestAuthenticator } from '@sim/auth/request-context'
+
 export interface EnvironmentActor {
   id: string
   name: string | null
   email: string | null
-}
-
-export interface EnvironmentSessionResolver {
-  resolve(headers: Headers): Promise<EnvironmentActor | null>
 }
 
 export interface EnvironmentRepository {
@@ -25,6 +24,7 @@ export interface PersonalEnvironmentCredentialSync {
 export interface EnvironmentAuditSink {
   updated(input: {
     actor: EnvironmentActor
+    authenticationContext: AuthenticatedRequestContext
     keys: readonly string[]
     request: Request
   }): Promise<void> | void
@@ -35,7 +35,7 @@ export interface EnvironmentEventSink {
 }
 
 export interface EnvironmentModuleDependencies {
-  sessions: EnvironmentSessionResolver
+  authentication: RequestAuthenticator
   repository: EnvironmentRepository
   cipher: EnvironmentSecretCipher
   credentials: PersonalEnvironmentCredentialSync

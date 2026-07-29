@@ -3,6 +3,7 @@ import {
   personalEnvironmentResponseSchema,
   publicStatusResponseSchema,
 } from '@sim/api-contracts'
+import { createRequestAuthenticator } from '@sim/auth/request-context'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { createApiApplication } from '@/bootstrap/application/create-api-application'
 import { createProductionApiOptions } from '@/bootstrap/composition/create-production-api-options'
@@ -21,13 +22,27 @@ function fixture() {
     variables: { EXISTING: 'encrypted:old-value' },
   }
   const dependencies: EnvironmentModuleDependencies = {
-    sessions: {
-      async resolve(headers) {
-        return headers.get('cookie') === 'session=valid'
-          ? { id: 'user-1', name: 'Ada', email: 'ada@example.com' }
-          : null
+    authentication: createRequestAuthenticator({
+      sessions: {
+        async verify(headers) {
+          return headers.get('cookie') === 'session=valid'
+            ? {
+                verified: true,
+                credential: {
+                  actor: {
+                    id: 'user-1',
+                    type: 'user',
+                    name: 'Ada',
+                    email: 'ada@example.com',
+                  },
+                  sessionId: 'session-1',
+                  activeOrganizationId: null,
+                },
+              }
+            : { verified: false, reason: 'invalid' }
+        },
       },
-    },
+    }),
     repository: {
       async getEncryptedVariables() {
         return stored.variables
@@ -167,10 +182,36 @@ describe('W1 route compatibility', () => {
       'REGION',
     ])
     expect(dependencies.audit.updated).toHaveBeenCalledOnce()
+    expect(dependencies.audit.updated).toHaveBeenCalledWith(
+      expect.objectContaining({
+        authenticationContext: expect.objectContaining({
+          authenticationMethod: 'session',
+          actor: expect.objectContaining({ id: 'user-1' }),
+        }),
+      })
+    )
     expect(dependencies.events.updated).toHaveBeenCalledWith({
       actorId: 'user-1',
       keyCount: 2,
     })
+  })
+
+  it('authenticates before reading or validating the request body', async () => {
+    const { application, dependencies } = fixture()
+    const authenticate = vi.spyOn(dependencies.authentication, 'authenticate')
+    const request = new Request('http://api.test/api/environment', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: '{invalid-json',
+    })
+    const bodyReader = vi.spyOn(request, 'json')
+
+    const response = await application.handle(request)
+
+    expect(response.status).toBe(401)
+    expect(await response.json()).toEqual({ error: 'Unauthorized' })
+    expect(authenticate).toHaveBeenCalledOnce()
+    expect(bodyReader).not.toHaveBeenCalled()
   })
 
   it('reports readiness independently from liveness', async () => {

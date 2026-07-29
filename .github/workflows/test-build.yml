@@ -171,6 +171,9 @@ jobs:
       - name: Verify browser contract build isolation
         run: bun run check:contract-browser-build
 
+      - name: Verify authentication seam isolation
+        run: bun run check:auth-verifier-isolation
+
       - name: Verify contract package purity
         run: bun run check:contract-purity
 

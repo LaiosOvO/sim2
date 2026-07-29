@@ -10,6 +10,18 @@
     "node": ">=20.0.0"
   },
   "exports": {
+    "./authorization": {
+      "types": "./src/authorization.ts",
+      "default": "./src/authorization.ts"
+    },
+    "./internal-token": {
+      "types": "./src/internal-token.ts",
+      "default": "./src/internal-token.ts"
+    },
+    "./request-context": {
+      "types": "./src/request-context.ts",
+      "default": "./src/request-context.ts"
+    },
     "./session": {
       "types": "./src/session.ts",
       "default": "./src/session.ts"
@@ -20,6 +32,7 @@
     }
   },
   "scripts": {
+    "test": "vitest run",
     "type-check": "tsc --noEmit",
     "lint": "biome check --write --unsafe .",
     "lint:check": "biome check .",
@@ -27,12 +40,15 @@
     "format:check": "biome format ."
   },
   "dependencies": {
+    "@sim/api-contracts": "workspace:*",
     "@sim/db": "workspace:*",
-    "better-auth": "1.6.23"
+    "better-auth": "1.6.23",
+    "jose": "6.0.11"
   },
   "devDependencies": {
     "@sim/tsconfig": "workspace:*",
     "@types/node": "24.2.1",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.0"
   }
 }

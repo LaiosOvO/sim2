@@ -59,7 +59,7 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
     { sql },
     { createAesEnvironmentSecretCipher },
     { createAuditEnvironmentSink },
-    { createBetterAuthSessionResolver },
+    { createProductionRequestAuthenticator },
     { createDrizzleEnvironmentRepository },
     { createPersonalEnvironmentCredentialSync },
     { createPostHogEnvironmentEventSink },
@@ -69,16 +69,19 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
     import('drizzle-orm'),
     import('@/modules/environment/infrastructure/aes-environment-secret-cipher'),
     import('@/modules/environment/infrastructure/audit-environment-sink'),
-    import('@/modules/environment/infrastructure/better-auth-session-resolver'),
+    import('@/middleware/authentication/composition/create-production-request-authenticator'),
     import('@/modules/environment/infrastructure/drizzle-environment-repository'),
     import('@/modules/environment/infrastructure/personal-environment-credential-sync'),
     import('@/modules/environment/infrastructure/posthog-environment-event-sink'),
   ])
 
+  const authentication = createProductionRequestAuthenticator({
+    sessionAuth: createSessionAuth({ secret: secret!, baseURL: baseURL! }),
+    internalSecret:
+      process.env.INTERNAL_JWT_SECRET?.trim() || process.env.INTERNAL_API_SECRET?.trim(),
+  })
   const environment = createEnvironmentModule({
-    sessions: createBetterAuthSessionResolver(
-      createSessionAuth({ secret: secret!, baseURL: baseURL! })
-    ),
+    authentication,
     repository: createDrizzleEnvironmentRepository(),
     cipher: createAesEnvironmentSecretCipher(encryptionKey!),
     credentials: createPersonalEnvironmentCredentialSync(),

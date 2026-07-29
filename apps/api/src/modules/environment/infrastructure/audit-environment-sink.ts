@@ -3,7 +3,7 @@ import type { EnvironmentAuditSink } from '@/modules/environment/application/por
 
 export function createAuditEnvironmentSink(): EnvironmentAuditSink {
   return {
-    updated({ actor, keys, request }) {
+    updated({ actor, authenticationContext, keys, request }) {
       recordAudit({
         actorId: actor.id,
         actorName: actor.name,
@@ -16,6 +16,8 @@ export function createAuditEnvironmentSink(): EnvironmentAuditSink {
           variableCount: keys.length,
           updatedKeys: [...keys],
           scope: 'personal',
+          authenticationMethod: authenticationContext.authenticationMethod,
+          authenticationRequestId: authenticationContext.requestId,
         },
         request,
       })

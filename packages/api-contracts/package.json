@@ -13,6 +13,10 @@
       "types": "./src/errors.ts",
       "default": "./src/errors.ts"
     },
+    "./auth": {
+      "types": "./src/auth.ts",
+      "default": "./src/auth.ts"
+    },
     "./core": {
       "types": "./src/core.ts",
       "default": "./src/core.ts"

@@ -107,6 +107,7 @@
     "@react-email/render": "2.1.0",
     "@sim/api-contracts": "workspace:*",
     "@sim/audit": "workspace:*",
+    "@sim/auth": "workspace:*",
     "@sim/browser-protocol": "workspace:*",
     "@sim/desktop-bridge": "workspace:*",
     "@sim/emcn": "workspace:*",

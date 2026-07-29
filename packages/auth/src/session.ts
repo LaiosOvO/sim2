@@ -18,6 +18,7 @@ export interface ServiceSession {
     image?: string | null
   }
   session: {
+    id?: string
     activeOrganizationId?: string | null
   }
 }
@@ -55,6 +56,7 @@ export function createSessionAuth(options: SessionAuthOptions): SessionAuth {
           image: result.user.image ?? null,
         },
         session: {
+          id: typeof session.id === 'string' ? session.id : undefined,
           activeOrganizationId:
             typeof session.activeOrganizationId === 'string' ? session.activeOrganizationId : null,
         },

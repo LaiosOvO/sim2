@@ -2,6 +2,15 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import {
+  apiKeyRequestContextSchema,
+  authenticatedRequestContextSchema,
+  authenticationErrorSchema,
+  internalRequestContextSchema,
+  publicTokenRequestContextSchema,
+  requestAuthenticationResultSchema,
+  sessionRequestContextSchema,
+} from '@sim/api-contracts/auth'
+import {
   apiVersionResponseSchema,
   healthResponseSchema,
   noInputSchema,
@@ -59,6 +68,13 @@ const schemas: Record<string, JsonSchemaProvider> = {
   RequestIdentity: requestIdentitySchema,
   PageRequest: pageRequestSchema,
   TraceContext: traceContextSchema,
+  SessionRequestContext: sessionRequestContextSchema,
+  ApiKeyRequestContext: apiKeyRequestContextSchema,
+  PublicTokenRequestContext: publicTokenRequestContextSchema,
+  InternalRequestContext: internalRequestContextSchema,
+  AuthenticatedRequestContext: authenticatedRequestContextSchema,
+  AuthenticationError: authenticationErrorSchema,
+  RequestAuthenticationResult: requestAuthenticationResultSchema,
   ExecutionJobV1: executionJobV1Schema,
   ExecutionEventV1: executionEventV1Schema,
   ExecutionJobAdmissionResponseV1: executionJobAdmissionResponseV1Schema,

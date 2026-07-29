@@ -3,10 +3,11 @@ import {
   personalEnvironmentResponseSchema,
   savePersonalEnvironmentBodySchema,
 } from '@sim/api-contracts/environment'
+import type { ApiRequestContext } from '@/http/request-context'
 import type { EnvironmentModuleDependencies } from './ports'
 
 export interface EnvironmentModule {
-  handle(request: Request): Promise<Response | undefined>
+  handle(request: Request, context: ApiRequestContext): Promise<Response | undefined>
 }
 
 function error(message: string, status: number, details?: unknown[]): Response {
@@ -23,14 +24,28 @@ export function createEnvironmentModule(
   dependencies: EnvironmentModuleDependencies
 ): EnvironmentModule {
   return {
-    async handle(request) {
+    async handle(request, context) {
       const { pathname } = new URL(request.url)
       if (pathname !== '/api/environment' || !['GET', 'POST'].includes(request.method)) {
         return undefined
       }
 
-      const actor = await dependencies.sessions.resolve(request.headers)
-      if (!actor) return error('Unauthorized', 401)
+      const authentication = await dependencies.authentication.authenticate({
+        request,
+        requestId: context.requestId,
+        policy: { mode: 'session' },
+      })
+      if (!authentication.ok) {
+        return error(
+          authentication.error.status === 503 ? 'Service unavailable' : 'Unauthorized',
+          authentication.error.status
+        )
+      }
+      const actor = {
+        id: authentication.context.actor.id,
+        name: authentication.context.actor.name ?? null,
+        email: authentication.context.actor.email ?? null,
+      }
 
       if (request.method === 'GET') {
         try {
@@ -81,7 +96,12 @@ export function createEnvironmentModule(
         const keys = Object.keys(parsed.data.variables)
         await dependencies.repository.upsertEncryptedVariables(actor.id, encryptedVariables)
         await dependencies.credentials.synchronize(actor.id, keys)
-        await dependencies.audit.updated({ actor, keys, request })
+        await dependencies.audit.updated({
+          actor,
+          authenticationContext: authentication.context,
+          keys,
+          request,
+        })
         await dependencies.events.updated({ actorId: actor.id, keyCount: keys.length })
         return Response.json(environmentSaveResponseSchema.parse({ success: true }))
       } catch {

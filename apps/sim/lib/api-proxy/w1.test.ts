@@ -1,3 +1,4 @@
+import { createRequestAuthenticator } from '@sim/auth/request-context'
 import { describe, expect, it, vi } from 'vitest'
 import { proxyW1Request } from '@/lib/api-proxy/w1'
 
@@ -72,4 +73,62 @@ describe('W1 Next compatibility proxy', () => {
     expect(response.headers.get('x-sim-api-route')).toBe('status:off')
     expect(fetcher).not.toHaveBeenCalled()
   })
+
+  it.each([
+    ['valid', true, 200],
+    ['revoked', false, 401],
+  ] as const)(
+    'keeps %s session identity and rejection identical across direct API and Next facade',
+    async (cookieValue, expectedOk, expectedStatus) => {
+      const authenticator = createRequestAuthenticator({
+        sessions: {
+          async verify(headers) {
+            return headers.get('cookie') === 'session=valid'
+              ? {
+                  verified: true,
+                  credential: {
+                    actor: {
+                      id: 'user-1',
+                      type: 'user',
+                      name: 'Ada',
+                      email: 'ada@example.com',
+                    },
+                    sessionId: 'session-1',
+                    activeOrganizationId: 'org-1',
+                  },
+                }
+              : { verified: false, reason: 'revoked' }
+          },
+        },
+      })
+      const authenticate = (request: Request) =>
+        authenticator.authenticate({
+          request,
+          requestId: request.headers.get('x-request-id') ?? 'missing-request-id',
+          policy: { mode: 'session' },
+        })
+      const source = new Request('http://web.test/api/environment', {
+        headers: {
+          cookie: `session=${cookieValue}`,
+          'x-request-id': 'request-parity',
+        },
+      })
+      const direct = await authenticate(source.clone())
+      const fetcher = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+        const forwarded = new Request(input, init)
+        const result = await authenticate(forwarded)
+        return Response.json(result, { status: result.ok ? 200 : result.error.status })
+      }) as typeof fetch
+
+      const proxied = await proxyW1Request(source, 'environment', {
+        fetcher,
+        apiBaseUrl: 'http://api.internal:3002',
+        mode: 'api',
+      })
+
+      expect(proxied.status).toBe(expectedStatus)
+      expect(direct.ok).toBe(expectedOk)
+      expect(await proxied.json()).toEqual(direct)
+    }
+  )
 })

@@ -862,6 +862,42 @@ memory 当前是 contract budget，待 isolated-vm/E2B/Daytona adapter 施加真
 不是这些生产进程的 runtime。restricted adapter 默认关闭，只有显式测试开关才能启用；
 未配置生产 Sandbox 时 readiness 为 503。全浏览器传递闭包复核后 `api-or-worker` 仍为 0。
 
+### 19.9 认证、授权与请求上下文 seam
+
+Ticket 09 把旧 `getSession`、`hybrid.ts`、`internal.ts`、API key service 与 public-share
+token lookup 的共同语义收敛到一个 request authentication deep module。路由必须声明
+session、API key、public token、internal 或带显式 allow-list 的 hybrid policy；没有默认
+allow-list。同时携带多种凭证会被拒绝，显式 token/key 失败不会降级回 session。
+
+四种版本化 context 只保存已验证 actor、credential ID、tenant/resource scope、permission
+和 request ID，不保存原始 Cookie、API key、public token 或 JWT。Session 继续使用相同
+Better Auth secret/schema；API key 继续使用 `key_hash` 索引并检查 expiry/ban；public
+token 检查 `is_active` 与 workspace archive；internal JWT 保留既有 issuer/audience/type。
+所有 process env fallback 都留在 API composition root。
+
+授权 seam 统一处理 workspace、organization、workflow 和 resource target。Workspace key
+先做 credential scope 比较，再校验 actor 权限；组织访问查询真实 membership；workflow
+通过 active workflow 的 owning workspace 授权；public token 只能读取它绑定的精确
+`resourceType/resourceId`，不能借此读取整个 workspace/org。Internal service 必须携带匹配
+scope。
+
+Internal/hybrid route 还必须声明接受 `user`、`service` 或 `either` actor。旧 internal JWT
+若没有 scope 仍可验证身份，但不能访问租户资源；后续切流必须升级 minting 或增加显式、
+有时限的 route mapping，不能给旧 token 默认补 `platform:*`。
+
+Public-token-only 路由会忽略浏览器自动携带的 ambient session Cookie，避免登录用户打开
+公链时被错误判定为多凭证；该 Cookie 不参与验证，public token 失败也不会回退 session。
+
+`/api/environment` 已使用这个 seam，并确保认证先于 body validation。Next facade 只透传
+Cookie/Header；valid/revoked session 的直接调用与代理调用 identity/error parity 测试
+通过。Auth 16/16、API 12/12、API Contract 5/5、Next proxy 5/5。Platform Contract 当前
+36 schemas。Auth core 独立 Node build 为 65,660 gzip bytes，Executor、Registry、MCP、
+Sandbox、UI、Feishu marker 为 0；API startup entry 为 18.89 KiB。W1 Node 冷启动复核为
+2,772.04 ms、222.1 MiB RSS，仍低于 5 秒/384 MiB 门槛。
+
+这不是 OAuth/SSO/Auth HTTP 路由迁移完成。Ticket 09 只建立消费 seam；session 创建与吊销、
+OAuth callback、SSO 注册、API key 管理等仍按 W7/API inventory 迁移。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -922,3 +958,9 @@ memory 当前是 contract budget，待 isolated-vm/E2B/Daytona adapter 施加真
 - 修复 `@sim/logger` 在 Node ESM 下使用 CommonJS `require` 导致服务无法直接启动的问题。
 - 建立 API -> execution Worker -> 独立 Sandbox role 的版本化执行骨架，覆盖 job 幂等、
   retry、cancel、timeout、poison dead letter、resource policy audit 与 Node build smoke。
+- 建立统一认证/request-context seam，覆盖 session、API key、public token、internal/hybrid
+  policy、拒绝降级和 workspace/organization/workflow/resource 授权。
+- 将 environment W1 改为认证先于 body validation，并验证 Next facade 与独立 API 的
+  valid/revoked session identity/error 一致。
+- Auth core 独立构建为 65,660 gzip bytes，Executor/Registry/MCP/Sandbox/UI/Feishu
+  marker 为 0；Platform Contract 扩展到 36 schemas。

@@ -42,6 +42,7 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 | `apps/sim/app/workspace` | `apps/sim/app/workspace` | A | 合并画布 UI；禁止恢复浏览器 Executor | canvas/replay E2E |
 | `apps/sim/app/api/**` | `apps/api/src/**` + `apps/sim/app/api/**` compat facade | S | 用 API inventory 定位目标；新行为先入 contract，再加兼容代理 | contract/differential |
 | `apps/sim/app/api/environment`、`health`、`status` | `apps/api/src/modules/environment|system|status` + 原路径 proxy facade | S | W1 已迁移；upstream 行为变化先更新 API contract/adapter，再更新 differential fixture，禁止恢复旧实现 import | W1 C/D/I/P、facade bundle |
+| `apps/sim/lib/auth/hybrid.ts`、`internal.ts` + `lib/api-key/service.ts` + public-share token lookup | `packages/auth/src/request-context.ts|authorization.ts|internal-token.ts` + `apps/api/src/middleware/authentication|authorization/**` | S | Ticket 09 已抽出统一 policy/context；upstream 新凭证类型、secret fallback、key/session/token 行为先更新 contract 和 verifier adapter，禁止把 Next auth barrel 搬入 API | auth contract、tenant isolation、facade parity、closure gate |
 | `apps/sim/background` | `apps/worker/src/jobs` | S | Ticket 08 已建立 job delivery/coordinator/内存 adapter；Trigger.dev 变化映射到 queue port，禁止绕过幂等、retry、cancel 与 event journal | job contract、duplicate/retry/poison |
 | `apps/sim/components` | `apps/sim/components` 或 `apps/sim/features/*/components` | A | 通用 UI 同路径合并；业务 UI 进入 feature | visual/component |
 | `apps/sim/hooks` | `apps/sim/hooks` | A | 合并 hook；所有服务端状态必须走 API contract | hook、contract |
@@ -82,7 +83,8 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 | `apps/sim/lib/api/contracts` | `packages/api-contracts/src` | S |
 | `apps/sim/lib/api/client` | `apps/sim/lib/api-client` | A |
 | `apps/sim/lib/api/server` | `apps/api/src/transport/http` | S |
-| `apps/sim/lib/auth` | `apps/api/src/modules/auth` + `packages/auth` | S |
+| `apps/sim/lib/auth` verification seam | `apps/api/src/middleware/authentication|authorization` + `packages/auth` | S |
+| `apps/sim/lib/auth` OAuth/SSO/session management routes | `apps/api/src/modules/auth` | S |
 | `apps/sim/lib/credentials` | `apps/api/src/modules/credentials` + `packages/runtime-secrets` | S |
 | `apps/sim/lib/db` | `packages/db` + API repository adapters | S |
 | `apps/sim/lib/execution` | `apps/worker/src/execution` | S |
@@ -109,12 +111,18 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 
 ## 6. Sim2 package 对齐
 
-以下 package 全部保持同路径，策略为 M；upstream 更新后正常 merge，并运行各 package 测试：
+以下 package 默认保持同路径，策略为 M；upstream 更新后正常 merge，并运行各 package 测试。
+`packages/auth` 是例外：原有 `session.ts/verify.ts` 继续吸收 upstream，目标新增的
+`request-context.ts/authorization.ts/internal-token.ts` 为 A/T seam，必须把 upstream
+认证语义适配进这些入口，不能被整目录覆盖：
+
+| 例外 package | 策略 | upstream 更新后的动作 |
+| --- | --- | --- |
+| `packages/auth` | A/T | `session.ts/verify.ts` 正常适配；request context、authz、internal token seam 保持目标接口并吸收行为差异 |
 
 | 同路径 package |
 | --- |
 | `packages/audit` |
-| `packages/auth` |
 | `packages/browser-protocol` |
 | `packages/cli` |
 | `packages/db` |

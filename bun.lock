@@ -38,6 +38,7 @@
         "@sim/db": "workspace:*",
         "@sim/execution-contracts": "workspace:*",
         "@sim/logger": "workspace:*",
+        "@sim/platform-authz": "workspace:*",
         "@sim/security": "workspace:*",
         "@sim/utils": "workspace:*",
         "drizzle-orm": "^0.45.2",
@@ -239,6 +240,7 @@
         "@react-email/render": "2.1.0",
         "@sim/api-contracts": "workspace:*",
         "@sim/audit": "workspace:*",
+        "@sim/auth": "workspace:*",
         "@sim/browser-protocol": "workspace:*",
         "@sim/desktop-bridge": "workspace:*",
         "@sim/emcn": "workspace:*",
@@ -559,13 +561,16 @@
       "name": "@sim/auth",
       "version": "0.1.0",
       "dependencies": {
+        "@sim/api-contracts": "workspace:*",
         "@sim/db": "workspace:*",
         "better-auth": "1.6.23",
+        "jose": "6.0.11",
       },
       "devDependencies": {
         "@sim/tsconfig": "workspace:*",
         "@types/node": "24.2.1",
         "typescript": "^7.0.2",
+        "vitest": "^4.1.0",
       },
     },
     "packages/browser-protocol": {

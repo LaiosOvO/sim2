@@ -1,5 +1,6 @@
 import { once } from 'node:events'
 import type { AddressInfo } from 'node:net'
+import { createRequestAuthenticator } from '@sim/auth/request-context'
 import { afterEach, describe, expect, it } from 'vitest'
 import { createApiApplication } from '@/bootstrap/application/create-api-application'
 import { createHttpServer } from '@/bootstrap/lifecycle/create-http-server'
@@ -22,11 +23,19 @@ describe('W1 HTTP server integration', () => {
   it('serves health and forwards a JSON POST body to the application', async () => {
     let saved: Record<string, string> | undefined
     const environment = createEnvironmentModule({
-      sessions: {
-        async resolve() {
-          return { id: 'user-1', name: null, email: null }
+      authentication: createRequestAuthenticator({
+        sessions: {
+          async verify() {
+            return {
+              verified: true,
+              credential: {
+                actor: { id: 'user-1', type: 'user', name: null, email: null },
+                activeOrganizationId: null,
+              },
+            }
+          },
         },
-      },
+      }),
       repository: {
         async getEncryptedVariables() {
           return saved
@@ -64,7 +73,10 @@ describe('W1 HTTP server integration', () => {
 
     const save = await fetch(`${baseUrl}/api/environment`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: {
+        'content-type': 'application/json',
+        cookie: 'session=valid',
+      },
       body: JSON.stringify({ variables: { KEY: 'value' } }),
     })
     expect(save.status).toBe(200)

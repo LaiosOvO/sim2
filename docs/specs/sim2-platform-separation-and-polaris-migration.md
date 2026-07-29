@@ -907,6 +907,13 @@ packages/*
 - The Web application remains on Next and Turbopack in the first phase. A Vite move would be a later framework migration, not an in-place bundler swap.
 - API and Worker are independent applications from the beginning, while legacy Next handlers migrate gradually through compatibility facades.
 - The API is a modular monolith. HTTP transport, middleware, composition, and observability do not own business rules.
+- API routes authenticate before body validation through one versioned request-context seam. Session,
+  API key, public token, and internal identities are explicit policies; hybrid policies have no default
+  allow-list and never downgrade a failed explicit credential to session.
+- Internal/hybrid policies explicitly select user, service, or either actor class; legacy tokens without
+  scopes never receive an implicit platform-wide scope.
+- Public-token identities authorize only their exact resource, workspace keys cannot cross workspace
+  scope, and internal services require explicit target scopes.
 - The Worker is the only application allowed to contain the complete execution closure.
 - Shared packages contain pure contracts, pure workflow types, browser-safe catalog data, or narrowly scoped infrastructure utilities; they do not become a new global barrel.
 - Tool Catalog and Runtime Registry are distinct Modules with distinct interfaces and build outputs.
@@ -939,6 +946,8 @@ packages/*
 
 - Tests exercise Module interfaces and externally observable behavior; they do not reach through interfaces to assert implementation structure.
 - Contract and authentication smoke tests are generated for every HTTP handler.
+- Authentication tests cover missing, expired, revoked, ambiguous and disallowed credentials, plus
+  cross-workspace/organization access and direct-API/compatibility-facade identity parity.
 - Each migrated handler receives old/new differential tests until cutover is complete.
 - Common and diverged routes use normalized fixtures that compare status, headers, response body, error body, idempotency, and side effects.
 - API Modules receive focused integration tests for database, Redis, object storage, transactions, and authorization.

@@ -1,5 +1,5 @@
 {
   "extends": "@sim/tsconfig/library.json",
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*", "vitest.config.ts"],
   "exclude": ["node_modules", "dist"]
 }

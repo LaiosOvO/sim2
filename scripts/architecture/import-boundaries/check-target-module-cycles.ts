@@ -15,7 +15,9 @@ const fixedModuleRoots = [
   'apps/api',
   'apps/worker',
   'packages/api-contracts',
+  'packages/auth',
   'packages/execution-contracts',
+  'packages/platform-authz',
   'packages/tool-catalog',
   'packages/polaris-extension-sdk',
 ]
