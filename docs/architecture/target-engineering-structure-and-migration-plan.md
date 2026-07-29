@@ -227,6 +227,7 @@ apps/api/
 │  │  ├─ catalog/
 │  │  ├─ copilot/
 │  │  ├─ credentials/
+│  │  ├─ data-drains/
 │  │  ├─ files/
 │  │  ├─ folders/
 │  │  ├─ identity/
@@ -320,6 +321,74 @@ block 的多表读取；application 才负责公开 paid flags、billing interva
 credit-availability/usage-gate 应消费这一深模块的稳定 host/payer seam，不能重新横跨旧 helper。
 `scripts/architecture/import-boundaries/check-workspaces-module-boundary.ts` 对 Module、adapter
 与 contract 分层设置 allowlist，阻止这些依赖回流。
+
+当前 Data Drains 读取竖切片的具体目录为：
+
+```text
+apps/api/src/modules/data-drains/
+├─ interface/
+│  └─ create-list-data-drain-runs-handler.ts
+├─ application/
+│  └─ list-data-drain-runs.ts
+├─ ports/
+│  ├─ data-drain-entitlement-reader.ts
+│  └─ data-drain-run-read-repository.ts
+└─ index.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+├─ drizzle-data-drain-entitlement-reader.ts
+└─ drizzle-data-drain-run-read-repository.ts
+
+apps/api/src/config/
+└─ data-drain-runtime.ts
+
+packages/api-contracts/src/
+└─ data-drains.ts
+
+scripts/architecture/import-boundaries/
+└─ check-data-drains-module-boundary.ts
+```
+
+这个读取 Module 只公开“列出一个 organization 内某个 drain 的 bounded run projection”。
+Entitlement adapter 隐藏部署 flag、owner billing-block 与 active Enterprise 查询；run adapter
+先验证 drain 的 organization ownership，再按 `startedAt DESC` 读取。destination 配置、
+serializer/dispatcher registry、Next/Auth implementation、Executor 与 Sandbox 均不属于该
+闭包。专用 boundary gate 对 5 个 Module 文件、2 个 adapter 和 1 个纯 contract 逐层
+allowlist。
+
+`API-1011 credit-availability` 与 `API-1122 usage-gate` 不扩张 Workspaces 或 Data Drains
+Module。它们的目标先建立以下 Billing read-model foundation，再逐路切流：
+
+```text
+apps/api/src/modules/billing/read-model/
+├─ interface/
+│  ├─ create-get-credit-availability-handler.ts
+│  └─ create-get-usage-gate-handler.ts
+├─ application/
+│  ├─ get-credit-availability.ts
+│  └─ get-usage-gate.ts
+├─ domain/
+│  ├─ billing-period.ts
+│  ├─ usage-limits.ts
+│  └─ failure-policy.ts
+├─ ports/
+│  ├─ billing-attribution-reader.ts
+│  ├─ payer-usage-ledger-reader.ts
+│  └─ member-usage-ledger-reader.ts
+└─ index.ts
+
+packages/api-contracts/src/
+└─ billing.ts
+
+apps/api/src/infrastructure/postgres/repositories/
+├─ drizzle-billing-attribution-reader.ts
+├─ drizzle-payer-usage-ledger-reader.ts
+└─ drizzle-member-usage-ledger-reader.ts
+```
+
+Attribution、ledger 与 limit policy 必须分别可测试；enforcement 结果和 display projection
+不能共用一个返回所有内部状态的大对象。上述目录是目标位置，不代表当前阶段已经实现。
+在 donor/native 差分 fixture 通过前，API-1011/API-1122 继续走固定 legacy backend。
 
 当前 Invitations read slices 的具体目录为：
 

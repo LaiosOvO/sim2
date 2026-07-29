@@ -13,6 +13,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { db },
       { readFile },
       { sql },
+      { createDrizzleDataDrainEntitlementReader },
+      { createDrizzleDataDrainRunReadRepository },
       { createDrizzleInvitationReadRepository },
       { createDrizzleOrganizationAccessControlEntitlementReader },
       { createDrizzleOrganizationInvitationHousekeeping },
@@ -27,6 +29,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import('@sim/db'),
       import('node:fs/promises'),
       import('drizzle-orm'),
+      import('@/infrastructure/postgres/repositories/drizzle-data-drain-entitlement-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-data-drain-run-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
       import(
         '@/infrastructure/postgres/repositories/drizzle-organization-access-control-entitlement-reader'
@@ -52,6 +56,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       `create type invitation_membership_intent as enum ('internal', 'external')`,
       `create type invitation_status as enum ('pending', 'accepted', 'rejected', 'cancelled', 'expired')`,
       `create type permission_type as enum ('admin', 'write', 'read')`,
+      `create type data_drain_run_status as enum ('running', 'success', 'failed')`,
+      `create type data_drain_run_trigger as enum ('cron', 'manual')`,
       `create table "user" (
         id text primary key,
         name text not null,
@@ -124,6 +130,24 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         period_start timestamp,
         billing_interval text,
         metadata jsonb
+      )`,
+      `create table data_drains (
+        id text primary key,
+        organization_id text not null references organization(id)
+      )`,
+      `create table data_drain_runs (
+        id text primary key,
+        drain_id text not null references data_drains(id),
+        status data_drain_run_status not null,
+        trigger data_drain_run_trigger not null,
+        started_at timestamp not null,
+        finished_at timestamp,
+        rows_exported integer not null default 0,
+        bytes_written bigint not null default 0,
+        cursor_before text,
+        cursor_after text,
+        error text,
+        locators jsonb
       )`,
       `create table invitation (
         id text primary key,
@@ -232,6 +256,20 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
           '2026-07-02T00:00:00Z', null, null),
          ('subscription-personal-enterprise', 'enterprise', 'member-1', 'active',
           '2026-07-03T00:00:00Z', 'month', null)`,
+      `insert into data_drains (id, organization_id) values
+         ('drain-1', 'organization-1'),
+         ('drain-other', 'organization-other')`,
+      `insert into data_drain_runs (
+         id, drain_id, status, trigger, started_at, finished_at,
+         rows_exported, bytes_written, cursor_before, cursor_after, error, locators
+       ) values
+         ('run-new', 'drain-1', 'success', 'manual', '2026-07-30T02:00:00Z',
+          '2026-07-30T02:01:00Z', 12, 345, 'before', 'after', null,
+          '["s3://bucket/new"]'),
+         ('run-old', 'drain-1', 'failed', 'cron', '2026-07-29T02:00:00Z',
+          '2026-07-29T02:01:00Z', 0, 0, null, null, 'delivery failed', '[]'),
+         ('run-other', 'drain-other', 'running', 'cron', '2026-07-31T02:00:00Z',
+          null, 0, 0, null, null, null, '[]')`,
       `insert into invitation (
          id, kind, email, inviter_id, organization_id, membership_intent,
          role, status, token, expires_at, created_at, updated_at
@@ -438,6 +476,36 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { id: 'workspace-denied', name: 'Secret' },
     ])
 
+    const dataDrainEntitlement = createDrizzleDataDrainEntitlementReader({
+      billingEnabled: true,
+      dataDrainsEnabled: false,
+      accessControlEnabled: false,
+      hosted: true,
+    })
+    await expect(dataDrainEntitlement.isEntitled('organization-1')).resolves.toBe(true)
+    const dataDrainRuns = createDrizzleDataDrainRunReadRepository()
+    await expect(
+      dataDrainRuns.listForOrganization('organization-1', 'drain-1', 1)
+    ).resolves.toEqual([
+      {
+        id: 'run-new',
+        drainId: 'drain-1',
+        status: 'success',
+        trigger: 'manual',
+        startedAt: new Date('2026-07-30T02:00:00.000Z'),
+        finishedAt: new Date('2026-07-30T02:01:00.000Z'),
+        rowsExported: 12,
+        bytesWritten: 345,
+        cursorBefore: 'before',
+        cursorAfter: 'after',
+        error: null,
+        locators: ['s3://bucket/new'],
+      },
+    ])
+    await expect(
+      dataDrainRuns.listForOrganization('organization-other', 'drain-1', 25)
+    ).resolves.toBeNull()
+
     const cloudEntitlement = createDrizzleOrganizationAccessControlEntitlementReader({
       billingEnabled: true,
       accessControlEnabled: false,
@@ -446,6 +514,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
     await expect(cloudEntitlement.isEntitled('organization-1')).resolves.toBe(true)
     await db.execute(sql`update user_stats set billing_blocked = true where id = 'stats-owner'`)
     await expect(cloudEntitlement.isEntitled('organization-1')).resolves.toBe(false)
+    await expect(dataDrainEntitlement.isEntitled('organization-1')).resolves.toBe(false)
     await expect(
       createDrizzleOrganizationAccessControlEntitlementReader({
         billingEnabled: true,

@@ -18,6 +18,15 @@ import {
   readinessResponseSchema,
 } from '@sim/api-contracts/core'
 import {
+  dataDrainIdV1Schema,
+  dataDrainRunStatusV1Schema,
+  dataDrainRunTriggerV1Schema,
+  dataDrainRunV1Schema,
+  listDataDrainRunsParamsV1Schema,
+  listDataDrainRunsQueryV1Schema,
+  listDataDrainRunsResponseV1Schema,
+} from '@sim/api-contracts/data-drains'
+import {
   environmentSaveResponseSchema,
   personalEnvironmentResponseSchema,
   savePersonalEnvironmentBodySchema,
@@ -105,6 +114,13 @@ const schemas: Record<string, JsonSchemaProvider> = {
   PublicStatusResponse: publicStatusResponseSchema,
   ReadinessResponse: readinessResponseSchema,
   ApiVersionResponse: apiVersionResponseSchema,
+  DataDrainIdV1: dataDrainIdV1Schema,
+  DataDrainRunStatusV1: dataDrainRunStatusV1Schema,
+  DataDrainRunTriggerV1: dataDrainRunTriggerV1Schema,
+  DataDrainRunV1: dataDrainRunV1Schema,
+  ListDataDrainRunsParamsV1: listDataDrainRunsParamsV1Schema,
+  ListDataDrainRunsQueryV1: listDataDrainRunsQueryV1Schema,
+  ListDataDrainRunsResponseV1: listDataDrainRunsResponseV1Schema,
   SavePersonalEnvironmentBody: savePersonalEnvironmentBodySchema,
   PersonalEnvironmentResponse: personalEnvironmentResponseSchema,
   EnvironmentSaveResponse: environmentSaveResponseSchema,

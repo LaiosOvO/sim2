@@ -39,6 +39,16 @@ export {
   readinessResponseSchema,
   statusTypeSchema,
 } from './core'
+export type { DataDrainRunV1, ListDataDrainRunsResponseV1 } from './data-drains'
+export {
+  dataDrainIdV1Schema,
+  dataDrainRunStatusV1Schema,
+  dataDrainRunTriggerV1Schema,
+  dataDrainRunV1Schema,
+  listDataDrainRunsParamsV1Schema,
+  listDataDrainRunsQueryV1Schema,
+  listDataDrainRunsResponseV1Schema,
+} from './data-drains'
 export type {
   EnvironmentSaveResponse,
   EnvironmentVariable,

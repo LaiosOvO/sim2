@@ -21,6 +21,10 @@
       "types": "./src/core.ts",
       "default": "./src/core.ts"
     },
+    "./data-drains": {
+      "types": "./src/data-drains.ts",
+      "default": "./src/data-drains.ts"
+    },
     "./environment": {
       "types": "./src/environment.ts",
       "default": "./src/environment.ts"

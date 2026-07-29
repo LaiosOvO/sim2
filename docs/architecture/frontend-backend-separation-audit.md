@@ -1165,6 +1165,37 @@ facade 最大仍为 1,485 gzip bytes；目标图 22 packages/141 source nodes、
 TypeScript 43/43 tasks 通过。专用 boundary gate 检查 7 个 Workspaces Module 文件、1 个
 adapter 和 1 个 contract，0 violation；目标结构为 50 roots / 56 required files。
 
+### 19.19 W2 原生 Data Drain Runs 与 Billing Foundation 延后
+
+第十条原生替换是
+`API-0209 GET /api/organizations/[id]/data-drains/[drainId]/runs`。Sim2 与 Polaris donor
+route SHA-256 相同。旧 route 虽只有 37 行，却把 Next、Auth、DB/Drizzle、Data Drain
+access helper 与 serializer 放在一起；access helper 又混合 membership、部署开关、
+Enterprise subscription 与 role error response。若继续复用，读取 run metadata 的路径仍会
+绑定 destination 侧 registry 和 legacy Billing helper。
+
+目标 Data Drains Module 以 `ListDataDrainRunsUseCase.execute` 作为深模块 interface，
+通过 `DataDrainEntitlementReader` 和 `DataDrainRunReadRepository` 两个窄 port 隐藏部署/
+权益与 persistence。Application 固定 membership -> deployment/enterprise -> owner/admin
+-> validation -> organization-scoped drain -> newest-first bounded runs 的兼容顺序。专用
+boundary gate 禁止 Module/adapters 导入 Next、Auth implementation、legacy helper、
+destination registry、Executor 或 Sandbox。
+
+真实 disposable PostgreSQL 16 fixture 验证 active Enterprise、owner billing-block、
+newest-first/limit 和跨 organization drain concealment。当前 W2 为 native 10/22、legacy
+12/22；API 104 passed（1 skipped），W2 focused 92 passed（1 skipped），API Contract
+15/15，Platform Contract 76 schemas。API build 共 1,039 modules，entry 29.31 KiB；
+Data Drains module/run adapter/entitlement adapter chunks 为 6.10/1.35/1.69 KiB；Next
+22 facade 最大仍为 1,485 gzip bytes。目标结构 53 roots/66 files，目标图
+22 packages/150 source nodes、0 cycle，全仓 TypeScript 43/43 tasks 通过；专用 boundary
+gate 检查 5 个 Module 文件、2 个 adapters 和 1 个 contract，0 violation。
+
+同时审计 `API-1011 credit-availability` 与 `API-1122 usage-gate` 后确认，两者下游
+`checkAttributedUsageLimits` 包含 payer attribution、actor/payer block、账期 ledger、
+organization pool、member cap、daily refresh、goodwill/on-demand limit 与不同失败策略。
+当前不复制这套 600+ 行 Billing Core；先建立独立、版本化的 attribution/ledger/limit-policy
+read-model foundation，再用 donor/native differential fixture 原生切流。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1265,3 +1296,8 @@ adapter 和 1 个 contract，0 violation；目标结构为 50 roots / 56 require
   收敛 workspace/host membership/payer subscription/billing block，切断 React cache 与旧
   Billing Core，并以真实 Postgres 验证 org newest、personal plan priority、block source 与
   archived concealment；新增专用 Workspaces boundary gate；当前 native 9/22、legacy 13/22。
+- 将 `API-0209 data drain runs` 切为原生 Data Drains Module；分离 entitlement 与
+  organization-scoped run ports，切断 destination registry、旧 Billing helper、
+  Executor/Sandbox，并以真实 Postgres 验证 plan/block/tenant/limit；新增专用 boundary
+  gate；当前 native 10/22、legacy 12/22。API-1011/API-1122 延后到 Billing read-model
+  foundation 建立后迁移。

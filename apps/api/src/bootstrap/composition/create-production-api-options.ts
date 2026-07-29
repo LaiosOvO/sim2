@@ -2,6 +2,8 @@ import type { RequestAccessResolver } from '@sim/auth/authorization'
 import type { RequestAuthenticator } from '@sim/auth/request-context'
 import type { PersonalIdentityProfileRepository } from '@sim/biz-identity'
 import type { ApiApplicationOptions } from '@/bootstrap/application/create-api-application'
+import { readDataDrainRuntimeConfig } from '@/config/data-drain-runtime'
+import type { DataDrainEntitlementReader, DataDrainRunReadRepository } from '@/modules/data-drains'
 import {
   createEnvironmentModule,
   type EnvironmentModule,
@@ -74,11 +76,13 @@ async function createTenantRead(
   authentication: RequestAuthenticator | undefined
 ): Promise<TenantReadModule> {
   const baseUrl = process.env.SIM_LEGACY_API_BASE_URL?.trim()
+  const dataDrainRuntime = readDataDrainRuntimeConfig()
   const [
     { createTenantReadModule },
     { createRoutedTenantReadBackend, createUnavailableTenantReadBackend },
     { createHttpLegacyTenantReadBackend },
     { createGitHubStarsHandler },
+    { createListDataDrainRunsHandler, createListDataDrainRunsUseCase },
     {
       createListMyInvitationsHandler,
       createListMyInvitationsUseCase,
@@ -105,6 +109,7 @@ async function createTenantRead(
     import('@/modules/tenant-read/application/create-routed-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/http-legacy-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
+    import('@/modules/data-drains'),
     import('@/modules/invitations'),
     import('@/modules/organizations'),
     import('@/modules/permission-groups'),
@@ -122,6 +127,16 @@ async function createTenantRead(
     },
     async listForAccessibleWorkspaces() {
       throw new Error('Invitation database is not configured')
+    },
+  }
+  let dataDrainRunRepository: DataDrainRunReadRepository = {
+    async listForOrganization() {
+      throw new Error('Data drain database is not configured')
+    },
+  }
+  let dataDrainEntitlement: DataDrainEntitlementReader = {
+    async isEntitled() {
+      return false
     },
   }
   let workspaceMemberRepository: WorkspaceMemberReadRepository = {
@@ -183,6 +198,8 @@ async function createTenantRead(
   }
   if (process.env.DATABASE_URL) {
     const [
+      { createDrizzleDataDrainEntitlementReader },
+      { createDrizzleDataDrainRunReadRepository },
       { createDrizzleInvitationReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
@@ -195,6 +212,8 @@ async function createTenantRead(
       { createDrizzleAccessResolver },
       { readAccessControlRuntimeConfig },
     ] = await Promise.all([
+      import('@/infrastructure/postgres/repositories/drizzle-data-drain-entitlement-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-data-drain-run-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-personal-identity-profile-repository'),
@@ -215,6 +234,8 @@ async function createTenantRead(
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
       import('@/config/enterprise-runtime'),
     ])
+    dataDrainEntitlement = createDrizzleDataDrainEntitlementReader(dataDrainRuntime)
+    dataDrainRunRepository = createDrizzleDataDrainRunReadRepository()
     invitationRepository = createDrizzleInvitationReadRepository()
     workspaceMemberRepository = createDrizzleWorkspaceMemberReadRepository()
     personalIdentityRepository = createDrizzlePersonalIdentityProfileRepository()
@@ -230,6 +251,7 @@ async function createTenantRead(
   }
   const nativeHandlers: Record<
     | 'API-0137'
+    | 'API-0209'
     | 'API-0235'
     | 'API-0241'
     | 'API-0243'
@@ -242,6 +264,14 @@ async function createTenantRead(
   > = {
     'API-0137': createListMyInvitationsHandler(
       createListMyInvitationsUseCase(invitationRepository)
+    ),
+    'API-0209': createListDataDrainRunsHandler(
+      createListDataDrainRunsUseCase({
+        access: accessResolver,
+        entitlement: dataDrainEntitlement,
+        repository: dataDrainRunRepository,
+        runtime: dataDrainRuntime,
+      })
     ),
     'API-0235': createListOrganizationRosterHandler(
       createListOrganizationRosterUseCase({

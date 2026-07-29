@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { authenticatedRequestContextSchema, requestAuthenticationResultSchema } from '../src/auth'
+import {
+  listDataDrainRunsQueryV1Schema,
+  listDataDrainRunsResponseV1Schema,
+} from '../src/data-drains'
 import { apiErrorEnvelopeSchema } from '../src/errors'
 import {
   listMyInvitationsResponseV1Schema,
@@ -143,6 +147,7 @@ describe('API contract compatibility', () => {
         .map((route) => route.inventoryId)
     ).toEqual([
       'API-0137',
+      'API-0209',
       'API-0235',
       'API-0241',
       'API-0243',
@@ -191,6 +196,33 @@ describe('API contract compatibility', () => {
     })
 
     expect(parsed.invitations[0]).not.toHaveProperty('token')
+  })
+
+  it('defines bounded data-drain run pagination and strips persistence-only fields', () => {
+    expect(listDataDrainRunsQueryV1Schema.parse({})).toEqual({ limit: 25 })
+    expect(listDataDrainRunsQueryV1Schema.parse({ limit: '200' })).toEqual({ limit: 200 })
+    expect(() => listDataDrainRunsQueryV1Schema.parse({ limit: '201' })).toThrow()
+
+    const parsed = listDataDrainRunsResponseV1Schema.parse({
+      runs: [
+        {
+          id: 'run-1',
+          drainId: 'drain-1',
+          status: 'success',
+          trigger: 'cron',
+          startedAt: '2026-07-30T00:00:00.000Z',
+          finishedAt: null,
+          rowsExported: 10,
+          bytesWritten: 100,
+          cursorBefore: null,
+          cursorAfter: 'cursor-1',
+          error: null,
+          locators: ['s3://bucket/key'],
+          destinationCredentials: 'must-not-cross-the-contract',
+        },
+      ],
+    })
+    expect(parsed.runs[0]).not.toHaveProperty('destinationCredentials')
   })
 
   it('keeps the existing token only in the workspace invitation management contract', () => {
