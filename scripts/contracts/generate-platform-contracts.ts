@@ -33,8 +33,14 @@ import {
   workspacePermissionV1Schema,
 } from '@sim/api-contracts/invitations'
 import {
+  getOrganizationRosterResponseV1Schema,
   listOrganizationWorkspacesResponseV1Schema,
   organizationIdV1Schema,
+  organizationRosterMemberV1Schema,
+  organizationRosterPendingInvitationV1Schema,
+  organizationRosterV1Schema,
+  organizationRosterWorkspaceAccessV1Schema,
+  organizationRosterWorkspacePermissionV1Schema,
   organizationWorkspaceRefV1Schema,
 } from '@sim/api-contracts/organizations'
 import { pageRequestSchema } from '@sim/api-contracts/pagination'
@@ -102,6 +108,12 @@ const schemas: Record<string, JsonSchemaProvider> = {
   OrganizationIdV1: organizationIdV1Schema,
   OrganizationWorkspaceRefV1: organizationWorkspaceRefV1Schema,
   ListOrganizationWorkspacesResponseV1: listOrganizationWorkspacesResponseV1Schema,
+  OrganizationRosterWorkspacePermissionV1: organizationRosterWorkspacePermissionV1Schema,
+  OrganizationRosterWorkspaceAccessV1: organizationRosterWorkspaceAccessV1Schema,
+  OrganizationRosterMemberV1: organizationRosterMemberV1Schema,
+  OrganizationRosterPendingInvitationV1: organizationRosterPendingInvitationV1Schema,
+  OrganizationRosterV1: organizationRosterV1Schema,
+  GetOrganizationRosterResponseV1: getOrganizationRosterResponseV1Schema,
   PageRequest: pageRequestSchema,
   TraceContext: traceContextSchema,
   SessionRequestContext: sessionRequestContextSchema,

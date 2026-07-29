@@ -15,6 +15,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { sql },
       { createDrizzleInvitationReadRepository },
       { createDrizzleOrganizationAccessControlEntitlementReader },
+      { createDrizzleOrganizationInvitationHousekeeping },
+      { createDrizzleOrganizationRosterReadRepository },
       { createDrizzleOrganizationWorkspaceReadRepository },
       { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleWorkspaceMemberReadRepository },
@@ -27,6 +29,8 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import(
         '@/infrastructure/postgres/repositories/drizzle-organization-access-control-entitlement-reader'
       ),
+      import('@/infrastructure/postgres/repositories/drizzle-organization-invitation-housekeeping'),
+      import('@/infrastructure/postgres/repositories/drizzle-organization-roster-read-repository'),
       import(
         '@/infrastructure/postgres/repositories/drizzle-organization-workspace-read-repository'
       ),
@@ -64,13 +68,15 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         user_id text not null references "user"(id),
         entity_type text not null,
         entity_id text not null,
-        permission_type permission_type not null
+        permission_type permission_type not null,
+        created_at timestamp not null default now()
       )`,
       `create table member (
         id text primary key,
         user_id text not null references "user"(id),
         organization_id text not null references organization(id),
-        role text not null
+        role text not null,
+        created_at timestamp not null default now()
       )`,
       `create table user_stats (
         id text primary key,
@@ -117,18 +123,28 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('org-owner-1', 'Oscar', 'oscar@example.com', true, null, 'admin',
           '2026-07-05T00:00:00Z')`,
       `insert into organization (id, name)
-       values ('organization-1', 'Platform')`,
+       values
+         ('organization-1', 'Platform'),
+         ('organization-other', 'Other')`,
       `insert into workspace (id, name, organization_id, archived_at) values
          ('workspace-1', 'Runtime', 'organization-1', null),
          ('workspace-denied', 'Secret', 'organization-1', null),
-         ('workspace-archived', 'Archive', 'organization-1', '2026-07-01T00:00:00Z')`,
-      `insert into permissions (id, user_id, entity_type, entity_id, permission_type) values
-         ('permission-viewer', 'viewer-1', 'workspace', 'workspace-1', 'read'),
-         ('permission-member', 'member-1', 'workspace', 'workspace-1', 'write'),
-         ('permission-archived', 'viewer-1', 'workspace', 'workspace-archived', 'admin')`,
-      `insert into member (id, user_id, organization_id, role) values
-         ('membership-admin', 'org-admin-1', 'organization-1', 'admin'),
-         ('membership-owner', 'org-owner-1', 'organization-1', 'owner')`,
+         ('workspace-archived', 'Archive', 'organization-1', '2026-07-01T00:00:00Z'),
+         ('workspace-other', 'Other Secret', 'organization-other', null)`,
+      `insert into permissions (
+         id, user_id, entity_type, entity_id, permission_type, created_at
+       ) values
+         ('permission-viewer', 'viewer-1', 'workspace', 'workspace-1', 'read',
+          '2026-07-08T00:00:00Z'),
+         ('permission-member', 'member-1', 'workspace', 'workspace-1', 'write',
+          '2026-07-09T00:00:00Z'),
+         ('permission-archived', 'viewer-1', 'workspace', 'workspace-archived', 'admin',
+          '2026-07-07T00:00:00Z')`,
+      `insert into member (id, user_id, organization_id, role, created_at) values
+         ('membership-admin', 'org-admin-1', 'organization-1', 'admin',
+          '2026-07-04T00:00:00Z'),
+         ('membership-owner', 'org-owner-1', 'organization-1', 'owner',
+          '2026-07-05T00:00:00Z')`,
       `insert into user_stats (id, user_id, billing_blocked)
        values ('stats-owner', 'org-owner-1', false)`,
       `insert into subscription (id, plan, reference_id, status)
@@ -387,5 +403,61 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       ],
     })
     expect(JSON.stringify(personalProfile)).not.toContain('must-not-leak')
+
+    await db.execute(sql`
+      insert into invitation_workspace_grant (id, invitation_id, workspace_id, permission)
+      values ('grant-cross-organization', 'invitation-visible', 'workspace-other', 'admin')
+    `)
+    const housekeeping = createDrizzleOrganizationInvitationHousekeeping()
+    await housekeeping.expireStalePending('organization-1')
+    const roster =
+      await createDrizzleOrganizationRosterReadRepository().loadAdminSnapshot('organization-1')
+
+    expect(roster.members).toEqual([
+      {
+        memberId: 'membership-admin',
+        userId: 'org-admin-1',
+        role: 'admin',
+        createdAt: new Date('2026-07-04T00:00:00.000Z'),
+        name: 'Olivia',
+        email: 'olivia@example.com',
+        image: null,
+      },
+      {
+        memberId: 'membership-owner',
+        userId: 'org-owner-1',
+        role: 'owner',
+        createdAt: new Date('2026-07-05T00:00:00.000Z'),
+        name: 'Oscar',
+        email: 'oscar@example.com',
+        image: null,
+      },
+    ])
+    expect(roster.workspaces).toEqual([
+      { id: 'workspace-1', name: 'Runtime' },
+      { id: 'workspace-denied', name: 'Secret' },
+    ])
+    expect(roster.permissions.map((permission) => permission.workspaceId)).not.toContain(
+      'workspace-archived'
+    )
+    expect(roster.permissions.map((permission) => permission.userId).sort()).toEqual([
+      'member-1',
+      'viewer-1',
+    ])
+    expect(roster.pendingInvitations.map((record) => record.id).sort()).toEqual([
+      'invitation-other-user',
+      'invitation-visible',
+    ])
+    expect(roster.invitationGrants).toEqual([
+      {
+        invitationId: 'invitation-visible',
+        workspaceId: 'workspace-1',
+        permission: 'write',
+      },
+    ])
+    const expiredInvitation = await db.execute(
+      sql`select status from invitation where id = 'invitation-expired'`
+    )
+    expect(expiredInvitation[0]?.status).toBe('expired')
   })
 })

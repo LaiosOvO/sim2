@@ -1081,6 +1081,36 @@ W2 focused 66 passed，API Contract 11/11，Platform Contract 55 schemas。API e
 0.64/1.83/0.87 KiB；Next 22 facade 最大仍为 1,485 gzip bytes；目标图 22 packages/125
 source nodes、0 cycle；全仓 TypeScript 43/43 tasks 通过。
 
+### 19.16 W2 原生 Organization Roster 与 GET 写副作用隔离
+
+第七条原生替换是 `API-0235 GET /api/organizations/[id]/roster`。Sim2 与 Polaris donor
+SHA-256 相同。旧 route 在约 280 行 handler 内同时做 session、organization membership、
+member/admin projection、members/workspaces/permissions/external users/invitations/grants
+查询，并在 GET 中调用 `expireStalePendingInvitationsForOrganization` 更新数据库。复制这段
+实现会把 Drizzle、Auth、platform-authz 和 Invitations Core 重新拉进 Next 编译闭包。
+
+目标将外部 interface 收敛为一个 `ListOrganizationRosterUseCase.execute`。普通 member
+只读取 organization members，并将每人的 workspaces、pending invitations 和顶层
+workspaces 留空；owner/admin 读取单个 admin snapshot，由 application 统一派生管理员全
+workspace access、普通 member 显式权限、external user 合并、earliest permission timestamp
+和 invitation projection。
+
+旧 GET 的 stale update 没有被藏回 repository，而是成为显式、best-effort
+`OrganizationInvitationHousekeeping` port。Application 保证 housekeeping 失败不令 roster
+失败，并保证 admin snapshot 在 cleanup 之后读取。该 seam 后续可以替换成周期 job；在完成
+seat/billing/read 状态依赖审计前仍保留同步兼容行为。
+
+本阶段还做了一个明确的 tenant-isolation hardening：donor 的 invitation grant 查询只按
+invitation id，脏数据可能指向其他 organization 或 archived workspace；新 adapter 同时限定
+目标 organization 的 active workspace ids。真实 disposable PostgreSQL 16 fixture 验证 stale
+状态更新、archive 排除和 cross-organization grant 不泄露。
+
+当前 W2 为 native 7/22、legacy 15/22；API 84 passed（1 个 disposable DB test 默认跳过），
+W2 focused 72 passed，API Contract 12/12，Platform Contract 61 schemas。API entry
+25.73 KiB；roster/housekeeping lazy chunks 分别为 3.10/0.69 KiB；Next 22 facade 最大仍为
+1,485 gzip bytes；目标图 22 packages/131 source nodes、0 cycle；全仓 TypeScript 43/43
+tasks 通过。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1169,3 +1199,7 @@ source nodes、0 cycle；全仓 TypeScript 43/43 tasks 通过。
 - 将 `API-0241 organization workspaces` 切为原生 Organizations Module；拆出 admin
   authorization、enterprise entitlement 和 workspace read ports，以真实 Postgres 验证
   cloud/self-host/billing-block 分支及 archived 兼容；当前 native 6/22、legacy 16/22。
+- 将 `API-0235 organization roster` 切为原生 Organizations Module；把 member/admin
+  projection、external grouping 和 invitation hydration 藏在单一 use-case interface 后，
+  把 GET stale update 隔离为显式 best-effort housekeeping port，并以真实 Postgres 验证
+  archive/cross-organization grant 隔离；当前 native 7/22、legacy 15/22。

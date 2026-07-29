@@ -5,7 +5,10 @@ import {
   listMyInvitationsResponseV1Schema,
   listWorkspaceInvitationsResponseV1Schema,
 } from '../src/invitations'
-import { listOrganizationWorkspacesResponseV1Schema } from '../src/organizations'
+import {
+  getOrganizationRosterResponseV1Schema,
+  listOrganizationWorkspacesResponseV1Schema,
+} from '../src/organizations'
 import { pageRequestSchema } from '../src/pagination'
 import { traceContextSchema } from '../src/tracing'
 import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
@@ -133,7 +136,7 @@ describe('API contract compatibility', () => {
       w2TenantReadRouteContracts
         .filter((route) => route.backend === 'native')
         .map((route) => route.inventoryId)
-    ).toEqual(['API-0137', 'API-0241', 'API-0294', 'API-1057', 'API-1060', 'API-1124'])
+    ).toEqual(['API-0137', 'API-0235', 'API-0241', 'API-0294', 'API-1057', 'API-1060', 'API-1124'])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',
@@ -233,6 +236,46 @@ describe('API contract compatibility', () => {
     expect(parsed).toEqual({
       workspaces: [{ id: 'workspace-1', name: 'Platform' }],
     })
+  })
+
+  it('keeps organization roster persistence and invitation token fields off the wire', () => {
+    const parsed = getOrganizationRosterResponseV1Schema.parse({
+      success: true,
+      data: {
+        members: [
+          {
+            memberId: 'membership-1',
+            userId: 'user-1',
+            role: 'member',
+            createdAt: '2026-07-30T00:00:00.000Z',
+            name: 'Ada',
+            email: 'ada@example.com',
+            image: null,
+            workspaces: [],
+            organizationId: 'organization-1',
+          },
+        ],
+        pendingInvitations: [
+          {
+            id: 'invitation-1',
+            email: 'grace@example.com',
+            role: 'member',
+            kind: 'organization',
+            membershipIntent: 'internal',
+            createdAt: '2026-07-30T00:00:00.000Z',
+            expiresAt: '2026-08-06T00:00:00.000Z',
+            inviteeName: null,
+            inviteeImage: null,
+            workspaces: [],
+            token: 'must-not-cross-the-contract',
+          },
+        ],
+        workspaces: [],
+      },
+    })
+
+    expect(parsed.data.members[0]).not.toHaveProperty('organizationId')
+    expect(parsed.data.pendingInvitations[0]).not.toHaveProperty('token')
   })
 
   it('keeps raw provider profiles outside the personal profile response', () => {

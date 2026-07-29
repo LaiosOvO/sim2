@@ -13,6 +13,8 @@ import type {
 } from '@/modules/invitations'
 import type {
   OrganizationAccessControlEntitlementReader,
+  OrganizationInvitationHousekeeping,
+  OrganizationRosterReadRepository,
   OrganizationWorkspaceReadRepository,
 } from '@/modules/organizations'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
@@ -79,7 +81,12 @@ async function createTenantRead(
       createListWorkspaceInvitationsHandler,
       createListWorkspaceInvitationsUseCase,
     },
-    { createListOrganizationWorkspacesHandler, createListOrganizationWorkspacesUseCase },
+    {
+      createListOrganizationRosterHandler,
+      createListOrganizationRosterUseCase,
+      createListOrganizationWorkspacesHandler,
+      createListOrganizationWorkspacesUseCase,
+    },
     { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
@@ -116,6 +123,19 @@ async function createTenantRead(
       throw new Error('Organization database is not configured')
     },
   }
+  let organizationRosterRepository: OrganizationRosterReadRepository = {
+    async listMembers() {
+      throw new Error('Organization database is not configured')
+    },
+    async loadAdminSnapshot() {
+      throw new Error('Organization database is not configured')
+    },
+  }
+  let organizationInvitationHousekeeping: OrganizationInvitationHousekeeping = {
+    async expireStalePending() {
+      throw new Error('Organization database is not configured')
+    },
+  }
   let organizationEntitlement: OrganizationAccessControlEntitlementReader = {
     async isEntitled() {
       return false
@@ -144,6 +164,8 @@ async function createTenantRead(
       { createDrizzlePersonalIdentityProfileRepository },
       { createDrizzleOrganizationWorkspaceReadRepository },
       { createDrizzleOrganizationAccessControlEntitlementReader },
+      { createDrizzleOrganizationRosterReadRepository },
+      { createDrizzleOrganizationInvitationHousekeeping },
       { createDrizzleAccessResolver },
       { readAccessControlRuntimeConfig },
     ] = await Promise.all([
@@ -156,6 +178,8 @@ async function createTenantRead(
       import(
         '@/infrastructure/postgres/repositories/drizzle-organization-access-control-entitlement-reader'
       ),
+      import('@/infrastructure/postgres/repositories/drizzle-organization-roster-read-repository'),
+      import('@/infrastructure/postgres/repositories/drizzle-organization-invitation-housekeeping'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
       import('@/config/enterprise-runtime'),
     ])
@@ -163,17 +187,26 @@ async function createTenantRead(
     workspaceMemberRepository = createDrizzleWorkspaceMemberReadRepository()
     personalIdentityRepository = createDrizzlePersonalIdentityProfileRepository()
     organizationWorkspaceRepository = createDrizzleOrganizationWorkspaceReadRepository()
+    organizationRosterRepository = createDrizzleOrganizationRosterReadRepository()
+    organizationInvitationHousekeeping = createDrizzleOrganizationInvitationHousekeeping()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
       readAccessControlRuntimeConfig()
     )
     accessResolver = createDrizzleAccessResolver()
   }
   const nativeHandlers: Record<
-    'API-0137' | 'API-0241' | 'API-0294' | 'API-1057' | 'API-1060' | 'API-1124',
+    'API-0137' | 'API-0235' | 'API-0241' | 'API-0294' | 'API-1057' | 'API-1060' | 'API-1124',
     NativeTenantReadHandler
   > = {
     'API-0137': createListMyInvitationsHandler(
       createListMyInvitationsUseCase(invitationRepository)
+    ),
+    'API-0235': createListOrganizationRosterHandler(
+      createListOrganizationRosterUseCase({
+        access: accessResolver,
+        housekeeping: organizationInvitationHousekeeping,
+        repository: organizationRosterRepository,
+      })
     ),
     'API-0241': createListOrganizationWorkspacesHandler(
       createListOrganizationWorkspacesUseCase({

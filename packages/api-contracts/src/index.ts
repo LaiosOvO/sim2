@@ -76,12 +76,24 @@ export {
   workspacePermissionV1Schema,
 } from './invitations'
 export type {
+  GetOrganizationRosterResponseV1,
   ListOrganizationWorkspacesResponseV1,
+  OrganizationRosterMemberV1,
+  OrganizationRosterPendingInvitationV1,
+  OrganizationRosterV1,
+  OrganizationRosterWorkspaceAccessV1,
+  OrganizationRosterWorkspacePermissionV1,
   OrganizationWorkspaceRefV1,
 } from './organizations'
 export {
+  getOrganizationRosterResponseV1Schema,
   listOrganizationWorkspacesResponseV1Schema,
   organizationIdV1Schema,
+  organizationRosterMemberV1Schema,
+  organizationRosterPendingInvitationV1Schema,
+  organizationRosterV1Schema,
+  organizationRosterWorkspaceAccessV1Schema,
+  organizationRosterWorkspacePermissionV1Schema,
   organizationWorkspaceRefV1Schema,
 } from './organizations'
 export type { PageRequest } from './pagination'

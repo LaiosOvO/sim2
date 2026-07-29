@@ -861,6 +861,659 @@
         ],
         "additionalProperties": false
       },
+      "OrganizationRosterWorkspacePermissionV1": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "write",
+          "read"
+        ]
+      },
+      "OrganizationRosterWorkspaceAccessV1": {
+        "type": "object",
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "workspaceName": {
+            "type": "string"
+          },
+          "permission": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "write",
+              "read"
+            ]
+          }
+        },
+        "required": [
+          "workspaceId",
+          "workspaceName",
+          "permission"
+        ],
+        "additionalProperties": false
+      },
+      "OrganizationRosterMemberV1": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "userId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "owner",
+              "admin",
+              "member",
+              "external"
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "image": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "workspaces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "workspaceId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "workspaceName": {
+                  "type": "string"
+                },
+                "permission": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "write",
+                    "read"
+                  ]
+                }
+              },
+              "required": [
+                "workspaceId",
+                "workspaceName",
+                "permission"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "memberId",
+          "userId",
+          "role",
+          "createdAt",
+          "name",
+          "email",
+          "image",
+          "workspaces"
+        ],
+        "additionalProperties": false
+      },
+      "OrganizationRosterPendingInvitationV1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "organization",
+              "workspace"
+            ]
+          },
+          "membershipIntent": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "external"
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string"
+          },
+          "inviteeName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "inviteeImage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "workspaces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "workspaceId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "workspaceName": {
+                  "type": "string"
+                },
+                "permission": {
+                  "type": "string",
+                  "enum": [
+                    "admin",
+                    "write",
+                    "read"
+                  ]
+                }
+              },
+              "required": [
+                "workspaceId",
+                "workspaceName",
+                "permission"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "role",
+          "kind",
+          "createdAt",
+          "expiresAt",
+          "inviteeName",
+          "inviteeImage",
+          "workspaces"
+        ],
+        "additionalProperties": false
+      },
+      "OrganizationRosterV1": {
+        "type": "object",
+        "properties": {
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "userId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "owner",
+                    "admin",
+                    "member",
+                    "external"
+                  ]
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "image": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "workspaces": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "workspaceId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "workspaceName": {
+                        "type": "string"
+                      },
+                      "permission": {
+                        "type": "string",
+                        "enum": [
+                          "admin",
+                          "write",
+                          "read"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "workspaceId",
+                      "workspaceName",
+                      "permission"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "memberId",
+                "userId",
+                "role",
+                "createdAt",
+                "name",
+                "email",
+                "image",
+                "workspaces"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "pendingInvitations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "email": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "organization",
+                    "workspace"
+                  ]
+                },
+                "membershipIntent": {
+                  "type": "string",
+                  "enum": [
+                    "internal",
+                    "external"
+                  ]
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "expiresAt": {
+                  "type": "string"
+                },
+                "inviteeName": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "inviteeImage": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "workspaces": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "workspaceId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "workspaceName": {
+                        "type": "string"
+                      },
+                      "permission": {
+                        "type": "string",
+                        "enum": [
+                          "admin",
+                          "write",
+                          "read"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "workspaceId",
+                      "workspaceName",
+                      "permission"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "email",
+                "role",
+                "kind",
+                "createdAt",
+                "expiresAt",
+                "inviteeName",
+                "inviteeImage",
+                "workspaces"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "workspaces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "members",
+          "pendingInvitations",
+          "workspaces"
+        ],
+        "additionalProperties": false
+      },
+      "GetOrganizationRosterResponseV1": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "members": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "memberId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "userId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "owner",
+                        "admin",
+                        "member",
+                        "external"
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "workspaces": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "workspaceId": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "workspaceName": {
+                            "type": "string"
+                          },
+                          "permission": {
+                            "type": "string",
+                            "enum": [
+                              "admin",
+                              "write",
+                              "read"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "workspaceId",
+                          "workspaceName",
+                          "permission"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "memberId",
+                    "userId",
+                    "role",
+                    "createdAt",
+                    "name",
+                    "email",
+                    "image",
+                    "workspaces"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "pendingInvitations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "organization",
+                        "workspace"
+                      ]
+                    },
+                    "membershipIntent": {
+                      "type": "string",
+                      "enum": [
+                        "internal",
+                        "external"
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "expiresAt": {
+                      "type": "string"
+                    },
+                    "inviteeName": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "inviteeImage": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "workspaces": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "workspaceId": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "workspaceName": {
+                            "type": "string"
+                          },
+                          "permission": {
+                            "type": "string",
+                            "enum": [
+                              "admin",
+                              "write",
+                              "read"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "workspaceId",
+                          "workspaceName",
+                          "permission"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "email",
+                    "role",
+                    "kind",
+                    "createdAt",
+                    "expiresAt",
+                    "inviteeName",
+                    "inviteeImage",
+                    "workspaces"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "workspaces": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "members",
+              "pendingInvitations",
+              "workspaces"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "success",
+          "data"
+        ],
+        "additionalProperties": false
+      },
       "PageRequest": {
         "type": "object",
         "properties": {

@@ -318,16 +318,22 @@ command ports/transactions，不能扩张这两个 read ports。
 ```text
 apps/api/src/modules/organizations/
 ├─ interface/
+│  ├─ create-list-organization-roster-handler.ts
 │  └─ create-list-organization-workspaces-handler.ts
 ├─ application/
+│  ├─ list-organization-roster.ts
 │  └─ list-organization-workspaces.ts
 ├─ ports/
 │  ├─ organization-access-control-entitlement-reader.ts
+│  ├─ organization-invitation-housekeeping.ts
+│  ├─ organization-roster-read-repository.ts
 │  └─ organization-workspace-read-repository.ts
 └─ index.ts
 
 apps/api/src/infrastructure/postgres/repositories/
 ├─ drizzle-organization-access-control-entitlement-reader.ts
+├─ drizzle-organization-invitation-housekeeping.ts
+├─ drizzle-organization-roster-read-repository.ts
 └─ drizzle-organization-workspace-read-repository.ts
 
 apps/api/src/config/
@@ -338,8 +344,10 @@ packages/api-contracts/src/
 ```
 
 Organization application 只能消费 role、entitlement 和 read repository ports。Billing plan、
-owner block、self-host env 与 Drizzle 留在 adapter/composition；后续 roster 复用 Module
-目录但使用 membership projection，不能误套 admin + enterprise gate。
+owner block、self-host env 与 Drizzle 留在 adapter/composition。Roster 使用 organization
+membership projection，不能误套 admin + enterprise gate；其 admin snapshot port 隐藏
+members/workspaces/permissions/invitations/grants 的批量读取。GET 中兼容保留的 stale
+invitation update 必须走显式 best-effort housekeeping port，后续可替换为周期 job。
 
 ### 4.4 `apps/worker`：执行闭包
 

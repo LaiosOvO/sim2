@@ -980,10 +980,11 @@ packages/*
   entry of 1,485 gzip bytes and zero DB/Auth runtime/Executor/Registry markers.
 - The standalone API owns W2 route selection, authentication policy, request identity, observability,
   and a backend port. Backend selection is recorded per inventory ID; `API-0137 /api/invitations`,
+  `API-0235 /api/organizations/[id]/roster`,
   `API-0241 /api/organizations/[id]/workspaces`, `API-0294 /api/stars`,
   `API-1057 /api/workspaces/[id]/members`, and Polaris
   `API-1060 /api/workspaces/[id]/personal-profile`, plus
-  `API-1124 /api/workspaces/invitations` are native, while the other 16 routes currently target a
+  `API-1124 /api/workspaces/invitations` are native, while the other 15 routes currently target a
   fixed pre-refactor legacy origin.
 - The invitations Module owns a token-free V1 response contract, application use case and repository
   port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
@@ -1015,8 +1016,14 @@ packages/*
   checks owner billing-block and active enterprise subscription in hosted billing mode. The
   workspace projection intentionally retains archived rows because the donor route does not filter
   them.
+- The Organizations Module also owns API-0235 through a single roster use-case interface. It keeps
+  the member/admin projection, derived organization-admin workspace access, external-member
+  grouping, and invitation hydration behind that interface. The donor GET-side stale-invitation
+  update is isolated as an explicit best-effort housekeeping port, so it can later be replaced by a
+  periodic job without editing the HTTP interface. The PostgreSQL adapter scopes grants to active
+  workspaces in the target organization, hardening a donor cross-organization dirty-data leak.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 16 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 15 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope
