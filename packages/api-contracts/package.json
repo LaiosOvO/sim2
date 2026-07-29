@@ -44,6 +44,10 @@
     "./w2-tenant-read": {
       "types": "./src/w2-tenant-read.ts",
       "default": "./src/w2-tenant-read.ts"
+    },
+    "./workspaces": {
+      "types": "./src/workspaces.ts",
+      "default": "./src/workspaces.ts"
     }
   },
   "scripts": {

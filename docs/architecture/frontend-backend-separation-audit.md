@@ -966,6 +966,25 @@ secret/base URL，不再要求 Environment Module 的 `ENCRYPTION_KEY`。否则�
 API 58 passed（常规运行跳过 1 个 disposable DB test），API Contract 7/7，Platform
 Contract 43 schemas，目标图 22 packages/102 source nodes、0 cycle。
 
+### 19.12 W2 原生 Workspace Members 与租户授权
+
+第三条原生替换是 `API-1057 GET /api/workspaces/[id]/members`。新 Workspaces Module 使用
+`interface/application/ports/index.ts` 布局；application 通过 Ticket 09
+`authorizeRequestContext` 和注入的 `RequestAccessResolver` 做 workspace read 授权，再经
+`WorkspaceMemberReadRepository` 读取轻量资料。Next 动态 route 继续只包含生成式 proxy。
+
+旧实现必须保留两个不同集合：访问者可由显式 workspace permission 或所属组织
+owner/admin 继承访问；但 UI 轻量成员列表只来自显式 workspace permission rows。真实
+PostgreSQL 16 fixture 证明组织管理员可以派生 `admin` 并读取列表，却不会在没有显式 grant
+时被错误加入 `members`。fixture 同时覆盖 cross-workspace null、archived workspace 即使
+残留 permission 也拒绝，以及 member `userId/name/image` 映射。
+
+为防止枚举，authorization 的 missing、archived、denied 都在接口层映射为旧
+`404 Workspace not found or access denied`；DB 异常保持旧 500。V1 response contract
+移除 `permissionType` 等服务端权限细节。当前 W2 为 native 3/22、legacy 19/22；API
+63 passed（1 个 disposable DB test 默认跳过），API Contract 8/8，Platform Contract
+46 schemas，目标图 22 packages/108 source nodes、0 cycle。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1041,3 +1060,6 @@ Contract 43 schemas，目标图 22 packages/102 source nodes、0 cycle。
 - 建立独立 Invitations Module 与 token-free V1 contract，把 `API-0137 /api/invitations`
   切为原生两批 PostgreSQL 查询；真实 disposable Postgres fixture 1/1，当前 native
   2/22、legacy 20/22。
+- 建立 Workspaces Module 与轻量 member V1 contract，把 `API-1057` 切为原生查询；复用
+  workspace authorization seam，并以真实 Postgres 验证组织管理员继承不污染显式成员
+  列表；当前 native 3/22、legacy 19/22。

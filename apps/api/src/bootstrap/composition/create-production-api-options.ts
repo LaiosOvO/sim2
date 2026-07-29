@@ -1,3 +1,4 @@
+import type { RequestAccessResolver } from '@sim/auth/authorization'
 import type { RequestAuthenticator } from '@sim/auth/request-context'
 import type { ApiApplicationOptions } from '@/bootstrap/application/create-api-application'
 import {
@@ -8,6 +9,7 @@ import type { ExecutionAdmissionModule } from '@/modules/execution/application/c
 import type { InvitationReadRepository } from '@/modules/invitations'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
+import type { WorkspaceMemberReadRepository } from '@/modules/workspaces'
 
 function unavailableEnvironmentModule(): EnvironmentModule {
   return {
@@ -64,12 +66,14 @@ async function createTenantRead(
     { createHttpLegacyTenantReadBackend },
     { createGitHubStarsHandler },
     { createListMyInvitationsHandler, createListMyInvitationsUseCase },
+    { createListWorkspaceMembersHandler, createListWorkspaceMembersUseCase },
   ] = await Promise.all([
     import('@/modules/tenant-read/application/create-tenant-read-module'),
     import('@/modules/tenant-read/application/create-routed-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/http-legacy-tenant-read-backend'),
     import('@/modules/tenant-read/infrastructure/native/github-stars-handler'),
     import('@/modules/invitations'),
+    import('@/modules/workspaces'),
   ])
   const fallback = baseUrl
     ? createHttpLegacyTenantReadBackend({ baseUrl })
@@ -80,19 +84,49 @@ async function createTenantRead(
       throw new Error('Invitation database is not configured')
     },
   }
-  if (process.env.DATABASE_URL) {
-    const { createDrizzleInvitationReadRepository } = await import(
-      '@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'
-    )
-    invitationRepository = createDrizzleInvitationReadRepository()
+  let workspaceMemberRepository: WorkspaceMemberReadRepository = {
+    async listActiveMembers() {
+      throw new Error('Workspace database is not configured')
+    },
   }
-  const nativeHandlers: Record<'API-0137' | 'API-0294', NativeTenantReadHandler> = {
+  let accessResolver: RequestAccessResolver = {
+    async workspacePermission() {
+      return null
+    },
+    async organizationRole() {
+      return null
+    },
+    async workflow() {
+      return null
+    },
+  }
+  if (process.env.DATABASE_URL) {
+    const [
+      { createDrizzleInvitationReadRepository },
+      { createDrizzleWorkspaceMemberReadRepository },
+      { createDrizzleAccessResolver },
+    ] = await Promise.all([
+      import('@/infrastructure/postgres/repositories/drizzle-invitation-read-repository'),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
+      import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
+    ])
+    invitationRepository = createDrizzleInvitationReadRepository()
+    workspaceMemberRepository = createDrizzleWorkspaceMemberReadRepository()
+    accessResolver = createDrizzleAccessResolver()
+  }
+  const nativeHandlers: Record<'API-0137' | 'API-0294' | 'API-1057', NativeTenantReadHandler> = {
     'API-0137': createListMyInvitationsHandler(
       createListMyInvitationsUseCase(invitationRepository)
     ),
     'API-0294': createGitHubStarsHandler({
       ...(githubToken ? { token: githubToken } : {}),
     }),
+    'API-1057': createListWorkspaceMembersHandler(
+      createListWorkspaceMembersUseCase({
+        access: accessResolver,
+        repository: workspaceMemberRepository,
+      })
+    ),
   }
   return createTenantReadModule({
     authentication,

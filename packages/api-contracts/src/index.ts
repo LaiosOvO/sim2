@@ -89,3 +89,9 @@ export {
   w2TenantReadRouteContracts,
   w2TenantReadRouteIdSchema,
 } from './w2-tenant-read'
+export type { ListWorkspaceMembersResponseV1, WorkspaceMemberV1 } from './workspaces'
+export {
+  listWorkspaceMembersResponseV1Schema,
+  workspaceIdV1Schema,
+  workspaceMemberV1Schema,
+} from './workspaces'

@@ -5,6 +5,7 @@ import { listMyInvitationsResponseV1Schema } from '../src/invitations'
 import { pageRequestSchema } from '../src/pagination'
 import { traceContextSchema } from '../src/tracing'
 import { w2TenantReadRouteContractSchema, w2TenantReadRouteContracts } from '../src/w2-tenant-read'
+import { listWorkspaceMembersResponseV1Schema } from '../src/workspaces'
 
 describe('API contract compatibility', () => {
   it('accepts omitted and nullable error details', () => {
@@ -125,7 +126,7 @@ describe('API contract compatibility', () => {
       w2TenantReadRouteContracts
         .filter((route) => route.backend === 'native')
         .map((route) => route.inventoryId)
-    ).toEqual(['API-0137', 'API-0294'])
+    ).toEqual(['API-0137', 'API-0294', 'API-1057'])
     for (const route of w2TenantReadRouteContracts) {
       expect(w2TenantReadRouteContractSchema.parse(route).requiredTests).toEqual([
         'contract',
@@ -165,5 +166,22 @@ describe('API contract compatibility', () => {
     })
 
     expect(parsed.invitations[0]).not.toHaveProperty('token')
+  })
+
+  it('defines the lightweight workspace member response without permission internals', () => {
+    const parsed = listWorkspaceMembersResponseV1Schema.parse({
+      members: [
+        {
+          userId: 'user-1',
+          name: 'Ada',
+          image: null,
+          permissionType: 'admin',
+        },
+      ],
+    })
+
+    expect(parsed).toEqual({
+      members: [{ userId: 'user-1', name: 'Ada', image: null }],
+    })
   })
 })

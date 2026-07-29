@@ -219,7 +219,7 @@ describe('W2 tenant-read compatibility module', () => {
     })
 
     const response = await application.handle(
-      new Request('http://api.test/api/workspaces/workspace-1/members', {
+      new Request('http://api.test/api/workspaces/workspace-1/host-context', {
         headers: { cookie: 'session=valid' },
       })
     )

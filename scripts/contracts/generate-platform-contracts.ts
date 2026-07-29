@@ -37,6 +37,11 @@ import {
   w2TenantReadRouteContractSchema,
   w2TenantReadRouteIdSchema,
 } from '@sim/api-contracts/w2-tenant-read'
+import {
+  listWorkspaceMembersResponseV1Schema,
+  workspaceIdV1Schema,
+  workspaceMemberV1Schema,
+} from '@sim/api-contracts/workspaces'
 import { debugCommandV1Schema, debugSessionV1Schema } from '@sim/execution-contracts/debug'
 import { executionEventV1Schema } from '@sim/execution-contracts/events'
 import {
@@ -93,6 +98,9 @@ const schemas: Record<string, JsonSchemaProvider> = {
   W2TenantReadRouteId: w2TenantReadRouteIdSchema,
   W2TenantReadBackend: w2TenantReadBackendSchema,
   W2TenantReadRouteContract: w2TenantReadRouteContractSchema,
+  WorkspaceIdV1: workspaceIdV1Schema,
+  WorkspaceMemberV1: workspaceMemberV1Schema,
+  ListWorkspaceMembersResponseV1: listWorkspaceMembersResponseV1Schema,
   ExecutionJobV1: executionJobV1Schema,
   ExecutionEventV1: executionEventV1Schema,
   ExecutionJobAdmissionResponseV1: executionJobAdmissionResponseV1Schema,

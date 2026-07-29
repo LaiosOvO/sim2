@@ -42,6 +42,7 @@
 - [Phase 4 W2 租户只读兼容平面检查点](./handoffs/phase-4-w2-tenant-read-compatibility.md)
 - [Phase 4 W2 原生路由与 Stars 检查点](./handoffs/phase-4-w2-native-stars.md)
 - [Phase 4 W2 原生邀请读取检查点](./handoffs/phase-4-w2-native-invitations.md)
+- [Phase 4 W2 原生 Workspace Members 检查点](./handoffs/phase-4-w2-native-workspace-members.md)
 
 ## 阅读顺序
 
