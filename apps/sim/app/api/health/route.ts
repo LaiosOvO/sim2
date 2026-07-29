@@ -1,12 +1,5 @@
-/**
- * Health check endpoint for deployment platforms and container probes.
- */
-export async function GET(): Promise<Response> {
-  return Response.json(
-    {
-      status: 'ok',
-      timestamp: new Date().toISOString(),
-    },
-    { status: 200 }
-  )
+import { proxyW1Request } from '@/lib/api-proxy/w1'
+
+export function GET(request: Request): Promise<Response> {
+  return proxyW1Request(request, 'health')
 }

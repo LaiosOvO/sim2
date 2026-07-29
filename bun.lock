@@ -33,8 +33,15 @@
       "version": "0.1.0",
       "dependencies": {
         "@sim/api-contracts": "workspace:*",
+        "@sim/audit": "workspace:*",
+        "@sim/auth": "workspace:*",
+        "@sim/db": "workspace:*",
         "@sim/execution-contracts": "workspace:*",
         "@sim/logger": "workspace:*",
+        "@sim/security": "workspace:*",
+        "@sim/utils": "workspace:*",
+        "drizzle-orm": "^0.45.2",
+        "posthog-node": "5.28.9",
       },
       "devDependencies": {
         "@sim/tsconfig": "workspace:*",

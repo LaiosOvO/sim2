@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "app/api/environment/route.ts",
+    "app/api/health/route.ts",
+    "app/api/status/route.ts",
+    "lib/api-proxy/w1.ts",
+    "lib/api-proxy/w1.test.ts"
+  ],
+  "exclude": ["node_modules", ".next", "dist"]
+}

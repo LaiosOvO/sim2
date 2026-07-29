@@ -15,10 +15,14 @@ interface Storage<T> {
 
 let storage: Storage<RequestContext>
 
-if (typeof globalThis.process !== 'undefined' && globalThis.process.versions?.node) {
-  // Node.js — use real AsyncLocalStorage
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { AsyncLocalStorage } = require('node:async_hooks') as typeof import('node:async_hooks')
+const asyncHooks =
+  typeof globalThis.process !== 'undefined' && globalThis.process.versions?.node
+    ? globalThis.process.getBuiltinModule?.('node:async_hooks')
+    : undefined
+
+if (asyncHooks) {
+  // Node 22+ ESM — synchronously resolve the builtin without CommonJS require.
+  const { AsyncLocalStorage } = asyncHooks as typeof import('node:async_hooks')
   storage = new AsyncLocalStorage<RequestContext>()
 } else {
   // Edge / browser — no-op

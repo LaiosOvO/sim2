@@ -1,6 +1,18 @@
 #!/usr/bin/env bun
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import {
+  apiVersionResponseSchema,
+  healthResponseSchema,
+  noInputSchema,
+  publicStatusResponseSchema,
+  readinessResponseSchema,
+} from '@sim/api-contracts/core'
+import {
+  environmentSaveResponseSchema,
+  personalEnvironmentResponseSchema,
+  savePersonalEnvironmentBodySchema,
+} from '@sim/api-contracts/environment'
 import { apiErrorEnvelopeSchema } from '@sim/api-contracts/errors'
 import { requestIdentitySchema } from '@sim/api-contracts/identity'
 import { pageRequestSchema } from '@sim/api-contracts/pagination'
@@ -26,6 +38,14 @@ const manifestPath = path.join(generatedDirectory, 'contract-versions.json')
 
 const schemas: Record<string, JsonSchemaProvider> = {
   ApiErrorEnvelope: apiErrorEnvelopeSchema,
+  NoInput: noInputSchema,
+  HealthResponse: healthResponseSchema,
+  PublicStatusResponse: publicStatusResponseSchema,
+  ReadinessResponse: readinessResponseSchema,
+  ApiVersionResponse: apiVersionResponseSchema,
+  SavePersonalEnvironmentBody: savePersonalEnvironmentBodySchema,
+  PersonalEnvironmentResponse: personalEnvironmentResponseSchema,
+  EnvironmentSaveResponse: environmentSaveResponseSchema,
   RequestIdentity: requestIdentitySchema,
   PageRequest: pageRequestSchema,
   TraceContext: traceContextSchema,

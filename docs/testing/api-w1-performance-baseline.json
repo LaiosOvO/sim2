@@ -1,0 +1,17 @@
+{
+  "measuredAt": "2026-07-29T20:07:45.523Z",
+  "budgets": {
+    "coldStartMs": 5000,
+    "rssBytes": 402653184,
+    "heapUsedBytes": 201326592
+  },
+  "metrics": {
+    "schemaVersion": 1,
+    "runtime": "node",
+    "status": 200,
+    "coldStartMs": 1978.91,
+    "rssBytes": 224079872,
+    "rssDeltaBytes": 141991936,
+    "heapUsedBytes": 85331960
+  }
+}

@@ -10,6 +10,10 @@
     "node": ">=20.0.0"
   },
   "exports": {
+    "./session": {
+      "types": "./src/session.ts",
+      "default": "./src/session.ts"
+    },
     "./verify": {
       "types": "./src/verify.ts",
       "default": "./src/verify.ts"

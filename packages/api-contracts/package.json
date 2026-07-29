@@ -13,6 +13,14 @@
       "types": "./src/errors.ts",
       "default": "./src/errors.ts"
     },
+    "./core": {
+      "types": "./src/core.ts",
+      "default": "./src/core.ts"
+    },
+    "./environment": {
+      "types": "./src/environment.ts",
+      "default": "./src/environment.ts"
+    },
     "./identity": {
       "types": "./src/identity.ts",
       "default": "./src/identity.ts"

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "wave": "W1",
+  "inventoryCount": 3,
+  "routes": [
+    {
+      "inventoryId": "API-0102",
+      "methods": ["GET", "POST"],
+      "path": "/api/environment",
+      "apiModule": "apps/api/src/modules/environment",
+      "nextFacade": "apps/sim/app/api/environment/route.ts",
+      "tests": ["contract", "differential", "integration", "performance"]
+    },
+    {
+      "inventoryId": "API-0127",
+      "methods": ["GET"],
+      "path": "/api/health",
+      "apiModule": "apps/api/src/modules/system",
+      "nextFacade": "apps/sim/app/api/health/route.ts",
+      "tests": ["contract", "differential", "integration", "performance"]
+    },
+    {
+      "inventoryId": "API-0295",
+      "methods": ["GET"],
+      "path": "/api/status",
+      "apiModule": "apps/api/src/modules/status",
+      "nextFacade": "apps/sim/app/api/status/route.ts",
+      "tests": ["contract", "differential", "integration", "performance"]
+    }
+  ]
+}

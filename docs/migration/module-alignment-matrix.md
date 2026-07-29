@@ -41,6 +41,7 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 | `apps/sim/app/playground` | `apps/sim/app/playground` | A | 合并 UI；执行请求进入 Worker | execution E2E |
 | `apps/sim/app/workspace` | `apps/sim/app/workspace` | A | 合并画布 UI；禁止恢复浏览器 Executor | canvas/replay E2E |
 | `apps/sim/app/api/**` | `apps/api/src/**` + `apps/sim/app/api/**` compat facade | S | 用 API inventory 定位目标；新行为先入 contract，再加兼容代理 | contract/differential |
+| `apps/sim/app/api/environment`、`health`、`status` | `apps/api/src/modules/environment|system|status` + 原路径 proxy facade | S | W1 已迁移；upstream 行为变化先更新 API contract/adapter，再更新 differential fixture，禁止恢复旧实现 import | W1 C/D/I/P、facade bundle |
 | `apps/sim/background` | `apps/worker/src/jobs` | S | Trigger.dev 任务变化移植到对应 job | job contract、retry |
 | `apps/sim/components` | `apps/sim/components` 或 `apps/sim/features/*/components` | A | 通用 UI 同路径合并；业务 UI 进入 feature | visual/component |
 | `apps/sim/hooks` | `apps/sim/hooks` | A | 合并 hook；所有服务端状态必须走 API contract | hook、contract |

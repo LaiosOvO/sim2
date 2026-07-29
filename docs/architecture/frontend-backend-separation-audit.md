@@ -700,6 +700,12 @@ transport 留在 Infra，把 PM/HR/Delivery 所需能力抽成 Biz port，并只
   `node --no-node-snapshot isolated-vm-worker.cjs` 启动 child process；
 - production Dockerfile 按 Node ABI 重编译 `isolated-vm`，最终使用
   `CMD ["node", "apps/sim/bootstrap.js"]`。
+- 2026-07-30 本机探针显示 Bun 1.3.11 可以导入 Lark SDK 1.71.1 并构造/关闭
+  `WSClient`，所以不能把问题误归因成“飞书 SDK 一导入就不支持 Bun”；但这不覆盖真实
+  长连接、TLS、代理、重连和信号生命周期。
+- 同一探针中 `isolated-vm` 6.0.2 在 Node 22.20.0 下正常暴露 `Isolate`，在 Bun 下执行
+  到 `require('isolated-vm')` 后提前结束且不再执行后续语句；其 package engine 也明确
+  要求 Node `>=22.0.0`。这是本地 Sandbox 不得改用 Bun 的直接运行时证据。
 
 结论：不能把“Bun 是 package manager”误写成“生产服务运行在 Bun”。API、Worker、飞书
 长连接与本地 Sandbox 的生产 runtime 固定为 Node.js 22.19+；Bun 用于 install、script、
@@ -791,6 +797,46 @@ Provider 独立 chunk 约 3.92 KB。Worker package 不暴露 exports，Registry 
 一个代表性 tool；余下工具要按 provider 波次迁移并逐步切换 Executor 调用方，直到旧
 Registry 不再属于生产执行路径。
 
+### 19.7 W1 独立 API 与 Next 兼容门面
+
+API inventory 的 W1 精确是三条路径，而不是只做三个无状态探针：
+
+- `API-0102`：GET/POST `/api/environment`；
+- `API-0127`：GET `/api/health`；
+- `API-0295`：GET `/api/status`。
+
+其中 environment 原实现同时 import DB、Better Auth、AES encryption、credential sync、
+Audit 和 PostHog；status 原实现把 Incident fetch/cache 留在 Next route。这两条正是
+“Route 看起来很小、实际把服务端闭包编进 Web”的代表。
+
+迁移后，三个原路径只调用 `apps/sim/lib/api-proxy/w1.ts`。独立构建得到 3 个 facade，
+最大 1,244 bytes gzip，不含 DB、Better Auth、Drizzle、encryption、Audit、Registry 或
+Executor marker。代理支持每条路由的 `api/legacy/off` 模式、request ID/cookie/body
+透传、超时、远端旧部署回滚和传输失败 fallback；legacy 模式指向独立旧部署，避免把旧
+实现以动态 import 的方式继续留在 Next 编译图。
+
+独立 API 内：
+
+- environment application 只依赖 session/repository/cipher/credential-sync/audit/event
+  ports，生产 adapters 才依赖 Better Auth、Drizzle、Security 与 Audit；
+- status module 保留原有 Incident summary、缓存、fallback 与响应 header；
+- system module 分开 liveness、readiness 和 version；
+- 所有响应补 `x-request-id` 与 `x-api-contract-version`；
+- 未配置环境也能由 Node 启动并返回 liveness 200，readiness 明确为 503。
+
+生产 adapters 改为配置完整后才 dynamic import，API split build 的 startup entry 从
+2.31 MB 降到 17.37 KB。Node 冷启动实测 1,978.91 ms、213.7 MiB RSS、约 81.4 MiB heap；
+当前预算分别为 5 秒、384 MiB 和 192 MiB。W1 的三条 inventory 记录都绑定 Contract、
+Differential、Integration、Performance 证据。
+
+Node 探针还发现并修复了 `@sim/logger` 在 ESM 中调用 CommonJS `require` 的问题；现在用
+Node 22 `process.getBuiltinModule('node:async_hooks')` 同步取得 AsyncLocalStorage，浏览器
+仍走 no-op 分支。这再次确认 Bun build 通过不代表 Node production runtime 一定可启动。
+
+最终全 Sim `tsc` 复核被系统以 `-1` 终止且无类型诊断；当时 Polaris Next 进程占用约
+6.9 GiB。最终代码使用独立 W1 type graph、API/auth/contracts type-check 和定向 Vitest
+通过，审计中保留该资源限制，不把它冒充为全量成功。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -838,3 +884,14 @@ Registry 不再属于生产执行路径。
   只通过 Worker port 解析。
 - Worker split build 将 Notion Provider 隔离为 3.92 KB lazy chunk，启动 entry 不含
   Provider marker；Catalog/Registry 仅做生成期一致性比对。
+- 完成 W1 三条 API inventory 路径迁移，建立独立 Node API、readiness/liveness/version
+  与 C/D/I/P 覆盖记录。
+- 保留 `/api/status` 对未知 query 的 400 validation wire contract；W1 API 定向测试
+  10/10 通过。
+- 将 environment/status/health 的 Next route 收敛为最大 1.24 KB gzip 的可回滚代理，
+  服务端实现不再进入 Next route 编译图。
+- Environment 的 credential sync、audit 和 `environment_updated` PostHog side effect
+  均由 API adapter 保留；PostHog 只在启用后动态加载，并在 Node 退出时 flush。
+- API production adapters 改为配置后懒加载，split build startup entry 为 17.37 KB；
+  记录 1.98 秒、213.7 MiB RSS 的 Node 冷启动基线。
+- 修复 `@sim/logger` 在 Node ESM 下使用 CommonJS `require` 导致服务无法直接启动的问题。

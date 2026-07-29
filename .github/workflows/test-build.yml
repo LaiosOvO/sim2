@@ -147,6 +147,21 @@ jobs:
       - name: Verify lazy Runtime Provider build
         run: bun run check:runtime-registry-lazy-build
 
+      - name: Verify W1 API route coverage
+        run: bun run check:w1-api-coverage
+
+      - name: Verify W1 Next facade isolation
+        run: bun run check:w1-next-facades
+
+      - name: Type-check W1 Next facade graph
+        run: bun run check:w1-proxy-types
+
+      - name: Verify W1 API cold-start budget
+        run: bun run check:w1-api-performance
+
+      - name: Verify standalone Node API liveness
+        run: bun run check:api-standalone
+
       - name: Verify browser contract build isolation
         run: bun run check:contract-browser-build
 

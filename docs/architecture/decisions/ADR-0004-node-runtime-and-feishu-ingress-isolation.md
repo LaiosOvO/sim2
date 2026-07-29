@@ -19,6 +19,20 @@ Sandbox/Executor 压力也可能影响长连接。
 `node --no-node-snapshot` 启动 `isolated-vm-worker.cjs`。强行改为 Bun 会引入 native ABI、
 IPC 和 V8 行为风险，且对前端编译问题没有帮助。
 
+2026-07-30 的本机运行时探针进一步区分了两个问题：
+
+- Bun 1.3.11 可以导入 `@larksuiteoapi/node-sdk` 1.71.1、构造 `WSClient`、读取 idle
+  connection status 并关闭 client；因此不能把当前服务不能用 Bun 简化成“飞书 SDK
+  完全不支持 Bun”。这只是构造级探针，不代表生产长连接、自动重连、代理、TLS 和信号
+  处理已经获得 Bun 兼容性保证。
+- `isolated-vm` 6.0.2 的 package engine 明确是 Node `>=22.0.0`。同一安装产物在
+  Node 22.20.0 下加载后得到 `Isolate` constructor；在 Bun 1.3.11 下执行到
+  `require('isolated-vm')` 后提前结束，后续语句不执行。它不能作为 Bun 进程内 native
+  addon 使用。
+
+所以 Node 决策既来自当前部署事实，也来自 Sandbox 的确定性兼容边界；不依赖于对飞书
+SDK 的猜测。
+
 ## Decision
 
 1. Bun 是 monorepo 的 package manager、script runner、build tool 和 test launcher。
@@ -53,6 +67,8 @@ adapter 使用 fake credential source、fake WS client 和 in-memory job sink。
 ## Consequences
 
 - 不能再用 `bun run ...` 的外层命令推断生产 runtime。
+- 飞书 SDK 的 Bun 构造级探针通过，不构成把 ingress 切换到 Bun 的授权或兼容性承诺；
+  生产 runtime 仍统一固定为 Node，避免为无业务收益的双运行时矩阵付费。
 - API/Worker Dockerfile、Helm command、runtime smoke test 必须明确执行 `node`。
 - 飞书连接可以独立滚动和扩缩容；必须通过租约或 leader election 保证同一 credential
   只有受控消费者。

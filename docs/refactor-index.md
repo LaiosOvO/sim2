@@ -22,6 +22,8 @@
 - [浏览器运行时闭包基线](./testing/browser-runtime-closure-baseline.json)
 - [性能与构建产物基线](./testing/performance-baseline.json)
 - [浏览器 Bundle 策略](./testing/browser-bundle-policy.json)
+- [W1 API 路由覆盖](./testing/api-w1-route-coverage.json)
+- [W1 API Node 冷启动基线](./testing/api-w1-performance-baseline.json)
 
 ## Goal
 
@@ -33,6 +35,7 @@
 - [Phase 2 Contract Foundation 检查点](./handoffs/phase-2-contract-foundation.md)
 - [Phase 2 Browser-safe Tool Catalog 检查点](./handoffs/phase-2-tool-catalog.md)
 - [Phase 2 Worker-only Runtime Registry 检查点](./handoffs/phase-2-runtime-registry.md)
+- [Phase 3 W1 独立 API 检查点](./handoffs/phase-3-w1-api.md)
 
 ## 阅读顺序
 
