@@ -1,0 +1,295 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_sheets",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_sheets",
+      "legacyIds": ["google-sheets"],
+      "provider": "google_sheets",
+      "version": "1",
+      "display": {
+        "name": "Google Sheets (Legacy)",
+        "description": "Read, write, and update data",
+        "category": "tools",
+        "icon": "GoogleSheetsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_sheets_read",
+        "google_sheets_write",
+        "google_sheets_update",
+        "google_sheets_append"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spreadsheetId",
+          "label": "Select Sheet",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualSpreadsheetId",
+          "label": "Spreadsheet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "range",
+          "label": "Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "valueInputOption",
+          "label": "Value Input Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "valueInputOption",
+          "label": "Value Input Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "valueInputOption",
+          "label": "Value Input Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insertDataOption",
+          "label": "Insert Data Option",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "google_sheets_v2",
+      "legacyIds": ["google-sheets", "google-sheets-v2"],
+      "provider": "google_sheets",
+      "version": "2",
+      "display": {
+        "name": "Google Sheets",
+        "description": "Read, write, and update data with sheet selection",
+        "category": "tools",
+        "icon": "GoogleSheetsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_sheets_read_v2",
+        "google_sheets_write_v2",
+        "google_sheets_update_v2",
+        "google_sheets_append_v2",
+        "google_sheets_clear_v2",
+        "google_sheets_get_spreadsheet_v2",
+        "google_sheets_create_spreadsheet_v2",
+        "google_sheets_batch_get_v2",
+        "google_sheets_batch_update_v2",
+        "google_sheets_batch_clear_v2",
+        "google_sheets_copy_sheet_v2",
+        "google_sheets_delete_rows_v2",
+        "google_sheets_delete_sheet_v2",
+        "google_sheets_delete_spreadsheet_v2"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spreadsheetId",
+          "label": "Select Spreadsheet",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualSpreadsheetId",
+          "label": "Spreadsheet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sheetName",
+          "label": "Sheet (Tab)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualSheetName",
+          "label": "Sheet Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cellRange",
+          "label": "Cell Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterColumn",
+          "label": "Filter Column",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterValue",
+          "label": "Filter Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterMatchType",
+          "label": "Match Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "valueInputOption",
+          "label": "Value Input Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "insertDataOption",
+          "label": "Insert Data Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Spreadsheet Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sheetTitles",
+          "label": "Sheet Names",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ranges",
+          "label": "Ranges",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "batchData",
+          "label": "Data",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ranges",
+          "label": "Ranges to Clear",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sheetId",
+          "label": "Sheet ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationSpreadsheetId",
+          "label": "Destination Spreadsheet ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deleteSheetId",
+          "label": "Sheet ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "startIndex",
+          "label": "Start Row Index",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "endIndex",
+          "label": "End Row Index",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

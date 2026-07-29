@@ -1,0 +1,215 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "workday",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "workday",
+      "legacyIds": [],
+      "provider": "workday",
+      "version": "1",
+      "display": {
+        "name": "Workday",
+        "description": "Manage workers, hiring, onboarding, and HR operations in Workday",
+        "category": "tools",
+        "icon": "WorkdayIcon",
+        "bgColor": "#F5F0EB"
+      },
+      "capabilities": [
+        "workday_get_worker",
+        "workday_list_workers",
+        "workday_create_prehire",
+        "workday_hire_employee",
+        "workday_update_worker",
+        "workday_assign_onboarding",
+        "workday_get_organizations",
+        "workday_change_job",
+        "workday_get_compensation",
+        "workday_terminate_worker"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tenantUrl",
+          "label": "Tenant URL",
+          "type": "string",
+          "required": true,
+          "description": "Your Workday instance URL (e.g., https://wd2-impl-services1.workday.com)"
+        },
+        {
+          "key": "tenant",
+          "label": "Tenant Name",
+          "type": "string",
+          "required": true,
+          "description": "Workday tenant identifier"
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true,
+          "description": "Integration System User username"
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true,
+          "description": "Integration System User password"
+        },
+        {
+          "key": "workerId",
+          "label": "Worker ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "legalName",
+          "label": "Legal Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "address",
+          "label": "Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countryCode",
+          "label": "Country Code",
+          "type": "string",
+          "required": false,
+          "description": "ISO 3166-1 Alpha-2 country code (defaults to US)"
+        },
+        {
+          "key": "preHireId",
+          "label": "Pre-Hire ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionId",
+          "label": "Position ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hireDate",
+          "label": "Hire Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobProfileId",
+          "label": "Job Profile ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationId",
+          "label": "Location ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "supervisoryOrgId",
+          "label": "Supervisory Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "employeeType",
+          "label": "Employee Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Personal Information (JSON)",
+          "type": "json",
+          "required": false,
+          "description": "Demographic fields supported by Workday Change_Personal_Information (e.g. Date_of_Birth, Gender_Reference, Marital_Status_Reference, Ethnicity_Reference, Citizenship_Status_Reference). Does not update business title or work contact info."
+        },
+        {
+          "key": "onboardingPlanId",
+          "label": "Onboarding Plan ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionEventId",
+          "label": "Action Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orgType",
+          "label": "Organization Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effectiveDate",
+          "label": "Effective Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reason",
+          "label": "Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "terminationDate",
+          "label": "Termination Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notificationDate",
+          "label": "Notification Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastDayOfWork",
+          "label": "Last Day of Work",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

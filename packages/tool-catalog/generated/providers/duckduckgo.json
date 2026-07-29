@@ -1,0 +1,42 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "duckduckgo",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "duckduckgo",
+      "legacyIds": [],
+      "provider": "duckduckgo",
+      "version": "1",
+      "display": {
+        "name": "DuckDuckGo",
+        "description": "Search with DuckDuckGo",
+        "category": "tools",
+        "icon": "DuckDuckGoIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["duckduckgo_search"],
+      "inputs": [
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "noHtml",
+          "label": "Remove HTML",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "skipDisambig",
+          "label": "Skip Disambiguation",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

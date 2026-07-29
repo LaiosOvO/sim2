@@ -1,0 +1,414 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "gong",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "gong",
+      "legacyIds": [],
+      "provider": "gong",
+      "version": "1",
+      "display": {
+        "name": "Gong",
+        "description": "Revenue intelligence and conversation analytics",
+        "category": "tools",
+        "icon": "GongIcon",
+        "bgColor": "#8039DF"
+      },
+      "capabilities": [
+        "gong_list_calls",
+        "gong_create_call",
+        "gong_get_call",
+        "gong_get_call_transcript",
+        "gong_get_extensive_calls",
+        "gong_list_users",
+        "gong_get_user",
+        "gong_aggregate_activity",
+        "gong_day_by_day_activity",
+        "gong_aggregate_by_period",
+        "gong_interaction_stats",
+        "gong_answered_scorecards",
+        "gong_list_library_folders",
+        "gong_get_folder_content",
+        "gong_list_scorecards",
+        "gong_list_trackers",
+        "gong_list_workspaces",
+        "gong_list_flows",
+        "gong_assign_flow_prospects",
+        "gong_unassign_flow_prospects",
+        "gong_get_prospect_flows",
+        "gong_get_coaching",
+        "gong_ask_anything",
+        "gong_get_brief",
+        "gong_get_logs",
+        "gong_lookup_email",
+        "gong_lookup_phone",
+        "gong_purge_email_address",
+        "gong_purge_phone_number"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientUniqueId",
+          "label": "Client Unique ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actualStart",
+          "label": "Actual Start",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "primaryUser",
+          "label": "Primary User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parties",
+          "label": "Parties",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "direction",
+          "label": "Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downloadMediaUrl",
+          "label": "Download Media URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disposition",
+          "label": "Disposition",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "purpose",
+          "label": "Purpose",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "context",
+          "label": "Context",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callProviderCode",
+          "label": "Call Provider Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromDateTime",
+          "label": "From Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toDateTime",
+          "label": "To Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callId",
+          "label": "Call ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callIds",
+          "label": "Call IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transcriptFromDateTime",
+          "label": "From Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transcriptToDateTime",
+          "label": "To Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "primaryUserIds",
+          "label": "Primary User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeAvatars",
+          "label": "Include Avatars",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statsFromDate",
+          "label": "From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statsToDate",
+          "label": "To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aggregationPeriod",
+          "label": "Aggregation Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callFromDate",
+          "label": "Call From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callToDate",
+          "label": "Call To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reviewFromDate",
+          "label": "Review From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reviewToDate",
+          "label": "Review To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scorecardIds",
+          "label": "Scorecard IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reviewedUserIds",
+          "label": "Reviewed User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flowOwnerEmail",
+          "label": "Flow Owner Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flowId",
+          "label": "Flow ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "crmProspectId",
+          "label": "CRM Prospect ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unassignFlowId",
+          "label": "Flow ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unassignedByUserEmail",
+          "label": "Unassigned By User Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "crmProspectsIds",
+          "label": "CRM Prospect IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flowInstanceOwnerEmail",
+          "label": "Flow Instance Owner Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "managerId",
+          "label": "Manager ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "coachingWorkspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "coachingFromDate",
+          "label": "From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "coachingToDate",
+          "label": "To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entityWorkspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "crmEntityType",
+          "label": "CRM Entity Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "crmEntityId",
+          "label": "CRM Entity ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "question",
+          "label": "Question",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "briefName",
+          "label": "Brief Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timePeriod",
+          "label": "Time Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entityFromDateTime",
+          "label": "From Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entityToDateTime",
+          "label": "To Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logType",
+          "label": "Log Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logsFromDateTime",
+          "label": "From Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logsToDateTime",
+          "label": "To Date/Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessKey",
+          "label": "Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeySecret",
+          "label": "Access Key Secret",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

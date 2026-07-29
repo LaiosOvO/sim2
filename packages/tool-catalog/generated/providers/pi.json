@@ -1,0 +1,204 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "pi",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "pi",
+      "legacyIds": [],
+      "provider": "pi",
+      "version": "1",
+      "display": {
+        "name": "Pi Coding Agent",
+        "description": "Run an autonomous coding agent on a repo",
+        "category": "blocks",
+        "icon": "PiIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "mode",
+          "label": "Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "task",
+          "label": "Task",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchProvider",
+          "label": "Internet Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchApiKey",
+          "label": "Search API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "owner",
+          "label": "Repository Owner",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "repo",
+          "label": "Repository Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "githubToken",
+          "label": "GitHub Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "baseBranch",
+          "label": "Base Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "branchName",
+          "label": "Branch Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "draft",
+          "label": "Open as Draft PR",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "prTitle",
+          "label": "PR Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prBody",
+          "label": "PR Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reviewEvent",
+          "label": "Review Outcome",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authMethod",
+          "label": "Authentication Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "privateKey",
+          "label": "Private Key",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "repoPath",
+          "label": "Repository Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "passphrase",
+          "label": "Passphrase",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tools",
+          "label": "Tools",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skills",
+          "label": "Skills",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "thinkingLevel",
+          "label": "Thinking Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memoryType",
+          "label": "Memory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conversationId",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slidingWindowSize",
+          "label": "Sliding Window Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slidingWindowTokens",
+          "label": "Max Tokens",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

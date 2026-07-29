@@ -1,0 +1,234 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "quartr",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "quartr",
+      "legacyIds": [],
+      "provider": "quartr",
+      "version": "1",
+      "display": {
+        "name": "Quartr",
+        "description": "Access earnings calls, transcripts, filings, and slides",
+        "category": "tools",
+        "icon": "QuartrIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "quartr_list_companies",
+        "quartr_get_company",
+        "quartr_list_events",
+        "quartr_get_event",
+        "quartr_get_event_summary",
+        "quartr_list_event_types",
+        "quartr_list_documents",
+        "quartr_list_document_types",
+        "quartr_list_reports",
+        "quartr_get_report",
+        "quartr_list_slide_decks",
+        "quartr_get_slide_deck",
+        "quartr_list_transcripts",
+        "quartr_get_transcript",
+        "quartr_list_audio",
+        "quartr_get_audio",
+        "quartr_list_live_events"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "eventId",
+          "label": "Event ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "summaryLength",
+          "label": "Summary Length",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "plainSummary",
+          "label": "Plain Text Summary",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "reportId",
+          "label": "Report ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "slideDeckId",
+          "label": "Slide Deck ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "transcriptId",
+          "label": "Transcript ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audioId",
+          "label": "Audio ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "companyIds",
+          "label": "Company IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventIds",
+          "label": "Event IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tickers",
+          "label": "Tickers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isins",
+          "label": "ISINs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ciks",
+          "label": "CIKs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "openfigis",
+          "label": "OpenFIGIs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countries",
+          "label": "Countries",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exchanges",
+          "label": "Exchanges",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTypeIds",
+          "label": "Event Type IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentTypeIds",
+          "label": "Document Type IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentGroupIds",
+          "label": "Document Group IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "states",
+          "label": "Live States",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transcriptVersion",
+          "label": "Live Transcript Version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expandEvent",
+          "label": "Include Event Details",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "updatedAfter",
+          "label": "Updated After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedBefore",
+          "label": "Updated Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "direction",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

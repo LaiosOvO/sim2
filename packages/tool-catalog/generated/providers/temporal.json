@@ -1,0 +1,291 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "temporal",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "temporal",
+      "legacyIds": [],
+      "provider": "temporal",
+      "version": "1",
+      "display": {
+        "name": "Temporal",
+        "description": "Start, signal, query, and manage Temporal workflow executions",
+        "category": "tools",
+        "icon": "TemporalIcon",
+        "bgColor": "#141414"
+      },
+      "capabilities": [
+        "temporal_start_workflow",
+        "temporal_signal_workflow",
+        "temporal_signal_with_start",
+        "temporal_query_workflow",
+        "temporal_update_workflow",
+        "temporal_describe_workflow",
+        "temporal_list_workflows",
+        "temporal_count_workflows",
+        "temporal_get_workflow_history",
+        "temporal_cancel_workflow",
+        "temporal_terminate_workflow",
+        "temporal_reset_workflow",
+        "temporal_describe_task_queue",
+        "temporal_create_schedule",
+        "temporal_list_schedules",
+        "temporal_describe_schedule",
+        "temporal_pause_schedule",
+        "temporal_unpause_schedule",
+        "temporal_trigger_schedule",
+        "temporal_delete_schedule"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowId",
+          "label": "Workflow ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowType",
+          "label": "Workflow Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskQueue",
+          "label": "Task Queue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "input",
+          "label": "Workflow Input",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "signalName",
+          "label": "Signal Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signalInput",
+          "label": "Signal Input",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "queryType",
+          "label": "Query Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryArgs",
+          "label": "Query Arguments",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "updateName",
+          "label": "Update Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateArgs",
+          "label": "Update Arguments",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "listQuery",
+          "label": "Query Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextPageToken",
+          "label": "Next Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyEventFilterType",
+          "label": "Event Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyNextPageToken",
+          "label": "Next Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowTaskFinishEventId",
+          "label": "Reset Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleId",
+          "label": "Schedule ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleCronExpressions",
+          "label": "Cron Expressions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleIntervalSeconds",
+          "label": "Interval (s)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleTimezone",
+          "label": "Time Zone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleNotes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedulePaused",
+          "label": "Initial State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleQuery",
+          "label": "Query Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedulePageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleNextPageToken",
+          "label": "Next Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "overlapPolicy",
+          "label": "Overlap Policy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskQueueType",
+          "label": "Task Queue Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reason",
+          "label": "Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowIdReusePolicy",
+          "label": "ID Reuse Policy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowIdConflictPolicy",
+          "label": "ID Conflict Policy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cronSchedule",
+          "label": "Cron Schedule",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "executionTimeoutSeconds",
+          "label": "Execution Timeout (s)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runTimeoutSeconds",
+          "label": "Run Timeout (s)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memo",
+          "label": "Memo",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "searchAttributes",
+          "label": "Search Attributes",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "serverUrl",
+          "label": "Server URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

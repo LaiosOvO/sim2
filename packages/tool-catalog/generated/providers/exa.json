@@ -1,0 +1,258 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "exa",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "exa",
+      "legacyIds": [],
+      "provider": "exa",
+      "version": "1",
+      "display": {
+        "name": "Exa",
+        "description": "Search with Exa AI",
+        "category": "tools",
+        "icon": "ExaAIIcon",
+        "bgColor": "#1F40ED"
+      },
+      "capabilities": [
+        "exa_search",
+        "exa_get_contents",
+        "exa_find_similar_links",
+        "exa_answer",
+        "exa_research"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "numResults",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "useAutoprompt",
+          "label": "Use Autoprompt",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Search Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDomains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeDomains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "category",
+          "label": "Category Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Include Text",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "highlights",
+          "label": "Include Highlights",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "summary",
+          "label": "Include Summary",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "livecrawl",
+          "label": "Live Crawl Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startPublishedDate",
+          "label": "Start Published Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endPublishedDate",
+          "label": "End Published Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startCrawlDate",
+          "label": "Start Crawl Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endCrawlDate",
+          "label": "End Crawl Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "urls",
+          "label": "URLs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Include Text",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "summaryQuery",
+          "label": "Summary Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subpages",
+          "label": "Number of Subpages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subpageTarget",
+          "label": "Subpage Target Keywords",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "highlights",
+          "label": "Include Highlights",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "numResults",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Include Text",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeDomains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeDomains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeSourceDomain",
+          "label": "Exclude Source Domain",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "category",
+          "label": "Category Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "highlights",
+          "label": "Include Highlights",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "summary",
+          "label": "Include Summary",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "livecrawl",
+          "label": "Live Crawl Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Question",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Include Text",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Research Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Research Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

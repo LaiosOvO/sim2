@@ -1,0 +1,44 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "clay",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "clay",
+      "legacyIds": [],
+      "provider": "clay",
+      "version": "1",
+      "display": {
+        "name": "Clay",
+        "description": "Populate Clay workbook",
+        "category": "tools",
+        "icon": "ClayIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["clay_populate"],
+      "inputs": [
+        {
+          "key": "webhookURL",
+          "label": "Webhook URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data (JSON or Plain Text)",
+          "type": "string",
+          "required": true,
+          "description": "JSON vs. Plain Text:\nJSON: Best for populating multiple columns.\nPlain Text: Best for populating a table in free-form style.\n      "
+        },
+        {
+          "key": "authToken",
+          "label": "Auth Token",
+          "type": "string",
+          "required": false,
+          "description": "Optional: If your Clay table has webhook authentication enabled, enter the auth token here. This will be sent in the x-clay-webhook-auth header."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "fathom",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "fathom",
+      "legacyIds": [],
+      "provider": "fathom",
+      "version": "1",
+      "display": {
+        "name": "Fathom",
+        "description": "Access meeting recordings, transcripts, and summaries",
+        "category": "tools",
+        "icon": "FathomIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "fathom_list_meetings",
+        "fathom_list_meeting_types",
+        "fathom_get_summary",
+        "fathom_get_transcript",
+        "fathom_list_team_members",
+        "fathom_list_teams"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordingId",
+          "label": "Recording ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeSummary",
+          "label": "Include Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeTranscript",
+          "label": "Include Transcript",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeActionItems",
+          "label": "Include Action Items",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeCrmMatches",
+          "label": "Include CRM Matches",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeHighlights",
+          "label": "Include Highlights",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdAfter",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdBefore",
+          "label": "Created Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordedBy",
+          "label": "Recorded By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teams",
+          "label": "Team",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "meetingType",
+          "label": "Meeting Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "calendarInviteesDomains",
+          "label": "Invitee Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "calendarInviteesDomainsType",
+          "label": "Invitee Domain Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "selectedTriggerId",
+          "label": "Trigger Type",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

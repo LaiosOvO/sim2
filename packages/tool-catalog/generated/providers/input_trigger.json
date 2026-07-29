@@ -1,0 +1,31 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "input_trigger",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "input_trigger",
+      "legacyIds": ["input-trigger"],
+      "provider": "input_trigger",
+      "version": "1",
+      "display": {
+        "name": "Input Form (Legacy)",
+        "description": "Legacy manual start block with structured input. Prefer Start block.",
+        "category": "triggers",
+        "icon": "InputTriggerIcon",
+        "bgColor": "#3B82F6"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "inputFormat",
+          "label": "Input Format",
+          "type": "string",
+          "required": false,
+          "description": "Define the JSON input schema for this workflow when run manually."
+        }
+      ]
+    }
+  ]
+}

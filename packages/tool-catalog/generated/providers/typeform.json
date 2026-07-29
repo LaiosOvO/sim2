@@ -1,0 +1,177 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "typeform",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "typeform",
+      "legacyIds": [],
+      "provider": "typeform",
+      "version": "1",
+      "display": {
+        "name": "Typeform",
+        "description": "Interact with Typeform",
+        "category": "tools",
+        "icon": "TypeformIcon",
+        "bgColor": "#262627"
+      },
+      "capabilities": [
+        "typeform_responses",
+        "typeform_files",
+        "typeform_insights",
+        "typeform_list_forms",
+        "typeform_get_form",
+        "typeform_create_form",
+        "typeform_update_form",
+        "typeform_delete_form"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "formId",
+          "label": "Form ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "Personal Access Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before (Cursor)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After (Cursor)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "since",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "until",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completed",
+          "label": "Completed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "responseId",
+          "label": "Response ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldId",
+          "label": "Field ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filename",
+          "label": "Filename",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inline",
+          "label": "Inline Display",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Form Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Form Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workspaceIdCreate",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "settings",
+          "label": "Settings",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "themeId",
+          "label": "Theme ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "operations",
+          "label": "JSON Patch Operations",
+          "type": "json",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

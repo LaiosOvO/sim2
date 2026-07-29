@@ -1,0 +1,120 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sendblue",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sendblue",
+      "legacyIds": [],
+      "provider": "sendblue",
+      "version": "1",
+      "display": {
+        "name": "Sendblue",
+        "description": "Send and receive iMessage and SMS",
+        "category": "tools",
+        "icon": "SendblueIcon",
+        "bgColor": "#008BFF"
+      },
+      "capabilities": [
+        "sendblue_send_message",
+        "sendblue_send_group_message",
+        "sendblue_evaluate_service",
+        "sendblue_send_typing_indicator",
+        "sendblue_get_message"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKeyId",
+          "label": "API Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiSecretKey",
+          "label": "API Secret Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from_number",
+          "label": "From Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "number",
+          "label": "Recipient Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "numbers",
+          "label": "Recipient Numbers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "media_url",
+          "label": "Media URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "send_style",
+          "label": "Send Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "group_id",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seat_id",
+          "label": "Seat ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status_callback",
+          "label": "Status Callback URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "typing_state",
+          "label": "Typing State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_duration_ms",
+          "label": "Max Duration (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message_id",
+          "label": "Message Handle / ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "workflow_input",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "workflow_input",
+      "legacyIds": ["workflow-input"],
+      "provider": "workflow_input",
+      "version": "1",
+      "display": {
+        "name": "Workflow",
+        "description": "Execute another workflow and map variables to its Start trigger schema.",
+        "category": "blocks",
+        "icon": "WorkflowIcon",
+        "bgColor": "#6366F1"
+      },
+      "capabilities": ["workflow_executor"],
+      "inputs": [
+        {
+          "key": "workflowId",
+          "label": "Select Workflow",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualWorkflowId",
+          "label": "Workflow ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "inputMapping",
+          "label": "Inputs",
+          "type": "string",
+          "required": false,
+          "description": "Map fields defined in the child workflow's Start block to variables/values in this workflow."
+        }
+      ]
+    }
+  ]
+}

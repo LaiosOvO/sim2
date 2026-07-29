@@ -1,0 +1,590 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "apollo",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "apollo",
+      "legacyIds": [],
+      "provider": "apollo",
+      "version": "1",
+      "display": {
+        "name": "Apollo",
+        "description": "Search, enrich, and manage contacts with Apollo.io",
+        "category": "tools",
+        "icon": "ApolloIcon",
+        "bgColor": "#EBF212"
+      },
+      "capabilities": [
+        "apollo_people_search",
+        "apollo_people_enrich",
+        "apollo_people_bulk_enrich",
+        "apollo_organization_search",
+        "apollo_organization_enrich",
+        "apollo_organization_bulk_enrich",
+        "apollo_contact_create",
+        "apollo_contact_update",
+        "apollo_contact_search",
+        "apollo_contact_bulk_create",
+        "apollo_contact_bulk_update",
+        "apollo_account_create",
+        "apollo_account_update",
+        "apollo_account_search",
+        "apollo_account_bulk_create",
+        "apollo_account_bulk_update",
+        "apollo_opportunity_create",
+        "apollo_opportunity_search",
+        "apollo_opportunity_get",
+        "apollo_opportunity_update",
+        "apollo_sequence_search",
+        "apollo_sequence_add_contacts",
+        "apollo_task_create",
+        "apollo_task_search",
+        "apollo_email_accounts"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Apollo API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "person_titles",
+          "label": "Job Titles",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "person_locations",
+          "label": "Locations",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "organization_names",
+          "label": "Company Names",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "person_seniorities",
+          "label": "Seniority Levels",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "include_similar_titles",
+          "label": "Include Similar Titles",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "contact_email_status",
+          "label": "Contact Email Status",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contact_stage_ids",
+          "label": "Contact Stage IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contact_label_ids",
+          "label": "Contact Label IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "first_name",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_name",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organization_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reveal_personal_emails",
+          "label": "Reveal Personal Emails",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "reveal_phone_number",
+          "label": "Reveal Phone Numbers",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "webhook_url",
+          "label": "Phone Reveal Webhook URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "people",
+          "label": "People (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "domains",
+          "label": "Domains (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "organization_locations",
+          "label": "Organization Locations",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "organization_not_locations",
+          "label": "Excluded Organization Locations",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "organization_ids",
+          "label": "Organization IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "q_organization_domains_list",
+          "label": "Organization Domains",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "organization_num_employees_ranges",
+          "label": "Employee Count Ranges",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "q_organization_keyword_tags",
+          "label": "Keyword Tags",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "q_organization_name",
+          "label": "Organization Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contact_id",
+          "label": "Contact ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "account_id",
+          "label": "Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "owner_id",
+          "label": "Owner ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website_url",
+          "label": "Corporate Website URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "label_names",
+          "label": "Label Names (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contact_stage_id",
+          "label": "Contact Stage ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "present_raw_address",
+          "label": "Personal Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "direct_phone",
+          "label": "Direct Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "corporate_phone",
+          "label": "Corporate Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mobile_phone",
+          "label": "Mobile Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "home_phone",
+          "label": "Home Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "other_phone",
+          "label": "Other Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "typed_custom_fields",
+          "label": "Custom Fields (JSON Object)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contact_run_dedupe",
+          "label": "Run Deduplication",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "contacts",
+          "label": "Contacts (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "contacts",
+          "label": "Contact IDs (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contact_attributes",
+          "label": "Contact Attributes (JSON Array of Objects)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "async",
+          "label": "Force Asynchronous Processing",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "run_dedupe",
+          "label": "Run Deduplication",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "append_label_names",
+          "label": "Append Label Names (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "account_name",
+          "label": "Account Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "account_stage_id",
+          "label": "Account Stage ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "raw_address",
+          "label": "Account Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "q_keywords",
+          "label": "Keywords",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "account_stage_ids",
+          "label": "Account Stage IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "account_label_ids",
+          "label": "Account Label IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "accounts",
+          "label": "Accounts (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "accounts",
+          "label": "Account IDs (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "account_bulk_update_name",
+          "label": "Uniform Name (used with Account IDs)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "account_bulk_update_owner_id",
+          "label": "Uniform Owner ID (used with Account IDs)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "account_bulk_update_account_stage_id",
+          "label": "Uniform Account Stage ID (used with Account IDs)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "account_attributes",
+          "label": "Account Attributes (JSON Array of Objects)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "opportunity_name",
+          "label": "Opportunity Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amount",
+          "label": "Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "opportunity_stage_id",
+          "label": "Opportunity Stage ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "closed_date",
+          "label": "Close Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "opportunity_id",
+          "label": "Opportunity ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sort_by_field",
+          "label": "Sort By Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort_ascending",
+          "label": "Sort Ascending",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "q_name",
+          "label": "Sequence Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sequence_id",
+          "label": "Sequence ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contact_ids",
+          "label": "Contact IDs (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sequence_add_label_names",
+          "label": "Label Names (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "send_email_from_email_account_id",
+          "label": "Send Email From (Email Account ID)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "send_email_from_email_address",
+          "label": "Send Email From (Email Address)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sequence_same_company_in_same_campaign",
+          "label": "Allow Same Company in Same Campaign",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "contacts_without_ownership_permission",
+          "label": "Add Contacts Without Ownership Permission",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "add_if_in_queue",
+          "label": "Add If In Queue",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "contact_verification_skipped",
+          "label": "Skip Contact Verification",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "sequence_user_id",
+          "label": "Acting User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sequence_status",
+          "label": "Initial Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "auto_unpause_at",
+          "label": "Auto Unpause At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user_id",
+          "label": "Assigned User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Task Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "due_at",
+          "label": "Due Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "task_notes",
+          "label": "Task Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "open_factor_names",
+          "label": "Open Factor Names",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

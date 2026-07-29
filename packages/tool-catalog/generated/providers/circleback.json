@@ -1,0 +1,23 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "circleback",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "circleback",
+      "legacyIds": [],
+      "provider": "circleback",
+      "version": "1",
+      "display": {
+        "name": "Circleback",
+        "description": "AI-powered meeting notes and action items",
+        "category": "triggers",
+        "icon": "CirclebackIcon",
+        "bgColor": "linear-gradient(180deg, #E0F7FA 0%, #FFFFFF 100%)"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "parallel_ai",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "parallel_ai",
+      "legacyIds": ["parallel-ai"],
+      "provider": "parallel_ai",
+      "version": "1",
+      "display": {
+        "name": "Parallel AI",
+        "description": "Web research with Parallel AI",
+        "category": "tools",
+        "icon": "ParallelIcon",
+        "bgColor": "#1D1C1A"
+      },
+      "capabilities": ["parallel_search", "parallel_extract", "parallel_deep_research"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objective",
+          "label": "Search Objective",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "search_queries",
+          "label": "Search Queries",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "urls",
+          "label": "URLs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "extract_objective",
+          "label": "Extract Objective",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excerpts",
+          "label": "Include Excerpts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "full_content",
+          "label": "Include Full Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "research_input",
+          "label": "Research Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "search_mode",
+          "label": "Search Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_include_domains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_exclude_domains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_domains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exclude_domains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "processor",
+          "label": "Research Processor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_results",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_chars_per_result",
+          "label": "Max Chars Per Result",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

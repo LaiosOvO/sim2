@@ -1,0 +1,702 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "ahrefs",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "ahrefs",
+      "legacyIds": [],
+      "provider": "ahrefs",
+      "version": "1",
+      "display": {
+        "name": "Ahrefs",
+        "description": "SEO analysis with Ahrefs",
+        "category": "tools",
+        "icon": "AhrefsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "ahrefs_domain_rating",
+        "ahrefs_metrics",
+        "ahrefs_backlinks",
+        "ahrefs_backlinks_stats",
+        "ahrefs_referring_domains",
+        "ahrefs_broken_backlinks",
+        "ahrefs_organic_keywords",
+        "ahrefs_organic_competitors",
+        "ahrefs_top_pages",
+        "ahrefs_keyword_overview",
+        "ahrefs_paid_pages",
+        "ahrefs_anchors",
+        "ahrefs_related_terms",
+        "ahrefs_domain_rating_history",
+        "ahrefs_metrics_history",
+        "ahrefs_refdomains_history",
+        "ahrefs_keywords_history",
+        "ahrefs_batch_analysis",
+        "ahrefs_site_audit_page_explorer",
+        "ahrefs_rank_tracker_overview",
+        "ahrefs_rank_tracker_serp_overview",
+        "ahrefs_rank_tracker_competitors_overview",
+        "ahrefs_rank_tracker_competitors_stats"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "history",
+          "label": "History",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "history",
+          "label": "History",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keyword",
+          "label": "Keyword",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "history",
+          "label": "History",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keyword",
+          "label": "Keyword",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "terms",
+          "label": "Related Terms Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewFor",
+          "label": "Derive From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateFrom",
+          "label": "Start Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateTo",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyGrouping",
+          "label": "Grouping",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateFrom",
+          "label": "Start Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateTo",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "volumeMode",
+          "label": "Volume Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyGrouping",
+          "label": "Grouping",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateFrom",
+          "label": "Start Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateTo",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyGrouping",
+          "label": "Grouping",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target Domain/URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateFrom",
+          "label": "Start Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateTo",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyGrouping",
+          "label": "Grouping",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targets",
+          "label": "Targets",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Analysis Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "protocol",
+          "label": "Protocol",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "volumeMode",
+          "label": "Volume Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Site Audit Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issueId",
+          "label": "Issue ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "crawlDate",
+          "label": "Crawl Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Rank Tracker Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "device",
+          "label": "Device",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateCompared",
+          "label": "Compare To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "volumeMode",
+          "label": "Volume Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Rank Tracker Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "keyword",
+          "label": "Keyword",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "device",
+          "label": "Device",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "topPositions",
+          "label": "Top Positions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "asOfDate",
+          "label": "As Of",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationId",
+          "label": "Location ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "languageCode",
+          "label": "Language Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Rank Tracker Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "device",
+          "label": "Device",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateCompared",
+          "label": "Compare To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "volumeMode",
+          "label": "Volume Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Rank Tracker Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "device",
+          "label": "Device",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "volumeMode",
+          "label": "Volume Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

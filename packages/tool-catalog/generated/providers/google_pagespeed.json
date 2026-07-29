@@ -1,0 +1,54 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_pagespeed",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_pagespeed",
+      "legacyIds": ["google-pagespeed"],
+      "provider": "google_pagespeed",
+      "version": "1",
+      "display": {
+        "name": "Google PageSpeed",
+        "description": "Analyze webpage performance with Google PageSpeed Insights",
+        "category": "tools",
+        "icon": "GooglePagespeedIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["google_pagespeed_analyze"],
+      "inputs": [
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "strategy",
+          "label": "Strategy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "category",
+          "label": "Categories",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locale",
+          "label": "Locale",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

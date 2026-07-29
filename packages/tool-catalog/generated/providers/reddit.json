@@ -1,0 +1,488 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "reddit",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "reddit",
+      "legacyIds": [],
+      "provider": "reddit",
+      "version": "1",
+      "display": {
+        "name": "Reddit",
+        "description": "Access Reddit data and content",
+        "category": "tools",
+        "icon": "RedditIcon",
+        "bgColor": "#FF5700"
+      },
+      "capabilities": [
+        "reddit_get_posts",
+        "reddit_get_comments",
+        "reddit_get_controversial",
+        "reddit_search",
+        "reddit_submit_post",
+        "reddit_vote",
+        "reddit_save",
+        "reddit_unsave",
+        "reddit_reply",
+        "reddit_edit",
+        "reddit_delete",
+        "reddit_subscribe",
+        "reddit_get_me",
+        "reddit_get_user",
+        "reddit_send_message",
+        "reddit_get_messages",
+        "reddit_get_subreddit_info",
+        "reddit_get_subreddit_rules",
+        "reddit_get_user_posts",
+        "reddit_get_user_comments",
+        "reddit_get_saved",
+        "reddit_get_info",
+        "reddit_search_subreddits",
+        "reddit_list_my_subreddits",
+        "reddit_report",
+        "reddit_hide",
+        "reddit_unhide",
+        "reddit_marknsfw",
+        "reddit_unmarknsfw",
+        "reddit_mark_read",
+        "reddit_mark_all_read",
+        "reddit_mod_approve",
+        "reddit_mod_remove",
+        "reddit_mod_distinguish",
+        "reddit_lock",
+        "reddit_unlock",
+        "reddit_mod_sticky"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Reddit Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Reddit Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subreddit",
+          "label": "Subreddit",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "time",
+          "label": "Time Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Max Posts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postId",
+          "label": "Post ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentSort",
+          "label": "Sort Comments By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentLimit",
+          "label": "Number of Comments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentDepth",
+          "label": "Max Reply Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentFocus",
+          "label": "Focus Comment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "controversialTime",
+          "label": "Time Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "controversialLimit",
+          "label": "Max Posts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchSort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchTime",
+          "label": "Time Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchLimit",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "submitSubreddit",
+          "label": "Subreddit",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Post Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "postType",
+          "label": "Post Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Post Text (Markdown)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nsfw",
+          "label": "Mark as NSFW",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spoiler",
+          "label": "Mark as Spoiler",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flairId",
+          "label": "Flair ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flairText",
+          "label": "Flair Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendReplies",
+          "label": "Send Reply Notifications",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voteId",
+          "label": "Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "voteDirection",
+          "label": "Vote Direction",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "saveId",
+          "label": "Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "saveCategory",
+          "label": "Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyParentId",
+          "label": "Parent Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replyText",
+          "label": "Reply Text (Markdown)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "editThingId",
+          "label": "Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "editText",
+          "label": "New Text (Markdown)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deleteId",
+          "label": "Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subscribeSubreddit",
+          "label": "Subreddit",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subscribeAction",
+          "label": "Action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageTo",
+          "label": "Recipient",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageSubject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageText",
+          "label": "Message Body (Markdown)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageFromSr",
+          "label": "Send From Subreddit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageWhere",
+          "label": "Message Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageLimit",
+          "label": "Max Messages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageMark",
+          "label": "Mark as Read",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userListUsername",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userListSort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userListTime",
+          "label": "Time Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userListLimit",
+          "label": "Max Items",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "infoIds",
+          "label": "Thing Fullnames",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchSubredditsQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchSubredditsSort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchSubredditsLimit",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listMineLimit",
+          "label": "Max Subreddits",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportThingId",
+          "label": "Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reportReason",
+          "label": "Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportOtherReason",
+          "label": "Custom Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hideId",
+          "label": "Post ID(s)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "nsfwId",
+          "label": "Post ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "markReadId",
+          "label": "Message ID(s)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "modThingId",
+          "label": "Post/Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "removeSpam",
+          "label": "Mark as Spam",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "distinguishHow",
+          "label": "Distinguish Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "distinguishSticky",
+          "label": "Sticky Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stickyId",
+          "label": "Post ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "stickyState",
+          "label": "Action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "stickyNum",
+          "label": "Sticky Slot",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

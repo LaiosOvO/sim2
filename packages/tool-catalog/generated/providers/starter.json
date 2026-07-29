@@ -1,0 +1,37 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "starter",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "starter",
+      "legacyIds": [],
+      "provider": "starter",
+      "version": "1",
+      "display": {
+        "name": "Starter",
+        "description": "Start workflow",
+        "category": "blocks",
+        "icon": "StartIcon",
+        "bgColor": "#2FB3FF"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "startWorkflow",
+          "label": "Start Workflow",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputFormat",
+          "label": "Input Format",
+          "type": "string",
+          "required": false,
+          "description": "Name and Type define your input schema. Value is used only for manual test runs."
+        }
+      ]
+    }
+  ]
+}

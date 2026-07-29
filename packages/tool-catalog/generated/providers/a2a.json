@@ -1,0 +1,93 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "a2a",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "a2a",
+      "legacyIds": [],
+      "provider": "a2a",
+      "version": "1",
+      "display": {
+        "name": "A2A",
+        "description": "Interact with external A2A-compatible agents",
+        "category": "blocks",
+        "icon": "A2AIcon",
+        "bgColor": "#4151B5"
+      },
+      "capabilities": ["a2a_send_message", "a2a_get_task", "a2a_cancel_task", "a2a_get_agent_card"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "agentUrl",
+          "label": "Agent URL",
+          "type": "string",
+          "required": true,
+          "description": "The A2A endpoint URL"
+        },
+        {
+          "key": "message",
+          "label": "Message",
+          "type": "string",
+          "required": false,
+          "description": "The message to send to the agent"
+        },
+        {
+          "key": "data",
+          "label": "Data (JSON)",
+          "type": "json",
+          "required": false,
+          "description": "Optional structured data to include with the message"
+        },
+        {
+          "key": "fileUpload",
+          "label": "Files",
+          "type": "file",
+          "required": false,
+          "description": "Optional files to include with the message"
+        },
+        {
+          "key": "fileReference",
+          "label": "Files",
+          "type": "string",
+          "required": false,
+          "description": "Optional files to include with the message"
+        },
+        {
+          "key": "contextId",
+          "label": "Context ID",
+          "type": "string",
+          "required": false,
+          "description": "Context ID for conversation continuity"
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false,
+          "description": "Task to continue, query, or cancel"
+        },
+        {
+          "key": "historyLength",
+          "label": "History Length",
+          "type": "string",
+          "required": false,
+          "description": "Number of history messages to include in the response"
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": false,
+          "description": "Sent via the X-API-Key header for agents that require authentication"
+        }
+      ]
+    }
+  ]
+}

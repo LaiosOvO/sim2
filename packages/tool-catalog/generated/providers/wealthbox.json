@@ -1,0 +1,115 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "wealthbox",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "wealthbox",
+      "legacyIds": [],
+      "provider": "wealthbox",
+      "version": "1",
+      "display": {
+        "name": "Wealthbox",
+        "description": "Interact with Wealthbox",
+        "category": "tools",
+        "icon": "WealthboxIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "wealthbox_read_note",
+        "wealthbox_write_note",
+        "wealthbox_read_contact",
+        "wealthbox_write_contact",
+        "wealthbox_read_task",
+        "wealthbox_write_task"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Wealthbox Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Wealthbox Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "noteId",
+          "label": "Note ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Select Contact",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualContactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dueDate",
+          "label": "Due Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "backgroundInformation",
+          "label": "Background Information",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

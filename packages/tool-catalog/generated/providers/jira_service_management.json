@@ -1,0 +1,410 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "jira_service_management",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "jira_service_management",
+      "legacyIds": ["jira-service-management"],
+      "provider": "jira_service_management",
+      "version": "1",
+      "display": {
+        "name": "Jira Service Management",
+        "description": "Interact with Jira Service Management",
+        "category": "tools",
+        "icon": "JiraServiceManagementIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "jsm_get_service_desks",
+        "jsm_get_request_types",
+        "jsm_create_request",
+        "jsm_get_request",
+        "jsm_get_requests",
+        "jsm_add_comment",
+        "jsm_get_comments",
+        "jsm_get_customers",
+        "jsm_add_customer",
+        "jsm_get_organizations",
+        "jsm_create_organization",
+        "jsm_add_organization",
+        "jsm_get_queues",
+        "jsm_get_sla",
+        "jsm_get_transitions",
+        "jsm_transition_request",
+        "jsm_get_participants",
+        "jsm_add_participants",
+        "jsm_get_approvals",
+        "jsm_answer_approval",
+        "jsm_get_request_type_fields",
+        "jsm_get_form_templates",
+        "jsm_get_form_structure",
+        "jsm_get_issue_forms",
+        "jsm_attach_form",
+        "jsm_save_form_answers",
+        "jsm_submit_form",
+        "jsm_get_form",
+        "jsm_get_form_answers",
+        "jsm_reopen_form",
+        "jsm_delete_form",
+        "jsm_externalise_form",
+        "jsm_internalise_form",
+        "jsm_copy_forms",
+        "jsm_list_object_schemas",
+        "jsm_get_object_schema",
+        "jsm_list_object_types",
+        "jsm_get_object_type_attributes",
+        "jsm_search_objects_aql",
+        "jsm_get_object",
+        "jsm_create_object",
+        "jsm_update_object",
+        "jsm_delete_object"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "credential",
+          "label": "Jira Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Jira Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "serviceDeskSelector",
+          "label": "Service Desk",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "serviceDeskId",
+          "label": "Service Desk ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestTypeSelector",
+          "label": "Request Type",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "requestTypeId",
+          "label": "Request Type ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issueIdOrKey",
+          "label": "Issue ID or Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectIdOrKey",
+          "label": "Project ID or Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "formId",
+          "label": "Form ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "formTemplateId",
+          "label": "Form Template ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceIssueIdOrKey",
+          "label": "Source Issue ID or Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "targetIssueIdOrKey",
+          "label": "Target Issue ID or Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "formIds",
+          "label": "Form IDs to Copy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "summary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "raiseOnBehalfOf",
+          "label": "Raise on Behalf Of",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestParticipants",
+          "label": "Request Participants",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channel",
+          "label": "Channel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestFieldValues",
+          "label": "Request Field Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "formAnswers",
+          "label": "Form Answers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expand",
+          "label": "Expand",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentBody",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "isPublic",
+          "label": "Comment Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountIds",
+          "label": "Account IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "customerQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transitionId",
+          "label": "Transition ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "transitionComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestOwnership",
+          "label": "Request Ownership",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestStatus",
+          "label": "Request Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchTerm",
+          "label": "Search Term",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeCount",
+          "label": "Include Issue Count",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationName",
+          "label": "Organization Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "organizationId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "participantAccountIds",
+          "label": "Account IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "approvalId",
+          "label": "Approval ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "approvalDecision",
+          "label": "Decision",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetSchemaId",
+          "label": "Schema ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetObjectTypeId",
+          "label": "Object Type ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetObjectId",
+          "label": "Object ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetQlQuery",
+          "label": "AQL Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetAttributes",
+          "label": "Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetStartAt",
+          "label": "Start At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetMaxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetIncludeCounts",
+          "label": "Include Counts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetExcludeAbstract",
+          "label": "Exclude Abstract Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetOnlyValueEditable",
+          "label": "Only Editable Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetAttributeQuery",
+          "label": "Attribute Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetResultsPerPage",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetIncludeAttributes",
+          "label": "Include Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetObjectSchemaId",
+          "label": "Object Schema ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetWorkspaceId",
+          "label": "Assets Workspace ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

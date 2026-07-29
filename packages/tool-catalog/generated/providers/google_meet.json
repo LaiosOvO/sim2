@@ -1,0 +1,91 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_meet",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_meet",
+      "legacyIds": ["google-meet"],
+      "provider": "google_meet",
+      "version": "1",
+      "display": {
+        "name": "Google Meet",
+        "description": "Create and manage Google Meet meetings",
+        "category": "tools",
+        "icon": "GoogleMeetIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_meet_create_space",
+        "google_meet_get_space",
+        "google_meet_end_conference",
+        "google_meet_list_conference_records",
+        "google_meet_get_conference_record",
+        "google_meet_list_participants"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Meet Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Meet Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessType",
+          "label": "Access Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryPointAccess",
+          "label": "Entry Point Access",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceName",
+          "label": "Space Name or Meeting Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conferenceName",
+          "label": "Conference Record Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

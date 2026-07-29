@@ -1,0 +1,31 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "api_trigger",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "api_trigger",
+      "legacyIds": ["api-trigger"],
+      "provider": "api_trigger",
+      "version": "1",
+      "display": {
+        "name": "API (Legacy)",
+        "description": "Legacy block for exposing HTTP API endpoint. Prefer Start block.",
+        "category": "triggers",
+        "icon": "ApiIcon",
+        "bgColor": "#2F55FF"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "inputFormat",
+          "label": "Input Format",
+          "type": "string",
+          "required": false,
+          "description": "Define the JSON input schema accepted by the API endpoint."
+        }
+      ]
+    }
+  ]
+}

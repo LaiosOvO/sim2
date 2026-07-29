@@ -1,0 +1,157 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "launchdarkly",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "launchdarkly",
+      "legacyIds": [],
+      "provider": "launchdarkly",
+      "version": "1",
+      "display": {
+        "name": "LaunchDarkly",
+        "description": "Manage feature flags with LaunchDarkly.",
+        "category": "tools",
+        "icon": "LaunchDarklyIcon",
+        "bgColor": "#191919"
+      },
+      "capabilities": [
+        "launchdarkly_create_flag",
+        "launchdarkly_delete_flag",
+        "launchdarkly_get_audit_log",
+        "launchdarkly_get_flag",
+        "launchdarkly_get_flag_status",
+        "launchdarkly_list_environments",
+        "launchdarkly_list_flags",
+        "launchdarkly_list_members",
+        "launchdarkly_list_projects",
+        "launchdarkly_list_segments",
+        "launchdarkly_toggle_flag",
+        "launchdarkly_update_flag"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectKey",
+          "label": "Project Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flagKey",
+          "label": "Flag Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environmentKey",
+          "label": "Environment Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enabled",
+          "label": "Enable Flag",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flagName",
+          "label": "Flag Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newFlagKey",
+          "label": "Flag Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "temporary",
+          "label": "Temporary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateName",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateDescription",
+          "label": "New Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addTags",
+          "label": "Add Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeTags",
+          "label": "Remove Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "archive",
+          "label": "Archive/Restore",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spec",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tag",
+          "label": "Filter by Tag",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

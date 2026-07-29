@@ -1,0 +1,30 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "search",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "search",
+      "legacyIds": [],
+      "provider": "search",
+      "version": "1",
+      "display": {
+        "name": "Search",
+        "description": "Search the web ($0.01 per search)",
+        "category": "blocks",
+        "icon": "SearchIcon",
+        "bgColor": "#3B82F6"
+      },
+      "capabilities": ["search_tool"],
+      "inputs": [
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

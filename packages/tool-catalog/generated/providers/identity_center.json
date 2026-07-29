@@ -1,0 +1,127 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "identity_center",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "identity_center",
+      "legacyIds": ["aws-identity-center", "identity-center"],
+      "provider": "identity_center",
+      "version": "1",
+      "display": {
+        "name": "AWS Identity Center",
+        "description": "Manage temporary elevated access in AWS IAM Identity Center",
+        "category": "tools",
+        "icon": "IdentityCenterIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "capabilities": [
+        "identity_center_list_instances",
+        "identity_center_list_accounts",
+        "identity_center_describe_account",
+        "identity_center_list_permission_sets",
+        "identity_center_get_user",
+        "identity_center_get_group",
+        "identity_center_list_groups",
+        "identity_center_create_account_assignment",
+        "identity_center_delete_account_assignment",
+        "identity_center_check_assignment_status",
+        "identity_center_check_assignment_deletion_status",
+        "identity_center_list_account_assignments"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "instanceArn",
+          "label": "Instance ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identityStoreId",
+          "label": "Identity Store ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "displayName",
+          "label": "Group Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountId",
+          "label": "AWS Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "permissionSetArn",
+          "label": "Permission Set ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "principalType",
+          "label": "Principal Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "principalId",
+          "label": "Principal ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestId",
+          "label": "Request ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextToken",
+          "label": "Pagination Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

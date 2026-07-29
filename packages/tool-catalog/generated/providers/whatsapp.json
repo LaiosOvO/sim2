@@ -1,0 +1,224 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "whatsapp",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "whatsapp",
+      "legacyIds": [],
+      "provider": "whatsapp",
+      "version": "1",
+      "display": {
+        "name": "WhatsApp",
+        "description": "Send WhatsApp messages",
+        "category": "tools",
+        "icon": "WhatsAppIcon",
+        "bgColor": "#25D366"
+      },
+      "capabilities": [
+        "whatsapp_send_message",
+        "whatsapp_send_template",
+        "whatsapp_send_media",
+        "whatsapp_send_interactive",
+        "whatsapp_send_reaction",
+        "whatsapp_mark_read",
+        "whatsapp_upload_media",
+        "whatsapp_get_media"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumber",
+          "label": "Recipient Phone Number",
+          "type": "string",
+          "required": false,
+          "description": "Include the plus sign and country calling code."
+        },
+        {
+          "key": "message",
+          "label": "Message",
+          "type": "string",
+          "required": false,
+          "description": "Free-form text (max 4096 characters). WhatsApp only delivers this within 24 hours of the recipient last messaging you — outside that window use Send Template."
+        },
+        {
+          "key": "previewUrl",
+          "label": "Preview First Link",
+          "type": "string",
+          "required": false,
+          "description": "Have WhatsApp attempt to render a link preview for the first URL in the message."
+        },
+        {
+          "key": "templateName",
+          "label": "Template Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "languageCode",
+          "label": "Template Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "components",
+          "label": "Template Components",
+          "type": "string",
+          "required": false,
+          "description": "JSON array of template components with variable parameters."
+        },
+        {
+          "key": "mediaType",
+          "label": "Media Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendMediaFile",
+          "label": "Media",
+          "type": "file",
+          "required": false,
+          "description": "Uploaded to WhatsApp, then sent. Use Upload Media when sending the same file repeatedly."
+        },
+        {
+          "key": "sendMediaFileRef",
+          "label": "Media",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaId",
+          "label": "Media ID",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Media. Reuses an upload for 30 days."
+        },
+        {
+          "key": "mediaLink",
+          "label": "Media Link",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Media. WhatsApp fetches and caches this URL for 10 minutes."
+        },
+        {
+          "key": "caption",
+          "label": "Caption",
+          "type": "string",
+          "required": false,
+          "description": "Max 1024 characters. Not supported for audio or sticker media."
+        },
+        {
+          "key": "filename",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interactiveType",
+          "label": "Interactive Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bodyText",
+          "label": "Body Text",
+          "type": "string",
+          "required": false,
+          "description": "Max 1024 characters with reply buttons, 4096 with a list."
+        },
+        {
+          "key": "buttons",
+          "label": "Reply Buttons",
+          "type": "string",
+          "required": false,
+          "description": "JSON array of reply buttons (max 3, title max 20 characters)."
+        },
+        {
+          "key": "listButtonText",
+          "label": "List Button Text",
+          "type": "string",
+          "required": false,
+          "description": "Label for the button that opens the list (max 20 characters)."
+        },
+        {
+          "key": "sections",
+          "label": "List Sections",
+          "type": "string",
+          "required": false,
+          "description": "JSON array of list sections (max 10 sections, 10 rows total)."
+        },
+        {
+          "key": "headerText",
+          "label": "Header Text",
+          "type": "string",
+          "required": false,
+          "description": "Max 60 characters."
+        },
+        {
+          "key": "footerText",
+          "label": "Footer Text",
+          "type": "string",
+          "required": false,
+          "description": "Max 60 characters."
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emoji",
+          "label": "Emoji",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": true,
+          "description": "WhatsApp limits: images 5 MB, video and audio 16 MB, documents 100 MB, stickers 500 KB."
+        },
+        {
+          "key": "uploadFileRef",
+          "label": "File",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "downloadMediaId",
+          "label": "Media ID",
+          "type": "string",
+          "required": false,
+          "description": "The media asset ID on an incoming message, not the message ID (wamid). Incoming media IDs expire after 7 days."
+        },
+        {
+          "key": "showTypingIndicator",
+          "label": "Show Typing Indicator",
+          "type": "string",
+          "required": false,
+          "description": "Display a typing indicator to the sender. Dismissed once you reply or after 25 seconds."
+        },
+        {
+          "key": "phoneNumberId",
+          "label": "WhatsApp Phone Number ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessToken",
+          "label": "Access Token",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

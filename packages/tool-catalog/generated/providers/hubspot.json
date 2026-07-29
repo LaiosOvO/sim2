@@ -1,0 +1,381 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "hubspot",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "hubspot",
+      "legacyIds": [],
+      "provider": "hubspot",
+      "version": "1",
+      "display": {
+        "name": "HubSpot",
+        "description": "Interact with HubSpot CRM or trigger workflows from HubSpot events",
+        "category": "tools",
+        "icon": "HubspotIcon",
+        "bgColor": "#FF7A59"
+      },
+      "capabilities": [
+        "hubspot_get_users",
+        "hubspot_list_contacts",
+        "hubspot_get_contact",
+        "hubspot_create_contact",
+        "hubspot_update_contact",
+        "hubspot_search_contacts",
+        "hubspot_list_companies",
+        "hubspot_get_company",
+        "hubspot_create_company",
+        "hubspot_update_company",
+        "hubspot_search_companies",
+        "hubspot_list_deals",
+        "hubspot_get_deal",
+        "hubspot_create_deal",
+        "hubspot_update_deal",
+        "hubspot_search_deals",
+        "hubspot_list_tickets",
+        "hubspot_get_ticket",
+        "hubspot_create_ticket",
+        "hubspot_update_ticket",
+        "hubspot_search_tickets",
+        "hubspot_list_notes",
+        "hubspot_get_note",
+        "hubspot_create_note",
+        "hubspot_search_notes",
+        "hubspot_list_emails",
+        "hubspot_get_email",
+        "hubspot_create_email",
+        "hubspot_search_emails",
+        "hubspot_get_properties",
+        "hubspot_list_associations",
+        "hubspot_create_association",
+        "hubspot_delete_association",
+        "hubspot_get_association_labels",
+        "hubspot_delete_contact",
+        "hubspot_delete_company",
+        "hubspot_delete_deal",
+        "hubspot_delete_ticket",
+        "hubspot_delete_line_item",
+        "hubspot_search_line_items",
+        "hubspot_search_quotes",
+        "hubspot_get_list_memberships",
+        "hubspot_add_list_memberships",
+        "hubspot_remove_list_memberships",
+        "hubspot_list_line_items",
+        "hubspot_get_line_item",
+        "hubspot_create_line_item",
+        "hubspot_update_line_item",
+        "hubspot_list_quotes",
+        "hubspot_get_quote",
+        "hubspot_list_appointments",
+        "hubspot_get_appointment",
+        "hubspot_create_appointment",
+        "hubspot_update_appointment",
+        "hubspot_list_carts",
+        "hubspot_get_cart",
+        "hubspot_list_owners",
+        "hubspot_list_marketing_events",
+        "hubspot_get_marketing_event",
+        "hubspot_list_lists",
+        "hubspot_get_list",
+        "hubspot_create_list"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "HubSpot Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "HubSpot Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID or Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID or Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID or Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID or Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dealId",
+          "label": "Deal ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dealId",
+          "label": "Deal ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dealId",
+          "label": "Deal ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ticketId",
+          "label": "Ticket ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticketId",
+          "label": "Ticket ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ticketId",
+          "label": "Ticket ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "noteId",
+          "label": "Note ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailId",
+          "label": "Email ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectType",
+          "label": "Object Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "propertyName",
+          "label": "Property Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "archived",
+          "label": "Archived Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectId",
+          "label": "Record ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toObjectType",
+          "label": "To Object Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toObjectId",
+          "label": "To Record ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "associationCategory",
+          "label": "Association Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "associationTypeId",
+          "label": "Association Type ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineItemId",
+          "label": "Line Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineItemId",
+          "label": "Line Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "lineItemId",
+          "label": "Line Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "quoteId",
+          "label": "Quote ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appointmentId",
+          "label": "Appointment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appointmentId",
+          "label": "Appointment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cartId",
+          "label": "Cart ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventId",
+          "label": "Marketing Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listId",
+          "label": "List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listId",
+          "label": "List ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recordIds",
+          "label": "Record IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listName",
+          "label": "List Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "objectTypeId",
+          "label": "Object Type ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "processingType",
+          "label": "Processing Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "idProperty",
+          "label": "ID Property",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "propertiesToSet",
+          "label": "Properties",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "properties",
+          "label": "Properties to Return",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "associations",
+          "label": "Associations",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterGroups",
+          "label": "Filter Groups",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sorts",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchProperties",
+          "label": "Properties to Return",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

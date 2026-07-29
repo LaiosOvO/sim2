@@ -1,0 +1,93 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "tiktok",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "tiktok",
+      "legacyIds": [],
+      "provider": "tiktok",
+      "version": "1",
+      "display": {
+        "name": "TikTok",
+        "description": "Access TikTok profiles and videos, and upload inbox drafts",
+        "category": "tools",
+        "icon": "TikTokIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "tiktok_get_user",
+        "tiktok_list_videos",
+        "tiktok_query_videos",
+        "tiktok_upload_video_draft",
+        "tiktok_get_post_status"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "TikTok Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "TikTok Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fields",
+          "label": "Fields",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of user fields to return. Leave empty for all fields."
+        },
+        {
+          "key": "maxCount",
+          "label": "Max Count",
+          "type": "string",
+          "required": false,
+          "description": "Maximum number of videos to return (1-20)."
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoIds",
+          "label": "Video IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoFile",
+          "label": "Video File",
+          "type": "file",
+          "required": false,
+          "description": "MP4, MOV, or WebM video up to 250 MB."
+        },
+        {
+          "key": "videoFileRef",
+          "label": "Video File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publishId",
+          "label": "Publish ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

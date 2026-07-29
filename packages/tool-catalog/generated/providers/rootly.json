@@ -1,0 +1,1104 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "rootly",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "rootly",
+      "legacyIds": [],
+      "provider": "rootly",
+      "version": "1",
+      "display": {
+        "name": "Rootly",
+        "description": "Manage incidents, alerts, and on-call with Rootly",
+        "category": "tools",
+        "icon": "RootlyIcon",
+        "bgColor": "#6C72C8"
+      },
+      "capabilities": [
+        "rootly_create_incident",
+        "rootly_get_incident",
+        "rootly_update_incident",
+        "rootly_list_incidents",
+        "rootly_create_alert",
+        "rootly_list_alerts",
+        "rootly_add_incident_event",
+        "rootly_list_services",
+        "rootly_list_severities",
+        "rootly_list_teams",
+        "rootly_list_environments",
+        "rootly_list_incident_types",
+        "rootly_list_functionalities",
+        "rootly_list_retrospectives",
+        "rootly_delete_incident",
+        "rootly_get_alert",
+        "rootly_update_alert",
+        "rootly_acknowledge_alert",
+        "rootly_resolve_alert",
+        "rootly_create_action_item",
+        "rootly_list_action_items",
+        "rootly_list_users",
+        "rootly_list_on_calls",
+        "rootly_list_schedules",
+        "rootly_list_escalation_policies",
+        "rootly_list_causes",
+        "rootly_list_playbooks",
+        "rootly_mitigate_incident",
+        "rootly_resolve_incident",
+        "rootly_assign_incident_role",
+        "rootly_unassign_incident_role",
+        "rootly_add_subscribers",
+        "rootly_remove_subscribers",
+        "rootly_create_status_page_event",
+        "rootly_update_action_item",
+        "rootly_delete_action_item",
+        "rootly_snooze_alert",
+        "rootly_escalate_alert",
+        "rootly_list_incident_events",
+        "rootly_run_workflow",
+        "rootly_list_incident_roles"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createSeverityId",
+          "label": "Severity ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createKind",
+          "label": "Kind",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceIds",
+          "label": "Service IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createEnvironmentIds",
+          "label": "Environment IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createGroupIds",
+          "label": "Team IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createIncidentTypeIds",
+          "label": "Incident Type IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createFunctionalityIds",
+          "label": "Functionality IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createLabels",
+          "label": "Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createPrivate",
+          "label": "Private",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateTitle",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSeverityId",
+          "label": "Severity ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mitigationMessage",
+          "label": "Mitigation Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolutionMessage",
+          "label": "Resolution Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateServiceIds",
+          "label": "Service IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateEnvironmentIds",
+          "label": "Environment IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateGroupIds",
+          "label": "Team IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateKind",
+          "label": "Kind",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatePrivate",
+          "label": "Private",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateIncidentTypeIds",
+          "label": "Incident Type IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateFunctionalityIds",
+          "label": "Functionality IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateLabels",
+          "label": "Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancellationMessage",
+          "label": "Cancellation Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsSeverity",
+          "label": "Severity Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsServices",
+          "label": "Services Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsSort",
+          "label": "Sort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsTeams",
+          "label": "Teams Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsEnvironments",
+          "label": "Environments Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIncidentsPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertSource",
+          "label": "Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertServiceIds",
+          "label": "Service IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertGroupIds",
+          "label": "Team IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertDeduplicationKey",
+          "label": "Deduplication Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertEnvironmentIds",
+          "label": "Environment IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertExternalUrl",
+          "label": "External URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsSource",
+          "label": "Source Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsServices",
+          "label": "Services Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsEnvironments",
+          "label": "Environments Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsGroups",
+          "label": "Teams Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAlertsPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventText",
+          "label": "Event",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventVisibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "servicesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "servicesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "servicesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "severitiesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "severitiesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "severitiesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamsPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environmentsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environmentsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environmentsPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentTypesSearch",
+          "label": "Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentTypesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentTypesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionalitiesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionalitiesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionalitiesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retrospectivesStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retrospectivesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retrospectivesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retrospectivesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertSource",
+          "label": "Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertServiceIds",
+          "label": "Service IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertGroupIds",
+          "label": "Team IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertEnvironmentIds",
+          "label": "Environment IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertExternalUrl",
+          "label": "External URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateAlertDeduplicationKey",
+          "label": "Deduplication Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ackAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolveAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolveResolutionMessage",
+          "label": "Resolution Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolveRelatedIncidents",
+          "label": "Resolve Related Incidents",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemKind",
+          "label": "Kind",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemPriority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemAssignedToUserId",
+          "label": "Assigned To User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionItemDueDate",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listActionItemsIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listActionItemsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listActionItemsPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersEmail",
+          "label": "Email Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onCallsScheduleIds",
+          "label": "Schedule IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onCallsEscalationPolicyIds",
+          "label": "Escalation Policy IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onCallsUserIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onCallsServiceIds",
+          "label": "Service IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedulesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedulesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedulesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPoliciesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPoliciesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPoliciesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "causesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "causesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "causesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "playbooksPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "playbooksPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mitigateIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mitigateMessage",
+          "label": "Mitigation Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolveIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolveIncidentMessage",
+          "label": "Resolution Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignRoleIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignRoleUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignRoleId",
+          "label": "Incident Role ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unassignRoleIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unassignRoleUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unassignRoleId",
+          "label": "Incident Role ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addSubsIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addSubsUserIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeSubsIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeSubsUserIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEventIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEventText",
+          "label": "Update Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEventStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEventStatusPageId",
+          "label": "Status Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEventNotify",
+          "label": "Notify Subscribers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEventTweet",
+          "label": "Post to Twitter/X",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemId",
+          "label": "Action Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemPriority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemKind",
+          "label": "Kind",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemAssignee",
+          "label": "Assigned To User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateActionItemDueDate",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteActionItemId",
+          "label": "Action Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "snoozeAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "snoozeDelayMinutes",
+          "label": "Snooze Minutes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalateAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalatePolicyId",
+          "label": "Escalation Policy ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalatePolicyLevel",
+          "label": "Escalation Policy Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listEventsIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listEventsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listEventsPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runWorkflowId",
+          "label": "Workflow ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runWorkflowIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runWorkflowAlertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runWorkflowImmediate",
+          "label": "Run Immediately",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runWorkflowCheckConditions",
+          "label": "Check Conditions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentRolesSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentRolesPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentRolesPageNumber",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

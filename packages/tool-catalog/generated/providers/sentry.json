@@ -1,0 +1,350 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sentry",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sentry",
+      "legacyIds": [],
+      "provider": "sentry",
+      "version": "1",
+      "display": {
+        "name": "Sentry",
+        "description": "Manage Sentry issues, projects, events, and releases",
+        "category": "tools",
+        "icon": "SentryIcon",
+        "bgColor": "#362D59"
+      },
+      "capabilities": [
+        "sentry_issues_list",
+        "sentry_issues_get",
+        "sentry_issues_update",
+        "sentry_projects_list",
+        "sentry_projects_get",
+        "sentry_projects_create",
+        "sentry_projects_update",
+        "sentry_events_list",
+        "sentry_events_get",
+        "sentry_releases_list",
+        "sentry_releases_create",
+        "sentry_releases_deploy",
+        "sentry_teams_list"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectSlug",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statsPeriod",
+          "label": "Stats Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issueId",
+          "label": "Issue ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issueId",
+          "label": "Issue ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "status",
+          "label": "New Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignedTo",
+          "label": "Assign To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isBookmarked",
+          "label": "Bookmark Issue",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "isSubscribed",
+          "label": "Subscribe to Updates",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectSlug",
+          "label": "Project ID or Slug",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Project Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "teamSlug",
+          "label": "Team Slug",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "platform",
+          "label": "Platform",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "label": "Project Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultRules",
+          "label": "Create Default Alert Rules",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "projectSlug",
+          "label": "Project Slug",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "label": "New Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "platform",
+          "label": "Platform",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isBookmarked",
+          "label": "Bookmark Project",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectSlug",
+          "label": "Project Slug",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issueId",
+          "label": "Issue ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statsPeriod",
+          "label": "Stats Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectSlug",
+          "label": "Project Slug",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "eventId",
+          "label": "Event ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectSlug",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "version",
+          "label": "Version",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projects",
+          "label": "Projects",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ref",
+          "label": "Git Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Release URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateReleased",
+          "label": "Release Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commits",
+          "label": "Commits (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "version",
+          "label": "Version",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "environment",
+          "label": "Environment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Deploy Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Deploy URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateStarted",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateFinished",
+          "label": "Finish Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "organizationSlug",
+          "label": "Organization Slug",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

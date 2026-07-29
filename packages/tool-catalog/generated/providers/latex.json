@@ -1,0 +1,83 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "latex",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "latex",
+      "legacyIds": [],
+      "provider": "latex",
+      "version": "1",
+      "display": {
+        "name": "LaTeX",
+        "description": "Compile LaTeX documents into PDFs",
+        "category": "tools",
+        "icon": "LatexIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "latex_compile",
+        "latex_search_packages",
+        "latex_get_package",
+        "latex_list_fonts"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "LaTeX Source",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "compiler",
+          "label": "Compiler",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resources",
+          "label": "Resources",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "packageQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "packageName",
+          "label": "Package Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fontQuery",
+          "label": "Font Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

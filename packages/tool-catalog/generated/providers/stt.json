@@ -1,0 +1,158 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "stt",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "stt",
+      "legacyIds": [],
+      "provider": "stt",
+      "version": "1",
+      "display": {
+        "name": "Speech-to-Text",
+        "description": "Convert speech to text using AI",
+        "category": "blocks",
+        "icon": "STTIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "stt_whisper",
+        "stt_deepgram",
+        "stt_elevenlabs",
+        "stt_assemblyai",
+        "stt_gemini"
+      ],
+      "inputs": [
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audioFile",
+          "label": "Audio/Video File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "audioFileReference",
+          "label": "Audio/Video File Reference",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audioUrl",
+          "label": "Audio/Video URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "timestamps",
+          "label": "Timestamps",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "diarization",
+          "label": "Speaker Diarization",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "translateToEnglish",
+          "label": "Translate to English",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "sentiment",
+          "label": "Sentiment Analysis",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "entityDetection",
+          "label": "Entity Detection",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "piiRedaction",
+          "label": "PII Redaction",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "summarization",
+          "label": "Auto Summarization",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "stt_v2",
+      "legacyIds": ["stt-v2"],
+      "provider": "stt",
+      "version": "2",
+      "display": {
+        "name": "Speech-to-Text",
+        "description": "",
+        "category": "blocks"
+      },
+      "capabilities": [
+        "stt_whisper_v2",
+        "stt_deepgram_v2",
+        "stt_elevenlabs_v2",
+        "stt_assemblyai_v2",
+        "stt_gemini_v2"
+      ],
+      "inputs": []
+    }
+  ]
+}

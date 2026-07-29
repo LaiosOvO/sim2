@@ -1,0 +1,154 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "cloudformation",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "cloudformation",
+      "legacyIds": [],
+      "provider": "cloudformation",
+      "version": "1",
+      "display": {
+        "name": "CloudFormation",
+        "description": "Manage and inspect AWS CloudFormation stacks, resources, and drift",
+        "category": "tools",
+        "icon": "CloudFormationIcon",
+        "bgColor": "linear-gradient(45deg, #B0084D 0%, #FF4F8B 100%)"
+      },
+      "capabilities": [
+        "cloudformation_describe_stacks",
+        "cloudformation_create_stack",
+        "cloudformation_update_stack",
+        "cloudformation_delete_stack",
+        "cloudformation_cancel_update_stack",
+        "cloudformation_create_change_set",
+        "cloudformation_describe_change_set",
+        "cloudformation_execute_change_set",
+        "cloudformation_list_stack_resources",
+        "cloudformation_detect_stack_drift",
+        "cloudformation_describe_stack_drift_detection_status",
+        "cloudformation_describe_stack_events",
+        "cloudformation_get_template",
+        "cloudformation_get_template_summary",
+        "cloudformation_validate_template"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "awsRegion",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsAccessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsSecretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "stackName",
+          "label": "Stack Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stackDriftDetectionId",
+          "label": "Drift Detection ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateBody",
+          "label": "Template Body",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "usePreviousTemplate",
+          "label": "Use Previous Template",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "changeSetName",
+          "label": "Change Set Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "changeSetType",
+          "label": "Change Set Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "changeSetDescription",
+          "label": "Change Set Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parameters",
+          "label": "Parameters (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "capabilities",
+          "label": "Capabilities",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "onFailure",
+          "label": "On Failure",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeoutInMinutes",
+          "label": "Timeout (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retainResources",
+          "label": "Retain Resources",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateStage",
+          "label": "Template Stage",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

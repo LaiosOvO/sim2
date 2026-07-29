@@ -1,0 +1,287 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sendgrid",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sendgrid",
+      "legacyIds": [],
+      "provider": "sendgrid",
+      "version": "1",
+      "display": {
+        "name": "SendGrid",
+        "description": "Send emails and manage contacts, lists, and templates with SendGrid",
+        "category": "tools",
+        "icon": "SendgridIcon",
+        "bgColor": "#1A82E2"
+      },
+      "capabilities": [
+        "sendgrid_send_mail",
+        "sendgrid_add_contact",
+        "sendgrid_get_contact",
+        "sendgrid_search_contacts",
+        "sendgrid_delete_contacts",
+        "sendgrid_create_list",
+        "sendgrid_get_list",
+        "sendgrid_list_all_lists",
+        "sendgrid_delete_list",
+        "sendgrid_add_contacts_to_list",
+        "sendgrid_remove_contacts_from_list",
+        "sendgrid_create_template",
+        "sendgrid_get_template",
+        "sendgrid_list_templates",
+        "sendgrid_delete_template",
+        "sendgrid_create_template_version"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "SendGrid API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from",
+          "label": "From Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromName",
+          "label": "From Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "to",
+          "label": "To Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toName",
+          "label": "To Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailSubject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyTo",
+          "label": "Reply To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToName",
+          "label": "Reply To Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailTemplateId",
+          "label": "Template ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dynamicTemplateData",
+          "label": "Dynamic Template Data",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "attachments",
+          "label": "Attachments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customFields",
+          "label": "Custom Fields",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contactListIds",
+          "label": "List IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contactIds",
+          "label": "Contact IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contacts",
+          "label": "Contacts (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "listName",
+          "label": "List Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listId",
+          "label": "List ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listPageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateName",
+          "label": "Template Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "templateId",
+          "label": "Template ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "generation",
+          "label": "Template Generation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateGenerations",
+          "label": "Filter by Generation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templatePageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templatePageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "versionName",
+          "label": "Version Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "templateSubject",
+          "label": "Template Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "htmlContent",
+          "label": "HTML Content",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "plainContent",
+          "label": "Plain Text Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "active",
+          "label": "Active",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "emailbison",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "emailbison",
+      "legacyIds": ["email-bison"],
+      "provider": "emailbison",
+      "version": "1",
+      "display": {
+        "name": "Email Bison",
+        "description": "Manage Email Bison leads, campaigns, replies, and tags",
+        "category": "tools",
+        "icon": "EmailBisonIcon",
+        "bgColor": "#FB7A22"
+      },
+      "capabilities": [
+        "emailbison_list_leads",
+        "emailbison_get_lead",
+        "emailbison_create_lead",
+        "emailbison_update_lead",
+        "emailbison_list_campaigns",
+        "emailbison_create_campaign",
+        "emailbison_update_campaign",
+        "emailbison_update_campaign_status",
+        "emailbison_attach_leads_to_campaign",
+        "emailbison_list_replies",
+        "emailbison_list_tags",
+        "emailbison_create_tag",
+        "emailbison_attach_tags_to_leads"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiBaseUrl",
+          "label": "Instance URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "leadId",
+          "label": "Lead ID or Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignStatus",
+          "label": "Lead Campaign Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company",
+          "label": "Company",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customVariables",
+          "label": "Custom Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignId",
+          "label": "Campaign ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignName",
+          "label": "Campaign Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignType",
+          "label": "Campaign Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "action",
+          "label": "Status Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxEmailsPerDay",
+          "label": "Max Emails Per Day",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxNewLeadsPerDay",
+          "label": "Max New Leads Per Day",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sequencePrioritization",
+          "label": "Sequence Prioritization",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "plainText",
+          "label": "Plain Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "openTracking",
+          "label": "Open Tracking",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reputationBuilding",
+          "label": "Reputation Building",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "canUnsubscribe",
+          "label": "Can Unsubscribe",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeAutoRepliesInStats",
+          "label": "Include Auto Replies in Stats",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadIds",
+          "label": "Lead IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allowParallelSending",
+          "label": "Allow Parallel Sending",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyStatus",
+          "label": "Reply Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folder",
+          "label": "Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "read",
+          "label": "Read",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "senderEmailId",
+          "label": "Sender Email ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyLeadId",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagName",
+          "label": "Tag Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagIds",
+          "label": "Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterTagIds",
+          "label": "Filter Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludedTagIds",
+          "label": "Excluded Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "withoutTags",
+          "label": "Without Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skipWebhooks",
+          "label": "Skip Webhooks",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

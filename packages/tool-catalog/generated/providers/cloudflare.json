@@ -1,0 +1,476 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "cloudflare",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "cloudflare",
+      "legacyIds": [],
+      "provider": "cloudflare",
+      "version": "1",
+      "display": {
+        "name": "Cloudflare",
+        "description": "Manage DNS, domains, certificates, and cache",
+        "category": "tools",
+        "icon": "CloudflareIcon",
+        "bgColor": "#F5F6FA"
+      },
+      "capabilities": [
+        "cloudflare_list_zones",
+        "cloudflare_get_zone",
+        "cloudflare_create_zone",
+        "cloudflare_delete_zone",
+        "cloudflare_list_dns_records",
+        "cloudflare_create_dns_record",
+        "cloudflare_update_dns_record",
+        "cloudflare_delete_dns_record",
+        "cloudflare_list_certificates",
+        "cloudflare_get_zone_settings",
+        "cloudflare_update_zone_setting",
+        "cloudflare_dns_analytics",
+        "cloudflare_purge_cache"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Domain Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Sort Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "direction",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "match",
+          "label": "Match Logic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Domain Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zoneType",
+          "label": "Zone Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Record Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "direction",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "match",
+          "label": "Match Logic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Sort Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "proxied",
+          "label": "Proxied Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tag",
+          "label": "Tag Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tag_match",
+          "label": "Tag Match Logic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentFilter",
+          "label": "Comment Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Record Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Record Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Record Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ttl",
+          "label": "TTL (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "proxied",
+          "label": "Proxied",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Record Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Record Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "New Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ttl",
+          "label": "TTL (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "proxied",
+          "label": "Proxied",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "status",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploy",
+          "label": "Environment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "settingId",
+          "label": "Setting",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "since",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "until",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dimensions",
+          "label": "Dimensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zoneId",
+          "label": "Zone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purge_everything",
+          "label": "Purge Everything",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "files",
+          "label": "Files to Purge",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Cache Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hosts",
+          "label": "Hostnames",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prefixes",
+          "label": "URL Prefixes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Token",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

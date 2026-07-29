@@ -1,0 +1,394 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sharepoint",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sharepoint",
+      "legacyIds": [],
+      "provider": "sharepoint",
+      "version": "1",
+      "display": {
+        "name": "Sharepoint",
+        "description": "Work with pages and lists",
+        "category": "tools",
+        "icon": "MicrosoftSharepointIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "sharepoint_create_page",
+        "sharepoint_read_page",
+        "sharepoint_update_page",
+        "sharepoint_publish_page",
+        "sharepoint_delete_page",
+        "sharepoint_list_sites",
+        "sharepoint_create_list",
+        "sharepoint_get_list",
+        "sharepoint_update_list",
+        "sharepoint_add_list_items",
+        "sharepoint_get_list_item",
+        "sharepoint_delete_list_item",
+        "sharepoint_upload_file",
+        "sharepoint_download_file",
+        "sharepoint_get_drive_item",
+        "sharepoint_delete_file"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": false
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "siteSelector",
+          "label": "Select Site",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "pageName",
+          "label": "Page Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageTitle",
+          "label": "Page Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageContent",
+          "label": "Page Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageId",
+          "label": "Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSelector",
+          "label": "List",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "listId",
+          "label": "List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listItemId",
+          "label": "Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listDisplayName",
+          "label": "List Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listTemplate",
+          "label": "List Template",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnDefinitions",
+          "label": "Column Definitions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listDescription",
+          "label": "List Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualSiteId",
+          "label": "Site ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listItemFields",
+          "label": "List Item Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxPages",
+          "label": "Max Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeColumns",
+          "label": "Include Columns",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeItems",
+          "label": "Include Items",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextPageUrl",
+          "label": "Next Page URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "driveId",
+          "label": "Document Library ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "driveItemId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderPath",
+          "label": "Folder Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFiles",
+          "label": "Files",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "files",
+          "label": "Files",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "sharepoint_v2",
+      "legacyIds": ["sharepoint", "sharepoint-v2"],
+      "provider": "sharepoint",
+      "version": "2",
+      "display": {
+        "name": "SharePoint",
+        "description": "Work with pages and lists",
+        "category": "tools",
+        "icon": "MicrosoftSharepointIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "siteSelector",
+          "label": "Select Site",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualSiteId",
+          "label": "Site ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageName",
+          "label": "Page Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageId",
+          "label": "Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageTitle",
+          "label": "Page Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageContent",
+          "label": "Page Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxPages",
+          "label": "Max Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSelector",
+          "label": "List",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualListId",
+          "label": "List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeColumns",
+          "label": "Include Columns",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeItems",
+          "label": "Include Items",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listDisplayName",
+          "label": "List Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listTemplate",
+          "label": "List Template",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnDefinitions",
+          "label": "Column Definitions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listDescription",
+          "label": "List Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemId",
+          "label": "Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listItemFields",
+          "label": "List Item Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "driveId",
+          "label": "Document Library ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "driveItemId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderPath",
+          "label": "Folder Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFiles",
+          "label": "Files",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileRefs",
+          "label": "Files",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "nextPageUrl",
+          "label": "Next Page URL",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

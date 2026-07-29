@@ -1,0 +1,228 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "s3",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "s3",
+      "legacyIds": [],
+      "provider": "s3",
+      "version": "1",
+      "display": {
+        "name": "S3",
+        "description": "Upload, download, list, and manage S3 files and buckets",
+        "category": "tools",
+        "icon": "S3Icon",
+        "bgColor": "linear-gradient(45deg, #1B660F 0%, #6CAE3E 100%)"
+      },
+      "capabilities": [
+        "s3_put_object",
+        "s3_get_object",
+        "s3_list_objects",
+        "s3_delete_object",
+        "s3_copy_object",
+        "s3_list_buckets",
+        "s3_head_object",
+        "s3_create_bucket",
+        "s3_delete_bucket",
+        "s3_presigned_url",
+        "s3_delete_objects"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessKeyId",
+          "label": "Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "getObjectRegion",
+          "label": "AWS Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bucketName",
+          "label": "Bucket Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "objectKey",
+          "label": "Object Key/Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "uploadFile",
+          "label": "File to Upload",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileReference",
+          "label": "File Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Text Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "acl",
+          "label": "Access Control",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "s3Uri",
+          "label": "S3 Object URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "prefix",
+          "label": "Prefix/Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxKeys",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "continuationToken",
+          "label": "Continuation Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectKey",
+          "label": "Object Key/Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceBucket",
+          "label": "Source Bucket",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceKey",
+          "label": "Source Object Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationBucket",
+          "label": "Destination Bucket",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationKey",
+          "label": "Destination Object Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "copyAcl",
+          "label": "Access Control",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "headVersionId",
+          "label": "Version ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectKeys",
+          "label": "Object Keys",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "quiet",
+          "label": "Quiet Mode",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "presignedMethod",
+          "label": "URL Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "expiresIn",
+          "label": "Expires In (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "presignedContentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bucketPrefix",
+          "label": "Bucket Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxBuckets",
+          "label": "Max Buckets",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bucketsContinuationToken",
+          "label": "Continuation Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createBucketAcl",
+          "label": "Access Control",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

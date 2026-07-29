@@ -1,0 +1,154 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "leadmagic",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "leadmagic",
+      "legacyIds": [],
+      "provider": "leadmagic",
+      "version": "1",
+      "display": {
+        "name": "LeadMagic",
+        "description": "Find and enrich B2B contacts, emails, mobile numbers, and company data",
+        "category": "tools",
+        "icon": "LeadMagicIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "leadmagic_validate_email",
+        "leadmagic_find_email",
+        "leadmagic_find_mobile",
+        "leadmagic_profile_search",
+        "leadmagic_profile_to_email",
+        "leadmagic_email_to_profile",
+        "leadmagic_company_search",
+        "leadmagic_role_finder",
+        "leadmagic_get_credits"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fe_full_name",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fe_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fe_company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ve_email",
+          "label": "Email Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fm_profile_url",
+          "label": "LinkedIn Profile URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fm_work_email",
+          "label": "Work Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ps_profile_url",
+          "label": "LinkedIn Profile URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "extended_response",
+          "label": "Include Profile Image",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pte_profile_url",
+          "label": "LinkedIn Profile URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "etp_work_email",
+          "label": "Work Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "etp_personal_email",
+          "label": "Personal Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cs_company_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cs_profile_url",
+          "label": "LinkedIn Company URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cs_company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rf_job_title",
+          "label": "Job Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "rf_company_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rf_company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

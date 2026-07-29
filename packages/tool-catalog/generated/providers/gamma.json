@@ -1,0 +1,180 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "gamma",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "gamma",
+      "legacyIds": [],
+      "provider": "gamma",
+      "version": "1",
+      "display": {
+        "name": "Gamma",
+        "description": "Generate presentations, documents, and webpages with AI",
+        "category": "tools",
+        "icon": "GammaIcon",
+        "bgColor": "#002253"
+      },
+      "capabilities": [
+        "gamma_generate",
+        "gamma_generate_from_template",
+        "gamma_check_status",
+        "gamma_list_themes",
+        "gamma_list_folders"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputText",
+          "label": "Input Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textMode",
+          "label": "Text Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "numCards",
+          "label": "Number of Cards",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "additionalInstructions",
+          "label": "Additional Instructions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textAmount",
+          "label": "Text Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textTone",
+          "label": "Tone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textAudience",
+          "label": "Audience",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textLanguage",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cardSplit",
+          "label": "Card Split",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cardDimensions",
+          "label": "Card Dimensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageSource",
+          "label": "Image Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageModel",
+          "label": "Image Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageStyle",
+          "label": "Image Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exportAs",
+          "label": "Export As",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "themeId",
+          "label": "Theme ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderIds",
+          "label": "Folder IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gammaId",
+          "label": "Template Gamma ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "generationId",
+          "label": "Generation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

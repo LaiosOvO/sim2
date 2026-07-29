@@ -1,0 +1,276 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "onedrive",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "onedrive",
+      "legacyIds": [],
+      "provider": "onedrive",
+      "version": "1",
+      "display": {
+        "name": "OneDrive",
+        "description": "Create, upload, download, search, move, copy, share, and delete files",
+        "category": "tools",
+        "icon": "MicrosoftOneDriveIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "onedrive_upload",
+        "onedrive_create_folder",
+        "onedrive_download",
+        "onedrive_list",
+        "onedrive_search",
+        "onedrive_get_item",
+        "onedrive_get_drive_info",
+        "onedrive_move",
+        "onedrive_copy",
+        "onedrive_create_share_link",
+        "onedrive_delete"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": false
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mimeType",
+          "label": "File Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileReference",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Text Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "uploadFolderSelector",
+          "label": "Select Parent Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "uploadManualFolderId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderName",
+          "label": "Folder Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createFolderParentSelector",
+          "label": "Select Parent Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "createFolderManualParentId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listFolderSelector",
+          "label": "Select Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "listManualFolderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getItemFileSelector",
+          "label": "Select File or Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "getItemManualFileId",
+          "label": "File or Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downloadFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "downloadManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "downloadFileName",
+          "label": "File Name Override",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moveFileSelector",
+          "label": "Select File or Folder to Move",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "moveManualFileId",
+          "label": "File or Folder ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "moveDestinationFolderSelector",
+          "label": "Select Destination Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "moveDestinationManualFolderId",
+          "label": "Destination Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newName",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "copyFileSelector",
+          "label": "Select File or Folder to Copy",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "copyManualFileId",
+          "label": "File or Folder ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "copyDestinationFolderSelector",
+          "label": "Select Destination Folder",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "copyDestinationManualFolderId",
+          "label": "Destination Folder ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationFileName",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shareLinkFileSelector",
+          "label": "Select File or Folder to Share",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "shareLinkManualFileId",
+          "label": "File or Folder ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "linkType",
+          "label": "Link Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "linkScope",
+          "label": "Link Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteFileSelector",
+          "label": "Select File to Delete",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "deleteManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

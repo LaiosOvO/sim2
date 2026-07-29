@@ -1,0 +1,71 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_appsheet",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_appsheet",
+      "legacyIds": ["google-appsheet"],
+      "provider": "google_appsheet",
+      "version": "1",
+      "display": {
+        "name": "Google AppSheet",
+        "description": "Read, add, edit, and delete rows in a Google AppSheet table",
+        "category": "tools",
+        "icon": "GoogleAppsheetIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_appsheet_find_rows",
+        "google_appsheet_add_rows",
+        "google_appsheet_edit_rows",
+        "google_appsheet_delete_rows"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appId",
+          "label": "App ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableName",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "selector",
+          "label": "Selector",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rows",
+          "label": "Rows (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Application Access Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

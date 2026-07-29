@@ -1,0 +1,38 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "start_trigger",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "start_trigger",
+      "legacyIds": ["start-trigger"],
+      "provider": "start_trigger",
+      "version": "1",
+      "display": {
+        "name": "Start",
+        "description": "Unified workflow entry point for chat, manual and API runs",
+        "category": "triggers",
+        "icon": "StartIcon",
+        "bgColor": "#34B5FF"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "inputFormat",
+          "label": "Inputs",
+          "type": "string",
+          "required": false,
+          "description": "Add custom fields beyond the built-in input, conversationId, and files fields."
+        },
+        {
+          "key": "runMetadata",
+          "label": "Add run metadata",
+          "type": "boolean",
+          "required": false,
+          "description": "Expose trusted, server-injected run metadata under <start.metadata>: userEmail, workspaceId, workflowId, executionId, executionType, executionMode, startTime. Fields describe the invoking run — inside a custom block they identify the calling user and workflow."
+        }
+      ]
+    }
+  ]
+}

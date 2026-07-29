@@ -1,0 +1,84 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "granola",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "granola",
+      "legacyIds": [],
+      "provider": "granola",
+      "version": "1",
+      "display": {
+        "name": "Granola",
+        "description": "Access meeting notes and transcripts from Granola",
+        "category": "tools",
+        "icon": "GranolaIcon",
+        "bgColor": "#B2C147"
+      },
+      "capabilities": ["granola_list_notes", "granola_get_note", "granola_list_folders"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "noteId",
+          "label": "Note ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeTranscript",
+          "label": "Include Transcript",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdAfter",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdBefore",
+          "label": "Created Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedAfter",
+          "label": "Updated After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

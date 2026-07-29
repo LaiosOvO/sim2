@@ -1,0 +1,120 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "lemlist",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "lemlist",
+      "legacyIds": [],
+      "provider": "lemlist",
+      "version": "1",
+      "display": {
+        "name": "Lemlist",
+        "description": "Manage outreach activities, leads, and send emails via Lemlist",
+        "category": "tools",
+        "icon": "LemlistIcon",
+        "bgColor": "#316BFF"
+      },
+      "capabilities": ["lemlist_get_activities", "lemlist_get_lead", "lemlist_send_email"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Activity Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignId",
+          "label": "Campaign ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterLeadId",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadIdLookup",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendUserId",
+          "label": "Sender User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendUserEmail",
+          "label": "Sender Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendUserMailboxId",
+          "label": "Mailbox ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadId",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

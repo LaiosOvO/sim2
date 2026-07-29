@@ -1,0 +1,564 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_drive",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_drive",
+      "legacyIds": ["google-drive"],
+      "provider": "google_drive",
+      "version": "1",
+      "display": {
+        "name": "Google Drive",
+        "description": "Manage files, folders, and permissions",
+        "category": "tools",
+        "icon": "GoogleDriveIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_drive_list",
+        "google_drive_get_file",
+        "google_drive_get_content",
+        "google_drive_create_folder",
+        "google_drive_upload",
+        "google_drive_download",
+        "google_drive_copy",
+        "google_drive_move",
+        "google_drive_search",
+        "google_drive_update",
+        "google_drive_trash",
+        "google_drive_untrash",
+        "google_drive_delete",
+        "google_drive_share",
+        "google_drive_unshare",
+        "google_drive_list_permissions",
+        "google_drive_export",
+        "google_drive_list_revisions",
+        "google_drive_get_revision",
+        "google_drive_list_comments",
+        "google_drive_create_comment",
+        "google_drive_delete_comment",
+        "google_drive_get_about"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Drive Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Drive Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileUpload",
+          "label": "Upload File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "File Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Text Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mimeType",
+          "label": "MIME Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFolderSelector",
+          "label": "Select Parent Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "uploadManualFolderId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "Folder Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "createFolderParentSelector",
+          "label": "Select Parent Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "createFolderManualParentId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listFolderSelector",
+          "label": "Select Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "listManualFolderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downloadFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "downloadManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mimeType",
+          "label": "Export Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name Override",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "getManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "copyFileSelector",
+          "label": "Select File to Copy",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "copyManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "newName",
+          "label": "New File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "copyDestFolderSelector",
+          "label": "Destination Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "copyManualDestFolderId",
+          "label": "Destination Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateFileSelector",
+          "label": "Select File to Update",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "updateManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "starred",
+          "label": "Starred",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addParents",
+          "label": "Add to Folders",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeParents",
+          "label": "Remove from Folders",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trashFileSelector",
+          "label": "Select File to Trash",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "trashManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deleteFileSelector",
+          "label": "Select File to Delete",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "deleteManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shareFileSelector",
+          "label": "Select File to Share",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "shareManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shareType",
+          "label": "Share With",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "role",
+          "label": "Permission Level",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sendNotification",
+          "label": "Send Notification",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailMessage",
+          "label": "Custom Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unshareFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "unshareManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "permissionId",
+          "label": "Permission ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listPermissionsFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "listPermissionsManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "getContentFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "getContentManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "getContentExportMimeType",
+          "label": "Export Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getContentIncludeRevisions",
+          "label": "Include Revisions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moveFileSelector",
+          "label": "Select File to Move",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "moveManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "moveDestFolderSelector",
+          "label": "Destination Folder",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "moveManualDestFolderId",
+          "label": "Destination Folder ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "moveRemoveFromCurrent",
+          "label": "Remove from Current Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchPageSize",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "untrashFileSelector",
+          "label": "Select File to Restore",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "untrashManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "exportFileSelector",
+          "label": "Select File to Export",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "exportManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "exportMimeType",
+          "label": "Export Format",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileName",
+          "label": "File Name Override",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listRevisionsFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "listRevisionsManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "revisionsPageSize",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getRevisionFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "getRevisionManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "revisionId",
+          "label": "Revision ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listCommentsFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "listCommentsManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentsPageSize",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDeleted",
+          "label": "Include Deleted Comments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createCommentFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "createCommentManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "anchor",
+          "label": "Anchor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteCommentFileSelector",
+          "label": "Select File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "deleteCommentManualFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

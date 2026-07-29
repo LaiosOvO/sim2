@@ -1,0 +1,23 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "generic_webhook",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "generic_webhook",
+      "legacyIds": ["generic-webhook"],
+      "provider": "generic_webhook",
+      "version": "1",
+      "display": {
+        "name": "Webhook Trigger",
+        "description": "Receive webhooks from any service by configuring a custom webhook.",
+        "category": "triggers",
+        "icon": "WebhookIcon",
+        "bgColor": "#10B981"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

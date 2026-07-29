@@ -1,0 +1,172 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "iam",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "iam",
+      "legacyIds": ["aws-iam"],
+      "provider": "iam",
+      "version": "1",
+      "display": {
+        "name": "AWS IAM",
+        "description": "Manage AWS IAM users, roles, policies, and groups",
+        "category": "tools",
+        "icon": "IAMIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "capabilities": [
+        "iam_list_users",
+        "iam_get_user",
+        "iam_create_user",
+        "iam_delete_user",
+        "iam_list_roles",
+        "iam_get_role",
+        "iam_create_role",
+        "iam_delete_role",
+        "iam_attach_user_policy",
+        "iam_detach_user_policy",
+        "iam_attach_role_policy",
+        "iam_detach_role_policy",
+        "iam_list_policies",
+        "iam_create_access_key",
+        "iam_delete_access_key",
+        "iam_list_groups",
+        "iam_add_user_to_group",
+        "iam_remove_user_from_group",
+        "iam_list_attached_role_policies",
+        "iam_list_attached_user_policies",
+        "iam_simulate_principal_policy"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userName",
+          "label": "User Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "roleName",
+          "label": "Role Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "policyArn",
+          "label": "Policy ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assumeRolePolicyDocument",
+          "label": "Trust Policy (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "groupName",
+          "label": "Group Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessKeyIdToDelete",
+          "label": "Access Key ID to Delete",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxSessionDuration",
+          "label": "Max Session Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scope",
+          "label": "Policy Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onlyAttached",
+          "label": "Only Attached",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "policySourceArn",
+          "label": "Principal ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionNames",
+          "label": "Actions (comma-separated)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resourceArns",
+          "label": "Resource ARNs (comma-separated)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pathPrefix",
+          "label": "Path Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxItems",
+          "label": "Max Items",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "marker",
+          "label": "Pagination Marker",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

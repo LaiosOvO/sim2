@@ -1,0 +1,735 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "vercel",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "vercel",
+      "legacyIds": [],
+      "provider": "vercel",
+      "version": "1",
+      "display": {
+        "name": "Vercel",
+        "description": "Manage Vercel deployments, projects, and infrastructure",
+        "category": "tools",
+        "icon": "VercelIcon",
+        "bgColor": "#171717"
+      },
+      "capabilities": [
+        "vercel_list_deployments",
+        "vercel_get_deployment",
+        "vercel_create_deployment",
+        "vercel_cancel_deployment",
+        "vercel_delete_deployment",
+        "vercel_get_deployment_events",
+        "vercel_list_deployment_files",
+        "vercel_promote_deployment",
+        "vercel_list_projects",
+        "vercel_get_project",
+        "vercel_create_project",
+        "vercel_update_project",
+        "vercel_delete_project",
+        "vercel_pause_project",
+        "vercel_unpause_project",
+        "vercel_list_project_domains",
+        "vercel_add_project_domain",
+        "vercel_remove_project_domain",
+        "vercel_update_project_domain",
+        "vercel_verify_project_domain",
+        "vercel_get_env_vars",
+        "vercel_create_env_var",
+        "vercel_update_env_var",
+        "vercel_delete_env_var",
+        "vercel_list_domains",
+        "vercel_get_domain",
+        "vercel_add_domain",
+        "vercel_delete_domain",
+        "vercel_get_domain_config",
+        "vercel_list_dns_records",
+        "vercel_create_dns_record",
+        "vercel_update_dns_record",
+        "vercel_delete_dns_record",
+        "vercel_list_aliases",
+        "vercel_get_alias",
+        "vercel_create_alias",
+        "vercel_delete_alias",
+        "vercel_list_edge_configs",
+        "vercel_get_edge_config",
+        "vercel_create_edge_config",
+        "vercel_get_edge_config_items",
+        "vercel_update_edge_config_items",
+        "vercel_delete_edge_config",
+        "vercel_list_webhooks",
+        "vercel_get_webhook",
+        "vercel_create_webhook",
+        "vercel_delete_webhook",
+        "vercel_create_check",
+        "vercel_get_check",
+        "vercel_list_checks",
+        "vercel_update_check",
+        "vercel_rerequest_check",
+        "vercel_list_teams",
+        "vercel_get_team",
+        "vercel_list_team_members",
+        "vercel_get_user"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deploymentsProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentsApp",
+          "label": "App Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentsSince",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentsUntil",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentId",
+          "label": "Deployment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "withGitRepoInfo",
+          "label": "Include Git Repo Info",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsDirection",
+          "label": "Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsFollow",
+          "label": "Follow Live Events",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsSince",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsUntil",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Project Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "project",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "redeployId",
+          "label": "Redeploy From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deployTarget",
+          "label": "Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentGitSource",
+          "label": "Git Source",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "deploymentForceNew",
+          "label": "Force New Deployment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectsFrom",
+          "label": "From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectName",
+          "label": "Project Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateProjectName",
+          "label": "New Project Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "framework",
+          "label": "Framework",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "buildCommand",
+          "label": "Build Command",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputDirectory",
+          "label": "Output Directory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "installCommand",
+          "label": "Install Command",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rootDirectory",
+          "label": "Root Directory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nodeVersion",
+          "label": "Node.js Version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "devCommand",
+          "label": "Dev Command",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectDomainsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domainName",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateDomainRedirect",
+          "label": "Redirect To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateDomainRedirectStatusCode",
+          "label": "Redirect Status Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateDomainGitBranch",
+          "label": "Git Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dnsRecordsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envId",
+          "label": "Env Variable ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envKey",
+          "label": "Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envValue",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envTarget",
+          "label": "Target Environments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envType",
+          "label": "Variable Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envGitBranch",
+          "label": "Git Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envVarsDecrypt",
+          "label": "Decrypt Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envVarsGitBranch",
+          "label": "Git Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordName",
+          "label": "Record Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordType",
+          "label": "Record Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordValue",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordMxPriority",
+          "label": "MX Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "srvTarget",
+          "label": "SRV Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "srvWeight",
+          "label": "SRV Weight",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "srvPort",
+          "label": "SRV Port",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "srvPriority",
+          "label": "SRV Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpsTarget",
+          "label": "HTTPS Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpsPriority",
+          "label": "HTTPS Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpsParams",
+          "label": "HTTPS Params",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateRecordName",
+          "label": "Record Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateRecordType",
+          "label": "Record Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateRecordValue",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateRecordTtl",
+          "label": "TTL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateRecordMxPriority",
+          "label": "MX Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSrvTarget",
+          "label": "SRV Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSrvWeight",
+          "label": "SRV Weight",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSrvPort",
+          "label": "SRV Port",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSrvPriority",
+          "label": "SRV Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateHttpsTarget",
+          "label": "HTTPS Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateHttpsPriority",
+          "label": "HTTPS Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateHttpsParams",
+          "label": "HTTPS Params",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateRecordComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aliasId",
+          "label": "Alias ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aliasDeploymentId",
+          "label": "Deployment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aliasName",
+          "label": "Alias",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aliasRedirect",
+          "label": "Redirect To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "edgeConfigId",
+          "label": "Edge Config ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "edgeConfigSlug",
+          "label": "Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "edgeConfigItems",
+          "label": "Items",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "webhookUrl",
+          "label": "Webhook URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookEvents",
+          "label": "Events",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookProjectIds",
+          "label": "Project IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookId",
+          "label": "Webhook ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkDeploymentId",
+          "label": "Deployment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkId",
+          "label": "Check ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkName",
+          "label": "Check Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkBlocking",
+          "label": "Blocking",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkPath",
+          "label": "Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkDetailsUrl",
+          "label": "Details URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkConclusion",
+          "label": "Conclusion",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkRerequestable",
+          "label": "Rerequestable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkOutput",
+          "label": "Output",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "checkAutoUpdate",
+          "label": "Auto Update",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamIdParam",
+          "label": "Team ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberRole",
+          "label": "Role Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamMembersLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamMembersSince",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamMembersUntil",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamMembersSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamsSince",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamsUntil",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamId",
+          "label": "Team ID (Scope)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamSlug",
+          "label": "Team Slug (Scope)",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "redis",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "redis",
+      "legacyIds": [],
+      "provider": "redis",
+      "version": "1",
+      "display": {
+        "name": "Redis",
+        "description": "Key-value operations with Redis",
+        "category": "tools",
+        "icon": "RedisIcon",
+        "bgColor": "#FF4438"
+      },
+      "capabilities": [
+        "redis_get",
+        "redis_set",
+        "redis_delete",
+        "redis_keys",
+        "redis_command",
+        "redis_hset",
+        "redis_hget",
+        "redis_hgetall",
+        "redis_hdel",
+        "redis_incr",
+        "redis_incrby",
+        "redis_expire",
+        "redis_ttl",
+        "redis_persist",
+        "redis_lpush",
+        "redis_rpush",
+        "redis_lpop",
+        "redis_rpop",
+        "redis_llen",
+        "redis_lrange",
+        "redis_exists",
+        "redis_setnx"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Connection URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "key",
+          "label": "Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ex",
+          "label": "Expiration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "field",
+          "label": "Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pattern",
+          "label": "Pattern",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seconds",
+          "label": "Seconds",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "increment",
+          "label": "Increment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stop",
+          "label": "Stop Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "command",
+          "label": "Command",
+          "type": "json",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

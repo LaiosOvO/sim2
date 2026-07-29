@@ -1,0 +1,76 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "pulse",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "pulse",
+      "legacyIds": [],
+      "provider": "pulse",
+      "version": "1",
+      "display": {
+        "name": "Pulse",
+        "description": "Extract text from documents using Pulse OCR",
+        "category": "tools",
+        "icon": "PulseIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["pulse_parser"],
+      "inputs": [
+        {
+          "key": "fileUpload",
+          "label": "Document",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "filePath",
+          "label": "Document",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pages",
+          "label": "Specific Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chunking",
+          "label": "Chunking Strategy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chunkSize",
+          "label": "Chunk Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "pulse_v2",
+      "legacyIds": ["pulse", "pulse-v2"],
+      "provider": "pulse",
+      "version": "2",
+      "display": {
+        "name": "Pulse",
+        "description": "Extract text from documents using Pulse OCR",
+        "category": "tools",
+        "icon": "PulseIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["pulse_parser_v2"],
+      "inputs": []
+    }
+  ]
+}

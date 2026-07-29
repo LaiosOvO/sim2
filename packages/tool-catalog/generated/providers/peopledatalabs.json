@@ -1,0 +1,276 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "peopledatalabs",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "peopledatalabs",
+      "legacyIds": ["people-data-labs"],
+      "provider": "peopledatalabs",
+      "version": "1",
+      "display": {
+        "name": "People Data Labs",
+        "description": "Enrich and search people and companies",
+        "category": "tools",
+        "icon": "PeopleDataLabsIcon",
+        "bgColor": "#4831C3"
+      },
+      "capabilities": [
+        "pdl_person_enrich",
+        "pdl_person_identify",
+        "pdl_person_search",
+        "pdl_bulk_person_enrich",
+        "pdl_company_enrich",
+        "pdl_company_search",
+        "pdl_bulk_company_enrich",
+        "pdl_clean_company",
+        "pdl_clean_location",
+        "pdl_clean_school",
+        "pdl_autocomplete"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "profile",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "first_name",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_name",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company",
+          "label": "Company",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "location",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "min_likelihood",
+          "label": "Min Likelihood",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sql",
+          "label": "SQL Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Elasticsearch Query (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Result Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scroll_token",
+          "label": "Scroll Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dataset",
+          "label": "Dataset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_profile",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticker",
+          "label": "Ticker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pdl_id",
+          "label": "PDL Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_location",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "field",
+          "label": "Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Search Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autocomplete_size",
+          "label": "Number of Suggestions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identify_locality",
+          "label": "Locality (City)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identify_region",
+          "label": "Region (State)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identify_country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identify_postal_code",
+          "label": "Postal Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identify_birth_date",
+          "label": "Birth Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "data_include",
+          "label": "Data Include",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_if_matched",
+          "label": "Include `matched_on`",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "bulk_person_requests",
+          "label": "Requests (JSON Array)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulk_person_required",
+          "label": "Required Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulk_company_requests",
+          "label": "Requests (JSON Array)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulk_company_required",
+          "label": "Required Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clean_location_input",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "school_name",
+          "label": "School Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "school_website",
+          "label": "School Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "school_profile",
+          "label": "School LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "titlecase",
+          "label": "Title Case Names",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

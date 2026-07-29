@@ -1,0 +1,152 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mistral_parse",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mistral_parse",
+      "legacyIds": ["mistral-parse"],
+      "provider": "mistral_parse",
+      "version": "1",
+      "display": {
+        "name": "Mistral Parser (Legacy)",
+        "description": "Extract text from PDF documents",
+        "category": "tools",
+        "icon": "MistralIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": ["mistral_parser"],
+      "inputs": [
+        {
+          "key": "inputMethod",
+          "label": "Select Input Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "PDF Document URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUpload",
+          "label": "Upload PDF",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "resultType",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pages",
+          "label": "Specific Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "mistral_parse_v2",
+      "legacyIds": ["mistral-parse-v2"],
+      "provider": "mistral_parse",
+      "version": "2",
+      "display": {
+        "name": "Mistral Parser",
+        "description": "Extract text from PDF documents",
+        "category": "blocks"
+      },
+      "capabilities": ["mistral_parser_v2"],
+      "inputs": [
+        {
+          "key": "fileUpload",
+          "label": "PDF Document",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "PDF Document",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resultType",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pages",
+          "label": "Specific Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "mistral_parse_v3",
+      "legacyIds": ["mistral-parse-v3", "mistral-parser"],
+      "provider": "mistral_parse",
+      "version": "3",
+      "display": {
+        "name": "Mistral Parser",
+        "description": "Extract text from PDF documents",
+        "category": "tools",
+        "icon": "MistralIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": ["mistral_parser_v3"],
+      "inputs": [
+        {
+          "key": "fileUpload",
+          "label": "PDF Document",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileReference",
+          "label": "File Reference",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "resultType",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pages",
+          "label": "Specific Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

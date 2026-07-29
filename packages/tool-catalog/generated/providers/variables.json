@@ -1,0 +1,31 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "variables",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "variables",
+      "legacyIds": [],
+      "provider": "variables",
+      "version": "1",
+      "display": {
+        "name": "Variables",
+        "description": "Set workflow-scoped variables",
+        "category": "blocks",
+        "icon": "VariableIcon",
+        "bgColor": "#8B5CF6"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "variables",
+          "label": "Variable Assignments",
+          "type": "string",
+          "required": false,
+          "description": "Select workflow variables and update their values during execution. Access them anywhere using <variable.variableName> syntax."
+        }
+      ]
+    }
+  ]
+}

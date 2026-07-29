@@ -1,0 +1,59 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "response",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "response",
+      "legacyIds": [],
+      "provider": "response",
+      "version": "1",
+      "display": {
+        "name": "Response",
+        "description": "Send structured API response",
+        "category": "blocks",
+        "icon": "ResponseIcon",
+        "bgColor": "#2F55FF"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "dataMode",
+          "label": "Response Data Mode",
+          "type": "string",
+          "required": false,
+          "description": "Choose how to define your response data structure"
+        },
+        {
+          "key": "builderData",
+          "label": "Response Structure",
+          "type": "string",
+          "required": false,
+          "description": "Define the structure of your response data. Use <variable.name> in field names to reference workflow variables."
+        },
+        {
+          "key": "data",
+          "label": "Response Data",
+          "type": "json",
+          "required": false,
+          "description": "Data that will be sent as the response body on API calls. Use <variable.name> to reference workflow variables."
+        },
+        {
+          "key": "status",
+          "label": "Status Code",
+          "type": "string",
+          "required": false,
+          "description": "HTTP status code (default: 200)"
+        },
+        {
+          "key": "headers",
+          "label": "Response Headers",
+          "type": "string",
+          "required": false,
+          "description": "Additional HTTP headers to include in the response"
+        }
+      ]
+    }
+  ]
+}

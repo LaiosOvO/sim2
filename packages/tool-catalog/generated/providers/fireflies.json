@@ -1,0 +1,210 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "fireflies",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "fireflies",
+      "legacyIds": [],
+      "provider": "fireflies",
+      "version": "1",
+      "display": {
+        "name": "Fireflies (Legacy)",
+        "description": "Interact with Fireflies.ai meeting transcripts and recordings",
+        "category": "tools",
+        "icon": "FirefliesIcon",
+        "bgColor": "#100730"
+      },
+      "capabilities": [
+        "fireflies_list_transcripts",
+        "fireflies_get_transcript",
+        "fireflies_get_user",
+        "fireflies_list_users",
+        "fireflies_upload_audio",
+        "fireflies_delete_transcript",
+        "fireflies_add_to_live_meeting",
+        "fireflies_create_bite",
+        "fireflies_list_bites",
+        "fireflies_list_contacts"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "transcriptId",
+          "label": "Transcript ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keyword",
+          "label": "Keyword",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromDate",
+          "label": "From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toDate",
+          "label": "To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hostEmail",
+          "label": "Host Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "participants",
+          "label": "Participants",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skip",
+          "label": "Skip",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audioFile",
+          "label": "Audio/Video File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "audioFileReference",
+          "label": "Audio/Video File Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audioUrl",
+          "label": "Audio/Video URL",
+          "type": "string",
+          "required": false,
+          "description": "Public HTTPS URL to audio file (MP3, MP4, WAV, M4A, OGG)"
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attendees",
+          "label": "Attendees",
+          "type": "string",
+          "required": false,
+          "description": "JSON array of attendees"
+        },
+        {
+          "key": "clientReferenceId",
+          "label": "Reference ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "meetingLink",
+          "label": "Meeting Link",
+          "type": "string",
+          "required": true,
+          "description": "URL for Zoom, Google Meet, or Microsoft Teams meeting"
+        },
+        {
+          "key": "meetingPassword",
+          "label": "Meeting Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTime",
+          "label": "Start Time (seconds)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "endTime",
+          "label": "End Time (seconds)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mediaType",
+          "label": "Media Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "biteName",
+          "label": "Bite Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "biteSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "fireflies_v2",
+      "legacyIds": ["fireflies", "fireflies-v2"],
+      "provider": "fireflies",
+      "version": "2",
+      "display": {
+        "name": "Fireflies",
+        "description": "Interact with Fireflies.ai meeting transcripts and recordings",
+        "category": "tools",
+        "icon": "FirefliesIcon",
+        "bgColor": "#100730"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

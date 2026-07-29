@@ -1,0 +1,182 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "loops",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "loops",
+      "legacyIds": [],
+      "provider": "loops",
+      "version": "1",
+      "display": {
+        "name": "Loops",
+        "description": "Manage contacts and send emails with Loops",
+        "category": "tools",
+        "icon": "LoopsIcon",
+        "bgColor": "#FAFAF9"
+      },
+      "capabilities": [
+        "loops_create_contact",
+        "loops_update_contact",
+        "loops_find_contact",
+        "loops_delete_contact",
+        "loops_send_transactional_email",
+        "loops_send_event",
+        "loops_list_mailing_lists",
+        "loops_list_transactional_emails",
+        "loops_create_contact_property",
+        "loops_list_contact_properties",
+        "loops_check_contact_suppression",
+        "loops_remove_contact_suppression",
+        "loops_get_transactional_email"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contactEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "source",
+          "label": "Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subscribed",
+          "label": "Subscribed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "userGroup",
+          "label": "User Group",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailingLists",
+          "label": "Mailing Lists",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customProperties",
+          "label": "Custom Properties",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transactionalId",
+          "label": "Transactional Email ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dataVariables",
+          "label": "Data Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addToAudience",
+          "label": "Add to Audience",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "attachments",
+          "label": "Attachments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventName",
+          "label": "Event Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventProperties",
+          "label": "Event Properties",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "perPage",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "propertyName",
+          "label": "Property Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "propertyType",
+          "label": "Property Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "propertyFilter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

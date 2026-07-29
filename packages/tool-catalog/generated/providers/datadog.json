@@ -1,0 +1,265 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "datadog",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "datadog",
+      "legacyIds": [],
+      "provider": "datadog",
+      "version": "1",
+      "display": {
+        "name": "Datadog",
+        "description": "Monitor infrastructure, applications, and logs with Datadog",
+        "category": "tools",
+        "icon": "DatadogIcon",
+        "bgColor": "#632CA6"
+      },
+      "capabilities": [
+        "datadog_submit_metrics",
+        "datadog_query_timeseries",
+        "datadog_create_event",
+        "datadog_create_monitor",
+        "datadog_get_monitor",
+        "datadog_list_monitors",
+        "datadog_mute_monitor",
+        "datadog_query_logs",
+        "datadog_send_logs",
+        "datadog_create_downtime",
+        "datadog_list_downtimes",
+        "datadog_cancel_downtime"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "series",
+          "label": "Metrics Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from",
+          "label": "From (Unix Timestamp)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To (Unix Timestamp)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Event Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Event Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "alertType",
+          "label": "Alert Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Monitor Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Monitor Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "monitorQuery",
+          "label": "Monitor Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "message",
+          "label": "Notification Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorTags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorPriority",
+          "label": "Priority (1-5)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "options",
+          "label": "Options (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "monitorId",
+          "label": "Monitor ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listMonitorName",
+          "label": "Filter by Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listMonitorTags",
+          "label": "Filter by Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "muteMonitorId",
+          "label": "Monitor ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "scope",
+          "label": "Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "end",
+          "label": "End Time (Unix Timestamp)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "logFrom",
+          "label": "From",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "logTo",
+          "label": "To",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "logLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logs",
+          "label": "Logs (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "downtimeScope",
+          "label": "Scope",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "downtimeMessage",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downtimeStart",
+          "label": "Start Time (Unix Timestamp)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downtimeEnd",
+          "label": "End Time (Unix Timestamp)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downtimeMonitorId",
+          "label": "Monitor ID (optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currentOnly",
+          "label": "Current Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "downtimeId",
+          "label": "Downtime ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "applicationKey",
+          "label": "Application Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "site",
+          "label": "Datadog Site",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "servicenow",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "servicenow",
+      "legacyIds": [],
+      "provider": "servicenow",
+      "version": "1",
+      "display": {
+        "name": "ServiceNow",
+        "description": "Create, read, update, and delete ServiceNow records",
+        "category": "tools",
+        "icon": "ServiceNowIcon",
+        "bgColor": "#032D42"
+      },
+      "capabilities": [
+        "servicenow_create_record",
+        "servicenow_read_record",
+        "servicenow_update_record",
+        "servicenow_delete_record",
+        "servicenow_aggregate",
+        "servicenow_list_attachments",
+        "servicenow_download_attachment",
+        "servicenow_upload_attachment"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "instanceUrl",
+          "label": "Instance URL",
+          "type": "string",
+          "required": true,
+          "description": "Your ServiceNow instance URL (e.g., https://yourcompany.service-now.com)"
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true,
+          "description": "ServiceNow user with web service access"
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true,
+          "description": "Password for the ServiceNow user"
+        },
+        {
+          "key": "tableName",
+          "label": "Table Name",
+          "type": "string",
+          "required": true,
+          "description": "ServiceNow table name"
+        },
+        {
+          "key": "fields",
+          "label": "Fields (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "sysId",
+          "label": "Record sys_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "number",
+          "label": "Record Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Query String",
+          "type": "string",
+          "required": false,
+          "description": "ServiceNow encoded query string"
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false,
+          "description": "Number of records to skip for pagination"
+        },
+        {
+          "key": "displayValue",
+          "label": "Display Value",
+          "type": "string",
+          "required": false,
+          "description": "Return display values for reference fields instead of sys_ids"
+        },
+        {
+          "key": "fields",
+          "label": "Fields to Return",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of fields"
+        },
+        {
+          "key": "sysId",
+          "label": "Record sys_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fields",
+          "label": "Fields to Update (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "sysId",
+          "label": "Record sys_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "count",
+          "label": "Return Count",
+          "type": "string",
+          "required": false,
+          "description": "Return the count of matching records"
+        },
+        {
+          "key": "groupBy",
+          "label": "Group By",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated fields to group results by"
+        },
+        {
+          "key": "avgFields",
+          "label": "Average Fields",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated numeric fields to average"
+        },
+        {
+          "key": "sumFields",
+          "label": "Sum Fields",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated numeric fields to sum"
+        },
+        {
+          "key": "minFields",
+          "label": "Min Fields",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated fields to compute the minimum of"
+        },
+        {
+          "key": "maxFields",
+          "label": "Max Fields",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated fields to compute the maximum of"
+        },
+        {
+          "key": "having",
+          "label": "Having",
+          "type": "string",
+          "required": false,
+          "description": "Filter on aggregate results"
+        },
+        {
+          "key": "recordSysId",
+          "label": "Record sys_id",
+          "type": "string",
+          "required": true,
+          "description": "sys_id of the record the attachment belongs to"
+        },
+        {
+          "key": "attachmentLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false,
+          "description": "Maximum number of attachments to return"
+        },
+        {
+          "key": "attachmentSysId",
+          "label": "Attachment sys_id",
+          "type": "string",
+          "required": true,
+          "description": "sys_id of the attachment to download (from List Attachments)"
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": true,
+          "description": "Name to give the uploaded file"
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileReference",
+          "label": "File",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

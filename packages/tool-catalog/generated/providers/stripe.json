@@ -1,0 +1,321 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "stripe",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "stripe",
+      "legacyIds": [],
+      "provider": "stripe",
+      "version": "1",
+      "display": {
+        "name": "Stripe",
+        "description": "Process payments and manage Stripe data",
+        "category": "tools",
+        "icon": "StripeIcon",
+        "bgColor": "#635BFF"
+      },
+      "capabilities": [
+        "stripe_create_payment_intent",
+        "stripe_retrieve_payment_intent",
+        "stripe_update_payment_intent",
+        "stripe_confirm_payment_intent",
+        "stripe_capture_payment_intent",
+        "stripe_cancel_payment_intent",
+        "stripe_list_payment_intents",
+        "stripe_search_payment_intents",
+        "stripe_create_customer",
+        "stripe_retrieve_customer",
+        "stripe_update_customer",
+        "stripe_delete_customer",
+        "stripe_list_customers",
+        "stripe_search_customers",
+        "stripe_create_subscription",
+        "stripe_retrieve_subscription",
+        "stripe_update_subscription",
+        "stripe_cancel_subscription",
+        "stripe_resume_subscription",
+        "stripe_list_subscriptions",
+        "stripe_search_subscriptions",
+        "stripe_create_invoice",
+        "stripe_retrieve_invoice",
+        "stripe_update_invoice",
+        "stripe_delete_invoice",
+        "stripe_finalize_invoice",
+        "stripe_pay_invoice",
+        "stripe_void_invoice",
+        "stripe_send_invoice",
+        "stripe_list_invoices",
+        "stripe_search_invoices",
+        "stripe_create_charge",
+        "stripe_retrieve_charge",
+        "stripe_update_charge",
+        "stripe_capture_charge",
+        "stripe_list_charges",
+        "stripe_search_charges",
+        "stripe_create_product",
+        "stripe_retrieve_product",
+        "stripe_update_product",
+        "stripe_delete_product",
+        "stripe_list_products",
+        "stripe_search_products",
+        "stripe_create_price",
+        "stripe_retrieve_price",
+        "stripe_update_price",
+        "stripe_list_prices",
+        "stripe_search_prices",
+        "stripe_retrieve_event",
+        "stripe_list_events"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Stripe API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "id",
+          "label": "ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "amount",
+          "label": "Amount (in cents)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "amount",
+          "label": "Amount (in cents)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currency",
+          "label": "Currency",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "currency",
+          "label": "Currency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "payment_method",
+          "label": "Payment Method ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customer",
+          "label": "Customer ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "customer",
+          "label": "Customer ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "address",
+          "label": "Address (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "items",
+          "label": "Items (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "items",
+          "label": "Items (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "trial_period_days",
+          "label": "Trial Period (days)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "default_payment_method",
+          "label": "Default Payment Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancel_at_period_end",
+          "label": "Cancel at Period End",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "collection_method",
+          "label": "Collection Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "auto_advance",
+          "label": "Auto Advance",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "source",
+          "label": "Payment Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "capture",
+          "label": "Capture Immediately",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "active",
+          "label": "Active",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "images",
+          "label": "Images (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "product",
+          "label": "Product ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "unit_amount",
+          "label": "Unit Amount (in cents)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recurring",
+          "label": "Recurring (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metadata",
+          "label": "Metadata (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "receipt_email",
+          "label": "Receipt Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancellation_reason",
+          "label": "Cancellation Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amount_to_capture",
+          "label": "Amount to Capture (in cents)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prorate",
+          "label": "Prorate",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invoice_now",
+          "label": "Invoice Now",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paid_out_of_band",
+          "label": "Paid Out of Band",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

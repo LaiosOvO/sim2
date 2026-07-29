@@ -1,0 +1,5311 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "items": [
+    {
+      "id": "a2a",
+      "legacyIds": [],
+      "provider": "a2a",
+      "version": "1",
+      "display": {
+        "name": "A2A",
+        "description": "Interact with external A2A-compatible agents",
+        "category": "blocks",
+        "icon": "A2AIcon",
+        "bgColor": "#4151B5"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "agent",
+      "legacyIds": [],
+      "provider": "agent",
+      "version": "1",
+      "display": {
+        "name": "Agent",
+        "description": "Build an agent",
+        "category": "blocks",
+        "icon": "AgentIcon",
+        "bgColor": "var(--brand)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "agentmail",
+      "legacyIds": [],
+      "provider": "agentmail",
+      "version": "1",
+      "display": {
+        "name": "AgentMail",
+        "description": "Manage email inboxes, threads, and messages with AgentMail",
+        "category": "tools",
+        "icon": "AgentMailIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "agentphone",
+      "legacyIds": [],
+      "provider": "agentphone",
+      "version": "1",
+      "display": {
+        "name": "AgentPhone",
+        "description": "Provision numbers, send SMS and iMessage, and place voice calls with AgentPhone",
+        "category": "tools",
+        "icon": "AgentPhoneIcon",
+        "bgColor": "linear-gradient(135deg, #1a1a1a 0%, #0a2a14 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "agiloft",
+      "legacyIds": [],
+      "provider": "agiloft",
+      "version": "1",
+      "display": {
+        "name": "Agiloft",
+        "description": "Manage records in Agiloft CLM",
+        "category": "tools",
+        "icon": "AgiloftIcon",
+        "bgColor": "#001028"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "ahrefs",
+      "legacyIds": [],
+      "provider": "ahrefs",
+      "version": "1",
+      "display": {
+        "name": "Ahrefs",
+        "description": "SEO analysis with Ahrefs",
+        "category": "tools",
+        "icon": "AhrefsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "airtable",
+      "legacyIds": [],
+      "provider": "airtable",
+      "version": "1",
+      "display": {
+        "name": "Airtable",
+        "description": "Read, create, and update Airtable",
+        "category": "tools",
+        "icon": "AirtableIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "airweave",
+      "legacyIds": [],
+      "provider": "airweave",
+      "version": "1",
+      "display": {
+        "name": "Airweave",
+        "description": "Search your synced data collections",
+        "category": "tools",
+        "icon": "AirweaveIcon",
+        "bgColor": "#6366F1"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "algolia",
+      "legacyIds": [],
+      "provider": "algolia",
+      "version": "1",
+      "display": {
+        "name": "Algolia",
+        "description": "Search and manage Algolia indices",
+        "category": "tools",
+        "icon": "AlgoliaIcon",
+        "bgColor": "#003DFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "amplitude",
+      "legacyIds": [],
+      "provider": "amplitude",
+      "version": "1",
+      "display": {
+        "name": "Amplitude",
+        "description": "Track events and query analytics from Amplitude",
+        "category": "tools",
+        "icon": "AmplitudeIcon",
+        "bgColor": "#13294B"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "api",
+      "legacyIds": [],
+      "provider": "api",
+      "version": "1",
+      "display": {
+        "name": "API",
+        "description": "Use any API",
+        "category": "blocks",
+        "icon": "ApiIcon",
+        "bgColor": "#2F55FF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "api_trigger",
+      "legacyIds": ["api-trigger"],
+      "provider": "api_trigger",
+      "version": "1",
+      "display": {
+        "name": "API (Legacy)",
+        "description": "Legacy block for exposing HTTP API endpoint. Prefer Start block.",
+        "category": "triggers",
+        "icon": "ApiIcon",
+        "bgColor": "#2F55FF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "apify",
+      "legacyIds": [],
+      "provider": "apify",
+      "version": "1",
+      "display": {
+        "name": "Apify",
+        "description": "Run Apify actors and retrieve results",
+        "category": "tools",
+        "icon": "ApifyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "apollo",
+      "legacyIds": [],
+      "provider": "apollo",
+      "version": "1",
+      "display": {
+        "name": "Apollo",
+        "description": "Search, enrich, and manage contacts with Apollo.io",
+        "category": "tools",
+        "icon": "ApolloIcon",
+        "bgColor": "#EBF212"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "appconfig",
+      "legacyIds": ["aws-appconfig"],
+      "provider": "appconfig",
+      "version": "1",
+      "display": {
+        "name": "AWS AppConfig",
+        "description": "Manage and retrieve configuration with AWS AppConfig",
+        "category": "tools",
+        "icon": "AppConfigIcon",
+        "bgColor": "linear-gradient(45deg, #B0084D 0%, #FF4F8B 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "arxiv",
+      "legacyIds": [],
+      "provider": "arxiv",
+      "version": "1",
+      "display": {
+        "name": "ArXiv",
+        "description": "Search and retrieve academic papers from ArXiv",
+        "category": "tools",
+        "icon": "ArxivIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "asana",
+      "legacyIds": [],
+      "provider": "asana",
+      "version": "1",
+      "display": {
+        "name": "Asana",
+        "description": "Interact with Asana",
+        "category": "tools",
+        "icon": "AsanaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "ashby",
+      "legacyIds": [],
+      "provider": "ashby",
+      "version": "1",
+      "display": {
+        "name": "Ashby",
+        "description": "Manage candidates, jobs, and applications in Ashby",
+        "category": "tools",
+        "icon": "AshbyIcon",
+        "bgColor": "#5D4ED6"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "athena",
+      "legacyIds": [],
+      "provider": "athena",
+      "version": "1",
+      "display": {
+        "name": "Athena",
+        "description": "Run SQL queries on data in Amazon S3 using AWS Athena",
+        "category": "tools",
+        "icon": "AthenaIcon",
+        "bgColor": "linear-gradient(45deg, #4D27A8 0%, #A166FF 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "attio",
+      "legacyIds": [],
+      "provider": "attio",
+      "version": "1",
+      "display": {
+        "name": "Attio",
+        "description": "Manage records, notes, tasks, lists, comments, and more in Attio CRM",
+        "category": "tools",
+        "icon": "AttioIcon",
+        "bgColor": "#1D1E20"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "azure_devops",
+      "legacyIds": ["azure-devops"],
+      "provider": "azure_devops",
+      "version": "1",
+      "display": {
+        "name": "Azure DevOps",
+        "description": "Interact with Azure DevOps pipelines, builds, and work items",
+        "category": "tools",
+        "icon": "AzureIcon",
+        "bgColor": "#0078D4"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "box",
+      "legacyIds": [],
+      "provider": "box",
+      "version": "1",
+      "display": {
+        "name": "Box",
+        "description": "Manage files, folders, and e-signatures with Box",
+        "category": "tools",
+        "icon": "BoxCompanyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "brandfetch",
+      "legacyIds": [],
+      "provider": "brandfetch",
+      "version": "1",
+      "display": {
+        "name": "Brandfetch",
+        "description": "Look up brand assets, logos, colors, and company info",
+        "category": "tools",
+        "icon": "BrandfetchIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "brex",
+      "legacyIds": [],
+      "provider": "brex",
+      "version": "1",
+      "display": {
+        "name": "Brex",
+        "description": "Manage expenses, receipts, transactions, and team data in Brex",
+        "category": "tools",
+        "icon": "BrexIcon",
+        "bgColor": "#171717"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "brightdata",
+      "legacyIds": ["bright-data"],
+      "provider": "brightdata",
+      "version": "1",
+      "display": {
+        "name": "Bright Data",
+        "description": "Scrape websites, search engines, and extract structured data",
+        "category": "tools",
+        "icon": "BrightDataIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "browser_use",
+      "legacyIds": ["browser-use"],
+      "provider": "browser_use",
+      "version": "1",
+      "display": {
+        "name": "Browser Use",
+        "description": "Run browser automation tasks",
+        "category": "tools",
+        "icon": "BrowserUseIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "buffer",
+      "legacyIds": [],
+      "provider": "buffer",
+      "version": "1",
+      "display": {
+        "name": "Buffer",
+        "description": "Schedule and publish social media posts across connected channels",
+        "category": "tools",
+        "icon": "BufferIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "calcom",
+      "legacyIds": ["cal-com"],
+      "provider": "calcom",
+      "version": "1",
+      "display": {
+        "name": "Cal.com",
+        "description": "Manage Cal.com bookings, event types, schedules, and availability",
+        "category": "tools",
+        "icon": "CalComIcon",
+        "bgColor": "#292929"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "calendly",
+      "legacyIds": [],
+      "provider": "calendly",
+      "version": "1",
+      "display": {
+        "name": "Calendly",
+        "description": "Manage Calendly scheduling and events",
+        "category": "tools",
+        "icon": "CalendlyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "chat_trigger",
+      "legacyIds": ["chat-trigger"],
+      "provider": "chat_trigger",
+      "version": "1",
+      "display": {
+        "name": "Chat",
+        "description": "Legacy chat start block. Prefer the unified Start block.",
+        "category": "triggers",
+        "icon": "ChatTriggerIcon",
+        "bgColor": "#6F3DFA"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "circleback",
+      "legacyIds": [],
+      "provider": "circleback",
+      "version": "1",
+      "display": {
+        "name": "Circleback",
+        "description": "AI-powered meeting notes and action items",
+        "category": "triggers",
+        "icon": "CirclebackIcon",
+        "bgColor": "linear-gradient(180deg, #E0F7FA 0%, #FFFFFF 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "clay",
+      "legacyIds": [],
+      "provider": "clay",
+      "version": "1",
+      "display": {
+        "name": "Clay",
+        "description": "Populate Clay workbook",
+        "category": "tools",
+        "icon": "ClayIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "clerk",
+      "legacyIds": [],
+      "provider": "clerk",
+      "version": "1",
+      "display": {
+        "name": "Clerk",
+        "description": "Manage users, organizations, and sessions in Clerk",
+        "category": "tools",
+        "icon": "ClerkIcon",
+        "bgColor": "#131316"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "clickhouse",
+      "legacyIds": [],
+      "provider": "clickhouse",
+      "version": "1",
+      "display": {
+        "name": "ClickHouse",
+        "description": "Connect to a ClickHouse database",
+        "category": "tools",
+        "icon": "ClickHouseIcon",
+        "bgColor": "#f9ff69"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "clickup",
+      "legacyIds": [],
+      "provider": "clickup",
+      "version": "1",
+      "display": {
+        "name": "ClickUp",
+        "description": "Interact with ClickUp",
+        "category": "tools",
+        "icon": "ClickUpIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "cloudflare",
+      "legacyIds": [],
+      "provider": "cloudflare",
+      "version": "1",
+      "display": {
+        "name": "Cloudflare",
+        "description": "Manage DNS, domains, certificates, and cache",
+        "category": "tools",
+        "icon": "CloudflareIcon",
+        "bgColor": "#F5F6FA"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "cloudformation",
+      "legacyIds": [],
+      "provider": "cloudformation",
+      "version": "1",
+      "display": {
+        "name": "CloudFormation",
+        "description": "Manage and inspect AWS CloudFormation stacks, resources, and drift",
+        "category": "tools",
+        "icon": "CloudFormationIcon",
+        "bgColor": "linear-gradient(45deg, #B0084D 0%, #FF4F8B 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "cloudwatch",
+      "legacyIds": [],
+      "provider": "cloudwatch",
+      "version": "1",
+      "display": {
+        "name": "CloudWatch",
+        "description": "Query and monitor AWS CloudWatch logs, metrics, and alarms",
+        "category": "tools",
+        "icon": "CloudWatchIcon",
+        "bgColor": "linear-gradient(45deg, #B0084D 0%, #FF4F8B 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "codepipeline",
+      "legacyIds": [],
+      "provider": "codepipeline",
+      "version": "1",
+      "display": {
+        "name": "CodePipeline",
+        "description": "Run, monitor, and approve AWS CodePipeline pipelines",
+        "category": "tools",
+        "icon": "CodePipelineIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "condition",
+      "legacyIds": [],
+      "provider": "condition",
+      "version": "1",
+      "display": {
+        "name": "Condition",
+        "description": "Add a condition",
+        "category": "blocks",
+        "icon": "ConditionalIcon",
+        "bgColor": "#FF752F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "confluence",
+      "legacyIds": [],
+      "provider": "confluence",
+      "version": "1",
+      "display": {
+        "name": "Confluence (Legacy)",
+        "description": "Interact with Confluence",
+        "category": "tools",
+        "icon": "ConfluenceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "confluence_v2",
+      "legacyIds": ["confluence", "confluence-v2"],
+      "provider": "confluence",
+      "version": "2",
+      "display": {
+        "name": "Confluence",
+        "description": "Interact with Confluence",
+        "category": "tools",
+        "icon": "ConfluenceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "context_dev",
+      "legacyIds": ["context-dev"],
+      "provider": "context_dev",
+      "version": "1",
+      "display": {
+        "name": "Context.dev",
+        "description": "Scrape, crawl, search, extract, and enrich web and brand data",
+        "category": "tools",
+        "icon": "ContextDevIcon",
+        "bgColor": "#ffffff"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "convex",
+      "legacyIds": [],
+      "provider": "convex",
+      "version": "1",
+      "display": {
+        "name": "Convex",
+        "description": "Use Convex database",
+        "category": "tools",
+        "icon": "ConvexIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "credential",
+      "legacyIds": [],
+      "provider": "credential",
+      "version": "1",
+      "display": {
+        "name": "Credential",
+        "description": "Select or list OAuth credentials",
+        "category": "blocks",
+        "icon": "CredentialIcon",
+        "bgColor": "#6366F1"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "crowdstrike",
+      "legacyIds": [],
+      "provider": "crowdstrike",
+      "version": "1",
+      "display": {
+        "name": "CrowdStrike",
+        "description": "Query CrowdStrike Identity Protection sensors and documented aggregates",
+        "category": "tools",
+        "icon": "CrowdStrikeIcon",
+        "bgColor": "#E01F3D"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "cursor",
+      "legacyIds": [],
+      "provider": "cursor",
+      "version": "1",
+      "display": {
+        "name": "Cursor (Legacy)",
+        "description": "Launch and manage Cursor cloud agents to work on GitHub repositories",
+        "category": "tools",
+        "icon": "CursorIcon",
+        "bgColor": "#1E1E1E"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "cursor_v2",
+      "legacyIds": ["cursor", "cursor-v2"],
+      "provider": "cursor",
+      "version": "2",
+      "display": {
+        "name": "Cursor",
+        "description": "Launch and manage Cursor cloud agents to work on GitHub repositories",
+        "category": "tools",
+        "icon": "CursorIcon",
+        "bgColor": "#1E1E1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "dagster",
+      "legacyIds": [],
+      "provider": "dagster",
+      "version": "1",
+      "display": {
+        "name": "Dagster",
+        "description": "Orchestrate data pipelines and manage job runs with Dagster",
+        "category": "tools",
+        "icon": "DagsterIcon",
+        "bgColor": "#ffffff"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "databricks",
+      "legacyIds": [],
+      "provider": "databricks",
+      "version": "1",
+      "display": {
+        "name": "Databricks",
+        "description": "Run SQL queries and manage jobs on Databricks",
+        "category": "tools",
+        "icon": "DatabricksIcon",
+        "bgColor": "#F9F7F4"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "datadog",
+      "legacyIds": [],
+      "provider": "datadog",
+      "version": "1",
+      "display": {
+        "name": "Datadog",
+        "description": "Monitor infrastructure, applications, and logs with Datadog",
+        "category": "tools",
+        "icon": "DatadogIcon",
+        "bgColor": "#632CA6"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "datagma",
+      "legacyIds": [],
+      "provider": "datagma",
+      "version": "1",
+      "display": {
+        "name": "Datagma",
+        "description": "Find verified B2B emails, mobile phones, and enrich person or company profiles",
+        "category": "tools",
+        "icon": "DatagmaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "daytona",
+      "legacyIds": [],
+      "provider": "daytona",
+      "version": "1",
+      "display": {
+        "name": "Daytona",
+        "description": "Run code and commands in secure cloud sandboxes",
+        "category": "tools",
+        "icon": "DaytonaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "deployments",
+      "legacyIds": [],
+      "provider": "deployments",
+      "version": "1",
+      "display": {
+        "name": "Deployments",
+        "description": "Manage workflow deployments",
+        "category": "blocks",
+        "icon": "SimDeploymentsIcon",
+        "bgColor": "#0C0C0C"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "devin",
+      "legacyIds": [],
+      "provider": "devin",
+      "version": "1",
+      "display": {
+        "name": "Devin",
+        "description": "Autonomous AI software engineer",
+        "category": "tools",
+        "icon": "DevinIcon",
+        "bgColor": "#12141A"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "discord",
+      "legacyIds": [],
+      "provider": "discord",
+      "version": "1",
+      "display": {
+        "name": "Discord",
+        "description": "Interact with Discord",
+        "category": "tools",
+        "icon": "DiscordIcon",
+        "bgColor": "#5865F2"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "docusign",
+      "legacyIds": [],
+      "provider": "docusign",
+      "version": "1",
+      "display": {
+        "name": "DocuSign",
+        "description": "Send documents for e-signature via DocuSign",
+        "category": "tools",
+        "icon": "DocuSignIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "downdetector",
+      "legacyIds": [],
+      "provider": "downdetector",
+      "version": "1",
+      "display": {
+        "name": "Downdetector",
+        "description": "Monitor outages and service status with Downdetector",
+        "category": "tools",
+        "icon": "DowndetectorIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "dropbox",
+      "legacyIds": [],
+      "provider": "dropbox",
+      "version": "1",
+      "display": {
+        "name": "Dropbox",
+        "description": "Upload, download, share, and manage files in Dropbox",
+        "category": "tools",
+        "icon": "DropboxIcon",
+        "bgColor": "#0061FF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "dropcontact",
+      "legacyIds": [],
+      "provider": "dropcontact",
+      "version": "1",
+      "display": {
+        "name": "Dropcontact",
+        "description": "Enrich B2B contacts with verified email, phone, and company data",
+        "category": "tools",
+        "icon": "DropcontactIcon",
+        "bgColor": "#0ABA9F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "dspy",
+      "legacyIds": [],
+      "provider": "dspy",
+      "version": "1",
+      "display": {
+        "name": "DSPy",
+        "description": "Run predictions using self-hosted DSPy programs",
+        "category": "tools",
+        "icon": "DsPyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "dub",
+      "legacyIds": [],
+      "provider": "dub",
+      "version": "1",
+      "display": {
+        "name": "Dub",
+        "description": "Link management with Dub",
+        "category": "tools",
+        "icon": "DubIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "duckduckgo",
+      "legacyIds": [],
+      "provider": "duckduckgo",
+      "version": "1",
+      "display": {
+        "name": "DuckDuckGo",
+        "description": "Search with DuckDuckGo",
+        "category": "tools",
+        "icon": "DuckDuckGoIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "dynamodb",
+      "legacyIds": ["amazon-dynamodb"],
+      "provider": "dynamodb",
+      "version": "1",
+      "display": {
+        "name": "Amazon DynamoDB",
+        "description": "Get, put, query, scan, update, and delete items in Amazon DynamoDB tables",
+        "category": "tools",
+        "icon": "DynamoDBIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "elasticsearch",
+      "legacyIds": [],
+      "provider": "elasticsearch",
+      "version": "1",
+      "display": {
+        "name": "Elasticsearch",
+        "description": "Search, index, and manage data in Elasticsearch",
+        "category": "tools",
+        "icon": "ElasticsearchIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "elevenlabs",
+      "legacyIds": [],
+      "provider": "elevenlabs",
+      "version": "1",
+      "display": {
+        "name": "ElevenLabs",
+        "description": "Generate and transform audio with ElevenLabs",
+        "category": "tools",
+        "icon": "ElevenLabsIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "emailbison",
+      "legacyIds": ["email-bison"],
+      "provider": "emailbison",
+      "version": "1",
+      "display": {
+        "name": "Email Bison",
+        "description": "Manage Email Bison leads, campaigns, replies, and tags",
+        "category": "tools",
+        "icon": "EmailBisonIcon",
+        "bgColor": "#FB7A22"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "enrich",
+      "legacyIds": [],
+      "provider": "enrich",
+      "version": "1",
+      "display": {
+        "name": "Enrich",
+        "description": "B2B data enrichment and LinkedIn intelligence with Enrich.so",
+        "category": "tools",
+        "icon": "EnrichSoIcon",
+        "bgColor": "#E5E5E6"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "enrichment",
+      "legacyIds": [],
+      "provider": "enrichment",
+      "version": "1",
+      "display": {
+        "name": "Data Enrichment",
+        "description": "Enrich data with a Sim enrichment",
+        "category": "blocks",
+        "icon": "EnrichmentIcon",
+        "bgColor": "#9333EA"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "enrow",
+      "legacyIds": [],
+      "provider": "enrow",
+      "version": "1",
+      "display": {
+        "name": "Enrow",
+        "description": "Find and verify B2B emails with triple-verified accuracy",
+        "category": "tools",
+        "icon": "EnrowIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "evaluator",
+      "legacyIds": [],
+      "provider": "evaluator",
+      "version": "1",
+      "display": {
+        "name": "Evaluator",
+        "description": "Evaluate content",
+        "category": "blocks",
+        "icon": "ChartBarIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "evernote",
+      "legacyIds": [],
+      "provider": "evernote",
+      "version": "1",
+      "display": {
+        "name": "Evernote",
+        "description": "Manage notes, notebooks, and tags in Evernote",
+        "category": "tools",
+        "icon": "EvernoteIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "exa",
+      "legacyIds": [],
+      "provider": "exa",
+      "version": "1",
+      "display": {
+        "name": "Exa",
+        "description": "Search with Exa AI",
+        "category": "tools",
+        "icon": "ExaAIIcon",
+        "bgColor": "#1F40ED"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "extend",
+      "legacyIds": [],
+      "provider": "extend",
+      "version": "1",
+      "display": {
+        "name": "Extend",
+        "description": "Parse and extract content from documents",
+        "category": "tools",
+        "icon": "ExtendIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "extend_v2",
+      "legacyIds": ["extend", "extend-v2"],
+      "provider": "extend",
+      "version": "2",
+      "display": {
+        "name": "Extend",
+        "description": "Parse and extract content from documents",
+        "category": "tools",
+        "icon": "ExtendIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "fathom",
+      "legacyIds": [],
+      "provider": "fathom",
+      "version": "1",
+      "display": {
+        "name": "Fathom",
+        "description": "Access meeting recordings, transcripts, and summaries",
+        "category": "tools",
+        "icon": "FathomIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "file",
+      "legacyIds": [],
+      "provider": "file",
+      "version": "1",
+      "display": {
+        "name": "File (Legacy)",
+        "description": "Read and parse multiple files",
+        "category": "blocks",
+        "icon": "DocumentIcon",
+        "bgColor": "#40916C"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "file_v2",
+      "legacyIds": ["file-v2"],
+      "provider": "file",
+      "version": "2",
+      "display": {
+        "name": "File (Legacy)",
+        "description": "Read and parse multiple files",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "file_v3",
+      "legacyIds": ["file-v3"],
+      "provider": "file",
+      "version": "3",
+      "display": {
+        "name": "File",
+        "description": "Read and write workspace files",
+        "category": "blocks",
+        "icon": "DocumentIcon",
+        "bgColor": "#40916C"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "file_v4",
+      "legacyIds": ["file-v4"],
+      "provider": "file",
+      "version": "4",
+      "display": {
+        "name": "File (Legacy)",
+        "description": "Read, fetch, write, and append files",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "file_v5",
+      "legacyIds": ["file-v5"],
+      "provider": "file",
+      "version": "5",
+      "display": {
+        "name": "File",
+        "description": "Read, get content, fetch, write, append, compress, decompress, and manage sharing for files",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "findymail",
+      "legacyIds": [],
+      "provider": "findymail",
+      "version": "1",
+      "display": {
+        "name": "Findymail",
+        "description": "Find and verify B2B emails, phones, employees, and company data",
+        "category": "tools",
+        "icon": "FindymailIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "firecrawl",
+      "legacyIds": [],
+      "provider": "firecrawl",
+      "version": "1",
+      "display": {
+        "name": "Firecrawl",
+        "description": "Scrape, search, crawl, map, and extract web data",
+        "category": "tools",
+        "icon": "FirecrawlIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "fireflies",
+      "legacyIds": [],
+      "provider": "fireflies",
+      "version": "1",
+      "display": {
+        "name": "Fireflies (Legacy)",
+        "description": "Interact with Fireflies.ai meeting transcripts and recordings",
+        "category": "tools",
+        "icon": "FirefliesIcon",
+        "bgColor": "#100730"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "fireflies_v2",
+      "legacyIds": ["fireflies", "fireflies-v2"],
+      "provider": "fireflies",
+      "version": "2",
+      "display": {
+        "name": "Fireflies",
+        "description": "Interact with Fireflies.ai meeting transcripts and recordings",
+        "category": "tools",
+        "icon": "FirefliesIcon",
+        "bgColor": "#100730"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "flint",
+      "legacyIds": [],
+      "provider": "flint",
+      "version": "1",
+      "display": {
+        "name": "Flint",
+        "description": "Run background agent tasks on your Flint sites",
+        "category": "tools",
+        "icon": "FlintIcon",
+        "bgColor": "#F6F54F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "function",
+      "legacyIds": [],
+      "provider": "function",
+      "version": "1",
+      "display": {
+        "name": "Function",
+        "description": "Run custom logic",
+        "category": "blocks",
+        "icon": "CodeIcon",
+        "bgColor": "#FF402F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "gamma",
+      "legacyIds": [],
+      "provider": "gamma",
+      "version": "1",
+      "display": {
+        "name": "Gamma",
+        "description": "Generate presentations, documents, and webpages with AI",
+        "category": "tools",
+        "icon": "GammaIcon",
+        "bgColor": "#002253"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "generic_webhook",
+      "legacyIds": ["generic-webhook"],
+      "provider": "generic_webhook",
+      "version": "1",
+      "display": {
+        "name": "Webhook Trigger",
+        "description": "Receive webhooks from any service by configuring a custom webhook.",
+        "category": "triggers",
+        "icon": "WebhookIcon",
+        "bgColor": "#10B981"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "github",
+      "legacyIds": [],
+      "provider": "github",
+      "version": "1",
+      "display": {
+        "name": "GitHub (Legacy)",
+        "description": "Interact with GitHub or trigger workflows from GitHub events",
+        "category": "tools",
+        "icon": "GithubIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "github_v2",
+      "legacyIds": ["github", "github-v2"],
+      "provider": "github",
+      "version": "2",
+      "display": {
+        "name": "GitHub",
+        "description": "Interact with GitHub or trigger workflows from GitHub events",
+        "category": "tools",
+        "icon": "GithubIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "gitlab",
+      "legacyIds": [],
+      "provider": "gitlab",
+      "version": "1",
+      "display": {
+        "name": "GitLab",
+        "description": "Interact with GitLab projects, issues, merge requests, and pipelines",
+        "category": "tools",
+        "icon": "GitLabIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "gmail",
+      "legacyIds": [],
+      "provider": "gmail",
+      "version": "1",
+      "display": {
+        "name": "Gmail (Legacy)",
+        "description": "Send, read, search, and move Gmail messages or trigger workflows from Gmail events",
+        "category": "tools",
+        "icon": "GmailIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "gmail_v2",
+      "legacyIds": ["gmail", "gmail-v2"],
+      "provider": "gmail",
+      "version": "2",
+      "display": {
+        "name": "Gmail",
+        "description": "Send, read, search, and move Gmail messages or trigger workflows from Gmail events",
+        "category": "tools",
+        "icon": "GmailIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "gong",
+      "legacyIds": [],
+      "provider": "gong",
+      "version": "1",
+      "display": {
+        "name": "Gong",
+        "description": "Revenue intelligence and conversation analytics",
+        "category": "tools",
+        "icon": "GongIcon",
+        "bgColor": "#8039DF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_ads",
+      "legacyIds": ["google-ads"],
+      "provider": "google_ads",
+      "version": "1",
+      "display": {
+        "name": "Google Ads",
+        "description": "Query campaigns, ad groups, and performance metrics",
+        "category": "tools",
+        "icon": "GoogleAdsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_appsheet",
+      "legacyIds": ["google-appsheet"],
+      "provider": "google_appsheet",
+      "version": "1",
+      "display": {
+        "name": "Google AppSheet",
+        "description": "Read, add, edit, and delete rows in a Google AppSheet table",
+        "category": "tools",
+        "icon": "GoogleAppsheetIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_bigquery",
+      "legacyIds": ["google-bigquery"],
+      "provider": "google_bigquery",
+      "version": "1",
+      "display": {
+        "name": "Google BigQuery",
+        "description": "Query, list, and insert data in Google BigQuery",
+        "category": "tools",
+        "icon": "GoogleBigQueryIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_books",
+      "legacyIds": ["google-books"],
+      "provider": "google_books",
+      "version": "1",
+      "display": {
+        "name": "Google Books",
+        "description": "Search and retrieve book information",
+        "category": "tools",
+        "icon": "GoogleBooksIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_calendar",
+      "legacyIds": ["google-calendar"],
+      "provider": "google_calendar",
+      "version": "1",
+      "display": {
+        "name": "Google Calendar (Legacy)",
+        "description": "Manage Google Calendar events",
+        "category": "tools",
+        "icon": "GoogleCalendarIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_calendar_v2",
+      "legacyIds": ["google-calendar", "google-calendar-v2"],
+      "provider": "google_calendar",
+      "version": "2",
+      "display": {
+        "name": "Google Calendar",
+        "description": "Manage Google Calendar events",
+        "category": "tools",
+        "icon": "GoogleCalendarIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_contacts",
+      "legacyIds": ["google-contacts"],
+      "provider": "google_contacts",
+      "version": "1",
+      "display": {
+        "name": "Google Contacts",
+        "description": "Manage Google Contacts",
+        "category": "tools",
+        "icon": "GoogleContactsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_docs",
+      "legacyIds": ["google-docs"],
+      "provider": "google_docs",
+      "version": "1",
+      "display": {
+        "name": "Google Docs",
+        "description": "Read, write, create, and edit documents",
+        "category": "tools",
+        "icon": "GoogleDocsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_drive",
+      "legacyIds": ["google-drive"],
+      "provider": "google_drive",
+      "version": "1",
+      "display": {
+        "name": "Google Drive",
+        "description": "Manage files, folders, and permissions",
+        "category": "tools",
+        "icon": "GoogleDriveIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_forms",
+      "legacyIds": ["google-forms"],
+      "provider": "google_forms",
+      "version": "1",
+      "display": {
+        "name": "Google Forms",
+        "description": "Manage Google Forms and responses",
+        "category": "tools",
+        "icon": "GoogleFormsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_groups",
+      "legacyIds": ["google-groups"],
+      "provider": "google_groups",
+      "version": "1",
+      "display": {
+        "name": "Google Groups",
+        "description": "Manage Google Workspace Groups and their members",
+        "category": "tools",
+        "icon": "GoogleGroupsIcon",
+        "bgColor": "#E8F0FE"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_maps",
+      "legacyIds": ["google-maps"],
+      "provider": "google_maps",
+      "version": "1",
+      "display": {
+        "name": "Google Maps",
+        "description": "Geocoding, directions, places, and distance calculations",
+        "category": "tools",
+        "icon": "GoogleMapsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_meet",
+      "legacyIds": ["google-meet"],
+      "provider": "google_meet",
+      "version": "1",
+      "display": {
+        "name": "Google Meet",
+        "description": "Create and manage Google Meet meetings",
+        "category": "tools",
+        "icon": "GoogleMeetIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_pagespeed",
+      "legacyIds": ["google-pagespeed"],
+      "provider": "google_pagespeed",
+      "version": "1",
+      "display": {
+        "name": "Google PageSpeed",
+        "description": "Analyze webpage performance with Google PageSpeed Insights",
+        "category": "tools",
+        "icon": "GooglePagespeedIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_search",
+      "legacyIds": ["google-search"],
+      "provider": "google_search",
+      "version": "1",
+      "display": {
+        "name": "Google Search",
+        "description": "Search the web",
+        "category": "tools",
+        "icon": "GoogleIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_sheets",
+      "legacyIds": ["google-sheets"],
+      "provider": "google_sheets",
+      "version": "1",
+      "display": {
+        "name": "Google Sheets (Legacy)",
+        "description": "Read, write, and update data",
+        "category": "tools",
+        "icon": "GoogleSheetsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_sheets_v2",
+      "legacyIds": ["google-sheets", "google-sheets-v2"],
+      "provider": "google_sheets",
+      "version": "2",
+      "display": {
+        "name": "Google Sheets",
+        "description": "Read, write, and update data with sheet selection",
+        "category": "tools",
+        "icon": "GoogleSheetsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_slides",
+      "legacyIds": ["google-slides"],
+      "provider": "google_slides",
+      "version": "1",
+      "display": {
+        "name": "Google Slides (Legacy)",
+        "description": "Read, write, and create presentations",
+        "category": "tools",
+        "icon": "GoogleSlidesIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_slides_v2",
+      "legacyIds": ["google-slides", "google-slides-v2"],
+      "provider": "google_slides",
+      "version": "2",
+      "display": {
+        "name": "Google Slides",
+        "description": "Read, write, and create presentations",
+        "category": "tools",
+        "icon": "GoogleSlidesIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_tasks",
+      "legacyIds": ["google-tasks"],
+      "provider": "google_tasks",
+      "version": "1",
+      "display": {
+        "name": "Google Tasks",
+        "description": "Manage Google Tasks",
+        "category": "tools",
+        "icon": "GoogleTasksIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_translate",
+      "legacyIds": ["google-translate"],
+      "provider": "google_translate",
+      "version": "1",
+      "display": {
+        "name": "Google Translate",
+        "description": "Translate text using Google Cloud Translation",
+        "category": "tools",
+        "icon": "GoogleTranslateIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "google_vault",
+      "legacyIds": ["google-vault"],
+      "provider": "google_vault",
+      "version": "1",
+      "display": {
+        "name": "Google Vault",
+        "description": "Search, export, and manage matters, holds, exports, and saved queries in Vault",
+        "category": "tools",
+        "icon": "GoogleVaultIcon",
+        "bgColor": "#E8F0FE"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "grafana",
+      "legacyIds": [],
+      "provider": "grafana",
+      "version": "1",
+      "display": {
+        "name": "Grafana",
+        "description": "Interact with Grafana dashboards, alerts, and annotations",
+        "category": "tools",
+        "icon": "GrafanaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "grain",
+      "legacyIds": [],
+      "provider": "grain",
+      "version": "1",
+      "display": {
+        "name": "Grain",
+        "description": "Access meeting recordings, transcripts, and AI summaries",
+        "category": "tools",
+        "icon": "GrainIcon",
+        "bgColor": "#F6FAF9"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "grain_v2",
+      "legacyIds": ["grain", "grain-v2"],
+      "provider": "grain",
+      "version": "2",
+      "display": {
+        "name": "Grain",
+        "description": "Access meeting recordings, transcripts, and AI summaries",
+        "category": "tools",
+        "icon": "GrainIcon",
+        "bgColor": "#F6FAF9"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "granola",
+      "legacyIds": [],
+      "provider": "granola",
+      "version": "1",
+      "display": {
+        "name": "Granola",
+        "description": "Access meeting notes and transcripts from Granola",
+        "category": "tools",
+        "icon": "GranolaIcon",
+        "bgColor": "#B2C147"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "greenhouse",
+      "legacyIds": [],
+      "provider": "greenhouse",
+      "version": "1",
+      "display": {
+        "name": "Greenhouse",
+        "description": "Manage candidates, jobs, and applications in Greenhouse",
+        "category": "tools",
+        "icon": "GreenhouseIcon",
+        "bgColor": "#469776"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "greptile",
+      "legacyIds": [],
+      "provider": "greptile",
+      "version": "1",
+      "display": {
+        "name": "Greptile",
+        "description": "AI-powered codebase search and Q&A",
+        "category": "tools",
+        "icon": "GreptileIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "guardrails",
+      "legacyIds": [],
+      "provider": "guardrails",
+      "version": "1",
+      "display": {
+        "name": "Guardrails",
+        "description": "Validate content with guardrails",
+        "category": "blocks",
+        "icon": "ShieldCheckIcon",
+        "bgColor": "#3D642D"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "hex",
+      "legacyIds": [],
+      "provider": "hex",
+      "version": "1",
+      "display": {
+        "name": "Hex",
+        "description": "Run and manage Hex projects",
+        "category": "tools",
+        "icon": "HexIcon",
+        "bgColor": "#14151A"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "hubspot",
+      "legacyIds": [],
+      "provider": "hubspot",
+      "version": "1",
+      "display": {
+        "name": "HubSpot",
+        "description": "Interact with HubSpot CRM or trigger workflows from HubSpot events",
+        "category": "tools",
+        "icon": "HubspotIcon",
+        "bgColor": "#FF7A59"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "huggingface",
+      "legacyIds": ["hugging-face"],
+      "provider": "huggingface",
+      "version": "1",
+      "display": {
+        "name": "Hugging Face",
+        "description": "Use Hugging Face Inference API",
+        "category": "tools",
+        "icon": "HuggingFaceIcon",
+        "bgColor": "#0B0F19"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "human_in_the_loop",
+      "legacyIds": ["human-in-the-loop"],
+      "provider": "human_in_the_loop",
+      "version": "1",
+      "display": {
+        "name": "Human in the Loop",
+        "description": "Pause workflow execution and wait for human input",
+        "category": "blocks",
+        "icon": "HumanInTheLoopIcon",
+        "bgColor": "#10B981"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "hunter",
+      "legacyIds": ["hunter-io"],
+      "provider": "hunter",
+      "version": "1",
+      "display": {
+        "name": "Hunter.io",
+        "description": "Find and verify professional email addresses",
+        "category": "tools",
+        "icon": "HunterIOIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "iam",
+      "legacyIds": ["aws-iam"],
+      "provider": "iam",
+      "version": "1",
+      "display": {
+        "name": "AWS IAM",
+        "description": "Manage AWS IAM users, roles, policies, and groups",
+        "category": "tools",
+        "icon": "IAMIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "icypeas",
+      "legacyIds": [],
+      "provider": "icypeas",
+      "version": "1",
+      "display": {
+        "name": "Icypeas",
+        "description": "Find and verify professional email addresses",
+        "category": "tools",
+        "icon": "IcypeasIcon",
+        "bgColor": "#d4d4d4"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "identity_center",
+      "legacyIds": ["aws-identity-center", "identity-center"],
+      "provider": "identity_center",
+      "version": "1",
+      "display": {
+        "name": "AWS Identity Center",
+        "description": "Manage temporary elevated access in AWS IAM Identity Center",
+        "category": "tools",
+        "icon": "IdentityCenterIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "image_generator",
+      "legacyIds": ["image-generator"],
+      "provider": "image_generator",
+      "version": "1",
+      "display": {
+        "name": "Image Generator",
+        "description": "Generate images",
+        "category": "blocks",
+        "icon": "ImageIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "image_generator_v2",
+      "legacyIds": ["image-generator-v2"],
+      "provider": "image_generator",
+      "version": "2",
+      "display": {
+        "name": "Image Generator",
+        "description": "Generate images",
+        "category": "blocks",
+        "icon": "ImageIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "imap",
+      "legacyIds": [],
+      "provider": "imap",
+      "version": "1",
+      "display": {
+        "name": "IMAP Email",
+        "description": "Trigger workflows when new emails arrive via IMAP (works with any email provider)",
+        "category": "triggers",
+        "icon": "MailServerIcon",
+        "bgColor": "#6366F1"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "incidentio",
+      "legacyIds": ["incident-io"],
+      "provider": "incidentio",
+      "version": "1",
+      "display": {
+        "name": "incident.io",
+        "description": "Manage incidents with incident.io",
+        "category": "tools",
+        "icon": "IncidentioIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "infisical",
+      "legacyIds": [],
+      "provider": "infisical",
+      "version": "1",
+      "display": {
+        "name": "Infisical",
+        "description": "Manage secrets with Infisical",
+        "category": "tools",
+        "icon": "InfisicalIcon",
+        "bgColor": "#F7FE62"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "input_trigger",
+      "legacyIds": ["input-trigger"],
+      "provider": "input_trigger",
+      "version": "1",
+      "display": {
+        "name": "Input Form (Legacy)",
+        "description": "Legacy manual start block with structured input. Prefer Start block.",
+        "category": "triggers",
+        "icon": "InputTriggerIcon",
+        "bgColor": "#3B82F6"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "instagram",
+      "legacyIds": [],
+      "provider": "instagram",
+      "version": "1",
+      "display": {
+        "name": "Instagram",
+        "description": "Publish and download content, moderate comments, and manage Instagram DMs",
+        "category": "tools",
+        "icon": "InstagramIcon",
+        "bgColor": "radial-gradient(circle at 28% 96%, #fa8f21 9%, #d82d7e 55%, #8c3aaa 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "instantly",
+      "legacyIds": [],
+      "provider": "instantly",
+      "version": "1",
+      "display": {
+        "name": "Instantly",
+        "description": "Manage Instantly leads, campaigns, emails, and lead lists",
+        "category": "tools",
+        "icon": "InstantlyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "intercom",
+      "legacyIds": [],
+      "provider": "intercom",
+      "version": "1",
+      "display": {
+        "name": "Intercom (Legacy)",
+        "description": "Manage contacts, companies, conversations, tickets, and messages in Intercom",
+        "category": "tools",
+        "icon": "IntercomIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "intercom_v2",
+      "legacyIds": ["intercom", "intercom-v2"],
+      "provider": "intercom",
+      "version": "2",
+      "display": {
+        "name": "Intercom",
+        "description": "Manage contacts, companies, conversations, tickets, and messages in Intercom",
+        "category": "tools",
+        "icon": "IntercomIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "jina",
+      "legacyIds": [],
+      "provider": "jina",
+      "version": "1",
+      "display": {
+        "name": "Jina",
+        "description": "Search the web or extract content from URLs",
+        "category": "tools",
+        "icon": "JinaAIIcon",
+        "bgColor": "#333333"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "jira",
+      "legacyIds": [],
+      "provider": "jira",
+      "version": "1",
+      "display": {
+        "name": "Jira",
+        "description": "Interact with Jira",
+        "category": "tools",
+        "icon": "JiraIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "jira_service_management",
+      "legacyIds": ["jira-service-management"],
+      "provider": "jira_service_management",
+      "version": "1",
+      "display": {
+        "name": "Jira Service Management",
+        "description": "Interact with Jira Service Management",
+        "category": "tools",
+        "icon": "JiraServiceManagementIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "jupyter",
+      "legacyIds": [],
+      "provider": "jupyter",
+      "version": "1",
+      "display": {
+        "name": "Jupyter",
+        "description": "Manage files, notebooks, kernels, and sessions on a Jupyter server",
+        "category": "tools",
+        "icon": "JupyterIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "kalshi",
+      "legacyIds": [],
+      "provider": "kalshi",
+      "version": "1",
+      "display": {
+        "name": "Kalshi (Legacy)",
+        "description": "Access prediction markets and trade on Kalshi",
+        "category": "tools",
+        "icon": "KalshiIcon",
+        "bgColor": "#09C285"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "kalshi_v2",
+      "legacyIds": ["kalshi", "kalshi-v2"],
+      "provider": "kalshi",
+      "version": "2",
+      "display": {
+        "name": "Kalshi",
+        "description": "Access prediction markets and trade on Kalshi",
+        "category": "tools",
+        "icon": "KalshiIcon",
+        "bgColor": "#09C285"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "ketch",
+      "legacyIds": [],
+      "provider": "ketch",
+      "version": "1",
+      "display": {
+        "name": "Ketch",
+        "description": "Manage privacy consent, subscriptions, and data subject rights",
+        "category": "tools",
+        "icon": "KetchIcon",
+        "bgColor": "#9B5CFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "knowledge",
+      "legacyIds": [],
+      "provider": "knowledge",
+      "version": "1",
+      "display": {
+        "name": "Knowledge",
+        "description": "Use vector search",
+        "category": "blocks",
+        "icon": "PackageSearchIcon",
+        "bgColor": "#00B0B0"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "langsmith",
+      "legacyIds": [],
+      "provider": "langsmith",
+      "version": "1",
+      "display": {
+        "name": "LangSmith",
+        "description": "Forward workflow runs to LangSmith for observability",
+        "category": "tools",
+        "icon": "LangsmithIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "latex",
+      "legacyIds": [],
+      "provider": "latex",
+      "version": "1",
+      "display": {
+        "name": "LaTeX",
+        "description": "Compile LaTeX documents into PDFs",
+        "category": "tools",
+        "icon": "LatexIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "launchdarkly",
+      "legacyIds": [],
+      "provider": "launchdarkly",
+      "version": "1",
+      "display": {
+        "name": "LaunchDarkly",
+        "description": "Manage feature flags with LaunchDarkly.",
+        "category": "tools",
+        "icon": "LaunchDarklyIcon",
+        "bgColor": "#191919"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "leadmagic",
+      "legacyIds": [],
+      "provider": "leadmagic",
+      "version": "1",
+      "display": {
+        "name": "LeadMagic",
+        "description": "Find and enrich B2B contacts, emails, mobile numbers, and company data",
+        "category": "tools",
+        "icon": "LeadMagicIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "lemlist",
+      "legacyIds": [],
+      "provider": "lemlist",
+      "version": "1",
+      "display": {
+        "name": "Lemlist",
+        "description": "Manage outreach activities, leads, and send emails via Lemlist",
+        "category": "tools",
+        "icon": "LemlistIcon",
+        "bgColor": "#316BFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "linear",
+      "legacyIds": [],
+      "provider": "linear",
+      "version": "1",
+      "display": {
+        "name": "Linear (Legacy)",
+        "description": "Interact with Linear issues, projects, and more",
+        "category": "tools",
+        "icon": "LinearIcon",
+        "bgColor": "#5E6AD2"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "linear_v2",
+      "legacyIds": ["linear", "linear-v2"],
+      "provider": "linear",
+      "version": "2",
+      "display": {
+        "name": "Linear",
+        "description": "Interact with Linear issues, projects, and more",
+        "category": "tools",
+        "icon": "LinearIcon",
+        "bgColor": "#5E6AD2"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "linkedin",
+      "legacyIds": [],
+      "provider": "linkedin",
+      "version": "1",
+      "display": {
+        "name": "LinkedIn",
+        "description": "Share posts and manage your LinkedIn presence",
+        "category": "tools",
+        "icon": "LinkedInIcon",
+        "bgColor": "#0072B1"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "linkup",
+      "legacyIds": [],
+      "provider": "linkup",
+      "version": "1",
+      "display": {
+        "name": "Linkup",
+        "description": "Search the web with Linkup",
+        "category": "tools",
+        "icon": "LinkupIcon",
+        "bgColor": "#D6D3C7"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "linq",
+      "legacyIds": [],
+      "provider": "linq",
+      "version": "1",
+      "display": {
+        "name": "Linq",
+        "description": "Send iMessage, SMS, and RCS messages and manage conversations with Linq",
+        "category": "tools",
+        "icon": "LinqIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "logs",
+      "legacyIds": [],
+      "provider": "logs",
+      "version": "1",
+      "display": {
+        "name": "Logs",
+        "description": "Query workflow execution logs",
+        "category": "blocks",
+        "icon": "Library",
+        "bgColor": "#EAB308"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "logs_v2",
+      "legacyIds": ["logs-v2"],
+      "provider": "logs",
+      "version": "2",
+      "display": {
+        "name": "Logs",
+        "description": "Query workflow runs and fetch run details",
+        "category": "blocks",
+        "icon": "Library",
+        "bgColor": "#EAB308"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "loops",
+      "legacyIds": [],
+      "provider": "loops",
+      "version": "1",
+      "display": {
+        "name": "Loops",
+        "description": "Manage contacts and send emails with Loops",
+        "category": "tools",
+        "icon": "LoopsIcon",
+        "bgColor": "#FAFAF9"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "luma",
+      "legacyIds": [],
+      "provider": "luma",
+      "version": "1",
+      "display": {
+        "name": "Luma",
+        "description": "Manage events and guests on Luma",
+        "category": "tools",
+        "icon": "LumaIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mailchimp",
+      "legacyIds": [],
+      "provider": "mailchimp",
+      "version": "1",
+      "display": {
+        "name": "Mailchimp",
+        "description": "Manage audiences, campaigns, and marketing automation in Mailchimp",
+        "category": "tools",
+        "icon": "MailchimpIcon",
+        "bgColor": "#FFE01B"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mailgun",
+      "legacyIds": [],
+      "provider": "mailgun",
+      "version": "1",
+      "display": {
+        "name": "Mailgun",
+        "description": "Send emails and manage mailing lists with Mailgun",
+        "category": "tools",
+        "icon": "MailgunIcon",
+        "bgColor": "#C12126"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "managed_agent",
+      "legacyIds": ["claude-managed-agents", "managed-agent"],
+      "provider": "managed_agent",
+      "version": "1",
+      "display": {
+        "name": "Claude Managed Agents",
+        "description": "Run a Claude Platform Managed Agent",
+        "category": "tools",
+        "icon": "ClaudeIcon",
+        "bgColor": "#DA7756"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "manual_trigger",
+      "legacyIds": ["manual-trigger"],
+      "provider": "manual_trigger",
+      "version": "1",
+      "display": {
+        "name": "Manual (Legacy)",
+        "description": "Legacy manual start block. Prefer the Start block.",
+        "category": "triggers",
+        "icon": "ManualTriggerIcon",
+        "bgColor": "#2563EB"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "mcp",
+      "legacyIds": [],
+      "provider": "mcp",
+      "version": "1",
+      "display": {
+        "name": "MCP Tool",
+        "description": "Execute tools from Model Context Protocol (MCP) servers",
+        "category": "blocks",
+        "icon": "McpIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mem0",
+      "legacyIds": [],
+      "provider": "mem0",
+      "version": "1",
+      "display": {
+        "name": "Mem0",
+        "description": "Agent memory management",
+        "category": "tools",
+        "icon": "Mem0Icon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "memory",
+      "legacyIds": [],
+      "provider": "memory",
+      "version": "1",
+      "display": {
+        "name": "Memory",
+        "description": "Add memory store",
+        "category": "blocks",
+        "icon": "BrainIcon",
+        "bgColor": "#F64F9E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "microsoft_ad",
+      "legacyIds": ["azure-ad", "microsoft-ad"],
+      "provider": "microsoft_ad",
+      "version": "1",
+      "display": {
+        "name": "Azure AD",
+        "description": "Manage users and groups in Azure AD (Microsoft Entra ID)",
+        "category": "tools",
+        "icon": "AzureIcon",
+        "bgColor": "#0078D4"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "microsoft_dataverse",
+      "legacyIds": ["microsoft-dataverse"],
+      "provider": "microsoft_dataverse",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Dataverse",
+        "description": "Manage records in Microsoft Dataverse tables",
+        "category": "tools",
+        "icon": "MicrosoftDataverseIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "microsoft_excel",
+      "legacyIds": ["microsoft-excel"],
+      "provider": "microsoft_excel",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Excel (Legacy)",
+        "description": "Read, write, and update data",
+        "category": "tools",
+        "icon": "MicrosoftExcelIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "microsoft_excel_v2",
+      "legacyIds": ["microsoft-excel", "microsoft-excel-v2"],
+      "provider": "microsoft_excel",
+      "version": "2",
+      "display": {
+        "name": "Microsoft Excel",
+        "description": "Read and write data with sheet selection",
+        "category": "tools",
+        "icon": "MicrosoftExcelIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "microsoft_planner",
+      "legacyIds": ["microsoft-planner"],
+      "provider": "microsoft_planner",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Planner",
+        "description": "Manage tasks, plans, and buckets in Microsoft Planner",
+        "category": "tools",
+        "icon": "MicrosoftPlannerIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "microsoft_teams",
+      "legacyIds": ["microsoft-teams"],
+      "provider": "microsoft_teams",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Teams",
+        "description": "Manage messages, reactions, and members in Teams",
+        "category": "tools",
+        "icon": "MicrosoftTeamsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "millionverifier",
+      "legacyIds": [],
+      "provider": "millionverifier",
+      "version": "1",
+      "display": {
+        "name": "MillionVerifier",
+        "description": "Verify email deliverability and check account credits",
+        "category": "tools",
+        "icon": "MillionVerifierIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mistral_parse",
+      "legacyIds": ["mistral-parse"],
+      "provider": "mistral_parse",
+      "version": "1",
+      "display": {
+        "name": "Mistral Parser (Legacy)",
+        "description": "Extract text from PDF documents",
+        "category": "tools",
+        "icon": "MistralIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "mistral_parse_v2",
+      "legacyIds": ["mistral-parse-v2"],
+      "provider": "mistral_parse",
+      "version": "2",
+      "display": {
+        "name": "Mistral Parser",
+        "description": "Extract text from PDF documents",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "mistral_parse_v3",
+      "legacyIds": ["mistral-parse-v3", "mistral-parser"],
+      "provider": "mistral_parse",
+      "version": "3",
+      "display": {
+        "name": "Mistral Parser",
+        "description": "Extract text from PDF documents",
+        "category": "tools",
+        "icon": "MistralIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "monday",
+      "legacyIds": [],
+      "provider": "monday",
+      "version": "1",
+      "display": {
+        "name": "Monday",
+        "description": "Manage Monday.com boards, items, and groups",
+        "category": "tools",
+        "icon": "MondayIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mongodb",
+      "legacyIds": [],
+      "provider": "mongodb",
+      "version": "1",
+      "display": {
+        "name": "MongoDB",
+        "description": "Connect to MongoDB database",
+        "category": "tools",
+        "icon": "MongoDBIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mothership",
+      "legacyIds": [],
+      "provider": "mothership",
+      "version": "1",
+      "display": {
+        "name": "Sim Chat",
+        "description": "Talk to Sim",
+        "category": "blocks",
+        "icon": "Blimp",
+        "bgColor": "#802FDE"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "mysql",
+      "legacyIds": [],
+      "provider": "mysql",
+      "version": "1",
+      "display": {
+        "name": "MySQL",
+        "description": "Connect to MySQL database",
+        "category": "tools",
+        "icon": "MySQLIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "neo4j",
+      "legacyIds": [],
+      "provider": "neo4j",
+      "version": "1",
+      "display": {
+        "name": "Neo4j",
+        "description": "Connect to Neo4j graph database",
+        "category": "tools",
+        "icon": "Neo4jIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "neverbounce",
+      "legacyIds": [],
+      "provider": "neverbounce",
+      "version": "1",
+      "display": {
+        "name": "NeverBounce",
+        "description": "Verify email deliverability and check account credits",
+        "category": "tools",
+        "icon": "NeverBounceIcon",
+        "bgColor": "#064AF4"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "new_relic",
+      "legacyIds": ["new-relic"],
+      "provider": "new_relic",
+      "version": "1",
+      "display": {
+        "name": "New Relic",
+        "description": "Query observability data and record deployments in New Relic",
+        "category": "tools",
+        "icon": "NewRelicIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "note",
+      "legacyIds": [],
+      "provider": "note",
+      "version": "1",
+      "display": {
+        "name": "Note",
+        "description": "Add contextual annotations directly onto the workflow canvas.",
+        "category": "blocks",
+        "icon": "NoteIcon",
+        "bgColor": "#F59E0B"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "notion",
+      "legacyIds": [],
+      "provider": "notion",
+      "version": "1",
+      "display": {
+        "name": "Notion (Legacy)",
+        "description": "Manage Notion pages",
+        "category": "tools",
+        "icon": "NotionIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "notion_v2",
+      "legacyIds": ["notion", "notion-v2"],
+      "provider": "notion",
+      "version": "2",
+      "display": {
+        "name": "Notion",
+        "description": "Manage Notion pages",
+        "category": "tools",
+        "icon": "NotionIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "obsidian",
+      "legacyIds": [],
+      "provider": "obsidian",
+      "version": "1",
+      "display": {
+        "name": "Obsidian",
+        "description": "Interact with your Obsidian vault via the Local REST API",
+        "category": "tools",
+        "icon": "ObsidianIcon",
+        "bgColor": "#0F0F0F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "okta",
+      "legacyIds": [],
+      "provider": "okta",
+      "version": "1",
+      "display": {
+        "name": "Okta",
+        "description": "Manage users and groups in Okta",
+        "category": "tools",
+        "icon": "OktaIcon",
+        "bgColor": "#191919"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "onedrive",
+      "legacyIds": [],
+      "provider": "onedrive",
+      "version": "1",
+      "display": {
+        "name": "OneDrive",
+        "description": "Create, upload, download, search, move, copy, share, and delete files",
+        "category": "tools",
+        "icon": "MicrosoftOneDriveIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "onepassword",
+      "legacyIds": ["1password"],
+      "provider": "onepassword",
+      "version": "1",
+      "display": {
+        "name": "1Password",
+        "description": "Manage secrets and items in 1Password vaults",
+        "category": "tools",
+        "icon": "OnePasswordIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "openai",
+      "legacyIds": ["embeddings"],
+      "provider": "openai",
+      "version": "1",
+      "display": {
+        "name": "Embeddings",
+        "description": "Generate Open AI embeddings",
+        "category": "tools",
+        "icon": "OpenAIIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "outlook",
+      "legacyIds": [],
+      "provider": "outlook",
+      "version": "1",
+      "display": {
+        "name": "Outlook",
+        "description": "Send, read, search, reply, organize, and manage Outlook email",
+        "category": "tools",
+        "icon": "OutlookIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "pagerduty",
+      "legacyIds": [],
+      "provider": "pagerduty",
+      "version": "1",
+      "display": {
+        "name": "PagerDuty",
+        "description": "Manage incidents and on-call schedules with PagerDuty",
+        "category": "tools",
+        "icon": "PagerDutyIcon",
+        "bgColor": "#06AC38"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "parallel_ai",
+      "legacyIds": ["parallel-ai"],
+      "provider": "parallel_ai",
+      "version": "1",
+      "display": {
+        "name": "Parallel AI",
+        "description": "Web research with Parallel AI",
+        "category": "tools",
+        "icon": "ParallelIcon",
+        "bgColor": "#1D1C1A"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "peopledatalabs",
+      "legacyIds": ["people-data-labs"],
+      "provider": "peopledatalabs",
+      "version": "1",
+      "display": {
+        "name": "People Data Labs",
+        "description": "Enrich and search people and companies",
+        "category": "tools",
+        "icon": "PeopleDataLabsIcon",
+        "bgColor": "#4831C3"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "perplexity",
+      "legacyIds": [],
+      "provider": "perplexity",
+      "version": "1",
+      "display": {
+        "name": "Perplexity",
+        "description": "Use Perplexity AI for chat and search",
+        "category": "tools",
+        "icon": "PerplexityIcon",
+        "bgColor": "#20808D"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "persona",
+      "legacyIds": [],
+      "provider": "persona",
+      "version": "1",
+      "display": {
+        "name": "Persona",
+        "description": "Verify identities with Persona",
+        "category": "tools",
+        "icon": "PersonaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "pi",
+      "legacyIds": [],
+      "provider": "pi",
+      "version": "1",
+      "display": {
+        "name": "Pi Coding Agent",
+        "description": "Run an autonomous coding agent on a repo",
+        "category": "blocks",
+        "icon": "PiIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "pinecone",
+      "legacyIds": [],
+      "provider": "pinecone",
+      "version": "1",
+      "display": {
+        "name": "Pinecone",
+        "description": "Use Pinecone vector database",
+        "category": "tools",
+        "icon": "PineconeIcon",
+        "bgColor": "#0D1117"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "pipedrive",
+      "legacyIds": [],
+      "provider": "pipedrive",
+      "version": "1",
+      "display": {
+        "name": "Pipedrive",
+        "description": "Interact with Pipedrive CRM",
+        "category": "tools",
+        "icon": "PipedriveIcon",
+        "bgColor": "#2E6936"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "polymarket",
+      "legacyIds": [],
+      "provider": "polymarket",
+      "version": "1",
+      "display": {
+        "name": "Polymarket",
+        "description": "Access prediction markets data from Polymarket",
+        "category": "tools",
+        "icon": "PolymarketIcon",
+        "bgColor": "#4C82FB"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "postgresql",
+      "legacyIds": [],
+      "provider": "postgresql",
+      "version": "1",
+      "display": {
+        "name": "PostgreSQL",
+        "description": "Connect to PostgreSQL database",
+        "category": "tools",
+        "icon": "PostgresIcon",
+        "bgColor": "#336791"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "posthog",
+      "legacyIds": [],
+      "provider": "posthog",
+      "version": "1",
+      "display": {
+        "name": "PostHog",
+        "description": "Product analytics and feature management",
+        "category": "tools",
+        "icon": "PosthogIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "profound",
+      "legacyIds": [],
+      "provider": "profound",
+      "version": "1",
+      "display": {
+        "name": "Profound",
+        "description": "AI visibility and analytics with Profound",
+        "category": "tools",
+        "icon": "ProfoundIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "prospeo",
+      "legacyIds": [],
+      "provider": "prospeo",
+      "version": "1",
+      "display": {
+        "name": "Prospeo",
+        "description": "Enrich and search B2B contacts and companies",
+        "category": "tools",
+        "icon": "ProspeoIcon",
+        "bgColor": "#FF1A26"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "pulse",
+      "legacyIds": [],
+      "provider": "pulse",
+      "version": "1",
+      "display": {
+        "name": "Pulse",
+        "description": "Extract text from documents using Pulse OCR",
+        "category": "tools",
+        "icon": "PulseIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "pulse_v2",
+      "legacyIds": ["pulse", "pulse-v2"],
+      "provider": "pulse",
+      "version": "2",
+      "display": {
+        "name": "Pulse",
+        "description": "Extract text from documents using Pulse OCR",
+        "category": "tools",
+        "icon": "PulseIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "qdrant",
+      "legacyIds": [],
+      "provider": "qdrant",
+      "version": "1",
+      "display": {
+        "name": "Qdrant",
+        "description": "Use Qdrant vector database",
+        "category": "tools",
+        "icon": "QdrantIcon",
+        "bgColor": "#1A223F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "quartr",
+      "legacyIds": [],
+      "provider": "quartr",
+      "version": "1",
+      "display": {
+        "name": "Quartr",
+        "description": "Access earnings calls, transcripts, filings, and slides",
+        "category": "tools",
+        "icon": "QuartrIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "quiver",
+      "legacyIds": [],
+      "provider": "quiver",
+      "version": "1",
+      "display": {
+        "name": "Quiver",
+        "description": "Generate and vectorize SVGs",
+        "category": "tools",
+        "icon": "QuiverIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "railway",
+      "legacyIds": [],
+      "provider": "railway",
+      "version": "1",
+      "display": {
+        "name": "Railway",
+        "description": "Manage Railway projects, services, deployments, and variables",
+        "category": "tools",
+        "icon": "RailwayIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "rb2b",
+      "legacyIds": [],
+      "provider": "rb2b",
+      "version": "1",
+      "display": {
+        "name": "RB2B",
+        "description": "Identify and enrich website visitors",
+        "category": "tools",
+        "icon": "RB2BIcon",
+        "bgColor": "#51FF00"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "rds",
+      "legacyIds": ["amazon-rds"],
+      "provider": "rds",
+      "version": "1",
+      "display": {
+        "name": "Amazon RDS",
+        "description": "Connect to Amazon RDS via Data API",
+        "category": "tools",
+        "icon": "RDSIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "reddit",
+      "legacyIds": [],
+      "provider": "reddit",
+      "version": "1",
+      "display": {
+        "name": "Reddit",
+        "description": "Access Reddit data and content",
+        "category": "tools",
+        "icon": "RedditIcon",
+        "bgColor": "#FF5700"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "redis",
+      "legacyIds": [],
+      "provider": "redis",
+      "version": "1",
+      "display": {
+        "name": "Redis",
+        "description": "Key-value operations with Redis",
+        "category": "tools",
+        "icon": "RedisIcon",
+        "bgColor": "#FF4438"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "reducto",
+      "legacyIds": [],
+      "provider": "reducto",
+      "version": "1",
+      "display": {
+        "name": "Reducto",
+        "description": "Extract text from PDF documents",
+        "category": "tools",
+        "icon": "ReductoIcon",
+        "bgColor": "#5c0c5c"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "reducto_v2",
+      "legacyIds": ["reducto", "reducto-v2"],
+      "provider": "reducto",
+      "version": "2",
+      "display": {
+        "name": "Reducto",
+        "description": "Extract text from PDF documents",
+        "category": "tools",
+        "icon": "ReductoIcon",
+        "bgColor": "#5c0c5c"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "resend",
+      "legacyIds": [],
+      "provider": "resend",
+      "version": "1",
+      "display": {
+        "name": "Resend",
+        "description": "Send emails and manage contacts with Resend.",
+        "category": "tools",
+        "icon": "ResendIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "response",
+      "legacyIds": [],
+      "provider": "response",
+      "version": "1",
+      "display": {
+        "name": "Response",
+        "description": "Send structured API response",
+        "category": "blocks",
+        "icon": "ResponseIcon",
+        "bgColor": "#2F55FF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "revenuecat",
+      "legacyIds": [],
+      "provider": "revenuecat",
+      "version": "1",
+      "display": {
+        "name": "RevenueCat",
+        "description": "Manage in-app subscriptions and entitlements",
+        "category": "tools",
+        "icon": "RevenueCatIcon",
+        "bgColor": "#F25A5A"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "rippling",
+      "legacyIds": [],
+      "provider": "rippling",
+      "version": "1",
+      "display": {
+        "name": "Rippling",
+        "description": "Manage workers, departments, custom objects, and company data in Rippling",
+        "category": "tools",
+        "icon": "RipplingIcon",
+        "bgColor": "#502D3C"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "rocketlane",
+      "legacyIds": [],
+      "provider": "rocketlane",
+      "version": "1",
+      "display": {
+        "name": "Rocketlane",
+        "description": "Manage client onboarding projects, tasks, time tracking, and invoices",
+        "category": "tools",
+        "icon": "RocketlaneIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "rootly",
+      "legacyIds": [],
+      "provider": "rootly",
+      "version": "1",
+      "display": {
+        "name": "Rootly",
+        "description": "Manage incidents, alerts, and on-call with Rootly",
+        "category": "tools",
+        "icon": "RootlyIcon",
+        "bgColor": "#6C72C8"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "router",
+      "legacyIds": [],
+      "provider": "router",
+      "version": "1",
+      "display": {
+        "name": "Router (Legacy)",
+        "description": "Route workflow",
+        "category": "blocks",
+        "icon": "ConnectIcon",
+        "bgColor": "#28C43F"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "router_v2",
+      "legacyIds": ["router-v2"],
+      "provider": "router",
+      "version": "2",
+      "display": {
+        "name": "Router",
+        "description": "Route workflow based on context",
+        "category": "blocks",
+        "icon": "ConnectIcon",
+        "bgColor": "#28C43F"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "rss",
+      "legacyIds": [],
+      "provider": "rss",
+      "version": "1",
+      "display": {
+        "name": "RSS Feed",
+        "description": "Monitor RSS feeds and trigger workflows when new items are published",
+        "category": "triggers",
+        "icon": "RssIcon",
+        "bgColor": "#F97316"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "s3",
+      "legacyIds": [],
+      "provider": "s3",
+      "version": "1",
+      "display": {
+        "name": "S3",
+        "description": "Upload, download, list, and manage S3 files and buckets",
+        "category": "tools",
+        "icon": "S3Icon",
+        "bgColor": "linear-gradient(45deg, #1B660F 0%, #6CAE3E 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "salesforce",
+      "legacyIds": [],
+      "provider": "salesforce",
+      "version": "1",
+      "display": {
+        "name": "Salesforce",
+        "description": "Interact with Salesforce CRM",
+        "category": "tools",
+        "icon": "SalesforceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sap_concur",
+      "legacyIds": ["sap-concur"],
+      "provider": "sap_concur",
+      "version": "1",
+      "display": {
+        "name": "SAP Concur",
+        "description": "Manage expense reports, travel requests, cash advances, and more in SAP Concur",
+        "category": "tools",
+        "icon": "SapConcurIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sap_s4hana",
+      "legacyIds": ["sap-s4hana"],
+      "provider": "sap_s4hana",
+      "version": "1",
+      "display": {
+        "name": "SAP S4HANA",
+        "description": "Read and write SAP S4HANA Cloud business data via OData",
+        "category": "tools",
+        "icon": "SapS4HanaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "schedule",
+      "legacyIds": [],
+      "provider": "schedule",
+      "version": "1",
+      "display": {
+        "name": "Schedule",
+        "description": "Trigger workflow execution on a schedule",
+        "category": "triggers",
+        "icon": "ScheduleIcon",
+        "bgColor": "#6366F1"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "search",
+      "legacyIds": [],
+      "provider": "search",
+      "version": "1",
+      "display": {
+        "name": "Search",
+        "description": "Search the web ($0.01 per search)",
+        "category": "blocks",
+        "icon": "SearchIcon",
+        "bgColor": "#3B82F6"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "secrets_manager",
+      "legacyIds": ["aws-secrets-manager", "secrets-manager"],
+      "provider": "secrets_manager",
+      "version": "1",
+      "display": {
+        "name": "AWS Secrets Manager",
+        "description": "Connect to AWS Secrets Manager",
+        "category": "tools",
+        "icon": "SecretsManagerIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sendblue",
+      "legacyIds": [],
+      "provider": "sendblue",
+      "version": "1",
+      "display": {
+        "name": "Sendblue",
+        "description": "Send and receive iMessage and SMS",
+        "category": "tools",
+        "icon": "SendblueIcon",
+        "bgColor": "#008BFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sendgrid",
+      "legacyIds": [],
+      "provider": "sendgrid",
+      "version": "1",
+      "display": {
+        "name": "SendGrid",
+        "description": "Send emails and manage contacts, lists, and templates with SendGrid",
+        "category": "tools",
+        "icon": "SendgridIcon",
+        "bgColor": "#1A82E2"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sentry",
+      "legacyIds": [],
+      "provider": "sentry",
+      "version": "1",
+      "display": {
+        "name": "Sentry",
+        "description": "Manage Sentry issues, projects, events, and releases",
+        "category": "tools",
+        "icon": "SentryIcon",
+        "bgColor": "#362D59"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "serper",
+      "legacyIds": [],
+      "provider": "serper",
+      "version": "1",
+      "display": {
+        "name": "Serper",
+        "description": "Search the web using Serper",
+        "category": "tools",
+        "icon": "SerperIcon",
+        "bgColor": "#2B3543"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "servicenow",
+      "legacyIds": [],
+      "provider": "servicenow",
+      "version": "1",
+      "display": {
+        "name": "ServiceNow",
+        "description": "Create, read, update, and delete ServiceNow records",
+        "category": "tools",
+        "icon": "ServiceNowIcon",
+        "bgColor": "#032D42"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "ses",
+      "legacyIds": ["aws-ses"],
+      "provider": "ses",
+      "version": "1",
+      "display": {
+        "name": "AWS SES",
+        "description": "Send emails and manage templates with AWS Simple Email Service",
+        "category": "tools",
+        "icon": "SESIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sftp",
+      "legacyIds": [],
+      "provider": "sftp",
+      "version": "1",
+      "display": {
+        "name": "SFTP",
+        "description": "Transfer files via SFTP (SSH File Transfer Protocol)",
+        "category": "tools",
+        "icon": "SftpIcon",
+        "bgColor": "#2D3748"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sharepoint",
+      "legacyIds": [],
+      "provider": "sharepoint",
+      "version": "1",
+      "display": {
+        "name": "Sharepoint",
+        "description": "Work with pages and lists",
+        "category": "tools",
+        "icon": "MicrosoftSharepointIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "sharepoint_v2",
+      "legacyIds": ["sharepoint", "sharepoint-v2"],
+      "provider": "sharepoint",
+      "version": "2",
+      "display": {
+        "name": "SharePoint",
+        "description": "Work with pages and lists",
+        "category": "tools",
+        "icon": "MicrosoftSharepointIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "shopify",
+      "legacyIds": [],
+      "provider": "shopify",
+      "version": "1",
+      "display": {
+        "name": "Shopify",
+        "description": "Manage products, orders, customers, and inventory in your Shopify store",
+        "category": "tools",
+        "icon": "ShopifyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sim_workspace_event",
+      "legacyIds": ["sim-workspace-event"],
+      "provider": "sim_workspace_event",
+      "version": "1",
+      "display": {
+        "name": "Sim Workspace Events",
+        "description": "Run this workflow when workspace events occur: run errors or successes, deployments, and alert conditions like latency or cost spikes.",
+        "category": "triggers",
+        "icon": "SimTriggerIcon",
+        "bgColor": "#33C482"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "similarweb",
+      "legacyIds": [],
+      "provider": "similarweb",
+      "version": "1",
+      "display": {
+        "name": "Similarweb",
+        "description": "Website traffic and analytics data",
+        "category": "tools",
+        "icon": "SimilarwebIcon",
+        "bgColor": "#000922"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sixtyfour",
+      "legacyIds": ["sixtyfour-ai"],
+      "provider": "sixtyfour",
+      "version": "1",
+      "display": {
+        "name": "Sixtyfour AI",
+        "description": "Enrich leads and companies with AI-powered research",
+        "category": "tools",
+        "icon": "SixtyfourIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "slack",
+      "legacyIds": [],
+      "provider": "slack",
+      "version": "1",
+      "display": {
+        "name": "Slack",
+        "description": "Send, update, delete messages, manage views and modals, add or remove reactions, manage canvases, get channel info and user presence in Slack",
+        "category": "tools",
+        "icon": "SlackIcon",
+        "bgColor": "#611f69"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "slack_v2",
+      "legacyIds": ["slack-v2"],
+      "provider": "slack",
+      "version": "2",
+      "display": {
+        "name": "slack v2",
+        "description": "",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": true
+      }
+    },
+    {
+      "id": "smtp",
+      "legacyIds": [],
+      "provider": "smtp",
+      "version": "1",
+      "display": {
+        "name": "SMTP",
+        "description": "Send emails via any SMTP mail server",
+        "category": "tools",
+        "icon": "SmtpIcon",
+        "bgColor": "#2D3748"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sportmonks",
+      "legacyIds": [],
+      "provider": "sportmonks",
+      "version": "1",
+      "display": {
+        "name": "Sportmonks",
+        "description": "Access Sportmonks football, motorsport, odds, and reference data",
+        "category": "tools",
+        "icon": "SportmonksIcon",
+        "bgColor": "#171534"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "spotify",
+      "legacyIds": [],
+      "provider": "spotify",
+      "version": "1",
+      "display": {
+        "name": "Spotify",
+        "description": "Search music, manage playlists, control playback, and access your library",
+        "category": "tools",
+        "icon": "SpotifyIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "sqs",
+      "legacyIds": ["amazon-sqs"],
+      "provider": "sqs",
+      "version": "1",
+      "display": {
+        "name": "Amazon SQS",
+        "description": "Connect to Amazon SQS",
+        "category": "tools",
+        "icon": "SQSIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "square",
+      "legacyIds": [],
+      "provider": "square",
+      "version": "1",
+      "display": {
+        "name": "Square",
+        "description": "Process payments and manage Square commerce data",
+        "category": "tools",
+        "icon": "SquareIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "ssh",
+      "legacyIds": [],
+      "provider": "ssh",
+      "version": "1",
+      "display": {
+        "name": "SSH",
+        "description": "Connect to remote servers via SSH",
+        "category": "tools",
+        "icon": "SshIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "stagehand",
+      "legacyIds": [],
+      "provider": "stagehand",
+      "version": "1",
+      "display": {
+        "name": "Stagehand",
+        "description": "Web automation and data extraction",
+        "category": "tools",
+        "icon": "StagehandIcon",
+        "bgColor": "#FFC83C"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "start_trigger",
+      "legacyIds": ["start-trigger"],
+      "provider": "start_trigger",
+      "version": "1",
+      "display": {
+        "name": "Start",
+        "description": "Unified workflow entry point for chat, manual and API runs",
+        "category": "triggers",
+        "icon": "StartIcon",
+        "bgColor": "#34B5FF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "starter",
+      "legacyIds": [],
+      "provider": "starter",
+      "version": "1",
+      "display": {
+        "name": "Starter",
+        "description": "Start workflow",
+        "category": "blocks",
+        "icon": "StartIcon",
+        "bgColor": "#2FB3FF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "stripe",
+      "legacyIds": [],
+      "provider": "stripe",
+      "version": "1",
+      "display": {
+        "name": "Stripe",
+        "description": "Process payments and manage Stripe data",
+        "category": "tools",
+        "icon": "StripeIcon",
+        "bgColor": "#635BFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "sts",
+      "legacyIds": ["aws-sts"],
+      "provider": "sts",
+      "version": "1",
+      "display": {
+        "name": "AWS STS",
+        "description": "Connect to AWS Security Token Service",
+        "category": "tools",
+        "icon": "STSIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "stt",
+      "legacyIds": [],
+      "provider": "stt",
+      "version": "1",
+      "display": {
+        "name": "Speech-to-Text",
+        "description": "Convert speech to text using AI",
+        "category": "blocks",
+        "icon": "STTIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "stt_v2",
+      "legacyIds": ["stt-v2"],
+      "provider": "stt",
+      "version": "2",
+      "display": {
+        "name": "Speech-to-Text",
+        "description": "",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "supabase",
+      "legacyIds": [],
+      "provider": "supabase",
+      "version": "1",
+      "display": {
+        "name": "Supabase",
+        "description": "Use Supabase database",
+        "category": "tools",
+        "icon": "SupabaseIcon",
+        "bgColor": "#1C1C1C"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "table",
+      "legacyIds": [],
+      "provider": "table",
+      "version": "1",
+      "display": {
+        "name": "Table",
+        "description": "User-defined data tables",
+        "category": "blocks",
+        "icon": "TableIcon",
+        "bgColor": "#10B981"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "tailscale",
+      "legacyIds": [],
+      "provider": "tailscale",
+      "version": "1",
+      "display": {
+        "name": "Tailscale",
+        "description": "Manage devices and network settings in your Tailscale tailnet",
+        "category": "tools",
+        "icon": "TailscaleIcon",
+        "bgColor": "#2E2D2D"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "tavily",
+      "legacyIds": [],
+      "provider": "tavily",
+      "version": "1",
+      "display": {
+        "name": "Tavily",
+        "description": "Search and extract information",
+        "category": "tools",
+        "icon": "TavilyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "telegram",
+      "legacyIds": [],
+      "provider": "telegram",
+      "version": "1",
+      "display": {
+        "name": "Telegram",
+        "description": "Interact with Telegram",
+        "category": "tools",
+        "icon": "TelegramIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "temporal",
+      "legacyIds": [],
+      "provider": "temporal",
+      "version": "1",
+      "display": {
+        "name": "Temporal",
+        "description": "Start, signal, query, and manage Temporal workflow executions",
+        "category": "tools",
+        "icon": "TemporalIcon",
+        "bgColor": "#141414"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "textract",
+      "legacyIds": [],
+      "provider": "textract",
+      "version": "1",
+      "display": {
+        "name": "AWS Textract",
+        "description": "Extract text, tables, and forms from documents",
+        "category": "tools",
+        "icon": "TextractIcon",
+        "bgColor": "linear-gradient(135deg, #055F4E 0%, #56C0A7 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "textract_v2",
+      "legacyIds": ["aws-textract", "textract-v2"],
+      "provider": "textract",
+      "version": "2",
+      "display": {
+        "name": "AWS Textract",
+        "description": "Extract text, tables, and forms from documents",
+        "category": "tools",
+        "icon": "TextractIcon",
+        "bgColor": "linear-gradient(135deg, #055F4E 0%, #56C0A7 100%)"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "thinking",
+      "legacyIds": [],
+      "provider": "thinking",
+      "version": "1",
+      "display": {
+        "name": "Thinking",
+        "description": "Forces model to outline its thought process.",
+        "category": "blocks",
+        "icon": "BrainIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "thrive",
+      "legacyIds": [],
+      "provider": "thrive",
+      "version": "1",
+      "display": {
+        "name": "Thrive",
+        "description": "Manage users, audiences, learning and CPD on Thrive",
+        "category": "tools",
+        "icon": "ThriveIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "tiktok",
+      "legacyIds": [],
+      "provider": "tiktok",
+      "version": "1",
+      "display": {
+        "name": "TikTok",
+        "description": "Access TikTok profiles and videos, and upload inbox drafts",
+        "category": "tools",
+        "icon": "TikTokIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "tinybird",
+      "legacyIds": [],
+      "provider": "tinybird",
+      "version": "1",
+      "display": {
+        "name": "Tinybird",
+        "description": "Send events, query data, and manage Data Sources with Tinybird",
+        "category": "tools",
+        "icon": "TinybirdIcon",
+        "bgColor": "#2EF598"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "translate",
+      "legacyIds": [],
+      "provider": "translate",
+      "version": "1",
+      "display": {
+        "name": "Translate",
+        "description": "Translate text to any language",
+        "category": "blocks",
+        "icon": "TranslateIcon",
+        "bgColor": "#FF4B4B"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "trello",
+      "legacyIds": [],
+      "provider": "trello",
+      "version": "1",
+      "display": {
+        "name": "Trello",
+        "description": "Manage Trello lists, cards, checklists, and activity",
+        "category": "tools",
+        "icon": "TrelloIcon",
+        "bgColor": "#0052CC"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "trigger_dev",
+      "legacyIds": ["trigger-dev"],
+      "provider": "trigger_dev",
+      "version": "1",
+      "display": {
+        "name": "Trigger.dev",
+        "description": "Trigger tasks and manage runs and schedules",
+        "category": "tools",
+        "icon": "TriggerDevIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "tts",
+      "legacyIds": [],
+      "provider": "tts",
+      "version": "1",
+      "display": {
+        "name": "Text-to-Speech",
+        "description": "Convert text to speech using AI voices",
+        "category": "blocks",
+        "icon": "TTSIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "twilio_sms",
+      "legacyIds": ["twilio-sms"],
+      "provider": "twilio_sms",
+      "version": "1",
+      "display": {
+        "name": "Twilio SMS",
+        "description": "Send SMS messages",
+        "category": "tools",
+        "icon": "TwilioIcon",
+        "bgColor": "#F22F46"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "twilio_voice",
+      "legacyIds": ["twilio-voice"],
+      "provider": "twilio_voice",
+      "version": "1",
+      "display": {
+        "name": "Twilio Voice",
+        "description": "Make and manage phone calls",
+        "category": "tools",
+        "icon": "TwilioIcon",
+        "bgColor": "#F22F46"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "typeform",
+      "legacyIds": [],
+      "provider": "typeform",
+      "version": "1",
+      "display": {
+        "name": "Typeform",
+        "description": "Interact with Typeform",
+        "category": "tools",
+        "icon": "TypeformIcon",
+        "bgColor": "#262627"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "upstash",
+      "legacyIds": [],
+      "provider": "upstash",
+      "version": "1",
+      "display": {
+        "name": "Upstash",
+        "description": "Serverless Redis with Upstash",
+        "category": "tools",
+        "icon": "UpstashIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "uptimerobot",
+      "legacyIds": [],
+      "provider": "uptimerobot",
+      "version": "1",
+      "display": {
+        "name": "UptimeRobot",
+        "description": "Monitor uptime, manage incidents, maintenance windows, and status pages",
+        "category": "tools",
+        "icon": "UptimeRobotIcon",
+        "bgColor": "#111921"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "vanta",
+      "legacyIds": [],
+      "provider": "vanta",
+      "version": "1",
+      "display": {
+        "name": "Vanta",
+        "description": "Query compliance status and manage evidence in Vanta",
+        "category": "tools",
+        "icon": "VantaIcon",
+        "bgColor": "#F8F4F3"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "variables",
+      "legacyIds": [],
+      "provider": "variables",
+      "version": "1",
+      "display": {
+        "name": "Variables",
+        "description": "Set workflow-scoped variables",
+        "category": "blocks",
+        "icon": "VariableIcon",
+        "bgColor": "#8B5CF6"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "vercel",
+      "legacyIds": [],
+      "provider": "vercel",
+      "version": "1",
+      "display": {
+        "name": "Vercel",
+        "description": "Manage Vercel deployments, projects, and infrastructure",
+        "category": "tools",
+        "icon": "VercelIcon",
+        "bgColor": "#171717"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "video_generator",
+      "legacyIds": ["video-generator"],
+      "provider": "video_generator",
+      "version": "1",
+      "display": {
+        "name": "Video Generator (Legacy)",
+        "description": "Generate videos from text using AI",
+        "category": "blocks",
+        "icon": "VideoIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "video_generator_v2",
+      "legacyIds": ["video-generator-v2"],
+      "provider": "video_generator",
+      "version": "2",
+      "display": {
+        "name": "Video Generator",
+        "description": "",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "video_generator_v3",
+      "legacyIds": ["video-generator-v3"],
+      "provider": "video_generator",
+      "version": "3",
+      "display": {
+        "name": "Video Generator",
+        "description": "Generate videos from text using AI",
+        "category": "blocks",
+        "icon": "VideoIcon",
+        "bgColor": "#181C1E"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "vision",
+      "legacyIds": [],
+      "provider": "vision",
+      "version": "1",
+      "display": {
+        "name": "Vision (Legacy)",
+        "description": "Analyze images with vision models",
+        "category": "blocks",
+        "icon": "EyeIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "vision_v2",
+      "legacyIds": ["vision-v2"],
+      "provider": "vision",
+      "version": "2",
+      "display": {
+        "name": "Vision",
+        "description": "Analyze images with vision models",
+        "category": "blocks"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "wait",
+      "legacyIds": [],
+      "provider": "wait",
+      "version": "1",
+      "display": {
+        "name": "Wait",
+        "description": "Pause workflow execution for a time interval",
+        "category": "blocks",
+        "icon": "WaitIcon",
+        "bgColor": "#F59E0B"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "wealthbox",
+      "legacyIds": [],
+      "provider": "wealthbox",
+      "version": "1",
+      "display": {
+        "name": "Wealthbox",
+        "description": "Interact with Wealthbox",
+        "category": "tools",
+        "icon": "WealthboxIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "webflow",
+      "legacyIds": [],
+      "provider": "webflow",
+      "version": "1",
+      "display": {
+        "name": "Webflow",
+        "description": "Manage Webflow CMS collections",
+        "category": "tools",
+        "icon": "WebflowIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "webhook_request",
+      "legacyIds": ["webhook-request"],
+      "provider": "webhook_request",
+      "version": "1",
+      "display": {
+        "name": "Webhook",
+        "description": "Send a webhook request",
+        "category": "blocks",
+        "icon": "WebhookIcon",
+        "bgColor": "#10B981"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "whatsapp",
+      "legacyIds": [],
+      "provider": "whatsapp",
+      "version": "1",
+      "display": {
+        "name": "WhatsApp",
+        "description": "Send WhatsApp messages",
+        "category": "tools",
+        "icon": "WhatsAppIcon",
+        "bgColor": "#25D366"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "wikipedia",
+      "legacyIds": [],
+      "provider": "wikipedia",
+      "version": "1",
+      "display": {
+        "name": "Wikipedia",
+        "description": "Search and retrieve content from Wikipedia",
+        "category": "tools",
+        "icon": "WikipediaIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "wiza",
+      "legacyIds": [],
+      "provider": "wiza",
+      "version": "1",
+      "display": {
+        "name": "Wiza",
+        "description": "Find, enrich, and verify B2B contact data with Wiza",
+        "category": "tools",
+        "icon": "WizaIcon",
+        "bgColor": "#9284BC"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "wordpress",
+      "legacyIds": [],
+      "provider": "wordpress",
+      "version": "1",
+      "display": {
+        "name": "WordPress",
+        "description": "Manage WordPress content",
+        "category": "tools",
+        "icon": "WordpressIcon",
+        "bgColor": "#21759B"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "workday",
+      "legacyIds": [],
+      "provider": "workday",
+      "version": "1",
+      "display": {
+        "name": "Workday",
+        "description": "Manage workers, hiring, onboarding, and HR operations in Workday",
+        "category": "tools",
+        "icon": "WorkdayIcon",
+        "bgColor": "#F5F0EB"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "workflow",
+      "legacyIds": [],
+      "provider": "workflow",
+      "version": "1",
+      "display": {
+        "name": "Workflow",
+        "description": "This is a core workflow block. Execute another workflow as a block in your workflow. Enter the input variable to pass to the child workflow.",
+        "category": "blocks",
+        "icon": "WorkflowIcon",
+        "bgColor": "#6366F1"
+      },
+      "visibility": {
+        "hideFromToolbar": true,
+        "preview": false
+      }
+    },
+    {
+      "id": "workflow_input",
+      "legacyIds": ["workflow-input"],
+      "provider": "workflow_input",
+      "version": "1",
+      "display": {
+        "name": "Workflow",
+        "description": "Execute another workflow and map variables to its Start trigger schema.",
+        "category": "blocks",
+        "icon": "WorkflowIcon",
+        "bgColor": "#6366F1"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "x",
+      "legacyIds": [],
+      "provider": "x",
+      "version": "1",
+      "display": {
+        "name": "X",
+        "description": "Interact with X",
+        "category": "tools",
+        "icon": "xIcon",
+        "bgColor": "#000000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "youtube",
+      "legacyIds": [],
+      "provider": "youtube",
+      "version": "1",
+      "display": {
+        "name": "YouTube",
+        "description": "Interact with YouTube videos, channels, and playlists",
+        "category": "tools",
+        "icon": "YouTubeIcon",
+        "bgColor": "#FF0000"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "zendesk",
+      "legacyIds": [],
+      "provider": "zendesk",
+      "version": "1",
+      "display": {
+        "name": "Zendesk",
+        "description": "Manage support tickets, users, and organizations in Zendesk",
+        "category": "tools",
+        "icon": "ZendeskIcon",
+        "bgColor": "#03363D"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "zep",
+      "legacyIds": [],
+      "provider": "zep",
+      "version": "1",
+      "display": {
+        "name": "Zep",
+        "description": "Long-term memory for AI agents",
+        "category": "tools",
+        "icon": "ZepIcon",
+        "bgColor": "#E8E8E8"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "zerobounce",
+      "legacyIds": [],
+      "provider": "zerobounce",
+      "version": "1",
+      "display": {
+        "name": "ZeroBounce",
+        "description": "Validate email deliverability and check account credits",
+        "category": "tools",
+        "icon": "ZeroBounceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "zoom",
+      "legacyIds": [],
+      "provider": "zoom",
+      "version": "1",
+      "display": {
+        "name": "Zoom",
+        "description": "Create and manage Zoom meetings and recordings",
+        "category": "tools",
+        "icon": "ZoomIcon",
+        "bgColor": "#2D8CFF"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    },
+    {
+      "id": "zoominfo",
+      "legacyIds": [],
+      "provider": "zoominfo",
+      "version": "1",
+      "display": {
+        "name": "ZoomInfo",
+        "description": "Search and enrich B2B company and contact data with ZoomInfo.",
+        "category": "tools",
+        "icon": "ZoomInfoIcon",
+        "bgColor": "#EA1B15"
+      },
+      "visibility": {
+        "hideFromToolbar": false,
+        "preview": false
+      }
+    }
+  ]
+}

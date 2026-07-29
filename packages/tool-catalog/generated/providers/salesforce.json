@@ -1,0 +1,503 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "salesforce",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "salesforce",
+      "legacyIds": [],
+      "provider": "salesforce",
+      "version": "1",
+      "display": {
+        "name": "Salesforce",
+        "description": "Interact with Salesforce CRM",
+        "category": "tools",
+        "icon": "SalesforceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "salesforce_get_accounts",
+        "salesforce_create_account",
+        "salesforce_update_account",
+        "salesforce_delete_account",
+        "salesforce_get_contacts",
+        "salesforce_create_contact",
+        "salesforce_update_contact",
+        "salesforce_delete_contact",
+        "salesforce_get_leads",
+        "salesforce_create_lead",
+        "salesforce_update_lead",
+        "salesforce_delete_lead",
+        "salesforce_get_opportunities",
+        "salesforce_create_opportunity",
+        "salesforce_update_opportunity",
+        "salesforce_delete_opportunity",
+        "salesforce_get_cases",
+        "salesforce_create_case",
+        "salesforce_update_case",
+        "salesforce_delete_case",
+        "salesforce_get_tasks",
+        "salesforce_create_task",
+        "salesforce_update_task",
+        "salesforce_delete_task",
+        "salesforce_list_reports",
+        "salesforce_get_report",
+        "salesforce_run_report",
+        "salesforce_list_report_types",
+        "salesforce_list_dashboards",
+        "salesforce_get_dashboard",
+        "salesforce_refresh_dashboard",
+        "salesforce_query",
+        "salesforce_query_more",
+        "salesforce_describe_object",
+        "salesforce_list_objects",
+        "salesforce_create_custom_field",
+        "salesforce_update_custom_field",
+        "salesforce_delete_custom_field",
+        "salesforce_create_custom_object",
+        "salesforce_tooling_query"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Salesforce Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Salesforce Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fields",
+          "label": "Fields to Return",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "industry",
+          "label": "Industry",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billingStreet",
+          "label": "Billing Street",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billingCity",
+          "label": "Billing City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billingState",
+          "label": "Billing State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billingPostalCode",
+          "label": "Billing Postal Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billingCountry",
+          "label": "Billing Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "annualRevenue",
+          "label": "Annual Revenue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "numberOfEmployees",
+          "label": "Number of Employees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "department",
+          "label": "Department",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailingStreet",
+          "label": "Mailing Street",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailingCity",
+          "label": "Mailing City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailingState",
+          "label": "Mailing State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailingPostalCode",
+          "label": "Mailing Postal Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailingCountry",
+          "label": "Mailing Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadId",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company",
+          "label": "Company",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadSource",
+          "label": "Lead Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "opportunityId",
+          "label": "Opportunity ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stageName",
+          "label": "Stage Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "closeDate",
+          "label": "Close Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amount",
+          "label": "Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "probability",
+          "label": "Probability",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "caseId",
+          "label": "Case ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "origin",
+          "label": "Origin",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityDate",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "whoId",
+          "label": "Related Contact/Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "whatId",
+          "label": "Related Account/Opportunity ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportId",
+          "label": "Report ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchTerm",
+          "label": "Search Term",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDetails",
+          "label": "Include Details",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Report Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dashboardId",
+          "label": "Dashboard ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SOQL Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextRecordsUrl",
+          "label": "Next Records URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "objectName",
+          "label": "Object Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldName",
+          "label": "Field Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldId",
+          "label": "Field ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldType",
+          "label": "Field Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "label",
+          "label": "Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pluralLabel",
+          "label": "Plural Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "picklistValues",
+          "label": "Picklist Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "length",
+          "label": "Length",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "precision",
+          "label": "Precision",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scale",
+          "label": "Scale",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visibleLines",
+          "label": "Visible Lines",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultValue",
+          "label": "Default Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inlineHelpText",
+          "label": "Help Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "required",
+          "label": "Required",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unique",
+          "label": "Unique",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nameFieldLabel",
+          "label": "Name Field Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sharingModel",
+          "label": "Sharing Model",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

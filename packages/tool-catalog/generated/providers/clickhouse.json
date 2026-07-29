@@ -1,0 +1,213 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "clickhouse",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "clickhouse",
+      "legacyIds": [],
+      "provider": "clickhouse",
+      "version": "1",
+      "display": {
+        "name": "ClickHouse",
+        "description": "Connect to a ClickHouse database",
+        "category": "tools",
+        "icon": "ClickHouseIcon",
+        "bgColor": "#f9ff69"
+      },
+      "capabilities": [
+        "clickhouse_query",
+        "clickhouse_execute",
+        "clickhouse_insert",
+        "clickhouse_insert_rows",
+        "clickhouse_update",
+        "clickhouse_delete",
+        "clickhouse_list_databases",
+        "clickhouse_list_tables",
+        "clickhouse_describe_table",
+        "clickhouse_show_create_table",
+        "clickhouse_count_rows",
+        "clickhouse_introspect",
+        "clickhouse_create_database",
+        "clickhouse_drop_database",
+        "clickhouse_create_table",
+        "clickhouse_drop_table",
+        "clickhouse_truncate_table",
+        "clickhouse_rename_table",
+        "clickhouse_optimize_table",
+        "clickhouse_list_partitions",
+        "clickhouse_drop_partition",
+        "clickhouse_list_mutations",
+        "clickhouse_list_running_queries",
+        "clickhouse_kill_query",
+        "clickhouse_table_stats",
+        "clickhouse_list_clusters"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "database",
+          "label": "Database Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secure",
+          "label": "Use HTTPS",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "table",
+          "label": "Table Name (Optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "SQL Statement",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "data",
+          "label": "Data (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "rows",
+          "label": "Rows (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "data",
+          "label": "Update Data (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition (Optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Database Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columns",
+          "label": "Columns (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "engine",
+          "label": "Engine",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "partitionBy",
+          "label": "Partition By (Optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newTable",
+          "label": "New Table Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "final",
+          "label": "Force Final Merge",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "partition",
+          "label": "Partition",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryId",
+          "label": "Query ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onlyRunning",
+          "label": "Only Running Mutations",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

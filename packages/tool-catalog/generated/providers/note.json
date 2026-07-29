@@ -1,0 +1,31 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "note",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "note",
+      "legacyIds": [],
+      "provider": "note",
+      "version": "1",
+      "display": {
+        "name": "Note",
+        "description": "Add contextual annotations directly onto the workflow canvas.",
+        "category": "blocks",
+        "icon": "NoteIcon",
+        "bgColor": "#F59E0B"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "content",
+          "label": "content",
+          "type": "string",
+          "required": false,
+          "description": "Write your note using Markdown. YouTube links will display as embedded videos."
+        }
+      ]
+    }
+  ]
+}

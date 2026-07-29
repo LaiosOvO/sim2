@@ -1,0 +1,566 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "intercom",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "intercom",
+      "legacyIds": [],
+      "provider": "intercom",
+      "version": "1",
+      "display": {
+        "name": "Intercom (Legacy)",
+        "description": "Manage contacts, companies, conversations, tickets, and messages in Intercom",
+        "category": "tools",
+        "icon": "IntercomIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "intercom_create_contact",
+        "intercom_get_contact",
+        "intercom_update_contact",
+        "intercom_list_contacts",
+        "intercom_search_contacts",
+        "intercom_delete_contact",
+        "intercom_create_company",
+        "intercom_get_company",
+        "intercom_list_companies",
+        "intercom_get_conversation",
+        "intercom_list_conversations",
+        "intercom_reply_conversation",
+        "intercom_search_conversations",
+        "intercom_create_ticket",
+        "intercom_get_ticket",
+        "intercom_create_message",
+        "intercom_update_ticket_v2",
+        "intercom_list_admins_v2",
+        "intercom_close_conversation_v2",
+        "intercom_open_conversation_v2",
+        "intercom_snooze_conversation_v2",
+        "intercom_assign_conversation_v2",
+        "intercom_list_tags_v2",
+        "intercom_create_tag_v2",
+        "intercom_tag_contact_v2",
+        "intercom_untag_contact_v2",
+        "intercom_tag_conversation_v2",
+        "intercom_create_note_v2",
+        "intercom_create_event_v2",
+        "intercom_attach_contact_to_company_v2",
+        "intercom_detach_contact_from_company_v2"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessToken",
+          "label": "Access Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "role",
+          "label": "Role",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "external_id",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "avatar",
+          "label": "Avatar URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signed_up_at",
+          "label": "Signed Up At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_seen_at",
+          "label": "Last Seen At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "owner_id",
+          "label": "Owner ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unsubscribed_from_emails",
+          "label": "Unsubscribed from Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "custom_attributes",
+          "label": "Custom Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contact_company_id",
+          "label": "Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sort_field",
+          "label": "Sort Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort_order",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "company_id",
+          "label": "Company ID (External)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "plan",
+          "label": "Plan",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "industry",
+          "label": "Industry",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monthly_spend",
+          "label": "Monthly Spend",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "remote_created_at",
+          "label": "Remote Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conversationId",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "display_as",
+          "label": "Display As",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_translations",
+          "label": "Include Translations",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message_type",
+          "label": "Message Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Message Body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "admin_id",
+          "label": "Admin ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachment_urls",
+          "label": "Attachment URLs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reply_created_at",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticketId",
+          "label": "Ticket ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ticket_type_id",
+          "label": "Ticket Type ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contacts",
+          "label": "Contacts",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ticket_attributes",
+          "label": "Ticket Attributes",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ticket_company_id",
+          "label": "Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticket_created_at",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conversation_to_link_id",
+          "label": "Conversation to Link",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disable_notifications",
+          "label": "Disable Notifications",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message_type_msg",
+          "label": "Message Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "template",
+          "label": "Template",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "from_type",
+          "label": "From Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from_id",
+          "label": "From ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to_type",
+          "label": "To Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to_id",
+          "label": "To ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "message_created_at",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "starting_after",
+          "label": "Starting After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "close_body",
+          "label": "Closing Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "snoozed_until",
+          "label": "Snooze Until",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "assignee_id",
+          "label": "Assignee ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "assign_body",
+          "label": "Assignment Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "update_ticket_attributes",
+          "label": "Ticket Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticket_open",
+          "label": "Ticket Open",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticket_is_shared",
+          "label": "Ticket Visible to Users",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticket_snoozed_until",
+          "label": "Snooze Ticket Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticket_assignee_id",
+          "label": "Ticket Assignee ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagId",
+          "label": "Tag ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tag_name",
+          "label": "Tag Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tag_id_update",
+          "label": "Tag ID (for update)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tag_contact_id",
+          "label": "Contact ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "note_body",
+          "label": "Note Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "event_name",
+          "label": "Event Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "event_user_id",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "event_email",
+          "label": "User Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "event_contact_id",
+          "label": "Contact ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "event_metadata",
+          "label": "Event Metadata",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "event_created_at",
+          "label": "Event Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attach_company_id",
+          "label": "Company ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "intercom_v2",
+      "legacyIds": ["intercom", "intercom-v2"],
+      "provider": "intercom",
+      "version": "2",
+      "display": {
+        "name": "Intercom",
+        "description": "Manage contacts, companies, conversations, tickets, and messages in Intercom",
+        "category": "tools",
+        "icon": "IntercomIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "intercom_create_contact_v2",
+        "intercom_get_contact_v2",
+        "intercom_update_contact_v2",
+        "intercom_list_contacts_v2",
+        "intercom_search_contacts_v2",
+        "intercom_delete_contact_v2",
+        "intercom_create_company_v2",
+        "intercom_get_company_v2",
+        "intercom_list_companies_v2",
+        "intercom_get_conversation_v2",
+        "intercom_list_conversations_v2",
+        "intercom_reply_conversation_v2",
+        "intercom_search_conversations_v2",
+        "intercom_create_ticket_v2",
+        "intercom_get_ticket_v2",
+        "intercom_update_ticket_v2",
+        "intercom_create_message_v2",
+        "intercom_list_admins_v2",
+        "intercom_close_conversation_v2",
+        "intercom_open_conversation_v2",
+        "intercom_snooze_conversation_v2",
+        "intercom_assign_conversation_v2",
+        "intercom_list_tags_v2",
+        "intercom_create_tag_v2",
+        "intercom_tag_contact_v2",
+        "intercom_untag_contact_v2",
+        "intercom_tag_conversation_v2",
+        "intercom_create_note_v2",
+        "intercom_create_event_v2",
+        "intercom_attach_contact_to_company_v2",
+        "intercom_detach_contact_from_company_v2"
+      ],
+      "inputs": []
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "attio",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "attio",
+      "legacyIds": [],
+      "provider": "attio",
+      "version": "1",
+      "display": {
+        "name": "Attio",
+        "description": "Manage records, notes, tasks, lists, comments, and more in Attio CRM",
+        "category": "tools",
+        "icon": "AttioIcon",
+        "bgColor": "#1D1E20"
+      },
+      "capabilities": [
+        "attio_list_records",
+        "attio_get_record",
+        "attio_create_record",
+        "attio_update_record",
+        "attio_delete_record",
+        "attio_search_records",
+        "attio_assert_record",
+        "attio_list_notes",
+        "attio_get_note",
+        "attio_create_note",
+        "attio_delete_note",
+        "attio_list_tasks",
+        "attio_get_task",
+        "attio_create_task",
+        "attio_update_task",
+        "attio_delete_task",
+        "attio_list_objects",
+        "attio_get_object",
+        "attio_create_object",
+        "attio_update_object",
+        "attio_list_lists",
+        "attio_get_list",
+        "attio_create_list",
+        "attio_update_list",
+        "attio_query_list_entries",
+        "attio_get_list_entry",
+        "attio_create_list_entry",
+        "attio_update_list_entry",
+        "attio_delete_list_entry",
+        "attio_list_members",
+        "attio_get_member",
+        "attio_create_comment",
+        "attio_get_comment",
+        "attio_delete_comment",
+        "attio_list_threads",
+        "attio_get_thread",
+        "attio_list_webhooks",
+        "attio_get_webhook",
+        "attio_create_webhook",
+        "attio_update_webhook",
+        "attio_delete_webhook",
+        "attio_list_attributes",
+        "attio_get_attribute",
+        "attio_create_attribute",
+        "attio_update_attribute"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Attio Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Attio Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "objectTypeSelector",
+          "label": "Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectType",
+          "label": "Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "matchingAttribute",
+          "label": "Matching Attribute",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sorts",
+          "label": "Sort",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objects",
+          "label": "Object Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteParentObject",
+          "label": "Parent Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteParentRecordId",
+          "label": "Parent Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteTitle",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteFormat",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteCreatedAt",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteMeetingId",
+          "label": "Meeting ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteId",
+          "label": "Note ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskDeadline",
+          "label": "Deadline",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskIsCompleted",
+          "label": "Completed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskIsCompletedUpdate",
+          "label": "Completed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskLinkedRecords",
+          "label": "Linked Records",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "taskAssignees",
+          "label": "Assignees",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskFilterObject",
+          "label": "Linked Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskFilterRecordId",
+          "label": "Linked Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskFilterAssignee",
+          "label": "Assignee",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskFilterCompleted",
+          "label": "Completed Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectIdOrSlug",
+          "label": "Object ID or Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectApiSlug",
+          "label": "API Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectSingularNoun",
+          "label": "Singular Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectPluralNoun",
+          "label": "Plural Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSelector",
+          "label": "List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIdOrSlug",
+          "label": "List ID or Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listName",
+          "label": "List Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listParentObject",
+          "label": "Parent Object",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listApiSlug",
+          "label": "API Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listWorkspaceAccess",
+          "label": "Workspace Access",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listWorkspaceAccessUpdate",
+          "label": "Workspace Access",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryId",
+          "label": "Entry ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryParentRecordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryParentObject",
+          "label": "Record Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryValues",
+          "label": "Entry Values",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "entryFilter",
+          "label": "Filter",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "entrySorts",
+          "label": "Sort",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "memberId",
+          "label": "Member ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentFormat",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentAuthorType",
+          "label": "Author Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentAuthorId",
+          "label": "Author ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentTarget",
+          "label": "Comment On",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentList",
+          "label": "List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentEntryId",
+          "label": "Entry ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentRecordObject",
+          "label": "Record Object",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentRecordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentThreadId",
+          "label": "Thread ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentCreatedAt",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadId",
+          "label": "Thread ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadFilterRecordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadFilterObject",
+          "label": "Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadFilterEntryId",
+          "label": "Entry ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadFilterList",
+          "label": "List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookId",
+          "label": "Webhook ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookTargetUrl",
+          "label": "Target URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookSubscriptions",
+          "label": "Subscriptions",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "attributeTarget",
+          "label": "Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIdentifier",
+          "label": "Object or List ID/Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeId",
+          "label": "Attribute ID or Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeTitle",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeApiSlug",
+          "label": "API Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeType",
+          "label": "Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIsRequired",
+          "label": "Required",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIsRequiredUpdate",
+          "label": "Required",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIsUnique",
+          "label": "Unique",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIsUniqueUpdate",
+          "label": "Unique",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIsMultiselect",
+          "label": "Multiselect",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeIsArchived",
+          "label": "Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributeConfig",
+          "label": "Config",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "attributeShowArchived",
+          "label": "Show Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskSort",
+          "label": "Sort",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

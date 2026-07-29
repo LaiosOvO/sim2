@@ -1,0 +1,127 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_tasks",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_tasks",
+      "legacyIds": ["google-tasks"],
+      "provider": "google_tasks",
+      "version": "1",
+      "display": {
+        "name": "Google Tasks",
+        "description": "Manage Google Tasks",
+        "category": "tools",
+        "icon": "GoogleTasksIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_tasks_create",
+        "google_tasks_list",
+        "google_tasks_get",
+        "google_tasks_update",
+        "google_tasks_delete",
+        "google_tasks_list_task_lists"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Tasks Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Tasks Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "taskListSelector",
+          "label": "Task List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskListId",
+          "label": "Task List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "due",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notes",
+          "label": "New Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "due",
+          "label": "New Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "New Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "showCompleted",
+          "label": "Show Completed",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

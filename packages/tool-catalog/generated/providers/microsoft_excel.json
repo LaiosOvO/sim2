@@ -1,0 +1,371 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "microsoft_excel",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "microsoft_excel",
+      "legacyIds": ["microsoft-excel"],
+      "provider": "microsoft_excel",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Excel (Legacy)",
+        "description": "Read, write, and update data",
+        "category": "tools",
+        "icon": "MicrosoftExcelIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "microsoft_excel_read",
+        "microsoft_excel_write",
+        "microsoft_excel_table_add",
+        "microsoft_excel_worksheet_add",
+        "microsoft_excel_clear_range",
+        "microsoft_excel_format_range",
+        "microsoft_excel_create_table",
+        "microsoft_excel_delete_worksheet",
+        "microsoft_excel_sort_range"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spreadsheetId",
+          "label": "Select Sheet",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "driveId",
+          "label": "Drive ID (SharePoint)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualSpreadsheetId",
+          "label": "Spreadsheet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "range",
+          "label": "Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableName",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "worksheetName",
+          "label": "Worksheet Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "valueInputOption",
+          "label": "Value Input Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "applyTo",
+          "label": "Clear",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fillColor",
+          "label": "Fill Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontBold",
+          "label": "Bold",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontColor",
+          "label": "Font Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontItalic",
+          "label": "Italic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontSize",
+          "label": "Font Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontName",
+          "label": "Font Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableHasHeaders",
+          "label": "First Row Has Headers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortTableName",
+          "label": "Table Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortColumn",
+          "label": "Sort Column Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortAscending",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortHasHeaders",
+          "label": "Range Has Header Row",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortMatchCase",
+          "label": "Match Case",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "microsoft_excel_v2",
+      "legacyIds": ["microsoft-excel", "microsoft-excel-v2"],
+      "provider": "microsoft_excel",
+      "version": "2",
+      "display": {
+        "name": "Microsoft Excel",
+        "description": "Read and write data with sheet selection",
+        "category": "tools",
+        "icon": "MicrosoftExcelIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "microsoft_excel_read_v2",
+        "microsoft_excel_write_v2",
+        "microsoft_excel_clear_range",
+        "microsoft_excel_format_range",
+        "microsoft_excel_create_table",
+        "microsoft_excel_delete_worksheet",
+        "microsoft_excel_sort_range"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileSource",
+          "label": "File Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "siteSelector",
+          "label": "SharePoint Site",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "driveSelector",
+          "label": "Document Library",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "spreadsheetId",
+          "label": "Select Spreadsheet",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualDriveId",
+          "label": "Drive ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualSpreadsheetId",
+          "label": "Spreadsheet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sheetName",
+          "label": "Sheet (Tab)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualSheetName",
+          "label": "Sheet Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cellRange",
+          "label": "Cell Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Values",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "valueInputOption",
+          "label": "Value Input Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "applyTo",
+          "label": "Clear",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fillColor",
+          "label": "Fill Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontBold",
+          "label": "Bold",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontColor",
+          "label": "Font Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontItalic",
+          "label": "Italic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontSize",
+          "label": "Font Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fontName",
+          "label": "Font Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableHasHeaders",
+          "label": "First Row Has Headers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortTableName",
+          "label": "Table Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortColumn",
+          "label": "Sort Column Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortAscending",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortHasHeaders",
+          "label": "Range Has Header Row",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortMatchCase",
+          "label": "Match Case",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

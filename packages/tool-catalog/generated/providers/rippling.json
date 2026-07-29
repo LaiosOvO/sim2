@@ -1,0 +1,435 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "rippling",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "rippling",
+      "legacyIds": [],
+      "provider": "rippling",
+      "version": "1",
+      "display": {
+        "name": "Rippling",
+        "description": "Manage workers, departments, custom objects, and company data in Rippling",
+        "category": "tools",
+        "icon": "RipplingIcon",
+        "bgColor": "#502D3C"
+      },
+      "capabilities": [
+        "rippling_list_workers",
+        "rippling_get_worker",
+        "rippling_list_users",
+        "rippling_get_user",
+        "rippling_list_companies",
+        "rippling_get_current_user",
+        "rippling_list_entitlements",
+        "rippling_list_departments",
+        "rippling_get_department",
+        "rippling_create_department",
+        "rippling_update_department",
+        "rippling_list_teams",
+        "rippling_get_team",
+        "rippling_list_employment_types",
+        "rippling_get_employment_type",
+        "rippling_list_titles",
+        "rippling_get_title",
+        "rippling_create_title",
+        "rippling_update_title",
+        "rippling_delete_title",
+        "rippling_list_custom_fields",
+        "rippling_list_job_functions",
+        "rippling_get_job_function",
+        "rippling_list_work_locations",
+        "rippling_get_work_location",
+        "rippling_create_work_location",
+        "rippling_update_work_location",
+        "rippling_delete_work_location",
+        "rippling_list_business_partners",
+        "rippling_get_business_partner",
+        "rippling_create_business_partner",
+        "rippling_delete_business_partner",
+        "rippling_list_business_partner_groups",
+        "rippling_get_business_partner_group",
+        "rippling_create_business_partner_group",
+        "rippling_delete_business_partner_group",
+        "rippling_list_supergroups",
+        "rippling_get_supergroup",
+        "rippling_list_supergroup_members",
+        "rippling_list_supergroup_inclusion_members",
+        "rippling_list_supergroup_exclusion_members",
+        "rippling_update_supergroup_inclusion_members",
+        "rippling_update_supergroup_exclusion_members",
+        "rippling_list_custom_objects",
+        "rippling_get_custom_object",
+        "rippling_create_custom_object",
+        "rippling_update_custom_object",
+        "rippling_delete_custom_object",
+        "rippling_list_custom_object_fields",
+        "rippling_get_custom_object_field",
+        "rippling_create_custom_object_field",
+        "rippling_update_custom_object_field",
+        "rippling_delete_custom_object_field",
+        "rippling_list_custom_object_records",
+        "rippling_get_custom_object_record",
+        "rippling_get_custom_object_record_by_external_id",
+        "rippling_query_custom_object_records",
+        "rippling_create_custom_object_record",
+        "rippling_update_custom_object_record",
+        "rippling_delete_custom_object_record",
+        "rippling_bulk_create_custom_object_records",
+        "rippling_bulk_update_custom_object_records",
+        "rippling_bulk_delete_custom_object_records",
+        "rippling_list_custom_apps",
+        "rippling_get_custom_app",
+        "rippling_create_custom_app",
+        "rippling_update_custom_app",
+        "rippling_delete_custom_app",
+        "rippling_list_custom_pages",
+        "rippling_get_custom_page",
+        "rippling_create_custom_page",
+        "rippling_update_custom_page",
+        "rippling_delete_custom_page",
+        "rippling_list_custom_settings",
+        "rippling_get_custom_setting",
+        "rippling_create_custom_setting",
+        "rippling_update_custom_setting",
+        "rippling_delete_custom_setting",
+        "rippling_list_object_categories",
+        "rippling_get_object_category",
+        "rippling_create_object_category",
+        "rippling_update_object_category",
+        "rippling_delete_object_category",
+        "rippling_get_report_run",
+        "rippling_trigger_report_run",
+        "rippling_create_draft_hires"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "id",
+          "label": "Resource ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customObjectId",
+          "label": "Custom Object API Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentId",
+          "label": "Parent ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "referenceCode",
+          "label": "Reference Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiName",
+          "label": "API Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "businessPartnerGroupId",
+          "label": "Business Partner Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workerId",
+          "label": "Worker ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultBusinessPartnerId",
+          "label": "Default Business Partner ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "streetAddress",
+          "label": "Street Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locality",
+          "label": "City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "State/Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postalCode",
+          "label": "Postal Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addressCountry",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addressType",
+          "label": "Address Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "category",
+          "label": "Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pluralLabel",
+          "label": "Plural Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerRole",
+          "label": "Owner Role",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dataType",
+          "label": "Data Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldRequired",
+          "label": "Required",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isUnique",
+          "label": "Unique",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enableHistory",
+          "label": "Enable History",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rqlDefinition",
+          "label": "RQL Definition",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "formulaAttrMetas",
+          "label": "Formula Attr Metas",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldSection",
+          "label": "Section",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "derivedFieldFormula",
+          "label": "Derived Field Formula",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "derivedAggregatedField",
+          "label": "Derived Aggregated Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nameFieldDetails",
+          "label": "Name Field Details",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "displayName",
+          "label": "Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "settingApiName",
+          "label": "Setting API Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "settingDataType",
+          "label": "Setting Data Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretValue",
+          "label": "Secret Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stringValue",
+          "label": "String Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "settingNumberValue",
+          "label": "Number Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "settingBooleanValue",
+          "label": "Boolean Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeObjectIds",
+          "label": "Include Object IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeTotalRows",
+          "label": "Include Total Rows",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "formatDateFields",
+          "label": "Format Date Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "formatCurrencyFields",
+          "label": "Format Currency Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputType",
+          "label": "Output Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "data",
+          "label": "Data",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "records",
+          "label": "Records",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allOrNothing",
+          "label": "All Or Nothing",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expand",
+          "label": "Expand",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

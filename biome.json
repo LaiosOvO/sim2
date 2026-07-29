@@ -29,6 +29,7 @@
       "!**/apps/docs/.source",
       "!**/apps/desktop/release",
       "!**/packages/api-contracts/generated",
+      "!**/packages/tool-catalog/generated",
       "!**/venv",
       "!**/.venv",
       "!**/uploads",

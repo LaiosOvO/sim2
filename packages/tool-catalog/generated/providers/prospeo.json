@@ -1,0 +1,213 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "prospeo",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "prospeo",
+      "legacyIds": [],
+      "provider": "prospeo",
+      "version": "1",
+      "display": {
+        "name": "Prospeo",
+        "description": "Enrich and search B2B contacts and companies",
+        "category": "tools",
+        "icon": "ProspeoIcon",
+        "bgColor": "#FF1A26"
+      },
+      "capabilities": [
+        "prospeo_account_information",
+        "prospeo_enrich_person",
+        "prospeo_enrich_company",
+        "prospeo_bulk_enrich_person",
+        "prospeo_bulk_enrich_company",
+        "prospeo_search_person",
+        "prospeo_search_company",
+        "prospeo_search_suggestions"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "first_name",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_name",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "full_name",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedin_url",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_company_website",
+          "label": "Company Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_company_linkedin_url",
+          "label": "Company LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "person_id",
+          "label": "Person ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_only_verified_email",
+          "label": "Only Verified Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_enrich_mobile",
+          "label": "Enrich Mobile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_only_verified_mobile",
+          "label": "Only Verified Mobile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ec_company_website",
+          "label": "Company Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ec_company_linkedin_url",
+          "label": "Company LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ec_company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_id",
+          "label": "Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bep_data",
+          "label": "Records",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "bep_only_verified_email",
+          "label": "Only Verified Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bep_enrich_mobile",
+          "label": "Enrich Mobile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bep_only_verified_mobile",
+          "label": "Only Verified Mobile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bec_data",
+          "label": "Records",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sp_filters",
+          "label": "Filters",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sp_page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sc_filters",
+          "label": "Filters",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sc_page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "location_search",
+          "label": "Location Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "job_title_search",
+          "label": "Job Title Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

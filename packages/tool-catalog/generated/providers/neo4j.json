@@ -1,0 +1,116 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "neo4j",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "neo4j",
+      "legacyIds": [],
+      "provider": "neo4j",
+      "version": "1",
+      "display": {
+        "name": "Neo4j",
+        "description": "Connect to Neo4j graph database",
+        "category": "tools",
+        "icon": "Neo4jIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "neo4j_query",
+        "neo4j_create",
+        "neo4j_merge",
+        "neo4j_update",
+        "neo4j_delete",
+        "neo4j_execute",
+        "neo4j_introspect"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "database",
+          "label": "Database Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "encryption",
+          "label": "Encryption",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cypherQuery",
+          "label": "Cypher Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "cypherQuery",
+          "label": "Cypher CREATE Statement",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "cypherQuery",
+          "label": "Cypher MERGE Statement",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "cypherQuery",
+          "label": "Cypher UPDATE Statement",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "cypherQuery",
+          "label": "Cypher DELETE Statement",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "cypherQuery",
+          "label": "Cypher Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "parameters",
+          "label": "Parameters",
+          "type": "json",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "instantly",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "instantly",
+      "legacyIds": [],
+      "provider": "instantly",
+      "version": "1",
+      "display": {
+        "name": "Instantly",
+        "description": "Manage Instantly leads, campaigns, emails, and lead lists",
+        "category": "tools",
+        "icon": "InstantlyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "instantly_list_leads",
+        "instantly_get_lead",
+        "instantly_create_lead",
+        "instantly_patch_lead",
+        "instantly_delete_leads",
+        "instantly_update_lead_interest_status",
+        "instantly_list_campaigns",
+        "instantly_create_campaign",
+        "instantly_patch_campaign",
+        "instantly_activate_campaign",
+        "instantly_pause_campaign",
+        "instantly_delete_campaign",
+        "instantly_list_emails",
+        "instantly_reply_to_email",
+        "instantly_list_lead_lists",
+        "instantly_create_lead_list"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "leadId",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadDestination",
+          "label": "Add Lead To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadDestinationId",
+          "label": "Campaign or Lead List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Lead Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyName",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTitle",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "personalization",
+          "label": "Personalization",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customVariables",
+          "label": "Custom Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skipIfInWorkspace",
+          "label": "Skip If In Workspace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skipIfInCampaign",
+          "label": "Skip If In Campaign",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skipIfInList",
+          "label": "Skip If In List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "verifyLeadsForLeadFinder",
+          "label": "Verify Leads For Lead Finder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "verifyLeadsOnImport",
+          "label": "Verify Leads On Import",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadInterestStatus",
+          "label": "Lead Interest Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "potentialLeadValue",
+          "label": "Potential Lead Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignedTo",
+          "label": "Assigned To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "blocklistId",
+          "label": "Blocklist ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadFilter",
+          "label": "Lead Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignId",
+          "label": "Campaign ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listId",
+          "label": "Lead List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadIds",
+          "label": "Lead IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludedLeadIds",
+          "label": "Excluded Lead IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contacts",
+          "label": "Contacts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inCampaign",
+          "label": "In Campaign",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inList",
+          "label": "In List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationUserIds",
+          "label": "Organization User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "smartViewId",
+          "label": "Smart View ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "websiteVisitor",
+          "label": "Website Visitor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "distinctContacts",
+          "label": "Distinct Contacts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enrichmentStatus",
+          "label": "Enrichment Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "esgCode",
+          "label": "ESG Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteSource",
+          "label": "Delete From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteSourceId",
+          "label": "Campaign or Lead List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteStatus",
+          "label": "Delete Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteLeadIds",
+          "label": "Delete Lead IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteLimit",
+          "label": "Delete Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadEmail",
+          "label": "Lead Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interestValue",
+          "label": "Interest Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disableAutoInterest",
+          "label": "Disable Auto Interest",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aiInterestValue",
+          "label": "AI Interest Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignName",
+          "label": "Campaign Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignSchedule",
+          "label": "Campaign Schedule",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sequences",
+          "label": "Sequences",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailList",
+          "label": "Sending Accounts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dailyLimit",
+          "label": "Daily Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dailyMaxLeads",
+          "label": "Daily Max Leads",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "openTracking",
+          "label": "Open Tracking",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stopOnReply",
+          "label": "Stop On Reply",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positiveLeadValue",
+          "label": "Positive Lead Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailGap",
+          "label": "Email Gap",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkTracking",
+          "label": "Link Tracking",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textOnly",
+          "label": "Text Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagIds",
+          "label": "Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aiSalesAgentId",
+          "label": "AI Sales Agent ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignStatus",
+          "label": "Campaign Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAccount",
+          "label": "Email Account",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailSearch",
+          "label": "Email Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailStatus",
+          "label": "Email Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailLead",
+          "label": "Lead Email Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailIsUnread",
+          "label": "Unread",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToUuid",
+          "label": "Reply To Email ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bodyText",
+          "label": "Body Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bodyHtml",
+          "label": "Body HTML",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ccRecipients",
+          "label": "CC Recipients",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bccRecipients",
+          "label": "BCC Recipients",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadListName",
+          "label": "Lead List Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hasEnrichmentTask",
+          "label": "Has Enrichment Task",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownedBy",
+          "label": "Owned By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startingAfter",
+          "label": "Starting After",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "langsmith",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "langsmith",
+      "legacyIds": [],
+      "provider": "langsmith",
+      "version": "1",
+      "display": {
+        "name": "LangSmith",
+        "description": "Forward workflow runs to LangSmith for observability",
+        "category": "tools",
+        "icon": "LangsmithIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "langsmith_create_run",
+        "langsmith_create_runs_batch",
+        "langsmith_update_run",
+        "langsmith_get_run",
+        "langsmith_create_feedback"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "id",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "run_type",
+          "label": "Run Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start_time",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "end_time",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputs",
+          "label": "Inputs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "outputs",
+          "label": "Outputs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "extra",
+          "label": "Metadata",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "parent_run_id",
+          "label": "Parent Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trace_id",
+          "label": "Trace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "session_id",
+          "label": "Session ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "session_name",
+          "label": "Session Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "error",
+          "label": "Error",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dotted_order",
+          "label": "Dotted Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "events",
+          "label": "Events",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "post",
+          "label": "Post Runs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "patch",
+          "label": "Patch Runs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "key",
+          "label": "Feedback Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "score",
+          "label": "Score",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "correction",
+          "label": "Correction",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "feedbackSourceType",
+          "label": "Feedback Source",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

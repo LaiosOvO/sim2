@@ -1,0 +1,677 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sap_concur",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sap_concur",
+      "legacyIds": ["sap-concur"],
+      "provider": "sap_concur",
+      "version": "1",
+      "display": {
+        "name": "SAP Concur",
+        "description": "Manage expense reports, travel requests, cash advances, and more in SAP Concur",
+        "category": "tools",
+        "icon": "SapConcurIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "sap_concur_approve_expense_report",
+        "sap_concur_associate_attendees",
+        "sap_concur_create_cash_advance",
+        "sap_concur_create_expected_expense",
+        "sap_concur_create_expense_report",
+        "sap_concur_create_list_item",
+        "sap_concur_create_purchase_request",
+        "sap_concur_create_quick_expense",
+        "sap_concur_create_quick_expense_with_image",
+        "sap_concur_create_report_comment",
+        "sap_concur_create_travel_request",
+        "sap_concur_create_user",
+        "sap_concur_delete_expected_expense",
+        "sap_concur_delete_expense",
+        "sap_concur_delete_expense_report",
+        "sap_concur_delete_list_item",
+        "sap_concur_delete_travel_request",
+        "sap_concur_delete_user",
+        "sap_concur_get_allocation",
+        "sap_concur_get_budget",
+        "sap_concur_get_cash_advance",
+        "sap_concur_upload_exchange_rates",
+        "sap_concur_get_expected_expense",
+        "sap_concur_get_expense",
+        "sap_concur_get_expense_report",
+        "sap_concur_get_itemizations",
+        "sap_concur_get_itinerary",
+        "sap_concur_get_list",
+        "sap_concur_get_list_item",
+        "sap_concur_get_purchase_request",
+        "sap_concur_get_receipt",
+        "sap_concur_get_receipt_status",
+        "sap_concur_get_travel_profile",
+        "sap_concur_get_travel_request",
+        "sap_concur_get_user",
+        "sap_concur_issue_cash_advance",
+        "sap_concur_list_allocations",
+        "sap_concur_list_attendee_associations",
+        "sap_concur_list_budget_categories",
+        "sap_concur_list_budgets",
+        "sap_concur_list_exceptions",
+        "sap_concur_list_expected_expenses",
+        "sap_concur_list_expenses",
+        "sap_concur_list_expense_reports",
+        "sap_concur_list_itineraries",
+        "sap_concur_list_lists",
+        "sap_concur_list_list_items",
+        "sap_concur_list_receipts",
+        "sap_concur_list_report_comments",
+        "sap_concur_list_reports_to_approve",
+        "sap_concur_get_request_cash_advance",
+        "sap_concur_list_travel_profiles_summary",
+        "sap_concur_list_travel_request_comments",
+        "sap_concur_list_travel_requests",
+        "sap_concur_list_users",
+        "sap_concur_move_travel_request",
+        "sap_concur_recall_expense_report",
+        "sap_concur_remove_all_attendees",
+        "sap_concur_search_locations",
+        "sap_concur_search_users",
+        "sap_concur_send_back_expense_report",
+        "sap_concur_submit_expense_report",
+        "sap_concur_update_allocation",
+        "sap_concur_update_expected_expense",
+        "sap_concur_update_expense",
+        "sap_concur_update_expense_report",
+        "sap_concur_update_list_item",
+        "sap_concur_update_travel_request",
+        "sap_concur_update_user",
+        "sap_concur_upload_receipt_image"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "datacenter",
+          "label": "Datacenter",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "grantType",
+          "label": "OAuth Grant Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientId",
+          "label": "OAuth Client ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "clientSecret",
+          "label": "OAuth Client Secret",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyUuid",
+          "label": "Company UUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextType",
+          "label": "Context Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextType",
+          "label": "Context Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextType",
+          "label": "Context Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextType",
+          "label": "Context Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextType",
+          "label": "Context Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextType",
+          "label": "Context Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportId",
+          "label": "Report ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expenseId",
+          "label": "Expense ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allocationId",
+          "label": "Allocation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expenseReportUser",
+          "label": "User",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalStatusCode",
+          "label": "Approval Status Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paymentStatusCode",
+          "label": "Payment Status Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currencyCode",
+          "label": "Currency Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approverLoginID",
+          "label": "Approver Login ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "submitDateAfter",
+          "label": "Submit Date After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "submitDateBefore",
+          "label": "Submit Date Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paidDateAfter",
+          "label": "Paid Date After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paidDateBefore",
+          "label": "Paid Date Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "modifiedDateAfter",
+          "label": "Modified Date After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "modifiedDateBefore",
+          "label": "Modified Date Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createDateAfter",
+          "label": "Create Date After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createDateBefore",
+          "label": "Create Date Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeAllComments",
+          "label": "Include All Comments",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "receiptId",
+          "label": "Receipt ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestUuid",
+          "label": "Travel Request UUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "view",
+          "label": "View",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestApprovedBefore",
+          "label": "Approved Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestApprovedAfter",
+          "label": "Approved After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestModifiedBefore",
+          "label": "Modified Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestModifiedAfter",
+          "label": "Modified After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestSortField",
+          "label": "Sort Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestSortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelRequestUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "action",
+          "label": "Workflow Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expectedExpenseUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expenseUuid",
+          "label": "Expected Expense UUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cashAdvanceUuid",
+          "label": "Cash Advance UUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cashAdvanceId",
+          "label": "Cash Advance ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tripId",
+          "label": "Trip ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "useridType",
+          "label": "User ID Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "useridValue",
+          "label": "User ID Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "systemFormat",
+          "label": "System Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bookingType",
+          "label": "Booking Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itineraryItemsPerPage",
+          "label": "Items Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itineraryPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeMetadata",
+          "label": "Include Metadata",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeCanceledTrips",
+          "label": "Include Canceled Trips",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "createdAfterDate",
+          "label": "Created After Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdBeforeDate",
+          "label": "Created Before Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itineraryLastModifiedDate",
+          "label": "Last Modified Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userUuid",
+          "label": "User UUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "count",
+          "label": "Count",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributes",
+          "label": "Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludedAttributes",
+          "label": "Excluded Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listId",
+          "label": "List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "budgetId",
+          "label": "Budget Item Header ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "adminView",
+          "label": "Admin View",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "responseSchema",
+          "label": "Response Schema",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "purchaseRequestId",
+          "label": "Purchase Request ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortDirection",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportsToApproveSort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportsToApproveOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDelegateApprovals",
+          "label": "Include Delegate Approvals",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemId",
+          "label": "List Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastModifiedDate",
+          "label": "Last Modified Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelProfilePage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemsPerPage",
+          "label": "Items Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "travelConfigs",
+          "label": "Travel Config IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchText",
+          "label": "Search Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locCode",
+          "label": "Location Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationNameId",
+          "label": "Location Name ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationNameKey",
+          "label": "Location Name Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countryCode",
+          "label": "Country Code (ISO 3166-1)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subdivisionCode",
+          "label": "Subdivision Code (ISO 3166-2)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "adminRegionId",
+          "label": "Administrative Region ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "receiptFile",
+          "label": "Receipt Image",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "receiptFileRef",
+          "label": "Receipt Image",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "forwardId",
+          "label": "Forward ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "Request Body (JSON)",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

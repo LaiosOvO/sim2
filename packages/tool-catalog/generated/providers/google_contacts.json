@@ -1,0 +1,139 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_contacts",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_contacts",
+      "legacyIds": ["google-contacts"],
+      "provider": "google_contacts",
+      "version": "1",
+      "display": {
+        "name": "Google Contacts",
+        "description": "Manage Google Contacts",
+        "category": "tools",
+        "icon": "GoogleContactsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_contacts_create",
+        "google_contacts_get",
+        "google_contacts_list",
+        "google_contacts_search",
+        "google_contacts_update",
+        "google_contacts_delete"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Contacts Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Contacts Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "givenName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "familyName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailType",
+          "label": "Email Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneType",
+          "label": "Phone Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organization",
+          "label": "Organization",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTitle",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resourceName",
+          "label": "Resource Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "etag",
+          "label": "ETag",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

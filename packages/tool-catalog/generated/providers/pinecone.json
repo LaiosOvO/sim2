@@ -1,0 +1,282 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "pinecone",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "pinecone",
+      "legacyIds": [],
+      "provider": "pinecone",
+      "version": "1",
+      "display": {
+        "name": "Pinecone",
+        "description": "Use Pinecone vector database",
+        "category": "tools",
+        "icon": "PineconeIcon",
+        "bgColor": "#0D1117"
+      },
+      "capabilities": [
+        "pinecone_generate_embeddings",
+        "pinecone_upsert_text",
+        "pinecone_update_vector",
+        "pinecone_delete_vectors",
+        "pinecone_search_text",
+        "pinecone_search_vector",
+        "pinecone_fetch",
+        "pinecone_list_vector_ids",
+        "pinecone_describe_index_stats",
+        "pinecone_list_indexes",
+        "pinecone_describe_index"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputs",
+          "label": "Text Inputs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "records",
+          "label": "Records",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "topK",
+          "label": "Top K Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Fields to Return",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rerank",
+          "label": "Rerank Options",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ids",
+          "label": "Vector IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "vector",
+          "label": "Query Vector",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "topK",
+          "label": "Top K Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "options",
+          "label": "Options",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "id",
+          "label": "Vector ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "values",
+          "label": "Vector Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "setMetadata",
+          "label": "Set Metadata",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sparseValues",
+          "label": "Sparse Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ids",
+          "label": "Vector IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteAll",
+          "label": "Delete All In Namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "prefix",
+          "label": "ID Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paginationToken",
+          "label": "Pagination Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "indexHost",
+          "label": "Index Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "indexName",
+          "label": "Index Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

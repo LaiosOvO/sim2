@@ -1,0 +1,30 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "thinking",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "thinking",
+      "legacyIds": [],
+      "provider": "thinking",
+      "version": "1",
+      "display": {
+        "name": "Thinking",
+        "description": "Forces model to outline its thought process.",
+        "category": "blocks",
+        "icon": "BrainIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": ["thinking_tool"],
+      "inputs": [
+        {
+          "key": "thought",
+          "label": "Thought Process / Instruction",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

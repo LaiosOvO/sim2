@@ -1,0 +1,100 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "zep",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "zep",
+      "legacyIds": [],
+      "provider": "zep",
+      "version": "1",
+      "display": {
+        "name": "Zep",
+        "description": "Long-term memory for AI agents",
+        "category": "tools",
+        "icon": "ZepIcon",
+        "bgColor": "#E8E8E8"
+      },
+      "capabilities": [
+        "zep_create_thread",
+        "zep_get_threads",
+        "zep_delete_thread",
+        "zep_get_context",
+        "zep_get_messages",
+        "zep_add_messages",
+        "zep_add_user",
+        "zep_get_user",
+        "zep_get_user_threads"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadId",
+          "label": "Thread ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metadata",
+          "label": "Metadata",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "messages",
+          "label": "Messages",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Context Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Result Limit",
+          "type": "number",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

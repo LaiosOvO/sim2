@@ -1,0 +1,48 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "brandfetch",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "brandfetch",
+      "legacyIds": [],
+      "provider": "brandfetch",
+      "version": "1",
+      "display": {
+        "name": "Brandfetch",
+        "description": "Look up brand assets, logos, colors, and company info",
+        "category": "tools",
+        "icon": "BrandfetchIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": ["brandfetch_get_brand", "brandfetch_search"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identifier",
+          "label": "Identifier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Brand Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

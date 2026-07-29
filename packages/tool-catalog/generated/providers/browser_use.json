@@ -1,0 +1,114 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "browser_use",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "browser_use",
+      "legacyIds": ["browser-use"],
+      "provider": "browser_use",
+      "version": "1",
+      "display": {
+        "name": "Browser Use",
+        "description": "Run browser automation tasks",
+        "category": "tools",
+        "icon": "BrowserUseIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": ["browser_use_run_task"],
+      "inputs": [
+        {
+          "key": "task",
+          "label": "Task",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "startUrl",
+          "label": "Start URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variables",
+          "label": "Variables (Secrets)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "profile_id",
+          "label": "Profile ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxSteps",
+          "label": "Max Steps",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allowedDomains",
+          "label": "Allowed Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vision",
+          "label": "Vision",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flashMode",
+          "label": "Flash Mode",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "thinking",
+          "label": "Thinking",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "highlightElements",
+          "label": "Highlight Elements",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "systemPromptExtension",
+          "label": "System Prompt Extension",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "structuredOutput",
+          "label": "Structured Output Schema",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "metadata",
+          "label": "Metadata",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

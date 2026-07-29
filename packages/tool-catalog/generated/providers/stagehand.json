@@ -1,0 +1,96 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "stagehand",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "stagehand",
+      "legacyIds": [],
+      "provider": "stagehand",
+      "version": "1",
+      "display": {
+        "name": "Stagehand",
+        "description": "Web automation and data extraction",
+        "category": "tools",
+        "icon": "StagehandIcon",
+        "bgColor": "#FFC83C"
+      },
+      "capabilities": ["stagehand_extract", "stagehand_agent"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "provider",
+          "label": "AI Provider",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "instruction",
+          "label": "Instructions",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "schema",
+          "label": "Schema",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "startUrl",
+          "label": "Starting URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "task",
+          "label": "Task",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "variables",
+          "label": "Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputSchema",
+          "label": "Output Schema",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Agent Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxSteps",
+          "label": "Max Steps",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

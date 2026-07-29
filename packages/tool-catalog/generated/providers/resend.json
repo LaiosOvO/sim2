@@ -1,0 +1,221 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "resend",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "resend",
+      "legacyIds": [],
+      "provider": "resend",
+      "version": "1",
+      "display": {
+        "name": "Resend",
+        "description": "Send emails and manage contacts with Resend.",
+        "category": "tools",
+        "icon": "ResendIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "resend_send",
+        "resend_get_email",
+        "resend_cancel_email",
+        "resend_create_contact",
+        "resend_list_contacts",
+        "resend_get_contact",
+        "resend_update_contact",
+        "resend_delete_contact",
+        "resend_create_audience",
+        "resend_get_audience",
+        "resend_list_audiences",
+        "resend_delete_audience",
+        "resend_create_broadcast",
+        "resend_send_broadcast",
+        "resend_get_broadcast",
+        "resend_list_domains"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resendApiKey",
+          "label": "Resend API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromAddress",
+          "label": "From Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyTo",
+          "label": "Reply To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduledAt",
+          "label": "Schedule At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailId",
+          "label": "Email ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unsubscribed",
+          "label": "Unsubscribed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID or Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cancelEmailId",
+          "label": "Email ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audienceName",
+          "label": "Audience Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audienceId",
+          "label": "Audience ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastFrom",
+          "label": "From Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "broadcastSubject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "broadcastHtml",
+          "label": "HTML Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastText",
+          "label": "Text Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastReplyTo",
+          "label": "Reply To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastName",
+          "label": "Broadcast Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastPreviewText",
+          "label": "Preview Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastId",
+          "label": "Broadcast ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "broadcastScheduledAt",
+          "label": "Schedule At",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

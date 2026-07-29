@@ -1,0 +1,277 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "instagram",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "instagram",
+      "legacyIds": [],
+      "provider": "instagram",
+      "version": "1",
+      "display": {
+        "name": "Instagram",
+        "description": "Publish and download content, moderate comments, and manage Instagram DMs",
+        "category": "tools",
+        "icon": "InstagramIcon",
+        "bgColor": "radial-gradient(circle at 28% 96%, #fa8f21 9%, #d82d7e 55%, #8c3aaa 100%)"
+      },
+      "capabilities": [
+        "instagram_get_profile",
+        "instagram_list_media",
+        "instagram_get_media",
+        "instagram_download_media",
+        "instagram_list_stories",
+        "instagram_publish_image",
+        "instagram_publish_video",
+        "instagram_publish_reel",
+        "instagram_publish_story",
+        "instagram_publish_carousel",
+        "instagram_get_container_status",
+        "instagram_get_publishing_limit",
+        "instagram_list_comments",
+        "instagram_reply_to_comment",
+        "instagram_hide_comment",
+        "instagram_delete_comment",
+        "instagram_set_comments_enabled",
+        "instagram_private_reply",
+        "instagram_list_conversations",
+        "instagram_get_conversation_messages",
+        "instagram_get_message",
+        "instagram_send_text_message",
+        "instagram_get_account_insights",
+        "instagram_get_media_insights"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Instagram Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Instagram Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "imageUpload",
+          "label": "Image",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "imageRef",
+          "label": "Image",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoUpload",
+          "label": "Video",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "videoRef",
+          "label": "Video",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "coverUpload",
+          "label": "Cover Image",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "coverRef",
+          "label": "Cover Image",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "storyMediaUpload",
+          "label": "Media",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "storyMediaRef",
+          "label": "Media",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "carouselMediaUpload",
+          "label": "Media",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "carouselMediaRef",
+          "label": "Media",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "caption",
+          "label": "Caption",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "altText",
+          "label": "Alt Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isAiGenerated",
+          "label": "AI Generated",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shareToFeed",
+          "label": "Share to Feed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "thumbOffset",
+          "label": "Thumbnail Offset (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaId",
+          "label": "Media ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filename",
+          "label": "Filename",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "containerId",
+          "label": "Container ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hide",
+          "label": "Hide Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentEnabled",
+          "label": "Comments Enabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conversationId",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recipientId",
+          "label": "Recipient ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "period",
+          "label": "Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "since",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "until",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricType",
+          "label": "Metric Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "breakdown",
+          "label": "Breakdown",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeframe",
+          "label": "Demographic Timeframe",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "igUserId",
+          "label": "Instagram User ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

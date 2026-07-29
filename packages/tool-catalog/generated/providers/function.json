@@ -1,0 +1,36 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "function",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "function",
+      "legacyIds": [],
+      "provider": "function",
+      "version": "1",
+      "display": {
+        "name": "Function",
+        "description": "Run custom logic",
+        "category": "blocks",
+        "icon": "CodeIcon",
+        "bgColor": "#FF402F"
+      },
+      "capabilities": ["function_execute"],
+      "inputs": [
+        {
+          "key": "language",
+          "label": "language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "code",
+          "label": "Code",
+          "type": "json",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "greenhouse",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "greenhouse",
+      "legacyIds": [],
+      "provider": "greenhouse",
+      "version": "1",
+      "display": {
+        "name": "Greenhouse",
+        "description": "Manage candidates, jobs, and applications in Greenhouse",
+        "category": "tools",
+        "icon": "GreenhouseIcon",
+        "bgColor": "#469776"
+      },
+      "capabilities": [
+        "greenhouse_list_candidates",
+        "greenhouse_get_candidate",
+        "greenhouse_list_jobs",
+        "greenhouse_get_job",
+        "greenhouse_list_applications",
+        "greenhouse_get_application",
+        "greenhouse_list_users",
+        "greenhouse_get_user",
+        "greenhouse_list_departments",
+        "greenhouse_list_offices",
+        "greenhouse_list_job_stages"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "candidateId",
+          "label": "Candidate ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobId",
+          "label": "Job ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "applicationId",
+          "label": "Application ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "job_id",
+          "label": "Job ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "candidate_ids",
+          "label": "Candidate IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "department_id",
+          "label": "Department ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "office_id",
+          "label": "Office ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "applicationStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_activity_after",
+          "label": "Activity After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "created_after",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updated_after",
+          "label": "Updated After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

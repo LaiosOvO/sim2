@@ -1,0 +1,212 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "microsoft_ad",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "microsoft_ad",
+      "legacyIds": ["azure-ad", "microsoft-ad"],
+      "provider": "microsoft_ad",
+      "version": "1",
+      "display": {
+        "name": "Azure AD",
+        "description": "Manage users and groups in Azure AD (Microsoft Entra ID)",
+        "category": "tools",
+        "icon": "AzureIcon",
+        "bgColor": "#0078D4"
+      },
+      "capabilities": [
+        "microsoft_ad_list_users",
+        "microsoft_ad_get_user",
+        "microsoft_ad_create_user",
+        "microsoft_ad_update_user",
+        "microsoft_ad_delete_user",
+        "microsoft_ad_list_groups",
+        "microsoft_ad_get_group",
+        "microsoft_ad_create_group",
+        "microsoft_ad_update_group",
+        "microsoft_ad_delete_group",
+        "microsoft_ad_list_group_members",
+        "microsoft_ad_add_group_member",
+        "microsoft_ad_remove_group_member"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "displayName",
+          "label": "Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailNickname",
+          "label": "Mail Nickname",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userPrincipalName",
+          "label": "User Principal Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountEnabled",
+          "label": "Account Enabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountEnabledCreate",
+          "label": "Account Enabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "givenName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "surname",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTitle",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "department",
+          "label": "Department",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "officeLocation",
+          "label": "Office Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mobilePhone",
+          "label": "Mobile Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "top",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextLink",
+          "label": "Next Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupDisplayName",
+          "label": "Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupMailNickname",
+          "label": "Mail Nickname",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mailEnabled",
+          "label": "Mail Enabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "securityEnabled",
+          "label": "Security Enabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupTypes",
+          "label": "Group Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visibilityCreate",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberId",
+          "label": "Member ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

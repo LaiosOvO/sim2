@@ -1,0 +1,114 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "ketch",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "ketch",
+      "legacyIds": [],
+      "provider": "ketch",
+      "version": "1",
+      "display": {
+        "name": "Ketch",
+        "description": "Manage privacy consent, subscriptions, and data subject rights",
+        "category": "tools",
+        "icon": "KetchIcon",
+        "bgColor": "#9B5CFF"
+      },
+      "capabilities": [
+        "ketch_get_consent",
+        "ketch_set_consent",
+        "ketch_get_subscriptions",
+        "ketch_set_subscriptions",
+        "ketch_invoke_right"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationCode",
+          "label": "Organization Code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "propertyCode",
+          "label": "Property Code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "environmentCode",
+          "label": "Environment Code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "jurisdictionCode",
+          "label": "Jurisdiction Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jurisdictionCodeOptional",
+          "label": "Jurisdiction Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identities",
+          "label": "Identities",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "purposesFilter",
+          "label": "Purposes Filter",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "purposes",
+          "label": "Purposes",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "topics",
+          "label": "Subscription Topics",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "controls",
+          "label": "Subscription Controls",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "rightCode",
+          "label": "Right Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userData",
+          "label": "User Data",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "collectedAt",
+          "label": "Collected At (UNIX timestamp)",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

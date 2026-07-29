@@ -1,0 +1,280 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "hex",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "hex",
+      "legacyIds": [],
+      "provider": "hex",
+      "version": "1",
+      "display": {
+        "name": "Hex",
+        "description": "Run and manage Hex projects",
+        "category": "tools",
+        "icon": "HexIcon",
+        "bgColor": "#14151A"
+      },
+      "capabilities": [
+        "hex_cancel_run",
+        "hex_create_collection",
+        "hex_create_group",
+        "hex_deactivate_user",
+        "hex_delete_group",
+        "hex_get_collection",
+        "hex_get_data_connection",
+        "hex_get_group",
+        "hex_get_project",
+        "hex_get_project_runs",
+        "hex_get_queried_tables",
+        "hex_get_run_status",
+        "hex_list_collections",
+        "hex_list_data_connections",
+        "hex_list_groups",
+        "hex_list_projects",
+        "hex_list_users",
+        "hex_run_project",
+        "hex_update_collection",
+        "hex_update_group",
+        "hex_update_project"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputParams",
+          "label": "Input Parameters",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "viewId",
+          "label": "Saved View ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notifications",
+          "label": "Notifications",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "projectStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runStatusFilter",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runTriggerFilter",
+          "label": "Trigger Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupIdInput",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupName",
+          "label": "Group Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupMemberUserIds",
+          "label": "Initial Member User IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "groupAddUserIds",
+          "label": "Add Member User IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "groupRemoveUserIds",
+          "label": "Remove Member User IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "collectionId",
+          "label": "Collection ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "collectionName",
+          "label": "Collection Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "collectionDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dataConnectionId",
+          "label": "Data Connection ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dryRun",
+          "label": "Dry Run",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "updateCache",
+          "label": "Update Cache",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "updatePublishedResults",
+          "label": "Update Published Results",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "useCachedSqlResults",
+          "label": "Use Cached SQL Results",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeArchived",
+          "label": "Include Archived",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeComponents",
+          "label": "Include Components",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeTrashed",
+          "label": "Include Trashed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "statusFilter",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "creatorEmail",
+          "label": "Creator Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerEmail",
+          "label": "Owner Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categories",
+          "label": "Categories",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortDirection",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Filter by Group",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userIds",
+          "label": "Filter by User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

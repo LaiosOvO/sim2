@@ -1,0 +1,369 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "enrich",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "enrich",
+      "legacyIds": [],
+      "provider": "enrich",
+      "version": "1",
+      "display": {
+        "name": "Enrich",
+        "description": "B2B data enrichment and LinkedIn intelligence with Enrich.so",
+        "category": "tools",
+        "icon": "EnrichSoIcon",
+        "bgColor": "#E5E5E6"
+      },
+      "capabilities": [
+        "enrich_check_credits",
+        "enrich_email_to_profile",
+        "enrich_email_to_person_lite",
+        "enrich_linkedin_profile",
+        "enrich_find_email",
+        "enrich_linkedin_to_work_email",
+        "enrich_linkedin_to_personal_email",
+        "enrich_phone_finder",
+        "enrich_email_to_phone",
+        "enrich_verify_email",
+        "enrich_disposable_email_check",
+        "enrich_email_to_ip",
+        "enrich_ip_to_company",
+        "enrich_company_lookup",
+        "enrich_company_funding",
+        "enrich_company_revenue",
+        "enrich_search_people",
+        "enrich_search_company",
+        "enrich_search_company_employees",
+        "enrich_search_similar_companies",
+        "enrich_sales_pointer_people",
+        "enrich_search_jobs",
+        "enrich_search_posts",
+        "enrich_get_post_details",
+        "enrich_search_post_reactions",
+        "enrich_search_post_reactions_by_url",
+        "enrich_search_post_comments",
+        "enrich_search_post_comments_by_url",
+        "enrich_search_people_activities",
+        "enrich_search_company_activities",
+        "enrich_reverse_hash_lookup",
+        "enrich_search_logo"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Enrich API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inRealtime",
+          "label": "Fetch Fresh Data",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "linkedinUrl",
+          "label": "LinkedIn Profile URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fullName",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyDomain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ip",
+          "label": "IP Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyName",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subTitle",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationCountry",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationCity",
+          "label": "City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "industry",
+          "label": "Industry",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currentJobTitles",
+          "label": "Current Job Titles (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "skills",
+          "label": "Skills (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "searchCompanyName",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "industries",
+          "label": "Industries (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "staffCountMin",
+          "label": "Min Employees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "staffCountMax",
+          "label": "Max Employees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyIds",
+          "label": "Company IDs (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "city",
+          "label": "City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTitles",
+          "label": "Job Titles (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "linkedinCompanyUrl",
+          "label": "LinkedIn Company URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountLocation",
+          "label": "Locations (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "employeeSizeType",
+          "label": "Employee Size Filter Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "employeeSizeRange",
+          "label": "Employee Size Range (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "num",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Filters (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "keywords",
+          "label": "Keywords",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "datePosted",
+          "label": "Date Posted",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobLocation",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timePosted",
+          "label": "Time Posted",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTypes",
+          "label": "Job Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workplaceTypes",
+          "label": "Workplace Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "experienceLevels",
+          "label": "Experience Levels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobCompanyIds",
+          "label": "Company IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postUrl",
+          "label": "LinkedIn Post URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postUrn",
+          "label": "Post URN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reactionType",
+          "label": "Reaction Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "profileId",
+          "label": "Profile ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityType",
+          "label": "Activity Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hash",
+          "label": "MD5 Hash",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paginationToken",
+          "label": "Pagination Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

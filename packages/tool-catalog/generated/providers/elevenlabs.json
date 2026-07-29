@@ -1,0 +1,185 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "elevenlabs",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "elevenlabs",
+      "legacyIds": [],
+      "provider": "elevenlabs",
+      "version": "1",
+      "display": {
+        "name": "ElevenLabs",
+        "description": "Generate and transform audio with ElevenLabs",
+        "category": "tools",
+        "icon": "ElevenLabsIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "elevenlabs_tts",
+        "elevenlabs_sound_effects",
+        "elevenlabs_speech_to_speech",
+        "elevenlabs_audio_isolation",
+        "elevenlabs_list_voices",
+        "elevenlabs_get_voice",
+        "elevenlabs_get_voice_settings",
+        "elevenlabs_edit_voice_settings",
+        "elevenlabs_list_models",
+        "elevenlabs_get_user"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Sound Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voiceId",
+          "label": "Voice ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audioFile",
+          "label": "Audio File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "audioFileRef",
+          "label": "Audio File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "modelId",
+          "label": "Model ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "modelId",
+          "label": "Model ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "modelId",
+          "label": "Model ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stability",
+          "label": "Stability",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "similarityBoost",
+          "label": "Similarity Boost",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "promptInfluence",
+          "label": "Prompt Influence",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "loop",
+          "label": "Loop",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "removeBackgroundNoise",
+          "label": "Remove Background Noise",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "editStability",
+          "label": "Stability",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "editSimilarityBoost",
+          "label": "Similarity Boost",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "editStyle",
+          "label": "Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "editSpeed",
+          "label": "Speed",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "editUseSpeakerBoost",
+          "label": "Use Speaker Boost",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "category",
+          "label": "Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextPageToken",
+          "label": "Next Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

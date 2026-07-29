@@ -1,0 +1,316 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "shopify",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "shopify",
+      "legacyIds": [],
+      "provider": "shopify",
+      "version": "1",
+      "display": {
+        "name": "Shopify",
+        "description": "Manage products, orders, customers, and inventory in your Shopify store",
+        "category": "tools",
+        "icon": "ShopifyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "shopify_create_product",
+        "shopify_get_product",
+        "shopify_list_products",
+        "shopify_update_product",
+        "shopify_delete_product",
+        "shopify_get_order",
+        "shopify_list_orders",
+        "shopify_update_order",
+        "shopify_cancel_order",
+        "shopify_create_customer",
+        "shopify_get_customer",
+        "shopify_list_customers",
+        "shopify_update_customer",
+        "shopify_delete_customer",
+        "shopify_list_inventory_items",
+        "shopify_get_inventory_level",
+        "shopify_adjust_inventory",
+        "shopify_list_locations",
+        "shopify_create_fulfillment",
+        "shopify_list_collections",
+        "shopify_get_collection"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Shopify Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Shopify Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shopDomain",
+          "label": "Shop Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "productId",
+          "label": "Product ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Product Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "descriptionHtml",
+          "label": "Description (HTML)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "productType",
+          "label": "Product Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendor",
+          "label": "Vendor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "productQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inventoryQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "first",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderId",
+          "label": "Order ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "orderStatus",
+          "label": "Order Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderNote",
+          "label": "Order Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderEmail",
+          "label": "Customer Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderTags",
+          "label": "Order Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancelReason",
+          "label": "Cancel Reason",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "staffNote",
+          "label": "Staff Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "restock",
+          "label": "Restock Inventory",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cancelNotifyCustomer",
+          "label": "Notify Customer",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "refundOriginalPayment",
+          "label": "Refund to Original Payment Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerId",
+          "label": "Customer ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "customerEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerNote",
+          "label": "Customer Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerTags",
+          "label": "Customer Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inventoryItemId",
+          "label": "Inventory Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "locationId",
+          "label": "Location ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "delta",
+          "label": "Quantity Change",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fulfillmentOrderId",
+          "label": "Fulfillment Order ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "trackingNumber",
+          "label": "Tracking Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trackingCompany",
+          "label": "Shipping Carrier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trackingUrl",
+          "label": "Tracking URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notifyCustomer",
+          "label": "Notify Customer",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeInactive",
+          "label": "Include Inactive Locations",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "collectionId",
+          "label": "Collection ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "collectionQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "productsFirst",
+          "label": "Max Products In Collection",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "grain",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "grain",
+      "legacyIds": [],
+      "provider": "grain",
+      "version": "1",
+      "display": {
+        "name": "Grain",
+        "description": "Access meeting recordings, transcripts, and AI summaries",
+        "category": "tools",
+        "icon": "GrainIcon",
+        "bgColor": "#F6FAF9"
+      },
+      "capabilities": [
+        "grain_list_recordings",
+        "grain_get_recording",
+        "grain_get_transcript",
+        "grain_list_views",
+        "grain_list_teams",
+        "grain_list_meeting_types",
+        "grain_create_hook",
+        "grain_list_hooks",
+        "grain_delete_hook"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recordingId",
+          "label": "Recording ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "beforeDatetime",
+          "label": "Before Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "afterDatetime",
+          "label": "After Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "participantScope",
+          "label": "Participant Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "titleSearch",
+          "label": "Title Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamId",
+          "label": "Team ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "meetingTypeId",
+          "label": "Meeting Type ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeHighlights",
+          "label": "Include Highlights",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeParticipants",
+          "label": "Include Participants",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeAiSummary",
+          "label": "Include AI Summary",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeAiActionItems",
+          "label": "Include AI Action Items",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "viewId",
+          "label": "View ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "includeCalendarEvent",
+          "label": "Include Calendar Event",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeHubspot",
+          "label": "Include HubSpot Data",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "hookUrl",
+          "label": "Webhook URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "hookId",
+          "label": "Webhook ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "selectedTriggerId",
+          "label": "Trigger Type",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "grain_v2",
+      "legacyIds": ["grain", "grain-v2"],
+      "provider": "grain",
+      "version": "2",
+      "display": {
+        "name": "Grain",
+        "description": "Access meeting recordings, transcripts, and AI summaries",
+        "category": "tools",
+        "icon": "GrainIcon",
+        "bgColor": "#F6FAF9"
+      },
+      "capabilities": [
+        "grain_list_recordings",
+        "grain_get_recording",
+        "grain_get_transcript",
+        "grain_list_teams",
+        "grain_list_meeting_types",
+        "grain_create_hook_v2",
+        "grain_list_hooks_v2",
+        "grain_delete_hook_v2"
+      ],
+      "inputs": [
+        {
+          "key": "hookUrl",
+          "label": "Webhook URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "hookType",
+          "label": "Event Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "hookInclude",
+          "label": "Include Options",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "hookTypeFilter",
+          "label": "Event Type Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hookState",
+          "label": "State Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hookId",
+          "label": "Webhook ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

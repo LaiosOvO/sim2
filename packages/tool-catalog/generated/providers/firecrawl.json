@@ -1,0 +1,218 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "firecrawl",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "firecrawl",
+      "legacyIds": [],
+      "provider": "firecrawl",
+      "version": "1",
+      "display": {
+        "name": "Firecrawl",
+        "description": "Scrape, search, crawl, map, and extract web data",
+        "category": "tools",
+        "icon": "FirecrawlIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "firecrawl_scrape",
+        "firecrawl_batch_scrape",
+        "firecrawl_batch_scrape_status",
+        "firecrawl_search",
+        "firecrawl_crawl",
+        "firecrawl_crawl_status",
+        "firecrawl_cancel_crawl",
+        "firecrawl_map",
+        "firecrawl_extract",
+        "firecrawl_extract_status",
+        "firecrawl_agent",
+        "firecrawl_parse",
+        "firecrawl_credit_usage"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUpload",
+          "label": "Document",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileReference",
+          "label": "File Reference",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "url",
+          "label": "Website URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "urls",
+          "label": "URLs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobId",
+          "label": "Job ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prompt",
+          "label": "Extraction Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "agentPrompt",
+          "label": "Agent Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "agentUrls",
+          "label": "Focus URLs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schema",
+          "label": "Output Schema",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "maxCredits",
+          "label": "Max Credits",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "strictConstrainToURLs",
+          "label": "Strict URL Constraint",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "onlyMainContent",
+          "label": "Only Main Content",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "formats",
+          "label": "Output Formats",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxConcurrency",
+          "label": "Max Concurrency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ignoreInvalidURLs",
+          "label": "Ignore Invalid URLs",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "waitFor",
+          "label": "Wait For (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mobile",
+          "label": "Mobile Mode",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeTags",
+          "label": "Include Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeTags",
+          "label": "Exclude Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parsers",
+          "label": "Parsers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeBase64Images",
+          "label": "Remove Base64 Images",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "blockAds",
+          "label": "Block Ads",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "proxy",
+          "label": "Proxy Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zeroDataRetention",
+          "label": "Zero Data Retention",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,785 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "gitlab",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "gitlab",
+      "legacyIds": [],
+      "provider": "gitlab",
+      "version": "1",
+      "display": {
+        "name": "GitLab",
+        "description": "Interact with GitLab projects, issues, merge requests, and pipelines",
+        "category": "tools",
+        "icon": "GitLabIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "gitlab_list_projects",
+        "gitlab_get_project",
+        "gitlab_list_groups",
+        "gitlab_get_group",
+        "gitlab_list_user_memberships",
+        "gitlab_list_issues",
+        "gitlab_get_issue",
+        "gitlab_create_issue",
+        "gitlab_update_issue",
+        "gitlab_delete_issue",
+        "gitlab_create_issue_note",
+        "gitlab_list_merge_requests",
+        "gitlab_get_merge_request",
+        "gitlab_create_merge_request",
+        "gitlab_update_merge_request",
+        "gitlab_merge_merge_request",
+        "gitlab_create_merge_request_note",
+        "gitlab_list_pipelines",
+        "gitlab_get_pipeline",
+        "gitlab_create_pipeline",
+        "gitlab_retry_pipeline",
+        "gitlab_cancel_pipeline",
+        "gitlab_list_repository_tree",
+        "gitlab_get_file",
+        "gitlab_create_file",
+        "gitlab_update_file",
+        "gitlab_create_branch",
+        "gitlab_delete_branch",
+        "gitlab_compare_branches",
+        "gitlab_list_branches",
+        "gitlab_list_commits",
+        "gitlab_get_merge_request_changes",
+        "gitlab_approve_merge_request",
+        "gitlab_list_pipeline_jobs",
+        "gitlab_get_job_log",
+        "gitlab_play_job",
+        "gitlab_list_releases",
+        "gitlab_create_release",
+        "gitlab_list_members",
+        "gitlab_add_member",
+        "gitlab_update_member",
+        "gitlab_remove_member",
+        "gitlab_invite_member",
+        "gitlab_list_invitations",
+        "gitlab_update_invitation",
+        "gitlab_revoke_invitation",
+        "gitlab_list_access_requests",
+        "gitlab_approve_access_request",
+        "gitlab_deny_access_request",
+        "gitlab_list_saml_group_links",
+        "gitlab_search_users",
+        "gitlab_create_user",
+        "gitlab_update_user",
+        "gitlab_delete_user",
+        "gitlab_block_user",
+        "gitlab_unblock_user",
+        "gitlab_deactivate_user",
+        "gitlab_activate_user",
+        "gitlab_ban_user",
+        "gitlab_unban_user",
+        "gitlab_approve_user",
+        "gitlab_reject_user",
+        "gitlab_delete_user_identity",
+        "gitlab_add_saml_group_link",
+        "gitlab_delete_saml_group_link"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessToken",
+          "label": "Personal Access Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "host",
+          "label": "GitLab Host",
+          "type": "string",
+          "required": false,
+          "description": "Self-managed GitLab host. Leave blank for gitlab.com."
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issueIid",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mergeRequestIid",
+          "label": "MR Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pipelineId",
+          "label": "Pipeline ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceBranch",
+          "label": "Source Branch",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "targetBranch",
+          "label": "Target Branch",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ref",
+          "label": "Branch/Tag",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "compareFrom",
+          "label": "From",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "compareTo",
+          "label": "To",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "straight",
+          "label": "Compare Directly",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "tagName",
+          "label": "Tag Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "releaseName",
+          "label": "Release Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "releasedAt",
+          "label": "Released At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "releaseMilestones",
+          "label": "Milestones",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "File Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commitMessage",
+          "label": "Commit Message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "jobId",
+          "label": "Job ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recursive",
+          "label": "Recursive",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "refName",
+          "label": "Ref (branch/tag)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "since",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "until",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "author",
+          "label": "Author",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastCommitId",
+          "label": "Last Commit ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeRetried",
+          "label": "Include Retried Jobs",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "scope",
+          "label": "Job Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sha",
+          "label": "Commit SHA",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labels",
+          "label": "Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeIds",
+          "label": "Assignee IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestoneId",
+          "label": "Milestone ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issueState",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mrState",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stateEvent",
+          "label": "State Event",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineStatus",
+          "label": "Pipeline Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeSourceBranch",
+          "label": "Remove Source Branch",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "updateRemoveSourceBranch",
+          "label": "Remove Source Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSquash",
+          "label": "Squash Commits",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "squash",
+          "label": "Squash Commits",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "mergeCommitMessage",
+          "label": "Merge Commit Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "owned",
+          "label": "Owned Only",
+          "type": "boolean",
+          "required": false,
+          "description": "Only resources explicitly owned by the current user"
+        },
+        {
+          "key": "groupsTopLevelOnly",
+          "label": "Top-Level Only",
+          "type": "boolean",
+          "required": false,
+          "description": "Only top-level groups, excluding subgroups"
+        },
+        {
+          "key": "groupAllAvailable",
+          "label": "All Available",
+          "type": "boolean",
+          "required": false,
+          "description": "Include groups you can access but are not a member of (ignored when Owned Only or Minimum Access Level is set)"
+        },
+        {
+          "key": "groupMinAccessLevel",
+          "label": "Minimum Access Level",
+          "type": "string",
+          "required": false,
+          "description": "Only groups where you have at least this access level"
+        },
+        {
+          "key": "membership",
+          "label": "Member Only",
+          "type": "boolean",
+          "required": false,
+          "description": "Only projects the current user is a member of"
+        },
+        {
+          "key": "visibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeId",
+          "label": "Assignee ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestoneTitle",
+          "label": "Milestone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourceBranchFilter",
+          "label": "Source Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetBranchFilter",
+          "label": "Target Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issueOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mrOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "releaseOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineVariables",
+          "label": "Pipeline Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineInputs",
+          "label": "Pipeline Inputs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobVariables",
+          "label": "Job Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagMessage",
+          "label": "Tag Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetLinks",
+          "label": "Asset Links",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startBranch",
+          "label": "Start Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authorName",
+          "label": "Author Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authorEmail",
+          "label": "Author Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "executeFilemode",
+          "label": "Executable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromProjectId",
+          "label": "From Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unidiff",
+          "label": "Unified Diff Format",
+          "type": "boolean",
+          "required": false,
+          "description": "Return diffs in unified diff format (GitLab 16.5+)"
+        },
+        {
+          "key": "internalNote",
+          "label": "Internal Note",
+          "type": "boolean",
+          "required": false,
+          "description": "Visible only to project members with at least Reporter access"
+        },
+        {
+          "key": "perPage",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resourceType",
+          "label": "Resource Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "resourceId",
+          "label": "Project / Group ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "membershipType",
+          "label": "Membership Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessLevel",
+          "label": "Access Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberAccessLevel",
+          "label": "Access Level",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "invitationAccessLevel",
+          "label": "Access Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expiresAt",
+          "label": "Expires At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clearExpiresAt",
+          "label": "Clear Expiration",
+          "type": "boolean",
+          "required": false,
+          "description": "Remove the existing access expiration date (overrides Expires At)"
+        },
+        {
+          "key": "memberRoleId",
+          "label": "Member Role ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inviteSource",
+          "label": "Invite Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "directMembersOnly",
+          "label": "Direct Members Only",
+          "type": "boolean",
+          "required": false,
+          "description": "Exclude members inherited from ancestor groups"
+        },
+        {
+          "key": "skipSubresources",
+          "label": "Skip Subresources",
+          "type": "boolean",
+          "required": false,
+          "description": "Keep the member in subgroups and projects below the target"
+        },
+        {
+          "key": "unassignIssuables",
+          "label": "Unassign Issues & MRs",
+          "type": "boolean",
+          "required": false,
+          "description": "Unassign the member from all issues and merge requests in the target"
+        },
+        {
+          "key": "memberUserIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberState",
+          "label": "Member State",
+          "type": "string",
+          "required": false,
+          "description": "Only applies when inherited members are included (Premium/Ultimate); ignored with Direct Members Only"
+        },
+        {
+          "key": "showSeatInfo",
+          "label": "Show Seat Info",
+          "type": "boolean",
+          "required": false,
+          "description": "Include seat information for each member (Premium/Ultimate)"
+        },
+        {
+          "key": "userSearch",
+          "label": "Search",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "samlGroupName",
+          "label": "SAML Group Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "samlProvider",
+          "label": "SAML Provider",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "provider",
+          "label": "Identity Provider",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "hardDelete",
+          "label": "Hard Delete",
+          "type": "boolean",
+          "required": false,
+          "description": "Delete contributions, personal projects, and solely-owned groups instead of moving them to a Ghost User"
+        },
+        {
+          "key": "userAdminEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userAdminUsername",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userAdminName",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userAdminPassword",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resetPassword",
+          "label": "Send Password Reset Link",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "forceRandomPassword",
+          "label": "Force Random Password",
+          "type": "boolean",
+          "required": false,
+          "description": "Set a random password without emailing a reset link (for SSO-only accounts)"
+        },
+        {
+          "key": "skipConfirmation",
+          "label": "Skip Email Confirmation",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "userAdminIsAdmin",
+          "label": "Administrator",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the user is an instance administrator"
+        }
+      ]
+    }
+  ]
+}

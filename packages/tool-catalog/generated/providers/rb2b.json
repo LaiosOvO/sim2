@@ -1,0 +1,106 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "rb2b",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "rb2b",
+      "legacyIds": [],
+      "provider": "rb2b",
+      "version": "1",
+      "display": {
+        "name": "RB2B",
+        "description": "Identify and enrich website visitors",
+        "category": "tools",
+        "icon": "RB2BIcon",
+        "bgColor": "#51FF00"
+      },
+      "capabilities": [
+        "rb2b_credit_check",
+        "rb2b_ip_to_hem",
+        "rb2b_ip_to_maid",
+        "rb2b_ip_to_company",
+        "rb2b_hem_to_business_profile",
+        "rb2b_hem_to_best_linkedin",
+        "rb2b_hem_to_linkedin",
+        "rb2b_hem_to_maid",
+        "rb2b_email_to_activity",
+        "rb2b_linkedin_to_business_profile",
+        "rb2b_linkedin_to_best_personal_email",
+        "rb2b_linkedin_to_personal_email",
+        "rb2b_linkedin_to_hashed_emails",
+        "rb2b_linkedin_to_mobile_phone",
+        "rb2b_linkedin_slug_search"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ip_address",
+          "label": "IP Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user_agent",
+          "label": "User Agent",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_sha256",
+          "label": "Include SHA-256 Hashes",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email or MD5 Hash",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedin_slug",
+          "label": "LinkedIn Slug or URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "first_name",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_name",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

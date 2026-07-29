@@ -1,0 +1,67 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "huggingface",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "huggingface",
+      "legacyIds": ["hugging-face"],
+      "provider": "huggingface",
+      "version": "1",
+      "display": {
+        "name": "Hugging Face",
+        "description": "Use Hugging Face Inference API",
+        "category": "tools",
+        "icon": "HuggingFaceIcon",
+        "bgColor": "#0B0F19"
+      },
+      "capabilities": ["huggingface_chat"],
+      "inputs": [
+        {
+          "key": "systemPrompt",
+          "label": "System Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "User Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true,
+          "description": "The model must be available for the selected provider."
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "maxTokens",
+          "label": "Max Tokens",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Token",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

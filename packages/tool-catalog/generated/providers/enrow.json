@@ -1,0 +1,60 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "enrow",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "enrow",
+      "legacyIds": [],
+      "provider": "enrow",
+      "version": "1",
+      "display": {
+        "name": "Enrow",
+        "description": "Find and verify B2B emails with triple-verified accuracy",
+        "category": "tools",
+        "icon": "EnrowIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["enrow_find_email", "enrow_verify_email"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fullname",
+          "label": "Full Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "company_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ve_email",
+          "label": "Email Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

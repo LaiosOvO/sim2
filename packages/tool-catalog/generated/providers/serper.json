@@ -1,0 +1,60 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "serper",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "serper",
+      "legacyIds": [],
+      "provider": "serper",
+      "version": "1",
+      "display": {
+        "name": "Serper",
+        "description": "Search the web using Serper",
+        "category": "tools",
+        "icon": "SerperIcon",
+        "bgColor": "#2B3543"
+      },
+      "capabilities": ["serper_search"],
+      "inputs": [
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Search Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "num",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gl",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hl",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

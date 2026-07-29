@@ -1,0 +1,143 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "jupyter",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "jupyter",
+      "legacyIds": [],
+      "provider": "jupyter",
+      "version": "1",
+      "display": {
+        "name": "Jupyter",
+        "description": "Manage files, notebooks, kernels, and sessions on a Jupyter server",
+        "category": "tools",
+        "icon": "JupyterIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "jupyter_list_contents",
+        "jupyter_get_content",
+        "jupyter_create_file",
+        "jupyter_upload_file",
+        "jupyter_rename_content",
+        "jupyter_delete_content",
+        "jupyter_copy_content",
+        "jupyter_list_kernels",
+        "jupyter_start_kernel",
+        "jupyter_stop_kernel",
+        "jupyter_restart_kernel",
+        "jupyter_interrupt_kernel",
+        "jupyter_list_kernelspecs",
+        "jupyter_list_sessions",
+        "jupyter_create_session",
+        "jupyter_delete_session"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "serverUrl",
+          "label": "Server URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "token",
+          "label": "Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "directory",
+          "label": "Directory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newPath",
+          "label": "New Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "copyFromPath",
+          "label": "Copy From Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "kernelName",
+          "label": "Kernel Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "kernelId",
+          "label": "Kernel ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionName",
+          "label": "Session Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionType",
+          "label": "Session Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionId",
+          "label": "Session ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

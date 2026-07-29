@@ -1,0 +1,204 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_bigquery",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_bigquery",
+      "legacyIds": ["google-bigquery"],
+      "provider": "google_bigquery",
+      "version": "1",
+      "display": {
+        "name": "Google BigQuery",
+        "description": "Query, list, and insert data in Google BigQuery",
+        "category": "tools",
+        "icon": "GoogleBigQueryIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_bigquery_query",
+        "google_bigquery_get_query_results",
+        "google_bigquery_list_datasets",
+        "google_bigquery_create_dataset",
+        "google_bigquery_delete_dataset",
+        "google_bigquery_list_tables",
+        "google_bigquery_get_table",
+        "google_bigquery_create_table",
+        "google_bigquery_delete_table",
+        "google_bigquery_list_table_data",
+        "google_bigquery_insert_rows"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "useLegacySql",
+          "label": "Use Legacy SQL",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultDatasetId",
+          "label": "Default Dataset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "location",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobId",
+          "label": "Job ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeoutMs",
+          "label": "Timeout (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newDatasetId",
+          "label": "Dataset ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "datasetLocation",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteContents",
+          "label": "Delete Contents",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "datasetSelector",
+          "label": "Dataset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "datasetId",
+          "label": "Dataset ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableSelector",
+          "label": "Table",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "tableId",
+          "label": "Table ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newTableId",
+          "label": "Table ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schema",
+          "label": "Schema",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "friendlyName",
+          "label": "Friendly Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "selectedFields",
+          "label": "Selected Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startIndex",
+          "label": "Start Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rows",
+          "label": "Rows",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "skipInvalidRows",
+          "label": "Skip Invalid Rows",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "ignoreUnknownValues",
+          "label": "Ignore Unknown Values",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

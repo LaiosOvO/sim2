@@ -1,0 +1,76 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "extend",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "extend",
+      "legacyIds": [],
+      "provider": "extend",
+      "version": "1",
+      "display": {
+        "name": "Extend",
+        "description": "Parse and extract content from documents",
+        "category": "tools",
+        "icon": "ExtendIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": ["extend_parser"],
+      "inputs": [
+        {
+          "key": "fileUpload",
+          "label": "Document",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "filePath",
+          "label": "Document",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "outputFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chunking",
+          "label": "Chunking Strategy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "engine",
+          "label": "Engine",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "extend_v2",
+      "legacyIds": ["extend", "extend-v2"],
+      "provider": "extend",
+      "version": "2",
+      "display": {
+        "name": "Extend",
+        "description": "Parse and extract content from documents",
+        "category": "tools",
+        "icon": "ExtendIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": ["extend_parser_v2"],
+      "inputs": []
+    }
+  ]
+}

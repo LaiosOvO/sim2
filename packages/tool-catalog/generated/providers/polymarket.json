@@ -1,0 +1,351 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "polymarket",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "polymarket",
+      "legacyIds": [],
+      "provider": "polymarket",
+      "version": "1",
+      "display": {
+        "name": "Polymarket",
+        "description": "Access prediction markets data from Polymarket",
+        "category": "tools",
+        "icon": "PolymarketIcon",
+        "bgColor": "#4C82FB"
+      },
+      "capabilities": [
+        "polymarket_get_markets",
+        "polymarket_get_market",
+        "polymarket_get_events",
+        "polymarket_get_event",
+        "polymarket_get_tags",
+        "polymarket_search",
+        "polymarket_get_series",
+        "polymarket_get_series_by_id",
+        "polymarket_get_orderbook",
+        "polymarket_get_price",
+        "polymarket_get_midpoint",
+        "polymarket_get_price_history",
+        "polymarket_get_last_trade_price",
+        "polymarket_get_spread",
+        "polymarket_get_tick_size",
+        "polymarket_get_positions",
+        "polymarket_get_trades",
+        "polymarket_get_activity",
+        "polymarket_get_leaderboard",
+        "polymarket_get_holders"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "marketId",
+          "label": "Market ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "marketSlug",
+          "label": "Market Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventId",
+          "label": "Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventSlug",
+          "label": "Event Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seriesId",
+          "label": "Series ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user",
+          "label": "User Wallet Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user",
+          "label": "User Wallet Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "market",
+          "label": "Condition ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionEventId",
+          "label": "Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sizeThreshold",
+          "label": "Size Threshold",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "redeemable",
+          "label": "Redeemable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeable",
+          "label": "Mergeable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionSortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionSortDirection",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionTitle",
+          "label": "Title Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tradeSide",
+          "label": "Trade Side",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "takerOnly",
+          "label": "Taker Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterType",
+          "label": "Filter Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterAmount",
+          "label": "Filter Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityUser",
+          "label": "User Wallet Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "activityType",
+          "label": "Activity Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityMarket",
+          "label": "Condition ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityEventId",
+          "label": "Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activitySide",
+          "label": "Trade Side",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activitySortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activitySortDirection",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityStart",
+          "label": "Start Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityEnd",
+          "label": "End Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leaderboardCategory",
+          "label": "Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leaderboardTimePeriod",
+          "label": "Time Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leaderboardOrderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leaderboardUser",
+          "label": "User Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leaderboardUserName",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "holdersMarket",
+          "label": "Condition ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "holdersMinBalance",
+          "label": "Min Balance",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tokenId",
+          "label": "Token ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "side",
+          "label": "Side",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "interval",
+          "label": "Interval",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fidelity",
+          "label": "Fidelity (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTs",
+          "label": "Start Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endTs",
+          "label": "End Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "closed",
+          "label": "Closed Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderEvents",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ascending",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagId",
+          "label": "Tag ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "arxiv",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "arxiv",
+      "legacyIds": [],
+      "provider": "arxiv",
+      "version": "1",
+      "display": {
+        "name": "ArXiv",
+        "description": "Search and retrieve academic papers from ArXiv",
+        "category": "tools",
+        "icon": "ArxivIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["arxiv_search", "arxiv_get_paper", "arxiv_get_author_papers"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchField",
+          "label": "Search Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paperId",
+          "label": "Paper ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authorName",
+          "label": "Author Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

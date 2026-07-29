@@ -1,0 +1,301 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "zoominfo",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "zoominfo",
+      "legacyIds": [],
+      "provider": "zoominfo",
+      "version": "1",
+      "display": {
+        "name": "ZoomInfo",
+        "description": "Search and enrich B2B company and contact data with ZoomInfo.",
+        "category": "tools",
+        "icon": "ZoomInfoIcon",
+        "bgColor": "#EA1B15"
+      },
+      "capabilities": [
+        "zoominfo_search_companies",
+        "zoominfo_search_contacts",
+        "zoominfo_enrich_companies",
+        "zoominfo_enrich_contacts",
+        "zoominfo_search_intent",
+        "zoominfo_search_news"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientId",
+          "label": "ZoomInfo Client ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "clientSecret",
+          "label": "ZoomInfo Client Secret",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "companyName",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyWebsite",
+          "label": "Company Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyTicker",
+          "label": "Ticker Symbol",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "industryCodes",
+          "label": "Industry Codes",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State / Province",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metroRegion",
+          "label": "Metro Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "revenueMin",
+          "label": "Min Revenue (thousands USD)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "revenueMax",
+          "label": "Max Revenue (thousands USD)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "employeeRangeMin",
+          "label": "Min Employees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "employeeRangeMax",
+          "label": "Max Employees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeDefunctCompanies",
+          "label": "Exclude Defunct Companies",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fullName",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTitle",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "managementLevel",
+          "label": "Management Level",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "department",
+          "label": "Department",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactAccuracyScoreMin",
+          "label": "Min Accuracy Score",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requiredFields",
+          "label": "Required Fields",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "excludePartialProfiles",
+          "label": "Exclude Partial Profiles",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "matchCompanyInput",
+          "label": "Companies to Enrich (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "matchPersonInput",
+          "label": "Contacts to Enrich (JSON Array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "outputFields",
+          "label": "Output Fields",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "topics",
+          "label": "Intent Topics",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "signalStartDate",
+          "label": "Signal Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signalEndDate",
+          "label": "Signal End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signalScoreMin",
+          "label": "Min Signal Score (60-100)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signalScoreMax",
+          "label": "Max Signal Score (60-100)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audienceStrengthMin",
+          "label": "Min Audience Strength (A-E)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audienceStrengthMax",
+          "label": "Max Audience Strength (A-E)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "findRecommendedContacts",
+          "label": "Include Recommended Contacts",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "categories",
+          "label": "Categories",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Source URLs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "pageDateMin",
+          "label": "Earliest Publish Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageDateMax",
+          "label": "Latest Publish Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rpp",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "airtable",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "airtable",
+      "legacyIds": [],
+      "provider": "airtable",
+      "version": "1",
+      "display": {
+        "name": "Airtable",
+        "description": "Read, create, and update Airtable",
+        "category": "tools",
+        "icon": "AirtableIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "airtable_list_bases",
+        "airtable_list_tables",
+        "airtable_list_records",
+        "airtable_get_record",
+        "airtable_create_records",
+        "airtable_update_record",
+        "airtable_update_multiple_records",
+        "airtable_upsert_records",
+        "airtable_delete_records",
+        "airtable_get_base_schema"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Airtable Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Airtable Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "baseSelector",
+          "label": "Base",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseId",
+          "label": "Base ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableSelector",
+          "label": "Table",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "tableId",
+          "label": "Table ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxRecords",
+          "label": "Max Records",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterFormula",
+          "label": "Filter Formula",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "records",
+          "label": "Records (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "fields",
+          "label": "Fields (JSON Object)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "fieldsToMergeOn",
+          "label": "Fields to Merge On (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "typecast",
+          "label": "Typecast",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "recordIds",
+          "label": "Record IDs (JSON Array)",
+          "type": "json",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

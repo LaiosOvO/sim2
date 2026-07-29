@@ -1,0 +1,1449 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_slides",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_slides",
+      "legacyIds": ["google-slides"],
+      "provider": "google_slides",
+      "version": "1",
+      "display": {
+        "name": "Google Slides (Legacy)",
+        "description": "Read, write, and create presentations",
+        "category": "tools",
+        "icon": "GoogleSlidesIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_slides_read",
+        "google_slides_write",
+        "google_slides_create",
+        "google_slides_replace_all_text",
+        "google_slides_add_slide",
+        "google_slides_add_image",
+        "google_slides_get_thumbnail",
+        "google_slides_get_page",
+        "google_slides_delete_object",
+        "google_slides_duplicate_object",
+        "google_slides_update_slides_position",
+        "google_slides_create_table",
+        "google_slides_create_shape",
+        "google_slides_insert_text",
+        "google_slides_update_text_style",
+        "google_slides_update_paragraph_style",
+        "google_slides_delete_text",
+        "google_slides_create_paragraph_bullets",
+        "google_slides_delete_paragraph_bullets",
+        "google_slides_replace_all_shapes_with_image",
+        "google_slides_replace_image",
+        "google_slides_update_image_properties",
+        "google_slides_update_shape_properties",
+        "google_slides_update_page_properties",
+        "google_slides_update_slide_properties",
+        "google_slides_update_page_element_alt_text",
+        "google_slides_update_page_element_transform",
+        "google_slides_update_page_elements_z_order",
+        "google_slides_group_objects",
+        "google_slides_ungroup_objects",
+        "google_slides_create_line",
+        "google_slides_update_line_properties",
+        "google_slides_update_line_category",
+        "google_slides_reroute_line",
+        "google_slides_insert_table_rows",
+        "google_slides_insert_table_columns",
+        "google_slides_delete_table_row",
+        "google_slides_delete_table_column",
+        "google_slides_merge_table_cells",
+        "google_slides_unmerge_table_cells",
+        "google_slides_update_table_cell_properties",
+        "google_slides_update_table_border_properties",
+        "google_slides_update_table_column_properties",
+        "google_slides_update_table_row_properties",
+        "google_slides_create_sheets_chart",
+        "google_slides_refresh_sheets_chart",
+        "google_slides_replace_all_shapes_with_sheets_chart",
+        "google_slides_create_video",
+        "google_slides_update_video_properties",
+        "google_slides_batch_update",
+        "google_slides_copy_presentation",
+        "google_slides_export_presentation"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "presentationId",
+          "label": "Select Presentation",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualPresentationId",
+          "label": "Presentation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slideIndex",
+          "label": "Slide Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Presentation Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "folderSelector",
+          "label": "Select Parent Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createContent",
+          "label": "Initial Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "findText",
+          "label": "Find Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceText",
+          "label": "Replace With",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "matchCase",
+          "label": "Match Case",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "pageObjectIds",
+          "label": "Limit to Slides (IDs)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "layout",
+          "label": "Slide Layout",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insertionIndex",
+          "label": "Insertion Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "placeholderIdMappings",
+          "label": "Placeholder ID Mappings",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "imageFile",
+          "label": "Image",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "imageUrl",
+          "label": "Image",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "imageWidth",
+          "label": "Width (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageHeight",
+          "label": "Height (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionX",
+          "label": "X Position (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "positionY",
+          "label": "Y Position (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "thumbnailPageId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "thumbnailSize",
+          "label": "Thumbnail Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mimeType",
+          "label": "Image Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getPageObjectId",
+          "label": "Page/Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deleteObjectId",
+          "label": "Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "duplicateObjectId",
+          "label": "Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "duplicateObjectIds",
+          "label": "Object ID Mappings",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reorderSlideIds",
+          "label": "Slide IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reorderInsertionIndex",
+          "label": "New Position",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tablePageObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableRows",
+          "label": "Rows",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableColumns",
+          "label": "Columns",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableWidth",
+          "label": "Width (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableHeight",
+          "label": "Height (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tablePositionX",
+          "label": "X Position (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tablePositionY",
+          "label": "Y Position (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapePageObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shapeType",
+          "label": "Shape Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeWidth",
+          "label": "Width (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeHeight",
+          "label": "Height (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapePositionX",
+          "label": "X Position (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapePositionY",
+          "label": "Y Position (points)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insertTextObjectId",
+          "label": "Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "insertTextContent",
+          "label": "Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "insertTextIndex",
+          "label": "Insertion Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourcePresentationSelector",
+          "label": "Source Presentation",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualSourcePresentationId",
+          "label": "Source Presentation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "copyTitle",
+          "label": "Copy Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "copyFolderSelector",
+          "label": "Destination Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualCopyFolderId",
+          "label": "Destination Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exportFormat",
+          "label": "Export Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requestsJson",
+          "label": "Requests (JSON Array)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "writeControlJson",
+          "label": "Write Control (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replaceShapesImageUrl",
+          "label": "Image URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceShapesFindText",
+          "label": "Find Text (Token)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceShapesMatchCase",
+          "label": "Match Case",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "replaceShapesImageMethod",
+          "label": "Image Fit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replaceShapesPageObjectIds",
+          "label": "Limit to Slides (IDs)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replaceImageObjectId",
+          "label": "Image Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceImageUrl",
+          "label": "New Image URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceImageMethod",
+          "label": "Image Fit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imagePropsObjectId",
+          "label": "Image Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "imageBrightness",
+          "label": "Brightness",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageContrast",
+          "label": "Contrast",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageTransparency",
+          "label": "Transparency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageLinkUrl",
+          "label": "Link URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageOutlineColor",
+          "label": "Outline Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageOutlineWeight",
+          "label": "Outline Weight (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageOutlineDashStyle",
+          "label": "Outline Dash Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imagePropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imagePropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textObjectId",
+          "label": "Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "textRowIndex",
+          "label": "Table Cell Row Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textColumnIndex",
+          "label": "Table Cell Column Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textRangeType",
+          "label": "Range Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textStartIndex",
+          "label": "Start Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textEndIndex",
+          "label": "End Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textBold",
+          "label": "Bold",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "textItalic",
+          "label": "Italic",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "textUnderline",
+          "label": "Underline",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "textStrikethrough",
+          "label": "Strikethrough",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "textSmallCaps",
+          "label": "Small Caps",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "textFontFamily",
+          "label": "Font Family",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textFontSize",
+          "label": "Font Size (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textForegroundColor",
+          "label": "Text Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textBackgroundColor",
+          "label": "Text Background Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textLinkUrl",
+          "label": "Link URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textBaselineOffset",
+          "label": "Baseline Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textStyleJson",
+          "label": "Style JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textStyleFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphAlignment",
+          "label": "Alignment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphLineSpacing",
+          "label": "Line Spacing (%)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphIndentStart",
+          "label": "Indent Start (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphIndentEnd",
+          "label": "Indent End (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphIndentFirstLine",
+          "label": "First-Line Indent (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphSpaceAbove",
+          "label": "Space Above (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphSpaceBelow",
+          "label": "Space Below (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphDirection",
+          "label": "Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphSpacingMode",
+          "label": "Spacing Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphStyleJson",
+          "label": "Style JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paragraphStyleFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulletPreset",
+          "label": "Bullet Preset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapePropsObjectId",
+          "label": "Shape Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shapeFillColor",
+          "label": "Fill Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeFillAlpha",
+          "label": "Fill Opacity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeFillUnset",
+          "label": "Clear Fill (inherit)",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "shapeOutlineColor",
+          "label": "Outline Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeOutlineWeight",
+          "label": "Outline Weight (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeOutlineDashStyle",
+          "label": "Outline Dash Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeOutlineUnset",
+          "label": "Clear Outline (inherit)",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "shapeLinkUrl",
+          "label": "Link URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeContentAlignment",
+          "label": "Content Alignment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapeAutofitType",
+          "label": "Autofit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapePropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shapePropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pagePropsObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pageBackgroundColor",
+          "label": "Background Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageBackgroundAlpha",
+          "label": "Background Opacity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageBackgroundImageUrl",
+          "label": "Background Image URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageBackgroundUnset",
+          "label": "Clear Background (inherit)",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "pagePropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pagePropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slidePropsObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "slideIsSkipped",
+          "label": "Skip Slide in Presentation",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "slidePropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slidePropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "altTextObjectId",
+          "label": "Element Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "altTextTitle",
+          "label": "Accessibility Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "altTextDescription",
+          "label": "Accessibility Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformObjectId",
+          "label": "Element Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "transformScaleX",
+          "label": "Scale X",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformScaleY",
+          "label": "Scale Y",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformShearX",
+          "label": "Shear X",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformShearY",
+          "label": "Shear Y",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformTranslateX",
+          "label": "X Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformTranslateY",
+          "label": "Y Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transformApplyMode",
+          "label": "Apply Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zOrderObjectIds",
+          "label": "Object IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "zOrderOperation",
+          "label": "Operation",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "groupChildrenObjectIds",
+          "label": "Children Object IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "groupObjectIdInput",
+          "label": "Group ID (optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ungroupObjectIds",
+          "label": "Group Object IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "linePageObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "lineCategory",
+          "label": "Line Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineWidth",
+          "label": "Width (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineHeight",
+          "label": "Height (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linePositionX",
+          "label": "X Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linePositionY",
+          "label": "Y Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linePropsObjectId",
+          "label": "Line Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "lineColor",
+          "label": "Line Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineWeight",
+          "label": "Line Weight (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineDashStyle",
+          "label": "Dash Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineStartArrow",
+          "label": "Start Arrow",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineEndArrow",
+          "label": "End Arrow",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineLinkUrl",
+          "label": "Link URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linePropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linePropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lineCategoryObjectId",
+          "label": "Line Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "newLineCategory",
+          "label": "Line Category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "rerouteLineObjectId",
+          "label": "Line Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableTargetObjectId",
+          "label": "Table Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableCellRowIndex",
+          "label": "Cell Row Index",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableCellColumnIndex",
+          "label": "Cell Column Index",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableInsertNumber",
+          "label": "Number to Insert",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableInsertBelow",
+          "label": "Insert Below",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "tableInsertRight",
+          "label": "Insert Right",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "tableRangeObjectId",
+          "label": "Table Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableRangeRowIndex",
+          "label": "Range Start Row",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableRangeColumnIndex",
+          "label": "Range Start Column",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableRangeRowSpan",
+          "label": "Row Span",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableRangeColumnSpan",
+          "label": "Column Span",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableCellBackgroundColor",
+          "label": "Cell Background Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableCellBackgroundAlpha",
+          "label": "Background Opacity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableCellContentAlignment",
+          "label": "Content Alignment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableCellPropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableCellPropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableBorderPosition",
+          "label": "Border Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableBorderColor",
+          "label": "Border Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableBorderWeight",
+          "label": "Border Weight (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableBorderDashStyle",
+          "label": "Dash Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableBorderPropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableBorderPropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableColumnPropsObjectId",
+          "label": "Table Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableColumnIndices",
+          "label": "Column Indices",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableColumnWidth",
+          "label": "Column Width (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableColumnPropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableColumnPropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableRowPropsObjectId",
+          "label": "Table Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableRowIndices",
+          "label": "Row Indices",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableMinRowHeight",
+          "label": "Minimum Row Height (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableRowPropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableRowPropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chartPageObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "chartSpreadsheetId",
+          "label": "Spreadsheet ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "chartId",
+          "label": "Chart ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "chartLinkingMode",
+          "label": "Linking Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chartWidth",
+          "label": "Width (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chartHeight",
+          "label": "Height (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chartPositionX",
+          "label": "X Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chartPositionY",
+          "label": "Y Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "refreshChartObjectId",
+          "label": "Chart Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceShapesChartFindText",
+          "label": "Find Text (Token)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceShapesChartMatchCase",
+          "label": "Match Case",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "replaceShapesChartPageObjectIds",
+          "label": "Limit to Slides (IDs)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoPageObjectId",
+          "label": "Slide ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "videoSource",
+          "label": "Source",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "videoId",
+          "label": "Video ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "videoWidth",
+          "label": "Width (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoHeight",
+          "label": "Height (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoPositionX",
+          "label": "X Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoPositionY",
+          "label": "Y Position (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoPropsObjectId",
+          "label": "Video Object ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "videoAutoPlay",
+          "label": "Auto Play",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "videoMute",
+          "label": "Mute",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "videoStart",
+          "label": "Start (sec)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoEnd",
+          "label": "End (sec)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoOutlineColor",
+          "label": "Outline Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoOutlineWeight",
+          "label": "Outline Weight (pt)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoOutlineDashStyle",
+          "label": "Outline Dash Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoPropertiesJson",
+          "label": "Properties JSON (advanced)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoPropertiesFields",
+          "label": "FieldMask (advanced)",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "google_slides_v2",
+      "legacyIds": ["google-slides", "google-slides-v2"],
+      "provider": "google_slides",
+      "version": "2",
+      "display": {
+        "name": "Google Slides",
+        "description": "Read, write, and create presentations",
+        "category": "tools",
+        "icon": "GoogleSlidesIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

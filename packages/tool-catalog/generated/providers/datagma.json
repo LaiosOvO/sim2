@@ -1,0 +1,126 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "datagma",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "datagma",
+      "legacyIds": [],
+      "provider": "datagma",
+      "version": "1",
+      "display": {
+        "name": "Datagma",
+        "description": "Find verified B2B emails, mobile phones, and enrich person or company profiles",
+        "category": "tools",
+        "icon": "DatagmaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "datagma_find_email",
+        "datagma_enrich_person",
+        "datagma_enrich_company",
+        "datagma_find_phone",
+        "datagma_get_credits"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fe_fullName",
+          "label": "Full Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fe_company",
+          "label": "Company Name or Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fe_linkedInSlug",
+          "label": "LinkedIn Company Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_data",
+          "label": "Email, LinkedIn URL, or Full Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ep_companyKeyword",
+          "label": "Company (when using full name)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_phoneFull",
+          "label": "Find Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_countryCode",
+          "label": "Country Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ep_personFull",
+          "label": "Include Full Profile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ec_data",
+          "label": "Company Domain, Name, or SIREN",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ec_companyPremium",
+          "label": "Include LinkedIn Data",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ec_companyFull",
+          "label": "Include Financial Data",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fp_username",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fp_email",
+          "label": "Email (improves accuracy)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

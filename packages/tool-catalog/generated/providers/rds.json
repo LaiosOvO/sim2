@@ -1,0 +1,139 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "rds",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "rds",
+      "legacyIds": ["amazon-rds"],
+      "provider": "rds",
+      "version": "1",
+      "display": {
+        "name": "Amazon RDS",
+        "description": "Connect to Amazon RDS via Data API",
+        "category": "tools",
+        "icon": "RDSIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "capabilities": [
+        "rds_query",
+        "rds_insert",
+        "rds_update",
+        "rds_delete",
+        "rds_execute",
+        "rds_introspect"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "resourceArn",
+          "label": "Resource ARN",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretArn",
+          "label": "Secret ARN",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "database",
+          "label": "Database Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Update Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "conditions",
+          "label": "Conditions (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "conditions",
+          "label": "Conditions (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "schema",
+          "label": "Schema Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "engine",
+          "label": "Database Engine",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

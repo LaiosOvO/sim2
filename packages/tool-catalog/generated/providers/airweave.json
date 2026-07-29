@@ -1,0 +1,75 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "airweave",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "airweave",
+      "legacyIds": [],
+      "provider": "airweave",
+      "version": "1",
+      "display": {
+        "name": "Airweave",
+        "description": "Search your synced data collections",
+        "category": "tools",
+        "icon": "AirweaveIcon",
+        "bgColor": "#6366F1"
+      },
+      "capabilities": ["airweave_search"],
+      "inputs": [
+        {
+          "key": "collectionId",
+          "label": "Collection ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retrievalStrategy",
+          "label": "Retrieval Strategy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expandQuery",
+          "label": "Expand Query",
+          "type": "boolean",
+          "required": false,
+          "description": "Generate query variations to improve recall"
+        },
+        {
+          "key": "rerank",
+          "label": "Rerank Results",
+          "type": "boolean",
+          "required": false,
+          "description": "Reorder results for improved relevance using LLM"
+        },
+        {
+          "key": "generateAnswer",
+          "label": "Generate Answer",
+          "type": "boolean",
+          "required": false,
+          "description": "Generate a natural-language answer from results"
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "downdetector",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "downdetector",
+      "legacyIds": [],
+      "provider": "downdetector",
+      "version": "1",
+      "display": {
+        "name": "Downdetector",
+        "description": "Monitor outages and service status with Downdetector",
+        "category": "tools",
+        "icon": "DowndetectorIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "downdetector_search_companies",
+        "downdetector_get_company",
+        "downdetector_get_company_status",
+        "downdetector_get_company_baseline",
+        "downdetector_get_company_last_15",
+        "downdetector_get_company_indicators",
+        "downdetector_get_reports",
+        "downdetector_get_company_incidents",
+        "downdetector_get_company_attribution",
+        "downdetector_get_company_events",
+        "downdetector_get_site_companies",
+        "downdetector_get_provider",
+        "downdetector_list_incidents",
+        "downdetector_list_categories",
+        "downdetector_list_sites"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country (ISO-2)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryId",
+          "label": "Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyId",
+          "label": "Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slugs",
+          "label": "Slugs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "siteId",
+          "label": "Site ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "providerId",
+          "label": "Provider ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threshold",
+          "label": "Threshold",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interval",
+          "label": "Interval",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "onlyActive",
+          "label": "Only Active",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "startdate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enddate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

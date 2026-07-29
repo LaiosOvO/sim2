@@ -1,0 +1,97 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "api",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "api",
+      "legacyIds": [],
+      "provider": "api",
+      "version": "1",
+      "display": {
+        "name": "API",
+        "description": "Use any API",
+        "category": "blocks",
+        "icon": "ApiIcon",
+        "bgColor": "#2F55FF"
+      },
+      "capabilities": ["http_request"],
+      "inputs": [
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": "Method",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "params",
+          "label": "Query Params",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "headers",
+          "label": "Headers",
+          "type": "string",
+          "required": false,
+          "description": "Custom headers (standard headers like User-Agent, Accept, etc. are added automatically)"
+        },
+        {
+          "key": "body",
+          "label": "Body",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (ms)",
+          "type": "string",
+          "required": false,
+          "description": "Request timeout in milliseconds (default: 300000 = 5 minutes, max: 600000 = 10 minutes)"
+        },
+        {
+          "key": "retries",
+          "label": "Retries",
+          "type": "string",
+          "required": false,
+          "description": "Number of retry attempts for timeouts, 429 responses, and 5xx errors (default: 0, no retries)"
+        },
+        {
+          "key": "retryDelayMs",
+          "label": "Retry delay (ms)",
+          "type": "string",
+          "required": false,
+          "description": "Initial retry delay in milliseconds (exponential backoff)"
+        },
+        {
+          "key": "retryMaxDelayMs",
+          "label": "Max retry delay (ms)",
+          "type": "string",
+          "required": false,
+          "description": "Maximum delay between retries in milliseconds"
+        },
+        {
+          "key": "retryNonIdempotent",
+          "label": "Retry non-idempotent methods",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow retries for POST/PATCH requests (may create duplicate requests)"
+        },
+        {
+          "key": "proxyUrl",
+          "label": "Proxy URL",
+          "type": "string",
+          "required": false,
+          "description": "Optional. Route this request through an http:// proxy (e.g. a residential proxy). Must be http://; the proxy host must be publicly reachable. Keep credentials in an environment variable and reference it like {{PROXY_URL}}."
+        }
+      ]
+    }
+  ]
+}

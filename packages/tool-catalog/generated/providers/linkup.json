@@ -1,0 +1,90 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "linkup",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "linkup",
+      "legacyIds": [],
+      "provider": "linkup",
+      "version": "1",
+      "display": {
+        "name": "Linkup",
+        "description": "Search the web with Linkup",
+        "category": "tools",
+        "icon": "LinkupIcon",
+        "bgColor": "#D6D3C7"
+      },
+      "capabilities": ["linkup_search"],
+      "inputs": [
+        {
+          "key": "q",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "outputType",
+          "label": "Output Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "depth",
+          "label": "Search Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeImages",
+          "label": "Include Images",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeInlineCitations",
+          "label": "Include Inline Citations",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeSources",
+          "label": "Include Sources",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "fromDate",
+          "label": "From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toDate",
+          "label": "To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDomains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeDomains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

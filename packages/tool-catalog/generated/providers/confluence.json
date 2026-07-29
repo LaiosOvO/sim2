@@ -1,0 +1,470 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "confluence",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "confluence",
+      "legacyIds": [],
+      "provider": "confluence",
+      "version": "1",
+      "display": {
+        "name": "Confluence (Legacy)",
+        "description": "Interact with Confluence",
+        "category": "tools",
+        "icon": "ConfluenceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "confluence_retrieve",
+        "confluence_update",
+        "confluence_create_page",
+        "confluence_delete_page",
+        "confluence_search",
+        "confluence_create_comment",
+        "confluence_list_comments",
+        "confluence_update_comment",
+        "confluence_delete_comment",
+        "confluence_upload_attachment",
+        "confluence_list_attachments",
+        "confluence_delete_attachment",
+        "confluence_list_labels",
+        "confluence_get_space",
+        "confluence_list_spaces"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "credential",
+          "label": "Confluence Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Confluence Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pageId",
+          "label": "Select Page",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualPageId",
+          "label": "Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceId",
+          "label": "Space ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentId",
+          "label": "Parent Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "comment",
+          "label": "Comment Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentFile",
+          "label": "File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "attachmentFileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labelName",
+          "label": "Label Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "confluence_v2",
+      "legacyIds": ["confluence", "confluence-v2"],
+      "provider": "confluence",
+      "version": "2",
+      "display": {
+        "name": "Confluence",
+        "description": "Interact with Confluence",
+        "category": "tools",
+        "icon": "ConfluenceIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "confluence_retrieve",
+        "confluence_update",
+        "confluence_create_page",
+        "confluence_delete_page",
+        "confluence_list_pages_in_space",
+        "confluence_get_page_children",
+        "confluence_get_page_ancestors",
+        "confluence_list_page_versions",
+        "confluence_get_page_version",
+        "confluence_list_page_properties",
+        "confluence_create_page_property",
+        "confluence_delete_page_property",
+        "confluence_search",
+        "confluence_search_in_space",
+        "confluence_list_blogposts",
+        "confluence_get_blogpost",
+        "confluence_create_blogpost",
+        "confluence_list_blogposts_in_space",
+        "confluence_create_comment",
+        "confluence_list_comments",
+        "confluence_update_comment",
+        "confluence_delete_comment",
+        "confluence_upload_attachment",
+        "confluence_list_attachments",
+        "confluence_delete_attachment",
+        "confluence_list_labels",
+        "confluence_add_label",
+        "confluence_delete_label",
+        "confluence_get_pages_by_label",
+        "confluence_list_space_labels",
+        "confluence_get_space",
+        "confluence_create_space",
+        "confluence_update_space",
+        "confluence_delete_space",
+        "confluence_list_spaces",
+        "confluence_list_space_properties",
+        "confluence_create_space_property",
+        "confluence_delete_space_property",
+        "confluence_list_space_permissions",
+        "confluence_get_page_descendants",
+        "confluence_list_tasks",
+        "confluence_get_task",
+        "confluence_update_task",
+        "confluence_update_blogpost",
+        "confluence_delete_blogpost",
+        "confluence_get_user"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Confluence Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Confluence Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pageId",
+          "label": "Select Page",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualPageId",
+          "label": "Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceSelector",
+          "label": "Space",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spaceId",
+          "label": "Space ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "blogPostId",
+          "label": "Blog Post ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "versionNumber",
+          "label": "Version Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "taskStatus",
+          "label": "Task Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskAssignedTo",
+          "label": "Assigned To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceName",
+          "label": "Space Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spaceKey",
+          "label": "Space Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spaceDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spacePropertyKey",
+          "label": "Property Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "spacePropertyValue",
+          "label": "Property Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spacePropertyId",
+          "label": "Property ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "propertyKey",
+          "label": "Property Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "propertyValue",
+          "label": "Property Value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "propertyId",
+          "label": "Property ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentId",
+          "label": "Parent Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "comment",
+          "label": "Comment Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentFileUpload",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "attachmentFileReference",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labelName",
+          "label": "Label Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "labelPrefix",
+          "label": "Label Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labelId",
+          "label": "Label ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "blogPostStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "purge",
+          "label": "Permanently Delete",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "bodyFormat",
+          "label": "Body Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sim_workspace_event",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sim_workspace_event",
+      "legacyIds": ["sim-workspace-event"],
+      "provider": "sim_workspace_event",
+      "version": "1",
+      "display": {
+        "name": "Sim Workspace Events",
+        "description": "Run this workflow when workspace events occur: run errors or successes, deployments, and alert conditions like latency or cost spikes.",
+        "category": "triggers",
+        "icon": "SimTriggerIcon",
+        "bgColor": "#33C482"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

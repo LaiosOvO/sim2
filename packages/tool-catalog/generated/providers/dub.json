@@ -1,0 +1,600 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "dub",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "dub",
+      "legacyIds": [],
+      "provider": "dub",
+      "version": "1",
+      "display": {
+        "name": "Dub",
+        "description": "Link management with Dub",
+        "category": "tools",
+        "icon": "DubIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "dub_create_link",
+        "dub_upsert_link",
+        "dub_get_link",
+        "dub_update_link",
+        "dub_delete_link",
+        "dub_list_links",
+        "dub_get_links_count",
+        "dub_bulk_create_links",
+        "dub_bulk_update_links",
+        "dub_bulk_delete_links",
+        "dub_get_analytics",
+        "dub_get_events",
+        "dub_get_qr_code",
+        "dub_list_domains",
+        "dub_list_tags",
+        "dub_create_tag",
+        "dub_list_folders"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Destination URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "key",
+          "label": "Custom Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagIds",
+          "label": "Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tenantId",
+          "label": "Tenant ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trackConversion",
+          "label": "Track Conversions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comments",
+          "label": "Comments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expiresAt",
+          "label": "Expires At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "utm_source",
+          "label": "UTM Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "utm_medium",
+          "label": "UTM Medium",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "utm_campaign",
+          "label": "UTM Campaign",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "utm_term",
+          "label": "UTM Term",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "utm_content",
+          "label": "UTM Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkRewrite",
+          "label": "Link Cloaking",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkArchived",
+          "label": "Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkId",
+          "label": "Link ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getLinkExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getLinkDomain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getLinkKey",
+          "label": "Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateUrl",
+          "label": "New Destination URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listDomain",
+          "label": "Filter by Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listTagIds",
+          "label": "Filter by Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listTenantId",
+          "label": "Filter by Tenant ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listFolderId",
+          "label": "Filter by Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "showArchived",
+          "label": "Show Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startingAfter",
+          "label": "Starting After (Cursor)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endingBefore",
+          "label": "Ending Before (Cursor)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsEvent",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsGroupBy",
+          "label": "Group By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsLinkId",
+          "label": "Link ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsDomain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsInterval",
+          "label": "Interval",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsStart",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsEnd",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsCountry",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "analyticsTimezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countDomain",
+          "label": "Filter by Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countTagIds",
+          "label": "Filter by Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countTagNames",
+          "label": "Filter by Tag Names",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countFolderId",
+          "label": "Filter by Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countShowArchived",
+          "label": "Show Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countGroupBy",
+          "label": "Group By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulkLinks",
+          "label": "Links",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "bulkUpdateLinkIds",
+          "label": "Link IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulkUpdateExternalIds",
+          "label": "External IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulkUpdateData",
+          "label": "Update Data",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "bulkDeleteLinkIds",
+          "label": "Link IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsEvent",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsLinkId",
+          "label": "Link ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsDomain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsInterval",
+          "label": "Interval",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsStart",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsEnd",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsCountry",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsTimezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsSortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrUrl",
+          "label": "Short Link URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrLogo",
+          "label": "Custom Logo URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrSize",
+          "label": "Size (px)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrLevel",
+          "label": "Error Correction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrFgColor",
+          "label": "Foreground Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrBgColor",
+          "label": "Background Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrHideLogo",
+          "label": "Hide Logo",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "qrMargin",
+          "label": "Margin",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domainsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domainsArchived",
+          "label": "Include Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domainsPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domainsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagsSortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagsSortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagsPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagsPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagName",
+          "label": "Tag Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagColor",
+          "label": "Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "foldersSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "foldersPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "foldersPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

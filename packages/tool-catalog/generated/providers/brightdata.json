@@ -1,0 +1,189 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "brightdata",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "brightdata",
+      "legacyIds": ["bright-data"],
+      "provider": "brightdata",
+      "version": "1",
+      "display": {
+        "name": "Bright Data",
+        "description": "Scrape websites, search engines, and extract structured data",
+        "category": "tools",
+        "icon": "BrightDataIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "brightdata_scrape_url",
+        "brightdata_serp_search",
+        "brightdata_discover",
+        "brightdata_sync_scrape",
+        "brightdata_scrape_dataset",
+        "brightdata_snapshot_status",
+        "brightdata_download_snapshot",
+        "brightdata_cancel_snapshot"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "zone",
+          "label": "Zone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dataFormat",
+          "label": "Convert To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchEngine",
+          "label": "Search Engine",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "numResults",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "discoverQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "intent",
+          "label": "Intent",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Search Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeContent",
+          "label": "Include Page Content",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "contentFormat",
+          "label": "Response Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "syncDatasetId",
+          "label": "Dataset ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "syncUrls",
+          "label": "URLs (max 20)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "syncFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "syncIncludeErrors",
+          "label": "Include Errors",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "datasetId",
+          "label": "Dataset ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "urls",
+          "label": "URLs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "datasetFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "datasetIncludeErrors",
+          "label": "Include Errors",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "snapshotId",
+          "label": "Snapshot ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downloadFormat",
+          "label": "Download Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

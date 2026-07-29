@@ -1,0 +1,209 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "zoom",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "zoom",
+      "legacyIds": [],
+      "provider": "zoom",
+      "version": "1",
+      "display": {
+        "name": "Zoom",
+        "description": "Create and manage Zoom meetings and recordings",
+        "category": "tools",
+        "icon": "ZoomIcon",
+        "bgColor": "#2D8CFF"
+      },
+      "capabilities": [
+        "zoom_create_meeting",
+        "zoom_list_meetings",
+        "zoom_get_meeting",
+        "zoom_update_meeting",
+        "zoom_delete_meeting",
+        "zoom_get_meeting_invitation",
+        "zoom_list_recordings",
+        "zoom_get_meeting_recordings",
+        "zoom_delete_recording",
+        "zoom_list_past_participants"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Zoom Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Zoom Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "meetingSelector",
+          "label": "Meeting",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "meetingId",
+          "label": "Meeting ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "topic",
+          "label": "Topic",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "topicUpdate",
+          "label": "Topic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Meeting Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTime",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "agenda",
+          "label": "Agenda",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hostVideo",
+          "label": "Host Video",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "participantVideo",
+          "label": "Participant Video",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "joinBeforeHost",
+          "label": "Join Before Host",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "muteUponEntry",
+          "label": "Mute Upon Entry",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "waitingRoom",
+          "label": "Waiting Room",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "autoRecording",
+          "label": "Auto Recording",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listType",
+          "label": "Meeting Type Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextPageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromDate",
+          "label": "From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toDate",
+          "label": "To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordingId",
+          "label": "Recording ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteAction",
+          "label": "Delete Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "occurrenceId",
+          "label": "Occurrence ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancelMeetingReminder",
+          "label": "Send Cancellation Email",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

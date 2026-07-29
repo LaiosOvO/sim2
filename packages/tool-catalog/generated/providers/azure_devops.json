@@ -1,0 +1,263 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "azure_devops",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "azure_devops",
+      "legacyIds": ["azure-devops"],
+      "provider": "azure_devops",
+      "version": "1",
+      "display": {
+        "name": "Azure DevOps",
+        "description": "Interact with Azure DevOps pipelines, builds, and work items",
+        "category": "tools",
+        "icon": "AzureIcon",
+        "bgColor": "#0078D4"
+      },
+      "capabilities": [
+        "azure_devops_list_pipelines",
+        "azure_devops_get_pipeline",
+        "azure_devops_list_pipeline_runs",
+        "azure_devops_get_pipeline_run",
+        "azure_devops_list_builds",
+        "azure_devops_list_build_logs",
+        "azure_devops_get_build_log",
+        "azure_devops_get_build_timeline",
+        "azure_devops_get_work_items_between_builds",
+        "azure_devops_query_work_items",
+        "azure_devops_get_work_item",
+        "azure_devops_get_work_items_batch",
+        "azure_devops_create_work_item",
+        "azure_devops_update_work_item",
+        "azure_devops_add_comment",
+        "azure_devops_get_comments"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessToken",
+          "label": "Personal Access Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "organization",
+          "label": "Organization",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "project",
+          "label": "Project",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pipelineId",
+          "label": "Pipeline ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "resultFilter",
+          "label": "Filter by Result",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "top",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "buildId",
+          "label": "Build ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "logId",
+          "label": "Log ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromBuildId",
+          "label": "From Build ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toBuildId",
+          "label": "To Build ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "wiqlQuery",
+          "label": "WIQL Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workItemId",
+          "label": "Work Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workItemIds",
+          "label": "Work Item IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workItemType",
+          "label": "Work Item Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignedTo",
+          "label": "Assigned To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effort",
+          "label": "Effort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effort",
+          "label": "Effort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetDate",
+          "label": "Target Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetDate",
+          "label": "Target Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activity",
+          "label": "Activity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activity",
+          "label": "Activity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "remainingWork",
+          "label": "Remaining Work",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "remainingWork",
+          "label": "Remaining Work",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completedWork",
+          "label": "Completed Work",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completedWork",
+          "label": "Completed Work",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "areaPath",
+          "label": "Area Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "iterationPath",
+          "label": "Iteration Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentText",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

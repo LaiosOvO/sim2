@@ -1,0 +1,439 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "pipedrive",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "pipedrive",
+      "legacyIds": [],
+      "provider": "pipedrive",
+      "version": "1",
+      "display": {
+        "name": "Pipedrive",
+        "description": "Interact with Pipedrive CRM",
+        "category": "tools",
+        "icon": "PipedriveIcon",
+        "bgColor": "#2E6936"
+      },
+      "capabilities": [
+        "pipedrive_get_all_deals",
+        "pipedrive_get_deal",
+        "pipedrive_create_deal",
+        "pipedrive_update_deal",
+        "pipedrive_get_files",
+        "pipedrive_get_mail_messages",
+        "pipedrive_get_mail_thread",
+        "pipedrive_get_pipelines",
+        "pipedrive_get_pipeline_deals",
+        "pipedrive_get_projects",
+        "pipedrive_create_project",
+        "pipedrive_get_activities",
+        "pipedrive_create_activity",
+        "pipedrive_update_activity",
+        "pipedrive_get_leads",
+        "pipedrive_create_lead",
+        "pipedrive_update_lead",
+        "pipedrive_delete_lead"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Pipedrive Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Pipedrive Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "person_id",
+          "label": "Person ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "org_id",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineSelector",
+          "label": "Pipeline",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipeline_id",
+          "label": "Pipeline ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updated_since",
+          "label": "Updated Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deal_id",
+          "label": "Deal ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "value",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currency",
+          "label": "Currency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "person_id",
+          "label": "Person ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "org_id",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stage_id",
+          "label": "Stage ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expected_close_date",
+          "label": "Expected Close Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folder",
+          "label": "Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "thread_id",
+          "label": "Thread ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sort_by",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort_direction",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start (Offset)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stage_id",
+          "label": "Stage ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "project_id",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start_date",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "end_date",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deal_id",
+          "label": "Deal ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "person_id",
+          "label": "Person ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "org_id",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user_id",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Activity Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "done",
+          "label": "Completion Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Activity Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "due_date",
+          "label": "Due Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "due_time",
+          "label": "Due Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "note",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activity_id",
+          "label": "Activity ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "done",
+          "label": "Mark as Done",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lead_id",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "archived",
+          "label": "Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "person_id",
+          "label": "Person ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organization_id",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "owner_id",
+          "label": "Owner ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value_amount",
+          "label": "Value Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value_currency",
+          "label": "Value Currency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expected_close_date",
+          "label": "Expected Close Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "is_archived",
+          "label": "Archive Lead",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

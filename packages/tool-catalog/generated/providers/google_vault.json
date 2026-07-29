@@ -1,0 +1,293 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_vault",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_vault",
+      "legacyIds": ["google-vault"],
+      "provider": "google_vault",
+      "version": "1",
+      "display": {
+        "name": "Google Vault",
+        "description": "Search, export, and manage matters, holds, exports, and saved queries in Vault",
+        "category": "tools",
+        "icon": "GoogleVaultIcon",
+        "bgColor": "#E8F0FE"
+      },
+      "capabilities": [
+        "google_vault_create_matters_export",
+        "google_vault_list_matters_export",
+        "google_vault_delete_matters_export",
+        "google_vault_download_export_file",
+        "google_vault_create_matters_holds",
+        "google_vault_list_matters_holds",
+        "google_vault_update_matters_holds",
+        "google_vault_delete_matters_holds",
+        "google_vault_add_held_accounts",
+        "google_vault_remove_held_accounts",
+        "google_vault_create_matters",
+        "google_vault_list_matters",
+        "google_vault_update_matters",
+        "google_vault_close_matters",
+        "google_vault_reopen_matters",
+        "google_vault_delete_matters",
+        "google_vault_undelete_matters",
+        "google_vault_add_matters_permissions",
+        "google_vault_remove_matters_permissions",
+        "google_vault_create_saved_query",
+        "google_vault_list_saved_queries",
+        "google_vault_delete_saved_query"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Vault Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Vault Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "matterId",
+          "label": "Matter ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listMatterId",
+          "label": "Matter ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bucketName",
+          "label": "Bucket Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "objectName",
+          "label": "Object Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exportName",
+          "label": "Export Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "holdName",
+          "label": "Hold Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "corpus",
+          "label": "Corpus",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accountEmails",
+          "label": "Account Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orgUnitId",
+          "label": "Org Unit ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateHoldAccountEmails",
+          "label": "Account Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateHoldOrgUnitId",
+          "label": "Org Unit ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "savedQueryAccountEmails",
+          "label": "Account Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "savedQueryOrgUnitId",
+          "label": "Org Unit ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTime",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endTime",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "holdStartTime",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "holdEndTime",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "terms",
+          "label": "Search Terms",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "holdTerms",
+          "label": "Search Terms",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeSharedDrives",
+          "label": "Include Shared Drives",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "exportId",
+          "label": "Export ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listExportId",
+          "label": "Export ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "holdId",
+          "label": "Hold ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listHoldId",
+          "label": "Hold ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Matter Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "heldAccountEmails",
+          "label": "Account Emails",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "heldAccountIds",
+          "label": "Account IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "role",
+          "label": "Role",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sendEmails",
+          "label": "Send Notification Email",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "ccMe",
+          "label": "CC Me",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "displayName",
+          "label": "Saved Query Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "savedQueryId",
+          "label": "Saved Query ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listSavedQueryId",
+          "label": "Saved Query ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

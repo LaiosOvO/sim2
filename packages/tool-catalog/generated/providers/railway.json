@@ -1,0 +1,393 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "railway",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "railway",
+      "legacyIds": [],
+      "provider": "railway",
+      "version": "1",
+      "display": {
+        "name": "Railway",
+        "description": "Manage Railway projects, services, deployments, and variables",
+        "category": "tools",
+        "icon": "RailwayIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "railway_list_projects",
+        "railway_get_project",
+        "railway_create_project",
+        "railway_update_project",
+        "railway_delete_project",
+        "railway_transfer_project",
+        "railway_list_project_members",
+        "railway_create_environment",
+        "railway_delete_environment",
+        "railway_create_service",
+        "railway_delete_service",
+        "railway_list_deployments",
+        "railway_get_deployment",
+        "railway_deploy_service",
+        "railway_restart_deployment",
+        "railway_rollback_deployment",
+        "railway_get_deployment_logs",
+        "railway_list_variables",
+        "railway_upsert_variable",
+        "railway_delete_variable"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tokenType",
+          "label": "Token Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listProjectsWorkspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "first",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "detailProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createProjectName",
+          "label": "Project Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createProjectDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createProjectWorkspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createProjectIsPublic",
+          "label": "Public Project",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultEnvironmentName",
+          "label": "Default Environment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prDeploys",
+          "label": "PR Deploys",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateProjectName",
+          "label": "Project Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateProjectDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateProjectIsPublic",
+          "label": "Public Project",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateProjectPrDeploys",
+          "label": "PR Deploys",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transferProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "membersProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createEnvironmentProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environmentName",
+          "label": "Environment Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourceEnvironmentId",
+          "label": "Source Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ephemeral",
+          "label": "Ephemeral",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skipInitialDeploys",
+          "label": "Skip Initial Deploys",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stageInitialChanges",
+          "label": "Stage Initial Changes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteEnvironmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentEnvironmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentFirst",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentAfter",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deployServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deployEnvironmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deployCommitSha",
+          "label": "Commit SHA",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variablesProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variablesEnvironmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variablesServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "upsertProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "upsertEnvironmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "upsertServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variableName",
+          "label": "Variable Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variableValue",
+          "label": "Variable Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skipDeploys",
+          "label": "Skip Deploys",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceName",
+          "label": "Service Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceRepo",
+          "label": "GitHub Repo",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceImage",
+          "label": "Docker Image",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceBranch",
+          "label": "Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentId",
+          "label": "Deployment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteVariableProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteVariableEnvironmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteVariableName",
+          "label": "Variable Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteVariableServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

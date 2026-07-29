@@ -1,0 +1,377 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "incidentio",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "incidentio",
+      "legacyIds": ["incident-io"],
+      "provider": "incidentio",
+      "version": "1",
+      "display": {
+        "name": "incident.io",
+        "description": "Manage incidents with incident.io",
+        "category": "tools",
+        "icon": "IncidentioIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "incidentio_incidents_list",
+        "incidentio_incidents_create",
+        "incidentio_incidents_show",
+        "incidentio_incidents_update",
+        "incidentio_actions_list",
+        "incidentio_actions_show",
+        "incidentio_follow_ups_list",
+        "incidentio_follow_ups_show",
+        "incidentio_users_list",
+        "incidentio_users_show",
+        "incidentio_workflows_list",
+        "incidentio_workflows_create",
+        "incidentio_workflows_show",
+        "incidentio_workflows_update",
+        "incidentio_workflows_delete",
+        "incidentio_schedules_list",
+        "incidentio_schedules_create",
+        "incidentio_schedules_show",
+        "incidentio_schedules_update",
+        "incidentio_schedules_delete",
+        "incidentio_escalations_list",
+        "incidentio_escalations_create",
+        "incidentio_escalations_show",
+        "incidentio_custom_fields_list",
+        "incidentio_custom_fields_create",
+        "incidentio_custom_fields_show",
+        "incidentio_custom_fields_update",
+        "incidentio_custom_fields_delete",
+        "incidentio_severities_list",
+        "incidentio_incident_statuses_list",
+        "incidentio_incident_types_list",
+        "incidentio_incident_roles_list",
+        "incidentio_incident_roles_create",
+        "incidentio_incident_roles_show",
+        "incidentio_incident_roles_update",
+        "incidentio_incident_roles_delete",
+        "incidentio_incident_timestamps_list",
+        "incidentio_incident_timestamps_show",
+        "incidentio_incident_updates_list",
+        "incidentio_schedule_entries_list",
+        "incidentio_schedule_overrides_create",
+        "incidentio_escalation_paths_list",
+        "incidentio_escalation_paths_create",
+        "incidentio_escalation_paths_show",
+        "incidentio_escalation_paths_update",
+        "incidentio_escalation_paths_delete"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page_size",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After (Pagination)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort_by",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter_mode",
+          "label": "Filter Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "summary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "severity_id",
+          "label": "Severity ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incident_type_id",
+          "label": "Incident Type ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incident_status_id",
+          "label": "Incident Status ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notify_incident_channel",
+          "label": "Notify Incident Channel",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "visibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "id",
+          "label": "ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "idempotency_key",
+          "label": "Idempotency Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "escalation_path_id",
+          "label": "Escalation Path ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user_ids",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incident_id",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incident_mode",
+          "label": "Incident Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folder",
+          "label": "Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skip_step_upgrades",
+          "label": "Skip Step Upgrades",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trigger",
+          "label": "Trigger",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runs_on_incidents",
+          "label": "Runs On Incidents",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runs_on_incident_modes",
+          "label": "Incident Modes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "steps",
+          "label": "Steps",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "condition_groups",
+          "label": "Condition Groups",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expressions",
+          "label": "Expressions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "once_for",
+          "label": "Once For",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "delay",
+          "label": "Delay",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_private_incidents",
+          "label": "Include Private Incidents",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "continue_on_step_error",
+          "label": "Continue On Step Error",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "timezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "config",
+          "label": "Schedule Configuration",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "field_type",
+          "label": "Field Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "instructions",
+          "label": "Instructions",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shortform",
+          "label": "Shortform",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "schedule_id",
+          "label": "Schedule ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "entry_window_start",
+          "label": "Entry Window Start (Date/Time)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entry_window_end",
+          "label": "Entry Window End (Date/Time)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rotation_id",
+          "label": "Rotation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "layer_id",
+          "label": "Layer ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user_id",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user_email",
+          "label": "User Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user_slack_id",
+          "label": "User Slack ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start_at",
+          "label": "Start At",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "end_at",
+          "label": "End At",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Path Configuration",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "working_hours",
+          "label": "Working Hours",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

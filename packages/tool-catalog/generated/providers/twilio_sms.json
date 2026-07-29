@@ -1,0 +1,54 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "twilio_sms",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "twilio_sms",
+      "legacyIds": ["twilio-sms"],
+      "provider": "twilio_sms",
+      "version": "1",
+      "display": {
+        "name": "Twilio SMS",
+        "description": "Send SMS messages",
+        "category": "tools",
+        "icon": "TwilioIcon",
+        "bgColor": "#F22F46"
+      },
+      "capabilities": ["twilio_send_sms"],
+      "inputs": [
+        {
+          "key": "phoneNumbers",
+          "label": "Recipient Phone Numbers",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "message",
+          "label": "Message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accountSid",
+          "label": "Twilio Account SID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authToken",
+          "label": "Auth Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromNumber",
+          "label": "From Twilio Phone Number",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

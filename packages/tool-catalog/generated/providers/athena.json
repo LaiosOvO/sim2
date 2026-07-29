@@ -1,0 +1,151 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "athena",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "athena",
+      "legacyIds": [],
+      "provider": "athena",
+      "version": "1",
+      "display": {
+        "name": "Athena",
+        "description": "Run SQL queries on data in Amazon S3 using AWS Athena",
+        "category": "tools",
+        "icon": "AthenaIcon",
+        "bgColor": "linear-gradient(45deg, #4D27A8 0%, #A166FF 100%)"
+      },
+      "capabilities": [
+        "athena_start_query",
+        "athena_get_query_execution",
+        "athena_get_query_results",
+        "athena_stop_query",
+        "athena_list_query_executions",
+        "athena_batch_get_query_execution",
+        "athena_create_named_query",
+        "athena_get_named_query",
+        "athena_list_named_queries",
+        "athena_delete_named_query",
+        "athena_list_databases",
+        "athena_list_table_metadata"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "awsRegion",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsAccessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsSecretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "queryString",
+          "label": "SQL Query",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "database",
+          "label": "Database",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "catalog",
+          "label": "Data Catalog",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputLocation",
+          "label": "Output Location (S3)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workGroup",
+          "label": "Workgroup",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryExecutionId",
+          "label": "Query Execution ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryExecutionIds",
+          "label": "Query Execution IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "namedQueryId",
+          "label": "Named Query ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "catalogName",
+          "label": "Data Catalog",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "databaseName",
+          "label": "Database",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expression",
+          "label": "Table Name Filter (regex)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryName",
+          "label": "Query Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextToken",
+          "label": "Pagination Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

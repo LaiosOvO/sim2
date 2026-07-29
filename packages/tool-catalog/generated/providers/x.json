@@ -1,0 +1,227 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "x",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "x",
+      "legacyIds": [],
+      "provider": "x",
+      "version": "1",
+      "display": {
+        "name": "X",
+        "description": "Interact with X",
+        "category": "tools",
+        "icon": "xIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "x_create_tweet",
+        "x_delete_tweet",
+        "x_search_tweets",
+        "x_get_tweets_by_ids",
+        "x_get_quote_tweets",
+        "x_hide_reply",
+        "x_get_user_tweets",
+        "x_get_user_mentions",
+        "x_get_user_timeline",
+        "x_manage_like",
+        "x_manage_retweet",
+        "x_get_liked_tweets",
+        "x_get_liking_users",
+        "x_get_retweeted_by",
+        "x_get_bookmarks",
+        "x_create_bookmark",
+        "x_delete_bookmark",
+        "x_get_me",
+        "x_search_users",
+        "x_get_followers",
+        "x_get_following",
+        "x_manage_follow",
+        "x_manage_block",
+        "x_get_blocking",
+        "x_manage_mute",
+        "x_get_trends_by_woeid",
+        "x_get_personalized_trends",
+        "x_get_usage"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "X Account",
+          "type": "credential",
+          "required": false
+        },
+        {
+          "key": "manualCredential",
+          "label": "X Account",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Tweet Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replyToTweetId",
+          "label": "Reply To Tweet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "quoteTweetId",
+          "label": "Quote Tweet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaIds",
+          "label": "Media IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replySettings",
+          "label": "Reply Settings",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tweetId",
+          "label": "Tweet ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hidden",
+          "label": "Hidden",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ids",
+          "label": "Tweet IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetUserId",
+          "label": "Target User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "action",
+          "label": "Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retweetAction",
+          "label": "Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "followAction",
+          "label": "Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "blockAction",
+          "label": "Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "muteAction",
+          "label": "Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exclude",
+          "label": "Exclude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTime",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endTime",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paginationToken",
+          "label": "Pagination Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextToken",
+          "label": "Pagination Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "woeid",
+          "label": "WOEID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxTrends",
+          "label": "Max Trends",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "days",
+          "label": "Days",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,377 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "ashby",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "ashby",
+      "legacyIds": [],
+      "provider": "ashby",
+      "version": "1",
+      "display": {
+        "name": "Ashby",
+        "description": "Manage candidates, jobs, and applications in Ashby",
+        "category": "tools",
+        "icon": "AshbyIcon",
+        "bgColor": "#5D4ED6"
+      },
+      "capabilities": [
+        "ashby_add_candidate_tag",
+        "ashby_change_application_stage",
+        "ashby_create_application",
+        "ashby_create_candidate",
+        "ashby_create_note",
+        "ashby_get_application",
+        "ashby_get_candidate",
+        "ashby_get_job",
+        "ashby_get_job_posting",
+        "ashby_get_offer",
+        "ashby_list_applications",
+        "ashby_list_archive_reasons",
+        "ashby_list_candidate_tags",
+        "ashby_list_candidates",
+        "ashby_list_custom_fields",
+        "ashby_list_departments",
+        "ashby_list_interviews",
+        "ashby_list_job_postings",
+        "ashby_list_jobs",
+        "ashby_list_locations",
+        "ashby_list_notes",
+        "ashby_list_offers",
+        "ashby_list_openings",
+        "ashby_list_sources",
+        "ashby_list_users",
+        "ashby_remove_candidate_tag",
+        "ashby_search_candidates",
+        "ashby_update_candidate"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "candidateId",
+          "label": "Candidate ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedInUrl",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "githubUrl",
+          "label": "GitHub URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourceId",
+          "label": "Source ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Website URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alternateEmail",
+          "label": "Alternate Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "candidateCreatedAt",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateName",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "websiteUrl",
+          "label": "Website URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchName",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobId",
+          "label": "Job ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "applicationId",
+          "label": "Application ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appCandidateId",
+          "label": "Candidate ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interviewPlanId",
+          "label": "Interview Plan ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interviewStageId",
+          "label": "Interview Stage ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "creditedToUserId",
+          "label": "Credited To User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appCreatedAt",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "note",
+          "label": "Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendNotifications",
+          "label": "Send Notifications",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "isPrivate",
+          "label": "Private Note",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "noteCreatedAt",
+          "label": "Created At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterJobId",
+          "label": "Job ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdAfter",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "openedAfter",
+          "label": "Opened After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "openedBefore",
+          "label": "Opened Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "closedAfter",
+          "label": "Closed After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "closedBefore",
+          "label": "Closed Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "perPage",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "syncToken",
+          "label": "Sync Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeLocationHierarchy",
+          "label": "Include Location Hierarchy",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "offerApplicationId",
+          "label": "Application ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alternateEmailAddresses",
+          "label": "Alternate Email Addresses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "socialLinks",
+          "label": "Social Links",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeArchived",
+          "label": "Include Archived",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeDeactivated",
+          "label": "Include Deactivated",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "jobBoardId",
+          "label": "Job Board ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postingLocation",
+          "label": "Location Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postingDepartment",
+          "label": "Department Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listedOnly",
+          "label": "Listed Postings Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "expandJob",
+          "label": "Include Job",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "tagId",
+          "label": "Tag ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "archiveReasonId",
+          "label": "Archive Reason ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offerId",
+          "label": "Offer ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobPostingId",
+          "label": "Job Posting ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

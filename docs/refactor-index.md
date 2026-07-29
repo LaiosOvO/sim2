@@ -31,6 +31,7 @@
 
 - [Phase 1 工程拓扑与边界门禁检查点](./handoffs/phase-1-foundation-checkpoint.md)
 - [Phase 2 Contract Foundation 检查点](./handoffs/phase-2-contract-foundation.md)
+- [Phase 2 Browser-safe Tool Catalog 检查点](./handoffs/phase-2-tool-catalog.md)
 
 ## 阅读顺序
 

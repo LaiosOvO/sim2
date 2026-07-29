@@ -1,0 +1,362 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "context_dev",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "context_dev",
+      "legacyIds": ["context-dev"],
+      "provider": "context_dev",
+      "version": "1",
+      "display": {
+        "name": "Context.dev",
+        "description": "Scrape, crawl, search, extract, and enrich web and brand data",
+        "category": "tools",
+        "icon": "ContextDevIcon",
+        "bgColor": "#ffffff"
+      },
+      "capabilities": [
+        "context_dev_scrape_markdown",
+        "context_dev_scrape_html",
+        "context_dev_scrape_images",
+        "context_dev_screenshot",
+        "context_dev_crawl",
+        "context_dev_map",
+        "context_dev_search",
+        "context_dev_extract",
+        "context_dev_extract_product",
+        "context_dev_extract_products",
+        "context_dev_scrape_fonts",
+        "context_dev_scrape_styleguide",
+        "context_dev_classify_naics",
+        "context_dev_classify_sic",
+        "context_dev_get_brand",
+        "context_dev_get_brand_by_name",
+        "context_dev_get_brand_by_email",
+        "context_dev_get_brand_by_ticker",
+        "context_dev_identify_transaction"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Website URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "input",
+          "label": "Domain or Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Work Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticker",
+          "label": "Stock Ticker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transactionInfo",
+          "label": "Transaction Descriptor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schema",
+          "label": "Extraction Schema",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "instructions",
+          "label": "Instructions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "useMainContentOnly",
+          "label": "Only Main Content",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeLinks",
+          "label": "Include Links",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeImages",
+          "label": "Include Images",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeFrames",
+          "label": "Include Frames",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "fullScreenshot",
+          "label": "Full Page Screenshot",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "handleCookiePopup",
+          "label": "Dismiss Cookie Popups",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "markdownEnabled",
+          "label": "Scrape Results to Markdown",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "tickerExchange",
+          "label": "Exchange",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sicType",
+          "label": "SIC Taxonomy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDomains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeDomains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryFanout",
+          "label": "Query Fan-out",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "numResults",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "factCheck",
+          "label": "Fact Check",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "followSubdomains",
+          "label": "Follow Subdomains",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "maxPages",
+          "label": "Max Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "extractMaxPages",
+          "label": "Max Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxDepth",
+          "label": "Max Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxProducts",
+          "label": "Max Products",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "urlRegex",
+          "label": "URL Regex",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxLinks",
+          "label": "Max Links",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewportWidth",
+          "label": "Viewport Width",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewportHeight",
+          "label": "Viewport Height",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enrichResolution",
+          "label": "Enrich: Resolution",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "enrichHostedUrl",
+          "label": "Enrich: Hosted URL",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "enrichClassification",
+          "label": "Enrich: Classification",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "minResults",
+          "label": "Min Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countryGl",
+          "label": "Country Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "city",
+          "label": "City",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mcc",
+          "label": "Merchant Category Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "highConfidenceOnly",
+          "label": "High Confidence Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "forceLanguage",
+          "label": "Force Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxSpeed",
+          "label": "Max Speed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "waitForMs",
+          "label": "Wait For (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stopAfterMs",
+          "label": "Stop After (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxAgeMs",
+          "label": "Cache Max Age (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeoutMS",
+          "label": "Timeout (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

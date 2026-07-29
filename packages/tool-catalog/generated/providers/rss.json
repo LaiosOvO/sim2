@@ -1,0 +1,23 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "rss",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "rss",
+      "legacyIds": [],
+      "provider": "rss",
+      "version": "1",
+      "display": {
+        "name": "RSS Feed",
+        "description": "Monitor RSS feeds and trigger workflows when new items are published",
+        "category": "triggers",
+        "icon": "RssIcon",
+        "bgColor": "#F97316"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

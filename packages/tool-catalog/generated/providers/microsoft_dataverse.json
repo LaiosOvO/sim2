@@ -1,0 +1,253 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "microsoft_dataverse",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "microsoft_dataverse",
+      "legacyIds": ["microsoft-dataverse"],
+      "provider": "microsoft_dataverse",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Dataverse",
+        "description": "Manage records in Microsoft Dataverse tables",
+        "category": "tools",
+        "icon": "MicrosoftDataverseIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "microsoft_dataverse_associate",
+        "microsoft_dataverse_create_multiple",
+        "microsoft_dataverse_create_record",
+        "microsoft_dataverse_delete_record",
+        "microsoft_dataverse_disassociate",
+        "microsoft_dataverse_download_file",
+        "microsoft_dataverse_execute_action",
+        "microsoft_dataverse_execute_function",
+        "microsoft_dataverse_fetchxml_query",
+        "microsoft_dataverse_get_entity_metadata",
+        "microsoft_dataverse_get_record",
+        "microsoft_dataverse_list_records",
+        "microsoft_dataverse_search",
+        "microsoft_dataverse_update_multiple",
+        "microsoft_dataverse_update_record",
+        "microsoft_dataverse_upload_file",
+        "microsoft_dataverse_upsert_record",
+        "microsoft_dataverse_whoami"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "environmentUrl",
+          "label": "Environment URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "entitySetName",
+          "label": "Entity Set Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "data",
+          "label": "Record Data",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fetchXml",
+          "label": "FetchXML",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchTerm",
+          "label": "Search Term",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchEntities",
+          "label": "Search Entities",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchMode",
+          "label": "Search Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchType",
+          "label": "Query Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "facets",
+          "label": "Facets",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skip",
+          "label": "Skip",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionName",
+          "label": "Action Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionName",
+          "label": "Function Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionParameters",
+          "label": "Function Parameters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parameters",
+          "label": "Action Parameters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entityLogicalName",
+          "label": "Table Logical Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeAttributes",
+          "label": "Include Column Definitions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "records",
+          "label": "Records",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileColumn",
+          "label": "File Column",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileReference",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metadataSelect",
+          "label": "Select Metadata Properties",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "select",
+          "label": "Select Columns",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "top",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "count",
+          "label": "Include Total Count",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expand",
+          "label": "Expand",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "navigationProperty",
+          "label": "Navigation Property",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "navigationType",
+          "label": "Navigation Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetEntitySetName",
+          "label": "Target Entity Set",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetRecordId",
+          "label": "Target Record ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "logs",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "logs",
+      "legacyIds": [],
+      "provider": "logs",
+      "version": "1",
+      "display": {
+        "name": "Logs",
+        "description": "Query workflow execution logs",
+        "category": "blocks",
+        "icon": "Library",
+        "bgColor": "#EAB308"
+      },
+      "capabilities": ["logs_query", "logs_get", "logs_get_execution"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowIds",
+          "label": "Workflow IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "executionId",
+          "label": "Execution ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "level",
+          "label": "Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "triggers",
+          "label": "Triggers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logId",
+          "label": "Log ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "executionIdLookup",
+          "label": "Execution ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "logs_v2",
+      "legacyIds": ["logs-v2"],
+      "provider": "logs",
+      "version": "2",
+      "display": {
+        "name": "Logs",
+        "description": "Query workflow runs and fetch run details",
+        "category": "blocks",
+        "icon": "Library",
+        "bgColor": "#EAB308"
+      },
+      "capabilities": ["logs_query_runs", "logs_get_run_details"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowSelector",
+          "label": "Workflows",
+          "type": "string",
+          "required": false,
+          "description": "Only include runs of these workflows. Leave empty for all."
+        },
+        {
+          "key": "manualWorkflowIds",
+          "label": "Workflow IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "level",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeRange",
+          "label": "Time Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "costOperator",
+          "label": "Cost Comparison",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "costValue",
+          "label": "Cost (credits)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationOperator",
+          "label": "Duration Comparison",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationValue",
+          "label": "Duration (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

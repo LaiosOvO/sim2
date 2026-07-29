@@ -1,0 +1,317 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "image_generator",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "image_generator",
+      "legacyIds": ["image-generator"],
+      "provider": "image_generator",
+      "version": "1",
+      "display": {
+        "name": "Image Generator",
+        "description": "Generate images",
+        "category": "blocks",
+        "icon": "ImageIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "capabilities": ["openai_image"],
+      "inputs": [
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "quality",
+          "label": "Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "quality",
+          "label": "Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "style",
+          "label": "Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "background",
+          "label": "Background",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "background",
+          "label": "Background",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moderation",
+          "label": "Moderation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "image_generator_v2",
+      "legacyIds": ["image-generator-v2"],
+      "provider": "image_generator",
+      "version": "2",
+      "display": {
+        "name": "Image Generator",
+        "description": "Generate images",
+        "category": "blocks",
+        "icon": "ImageIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "capabilities": ["image_generate"],
+      "inputs": [
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "quality",
+          "label": "Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "quality",
+          "label": "Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "background",
+          "label": "Background",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moderation",
+          "label": "Moderation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "safetyTolerance",
+          "label": "Safety Tolerance",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "safetyTolerance",
+          "label": "Safety Tolerance",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "thinkingLevel",
+          "label": "Thinking Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enableWebSearch",
+          "label": "Web Search",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "enableSafetyChecker",
+          "label": "Safety Checker",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

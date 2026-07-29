@@ -1,0 +1,429 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "trigger_dev",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "trigger_dev",
+      "legacyIds": ["trigger-dev"],
+      "provider": "trigger_dev",
+      "version": "1",
+      "display": {
+        "name": "Trigger.dev",
+        "description": "Trigger tasks and manage runs and schedules",
+        "category": "tools",
+        "icon": "TriggerDevIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "trigger_dev_trigger_task",
+        "trigger_dev_batch_trigger_task",
+        "trigger_dev_get_batch",
+        "trigger_dev_get_batch_results",
+        "trigger_dev_get_run",
+        "trigger_dev_get_run_result",
+        "trigger_dev_get_run_events",
+        "trigger_dev_get_run_trace",
+        "trigger_dev_list_runs",
+        "trigger_dev_cancel_run",
+        "trigger_dev_replay_run",
+        "trigger_dev_reschedule_run",
+        "trigger_dev_add_run_tags",
+        "trigger_dev_update_run_metadata",
+        "trigger_dev_create_schedule",
+        "trigger_dev_get_schedule",
+        "trigger_dev_list_schedules",
+        "trigger_dev_update_schedule",
+        "trigger_dev_delete_schedule",
+        "trigger_dev_activate_schedule",
+        "trigger_dev_deactivate_schedule",
+        "trigger_dev_list_env_vars",
+        "trigger_dev_create_env_var",
+        "trigger_dev_get_env_var",
+        "trigger_dev_update_env_var",
+        "trigger_dev_delete_env_var",
+        "trigger_dev_import_env_vars",
+        "trigger_dev_get_queue",
+        "trigger_dev_list_queues",
+        "trigger_dev_pause_queue",
+        "trigger_dev_resume_queue",
+        "trigger_dev_override_queue_concurrency",
+        "trigger_dev_reset_queue_concurrency",
+        "trigger_dev_list_deployments",
+        "trigger_dev_get_deployment",
+        "trigger_dev_get_latest_deployment",
+        "trigger_dev_promote_deployment",
+        "trigger_dev_execute_query",
+        "trigger_dev_get_query_schema",
+        "trigger_dev_create_waitpoint_token",
+        "trigger_dev_complete_waitpoint_token",
+        "trigger_dev_get_waitpoint_token",
+        "trigger_dev_list_waitpoint_tokens",
+        "trigger_dev_list_timezones"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Secret API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "taskIdentifier",
+          "label": "Task Identifier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "payload",
+          "label": "Payload",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "idempotencyKey",
+          "label": "Idempotency Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queue",
+          "label": "Queue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "concurrencyKey",
+          "label": "Concurrency Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "delay",
+          "label": "Delay",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ttl",
+          "label": "TTL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "machine",
+          "label": "Machine",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "items",
+          "label": "Batch Items",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "batchId",
+          "label": "Batch ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rescheduleDelay",
+          "label": "Delay",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runTags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metadata",
+          "label": "Metadata",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterTaskIdentifier",
+          "label": "Task Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "period",
+          "label": "Time Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "from",
+          "label": "From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "to",
+          "label": "To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "version",
+          "label": "Version Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tag",
+          "label": "Tag Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedule",
+          "label": "Schedule Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isTest",
+          "label": "Test Runs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageAfter",
+          "label": "Page After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageBefore",
+          "label": "Page Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleId",
+          "label": "Schedule ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "task",
+          "label": "Task Identifier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cron",
+          "label": "Cron Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deduplicationKey",
+          "label": "Deduplication Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "perPage",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectRef",
+          "label": "Project Ref",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environment",
+          "label": "Environment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Variable Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Variable Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "variables",
+          "label": "Variables",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "override",
+          "label": "Override Existing",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queueName",
+          "label": "Queue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queueType",
+          "label": "Queue Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "concurrencyLimit",
+          "label": "Concurrency Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentId",
+          "label": "Deployment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentVersion",
+          "label": "Deployment Version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "TRQL Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scope",
+          "label": "Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waitpointId",
+          "label": "Waitpoint ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waitpointData",
+          "label": "Completion Data",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "idempotencyKeyTTL",
+          "label": "Idempotency Key TTL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waitpointStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterIdempotencyKey",
+          "label": "Idempotency Key Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waitpointTags",
+          "label": "Tag Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excludeUtc",
+          "label": "Exclude UTC",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

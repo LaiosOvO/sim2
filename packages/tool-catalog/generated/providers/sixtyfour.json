@@ -1,0 +1,149 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sixtyfour",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sixtyfour",
+      "legacyIds": ["sixtyfour-ai"],
+      "provider": "sixtyfour",
+      "version": "1",
+      "display": {
+        "name": "Sixtyfour AI",
+        "description": "Enrich leads and companies with AI-powered research",
+        "category": "tools",
+        "icon": "SixtyfourIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "sixtyfour_find_phone",
+        "sixtyfour_find_email",
+        "sixtyfour_enrich_lead",
+        "sixtyfour_enrich_company"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company",
+          "label": "Company",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedinUrl",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailInput",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneInput",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadInfo",
+          "label": "Lead Info",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadStruct",
+          "label": "Fields to Collect",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadResearchPlan",
+          "label": "Research Plan",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetCompany",
+          "label": "Company Info",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyStruct",
+          "label": "Fields to Collect",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "findPeople",
+          "label": "Find People",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "peopleFocusPrompt",
+          "label": "People Focus",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fullOrgChart",
+          "label": "Full Org Chart",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "companyLeadStruct",
+          "label": "Lead Schema",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyResearchPlan",
+          "label": "Research Plan",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,545 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "clickup",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "clickup",
+      "legacyIds": [],
+      "provider": "clickup",
+      "version": "1",
+      "display": {
+        "name": "ClickUp",
+        "description": "Interact with ClickUp",
+        "category": "tools",
+        "icon": "ClickUpIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "clickup_create_task",
+        "clickup_get_task",
+        "clickup_update_task",
+        "clickup_delete_task",
+        "clickup_get_tasks",
+        "clickup_search_tasks",
+        "clickup_create_comment",
+        "clickup_get_comments",
+        "clickup_update_comment",
+        "clickup_delete_comment",
+        "clickup_upload_attachment",
+        "clickup_add_tag_to_task",
+        "clickup_remove_tag_from_task",
+        "clickup_get_space_tags",
+        "clickup_get_task_members",
+        "clickup_get_list_members",
+        "clickup_get_custom_fields",
+        "clickup_get_workspaces",
+        "clickup_get_spaces",
+        "clickup_get_folders",
+        "clickup_get_lists",
+        "clickup_create_folder",
+        "clickup_create_list",
+        "clickup_set_custom_field_value",
+        "clickup_remove_custom_field_value",
+        "clickup_create_checklist",
+        "clickup_update_checklist",
+        "clickup_delete_checklist",
+        "clickup_create_checklist_item",
+        "clickup_update_checklist_item",
+        "clickup_delete_checklist_item",
+        "clickup_get_time_entries",
+        "clickup_create_time_entry",
+        "clickup_update_time_entry",
+        "clickup_delete_time_entry",
+        "clickup_start_timer",
+        "clickup_stop_timer",
+        "clickup_get_running_timer"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "ClickUp Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "ClickUp Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workspaceSelector",
+          "label": "Workspace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualWorkspaceId",
+          "label": "Workspace (Team) ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceSelector",
+          "label": "Space",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualSpaceId",
+          "label": "Space ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listParent",
+          "label": "Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSpaceSelector",
+          "label": "Space",
+          "type": "string",
+          "required": false,
+          "description": "Required for folderless lists; used to browse folders in folder mode"
+        },
+        {
+          "key": "manualListSpaceId",
+          "label": "Space ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderSelector",
+          "label": "Folder",
+          "type": "string",
+          "required": false,
+          "description": "Leave empty for folderless lists that live directly in the space"
+        },
+        {
+          "key": "manualFolderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSelector",
+          "label": "List",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualListId",
+          "label": "List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "markdownContent",
+          "label": "Markdown Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDate",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignees",
+          "label": "Assignees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneesToAdd",
+          "label": "Add Assignees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneesToRemove",
+          "label": "Remove Assignees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEstimate",
+          "label": "Time Estimate",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "points",
+          "label": "Sprint Points",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parent",
+          "label": "Parent Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateTime",
+          "label": "Due Date Has Time",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "startDateTime",
+          "label": "Start Date Has Time",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "notifyAll",
+          "label": "Notify All",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "archiveAction",
+          "label": "Archive",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeSubtasks",
+          "label": "Include Subtasks",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeMarkdownDescription",
+          "label": "Return Markdown Description",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reverse",
+          "label": "Reverse Order",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "subtasks",
+          "label": "Include Subtasks",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeClosed",
+          "label": "Include Closed Tasks",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "archived",
+          "label": "Archived Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "statuses",
+          "label": "Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateGt",
+          "label": "Due After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateLt",
+          "label": "Due Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listIds",
+          "label": "List IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceIds",
+          "label": "Space IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderIds",
+          "label": "Folder IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentText",
+          "label": "Comment Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentAssignee",
+          "label": "Comment Assignee",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolvedAction",
+          "label": "Resolved",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startId",
+          "label": "Start Comment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagName",
+          "label": "Tag Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "List Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldId",
+          "label": "Custom Field ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fieldValue",
+          "label": "Value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "checklistId",
+          "label": "Checklist ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "checklistItemId",
+          "label": "Checklist Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "position",
+          "label": "Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemAssignee",
+          "label": "Item Assignee",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemParent",
+          "label": "Parent Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timerId",
+          "label": "Time Entry ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "entryStart",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryEnd",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryDuration",
+          "label": "Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryDescription",
+          "label": "Entry Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billableAction",
+          "label": "Billable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timerTaskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timerTags",
+          "label": "Entry Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timerAssignee",
+          "label": "Assignees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryAssignee",
+          "label": "Assignee",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeStartDate",
+          "label": "From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEndDate",
+          "label": "To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeLocationType",
+          "label": "Filter By Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeLocationId",
+          "label": "Location ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeTaskTags",
+          "label": "Include Task Tags",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeLocationNames",
+          "label": "Include Location Names",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "attachmentFile",
+          "label": "File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileReference",
+          "label": "File",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

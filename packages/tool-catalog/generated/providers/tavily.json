@@ -1,0 +1,228 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "tavily",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "tavily",
+      "legacyIds": [],
+      "provider": "tavily",
+      "version": "1",
+      "display": {
+        "name": "Tavily",
+        "description": "Search and extract information",
+        "category": "tools",
+        "icon": "TavilyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["tavily_search", "tavily_extract", "tavily_crawl", "tavily_map"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "max_results",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "topic",
+          "label": "Topic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_depth",
+          "label": "Search Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_answer",
+          "label": "Include Answer",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_raw_content",
+          "label": "Include Raw Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_images",
+          "label": "Include Images",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "include_image_descriptions",
+          "label": "Include Image Descriptions",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "include_favicon",
+          "label": "Include Favicon",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "time_range",
+          "label": "Time Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_domains",
+          "label": "Include Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exclude_domains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "urls",
+          "label": "URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "extract_depth",
+          "label": "Extract Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_images",
+          "label": "Include Images",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "include_favicon",
+          "label": "Include Favicon",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Website URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "instructions",
+          "label": "Instructions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_depth",
+          "label": "Max Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_breadth",
+          "label": "Max Breadth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "select_paths",
+          "label": "Select Paths",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "select_domains",
+          "label": "Select Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exclude_paths",
+          "label": "Exclude Paths",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "exclude_domains",
+          "label": "Exclude Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allow_external",
+          "label": "Allow External Links",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "include_images",
+          "label": "Include Images",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "extract_depth",
+          "label": "Extract Depth",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "include_favicon",
+          "label": "Include Favicon",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

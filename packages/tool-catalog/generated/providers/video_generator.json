@@ -1,0 +1,577 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "video_generator",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "video_generator",
+      "legacyIds": ["video-generator"],
+      "provider": "video_generator",
+      "version": "1",
+      "display": {
+        "name": "Video Generator (Legacy)",
+        "description": "Generate videos from text using AI",
+        "category": "blocks",
+        "icon": "VideoIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": ["video_runway", "video_veo", "video_luma", "video_minimax", "video_falai"],
+      "inputs": [
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endpoint",
+          "label": "Quality Endpoint",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visualReference",
+          "label": "Reference Image",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "cameraControl",
+          "label": "Camera Controls",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "promptOptimizer",
+          "label": "Prompt Optimizer",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "promptOptimizer",
+          "label": "Prompt Optimizer",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "generateAudio",
+          "label": "Generate Audio",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "generateAudio",
+          "label": "Generate Audio",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "video_generator_v2",
+      "legacyIds": ["video-generator-v2"],
+      "provider": "video_generator",
+      "version": "2",
+      "display": {
+        "name": "Video Generator",
+        "description": "",
+        "category": "blocks"
+      },
+      "capabilities": ["video_runway", "video_veo", "video_luma", "video_minimax", "video_falai"],
+      "inputs": [
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endpoint",
+          "label": "Quality Endpoint",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aspectRatio",
+          "label": "Aspect Ratio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visualReferenceUpload",
+          "label": "Reference Image",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "visualReferenceInput",
+          "label": "Reference Image",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cameraControl",
+          "label": "Camera Controls",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "promptOptimizer",
+          "label": "Prompt Optimizer",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "promptOptimizer",
+          "label": "Prompt Optimizer",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "generateAudio",
+          "label": "Generate Audio",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "generateAudio",
+          "label": "Generate Audio",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "video_generator_v3",
+      "legacyIds": ["video-generator-v3"],
+      "provider": "video_generator",
+      "version": "3",
+      "display": {
+        "name": "Video Generator",
+        "description": "Generate videos from text using AI",
+        "category": "blocks",
+        "icon": "VideoIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

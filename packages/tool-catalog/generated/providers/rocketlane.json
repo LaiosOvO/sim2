@@ -1,0 +1,1145 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "rocketlane",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "rocketlane",
+      "legacyIds": [],
+      "provider": "rocketlane",
+      "version": "1",
+      "display": {
+        "name": "Rocketlane",
+        "description": "Manage client onboarding projects, tasks, time tracking, and invoices",
+        "category": "tools",
+        "icon": "RocketlaneIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "rocketlane_create_project",
+        "rocketlane_get_project",
+        "rocketlane_list_projects",
+        "rocketlane_update_project",
+        "rocketlane_archive_project",
+        "rocketlane_delete_project",
+        "rocketlane_add_project_members",
+        "rocketlane_remove_project_members",
+        "rocketlane_import_template",
+        "rocketlane_list_placeholders",
+        "rocketlane_assign_placeholders",
+        "rocketlane_unassign_placeholders",
+        "rocketlane_create_task",
+        "rocketlane_get_task",
+        "rocketlane_list_tasks",
+        "rocketlane_update_task",
+        "rocketlane_delete_task",
+        "rocketlane_move_task_to_phase",
+        "rocketlane_add_task_assignees",
+        "rocketlane_remove_task_assignees",
+        "rocketlane_add_task_followers",
+        "rocketlane_remove_task_followers",
+        "rocketlane_add_task_dependencies",
+        "rocketlane_remove_task_dependencies",
+        "rocketlane_create_phase",
+        "rocketlane_get_phase",
+        "rocketlane_list_phases",
+        "rocketlane_update_phase",
+        "rocketlane_delete_phase",
+        "rocketlane_create_field",
+        "rocketlane_get_field",
+        "rocketlane_list_fields",
+        "rocketlane_update_field",
+        "rocketlane_delete_field",
+        "rocketlane_add_field_option",
+        "rocketlane_update_field_option",
+        "rocketlane_create_time_entry",
+        "rocketlane_get_time_entry",
+        "rocketlane_list_time_entries",
+        "rocketlane_search_time_entries",
+        "rocketlane_update_time_entry",
+        "rocketlane_delete_time_entry",
+        "rocketlane_list_time_entry_categories",
+        "rocketlane_create_time_off",
+        "rocketlane_get_time_off",
+        "rocketlane_list_time_offs",
+        "rocketlane_delete_time_off",
+        "rocketlane_get_user",
+        "rocketlane_list_users",
+        "rocketlane_create_space",
+        "rocketlane_get_space",
+        "rocketlane_list_spaces",
+        "rocketlane_update_space",
+        "rocketlane_delete_space",
+        "rocketlane_create_space_document",
+        "rocketlane_get_space_document",
+        "rocketlane_list_space_documents",
+        "rocketlane_update_space_document",
+        "rocketlane_delete_space_document",
+        "rocketlane_list_resource_allocations",
+        "rocketlane_get_invoice",
+        "rocketlane_list_invoices",
+        "rocketlane_get_invoice_line_items",
+        "rocketlane_get_invoice_payments"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phaseId",
+          "label": "Phase ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldId",
+          "label": "Field ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceId",
+          "label": "Space ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceDocumentId",
+          "label": "Space Document ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEntryId",
+          "label": "Time Entry ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeOffId",
+          "label": "Time-Off ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invoiceId",
+          "label": "Invoice ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "placeholderId",
+          "label": "Placeholder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userEmail",
+          "label": "User Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectName",
+          "label": "Project Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerCompanyName",
+          "label": "Customer Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerUserId",
+          "label": "Owner User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerEmailId",
+          "label": "Owner Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerChampionUserId",
+          "label": "Customer Champion User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerUserIds",
+          "label": "Customer User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerEmailIds",
+          "label": "Customer Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Custom Fields",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sources",
+          "label": "Template Sources",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "placeholders",
+          "label": "Placeholder Assignments",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "assignProjectOwner",
+          "label": "Assign Unassigned Tasks to Owner",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "autoCreateCompany",
+          "label": "Auto-create Customer Company",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "autoAllocation",
+          "label": "Auto Allocation",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "annualizedRecurringRevenue",
+          "label": "Annualized Recurring Revenue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectFee",
+          "label": "Project Fee",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "budgetedHours",
+          "label": "Budgeted Hours",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contractType",
+          "label": "Contract Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fixedFee",
+          "label": "Fixed Fee",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectBudget",
+          "label": "Project Budget",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rateCardId",
+          "label": "Rate Card ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subscriptionFrequency",
+          "label": "Subscription Frequency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subscriptionStartDate",
+          "label": "Subscription Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "periodMinutes",
+          "label": "Budgeted Minutes per Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "periodBudget",
+          "label": "Budget per Period",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noOfPeriods",
+          "label": "Number of Periods",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currency",
+          "label": "Currency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberUserIds",
+          "label": "Member User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberEmailIds",
+          "label": "Member Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dependencyTaskIds",
+          "label": "Dependency Task IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskName",
+          "label": "Task Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskPrivateNote",
+          "label": "Private Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskType",
+          "label": "Task Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effortInMinutes",
+          "label": "Effort (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "progress",
+          "label": "Progress (%)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "atRisk",
+          "label": "At Risk",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "assigneeUserIds",
+          "label": "Assignee User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeEmailIds",
+          "label": "Assignee Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "followerUserIds",
+          "label": "Follower User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "followerEmailIds",
+          "label": "Follower Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentTaskId",
+          "label": "Parent Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalReferenceId",
+          "label": "External Reference ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phaseName",
+          "label": "Phase Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldLabel",
+          "label": "Field Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldType",
+          "label": "Field Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectType",
+          "label": "Object Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldDescription",
+          "label": "Field Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldOptions",
+          "label": "Field Options",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "ratingScale",
+          "label": "Rating Scale",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enabled",
+          "label": "Enabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "private",
+          "label": "Private",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "optionLabel",
+          "label": "Option Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "optionColor",
+          "label": "Option Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "optionValue",
+          "label": "Option Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateId",
+          "label": "Template ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prefix",
+          "label": "Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDate",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusValue",
+          "label": "Status Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "minutes",
+          "label": "Minutes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEntrySource",
+          "label": "Track Time Against",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEntryTaskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEntryProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEntryPhaseId",
+          "label": "Project Phase ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEntryActivityName",
+          "label": "Activity Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityName",
+          "label": "Activity Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billable",
+          "label": "Billable",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "categoryId",
+          "label": "Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeOffType",
+          "label": "Time-Off Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationInMinutes",
+          "label": "Duration per Day (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "note",
+          "label": "Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notifyProjectOwners",
+          "label": "Notify Project Owners",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "notifyUserIds",
+          "label": "Notify User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notifyUserEmails",
+          "label": "Notify User Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceName",
+          "label": "Space Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceDocumentType",
+          "label": "Document Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceDocumentName",
+          "label": "Document Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Embed URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentTemplateId",
+          "label": "Document Template ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectNameContains",
+          "label": "Project Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectNameEquals",
+          "label": "Project Name Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusEquals",
+          "label": "Status Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusOneOf",
+          "label": "Status One Of",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerIdEquals",
+          "label": "Customer Company ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerIdOneOf",
+          "label": "Customer Company ID One Of",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamMemberIdEquals",
+          "label": "Team Member ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contractTypeEquals",
+          "label": "Contract Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeArchived",
+          "label": "Include Archived",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "externalReferenceIdEquals",
+          "label": "External Reference ID Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateAfter",
+          "label": "Start Date After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateBefore",
+          "label": "Start Date Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateAfter",
+          "label": "Due Date After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateBefore",
+          "label": "Due Date Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskNameContains",
+          "label": "Task Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskStatus",
+          "label": "Task Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateFrom",
+          "label": "Start Date From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateTo",
+          "label": "Start Date To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateFrom",
+          "label": "Due Date From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateTo",
+          "label": "Due Date To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeArchive",
+          "label": "Include Archived Tasks",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "dateEq",
+          "label": "Date Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateGe",
+          "label": "Date On or After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateLe",
+          "label": "Date On or Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectIdEq",
+          "label": "Project ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskIdEq",
+          "label": "Task ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectPhaseIdEq",
+          "label": "Phase ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryIdEq",
+          "label": "Category ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userIdEq",
+          "label": "User ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailIdEq",
+          "label": "User Email Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailIdCn",
+          "label": "User Email Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourceTypeEq",
+          "label": "Source Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityNameEq",
+          "label": "Activity Name Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activityNameCn",
+          "label": "Activity Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalStatusEq",
+          "label": "Approval Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "billableEq",
+          "label": "Billable Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeDeletedEq",
+          "label": "Include Deleted",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "createdAtGt",
+          "label": "Created After (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdAtLt",
+          "label": "Created Before (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedAtGt",
+          "label": "Updated After (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedAtLt",
+          "label": "Updated Before (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateGe",
+          "label": "Start Date On or After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateLe",
+          "label": "Start Date On or Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDateGe",
+          "label": "End Date On or After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDateLe",
+          "label": "End Date On or Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeOffTypeEq",
+          "label": "Time-Off Type Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstNameCn",
+          "label": "First Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastNameCn",
+          "label": "Last Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailEq",
+          "label": "Email Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailCn",
+          "label": "Email Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userStatusEq",
+          "label": "User Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userTypeEq",
+          "label": "User Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceNameEq",
+          "label": "Space Name Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceNameCn",
+          "label": "Space Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceDocumentNameEq",
+          "label": "Document Name Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceDocumentNameCn",
+          "label": "Document Name Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spaceIdEq",
+          "label": "Space ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberIdEq",
+          "label": "Member ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "placeholderIdEq",
+          "label": "Placeholder ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invoiceStatusEq",
+          "label": "Invoice Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invoiceStatusOneOf",
+          "label": "Invoice Status One Of",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invoiceNumberEq",
+          "label": "Invoice Number Equals",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invoiceNumberCn",
+          "label": "Invoice Number Contains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyIdEq",
+          "label": "Company ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyIdOneOf",
+          "label": "Company ID One Of",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateOfIssueGe",
+          "label": "Issued On or After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateOfIssueLe",
+          "label": "Issued On or Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateGe",
+          "label": "Due On or After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateLe",
+          "label": "Due On or Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amountGe",
+          "label": "Amount At Least",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amountLe",
+          "label": "Amount At Most",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amountOutstandingGt",
+          "label": "Amount Outstanding Greater Than",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "match",
+          "label": "Filter Match",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeFields",
+          "label": "Include Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeAllFields",
+          "label": "Include All Fields",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

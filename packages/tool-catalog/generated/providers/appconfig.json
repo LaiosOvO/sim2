@@ -1,0 +1,182 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "appconfig",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "appconfig",
+      "legacyIds": ["aws-appconfig"],
+      "provider": "appconfig",
+      "version": "1",
+      "display": {
+        "name": "AWS AppConfig",
+        "description": "Manage and retrieve configuration with AWS AppConfig",
+        "category": "tools",
+        "icon": "AppConfigIcon",
+        "bgColor": "linear-gradient(45deg, #B0084D 0%, #FF4F8B 100%)"
+      },
+      "capabilities": [
+        "appconfig_get_configuration",
+        "appconfig_list_applications",
+        "appconfig_create_application",
+        "appconfig_get_application",
+        "appconfig_update_application",
+        "appconfig_delete_application",
+        "appconfig_list_environments",
+        "appconfig_create_environment",
+        "appconfig_get_environment",
+        "appconfig_update_environment",
+        "appconfig_delete_environment",
+        "appconfig_list_configuration_profiles",
+        "appconfig_create_configuration_profile",
+        "appconfig_get_configuration_profile",
+        "appconfig_update_configuration_profile",
+        "appconfig_delete_configuration_profile",
+        "appconfig_create_hosted_configuration_version",
+        "appconfig_get_hosted_configuration_version",
+        "appconfig_list_hosted_configuration_versions",
+        "appconfig_delete_hosted_configuration_version",
+        "appconfig_list_deployment_strategies",
+        "appconfig_start_deployment",
+        "appconfig_get_deployment",
+        "appconfig_list_deployments",
+        "appconfig_stop_deployment"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "applicationId",
+          "label": "Application ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environmentId",
+          "label": "Environment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "configurationProfileId",
+          "label": "Configuration Profile ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationUri",
+          "label": "Location URI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Profile Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retrievalRoleArn",
+          "label": "Retrieval Role ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Configuration Content",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "latestVersionNumber",
+          "label": "Latest Version Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "versionLabel",
+          "label": "Version Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "versionNumber",
+          "label": "Version Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentStrategyId",
+          "label": "Deployment Strategy ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "configurationVersion",
+          "label": "Configuration Version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentNumber",
+          "label": "Deployment Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextToken",
+          "label": "Next Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

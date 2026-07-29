@@ -1,0 +1,272 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "dropbox",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "dropbox",
+      "legacyIds": [],
+      "provider": "dropbox",
+      "version": "1",
+      "display": {
+        "name": "Dropbox",
+        "description": "Upload, download, share, and manage files in Dropbox",
+        "category": "tools",
+        "icon": "DropboxIcon",
+        "bgColor": "#0061FF"
+      },
+      "capabilities": [
+        "dropbox_upload",
+        "dropbox_download",
+        "dropbox_list_folder",
+        "dropbox_create_folder",
+        "dropbox_delete",
+        "dropbox_copy",
+        "dropbox_move",
+        "dropbox_get_metadata",
+        "dropbox_create_shared_link",
+        "dropbox_list_shared_links",
+        "dropbox_search",
+        "dropbox_list_revisions",
+        "dropbox_restore"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Dropbox Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Dropbox Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Destination Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "label": "Write Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autorename",
+          "label": "Auto-rename on Conflict",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Folder Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recursive",
+          "label": "List Recursively",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Maximum Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Folder Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "autorename",
+          "label": "Auto-rename on Conflict",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Path to Delete",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromPath",
+          "label": "Source Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toPath",
+          "label": "Destination Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "autorename",
+          "label": "Auto-rename on Conflict",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "fromPath",
+          "label": "Source Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toPath",
+          "label": "Destination Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "autorename",
+          "label": "Auto-rename on Conflict",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File/Folder Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "includeMediaInfo",
+          "label": "Include Media Info",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File/Folder Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "requestedVisibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkPassword",
+          "label": "Link Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expires",
+          "label": "Expiration Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Search in Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileExtensions",
+          "label": "File Extensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Maximum Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "directOnly",
+          "label": "Direct Links Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Maximum Revisions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "beforeRev",
+          "label": "Before Revision",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "rev",
+          "label": "Revision",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

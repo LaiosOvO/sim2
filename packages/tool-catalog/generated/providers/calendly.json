@@ -1,0 +1,129 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "calendly",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "calendly",
+      "legacyIds": [],
+      "provider": "calendly",
+      "version": "1",
+      "display": {
+        "name": "Calendly",
+        "description": "Manage Calendly scheduling and events",
+        "category": "tools",
+        "icon": "CalendlyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "calendly_get_current_user",
+        "calendly_list_event_types",
+        "calendly_get_event_type",
+        "calendly_list_scheduled_events",
+        "calendly_get_scheduled_event",
+        "calendly_list_event_invitees",
+        "calendly_cancel_event"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Personal Access Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "eventTypeUuid",
+          "label": "Event Type UUID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user",
+          "label": "User URI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organization",
+          "label": "Organization URI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "active",
+          "label": "Active Only",
+          "type": "boolean",
+          "required": false,
+          "description": "When enabled, shows only active event types. When disabled, shows all event types."
+        },
+        {
+          "key": "invitee_email",
+          "label": "Invitee Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "min_start_time",
+          "label": "Min Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_start_time",
+          "label": "Max Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventUuid",
+          "label": "Event UUID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reason",
+          "label": "Cancellation Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "count",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

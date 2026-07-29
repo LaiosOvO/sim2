@@ -1,0 +1,200 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "elasticsearch",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "elasticsearch",
+      "legacyIds": [],
+      "provider": "elasticsearch",
+      "version": "1",
+      "display": {
+        "name": "Elasticsearch",
+        "description": "Search, index, and manage data in Elasticsearch",
+        "category": "tools",
+        "icon": "ElasticsearchIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "elasticsearch_search",
+        "elasticsearch_index_document",
+        "elasticsearch_get_document",
+        "elasticsearch_update_document",
+        "elasticsearch_delete_document",
+        "elasticsearch_bulk",
+        "elasticsearch_count",
+        "elasticsearch_create_index",
+        "elasticsearch_delete_index",
+        "elasticsearch_get_index",
+        "elasticsearch_cluster_health",
+        "elasticsearch_cluster_stats",
+        "elasticsearch_list_indices"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentType",
+          "label": "Deployment Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Elasticsearch Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cloudId",
+          "label": "Cloud ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authMethod",
+          "label": "Authentication Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "index",
+          "label": "Index Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "documentId",
+          "label": "Document ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "documentId",
+          "label": "Document ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "document",
+          "label": "Document",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "document",
+          "label": "Partial Document",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "size",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "from",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sourceIncludes",
+          "label": "Fields to Include",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourceExcludes",
+          "label": "Fields to Exclude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "operations",
+          "label": "Bulk Operations",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "settings",
+          "label": "Index Settings",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "mappings",
+          "label": "Index Mappings",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "refresh",
+          "label": "Refresh",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waitForStatus",
+          "label": "Wait for Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retryOnConflict",
+          "label": "Retry on Conflict",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "microsoft_teams",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "microsoft_teams",
+      "legacyIds": ["microsoft-teams"],
+      "provider": "microsoft_teams",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Teams",
+        "description": "Manage messages, reactions, and members in Teams",
+        "category": "tools",
+        "icon": "MicrosoftTeamsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "microsoft_teams_read_chat",
+        "microsoft_teams_write_chat",
+        "microsoft_teams_read_channel",
+        "microsoft_teams_write_channel",
+        "microsoft_teams_update_chat_message",
+        "microsoft_teams_update_channel_message",
+        "microsoft_teams_delete_chat_message",
+        "microsoft_teams_delete_channel_message",
+        "microsoft_teams_reply_to_message",
+        "microsoft_teams_get_message",
+        "microsoft_teams_set_reaction",
+        "microsoft_teams_unset_reaction",
+        "microsoft_teams_list_team_members",
+        "microsoft_teams_list_channel_members",
+        "microsoft_teams_list_chat_members",
+        "microsoft_teams_list_teams",
+        "microsoft_teams_list_chats",
+        "microsoft_teams_list_channels"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "teamSelector",
+          "label": "Select Team",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualTeamId",
+          "label": "Team ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "chatSelector",
+          "label": "Select Chat",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualChatId",
+          "label": "Chat ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "channelSelector",
+          "label": "Select Channel",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualChannelId",
+          "label": "Channel ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reactionType",
+          "label": "Reaction",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "includeAttachments",
+          "label": "Include Attachments",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileReferences",
+          "label": "File Attachments",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "grafana",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "grafana",
+      "legacyIds": [],
+      "provider": "grafana",
+      "version": "1",
+      "display": {
+        "name": "Grafana",
+        "description": "Interact with Grafana dashboards, alerts, and annotations",
+        "category": "tools",
+        "icon": "GrafanaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "grafana_get_dashboard",
+        "grafana_list_dashboards",
+        "grafana_create_dashboard",
+        "grafana_update_dashboard",
+        "grafana_delete_dashboard",
+        "grafana_list_alert_rules",
+        "grafana_get_alert_rule",
+        "grafana_create_alert_rule",
+        "grafana_update_alert_rule",
+        "grafana_delete_alert_rule",
+        "grafana_list_contact_points",
+        "grafana_create_contact_point",
+        "grafana_create_annotation",
+        "grafana_list_annotations",
+        "grafana_update_annotation",
+        "grafana_delete_annotation",
+        "grafana_list_data_sources",
+        "grafana_get_data_source",
+        "grafana_check_data_source_health",
+        "grafana_list_folders",
+        "grafana_create_folder",
+        "grafana_get_folder",
+        "grafana_update_folder",
+        "grafana_delete_folder",
+        "grafana_get_health"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseUrl",
+          "label": "Grafana URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "Service Account Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "organizationId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dataSourceId",
+          "label": "Data Source ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dataSourceUid",
+          "label": "Data Source UID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dashboardUid",
+          "label": "Dashboard UID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tag",
+          "label": "Filter by Tag",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderUIDs",
+          "label": "Folder UIDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dashboardUIDs",
+          "label": "Dashboard UIDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "starred",
+          "label": "Only Starred",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Dashboard Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "folderUid",
+          "label": "Folder UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "panels",
+          "label": "Panels (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message",
+          "label": "Commit Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "overwrite",
+          "label": "Overwrite on Conflict",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "alertRuleUid",
+          "label": "Alert Rule UID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "alertTitle",
+          "label": "Alert Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ruleGroup",
+          "label": "Rule Group",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "condition",
+          "label": "Condition",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "data",
+          "label": "Query Data (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "forDuration",
+          "label": "For Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noDataState",
+          "label": "No Data State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "execErrState",
+          "label": "Error State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "annotations",
+          "label": "Annotations (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labels",
+          "label": "Labels (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isPaused",
+          "label": "Paused",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "keepFiringFor",
+          "label": "Keep Firing For",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "missingSeriesEvalsToResolve",
+          "label": "Missing Series Evals to Resolve",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notificationSettings",
+          "label": "Notification Settings (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "record",
+          "label": "Recording Rule (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertRuleUidNew",
+          "label": "Custom Alert Rule UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disableProvenance",
+          "label": "Disable Provenance",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Annotation Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "annotationTags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "annotationDashboardUid",
+          "label": "Dashboard UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "panelId",
+          "label": "Panel ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertId",
+          "label": "Alert ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "annotationType",
+          "label": "Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "time",
+          "label": "Time (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeEnd",
+          "label": "End Time (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "annotationId",
+          "label": "Annotation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from",
+          "label": "From Time (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "to",
+          "label": "To Time (epoch ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderTitle",
+          "label": "Folder Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "folderUidNew",
+          "label": "Folder UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentUidNew",
+          "label": "Parent Folder UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentUidList",
+          "label": "Parent Folder UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manageFolderUid",
+          "label": "Folder UID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "updateFolderTitle",
+          "label": "New Folder Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "forceDeleteRules",
+          "label": "Force Delete Alert Rules",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "contactPointName",
+          "label": "Contact Point Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactPointNameNew",
+          "label": "Contact Point Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contactPointType",
+          "label": "Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contactPointSettings",
+          "label": "Settings (JSON)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "disableResolveMessage",
+          "label": "Disable Resolve Message",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

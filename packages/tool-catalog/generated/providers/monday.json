@@ -1,0 +1,229 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "monday",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "monday",
+      "legacyIds": [],
+      "provider": "monday",
+      "version": "1",
+      "display": {
+        "name": "Monday",
+        "description": "Manage Monday.com boards, items, and groups",
+        "category": "tools",
+        "icon": "MondayIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "monday_list_boards",
+        "monday_get_board",
+        "monday_get_item",
+        "monday_get_items",
+        "monday_search_items",
+        "monday_create_item",
+        "monday_update_item",
+        "monday_change_column_value",
+        "monday_duplicate_item",
+        "monday_delete_item",
+        "monday_archive_item",
+        "monday_move_item_to_group",
+        "monday_create_subitem",
+        "monday_create_update",
+        "monday_create_group",
+        "monday_get_groups",
+        "monday_create_board",
+        "monday_create_column"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Monday Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Monday Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "boardSelector",
+          "label": "Board",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualBoardId",
+          "label": "Board ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemId",
+          "label": "Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentItemId",
+          "label": "Parent Item ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemName",
+          "label": "Item Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupSelector",
+          "label": "Group",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualGroupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchColumns",
+          "label": "Column Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnValues",
+          "label": "Column Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateBody",
+          "label": "Update Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupName",
+          "label": "Group Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupColor",
+          "label": "Group Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnId",
+          "label": "Column ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnValue",
+          "label": "Column Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createLabelsIfMissing",
+          "label": "Create Labels If Missing",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "withUpdates",
+          "label": "Include Updates",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "boardName",
+          "label": "Board Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "boardKind",
+          "label": "Board Kind",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "boardDescription",
+          "label": "Board Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workspaceId",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnTitle",
+          "label": "Column Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnType",
+          "label": "Column Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnDescription",
+          "label": "Column Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "columnDefaults",
+          "label": "Column Defaults",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

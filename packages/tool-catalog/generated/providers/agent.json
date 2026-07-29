@@ -1,0 +1,152 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "agent",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "agent",
+      "legacyIds": [],
+      "provider": "agent",
+      "version": "1",
+      "display": {
+        "name": "Agent",
+        "description": "Build an agent",
+        "category": "blocks",
+        "icon": "AgentIcon",
+        "bgColor": "var(--brand)"
+      },
+      "capabilities": [
+        "openai_chat",
+        "anthropic_chat",
+        "google_chat",
+        "xai_chat",
+        "deepseek_chat",
+        "deepseek_reasoner"
+      ],
+      "inputs": [
+        {
+          "key": "messages",
+          "label": "Messages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Files",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "files",
+          "label": "Files",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reasoningEffort",
+          "label": "Reasoning Effort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "verbosity",
+          "label": "Verbosity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "thinkingLevel",
+          "label": "Thinking Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "promptCaching",
+          "label": "Prompt Caching",
+          "type": "boolean",
+          "required": false,
+          "description": "Cache the system prompt and tool definitions so repeat runs reuse them at a reduced rate. Writing the cache costs more than a normal request, so this pays off when the same prompt runs repeatedly."
+        },
+        {
+          "key": "tools",
+          "label": "Tools",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skills",
+          "label": "Skills",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memoryType",
+          "label": "Memory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conversationId",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slidingWindowSize",
+          "label": "Sliding Window Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slidingWindowTokens",
+          "label": "Max Tokens",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "maxTokens",
+          "label": "Max Output Tokens",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "responseFormat",
+          "label": "Response Format",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "previousInteractionId",
+          "label": "Previous Interaction ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

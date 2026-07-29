@@ -1,0 +1,240 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "outlook",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "outlook",
+      "legacyIds": [],
+      "provider": "outlook",
+      "version": "1",
+      "display": {
+        "name": "Outlook",
+        "description": "Send, read, search, reply, organize, and manage Outlook email",
+        "category": "tools",
+        "icon": "OutlookIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "outlook_send",
+        "outlook_draft",
+        "outlook_read",
+        "outlook_search",
+        "outlook_reply",
+        "outlook_reply_all",
+        "outlook_forward",
+        "outlook_move",
+        "outlook_copy",
+        "outlook_mark_read",
+        "outlook_mark_unread",
+        "outlook_update_message",
+        "outlook_delete",
+        "outlook_list_folders",
+        "outlook_create_folder",
+        "outlook_list_attachments",
+        "outlook_get_attachment"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "attachmentReference",
+          "label": "Attachments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToMessageId",
+          "label": "Reply to Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderSelector",
+          "label": "Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualFolder",
+          "label": "Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeAttachments",
+          "label": "Include Attachments",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "moveMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationFolder",
+          "label": "Move To Folder",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualDestinationFolder",
+          "label": "Move To Folder",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "actionMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "copyMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "copyDestinationFolder",
+          "label": "Copy To Folder",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualCopyDestinationFolder",
+          "label": "Copy To Folder",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "includeHiddenFolders",
+          "label": "Include Hidden Folders",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "folderName",
+          "label": "Folder Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "folderIsHidden",
+          "label": "Hidden Folder",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "attachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "categories",
+          "label": "Categories",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "flagStatus",
+          "label": "Flag Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "importance",
+          "label": "Importance",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

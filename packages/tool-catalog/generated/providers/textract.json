@@ -1,0 +1,191 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "textract",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "textract",
+      "legacyIds": [],
+      "provider": "textract",
+      "version": "1",
+      "display": {
+        "name": "AWS Textract",
+        "description": "Extract text, tables, and forms from documents",
+        "category": "tools",
+        "icon": "TextractIcon",
+        "bgColor": "linear-gradient(135deg, #055F4E 0%, #56C0A7 100%)"
+      },
+      "capabilities": ["textract_parser"],
+      "inputs": [
+        {
+          "key": "processingMode",
+          "label": "Processing Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUpload",
+          "label": "Document",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "Document",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "s3Uri",
+          "label": "S3 URI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "extractTables",
+          "label": "Extract Tables",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "extractForms",
+          "label": "Extract Forms (Key-Value Pairs)",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "detectSignatures",
+          "label": "Detect Signatures",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "analyzeLayout",
+          "label": "Analyze Document Layout",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "textract_v2",
+      "legacyIds": ["aws-textract", "textract-v2"],
+      "provider": "textract",
+      "version": "2",
+      "display": {
+        "name": "AWS Textract",
+        "description": "Extract text, tables, and forms from documents",
+        "category": "tools",
+        "icon": "TextractIcon",
+        "bgColor": "linear-gradient(135deg, #055F4E 0%, #56C0A7 100%)"
+      },
+      "capabilities": ["textract_parser_v2", "textract_analyze_expense", "textract_analyze_id"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "processingMode",
+          "label": "Processing Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUpload",
+          "label": "Document",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileReference",
+          "label": "Document",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUploadBack",
+          "label": "Back of ID (optional)",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileReferenceBack",
+          "label": "Back of ID (optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "s3Uri",
+          "label": "S3 URI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "extractTables",
+          "label": "Extract Tables",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "extractForms",
+          "label": "Extract Forms (Key-Value Pairs)",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "detectSignatures",
+          "label": "Detect Signatures",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "analyzeLayout",
+          "label": "Analyze Document Layout",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

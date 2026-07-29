@@ -1,0 +1,286 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "box",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "box",
+      "legacyIds": [],
+      "provider": "box",
+      "version": "1",
+      "display": {
+        "name": "Box",
+        "description": "Manage files, folders, and e-signatures with Box",
+        "category": "tools",
+        "icon": "BoxCompanyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "box_upload_file",
+        "box_download_file",
+        "box_get_file_info",
+        "box_list_folder_items",
+        "box_create_folder",
+        "box_delete_file",
+        "box_delete_folder",
+        "box_copy_file",
+        "box_search",
+        "box_update_file",
+        "box_sign_create_request",
+        "box_sign_get_request",
+        "box_sign_list_requests",
+        "box_sign_cancel_request",
+        "box_sign_resend_request"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Box Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentFolderId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folderName",
+          "label": "Folder Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "copyName",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ancestorFolderId",
+          "label": "Ancestor Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileExtensions",
+          "label": "File Extensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newName",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moveToFolderId",
+          "label": "Move to Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recursive",
+          "label": "Delete Recursively",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "direction",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sourceFileIds",
+          "label": "Source File IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signerEmail",
+          "label": "Signer Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signerRole",
+          "label": "Signer Role",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailSubject",
+          "label": "Email Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailMessage",
+          "label": "Email Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signRequestName",
+          "label": "Request Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "additionalSigners",
+          "label": "Additional Signers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signParentFolderId",
+          "label": "Destination Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "daysValid",
+          "label": "Days Valid",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "areRemindersEnabled",
+          "label": "Enable Reminders",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "areTextSignaturesEnabled",
+          "label": "Allow Text Signatures",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "signatureColor",
+          "label": "Signature Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "redirectUrl",
+          "label": "Redirect URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "declinedRedirectUrl",
+          "label": "Declined Redirect URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isDocumentPreparationNeeded",
+          "label": "Document Preparation Needed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signRequestId",
+          "label": "Sign Request ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "marker",
+          "label": "Pagination Marker",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

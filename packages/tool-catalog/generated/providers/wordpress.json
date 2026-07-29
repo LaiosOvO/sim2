@@ -1,0 +1,382 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "wordpress",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "wordpress",
+      "legacyIds": [],
+      "provider": "wordpress",
+      "version": "1",
+      "display": {
+        "name": "WordPress",
+        "description": "Manage WordPress content",
+        "category": "tools",
+        "icon": "WordpressIcon",
+        "bgColor": "#21759B"
+      },
+      "capabilities": [
+        "wordpress_create_post",
+        "wordpress_update_post",
+        "wordpress_delete_post",
+        "wordpress_get_post",
+        "wordpress_list_posts",
+        "wordpress_create_page",
+        "wordpress_update_page",
+        "wordpress_delete_page",
+        "wordpress_get_page",
+        "wordpress_list_pages",
+        "wordpress_upload_media",
+        "wordpress_get_media",
+        "wordpress_list_media",
+        "wordpress_delete_media",
+        "wordpress_create_comment",
+        "wordpress_list_comments",
+        "wordpress_update_comment",
+        "wordpress_delete_comment",
+        "wordpress_create_category",
+        "wordpress_list_categories",
+        "wordpress_get_category",
+        "wordpress_update_category",
+        "wordpress_delete_category",
+        "wordpress_create_tag",
+        "wordpress_list_tags",
+        "wordpress_get_tag",
+        "wordpress_update_tag",
+        "wordpress_delete_tag",
+        "wordpress_get_current_user",
+        "wordpress_list_users",
+        "wordpress_get_user",
+        "wordpress_search_content"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "WordPress Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "WordPress Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "siteId",
+          "label": "Site ID or Domain",
+          "type": "string",
+          "required": true,
+          "description": "Your WordPress.com site ID or domain. Find it in Settings → General."
+        },
+        {
+          "key": "postId",
+          "label": "Post ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "excerpt",
+          "label": "Excerpt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categories",
+          "label": "Categories",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listAuthor",
+          "label": "Author ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "featuredMedia",
+          "label": "Featured Image ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageId",
+          "label": "Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parent",
+          "label": "Parent Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "menuOrder",
+          "label": "Menu Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUpload",
+          "label": "Upload File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "File Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filename",
+          "label": "Filename Override",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaTitle",
+          "label": "Media Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "caption",
+          "label": "Caption",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "altText",
+          "label": "Alt Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaId",
+          "label": "Media ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaType",
+          "label": "Media Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentPostId",
+          "label": "Post ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentContent",
+          "label": "Comment Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentParent",
+          "label": "Parent Comment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentAuthorName",
+          "label": "Author Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentAuthorEmail",
+          "label": "Author Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentAuthorUrl",
+          "label": "Author URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentStatus",
+          "label": "Comment Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryId",
+          "label": "Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryName",
+          "label": "Category Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryParent",
+          "label": "Parent Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categorySlug",
+          "label": "Category Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagId",
+          "label": "Tag ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagName",
+          "label": "Tag Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagSlug",
+          "label": "Tag Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "roles",
+          "label": "User Roles",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "perPage",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "force",
+          "label": "Force Delete",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

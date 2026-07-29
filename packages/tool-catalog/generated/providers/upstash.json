@@ -1,0 +1,119 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "upstash",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "upstash",
+      "legacyIds": [],
+      "provider": "upstash",
+      "version": "1",
+      "display": {
+        "name": "Upstash",
+        "description": "Serverless Redis with Upstash",
+        "category": "tools",
+        "icon": "UpstashIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "upstash_redis_get",
+        "upstash_redis_set",
+        "upstash_redis_delete",
+        "upstash_redis_keys",
+        "upstash_redis_command",
+        "upstash_redis_hset",
+        "upstash_redis_hget",
+        "upstash_redis_hgetall",
+        "upstash_redis_incr",
+        "upstash_redis_expire",
+        "upstash_redis_ttl",
+        "upstash_redis_lpush",
+        "upstash_redis_lrange",
+        "upstash_redis_exists",
+        "upstash_redis_setnx",
+        "upstash_redis_incrby"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "restUrl",
+          "label": "REST URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "restToken",
+          "label": "REST Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "key",
+          "label": "Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ex",
+          "label": "Expiration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "field",
+          "label": "Field",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pattern",
+          "label": "Pattern",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seconds",
+          "label": "Seconds",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "increment",
+          "label": "Increment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stop",
+          "label": "Stop Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "command",
+          "label": "Command",
+          "type": "json",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

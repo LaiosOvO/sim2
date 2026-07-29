@@ -1,0 +1,213 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "asana",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "asana",
+      "legacyIds": [],
+      "provider": "asana",
+      "version": "1",
+      "display": {
+        "name": "Asana",
+        "description": "Interact with Asana",
+        "category": "tools",
+        "icon": "AsanaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "asana_get_task",
+        "asana_create_task",
+        "asana_update_task",
+        "asana_get_projects",
+        "asana_search_tasks",
+        "asana_add_comment",
+        "asana_create_subtask",
+        "asana_delete_task",
+        "asana_add_followers",
+        "asana_create_project",
+        "asana_get_project",
+        "asana_list_workspaces",
+        "asana_create_section",
+        "asana_list_sections"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Asana Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Asana Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workspaceSelector",
+          "label": "Workspace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workspace",
+          "label": "Workspace GID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "taskGid",
+          "label": "Task GID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskGid",
+          "label": "Task GID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "getTasksWorkspaceSelector",
+          "label": "Workspace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getTasks_workspace",
+          "label": "Workspace GID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getTasks_project",
+          "label": "Project GID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getTasks_limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Task Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "notes",
+          "label": "Task Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignee",
+          "label": "Assignee GID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "due_on",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchText",
+          "label": "Search Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentText",
+          "label": "Comment Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "createProjectWorkspaceSelector",
+          "label": "Workspace",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "createProject_workspace",
+          "label": "Workspace GID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectGid",
+          "label": "Project GID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subtaskParentGid",
+          "label": "Parent Task GID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "taskGid",
+          "label": "Task GID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "notes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignee",
+          "label": "Assignee GID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "due_on",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "followers",
+          "label": "Followers",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projects",
+          "label": "Projects",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completed",
+          "label": "Completion",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

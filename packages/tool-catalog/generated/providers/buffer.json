@@ -1,0 +1,174 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "buffer",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "buffer",
+      "legacyIds": [],
+      "provider": "buffer",
+      "version": "1",
+      "display": {
+        "name": "Buffer",
+        "description": "Schedule and publish social media posts across connected channels",
+        "category": "tools",
+        "icon": "BufferIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "buffer_create_post",
+        "buffer_edit_post",
+        "buffer_get_posts",
+        "buffer_get_post",
+        "buffer_delete_post",
+        "buffer_get_channels",
+        "buffer_create_idea",
+        "buffer_get_ideas",
+        "buffer_get_idea_groups",
+        "buffer_get_account"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelId",
+          "label": "Channel ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postId",
+          "label": "Post ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Share Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueAt",
+          "label": "Publish Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaUpload",
+          "label": "Media",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "mediaRef",
+          "label": "Media",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaUrl",
+          "label": "Media URL",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Media."
+        },
+        {
+          "key": "mediaType",
+          "label": "Media Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaAltText",
+          "label": "Media Alt Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schedulingType",
+          "label": "Scheduling Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "saveToDraft",
+          "label": "Save as Draft",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "channelIds",
+          "label": "Channel IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortDirection",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Idea Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Idea Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

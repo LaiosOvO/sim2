@@ -1,0 +1,49 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "wait",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "wait",
+      "legacyIds": [],
+      "provider": "wait",
+      "version": "1",
+      "display": {
+        "name": "Wait",
+        "description": "Pause workflow execution for a time interval",
+        "category": "blocks",
+        "icon": "WaitIcon",
+        "bgColor": "#F59E0B"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "timeValue",
+          "label": "Wait Amount",
+          "type": "string",
+          "required": true,
+          "description": "Max 5 minutes (300 seconds). Enable Async for up to 30 days."
+        },
+        {
+          "key": "timeUnit",
+          "label": "Unit",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "timeUnitLong",
+          "label": "Unit",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "async",
+          "label": "Async",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

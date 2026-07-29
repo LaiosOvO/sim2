@@ -1,0 +1,120 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "quiver",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "quiver",
+      "legacyIds": [],
+      "provider": "quiver",
+      "version": "1",
+      "display": {
+        "name": "Quiver",
+        "description": "Generate and vectorize SVGs",
+        "category": "tools",
+        "icon": "QuiverIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["quiver_text_to_svg", "quiver_image_to_svg", "quiver_list_models"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "instructions",
+          "label": "Instructions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "referenceFiles",
+          "label": "Reference Images",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "referenceInput",
+          "label": "Reference Images",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "n",
+          "label": "Number of Outputs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "imageFile",
+          "label": "Image",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "imageInput",
+          "label": "Image",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoCrop",
+          "label": "Auto Crop",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetSize",
+          "label": "Target Size (px)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "topP",
+          "label": "Top P",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxOutputTokens",
+          "label": "Max Output Tokens",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "presencePenalty",
+          "label": "Presence Penalty",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

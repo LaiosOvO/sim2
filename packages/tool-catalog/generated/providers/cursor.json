@@ -1,0 +1,168 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "cursor",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "cursor",
+      "legacyIds": [],
+      "provider": "cursor",
+      "version": "1",
+      "display": {
+        "name": "Cursor (Legacy)",
+        "description": "Launch and manage Cursor cloud agents to work on GitHub repositories",
+        "category": "tools",
+        "icon": "CursorIcon",
+        "bgColor": "#1E1E1E"
+      },
+      "capabilities": [
+        "cursor_list_agents",
+        "cursor_get_agent",
+        "cursor_get_conversation",
+        "cursor_launch_agent",
+        "cursor_add_followup",
+        "cursor_stop_agent",
+        "cursor_delete_agent",
+        "cursor_list_artifacts",
+        "cursor_download_artifact",
+        "cursor_list_models",
+        "cursor_list_repositories",
+        "cursor_get_api_key_info"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "repository",
+          "label": "Repository URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ref",
+          "label": "Branch/Ref",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "promptText",
+          "label": "Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "promptImages",
+          "label": "Prompt Images",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "branchName",
+          "label": "Branch Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoCreatePr",
+          "label": "Auto Create PR",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "openAsCursorGithubApp",
+          "label": "Open as Cursor GitHub App",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "skipReviewerRequest",
+          "label": "Skip Reviewer Request",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "agentId",
+          "label": "Agent ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Artifact Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "followupPromptText",
+          "label": "Follow-up Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "prUrl",
+          "label": "PR URL Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "cursor_v2",
+      "legacyIds": ["cursor", "cursor-v2"],
+      "provider": "cursor",
+      "version": "2",
+      "display": {
+        "name": "Cursor",
+        "description": "Launch and manage Cursor cloud agents to work on GitHub repositories",
+        "category": "tools",
+        "icon": "CursorIcon",
+        "bgColor": "#1E1E1E"
+      },
+      "capabilities": [
+        "cursor_list_agents_v2",
+        "cursor_get_agent_v2",
+        "cursor_get_conversation_v2",
+        "cursor_launch_agent_v2",
+        "cursor_add_followup_v2",
+        "cursor_stop_agent_v2",
+        "cursor_delete_agent_v2",
+        "cursor_list_artifacts_v2",
+        "cursor_download_artifact_v2",
+        "cursor_list_models_v2",
+        "cursor_list_repositories_v2",
+        "cursor_get_api_key_info_v2"
+      ],
+      "inputs": []
+    }
+  ]
+}

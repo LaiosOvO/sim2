@@ -1,0 +1,240 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_docs",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_docs",
+      "legacyIds": ["google-docs"],
+      "provider": "google_docs",
+      "version": "1",
+      "display": {
+        "name": "Google Docs",
+        "description": "Read, write, create, and edit documents",
+        "category": "tools",
+        "icon": "GoogleDocsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_docs_read",
+        "google_docs_write",
+        "google_docs_create",
+        "google_docs_insert_text",
+        "google_docs_replace_text",
+        "google_docs_insert_table",
+        "google_docs_insert_image",
+        "google_docs_insert_page_break",
+        "google_docs_update_text_style",
+        "google_docs_update_paragraph_style",
+        "google_docs_create_paragraph_bullets",
+        "google_docs_delete_paragraph_bullets",
+        "google_docs_delete_content_range",
+        "google_docs_create_named_range",
+        "google_docs_delete_named_range"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "documentId",
+          "label": "Select Document",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualDocumentId",
+          "label": "Document ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Document Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "folderSelector",
+          "label": "Select Parent Folder",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "folderId",
+          "label": "Parent Folder ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "markdown",
+          "label": "Interpret content as Markdown",
+          "type": "boolean",
+          "required": false,
+          "description": "Convert headings, bold/italic, lists, tables, links, code, and blockquotes into formatted Google Docs content. When off, content is inserted as plain text."
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchText",
+          "label": "Find",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "replaceText",
+          "label": "Replace With",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "matchCase",
+          "label": "Match Case",
+          "type": "boolean",
+          "required": false,
+          "description": "When on, only case-sensitive matches are replaced."
+        },
+        {
+          "key": "rows",
+          "label": "Rows",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "columns",
+          "label": "Columns",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "imageUrl",
+          "label": "Image URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "width",
+          "label": "Width (PT)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "height",
+          "label": "Height (PT)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startIndex",
+          "label": "Start Index",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "endIndex",
+          "label": "End Index",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "bold",
+          "label": "Bold",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "italic",
+          "label": "Italic",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "underline",
+          "label": "Underline",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "fontSize",
+          "label": "Font Size (PT)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "namedStyleType",
+          "label": "Paragraph Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alignment",
+          "label": "Alignment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulletPreset",
+          "label": "Bullet Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Range Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "namedRangeId",
+          "label": "Named Range ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "namedRangeName",
+          "label": "Named Range Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "index",
+          "label": "Insertion Index",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

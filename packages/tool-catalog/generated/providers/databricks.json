@@ -1,0 +1,199 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "databricks",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "databricks",
+      "legacyIds": [],
+      "provider": "databricks",
+      "version": "1",
+      "display": {
+        "name": "Databricks",
+        "description": "Run SQL queries and manage jobs on Databricks",
+        "category": "tools",
+        "icon": "DatabricksIcon",
+        "bgColor": "#F9F7F4"
+      },
+      "capabilities": [
+        "databricks_execute_sql",
+        "databricks_get_statement",
+        "databricks_list_warehouses",
+        "databricks_list_jobs",
+        "databricks_get_job",
+        "databricks_run_job",
+        "databricks_get_run",
+        "databricks_list_runs",
+        "databricks_cancel_run",
+        "databricks_get_run_output",
+        "databricks_list_clusters",
+        "databricks_get_cluster"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "warehouseId",
+          "label": "Warehouse ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statement",
+          "label": "SQL Statement",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "catalog",
+          "label": "Catalog",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "schema",
+          "label": "Schema",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rowLimit",
+          "label": "Row Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waitTimeout",
+          "label": "Wait Timeout",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statementId",
+          "label": "Statement ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Job Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expandTasks",
+          "label": "Expand Tasks",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobId",
+          "label": "Job ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobParameters",
+          "label": "Job Parameters",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "notebookParams",
+          "label": "Notebook Parameters",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "idempotencyToken",
+          "label": "Idempotency Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeHistory",
+          "label": "Include History",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeResolvedValues",
+          "label": "Include Resolved Values",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "activeOnly",
+          "label": "Active Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completedOnly",
+          "label": "Completed Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runType",
+          "label": "Run Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTimeFrom",
+          "label": "Start Time From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTimeTo",
+          "label": "Start Time To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clusterId",
+          "label": "Cluster ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Workspace Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "Access Token",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

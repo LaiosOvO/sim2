@@ -1,0 +1,144 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "evernote",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "evernote",
+      "legacyIds": [],
+      "provider": "evernote",
+      "version": "1",
+      "display": {
+        "name": "Evernote",
+        "description": "Manage notes, notebooks, and tags in Evernote",
+        "category": "tools",
+        "icon": "EvernoteIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "evernote_copy_note",
+        "evernote_create_note",
+        "evernote_create_notebook",
+        "evernote_create_tag",
+        "evernote_delete_note",
+        "evernote_get_note",
+        "evernote_get_notebook",
+        "evernote_list_notebooks",
+        "evernote_list_tags",
+        "evernote_search_notes",
+        "evernote_update_note"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Developer Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteGuid",
+          "label": "Note GUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateTitle",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateContent",
+          "label": "New Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toNotebookGuid",
+          "label": "Destination Notebook GUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notebookGuid",
+          "label": "Notebook GUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notebookName",
+          "label": "Notebook Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stack",
+          "label": "Stack",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagName",
+          "label": "Tag Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentGuid",
+          "label": "Parent Tag GUID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagNames",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxNotes",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "withContent",
+          "label": "Include Content",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

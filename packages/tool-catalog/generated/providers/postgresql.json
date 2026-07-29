@@ -1,0 +1,133 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "postgresql",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "postgresql",
+      "legacyIds": [],
+      "provider": "postgresql",
+      "version": "1",
+      "display": {
+        "name": "PostgreSQL",
+        "description": "Connect to PostgreSQL database",
+        "category": "tools",
+        "icon": "PostgresIcon",
+        "bgColor": "#336791"
+      },
+      "capabilities": [
+        "postgresql_query",
+        "postgresql_insert",
+        "postgresql_update",
+        "postgresql_delete",
+        "postgresql_execute",
+        "postgresql_introspect"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "database",
+          "label": "Database Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ssl",
+          "label": "SSL Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Update Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "schema",
+          "label": "Schema Name",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

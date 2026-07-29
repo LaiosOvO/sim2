@@ -1,0 +1,126 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "infisical",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "infisical",
+      "legacyIds": [],
+      "provider": "infisical",
+      "version": "1",
+      "display": {
+        "name": "Infisical",
+        "description": "Manage secrets with Infisical",
+        "category": "tools",
+        "icon": "InfisicalIcon",
+        "bgColor": "#F7FE62"
+      },
+      "capabilities": [
+        "infisical_list_secrets",
+        "infisical_get_secret",
+        "infisical_create_secret",
+        "infisical_update_secret",
+        "infisical_delete_secret"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "environment",
+          "label": "Environment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretName",
+          "label": "Secret Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretValue",
+          "label": "Secret Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateSecretValue",
+          "label": "Secret Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newSecretName",
+          "label": "New Secret Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseUrl",
+          "label": "Instance URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretPath",
+          "label": "Secret Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recursive",
+          "label": "Recursive",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeImports",
+          "label": "Include Imports",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "tagSlugs",
+          "label": "Filter by Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagIds",
+          "label": "Tag IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretVersion",
+          "label": "Version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Token",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

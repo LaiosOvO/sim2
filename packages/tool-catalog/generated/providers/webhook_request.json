@@ -1,0 +1,49 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "webhook_request",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "webhook_request",
+      "legacyIds": ["webhook-request"],
+      "provider": "webhook_request",
+      "version": "1",
+      "display": {
+        "name": "Webhook",
+        "description": "Send a webhook request",
+        "category": "blocks",
+        "icon": "WebhookIcon",
+        "bgColor": "#10B981"
+      },
+      "capabilities": ["webhook_request"],
+      "inputs": [
+        {
+          "key": "url",
+          "label": "Webhook URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Payload",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "secret",
+          "label": "Signing Secret",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "headers",
+          "label": "Additional Headers",
+          "type": "string",
+          "required": false,
+          "description": "Optional custom headers to include with the webhook request"
+        }
+      ]
+    }
+  ]
+}

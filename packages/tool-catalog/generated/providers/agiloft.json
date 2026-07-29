@@ -1,0 +1,158 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "agiloft",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "agiloft",
+      "legacyIds": [],
+      "provider": "agiloft",
+      "version": "1",
+      "display": {
+        "name": "Agiloft",
+        "description": "Manage records in Agiloft CLM",
+        "category": "tools",
+        "icon": "AgiloftIcon",
+        "bgColor": "#001028"
+      },
+      "capabilities": [
+        "agiloft_attach_file",
+        "agiloft_attachment_info",
+        "agiloft_create_record",
+        "agiloft_delete_record",
+        "agiloft_get_choice_line_id",
+        "agiloft_lock_record",
+        "agiloft_read_record",
+        "agiloft_remove_attachment",
+        "agiloft_retrieve_attachment",
+        "agiloft_saved_search",
+        "agiloft_search_records",
+        "agiloft_select_records",
+        "agiloft_update_record"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "instanceUrl",
+          "label": "Instance URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "knowledgeBase",
+          "label": "Knowledge Base",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "login",
+          "label": "Login",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recordId",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "data",
+          "label": "Record Data",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "where",
+          "label": "WHERE Clause",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldName",
+          "label": "Field Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Choice Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "position",
+          "label": "File Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lockAction",
+          "label": "Lock Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -129,6 +129,15 @@ jobs:
       - name: Verify platform contract artifacts
         run: bun run contracts:check
 
+      - name: Verify generated browser-safe catalog
+        run: bun run catalog:check
+
+      - name: Verify browser catalog build isolation
+        run: bun run check:catalog-browser-build
+
+      - name: Verify migrated canvas catalog consumers
+        run: bun run check:catalog-consumers
+
       - name: Verify browser contract build isolation
         run: bun run check:contract-browser-build
 

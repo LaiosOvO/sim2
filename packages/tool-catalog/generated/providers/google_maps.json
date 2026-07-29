@@ -1,0 +1,323 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_maps",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_maps",
+      "legacyIds": ["google-maps"],
+      "provider": "google_maps",
+      "version": "1",
+      "display": {
+        "name": "Google Maps",
+        "description": "Geocoding, directions, places, and distance calculations",
+        "category": "tools",
+        "icon": "GoogleMapsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_maps_air_quality",
+        "google_maps_directions",
+        "google_maps_distance_matrix",
+        "google_maps_elevation",
+        "google_maps_geocode",
+        "google_maps_geolocate",
+        "google_maps_place_details",
+        "google_maps_places_nearby",
+        "google_maps_places_search",
+        "google_maps_pollen",
+        "google_maps_reverse_geocode",
+        "google_maps_snap_to_roads",
+        "google_maps_solar",
+        "google_maps_speed_limits",
+        "google_maps_timezone",
+        "google_maps_validate_address"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "latitude",
+          "label": "Latitude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "longitude",
+          "label": "Longitude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timestamp",
+          "label": "Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "origin",
+          "label": "Origin",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "destination",
+          "label": "Destination",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "destinations",
+          "label": "Destinations",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mode",
+          "label": "Travel Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "avoid",
+          "label": "Avoid",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "waypoints",
+          "label": "Waypoints",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "units",
+          "label": "Units",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locationBias",
+          "label": "Location Bias",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "radius",
+          "label": "Radius (meters)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "radius",
+          "label": "Radius (meters)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "placeType",
+          "label": "Place Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResultCount",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rankPreference",
+          "label": "Rank By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "placeId",
+          "label": "Place ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interpolate",
+          "label": "Interpolate",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "placeIds",
+          "label": "Place IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "speedUnits",
+          "label": "Speed Units",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addressToValidate",
+          "label": "Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "regionCode",
+          "label": "Region Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "locality",
+          "label": "Locality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enableUspsCass",
+          "label": "Enable USPS CASS",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "considerIp",
+          "label": "Use IP Address",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "radioType",
+          "label": "Radio Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "carrier",
+          "label": "Carrier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "homeMobileCountryCode",
+          "label": "Home Mobile Country Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "homeMobileNetworkCode",
+          "label": "Home Mobile Network Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "wifiAccessPoints",
+          "label": "WiFi Access Points",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cellTowers",
+          "label": "Cell Towers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aqLatitude",
+          "label": "Latitude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aqLongitude",
+          "label": "Longitude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "languageCode",
+          "label": "Language Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "days",
+          "label": "Forecast Days",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "plantsDescription",
+          "label": "Include Plant Descriptions",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "requiredQuality",
+          "label": "Minimum Imagery Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "Region Bias",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "uptimerobot",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "uptimerobot",
+      "legacyIds": [],
+      "provider": "uptimerobot",
+      "version": "1",
+      "display": {
+        "name": "UptimeRobot",
+        "description": "Monitor uptime, manage incidents, maintenance windows, and status pages",
+        "category": "tools",
+        "icon": "UptimeRobotIcon",
+        "bgColor": "#111921"
+      },
+      "capabilities": [
+        "uptimerobot_list_monitors",
+        "uptimerobot_get_monitor",
+        "uptimerobot_create_monitor",
+        "uptimerobot_update_monitor",
+        "uptimerobot_delete_monitor",
+        "uptimerobot_pause_monitor",
+        "uptimerobot_start_monitor",
+        "uptimerobot_list_incidents",
+        "uptimerobot_get_incident",
+        "uptimerobot_list_maintenance_windows",
+        "uptimerobot_get_maintenance_window",
+        "uptimerobot_create_maintenance_window",
+        "uptimerobot_update_maintenance_window",
+        "uptimerobot_delete_maintenance_window",
+        "uptimerobot_list_alert_contacts",
+        "uptimerobot_get_alert_contact",
+        "uptimerobot_create_alert_contact",
+        "uptimerobot_delete_alert_contact",
+        "uptimerobot_list_psps",
+        "uptimerobot_get_psp",
+        "uptimerobot_create_psp",
+        "uptimerobot_update_psp",
+        "uptimerobot_delete_psp",
+        "uptimerobot_get_account"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorId",
+          "label": "Monitor ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "friendlyName",
+          "label": "Friendly Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Monitor Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorInterval",
+          "label": "Check Interval (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkTimeout",
+          "label": "Timeout (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keywordType",
+          "label": "Keyword Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keywordValue",
+          "label": "Keyword Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keywordCaseType",
+          "label": "Keyword Case Sensitivity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpMethodType",
+          "label": "HTTP Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authType",
+          "label": "Authentication Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpUsername",
+          "label": "HTTP Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpPassword",
+          "label": "HTTP Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gracePeriod",
+          "label": "Grace Period (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "successHttpResponseCodes",
+          "label": "Success HTTP Codes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkSSLErrors",
+          "label": "Check SSL Errors",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "followRedirections",
+          "label": "Follow Redirects",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "sslExpirationReminder",
+          "label": "SSL Expiration Reminder",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "domainExpirationReminder",
+          "label": "Domain Expiration Reminder",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "responseTimeThreshold",
+          "label": "Response Time Threshold (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagNames",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignedAlertContacts",
+          "label": "Assigned Alert Contacts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customHttpHeaders",
+          "label": "Custom HTTP Headers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Monitor Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorStatusFilter",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorName",
+          "label": "Monitor Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startedAfter",
+          "label": "Started After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startedBefore",
+          "label": "Started Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maintenanceWindowId",
+          "label": "Maintenance Window ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maintenanceInterval",
+          "label": "Recurrence",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "time",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "days",
+          "label": "Days",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoAddMonitors",
+          "label": "Auto-add Monitors",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "maintenanceStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorIds",
+          "label": "Monitor IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertContactId",
+          "label": "Alert Contact ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enableNotificationsFor",
+          "label": "Notify For",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pspId",
+          "label": "Status Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pspStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customDomain",
+          "label": "Custom Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Page Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hideUrlLinks",
+          "label": "Hide \"Powered by\" Link",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "noIndex",
+          "label": "Disable Search Indexing",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "logoUpload",
+          "label": "Logo",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "logoRef",
+          "label": "Logo",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "iconUpload",
+          "label": "Icon",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "iconRef",
+          "label": "Icon",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "monitorsCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentsCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maintenanceCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertContactsCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pspsCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

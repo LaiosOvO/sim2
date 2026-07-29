@@ -1,0 +1,90 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "guardrails",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "guardrails",
+      "legacyIds": [],
+      "provider": "guardrails",
+      "version": "1",
+      "display": {
+        "name": "Guardrails",
+        "description": "Validate content with guardrails",
+        "category": "blocks",
+        "icon": "ShieldCheckIcon",
+        "bgColor": "#3D642D"
+      },
+      "capabilities": ["guardrails_validate"],
+      "inputs": [
+        {
+          "key": "input",
+          "label": "Content to Validate",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "validationType",
+          "label": "Validation Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "regex",
+          "label": "Regex Pattern",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "knowledgeBaseId",
+          "label": "Knowledge Base",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "threshold",
+          "label": "Confidence",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "topK",
+          "label": "Number of Chunks to Retrieve",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "piiEntityTypes",
+          "label": "PII Types to Detect",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "piiMode",
+          "label": "Action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "piiLanguage",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "piiCustomPatterns",
+          "label": "Custom Patterns",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

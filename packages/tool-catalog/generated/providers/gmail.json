@@ -1,0 +1,248 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "gmail",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "gmail",
+      "legacyIds": [],
+      "provider": "gmail",
+      "version": "1",
+      "display": {
+        "name": "Gmail (Legacy)",
+        "description": "Send, read, search, and move Gmail messages or trigger workflows from Gmail events",
+        "category": "tools",
+        "icon": "GmailIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "gmail_send",
+        "gmail_draft",
+        "gmail_read",
+        "gmail_search",
+        "gmail_move",
+        "gmail_mark_read",
+        "gmail_mark_unread",
+        "gmail_archive",
+        "gmail_unarchive",
+        "gmail_delete",
+        "gmail_add_label",
+        "gmail_remove_label",
+        "gmail_edit_draft_v2"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Gmail Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Gmail Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "draftId",
+          "label": "Draft ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "Body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "attachments",
+          "label": "Attachments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadId",
+          "label": "Thread ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToMessageId",
+          "label": "Reply to Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "folder",
+          "label": "Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualFolder",
+          "label": "Label/Folder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unreadOnly",
+          "label": "Unread Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "includeAttachments",
+          "label": "Include Attachments",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moveMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationLabel",
+          "label": "Move To Label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualDestinationLabel",
+          "label": "Move To Label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceLabel",
+          "label": "Remove From Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualSourceLabel",
+          "label": "Remove From Label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "labelActionMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "labelSelector",
+          "label": "Label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualLabelId",
+          "label": "Label",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "gmail_v2",
+      "legacyIds": ["gmail", "gmail-v2"],
+      "provider": "gmail",
+      "version": "2",
+      "display": {
+        "name": "Gmail",
+        "description": "Send, read, search, and move Gmail messages or trigger workflows from Gmail events",
+        "category": "tools",
+        "icon": "GmailIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "gmail_send_v2",
+        "gmail_draft_v2",
+        "gmail_edit_draft_v2",
+        "gmail_read_v2",
+        "gmail_search_v2",
+        "gmail_move_v2",
+        "gmail_mark_read_v2",
+        "gmail_mark_unread_v2",
+        "gmail_archive_v2",
+        "gmail_unarchive_v2",
+        "gmail_delete_v2",
+        "gmail_add_label_v2",
+        "gmail_remove_label_v2"
+      ],
+      "inputs": []
+    }
+  ]
+}

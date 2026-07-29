@@ -1,0 +1,242 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "dynamodb",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "dynamodb",
+      "legacyIds": ["amazon-dynamodb"],
+      "provider": "dynamodb",
+      "version": "1",
+      "display": {
+        "name": "Amazon DynamoDB",
+        "description": "Get, put, query, scan, update, and delete items in Amazon DynamoDB tables",
+        "category": "tools",
+        "icon": "DynamoDBIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "capabilities": [
+        "dynamodb_get",
+        "dynamodb_put",
+        "dynamodb_query",
+        "dynamodb_scan",
+        "dynamodb_update",
+        "dynamodb_delete",
+        "dynamodb_introspect"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tableName",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "introspectTableName",
+          "label": "Table Name (Optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getKey",
+          "label": "Key (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "updateKey",
+          "label": "Key (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "deleteKey",
+          "label": "Key (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "consistentRead",
+          "label": "Consistent Read",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "item",
+          "label": "Item (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "keyConditionExpression",
+          "label": "Key Condition Expression",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "updateExpression",
+          "label": "Update Expression",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "queryFilterExpression",
+          "label": "Filter Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scanFilterExpression",
+          "label": "Filter Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectionExpression",
+          "label": "Projection Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryExpressionAttributeNames",
+          "label": "Expression Attribute Names (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "scanExpressionAttributeNames",
+          "label": "Expression Attribute Names (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "updateExpressionAttributeNames",
+          "label": "Expression Attribute Names (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "putExpressionAttributeNames",
+          "label": "Expression Attribute Names (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "deleteExpressionAttributeNames",
+          "label": "Expression Attribute Names (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "queryExpressionAttributeValues",
+          "label": "Expression Attribute Values (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "scanExpressionAttributeValues",
+          "label": "Expression Attribute Values (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "updateExpressionAttributeValues",
+          "label": "Expression Attribute Values (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "putExpressionAttributeValues",
+          "label": "Expression Attribute Values (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "deleteExpressionAttributeValues",
+          "label": "Expression Attribute Values (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "indexName",
+          "label": "Index Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scanLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "putConditionExpression",
+          "label": "Condition Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateConditionExpression",
+          "label": "Condition Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteConditionExpression",
+          "label": "Condition Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryExclusiveStartKey",
+          "label": "Exclusive Start Key (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "scanExclusiveStartKey",
+          "label": "Exclusive Start Key (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "scanIndexForward",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

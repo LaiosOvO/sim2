@@ -1,0 +1,79 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "similarweb",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "similarweb",
+      "legacyIds": [],
+      "provider": "similarweb",
+      "version": "1",
+      "display": {
+        "name": "Similarweb",
+        "description": "Website traffic and analytics data",
+        "category": "tools",
+        "icon": "SimilarwebIcon",
+        "bgColor": "#000922"
+      },
+      "capabilities": [
+        "similarweb_website_overview",
+        "similarweb_traffic_visits",
+        "similarweb_bounce_rate",
+        "similarweb_pages_per_visit",
+        "similarweb_visit_duration",
+        "similarweb_page_views"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "granularity",
+          "label": "Granularity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mainDomainOnly",
+          "label": "Main Domain Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

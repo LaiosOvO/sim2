@@ -1,0 +1,204 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "luma",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "luma",
+      "legacyIds": [],
+      "provider": "luma",
+      "version": "1",
+      "display": {
+        "name": "Luma",
+        "description": "Manage events and guests on Luma",
+        "category": "tools",
+        "icon": "LumaIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "luma_get_event",
+        "luma_create_event",
+        "luma_update_event",
+        "luma_list_events",
+        "luma_lookup_event",
+        "luma_cancel_event",
+        "luma_get_guests",
+        "luma_get_guest",
+        "luma_add_guests",
+        "luma_send_invites",
+        "luma_update_guest_status"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "eventId",
+          "label": "Event ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Event Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startAt",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endAt",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationInterval",
+          "label": "Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "descriptionMd",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "meetingUrl",
+          "label": "Meeting URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "coverUrl",
+          "label": "Cover Image URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "guests",
+          "label": "Guests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message",
+          "label": "Invite Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "guestIdentifier",
+          "label": "Guest",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendEmail",
+          "label": "Notify Guest",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancellationToken",
+          "label": "Cancellation Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shouldRefund",
+          "label": "Refund Paid Guests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "Event URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "platform",
+          "label": "Platform",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paginationLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paginationCursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortColumn",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortDirection",
+          "label": "Sort Direction",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

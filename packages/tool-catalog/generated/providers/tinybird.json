@@ -1,0 +1,140 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "tinybird",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "tinybird",
+      "legacyIds": [],
+      "provider": "tinybird",
+      "version": "1",
+      "display": {
+        "name": "Tinybird",
+        "description": "Send events, query data, and manage Data Sources with Tinybird",
+        "category": "tools",
+        "icon": "TinybirdIcon",
+        "bgColor": "#2EF598"
+      },
+      "capabilities": [
+        "tinybird_events",
+        "tinybird_query",
+        "tinybird_query_pipe",
+        "tinybird_append_datasource",
+        "tinybird_truncate_datasource",
+        "tinybird_delete_datasource_rows",
+        "tinybird_get_job"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "base_url",
+          "label": "Base URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "token",
+          "label": "API Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "datasource",
+          "label": "Data Source",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "compression",
+          "label": "Compression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "wait",
+          "label": "Wait for Acknowledgment",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "pipeline",
+          "label": "Pipeline Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipe",
+          "label": "Pipe Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "parameters",
+          "label": "Parameters",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "pipe_sql",
+          "label": "SQL (on top of Pipe)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "source_url",
+          "label": "Source File URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "source_format",
+          "label": "Source Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "delete_condition",
+          "label": "Delete Condition",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dry_run",
+          "label": "Dry Run",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "job_id",
+          "label": "Job ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

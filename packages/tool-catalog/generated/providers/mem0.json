@@ -1,0 +1,84 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mem0",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mem0",
+      "legacyIds": [],
+      "provider": "mem0",
+      "version": "1",
+      "display": {
+        "name": "Mem0",
+        "description": "Agent memory management",
+        "category": "tools",
+        "icon": "Mem0Icon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": ["mem0_add_memories", "mem0_search_memories", "mem0_get_memories"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messages",
+          "label": "Messages",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "memoryId",
+          "label": "Memory ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Result Limit",
+          "type": "number",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

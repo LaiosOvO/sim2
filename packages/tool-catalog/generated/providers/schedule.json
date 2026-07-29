@@ -1,0 +1,90 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "schedule",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "schedule",
+      "legacyIds": [],
+      "provider": "schedule",
+      "version": "1",
+      "display": {
+        "name": "Schedule",
+        "description": "Trigger workflow execution on a schedule",
+        "category": "triggers",
+        "icon": "ScheduleIcon",
+        "bgColor": "#6366F1"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "scheduleType",
+          "label": "Run frequency",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "minutesInterval",
+          "label": "Interval (minutes)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "hourlyMinute",
+          "label": "Minute",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dailyTime",
+          "label": "Time",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "weeklyDay",
+          "label": "Day of week",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "weeklyDayTime",
+          "label": "Time",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "monthlyDay",
+          "label": "Day of month",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "monthlyTime",
+          "label": "Time",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cronExpression",
+          "label": "Cron expression",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "timezone",
+          "label": "Timezone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleInfo",
+          "label": "scheduleInfo",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

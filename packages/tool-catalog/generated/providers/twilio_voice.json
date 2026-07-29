@@ -1,0 +1,137 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "twilio_voice",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "twilio_voice",
+      "legacyIds": ["twilio-voice"],
+      "provider": "twilio_voice",
+      "version": "1",
+      "display": {
+        "name": "Twilio Voice",
+        "description": "Make and manage phone calls",
+        "category": "tools",
+        "icon": "TwilioIcon",
+        "bgColor": "#F22F46"
+      },
+      "capabilities": [
+        "twilio_voice_make_call",
+        "twilio_voice_list_calls",
+        "twilio_voice_get_recording"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountSid",
+          "label": "Twilio Account SID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authToken",
+          "label": "Auth Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To Phone Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from",
+          "label": "From Twilio Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "url",
+          "label": "TwiML URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "twiml",
+          "label": "TwiML Instructions",
+          "type": "string",
+          "required": false,
+          "description": "Use square brackets instead of angle brackets (e.g., [Response] instead of <Response>)"
+        },
+        {
+          "key": "record",
+          "label": "Record Call",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusCallback",
+          "label": "Status Callback URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "machineDetection",
+          "label": "Machine Detection",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listTo",
+          "label": "To Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listFrom",
+          "label": "From Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listPageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTimeAfter",
+          "label": "After (YYYY-MM-DD)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTimeBefore",
+          "label": "Before (YYYY-MM-DD)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recordingSid",
+          "label": "Recording SID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

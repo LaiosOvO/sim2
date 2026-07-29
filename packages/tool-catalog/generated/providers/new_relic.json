@@ -1,0 +1,155 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "new_relic",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "new_relic",
+      "legacyIds": ["new-relic"],
+      "provider": "new_relic",
+      "version": "1",
+      "display": {
+        "name": "New Relic",
+        "description": "Query observability data and record deployments in New Relic",
+        "category": "tools",
+        "icon": "NewRelicIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "new_relic_nrql_query",
+        "new_relic_search_entities",
+        "new_relic_get_entity",
+        "new_relic_create_deployment_event"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "User API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "region",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "nrql",
+          "label": "NRQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (Seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Entity Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "guid",
+          "label": "Entity GUID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "entityGuid",
+          "label": "Entity GUID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "version",
+          "label": "Version",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "shortDescription",
+          "label": "Short Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "changelog",
+          "label": "Changelog",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commit",
+          "label": "Commit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deepLink",
+          "label": "Deep Link",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "user",
+          "label": "User",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customAttributes",
+          "label": "Custom Attributes",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "deploymentType",
+          "label": "Deployment Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timestamp",
+          "label": "Timestamp (Epoch ms)",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

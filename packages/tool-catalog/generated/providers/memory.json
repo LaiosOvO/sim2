@@ -1,0 +1,60 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "memory",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "memory",
+      "legacyIds": [],
+      "provider": "memory",
+      "version": "1",
+      "display": {
+        "name": "Memory",
+        "description": "Add memory store",
+        "category": "blocks",
+        "icon": "BrainIcon",
+        "bgColor": "#F64F9E"
+      },
+      "capabilities": ["memory_add", "memory_get", "memory_get_all", "memory_delete"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "id",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "id",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "id",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "role",
+          "label": "Role",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

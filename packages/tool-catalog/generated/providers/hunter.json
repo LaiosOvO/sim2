@@ -1,0 +1,163 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "hunter",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "hunter",
+      "legacyIds": ["hunter-io"],
+      "provider": "hunter",
+      "version": "1",
+      "display": {
+        "name": "Hunter.io",
+        "description": "Find and verify professional email addresses",
+        "category": "tools",
+        "icon": "HunterIOIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "hunter_discover",
+        "hunter_domain_search",
+        "hunter_email_finder",
+        "hunter_email_verifier",
+        "hunter_companies_find",
+        "hunter_email_count"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Email Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seniority",
+          "label": "Seniority Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "department",
+          "label": "Department",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "first_name",
+          "label": "First Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "last_name",
+          "label": "Last Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "company",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "domain",
+          "label": "Domain Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "headcount",
+          "label": "Headcount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_type",
+          "label": "Company Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "technology",
+          "label": "Technology",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "company",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Email Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

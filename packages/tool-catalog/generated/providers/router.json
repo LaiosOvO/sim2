@@ -1,0 +1,97 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "router",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "router",
+      "legacyIds": [],
+      "provider": "router",
+      "version": "1",
+      "display": {
+        "name": "Router (Legacy)",
+        "description": "Route workflow",
+        "category": "blocks",
+        "icon": "ConnectIcon",
+        "bgColor": "#28C43F"
+      },
+      "capabilities": [
+        "openai_chat",
+        "anthropic_chat",
+        "google_chat",
+        "xai_chat",
+        "deepseek_chat",
+        "deepseek_reasoner"
+      ],
+      "inputs": [
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "systemPrompt",
+          "label": "System Prompt",
+          "type": "json",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "router_v2",
+      "legacyIds": ["router-v2"],
+      "provider": "router",
+      "version": "2",
+      "display": {
+        "name": "Router",
+        "description": "Route workflow based on context",
+        "category": "blocks",
+        "icon": "ConnectIcon",
+        "bgColor": "#28C43F"
+      },
+      "capabilities": [
+        "openai_chat",
+        "anthropic_chat",
+        "google_chat",
+        "xai_chat",
+        "deepseek_chat",
+        "deepseek_reasoner"
+      ],
+      "inputs": [
+        {
+          "key": "context",
+          "label": "Context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "routes",
+          "label": "routes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

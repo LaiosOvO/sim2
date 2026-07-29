@@ -1,0 +1,45 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "human_in_the_loop",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "human_in_the_loop",
+      "legacyIds": ["human-in-the-loop"],
+      "provider": "human_in_the_loop",
+      "version": "1",
+      "display": {
+        "name": "Human in the Loop",
+        "description": "Pause workflow execution and wait for human input",
+        "category": "blocks",
+        "icon": "HumanInTheLoopIcon",
+        "bgColor": "#10B981"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "builderData",
+          "label": "Display Data",
+          "type": "string",
+          "required": false,
+          "description": "Define the structure of your response data. Use <variable.name> in field names to reference workflow variables."
+        },
+        {
+          "key": "notification",
+          "label": "Notification (Send URL)",
+          "type": "string",
+          "required": false,
+          "description": "Configure notification tools to alert approvers (e.g., Slack, Email)"
+        },
+        {
+          "key": "inputFormat",
+          "label": "Resume Form",
+          "type": "string",
+          "required": false,
+          "description": "Define the fields the approver can fill in when resuming"
+        }
+      ]
+    }
+  ]
+}

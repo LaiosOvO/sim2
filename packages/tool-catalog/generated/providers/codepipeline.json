@@ -1,0 +1,169 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "codepipeline",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "codepipeline",
+      "legacyIds": [],
+      "provider": "codepipeline",
+      "version": "1",
+      "display": {
+        "name": "CodePipeline",
+        "description": "Run, monitor, and approve AWS CodePipeline pipelines",
+        "category": "tools",
+        "icon": "CodePipelineIcon",
+        "bgColor": "linear-gradient(45deg, #2E27AD 0%, #527FFF 100%)"
+      },
+      "capabilities": [
+        "codepipeline_list_pipelines",
+        "codepipeline_get_pipeline",
+        "codepipeline_get_pipeline_state",
+        "codepipeline_get_pipeline_execution",
+        "codepipeline_list_pipeline_executions",
+        "codepipeline_list_action_executions",
+        "codepipeline_start_execution",
+        "codepipeline_stop_execution",
+        "codepipeline_retry_stage_execution",
+        "codepipeline_put_approval_result",
+        "codepipeline_disable_stage_transition",
+        "codepipeline_enable_stage_transition"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "awsRegion",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsAccessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsSecretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pipelineName",
+          "label": "Pipeline Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineExecutionId",
+          "label": "Execution ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stageName",
+          "label": "Stage Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transitionType",
+          "label": "Transition Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transitionReason",
+          "label": "Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getPipelineVersion",
+          "label": "Pipeline Version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retryMode",
+          "label": "Retry Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actionName",
+          "label": "Approval Action Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalToken",
+          "label": "Approval Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalStatus",
+          "label": "Decision",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pipelineVariables",
+          "label": "Pipeline Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientRequestToken",
+          "label": "Client Request Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "abandon",
+          "label": "Abandon In-Progress Actions",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "stopReason",
+          "label": "Stop Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "succeededInStage",
+          "label": "Succeeded In Stage",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextToken",
+          "label": "Next Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

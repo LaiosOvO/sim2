@@ -1,0 +1,187 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "profound",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "profound",
+      "legacyIds": [],
+      "provider": "profound",
+      "version": "1",
+      "display": {
+        "name": "Profound",
+        "description": "AI visibility and analytics with Profound",
+        "category": "tools",
+        "icon": "ProfoundIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "profound_list_categories",
+        "profound_list_regions",
+        "profound_list_models",
+        "profound_list_domains",
+        "profound_list_assets",
+        "profound_list_personas",
+        "profound_category_topics",
+        "profound_category_tags",
+        "profound_category_prompts",
+        "profound_category_assets",
+        "profound_category_personas",
+        "profound_visibility_report",
+        "profound_sentiment_report",
+        "profound_citations_report",
+        "profound_query_fanouts",
+        "profound_prompt_answers",
+        "profound_bots_report",
+        "profound_referrals_report",
+        "profound_raw_logs",
+        "profound_bot_logs",
+        "profound_list_optimizations",
+        "profound_optimization_analysis",
+        "profound_prompt_volume",
+        "profound_citation_prompts"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "categoryId",
+          "label": "Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputDomain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetId",
+          "label": "Asset ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentId",
+          "label": "Content ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "visibilityMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sentimentMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "citationsMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "botsMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "referralsMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fanoutsMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "volumeMetrics",
+          "label": "Metrics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dimensions",
+          "label": "Dimensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateInterval",
+          "label": "Date Interval",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "promptType",
+          "label": "Prompt Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

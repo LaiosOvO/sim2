@@ -1,0 +1,120 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "smtp",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "smtp",
+      "legacyIds": [],
+      "provider": "smtp",
+      "version": "1",
+      "display": {
+        "name": "SMTP",
+        "description": "Send emails via any SMTP mail server",
+        "category": "tools",
+        "icon": "SmtpIcon",
+        "bgColor": "#2D3748"
+      },
+      "capabilities": ["smtp_send_mail"],
+      "inputs": [
+        {
+          "key": "smtpHost",
+          "label": "SMTP Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "smtpPort",
+          "label": "SMTP Port",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "smtpUsername",
+          "label": "SMTP Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "smtpPassword",
+          "label": "SMTP Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "smtpSecure",
+          "label": "Security Mode",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from",
+          "label": "From",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Body",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "attachments",
+          "label": "Attachments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromName",
+          "label": "From Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyTo",
+          "label": "Reply To",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

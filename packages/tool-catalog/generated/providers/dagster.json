@@ -1,0 +1,236 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "dagster",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "dagster",
+      "legacyIds": [],
+      "provider": "dagster",
+      "version": "1",
+      "display": {
+        "name": "Dagster",
+        "description": "Orchestrate data pipelines and manage job runs with Dagster",
+        "category": "tools",
+        "icon": "DagsterIcon",
+        "bgColor": "#ffffff"
+      },
+      "capabilities": [
+        "dagster_launch_run",
+        "dagster_get_run",
+        "dagster_get_run_logs",
+        "dagster_list_runs",
+        "dagster_list_jobs",
+        "dagster_reexecute_run",
+        "dagster_terminate_run",
+        "dagster_delete_run",
+        "dagster_list_schedules",
+        "dagster_start_schedule",
+        "dagster_stop_schedule",
+        "dagster_list_sensors",
+        "dagster_start_sensor",
+        "dagster_stop_sensor",
+        "dagster_list_assets",
+        "dagster_get_asset",
+        "dagster_materialize_assets",
+        "dagster_report_asset_materialization",
+        "dagster_wipe_asset"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "repositoryLocationName",
+          "label": "Repository Location",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "repositoryName",
+          "label": "Repository Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobName",
+          "label": "Job Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runConfigJson",
+          "label": "Run Config",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "runId",
+          "label": "Run ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "strategy",
+          "label": "Reexecution Strategy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "afterCursor",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listRunsJobName",
+          "label": "Job Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statuses",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdAfter",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdBefore",
+          "label": "Created Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runsCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleName",
+          "label": "Schedule Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sensorName",
+          "label": "Sensor Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sensorStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "instigationStateId",
+          "label": "Instigator State ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetKey",
+          "label": "Asset Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetJobName",
+          "label": "Asset Job",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetSelection",
+          "label": "Asset Selection",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetPrefix",
+          "label": "Key Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetsCursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportEventType",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportPartitionKeys",
+          "label": "Partition Keys",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reportDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Token",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

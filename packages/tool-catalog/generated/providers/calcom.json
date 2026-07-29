@@ -1,0 +1,292 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "calcom",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "calcom",
+      "legacyIds": ["cal-com"],
+      "provider": "calcom",
+      "version": "1",
+      "display": {
+        "name": "Cal.com",
+        "description": "Manage Cal.com bookings, event types, schedules, and availability",
+        "category": "tools",
+        "icon": "CalComIcon",
+        "bgColor": "#292929"
+      },
+      "capabilities": [
+        "calcom_create_booking",
+        "calcom_get_booking",
+        "calcom_list_bookings",
+        "calcom_cancel_booking",
+        "calcom_reschedule_booking",
+        "calcom_confirm_booking",
+        "calcom_decline_booking",
+        "calcom_create_event_type",
+        "calcom_get_event_type",
+        "calcom_list_event_types",
+        "calcom_update_event_type",
+        "calcom_delete_event_type",
+        "calcom_create_schedule",
+        "calcom_get_schedule",
+        "calcom_list_schedules",
+        "calcom_update_schedule",
+        "calcom_delete_schedule",
+        "calcom_get_default_schedule",
+        "calcom_get_slots"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Cal.com Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Cal.com Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "eventTypeSelector",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTypeId",
+          "label": "Event Type ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "start",
+          "label": "Start Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "end",
+          "label": "End Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attendeeName",
+          "label": "Attendee Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attendeeEmail",
+          "label": "Attendee Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attendeeTimeZone",
+          "label": "Attendee Time Zone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attendeePhone",
+          "label": "Attendee Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "guests",
+          "label": "Guests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lengthInMinutes",
+          "label": "Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metadata",
+          "label": "Metadata",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "bookingUid",
+          "label": "Booking UID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cancellationReason",
+          "label": "Cancellation Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reschedulingReason",
+          "label": "Rescheduling Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bookingStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTypeParamSelector",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTypeIdParam",
+          "label": "Event Type ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventLength",
+          "label": "Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slotInterval",
+          "label": "Slot Interval (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "minimumBookingNotice",
+          "label": "Minimum Notice (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "beforeEventBuffer",
+          "label": "Buffer Before (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "afterEventBuffer",
+          "label": "Buffer After (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTypeScheduleSelector",
+          "label": "Schedule",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTypeScheduleId",
+          "label": "Schedule ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disableGuests",
+          "label": "Disable Guests",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent attendees from adding guests"
+        },
+        {
+          "key": "scheduleSelector",
+          "label": "Schedule",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleId",
+          "label": "Schedule ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeZone",
+          "label": "Time Zone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isDefault",
+          "label": "Default Schedule",
+          "type": "boolean",
+          "required": false,
+          "description": "Set as the default schedule"
+        },
+        {
+          "key": "availability",
+          "label": "Availability",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "eventTypeSlug",
+          "label": "Event Type Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortCreatedAt",
+          "label": "Sort by Created",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "manual_trigger",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "manual_trigger",
+      "legacyIds": ["manual-trigger"],
+      "provider": "manual_trigger",
+      "version": "1",
+      "display": {
+        "name": "Manual (Legacy)",
+        "description": "Legacy manual start block. Prefer the Start block.",
+        "category": "triggers",
+        "icon": "ManualTriggerIcon",
+        "bgColor": "#2563EB"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

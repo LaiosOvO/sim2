@@ -1,0 +1,102 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "managed_agent",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "managed_agent",
+      "legacyIds": ["claude-managed-agents", "managed-agent"],
+      "provider": "managed_agent",
+      "version": "1",
+      "display": {
+        "name": "Claude Managed Agents",
+        "description": "Run a Claude Platform Managed Agent",
+        "category": "tools",
+        "icon": "ClaudeIcon",
+        "bgColor": "#DA7756"
+      },
+      "capabilities": ["managed_agent_run_session"],
+      "inputs": [
+        {
+          "key": "credential",
+          "label": "Claude Platform account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "environmentType",
+          "label": "Environment type",
+          "type": "string",
+          "required": true,
+          "description": "Self-hosted environments run on your own infrastructure and route memory via session metadata; file attachments are cloud-only."
+        },
+        {
+          "key": "agent",
+          "label": "Agent",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "environment",
+          "label": "Environment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userMessage",
+          "label": "User message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "vaults",
+          "label": "Credential vaults",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vaultsAck",
+          "label": "I own or am authorized to use these vaults. I understand this means this agent can assume the identity granted by them.",
+          "type": "boolean",
+          "required": false,
+          "description": "Required when at least one vault is selected above."
+        },
+        {
+          "key": "memoryStoreId",
+          "label": "Memory store",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memoryAccess",
+          "label": "Memory access",
+          "type": "string",
+          "required": false,
+          "description": "read_write pushes changes back on session exit; read_only never writes."
+        },
+        {
+          "key": "memoryInstructions",
+          "label": "Memory instructions",
+          "type": "string",
+          "required": false,
+          "description": "Per-attachment guidance rendered into the memory section of the system prompt."
+        },
+        {
+          "key": "files",
+          "label": "Files",
+          "type": "string",
+          "required": false,
+          "description": "Files-API file ids (file_...) to attach as file resources. Mount path is optional."
+        },
+        {
+          "key": "sessionParameters",
+          "label": "Metadata",
+          "type": "string",
+          "required": false,
+          "description": "Optional key/value metadata forwarded on the session. On self-hosted environments each key is exposed to the agent as an env var."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "agentphone",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "agentphone",
+      "legacyIds": [],
+      "provider": "agentphone",
+      "version": "1",
+      "display": {
+        "name": "AgentPhone",
+        "description": "Provision numbers, send SMS and iMessage, and place voice calls with AgentPhone",
+        "category": "tools",
+        "icon": "AgentPhoneIcon",
+        "bgColor": "linear-gradient(135deg, #1a1a1a 0%, #0a2a14 100%)"
+      },
+      "capabilities": [
+        "agentphone_create_call",
+        "agentphone_create_contact",
+        "agentphone_create_number",
+        "agentphone_delete_contact",
+        "agentphone_get_call",
+        "agentphone_get_call_transcript",
+        "agentphone_get_contact",
+        "agentphone_get_conversation",
+        "agentphone_get_conversation_messages",
+        "agentphone_get_number_messages",
+        "agentphone_get_usage",
+        "agentphone_get_usage_daily",
+        "agentphone_get_usage_monthly",
+        "agentphone_list_calls",
+        "agentphone_list_contacts",
+        "agentphone_list_conversations",
+        "agentphone_list_numbers",
+        "agentphone_react_to_message",
+        "agentphone_release_number",
+        "agentphone_send_message",
+        "agentphone_update_contact",
+        "agentphone_update_conversation"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "areaCode",
+          "label": "Area Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachAgentId",
+          "label": "Agent ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "numberId",
+          "label": "Phone Number ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callAgentId",
+          "label": "Agent ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toNumberCall",
+          "label": "To Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromNumberId",
+          "label": "From Phone Number ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "initialGreeting",
+          "label": "Initial Greeting",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voice",
+          "label": "Voice",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "systemPrompt",
+          "label": "System Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callId",
+          "label": "Call ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callsStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callsDirection",
+          "label": "Direction Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callsType",
+          "label": "Type Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "callsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conversationId",
+          "label": "Conversation ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageLimit",
+          "label": "Message Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metadata",
+          "label": "Metadata",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendAgentId",
+          "label": "Agent ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toNumberMessage",
+          "label": "To Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageBody",
+          "label": "Message Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaUrl",
+          "label": "Media URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendNumberId",
+          "label": "From Phone Number ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reaction",
+          "label": "Reaction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactPhoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactName",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactNotes",
+          "label": "Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactId",
+          "label": "Contact ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactsSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messagesLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usageDays",
+          "label": "Days",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usageMonths",
+          "label": "Months",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

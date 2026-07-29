@@ -1,0 +1,162 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "findymail",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "findymail",
+      "legacyIds": [],
+      "provider": "findymail",
+      "version": "1",
+      "display": {
+        "name": "Findymail",
+        "description": "Find and verify B2B emails, phones, employees, and company data",
+        "category": "tools",
+        "icon": "FindymailIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "findymail_verify_email",
+        "findymail_find_email_from_name",
+        "findymail_find_emails_by_domain",
+        "findymail_find_email_from_linkedin",
+        "findymail_reverse_email_lookup",
+        "findymail_get_company",
+        "findymail_find_employees",
+        "findymail_find_phone",
+        "findymail_search_technologies",
+        "findymail_lookup_technologies",
+        "findymail_get_credits"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fn_name",
+          "label": "Full Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fn_domain",
+          "label": "Company Domain or Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fefl_linkedin_url",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fed_domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "roles",
+          "label": "Target Roles",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ve_email",
+          "label": "Email Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "rel_email",
+          "label": "Email Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "with_profile",
+          "label": "Return Full Profile",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gc_linkedin_url",
+          "label": "Company LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gc_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gc_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Company Website",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "job_titles",
+          "label": "Job Titles",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "count",
+          "label": "Number of Contacts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fp_linkedin_url",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "q",
+          "label": "Search Term",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "lt_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "technologies",
+          "label": "Filter Technologies",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

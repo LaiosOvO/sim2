@@ -1,0 +1,205 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "microsoft_planner",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "microsoft_planner",
+      "legacyIds": ["microsoft-planner"],
+      "provider": "microsoft_planner",
+      "version": "1",
+      "display": {
+        "name": "Microsoft Planner",
+        "description": "Manage tasks, plans, and buckets in Microsoft Planner",
+        "category": "tools",
+        "icon": "MicrosoftPlannerIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "microsoft_planner_read_task",
+        "microsoft_planner_create_task",
+        "microsoft_planner_update_task",
+        "microsoft_planner_delete_task",
+        "microsoft_planner_list_plans",
+        "microsoft_planner_read_plan",
+        "microsoft_planner_create_plan",
+        "microsoft_planner_update_plan",
+        "microsoft_planner_get_plan_details",
+        "microsoft_planner_update_plan_details",
+        "microsoft_planner_delete_plan",
+        "microsoft_planner_list_buckets",
+        "microsoft_planner_read_bucket",
+        "microsoft_planner_create_bucket",
+        "microsoft_planner_update_bucket",
+        "microsoft_planner_delete_bucket",
+        "microsoft_planner_get_task_details",
+        "microsoft_planner_update_task_details"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Microsoft Account",
+          "type": "credential",
+          "required": false
+        },
+        {
+          "key": "manualCredential",
+          "label": "Microsoft Account",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "planSelector",
+          "label": "Plan",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "planId",
+          "label": "Plan ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskSelector",
+          "label": "Task ID",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualReadTaskId",
+          "label": "Manual Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateTaskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "bucketIdForRead",
+          "label": "Bucket ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "etag",
+          "label": "ETag",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Task Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Bucket Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueDateTime",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDateTime",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeUserId",
+          "label": "Assignee User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bucketId",
+          "label": "Bucket ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "percentComplete",
+          "label": "Percent Complete",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checklist",
+          "label": "Checklist (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "references",
+          "label": "References (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "previewType",
+          "label": "Preview Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Microsoft 365 Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "planTitle",
+          "label": "Plan Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appliedCategories",
+          "label": "Categories",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryDescriptions",
+          "label": "Category Descriptions (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sharedWith",
+          "label": "Shared With (JSON)",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

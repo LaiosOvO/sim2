@@ -1,0 +1,332 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "kalshi",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "kalshi",
+      "legacyIds": [],
+      "provider": "kalshi",
+      "version": "1",
+      "display": {
+        "name": "Kalshi (Legacy)",
+        "description": "Access prediction markets and trade on Kalshi",
+        "category": "tools",
+        "icon": "KalshiIcon",
+        "bgColor": "#09C285"
+      },
+      "capabilities": [
+        "kalshi_get_markets",
+        "kalshi_get_market",
+        "kalshi_get_events",
+        "kalshi_get_event",
+        "kalshi_get_balance",
+        "kalshi_get_positions",
+        "kalshi_get_orders",
+        "kalshi_get_order",
+        "kalshi_get_orderbook",
+        "kalshi_get_trades",
+        "kalshi_get_candlesticks",
+        "kalshi_get_event_candlesticks",
+        "kalshi_get_fills",
+        "kalshi_get_settlements",
+        "kalshi_get_series_by_ticker",
+        "kalshi_get_series_list",
+        "kalshi_get_exchange_status",
+        "kalshi_get_exchange_schedule",
+        "kalshi_get_exchange_announcements",
+        "kalshi_create_order",
+        "kalshi_cancel_order",
+        "kalshi_amend_order"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keyId",
+          "label": "API Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "privateKey",
+          "label": "Private Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seriesTicker",
+          "label": "Series Ticker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventTicker",
+          "label": "Event Ticker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ticker",
+          "label": "Market Ticker",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tickerFilter",
+          "label": "Market Ticker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "withNestedMarkets",
+          "label": "Include Markets",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderStatus",
+          "label": "Order Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "minTs",
+          "label": "Min Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxTs",
+          "label": "Max Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seriesTickerCandlesticks",
+          "label": "Series Ticker",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tickerCandlesticks",
+          "label": "Market Ticker",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "startTs",
+          "label": "Start Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "endTs",
+          "label": "End Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "periodInterval",
+          "label": "Period Interval",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tickerFills",
+          "label": "Market Ticker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderId",
+          "label": "Order ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "seriesTickerGet",
+          "label": "Series Ticker",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "category",
+          "label": "Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderIdParam",
+          "label": "Order ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tickerOrder",
+          "label": "Market Ticker",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "side",
+          "label": "Side",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "action",
+          "label": "Action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "count",
+          "label": "Contracts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countFp",
+          "label": "Contracts (Fixed-Point)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countAmend",
+          "label": "Contracts",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderType",
+          "label": "Order Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "yesPrice",
+          "label": "Yes Price (cents)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noPrice",
+          "label": "No Price (cents)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientOrderId",
+          "label": "Client Order ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientOrderIdAmend",
+          "label": "Client Order ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedClientOrderId",
+          "label": "New Client Order ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeInForce",
+          "label": "Time in Force",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expirationTs",
+          "label": "Expiration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postOnly",
+          "label": "Post Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reduceOnly",
+          "label": "Reduce Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "kalshi_v2",
+      "legacyIds": ["kalshi", "kalshi-v2"],
+      "provider": "kalshi",
+      "version": "2",
+      "display": {
+        "name": "Kalshi",
+        "description": "Access prediction markets and trade on Kalshi",
+        "category": "tools",
+        "icon": "KalshiIcon",
+        "bgColor": "#09C285"
+      },
+      "capabilities": [
+        "kalshi_get_markets_v2",
+        "kalshi_get_market_v2",
+        "kalshi_get_events_v2",
+        "kalshi_get_event_v2",
+        "kalshi_get_balance_v2",
+        "kalshi_get_positions_v2",
+        "kalshi_get_orders_v2",
+        "kalshi_get_order_v2",
+        "kalshi_get_orderbook_v2",
+        "kalshi_get_trades_v2",
+        "kalshi_get_candlesticks_v2",
+        "kalshi_get_event_candlesticks_v2",
+        "kalshi_get_fills_v2",
+        "kalshi_get_settlements_v2",
+        "kalshi_get_series_by_ticker_v2",
+        "kalshi_get_series_list_v2",
+        "kalshi_get_exchange_status_v2",
+        "kalshi_get_exchange_schedule_v2",
+        "kalshi_get_exchange_announcements_v2",
+        "kalshi_create_order_v2",
+        "kalshi_cancel_order_v2",
+        "kalshi_amend_order_v2"
+      ],
+      "inputs": []
+    }
+  ]
+}

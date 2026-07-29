@@ -1,0 +1,59 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "wikipedia",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "wikipedia",
+      "legacyIds": [],
+      "provider": "wikipedia",
+      "version": "1",
+      "display": {
+        "name": "Wikipedia",
+        "description": "Search and retrieve content from Wikipedia",
+        "category": "tools",
+        "icon": "WikipediaIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "wikipedia_summary",
+        "wikipedia_search",
+        "wikipedia_content",
+        "wikipedia_random"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageTitle",
+          "label": "Page Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchLimit",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageTitle",
+          "label": "Page Title",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

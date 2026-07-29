@@ -1,0 +1,165 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "docusign",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "docusign",
+      "legacyIds": [],
+      "provider": "docusign",
+      "version": "1",
+      "display": {
+        "name": "DocuSign",
+        "description": "Send documents for e-signature via DocuSign",
+        "category": "tools",
+        "icon": "DocuSignIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "docusign_send_envelope",
+        "docusign_create_from_template",
+        "docusign_get_envelope",
+        "docusign_list_envelopes",
+        "docusign_void_envelope",
+        "docusign_download_document",
+        "docusign_list_templates",
+        "docusign_list_recipients"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "DocuSign Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "DocuSign Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "emailSubject",
+          "label": "Email Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailBody",
+          "label": "Email Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signerEmail",
+          "label": "Signer Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "signerName",
+          "label": "Signer Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadDocument",
+          "label": "Document",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "documentRef",
+          "label": "Document",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ccEmail",
+          "label": "CC Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ccName",
+          "label": "CC Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envelopeStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateId",
+          "label": "Template ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateRoles",
+          "label": "Template Roles",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envelopeId",
+          "label": "Envelope ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voidedReason",
+          "label": "Void Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentId",
+          "label": "Document ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromDate",
+          "label": "From Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toDate",
+          "label": "To Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listEnvelopeStatus",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchText",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "count",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

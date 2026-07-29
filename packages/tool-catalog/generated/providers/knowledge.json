@@ -1,0 +1,201 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "knowledge",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "knowledge",
+      "legacyIds": [],
+      "provider": "knowledge",
+      "version": "1",
+      "display": {
+        "name": "Knowledge",
+        "description": "Use vector search",
+        "category": "blocks",
+        "icon": "PackageSearchIcon",
+        "bgColor": "#00B0B0"
+      },
+      "capabilities": [
+        "knowledge_search",
+        "knowledge_upload_chunk",
+        "knowledge_create_document",
+        "knowledge_upsert_document",
+        "knowledge_list_tags",
+        "knowledge_list_documents",
+        "knowledge_get_document",
+        "knowledge_delete_document",
+        "knowledge_list_chunks",
+        "knowledge_update_chunk",
+        "knowledge_delete_chunk",
+        "knowledge_list_connectors",
+        "knowledge_get_connector",
+        "knowledge_trigger_sync"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "knowledgeBaseSelector",
+          "label": "Knowledge Base",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualKnowledgeBaseId",
+          "label": "Knowledge Base ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "topK",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagFilters",
+          "label": "Tag Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rerankerEnabled",
+          "label": "Rerank Results",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "rerankerModel",
+          "label": "Rerank Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rerankerInputCount",
+          "label": "Documents Sent to Reranker",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Cohere API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enabledFilter",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentSelector",
+          "label": "Document",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "documentId",
+          "label": "Document ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Chunk Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Document Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Document Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "upsertDocumentId",
+          "label": "Document ID (Optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentTags",
+          "label": "Document Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chunkId",
+          "label": "Chunk ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "New Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enabled",
+          "label": "Enabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "connectorId",
+          "label": "Connector ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "chunkSearch",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "chunkEnabledFilter",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

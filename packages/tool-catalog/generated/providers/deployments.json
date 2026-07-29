@@ -1,0 +1,66 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "deployments",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "deployments",
+      "legacyIds": [],
+      "provider": "deployments",
+      "version": "1",
+      "display": {
+        "name": "Deployments",
+        "description": "Manage workflow deployments",
+        "category": "blocks",
+        "icon": "SimDeploymentsIcon",
+        "bgColor": "#0C0C0C"
+      },
+      "capabilities": [
+        "deployments_deploy",
+        "deployments_undeploy",
+        "deployments_promote",
+        "deployments_list_versions",
+        "deployments_get_version"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowSelector",
+          "label": "Workflow",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualWorkflowId",
+          "label": "Workflow ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "versionName",
+          "label": "Version Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "versionDescription",
+          "label": "Version Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "version",
+          "label": "Version",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

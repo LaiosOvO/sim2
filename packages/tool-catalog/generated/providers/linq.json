@@ -1,0 +1,347 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "linq",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "linq",
+      "legacyIds": [],
+      "provider": "linq",
+      "version": "1",
+      "display": {
+        "name": "Linq",
+        "description": "Send iMessage, SMS, and RCS messages and manage conversations with Linq",
+        "category": "tools",
+        "icon": "LinqIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "linq_add_participant",
+        "linq_check_imessage",
+        "linq_check_rcs",
+        "linq_create_attachment",
+        "linq_create_chat",
+        "linq_create_contact_card",
+        "linq_create_webhook_subscription",
+        "linq_delete_attachment",
+        "linq_delete_message",
+        "linq_delete_webhook_subscription",
+        "linq_edit_message",
+        "linq_get_attachment",
+        "linq_get_chat",
+        "linq_get_contact_card",
+        "linq_get_message",
+        "linq_get_webhook_subscription",
+        "linq_leave_chat",
+        "linq_list_chats",
+        "linq_list_messages",
+        "linq_list_phone_numbers",
+        "linq_list_thread",
+        "linq_list_webhook_events",
+        "linq_list_webhook_subscriptions",
+        "linq_mark_chat_read",
+        "linq_react_to_message",
+        "linq_remove_participant",
+        "linq_send_message",
+        "linq_send_voice_memo",
+        "linq_share_contact_card",
+        "linq_start_typing",
+        "linq_stop_typing",
+        "linq_update_chat",
+        "linq_update_contact_card",
+        "linq_update_webhook_subscription"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "chatId",
+          "label": "Chat ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "senderFrom",
+          "label": "From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recipients",
+          "label": "To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageText",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaUrl",
+          "label": "Media URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mediaAttachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkUrl",
+          "label": "Link URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "preferredService",
+          "label": "Preferred Service",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effectName",
+          "label": "Effect Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effectType",
+          "label": "Effect Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToMessageId",
+          "label": "Reply to Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToPartIndex",
+          "label": "Reply Part Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "idempotencyKey",
+          "label": "Idempotency Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "displayName",
+          "label": "Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupChatIcon",
+          "label": "Group Chat Icon",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "participantHandle",
+          "label": "Participant Handle",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voiceMemoUrl",
+          "label": "Voice Memo URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voiceAttachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterFrom",
+          "label": "From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterTo",
+          "label": "To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "editText",
+          "label": "New Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "editPartIndex",
+          "label": "Part Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reactionOperation",
+          "label": "Reaction Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reactionType",
+          "label": "Reaction Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reactionCustomEmoji",
+          "label": "Custom Emoji",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reactionPartIndex",
+          "label": "Part Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFilename",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentContentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "address",
+          "label": "Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "capabilityFrom",
+          "label": "From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactPhoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactFirstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactLastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contactImageUrl",
+          "label": "Profile Photo URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subscriptionId",
+          "label": "Subscription ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookTargetUrl",
+          "label": "Target URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookEvents",
+          "label": "Subscribed Events",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookPhoneNumbers",
+          "label": "Phone Numbers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webhookIsActive",
+          "label": "Active",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

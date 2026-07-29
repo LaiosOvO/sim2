@@ -1,0 +1,611 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "linear",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "linear",
+      "legacyIds": [],
+      "provider": "linear",
+      "version": "1",
+      "display": {
+        "name": "Linear (Legacy)",
+        "description": "Interact with Linear issues, projects, and more",
+        "category": "tools",
+        "icon": "LinearIcon",
+        "bgColor": "#5E6AD2"
+      },
+      "capabilities": [
+        "linear_read_issues",
+        "linear_get_issue",
+        "linear_create_issue",
+        "linear_update_issue",
+        "linear_archive_issue",
+        "linear_unarchive_issue",
+        "linear_delete_issue",
+        "linear_search_issues",
+        "linear_add_label_to_issue",
+        "linear_remove_label_from_issue",
+        "linear_create_comment",
+        "linear_update_comment",
+        "linear_delete_comment",
+        "linear_list_comments",
+        "linear_list_projects",
+        "linear_get_project",
+        "linear_create_project",
+        "linear_update_project",
+        "linear_archive_project",
+        "linear_list_users",
+        "linear_list_teams",
+        "linear_get_viewer",
+        "linear_list_labels",
+        "linear_create_label",
+        "linear_update_label",
+        "linear_archive_label",
+        "linear_list_workflow_states",
+        "linear_create_workflow_state",
+        "linear_update_workflow_state",
+        "linear_list_cycles",
+        "linear_get_cycle",
+        "linear_create_cycle",
+        "linear_get_active_cycle",
+        "linear_create_attachment",
+        "linear_list_attachments",
+        "linear_update_attachment",
+        "linear_delete_attachment",
+        "linear_create_issue_relation",
+        "linear_list_issue_relations",
+        "linear_delete_issue_relation",
+        "linear_create_favorite",
+        "linear_list_favorites",
+        "linear_create_project_update",
+        "linear_list_project_updates",
+        "linear_list_notifications",
+        "linear_update_notification",
+        "linear_create_customer",
+        "linear_list_customers",
+        "linear_create_customer_request",
+        "linear_update_customer_request",
+        "linear_list_customer_requests",
+        "linear_get_customer",
+        "linear_update_customer",
+        "linear_delete_customer",
+        "linear_merge_customers",
+        "linear_create_customer_status",
+        "linear_update_customer_status",
+        "linear_delete_customer_status",
+        "linear_list_customer_statuses",
+        "linear_create_customer_tier",
+        "linear_update_customer_tier",
+        "linear_delete_customer_tier",
+        "linear_list_customer_tiers",
+        "linear_delete_project",
+        "linear_create_project_label",
+        "linear_update_project_label",
+        "linear_delete_project_label",
+        "linear_list_project_labels",
+        "linear_add_label_to_project",
+        "linear_remove_label_from_project",
+        "linear_create_project_milestone",
+        "linear_update_project_milestone",
+        "linear_delete_project_milestone",
+        "linear_list_project_milestones",
+        "linear_create_project_status",
+        "linear_update_project_status",
+        "linear_delete_project_status",
+        "linear_list_project_statuses"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Linear Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Linear Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "teamId",
+          "label": "Team",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualTeamId",
+          "label": "Team ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Project",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issueId",
+          "label": "Issue ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "labelId",
+          "label": "Label ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "color",
+          "label": "Color (hex)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stateId",
+          "label": "State ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeId",
+          "label": "Assignee ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "estimate",
+          "label": "Estimate",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "includeArchived",
+          "label": "Include Archived",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "labelIds",
+          "label": "Label IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdAfter",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedAfter",
+          "label": "Updated After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cycleId",
+          "label": "Cycle ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "targetDate",
+          "label": "Target Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFileUpload",
+          "label": "Attachment",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "File Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentTitle",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "relationType",
+          "label": "Relation Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "relatedIssueId",
+          "label": "Related Issue ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "relationId",
+          "label": "Relation ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "favoriteType",
+          "label": "Favorite Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "favoriteTargetId",
+          "label": "Target ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "first",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "health",
+          "label": "Project Health",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notificationId",
+          "label": "Notification ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "markAsRead",
+          "label": "Mark as Read",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "workflowType",
+          "label": "Workflow Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "leadId",
+          "label": "Lead ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectState",
+          "label": "Project State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerName",
+          "label": "Customer Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "customerDomains",
+          "label": "Domains",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerExternalIds",
+          "label": "External IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerLogoUrl",
+          "label": "Logo URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerOwnerId",
+          "label": "Owner User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerRevenue",
+          "label": "Annual Revenue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerSize",
+          "label": "Organization Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerId",
+          "label": "Customer ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "customerNeedId",
+          "label": "Customer Request ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "requestBody",
+          "label": "Request Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerRequestPriority",
+          "label": "Urgency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedIssueId",
+          "label": "Link to Issue",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customerIdTarget",
+          "label": "Customer ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceCustomerId",
+          "label": "Source Customer ID (to merge from)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "targetCustomerId",
+          "label": "Target Customer ID (to merge into)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "statusName",
+          "label": "Status Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "statusColor",
+          "label": "Status Color",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "statusId",
+          "label": "Status ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tierName",
+          "label": "Tier Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tierId",
+          "label": "Tier ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectLabelName",
+          "label": "Label Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectLabelDescription",
+          "label": "Label Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectLabelIsGroup",
+          "label": "Is Label Group",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectLabelParentId",
+          "label": "Parent Label ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectLabelId",
+          "label": "Label ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "milestoneName",
+          "label": "Milestone Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "milestoneDescription",
+          "label": "Milestone Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestoneId",
+          "label": "Milestone ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "milestoneTargetDate",
+          "label": "Target Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectStatusName",
+          "label": "Status Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectStatusType",
+          "label": "Status Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectStatusPosition",
+          "label": "Position",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectStatusId",
+          "label": "Status ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectStatusIndefinite",
+          "label": "Can Stay Indefinitely",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectIdForMilestone",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "linear_v2",
+      "legacyIds": ["linear", "linear-v2"],
+      "provider": "linear",
+      "version": "2",
+      "display": {
+        "name": "Linear",
+        "description": "Interact with Linear issues, projects, and more",
+        "category": "tools",
+        "icon": "LinearIcon",
+        "bgColor": "#5E6AD2"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

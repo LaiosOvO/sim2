@@ -1,0 +1,235 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "zendesk",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "zendesk",
+      "legacyIds": [],
+      "provider": "zendesk",
+      "version": "1",
+      "display": {
+        "name": "Zendesk",
+        "description": "Manage support tickets, users, and organizations in Zendesk",
+        "category": "tools",
+        "icon": "ZendeskIcon",
+        "bgColor": "#03363D"
+      },
+      "capabilities": [
+        "zendesk_get_tickets",
+        "zendesk_get_ticket",
+        "zendesk_create_ticket",
+        "zendesk_create_tickets_bulk",
+        "zendesk_update_ticket",
+        "zendesk_update_tickets_bulk",
+        "zendesk_delete_ticket",
+        "zendesk_merge_tickets",
+        "zendesk_get_users",
+        "zendesk_get_user",
+        "zendesk_get_current_user",
+        "zendesk_search_users",
+        "zendesk_create_user",
+        "zendesk_create_users_bulk",
+        "zendesk_update_user",
+        "zendesk_update_users_bulk",
+        "zendesk_delete_user",
+        "zendesk_get_organizations",
+        "zendesk_get_organization",
+        "zendesk_autocomplete_organizations",
+        "zendesk_create_organization",
+        "zendesk_create_organizations_bulk",
+        "zendesk_update_organization",
+        "zendesk_delete_organization",
+        "zendesk_search",
+        "zendesk_search_count"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": true,
+          "description": "The email address associated with your Zendesk account"
+        },
+        {
+          "key": "apiToken",
+          "label": "API Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subdomain",
+          "label": "Subdomain",
+          "type": "string",
+          "required": true,
+          "description": "The subdomain from your Zendesk URL (mycompany.zendesk.com)"
+        },
+        {
+          "key": "ticketId",
+          "label": "Ticket ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "type",
+          "label": "Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeId",
+          "label": "Assignee ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupId",
+          "label": "Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customFields",
+          "label": "Custom Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tickets",
+          "label": "Tickets",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "targetTicketId",
+          "label": "Target Ticket ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sourceTicketIds",
+          "label": "Source Ticket IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "users",
+          "label": "Users",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "organizationId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationName",
+          "label": "Organization Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizations",
+          "label": "Organizations",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterType",
+          "label": "Resource Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sort",
+          "label": "Sort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "perPage",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageAfter",
+          "label": "Page After (Cursor)",
+          "type": "string",
+          "required": false,
+          "description": "Cursor value from a previous response to fetch the next page of results"
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false,
+          "description": "Page number for offset-based pagination"
+        }
+      ]
+    }
+  ]
+}

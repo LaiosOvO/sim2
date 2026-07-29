@@ -1,0 +1,45 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mcp",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mcp",
+      "legacyIds": [],
+      "provider": "mcp",
+      "version": "1",
+      "display": {
+        "name": "MCP Tool",
+        "description": "Execute tools from Model Context Protocol (MCP) servers",
+        "category": "blocks",
+        "icon": "McpIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "server",
+          "label": "MCP Server",
+          "type": "string",
+          "required": true,
+          "description": "Choose from configured MCP servers in your workspace"
+        },
+        {
+          "key": "tool",
+          "label": "Tool",
+          "type": "string",
+          "required": true,
+          "description": "Available tools from the selected MCP server"
+        },
+        {
+          "key": "arguments",
+          "label": "",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

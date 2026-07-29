@@ -1,0 +1,161 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "revenuecat",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "revenuecat",
+      "legacyIds": [],
+      "provider": "revenuecat",
+      "version": "1",
+      "display": {
+        "name": "RevenueCat",
+        "description": "Manage in-app subscriptions and entitlements",
+        "category": "tools",
+        "icon": "RevenueCatIcon",
+        "bgColor": "#F25A5A"
+      },
+      "capabilities": [
+        "revenuecat_get_customer",
+        "revenuecat_delete_customer",
+        "revenuecat_create_purchase",
+        "revenuecat_grant_entitlement",
+        "revenuecat_revoke_entitlement",
+        "revenuecat_list_offerings",
+        "revenuecat_update_subscriber_attributes",
+        "revenuecat_defer_google_subscription",
+        "revenuecat_refund_google_subscription",
+        "revenuecat_revoke_google_subscription"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "appUserId",
+          "label": "App User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "entitlementIdentifier",
+          "label": "Entitlement Identifier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endTimeMs",
+          "label": "End Time (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startTimeMs",
+          "label": "Start Time (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fetchToken",
+          "label": "Fetch Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "productId",
+          "label": "Product ID / Store Transaction ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "price",
+          "label": "Price",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currency",
+          "label": "Currency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "presentedOfferingIdentifier",
+          "label": "Presented Offering ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paymentMode",
+          "label": "Payment Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "introductoryPrice",
+          "label": "Introductory Price",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedAtMs",
+          "label": "Updated At (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isRestore",
+          "label": "Is Restore",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "purchasePlatform",
+          "label": "Platform",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributes",
+          "label": "Attributes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "extendByDays",
+          "label": "Extend By Days",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expiryTimeMs",
+          "label": "Expiry Time (ms)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "platform",
+          "label": "Platform",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

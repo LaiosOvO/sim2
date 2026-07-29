@@ -1,0 +1,143 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "table",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "table",
+      "legacyIds": [],
+      "provider": "table",
+      "version": "1",
+      "display": {
+        "name": "Table",
+        "description": "User-defined data tables",
+        "category": "blocks",
+        "icon": "TableIcon",
+        "bgColor": "#10B981"
+      },
+      "capabilities": [
+        "table_insert_row",
+        "table_batch_insert_rows",
+        "table_upsert_row",
+        "table_update_row",
+        "table_update_rows_by_filter",
+        "table_delete_row",
+        "table_delete_rows_by_filter",
+        "table_query_rows",
+        "table_get_row",
+        "table_get_schema"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tableSelector",
+          "label": "Table",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualTableId",
+          "label": "Table ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "rowId",
+          "label": "Row ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Row Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "conflictColumnSelector",
+          "label": "Conflict Column",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualConflictColumn",
+          "label": "Conflict Column",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rows",
+          "label": "Rows Data (Array of JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "bulkFilterMode",
+          "label": "Filter Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bulkFilterBuilder",
+          "label": "Filter Conditions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "builderMode",
+          "label": "Input Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterBuilder",
+          "label": "Filter Conditions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBuilder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

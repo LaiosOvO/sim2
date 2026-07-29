@@ -1,0 +1,627 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "slack",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "slack",
+      "legacyIds": [],
+      "provider": "slack",
+      "version": "1",
+      "display": {
+        "name": "Slack",
+        "description": "Send, update, delete messages, manage views and modals, add or remove reactions, manage canvases, get channel info and user presence in Slack",
+        "category": "tools",
+        "icon": "SlackIcon",
+        "bgColor": "#611f69"
+      },
+      "capabilities": [
+        "slack_message",
+        "slack_ephemeral_message",
+        "slack_canvas",
+        "slack_message_reader",
+        "slack_get_message",
+        "slack_get_thread",
+        "slack_get_thread_replies",
+        "slack_get_channel_history",
+        "slack_get_permalink",
+        "slack_set_status",
+        "slack_set_title",
+        "slack_set_suggested_prompts",
+        "slack_list_channels",
+        "slack_list_members",
+        "slack_list_users",
+        "slack_get_user",
+        "slack_download",
+        "slack_update_message",
+        "slack_delete_message",
+        "slack_add_reaction",
+        "slack_remove_reaction",
+        "slack_get_channel_info",
+        "slack_get_user_presence",
+        "slack_edit_canvas",
+        "slack_create_channel_canvas",
+        "slack_get_canvas",
+        "slack_list_canvases",
+        "slack_lookup_canvas_sections",
+        "slack_delete_canvas",
+        "slack_create_conversation",
+        "slack_invite_to_conversation",
+        "slack_open_view",
+        "slack_update_view",
+        "slack_push_view",
+        "slack_publish_view",
+        "slack_schedule_message",
+        "slack_list_scheduled_messages",
+        "slack_delete_scheduled_message",
+        "slack_archive_conversation",
+        "slack_rename_conversation",
+        "slack_set_conversation_topic",
+        "slack_set_conversation_purpose"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authMethod",
+          "label": "Authentication Method",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationType",
+          "label": "Destination",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Slack Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Slack Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "botToken",
+          "label": "Bot Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "channel",
+          "label": "Channel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualChannel",
+          "label": "Channel ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dmUserId",
+          "label": "User",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualDmUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ephemeralUser",
+          "label": "Target User",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualEphemeralUser",
+          "label": "Target User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageFormat",
+          "label": "Message Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "blocks",
+          "label": "Block Kit Blocks",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "threadTs",
+          "label": "Thread Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "files",
+          "label": "File Attachments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Canvas Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Canvas Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Message Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includePrivate",
+          "label": "Include Private Channels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelLimit",
+          "label": "Channel Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberLimit",
+          "label": "Member Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeDeleted",
+          "label": "Include Deactivated Users",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userLimit",
+          "label": "User Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paginationCursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "getMessageTimestamp",
+          "label": "Message Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "getThreadTimestamp",
+          "label": "Thread Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "threadLimit",
+          "label": "Message Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "loadingMessages",
+          "label": "Loading Messages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assistantTitle",
+          "label": "Thread Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "suggestedPrompts",
+          "label": "Suggested Prompts",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "promptsTitle",
+          "label": "Prompts Heading",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyOldest",
+          "label": "Oldest Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyLatest",
+          "label": "Latest Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyLimit",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyMaxPages",
+          "label": "Max Pages",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyCursor",
+          "label": "Start Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyInclusive",
+          "label": "Inclusive",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oldest",
+          "label": "Oldest Timestamp",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileId",
+          "label": "File ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "downloadFileName",
+          "label": "File Name Override",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateTimestamp",
+          "label": "Message Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "updateText",
+          "label": "New Message Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteTimestamp",
+          "label": "Message Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reactionTimestamp",
+          "label": "Message Timestamp",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "emojiName",
+          "label": "Emoji Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "includeNumMembers",
+          "label": "Include Member Count",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "presenceUserId",
+          "label": "User",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualPresenceUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "editCanvasId",
+          "label": "Canvas ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "canvasOperation",
+          "label": "Edit Operation",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "canvasContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sectionId",
+          "label": "Section ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "canvasTitle",
+          "label": "New Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "channelCanvasTitle",
+          "label": "Canvas Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelCanvasContent",
+          "label": "Canvas Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getCanvasId",
+          "label": "Canvas ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "canvasListCount",
+          "label": "Canvas Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "canvasListPage",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "canvasListUser",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "canvasListTsFrom",
+          "label": "Created After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "canvasListTsTo",
+          "label": "Created Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "canvasListTeamId",
+          "label": "Team ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lookupCanvasId",
+          "label": "Canvas ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sectionCriteria",
+          "label": "Section Criteria",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "deleteCanvasId",
+          "label": "Canvas ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "conversationName",
+          "label": "Channel Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "isPrivate",
+          "label": "Private Channel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "teamId",
+          "label": "Team ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inviteUsers",
+          "label": "User IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "inviteForce",
+          "label": "Skip Invalid Users",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewTriggerId",
+          "label": "Trigger ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "viewInteractivityPointer",
+          "label": "Interactivity Pointer",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewId",
+          "label": "View ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewExternalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "viewHash",
+          "label": "View Hash",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publishUserId",
+          "label": "User",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualPublishUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "viewPayload",
+          "label": "View Payload",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "scheduleAt",
+          "label": "Send At",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "scheduledLimit",
+          "label": "Message Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduledCursor",
+          "label": "Pagination Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduledMessageId",
+          "label": "Scheduled Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "renameChannelName",
+          "label": "New Channel Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "conversationTopic",
+          "label": "Topic",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "conversationPurpose",
+          "label": "Purpose",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "slack_v2",
+      "legacyIds": ["slack-v2"],
+      "provider": "slack",
+      "version": "2",
+      "display": {
+        "name": "slack v2",
+        "description": "",
+        "category": "blocks"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

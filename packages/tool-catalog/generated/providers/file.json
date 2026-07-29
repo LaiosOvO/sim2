@@ -1,0 +1,397 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "file",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "file",
+      "legacyIds": [],
+      "provider": "file",
+      "version": "1",
+      "display": {
+        "name": "File (Legacy)",
+        "description": "Read and parse multiple files",
+        "category": "blocks",
+        "icon": "DocumentIcon",
+        "bgColor": "#40916C"
+      },
+      "capabilities": ["file_parser"],
+      "inputs": [
+        {
+          "key": "inputMethod",
+          "label": "Select Input Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "File URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "Process Files",
+          "type": "file",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "file_v2",
+      "legacyIds": ["file-v2"],
+      "provider": "file",
+      "version": "2",
+      "display": {
+        "name": "File (Legacy)",
+        "description": "Read and parse multiple files",
+        "category": "blocks"
+      },
+      "capabilities": ["file_parser_v2"],
+      "inputs": [
+        {
+          "key": "file",
+          "label": "Files",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "Files",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "file_v3",
+      "legacyIds": ["file-v3"],
+      "provider": "file",
+      "version": "3",
+      "display": {
+        "name": "File",
+        "description": "Read and write workspace files",
+        "category": "blocks",
+        "icon": "DocumentIcon",
+        "bgColor": "#40916C"
+      },
+      "capabilities": ["file_parser_v3", "file_get", "file_write", "file_append"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "Files",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileUrl",
+          "label": "File URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "getFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appendFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "appendFileName",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appendContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "file_v4",
+      "legacyIds": ["file-v4"],
+      "provider": "file",
+      "version": "4",
+      "display": {
+        "name": "File (Legacy)",
+        "description": "Read, fetch, write, and append files",
+        "category": "blocks"
+      },
+      "capabilities": ["file_fetch", "file_read", "file_write", "file_append"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "readFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "readFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUrl",
+          "label": "File URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "headers",
+          "label": "Headers",
+          "type": "string",
+          "required": false,
+          "description": "Custom headers for fetching the file URL, such as Authorization: Bearer <token>."
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appendFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "appendFileName",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appendContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "file_v5",
+      "legacyIds": ["file-v5"],
+      "provider": "file",
+      "version": "5",
+      "display": {
+        "name": "File",
+        "description": "Read, get content, fetch, write, append, compress, decompress, and manage sharing for files",
+        "category": "blocks"
+      },
+      "capabilities": [
+        "file_read",
+        "file_get_content",
+        "file_fetch",
+        "file_write",
+        "file_append",
+        "file_compress",
+        "file_decompress",
+        "file_manage_sharing"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "readFile",
+          "label": "Files",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "readFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getContentFile",
+          "label": "Files",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "getContentFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileUrl",
+          "label": "File URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "headers",
+          "label": "Headers",
+          "type": "string",
+          "required": false,
+          "description": "Custom headers for fetching the file URL, such as Authorization: Bearer <token>."
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appendFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "appendFileName",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appendContent",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "compressFile",
+          "label": "Files",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "compressFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "archiveName",
+          "label": "Archive Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "decompressFile",
+          "label": "Archive",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "decompressFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shareFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "shareFileId",
+          "label": "File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shareVisibility",
+          "label": "Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sharePassword",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shareAllowedEmails",
+          "label": "Allowed Emails",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

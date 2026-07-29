@@ -1,0 +1,244 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "agentmail",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "agentmail",
+      "legacyIds": [],
+      "provider": "agentmail",
+      "version": "1",
+      "display": {
+        "name": "AgentMail",
+        "description": "Manage email inboxes, threads, and messages with AgentMail",
+        "category": "tools",
+        "icon": "AgentMailIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "agentmail_create_draft",
+        "agentmail_create_inbox",
+        "agentmail_delete_draft",
+        "agentmail_delete_inbox",
+        "agentmail_delete_thread",
+        "agentmail_forward_message",
+        "agentmail_get_draft",
+        "agentmail_get_inbox",
+        "agentmail_get_message",
+        "agentmail_get_thread",
+        "agentmail_list_drafts",
+        "agentmail_list_inboxes",
+        "agentmail_list_messages",
+        "agentmail_list_threads",
+        "agentmail_reply_message",
+        "agentmail_send_draft",
+        "agentmail_send_message",
+        "agentmail_update_draft",
+        "agentmail_update_inbox",
+        "agentmail_update_message",
+        "agentmail_update_thread"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "inboxId",
+          "label": "Inbox ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "to",
+          "label": "To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "html",
+          "label": "HTML",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyMessageId",
+          "label": "Message ID to Reply To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyTo",
+          "label": "Override Recipients",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyAll",
+          "label": "Reply All",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadId",
+          "label": "Thread ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "addLabels",
+          "label": "Add Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "removeLabels",
+          "label": "Remove Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "permanent",
+          "label": "Permanent Delete",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "forwardMessageId",
+          "label": "Message ID to Forward",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateMessageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "msgAddLabels",
+          "label": "Add Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "msgRemoveLabels",
+          "label": "Remove Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "draftId",
+          "label": "Draft ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "draftInReplyTo",
+          "label": "In Reply To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendAt",
+          "label": "Schedule Send",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "displayName",
+          "label": "Display Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inboxIdParam",
+          "label": "Inbox ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labels",
+          "label": "Labels Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

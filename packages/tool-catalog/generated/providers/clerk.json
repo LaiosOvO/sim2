@@ -1,0 +1,353 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "clerk",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "clerk",
+      "legacyIds": [],
+      "provider": "clerk",
+      "version": "1",
+      "display": {
+        "name": "Clerk",
+        "description": "Manage users, organizations, and sessions in Clerk",
+        "category": "tools",
+        "icon": "ClerkIcon",
+        "bgColor": "#131316"
+      },
+      "capabilities": [
+        "clerk_list_users",
+        "clerk_get_user",
+        "clerk_create_user",
+        "clerk_update_user",
+        "clerk_delete_user",
+        "clerk_ban_user",
+        "clerk_unban_user",
+        "clerk_lock_user",
+        "clerk_unlock_user",
+        "clerk_get_user_oauth_token",
+        "clerk_list_organizations",
+        "clerk_get_organization",
+        "clerk_create_organization",
+        "clerk_update_organization",
+        "clerk_delete_organization",
+        "clerk_list_organization_memberships",
+        "clerk_add_organization_member",
+        "clerk_update_organization_membership",
+        "clerk_remove_organization_member",
+        "clerk_create_organization_invitation",
+        "clerk_list_organization_invitations",
+        "clerk_list_sessions",
+        "clerk_get_session",
+        "clerk_revoke_session",
+        "clerk_list_allowlist_identifiers",
+        "clerk_create_allowlist_identifier",
+        "clerk_delete_allowlist_identifier",
+        "clerk_list_blocklist_identifiers",
+        "clerk_create_blocklist_identifier",
+        "clerk_delete_blocklist_identifier",
+        "clerk_list_jwt_templates",
+        "clerk_get_jwt_template",
+        "clerk_create_actor_token",
+        "clerk_revoke_actor_token"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretKey",
+          "label": "Secret Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddressFilter",
+          "label": "Email Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usernameFilter",
+          "label": "Username Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumberFilter",
+          "label": "Phone Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalIdFilter",
+          "label": "External ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userIdFilter",
+          "label": "User ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "provider",
+          "label": "OAuth Provider",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publicMetadata",
+          "label": "Public Metadata",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "privateMetadata",
+          "label": "Private Metadata",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "orgQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeMembersCount",
+          "label": "Include Members Count",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "organizationId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orgName",
+          "label": "Organization Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createdBy",
+          "label": "Creator User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxAllowedMemberships",
+          "label": "Max Members",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "adminDeleteEnabled",
+          "label": "Admin Delete Enabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "role",
+          "label": "Role",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inviterUserId",
+          "label": "Inviter User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "redirectUrl",
+          "label": "Redirect URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expiresInDays",
+          "label": "Expires In (Days)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notifyInvitation",
+          "label": "Send Invitation Email",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "invitationEmailFilter",
+          "label": "Email Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "invitationStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionUserId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientId",
+          "label": "Client ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionId",
+          "label": "Session ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "identifier",
+          "label": "Identifier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allowlistNotify",
+          "label": "Notify Identifier",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "identifierId",
+          "label": "Identifier ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateId",
+          "label": "Template ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actor",
+          "label": "Actor",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "expiresInSeconds",
+          "label": "Expires In (Seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionMaxDurationInSeconds",
+          "label": "Session Max Duration (Seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actorTokenId",
+          "label": "Actor Token ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

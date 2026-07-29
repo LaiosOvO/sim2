@@ -1,0 +1,121 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_ads",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_ads",
+      "legacyIds": ["google-ads"],
+      "provider": "google_ads",
+      "version": "1",
+      "display": {
+        "name": "Google Ads",
+        "description": "Query campaigns, ad groups, and performance metrics",
+        "category": "tools",
+        "icon": "GoogleAdsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_ads_list_customers",
+        "google_ads_search",
+        "google_ads_list_campaigns",
+        "google_ads_campaign_performance",
+        "google_ads_list_ad_groups",
+        "google_ads_ad_performance"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Ads Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Ads Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "developerToken",
+          "label": "Developer Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "customerId",
+          "label": "Customer ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "managerCustomerId",
+          "label": "Manager Customer ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "GAQL Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignId",
+          "label": "Campaign ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "adGroupId",
+          "label": "Ad Group ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dateRange",
+          "label": "Date Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

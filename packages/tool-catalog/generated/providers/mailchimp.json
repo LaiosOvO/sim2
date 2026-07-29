@@ -1,0 +1,368 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mailchimp",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mailchimp",
+      "legacyIds": [],
+      "provider": "mailchimp",
+      "version": "1",
+      "display": {
+        "name": "Mailchimp",
+        "description": "Manage audiences, campaigns, and marketing automation in Mailchimp",
+        "category": "tools",
+        "icon": "MailchimpIcon",
+        "bgColor": "#FFE01B"
+      },
+      "capabilities": [
+        "mailchimp_get_audiences",
+        "mailchimp_get_audience",
+        "mailchimp_create_audience",
+        "mailchimp_update_audience",
+        "mailchimp_delete_audience",
+        "mailchimp_get_members",
+        "mailchimp_get_member",
+        "mailchimp_add_member",
+        "mailchimp_add_or_update_member",
+        "mailchimp_update_member",
+        "mailchimp_delete_member",
+        "mailchimp_archive_member",
+        "mailchimp_unarchive_member",
+        "mailchimp_get_campaigns",
+        "mailchimp_get_campaign",
+        "mailchimp_create_campaign",
+        "mailchimp_update_campaign",
+        "mailchimp_delete_campaign",
+        "mailchimp_send_campaign",
+        "mailchimp_schedule_campaign",
+        "mailchimp_unschedule_campaign",
+        "mailchimp_replicate_campaign",
+        "mailchimp_get_campaign_content",
+        "mailchimp_set_campaign_content",
+        "mailchimp_get_automations",
+        "mailchimp_get_automation",
+        "mailchimp_start_automation",
+        "mailchimp_pause_automation",
+        "mailchimp_add_subscriber_to_automation",
+        "mailchimp_get_templates",
+        "mailchimp_get_template",
+        "mailchimp_create_template",
+        "mailchimp_update_template",
+        "mailchimp_delete_template",
+        "mailchimp_get_campaign_reports",
+        "mailchimp_get_campaign_report",
+        "mailchimp_get_segments",
+        "mailchimp_get_segment",
+        "mailchimp_create_segment",
+        "mailchimp_update_segment",
+        "mailchimp_delete_segment",
+        "mailchimp_get_segment_members",
+        "mailchimp_add_segment_member",
+        "mailchimp_remove_segment_member",
+        "mailchimp_get_member_tags",
+        "mailchimp_add_member_tags",
+        "mailchimp_remove_member_tags",
+        "mailchimp_get_merge_fields",
+        "mailchimp_get_merge_field",
+        "mailchimp_create_merge_field",
+        "mailchimp_update_merge_field",
+        "mailchimp_delete_merge_field",
+        "mailchimp_get_interest_categories",
+        "mailchimp_get_interest_category",
+        "mailchimp_create_interest_category",
+        "mailchimp_update_interest_category",
+        "mailchimp_delete_interest_category",
+        "mailchimp_get_interests",
+        "mailchimp_get_interest",
+        "mailchimp_create_interest",
+        "mailchimp_update_interest",
+        "mailchimp_delete_interest",
+        "mailchimp_get_landing_pages",
+        "mailchimp_get_landing_page",
+        "mailchimp_create_landing_page",
+        "mailchimp_update_landing_page",
+        "mailchimp_delete_landing_page",
+        "mailchimp_publish_landing_page",
+        "mailchimp_unpublish_landing_page",
+        "mailchimp_get_batch_operations",
+        "mailchimp_get_batch_operation",
+        "mailchimp_create_batch_operation",
+        "mailchimp_delete_batch_operation"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listId",
+          "label": "Audience ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audienceName",
+          "label": "Audience Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contact",
+          "label": "Contact Information",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "permissionReminder",
+          "label": "Permission Reminder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignDefaults",
+          "label": "Campaign Defaults",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailTypeOption",
+          "label": "Email Type Option",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subscriberEmail",
+          "label": "Subscriber Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusIfNew",
+          "label": "Status If New",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeFields",
+          "label": "Merge Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interests",
+          "label": "Interests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignId",
+          "label": "Campaign ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignType",
+          "label": "Campaign Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "campaignSettings",
+          "label": "Campaign Settings",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recipients",
+          "label": "Recipients",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleTime",
+          "label": "Schedule Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "html",
+          "label": "HTML Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "plainText",
+          "label": "Plain Text Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateId",
+          "label": "Template ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateName",
+          "label": "Template Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateHtml",
+          "label": "Template HTML",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowId",
+          "label": "Workflow ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflowEmailId",
+          "label": "Workflow Email ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "segmentId",
+          "label": "Segment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "segmentName",
+          "label": "Segment Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "segmentOptions",
+          "label": "Segment Options",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeId",
+          "label": "Merge Field ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeName",
+          "label": "Merge Field Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeType",
+          "label": "Merge Field Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interestCategoryId",
+          "label": "Interest Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interestCategoryTitle",
+          "label": "Interest Category Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interestCategoryType",
+          "label": "Interest Category Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interestId",
+          "label": "Interest ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "interestName",
+          "label": "Interest Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageId",
+          "label": "Landing Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "landingPageTitle",
+          "label": "Landing Page Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "landingPageType",
+          "label": "Landing Page Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "batchId",
+          "label": "Batch ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "operations",
+          "label": "Operations",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "count",
+          "label": "Count",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

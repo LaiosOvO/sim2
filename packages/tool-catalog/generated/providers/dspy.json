@@ -1,0 +1,90 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "dspy",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "dspy",
+      "legacyIds": [],
+      "provider": "dspy",
+      "version": "1",
+      "display": {
+        "name": "DSPy",
+        "description": "Run predictions using self-hosted DSPy programs",
+        "category": "tools",
+        "icon": "DsPyIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["dspy_predict", "dspy_chain_of_thought", "dspy_react"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseUrl",
+          "label": "Base URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endpoint",
+          "label": "Endpoint",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "input",
+          "label": "Input",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inputField",
+          "label": "Input Field Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "additionalInputs",
+          "label": "Additional Inputs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "question",
+          "label": "Question",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "task",
+          "label": "Task",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxIterations",
+          "label": "Max Iterations",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "context",
+          "label": "Context",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

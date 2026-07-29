@@ -726,6 +726,37 @@ Executor、Registry、Sandbox、Provider SDK 或 Node marker。这个结果确�
 契约 CI 现包括 pure-package gate、target module cycle gate、OpenAPI/manifest clean-tree
 生成检查和 16 KB browser adapter budget。
 
+### 19.5 Browser-safe Tool Catalog 与剩余闭包
+
+原有 `apps/sim/lib/integrations/integrations.json` 已经接近浏览器安全 metadata，但两个真实
+画布消费者仍会导入 `@/blocks/registry`：integration matcher 直接读取 `getBlock` 和
+`getAllBlocks`，Copilot mention hook 则动态导入完整 Block Registry。动态 import 只改变
+加载时机，不会建立前后端边界；它仍会要求浏览器 bundler 编译 Registry 的传递闭包。
+
+现在的 seam 是：
+
+```text
+BlockConfig declarations
+  -> TypeScript AST extractor（生成时，不执行 Registry）
+  -> versioned browser summary + provider shards + manifest/hash
+  -> apps/sim/lib/catalog/client.ts
+  -> integration matcher / Copilot mention UI
+```
+
+本次生成 313 个 item 和 280 个 provider shard；231 个现有 UI integration 的 name、
+description、category、bgColor 与生成结果逐项一致。browser summary 为 15,127 bytes
+gzip，独立 catalog client bundle 为 80,140 bytes raw / 14,425 bytes gzip，且不包含
+Executor、Runtime Registry、execution、Node builtin、Zod、Feishu SDK 或 Provider SDK
+marker。Catalog 的 runtime reader 支持 ID/legacy alias 查询、provider filter、搜索、
+cursor 和 limit。
+
+`integration-matcher.ts` 与 Copilot `use-mention-data.ts` 已不再导入 Block Registry；专门
+consumer gate 会防止回归。全局浏览器闭包计数仍是 588 个 client root，其中 297 个可达
+Executor、267 个可达 execution/sandbox、200 个可达 runtime tools/blocks/triggers。
+这不是 Catalog seam 失效，而是同一批页面仍通过别的旧 import chain 触达运行时。因而当前
+结论只能是“两个消费者已切断”，不能声称“整页运行时闭包已清零”；后续 Runtime Registry、
+Replay/Debug、Auth/DB 与其他画布消费者迁移必须继续降低全局 ratchet。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -761,3 +792,9 @@ Executor、Registry、Sandbox、Provider SDK 或 Node marker。这个结果确�
 - 建立 10 个平台契约 schema、可重复 OpenAPI/版本产物和 Web→API→Worker trace seam。
 - 将 Web trace adapter 从运行时 Zod import 收紧为 type-only，browser build 从
   269,728 bytes 降至 200 bytes。
+- 建立 AST 驱动的 browser-safe Tool Catalog：313 个 item、280 个 provider 分片、
+  231 个 UI metadata differential match 和稳定 SHA-256 manifest。
+- 将 integration matcher 与 Copilot mention hook 从完整 Block Registry 迁到 Catalog；
+  独立 browser bundle 为 14,425 bytes gzip，Runtime/Executor/Provider marker 为 0。
+- 记录局部 Catalog seam 已切断但全局客户端闭包计数未下降，防止把消费者级改造误报为
+  整页性能完成。

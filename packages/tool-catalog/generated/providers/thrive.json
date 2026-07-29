@@ -1,0 +1,474 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "thrive",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "thrive",
+      "legacyIds": [],
+      "provider": "thrive",
+      "version": "1",
+      "display": {
+        "name": "Thrive",
+        "description": "Manage users, audiences, learning and CPD on Thrive",
+        "category": "tools",
+        "icon": "ThriveIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "thrive_create_user",
+        "thrive_update_user",
+        "thrive_delete_user",
+        "thrive_suspend_user",
+        "thrive_search_users",
+        "thrive_get_user_by_id",
+        "thrive_get_user_by_ref",
+        "thrive_list_audiences",
+        "thrive_create_audience",
+        "thrive_get_audience",
+        "thrive_update_audience",
+        "thrive_delete_audience",
+        "thrive_list_audience_members",
+        "thrive_add_audience_members",
+        "thrive_replace_audience_members",
+        "thrive_remove_audience_member",
+        "thrive_list_audience_managers",
+        "thrive_add_audience_managers",
+        "thrive_replace_audience_managers",
+        "thrive_remove_audience_manager",
+        "thrive_list_assignments",
+        "thrive_create_assignment",
+        "thrive_get_assignment",
+        "thrive_update_assignment",
+        "thrive_delete_assignment",
+        "thrive_list_enrolments",
+        "thrive_get_enrolment",
+        "thrive_list_completions",
+        "thrive_get_completion",
+        "thrive_create_completion",
+        "thrive_get_content",
+        "thrive_query_content",
+        "thrive_get_activity",
+        "thrive_query_activities",
+        "thrive_get_cpd_category",
+        "thrive_query_cpd_categories",
+        "thrive_get_cpd_entry",
+        "thrive_query_cpd_entries",
+        "thrive_get_cpd_requirement",
+        "thrive_query_cpd_requirements",
+        "thrive_query_cpd_user_summaries",
+        "thrive_list_tags",
+        "thrive_get_tag",
+        "thrive_add_user_tags",
+        "thrive_remove_user_tags",
+        "thrive_update_user_skills",
+        "thrive_get_skill_levels"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tenantId",
+          "label": "Tenant ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "host",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ref",
+          "label": "User Ref",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "id",
+          "label": "Record ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "loginMethod",
+          "label": "Login Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "role",
+          "label": "Role",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jobTitle",
+          "label": "Job Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "managerRef",
+          "label": "Manager Ref",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeZone",
+          "label": "Time Zone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "languageCode",
+          "label": "Language Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sso",
+          "label": "SSO Managed",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "additionalFields",
+          "label": "Additional Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statuses",
+          "label": "Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "omitStatuses",
+          "label": "Omit Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enrolmentStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audienceId",
+          "label": "Audience ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Audience Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reference",
+          "label": "Audience Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentId",
+          "label": "Parent ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "category",
+          "label": "Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "users",
+          "label": "Users",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userRef",
+          "label": "User",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "managers",
+          "label": "Managers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignmentId",
+          "label": "Assignment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enrolmentId",
+          "label": "Enrolment ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentId",
+          "label": "Content ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alternativeContentIds",
+          "label": "Alternative Content IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hideAlternativeContent",
+          "label": "Hide Alternative Content",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "completionPeriod",
+          "label": "Completion Period (days)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recurrence",
+          "label": "Recurrence (days)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isRPL",
+          "label": "Imported via RPL",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "completedDateRangeStart",
+          "label": "Completed From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completedDateRangeEnd",
+          "label": "Completed To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "completedAt",
+          "label": "Completed At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "types",
+          "label": "Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "omitTypes",
+          "label": "Omit Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "actions",
+          "label": "Actions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "omitActions",
+          "label": "Omit Actions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentIds",
+          "label": "Content IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timestampFrom",
+          "label": "Timestamp From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timestampTo",
+          "label": "Timestamp To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryId",
+          "label": "CPD Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logEntryId",
+          "label": "CPD Entry ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audienceRequirementId",
+          "label": "CPD Requirement ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryDateFrom",
+          "label": "Entry Date From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entryDateTo",
+          "label": "Entry Date To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagId",
+          "label": "Tag ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skills",
+          "label": "Skills",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiControlled",
+          "label": "API Controlled Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "updatedAtFrom",
+          "label": "Updated From",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedAtTo",
+          "label": "Updated To",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updatedSince",
+          "label": "Updated Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "perPage",
+          "label": "Per Page",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

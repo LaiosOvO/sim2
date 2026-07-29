@@ -1,0 +1,397 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "jira",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "jira",
+      "legacyIds": [],
+      "provider": "jira",
+      "version": "1",
+      "display": {
+        "name": "Jira",
+        "description": "Interact with Jira",
+        "category": "tools",
+        "icon": "JiraIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "jira_retrieve",
+        "jira_update",
+        "jira_write",
+        "jira_bulk_read",
+        "jira_delete_issue",
+        "jira_assign_issue",
+        "jira_transition_issue",
+        "jira_search_issues",
+        "jira_add_comment",
+        "jira_get_comments",
+        "jira_update_comment",
+        "jira_delete_comment",
+        "jira_get_attachments",
+        "jira_add_attachment",
+        "jira_delete_attachment",
+        "jira_add_worklog",
+        "jira_get_worklogs",
+        "jira_update_worklog",
+        "jira_delete_worklog",
+        "jira_create_issue_link",
+        "jira_delete_issue_link",
+        "jira_add_watcher",
+        "jira_remove_watcher",
+        "jira_get_users",
+        "jira_search_users",
+        "jira_list_projects",
+        "jira_get_project",
+        "jira_get_transitions",
+        "jira_list_issue_types",
+        "jira_get_fields"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "credential",
+          "label": "Jira Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Jira Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectId",
+          "label": "Select Project",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualProjectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issueKey",
+          "label": "Select Issue",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "manualIssueKey",
+          "label": "Issue Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "summary",
+          "label": "New Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "New Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issueType",
+          "label": "Issue Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentIssue",
+          "label": "Parent Issue Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignee",
+          "label": "Assignee Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labels",
+          "label": "Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "duedate",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reporter",
+          "label": "Reporter Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "environment",
+          "label": "Environment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customFieldId",
+          "label": "Custom Field ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customFieldValue",
+          "label": "Custom Field Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "components",
+          "label": "Components",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fixVersions",
+          "label": "Fix Versions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "notifyUsers",
+          "label": "Notify Users",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteSubtasks",
+          "label": "Delete Subtasks",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "transitionId",
+          "label": "Transition ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "transitionComment",
+          "label": "Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "resolution",
+          "label": "Resolution",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "jql",
+          "label": "JQL Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "nextPageToken",
+          "label": "Next Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startAt",
+          "label": "Start At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fields",
+          "label": "Fields",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentBody",
+          "label": "Comment Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentId",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "files",
+          "label": "File References",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "attachmentId",
+          "label": "Attachment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "timeSpentSeconds",
+          "label": "Time Spent (seconds)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "timeSpentSecondsUpdate",
+          "label": "Time Spent (seconds) - Optional",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "worklogComment",
+          "label": "Worklog Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "started",
+          "label": "Started At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "worklogId",
+          "label": "Worklog ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "inwardIssueKey",
+          "label": "Inward Issue Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "outwardIssueKey",
+          "label": "Outward Issue Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "linkType",
+          "label": "Link Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "linkComment",
+          "label": "Link Comment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkId",
+          "label": "Link ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userAccountId",
+          "label": "Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersStartAt",
+          "label": "Start At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "usersMaxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchUsersQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchUsersMaxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchUsersStartAt",
+          "label": "Start At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectSearchQuery",
+          "label": "Project Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listProjectsStartAt",
+          "label": "Start At",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listProjectsMaxResults",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

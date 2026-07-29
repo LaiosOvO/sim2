@@ -1,0 +1,23 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "chat_trigger",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "chat_trigger",
+      "legacyIds": ["chat-trigger"],
+      "provider": "chat_trigger",
+      "version": "1",
+      "display": {
+        "name": "Chat",
+        "description": "Legacy chat start block. Prefer the unified Start block.",
+        "category": "triggers",
+        "icon": "ChatTriggerIcon",
+        "bgColor": "#6F3DFA"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

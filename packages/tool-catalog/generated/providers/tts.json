@@ -1,0 +1,212 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "tts",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "tts",
+      "legacyIds": [],
+      "provider": "tts",
+      "version": "1",
+      "display": {
+        "name": "Text-to-Speech",
+        "description": "Convert text to speech using AI voices",
+        "category": "blocks",
+        "icon": "TTSIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "tts_openai",
+        "tts_deepgram",
+        "tts_elevenlabs",
+        "tts_cartesia",
+        "tts_google",
+        "tts_azure",
+        "tts_playht"
+      ],
+      "inputs": [
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voice",
+          "label": "Voice",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "responseFormat",
+          "label": "Audio Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "speed",
+          "label": "Speed",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "voice",
+          "label": "Voice",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "encoding",
+          "label": "Audio Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sampleRate",
+          "label": "Sample Rate",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voiceId",
+          "label": "Voice ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "modelId",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stability",
+          "label": "Stability",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "similarityBoost",
+          "label": "Similarity Boost",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "style",
+          "label": "Style",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "modelId",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "voice",
+          "label": "Voice ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "speed",
+          "label": "Speed",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "voiceId",
+          "label": "Voice ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "languageCode",
+          "label": "Language Code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "speakingRate",
+          "label": "Speaking Rate",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "pitch",
+          "label": "Pitch",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "voiceId",
+          "label": "Voice ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "outputFormat",
+          "label": "Output Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "style",
+          "label": "Speaking Style",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "voice",
+          "label": "Voice",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "quality",
+          "label": "Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "speed",
+          "label": "Speed",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "youtube",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "youtube",
+      "legacyIds": [],
+      "provider": "youtube",
+      "version": "1",
+      "display": {
+        "name": "YouTube",
+        "description": "Interact with YouTube videos, channels, and playlists",
+        "category": "tools",
+        "icon": "YouTubeIcon",
+        "bgColor": "#FF0000"
+      },
+      "capabilities": [
+        "youtube_channel_info",
+        "youtube_channel_playlists",
+        "youtube_channel_videos",
+        "youtube_comments",
+        "youtube_playlist_items",
+        "youtube_search",
+        "youtube_trending",
+        "youtube_video_categories",
+        "youtube_video_details"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelId",
+          "label": "Filter by Channel ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventType",
+          "label": "Live Stream Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publishedAfter",
+          "label": "Published After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publishedBefore",
+          "label": "Published Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoDuration",
+          "label": "Video Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoCategoryId",
+          "label": "Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoDefinition",
+          "label": "Video Quality",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoCaption",
+          "label": "Captions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "regionCode",
+          "label": "Region Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "relevanceLanguage",
+          "label": "Language Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "safeSearch",
+          "label": "Safe Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "videoCategoryId",
+          "label": "Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoId",
+          "label": "Video ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "hl",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelId",
+          "label": "Channel ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Channel Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelId",
+          "label": "Channel ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelId",
+          "label": "Channel ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "playlistId",
+          "label": "Playlist ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "videoId",
+          "label": "Video ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "maxResults",
+          "label": "Max Results",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "YouTube API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mysql",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mysql",
+      "legacyIds": [],
+      "provider": "mysql",
+      "version": "1",
+      "display": {
+        "name": "MySQL",
+        "description": "Connect to MySQL database",
+        "category": "tools",
+        "icon": "MySQLIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "mysql_query",
+        "mysql_insert",
+        "mysql_update",
+        "mysql_delete",
+        "mysql_execute",
+        "mysql_introspect"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "database",
+          "label": "Database Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ssl",
+          "label": "SSL Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "SQL Query",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Update Data (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "where",
+          "label": "WHERE Condition",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

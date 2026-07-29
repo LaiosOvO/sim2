@@ -1,0 +1,96 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "jina",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "jina",
+      "legacyIds": [],
+      "provider": "jina",
+      "version": "1",
+      "display": {
+        "name": "Jina",
+        "description": "Search the web or extract content from URLs",
+        "category": "tools",
+        "icon": "JinaAIIcon",
+        "bgColor": "#333333"
+      },
+      "capabilities": ["jina_read_url", "jina_search"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "url",
+          "label": "URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "returnFormat",
+          "label": "Return Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retainImages",
+          "label": "Retain Images",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "readUrlOptions",
+          "label": "Options",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "q",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "num",
+          "label": "Number of Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "site",
+          "label": "Site Restriction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchReturnFormat",
+          "label": "Return Format",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchRetainImages",
+          "label": "Retain Images",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchOptions",
+          "label": "Options",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

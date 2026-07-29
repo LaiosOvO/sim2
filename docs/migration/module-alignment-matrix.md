@@ -57,12 +57,12 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 
 | Sim2 upstream | 目标路径 | 策略 | 变化处理 |
 | --- | --- | --- | --- |
-| `apps/sim/blocks` metadata | `packages/tool-catalog/src/generated/blocks` | S | 重新生成 metadata，比较稳定 block ID |
+| `apps/sim/blocks/registry-maps.ts` + BlockConfig metadata | `packages/tool-catalog/generated/browser-summary.json` + `generated/providers/*` | S | 运行 AST 生成器，比较稳定 block/tool ID、legacy alias 与 manifest hash |
 | `apps/sim/blocks` UI | `apps/sim/features/workflow-canvas/blocks` | S | 只移植浏览器渲染与编辑行为 |
 | `apps/sim/blocks` runtime | `apps/worker/src/runtime/blocks` | S | 移植执行绑定，禁止 Web import |
-| `apps/sim/tools` metadata | `packages/tool-catalog/src/generated/tools` | S | 重新生成、分页和版本化 |
+| `apps/sim/tools` metadata | `packages/tool-catalog/generated/providers/*` | S | 由 BlockConfig capability 提取，重新生成并运行 231 项 UI differential check |
 | `apps/sim/tools` runtime | `apps/worker/src/runtime/tools` + `extensions/infra/*` | S | 按 Provider 适配，保留稳定 tool ID |
-| `apps/sim/triggers` metadata | `packages/tool-catalog/src/generated/triggers` | S | 重新生成 trigger catalog |
+| `apps/sim/triggers` metadata | `packages/tool-catalog/generated/providers/*`（后续扩展 trigger kind） | S | 保留稳定 trigger ID；Ticket 06 前不允许浏览器读取 runtime trigger registry |
 | `apps/sim/triggers` runtime | `apps/worker/src/runtime/triggers` + `apps/api/src/modules/webhooks` | S | 执行在 Worker，公网 admission 在 API |
 | `apps/sim/executor` | `apps/worker/src/execution` | S | 移植执行语义、snapshot、resume、cancel |
 | `apps/sim/sandbox-tasks` | `apps/worker/src/sandbox` | S | 移植任务；通过 SandboxExecution interface |

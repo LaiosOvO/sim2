@@ -1,0 +1,96 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "greptile",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "greptile",
+      "legacyIds": [],
+      "provider": "greptile",
+      "version": "1",
+      "display": {
+        "name": "Greptile",
+        "description": "AI-powered codebase search and Q&A",
+        "category": "tools",
+        "icon": "GreptileIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": ["greptile_query", "greptile_index_repo", "greptile_status"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "repositories",
+          "label": "Repositories",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sessionId",
+          "label": "Session ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "genius",
+          "label": "Genius Mode",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "remote",
+          "label": "Git Remote",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "repository",
+          "label": "Repository",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reload",
+          "label": "Force Re-index",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "notify",
+          "label": "Email Notification",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Greptile API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "githubToken",
+          "label": "GitHub Token",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

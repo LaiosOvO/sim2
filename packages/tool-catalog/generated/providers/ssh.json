@@ -1,0 +1,266 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "ssh",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "ssh",
+      "legacyIds": [],
+      "provider": "ssh",
+      "version": "1",
+      "display": {
+        "name": "SSH",
+        "description": "Connect to remote servers via SSH",
+        "category": "tools",
+        "icon": "SshIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "ssh_execute_command",
+        "ssh_execute_script",
+        "ssh_check_command_exists",
+        "ssh_upload_file",
+        "ssh_download_file",
+        "ssh_list_directory",
+        "ssh_check_file_exists",
+        "ssh_create_directory",
+        "ssh_delete_file",
+        "ssh_move_rename",
+        "ssh_get_system_info",
+        "ssh_read_file_content",
+        "ssh_write_file_content"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authMethod",
+          "label": "Authentication Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "privateKey",
+          "label": "Private Key",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "passphrase",
+          "label": "Passphrase",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "command",
+          "label": "Command",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "workingDirectory",
+          "label": "Working Directory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "script",
+          "label": "Script Content",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "interpreter",
+          "label": "Interpreter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scriptWorkingDirectory",
+          "label": "Working Directory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commandName",
+          "label": "Command Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileContent",
+          "label": "File Content",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "remotePath",
+          "label": "Remote Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "permissions",
+          "label": "Permissions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "downloadRemotePath",
+          "label": "Remote File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "listPath",
+          "label": "Directory Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "detailed",
+          "label": "Show Details",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "checkPath",
+          "label": "Path to Check",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "checkType",
+          "label": "Expected Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createPath",
+          "label": "Directory Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recursive",
+          "label": "Create Parent Directories",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "deletePath",
+          "label": "Path to Delete",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deleteRecursive",
+          "label": "Recursive Delete",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "force",
+          "label": "Force Delete",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "sourcePath",
+          "label": "Source Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "destinationPath",
+          "label": "Destination Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "overwrite",
+          "label": "Overwrite if Exists",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "readPath",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "encoding",
+          "label": "Encoding",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxSize",
+          "label": "Max Size (MB)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "writePath",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "File Content",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "writeMode",
+          "label": "Write Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "writePermissions",
+          "label": "Permissions",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

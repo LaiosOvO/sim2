@@ -1,0 +1,1408 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "itemCount": 313,
+  "providerCount": 280,
+  "providers": [
+    {
+      "id": "a2a",
+      "count": 1,
+      "file": "providers/a2a.json"
+    },
+    {
+      "id": "agent",
+      "count": 1,
+      "file": "providers/agent.json"
+    },
+    {
+      "id": "agentmail",
+      "count": 1,
+      "file": "providers/agentmail.json"
+    },
+    {
+      "id": "agentphone",
+      "count": 1,
+      "file": "providers/agentphone.json"
+    },
+    {
+      "id": "agiloft",
+      "count": 1,
+      "file": "providers/agiloft.json"
+    },
+    {
+      "id": "ahrefs",
+      "count": 1,
+      "file": "providers/ahrefs.json"
+    },
+    {
+      "id": "airtable",
+      "count": 1,
+      "file": "providers/airtable.json"
+    },
+    {
+      "id": "airweave",
+      "count": 1,
+      "file": "providers/airweave.json"
+    },
+    {
+      "id": "algolia",
+      "count": 1,
+      "file": "providers/algolia.json"
+    },
+    {
+      "id": "amplitude",
+      "count": 1,
+      "file": "providers/amplitude.json"
+    },
+    {
+      "id": "api",
+      "count": 1,
+      "file": "providers/api.json"
+    },
+    {
+      "id": "api_trigger",
+      "count": 1,
+      "file": "providers/api_trigger.json"
+    },
+    {
+      "id": "apify",
+      "count": 1,
+      "file": "providers/apify.json"
+    },
+    {
+      "id": "apollo",
+      "count": 1,
+      "file": "providers/apollo.json"
+    },
+    {
+      "id": "appconfig",
+      "count": 1,
+      "file": "providers/appconfig.json"
+    },
+    {
+      "id": "arxiv",
+      "count": 1,
+      "file": "providers/arxiv.json"
+    },
+    {
+      "id": "asana",
+      "count": 1,
+      "file": "providers/asana.json"
+    },
+    {
+      "id": "ashby",
+      "count": 1,
+      "file": "providers/ashby.json"
+    },
+    {
+      "id": "athena",
+      "count": 1,
+      "file": "providers/athena.json"
+    },
+    {
+      "id": "attio",
+      "count": 1,
+      "file": "providers/attio.json"
+    },
+    {
+      "id": "azure_devops",
+      "count": 1,
+      "file": "providers/azure_devops.json"
+    },
+    {
+      "id": "box",
+      "count": 1,
+      "file": "providers/box.json"
+    },
+    {
+      "id": "brandfetch",
+      "count": 1,
+      "file": "providers/brandfetch.json"
+    },
+    {
+      "id": "brex",
+      "count": 1,
+      "file": "providers/brex.json"
+    },
+    {
+      "id": "brightdata",
+      "count": 1,
+      "file": "providers/brightdata.json"
+    },
+    {
+      "id": "browser_use",
+      "count": 1,
+      "file": "providers/browser_use.json"
+    },
+    {
+      "id": "buffer",
+      "count": 1,
+      "file": "providers/buffer.json"
+    },
+    {
+      "id": "calcom",
+      "count": 1,
+      "file": "providers/calcom.json"
+    },
+    {
+      "id": "calendly",
+      "count": 1,
+      "file": "providers/calendly.json"
+    },
+    {
+      "id": "chat_trigger",
+      "count": 1,
+      "file": "providers/chat_trigger.json"
+    },
+    {
+      "id": "circleback",
+      "count": 1,
+      "file": "providers/circleback.json"
+    },
+    {
+      "id": "clay",
+      "count": 1,
+      "file": "providers/clay.json"
+    },
+    {
+      "id": "clerk",
+      "count": 1,
+      "file": "providers/clerk.json"
+    },
+    {
+      "id": "clickhouse",
+      "count": 1,
+      "file": "providers/clickhouse.json"
+    },
+    {
+      "id": "clickup",
+      "count": 1,
+      "file": "providers/clickup.json"
+    },
+    {
+      "id": "cloudflare",
+      "count": 1,
+      "file": "providers/cloudflare.json"
+    },
+    {
+      "id": "cloudformation",
+      "count": 1,
+      "file": "providers/cloudformation.json"
+    },
+    {
+      "id": "cloudwatch",
+      "count": 1,
+      "file": "providers/cloudwatch.json"
+    },
+    {
+      "id": "codepipeline",
+      "count": 1,
+      "file": "providers/codepipeline.json"
+    },
+    {
+      "id": "condition",
+      "count": 1,
+      "file": "providers/condition.json"
+    },
+    {
+      "id": "confluence",
+      "count": 2,
+      "file": "providers/confluence.json"
+    },
+    {
+      "id": "context_dev",
+      "count": 1,
+      "file": "providers/context_dev.json"
+    },
+    {
+      "id": "convex",
+      "count": 1,
+      "file": "providers/convex.json"
+    },
+    {
+      "id": "credential",
+      "count": 1,
+      "file": "providers/credential.json"
+    },
+    {
+      "id": "crowdstrike",
+      "count": 1,
+      "file": "providers/crowdstrike.json"
+    },
+    {
+      "id": "cursor",
+      "count": 2,
+      "file": "providers/cursor.json"
+    },
+    {
+      "id": "dagster",
+      "count": 1,
+      "file": "providers/dagster.json"
+    },
+    {
+      "id": "databricks",
+      "count": 1,
+      "file": "providers/databricks.json"
+    },
+    {
+      "id": "datadog",
+      "count": 1,
+      "file": "providers/datadog.json"
+    },
+    {
+      "id": "datagma",
+      "count": 1,
+      "file": "providers/datagma.json"
+    },
+    {
+      "id": "daytona",
+      "count": 1,
+      "file": "providers/daytona.json"
+    },
+    {
+      "id": "deployments",
+      "count": 1,
+      "file": "providers/deployments.json"
+    },
+    {
+      "id": "devin",
+      "count": 1,
+      "file": "providers/devin.json"
+    },
+    {
+      "id": "discord",
+      "count": 1,
+      "file": "providers/discord.json"
+    },
+    {
+      "id": "docusign",
+      "count": 1,
+      "file": "providers/docusign.json"
+    },
+    {
+      "id": "downdetector",
+      "count": 1,
+      "file": "providers/downdetector.json"
+    },
+    {
+      "id": "dropbox",
+      "count": 1,
+      "file": "providers/dropbox.json"
+    },
+    {
+      "id": "dropcontact",
+      "count": 1,
+      "file": "providers/dropcontact.json"
+    },
+    {
+      "id": "dspy",
+      "count": 1,
+      "file": "providers/dspy.json"
+    },
+    {
+      "id": "dub",
+      "count": 1,
+      "file": "providers/dub.json"
+    },
+    {
+      "id": "duckduckgo",
+      "count": 1,
+      "file": "providers/duckduckgo.json"
+    },
+    {
+      "id": "dynamodb",
+      "count": 1,
+      "file": "providers/dynamodb.json"
+    },
+    {
+      "id": "elasticsearch",
+      "count": 1,
+      "file": "providers/elasticsearch.json"
+    },
+    {
+      "id": "elevenlabs",
+      "count": 1,
+      "file": "providers/elevenlabs.json"
+    },
+    {
+      "id": "emailbison",
+      "count": 1,
+      "file": "providers/emailbison.json"
+    },
+    {
+      "id": "enrich",
+      "count": 1,
+      "file": "providers/enrich.json"
+    },
+    {
+      "id": "enrichment",
+      "count": 1,
+      "file": "providers/enrichment.json"
+    },
+    {
+      "id": "enrow",
+      "count": 1,
+      "file": "providers/enrow.json"
+    },
+    {
+      "id": "evaluator",
+      "count": 1,
+      "file": "providers/evaluator.json"
+    },
+    {
+      "id": "evernote",
+      "count": 1,
+      "file": "providers/evernote.json"
+    },
+    {
+      "id": "exa",
+      "count": 1,
+      "file": "providers/exa.json"
+    },
+    {
+      "id": "extend",
+      "count": 2,
+      "file": "providers/extend.json"
+    },
+    {
+      "id": "fathom",
+      "count": 1,
+      "file": "providers/fathom.json"
+    },
+    {
+      "id": "file",
+      "count": 5,
+      "file": "providers/file.json"
+    },
+    {
+      "id": "findymail",
+      "count": 1,
+      "file": "providers/findymail.json"
+    },
+    {
+      "id": "firecrawl",
+      "count": 1,
+      "file": "providers/firecrawl.json"
+    },
+    {
+      "id": "fireflies",
+      "count": 2,
+      "file": "providers/fireflies.json"
+    },
+    {
+      "id": "flint",
+      "count": 1,
+      "file": "providers/flint.json"
+    },
+    {
+      "id": "function",
+      "count": 1,
+      "file": "providers/function.json"
+    },
+    {
+      "id": "gamma",
+      "count": 1,
+      "file": "providers/gamma.json"
+    },
+    {
+      "id": "generic_webhook",
+      "count": 1,
+      "file": "providers/generic_webhook.json"
+    },
+    {
+      "id": "github",
+      "count": 2,
+      "file": "providers/github.json"
+    },
+    {
+      "id": "gitlab",
+      "count": 1,
+      "file": "providers/gitlab.json"
+    },
+    {
+      "id": "gmail",
+      "count": 2,
+      "file": "providers/gmail.json"
+    },
+    {
+      "id": "gong",
+      "count": 1,
+      "file": "providers/gong.json"
+    },
+    {
+      "id": "google_ads",
+      "count": 1,
+      "file": "providers/google_ads.json"
+    },
+    {
+      "id": "google_appsheet",
+      "count": 1,
+      "file": "providers/google_appsheet.json"
+    },
+    {
+      "id": "google_bigquery",
+      "count": 1,
+      "file": "providers/google_bigquery.json"
+    },
+    {
+      "id": "google_books",
+      "count": 1,
+      "file": "providers/google_books.json"
+    },
+    {
+      "id": "google_calendar",
+      "count": 2,
+      "file": "providers/google_calendar.json"
+    },
+    {
+      "id": "google_contacts",
+      "count": 1,
+      "file": "providers/google_contacts.json"
+    },
+    {
+      "id": "google_docs",
+      "count": 1,
+      "file": "providers/google_docs.json"
+    },
+    {
+      "id": "google_drive",
+      "count": 1,
+      "file": "providers/google_drive.json"
+    },
+    {
+      "id": "google_forms",
+      "count": 1,
+      "file": "providers/google_forms.json"
+    },
+    {
+      "id": "google_groups",
+      "count": 1,
+      "file": "providers/google_groups.json"
+    },
+    {
+      "id": "google_maps",
+      "count": 1,
+      "file": "providers/google_maps.json"
+    },
+    {
+      "id": "google_meet",
+      "count": 1,
+      "file": "providers/google_meet.json"
+    },
+    {
+      "id": "google_pagespeed",
+      "count": 1,
+      "file": "providers/google_pagespeed.json"
+    },
+    {
+      "id": "google_search",
+      "count": 1,
+      "file": "providers/google_search.json"
+    },
+    {
+      "id": "google_sheets",
+      "count": 2,
+      "file": "providers/google_sheets.json"
+    },
+    {
+      "id": "google_slides",
+      "count": 2,
+      "file": "providers/google_slides.json"
+    },
+    {
+      "id": "google_tasks",
+      "count": 1,
+      "file": "providers/google_tasks.json"
+    },
+    {
+      "id": "google_translate",
+      "count": 1,
+      "file": "providers/google_translate.json"
+    },
+    {
+      "id": "google_vault",
+      "count": 1,
+      "file": "providers/google_vault.json"
+    },
+    {
+      "id": "grafana",
+      "count": 1,
+      "file": "providers/grafana.json"
+    },
+    {
+      "id": "grain",
+      "count": 2,
+      "file": "providers/grain.json"
+    },
+    {
+      "id": "granola",
+      "count": 1,
+      "file": "providers/granola.json"
+    },
+    {
+      "id": "greenhouse",
+      "count": 1,
+      "file": "providers/greenhouse.json"
+    },
+    {
+      "id": "greptile",
+      "count": 1,
+      "file": "providers/greptile.json"
+    },
+    {
+      "id": "guardrails",
+      "count": 1,
+      "file": "providers/guardrails.json"
+    },
+    {
+      "id": "hex",
+      "count": 1,
+      "file": "providers/hex.json"
+    },
+    {
+      "id": "hubspot",
+      "count": 1,
+      "file": "providers/hubspot.json"
+    },
+    {
+      "id": "huggingface",
+      "count": 1,
+      "file": "providers/huggingface.json"
+    },
+    {
+      "id": "human_in_the_loop",
+      "count": 1,
+      "file": "providers/human_in_the_loop.json"
+    },
+    {
+      "id": "hunter",
+      "count": 1,
+      "file": "providers/hunter.json"
+    },
+    {
+      "id": "iam",
+      "count": 1,
+      "file": "providers/iam.json"
+    },
+    {
+      "id": "icypeas",
+      "count": 1,
+      "file": "providers/icypeas.json"
+    },
+    {
+      "id": "identity_center",
+      "count": 1,
+      "file": "providers/identity_center.json"
+    },
+    {
+      "id": "image_generator",
+      "count": 2,
+      "file": "providers/image_generator.json"
+    },
+    {
+      "id": "imap",
+      "count": 1,
+      "file": "providers/imap.json"
+    },
+    {
+      "id": "incidentio",
+      "count": 1,
+      "file": "providers/incidentio.json"
+    },
+    {
+      "id": "infisical",
+      "count": 1,
+      "file": "providers/infisical.json"
+    },
+    {
+      "id": "input_trigger",
+      "count": 1,
+      "file": "providers/input_trigger.json"
+    },
+    {
+      "id": "instagram",
+      "count": 1,
+      "file": "providers/instagram.json"
+    },
+    {
+      "id": "instantly",
+      "count": 1,
+      "file": "providers/instantly.json"
+    },
+    {
+      "id": "intercom",
+      "count": 2,
+      "file": "providers/intercom.json"
+    },
+    {
+      "id": "jina",
+      "count": 1,
+      "file": "providers/jina.json"
+    },
+    {
+      "id": "jira",
+      "count": 1,
+      "file": "providers/jira.json"
+    },
+    {
+      "id": "jira_service_management",
+      "count": 1,
+      "file": "providers/jira_service_management.json"
+    },
+    {
+      "id": "jupyter",
+      "count": 1,
+      "file": "providers/jupyter.json"
+    },
+    {
+      "id": "kalshi",
+      "count": 2,
+      "file": "providers/kalshi.json"
+    },
+    {
+      "id": "ketch",
+      "count": 1,
+      "file": "providers/ketch.json"
+    },
+    {
+      "id": "knowledge",
+      "count": 1,
+      "file": "providers/knowledge.json"
+    },
+    {
+      "id": "langsmith",
+      "count": 1,
+      "file": "providers/langsmith.json"
+    },
+    {
+      "id": "latex",
+      "count": 1,
+      "file": "providers/latex.json"
+    },
+    {
+      "id": "launchdarkly",
+      "count": 1,
+      "file": "providers/launchdarkly.json"
+    },
+    {
+      "id": "leadmagic",
+      "count": 1,
+      "file": "providers/leadmagic.json"
+    },
+    {
+      "id": "lemlist",
+      "count": 1,
+      "file": "providers/lemlist.json"
+    },
+    {
+      "id": "linear",
+      "count": 2,
+      "file": "providers/linear.json"
+    },
+    {
+      "id": "linkedin",
+      "count": 1,
+      "file": "providers/linkedin.json"
+    },
+    {
+      "id": "linkup",
+      "count": 1,
+      "file": "providers/linkup.json"
+    },
+    {
+      "id": "linq",
+      "count": 1,
+      "file": "providers/linq.json"
+    },
+    {
+      "id": "logs",
+      "count": 2,
+      "file": "providers/logs.json"
+    },
+    {
+      "id": "loops",
+      "count": 1,
+      "file": "providers/loops.json"
+    },
+    {
+      "id": "luma",
+      "count": 1,
+      "file": "providers/luma.json"
+    },
+    {
+      "id": "mailchimp",
+      "count": 1,
+      "file": "providers/mailchimp.json"
+    },
+    {
+      "id": "mailgun",
+      "count": 1,
+      "file": "providers/mailgun.json"
+    },
+    {
+      "id": "managed_agent",
+      "count": 1,
+      "file": "providers/managed_agent.json"
+    },
+    {
+      "id": "manual_trigger",
+      "count": 1,
+      "file": "providers/manual_trigger.json"
+    },
+    {
+      "id": "mcp",
+      "count": 1,
+      "file": "providers/mcp.json"
+    },
+    {
+      "id": "mem0",
+      "count": 1,
+      "file": "providers/mem0.json"
+    },
+    {
+      "id": "memory",
+      "count": 1,
+      "file": "providers/memory.json"
+    },
+    {
+      "id": "microsoft_ad",
+      "count": 1,
+      "file": "providers/microsoft_ad.json"
+    },
+    {
+      "id": "microsoft_dataverse",
+      "count": 1,
+      "file": "providers/microsoft_dataverse.json"
+    },
+    {
+      "id": "microsoft_excel",
+      "count": 2,
+      "file": "providers/microsoft_excel.json"
+    },
+    {
+      "id": "microsoft_planner",
+      "count": 1,
+      "file": "providers/microsoft_planner.json"
+    },
+    {
+      "id": "microsoft_teams",
+      "count": 1,
+      "file": "providers/microsoft_teams.json"
+    },
+    {
+      "id": "millionverifier",
+      "count": 1,
+      "file": "providers/millionverifier.json"
+    },
+    {
+      "id": "mistral_parse",
+      "count": 3,
+      "file": "providers/mistral_parse.json"
+    },
+    {
+      "id": "monday",
+      "count": 1,
+      "file": "providers/monday.json"
+    },
+    {
+      "id": "mongodb",
+      "count": 1,
+      "file": "providers/mongodb.json"
+    },
+    {
+      "id": "mothership",
+      "count": 1,
+      "file": "providers/mothership.json"
+    },
+    {
+      "id": "mysql",
+      "count": 1,
+      "file": "providers/mysql.json"
+    },
+    {
+      "id": "neo4j",
+      "count": 1,
+      "file": "providers/neo4j.json"
+    },
+    {
+      "id": "neverbounce",
+      "count": 1,
+      "file": "providers/neverbounce.json"
+    },
+    {
+      "id": "new_relic",
+      "count": 1,
+      "file": "providers/new_relic.json"
+    },
+    {
+      "id": "note",
+      "count": 1,
+      "file": "providers/note.json"
+    },
+    {
+      "id": "notion",
+      "count": 2,
+      "file": "providers/notion.json"
+    },
+    {
+      "id": "obsidian",
+      "count": 1,
+      "file": "providers/obsidian.json"
+    },
+    {
+      "id": "okta",
+      "count": 1,
+      "file": "providers/okta.json"
+    },
+    {
+      "id": "onedrive",
+      "count": 1,
+      "file": "providers/onedrive.json"
+    },
+    {
+      "id": "onepassword",
+      "count": 1,
+      "file": "providers/onepassword.json"
+    },
+    {
+      "id": "openai",
+      "count": 1,
+      "file": "providers/openai.json"
+    },
+    {
+      "id": "outlook",
+      "count": 1,
+      "file": "providers/outlook.json"
+    },
+    {
+      "id": "pagerduty",
+      "count": 1,
+      "file": "providers/pagerduty.json"
+    },
+    {
+      "id": "parallel_ai",
+      "count": 1,
+      "file": "providers/parallel_ai.json"
+    },
+    {
+      "id": "peopledatalabs",
+      "count": 1,
+      "file": "providers/peopledatalabs.json"
+    },
+    {
+      "id": "perplexity",
+      "count": 1,
+      "file": "providers/perplexity.json"
+    },
+    {
+      "id": "persona",
+      "count": 1,
+      "file": "providers/persona.json"
+    },
+    {
+      "id": "pi",
+      "count": 1,
+      "file": "providers/pi.json"
+    },
+    {
+      "id": "pinecone",
+      "count": 1,
+      "file": "providers/pinecone.json"
+    },
+    {
+      "id": "pipedrive",
+      "count": 1,
+      "file": "providers/pipedrive.json"
+    },
+    {
+      "id": "polymarket",
+      "count": 1,
+      "file": "providers/polymarket.json"
+    },
+    {
+      "id": "postgresql",
+      "count": 1,
+      "file": "providers/postgresql.json"
+    },
+    {
+      "id": "posthog",
+      "count": 1,
+      "file": "providers/posthog.json"
+    },
+    {
+      "id": "profound",
+      "count": 1,
+      "file": "providers/profound.json"
+    },
+    {
+      "id": "prospeo",
+      "count": 1,
+      "file": "providers/prospeo.json"
+    },
+    {
+      "id": "pulse",
+      "count": 2,
+      "file": "providers/pulse.json"
+    },
+    {
+      "id": "qdrant",
+      "count": 1,
+      "file": "providers/qdrant.json"
+    },
+    {
+      "id": "quartr",
+      "count": 1,
+      "file": "providers/quartr.json"
+    },
+    {
+      "id": "quiver",
+      "count": 1,
+      "file": "providers/quiver.json"
+    },
+    {
+      "id": "railway",
+      "count": 1,
+      "file": "providers/railway.json"
+    },
+    {
+      "id": "rb2b",
+      "count": 1,
+      "file": "providers/rb2b.json"
+    },
+    {
+      "id": "rds",
+      "count": 1,
+      "file": "providers/rds.json"
+    },
+    {
+      "id": "reddit",
+      "count": 1,
+      "file": "providers/reddit.json"
+    },
+    {
+      "id": "redis",
+      "count": 1,
+      "file": "providers/redis.json"
+    },
+    {
+      "id": "reducto",
+      "count": 2,
+      "file": "providers/reducto.json"
+    },
+    {
+      "id": "resend",
+      "count": 1,
+      "file": "providers/resend.json"
+    },
+    {
+      "id": "response",
+      "count": 1,
+      "file": "providers/response.json"
+    },
+    {
+      "id": "revenuecat",
+      "count": 1,
+      "file": "providers/revenuecat.json"
+    },
+    {
+      "id": "rippling",
+      "count": 1,
+      "file": "providers/rippling.json"
+    },
+    {
+      "id": "rocketlane",
+      "count": 1,
+      "file": "providers/rocketlane.json"
+    },
+    {
+      "id": "rootly",
+      "count": 1,
+      "file": "providers/rootly.json"
+    },
+    {
+      "id": "router",
+      "count": 2,
+      "file": "providers/router.json"
+    },
+    {
+      "id": "rss",
+      "count": 1,
+      "file": "providers/rss.json"
+    },
+    {
+      "id": "s3",
+      "count": 1,
+      "file": "providers/s3.json"
+    },
+    {
+      "id": "salesforce",
+      "count": 1,
+      "file": "providers/salesforce.json"
+    },
+    {
+      "id": "sap_concur",
+      "count": 1,
+      "file": "providers/sap_concur.json"
+    },
+    {
+      "id": "sap_s4hana",
+      "count": 1,
+      "file": "providers/sap_s4hana.json"
+    },
+    {
+      "id": "schedule",
+      "count": 1,
+      "file": "providers/schedule.json"
+    },
+    {
+      "id": "search",
+      "count": 1,
+      "file": "providers/search.json"
+    },
+    {
+      "id": "secrets_manager",
+      "count": 1,
+      "file": "providers/secrets_manager.json"
+    },
+    {
+      "id": "sendblue",
+      "count": 1,
+      "file": "providers/sendblue.json"
+    },
+    {
+      "id": "sendgrid",
+      "count": 1,
+      "file": "providers/sendgrid.json"
+    },
+    {
+      "id": "sentry",
+      "count": 1,
+      "file": "providers/sentry.json"
+    },
+    {
+      "id": "serper",
+      "count": 1,
+      "file": "providers/serper.json"
+    },
+    {
+      "id": "servicenow",
+      "count": 1,
+      "file": "providers/servicenow.json"
+    },
+    {
+      "id": "ses",
+      "count": 1,
+      "file": "providers/ses.json"
+    },
+    {
+      "id": "sftp",
+      "count": 1,
+      "file": "providers/sftp.json"
+    },
+    {
+      "id": "sharepoint",
+      "count": 2,
+      "file": "providers/sharepoint.json"
+    },
+    {
+      "id": "shopify",
+      "count": 1,
+      "file": "providers/shopify.json"
+    },
+    {
+      "id": "sim_workspace_event",
+      "count": 1,
+      "file": "providers/sim_workspace_event.json"
+    },
+    {
+      "id": "similarweb",
+      "count": 1,
+      "file": "providers/similarweb.json"
+    },
+    {
+      "id": "sixtyfour",
+      "count": 1,
+      "file": "providers/sixtyfour.json"
+    },
+    {
+      "id": "slack",
+      "count": 2,
+      "file": "providers/slack.json"
+    },
+    {
+      "id": "smtp",
+      "count": 1,
+      "file": "providers/smtp.json"
+    },
+    {
+      "id": "sportmonks",
+      "count": 1,
+      "file": "providers/sportmonks.json"
+    },
+    {
+      "id": "spotify",
+      "count": 1,
+      "file": "providers/spotify.json"
+    },
+    {
+      "id": "sqs",
+      "count": 1,
+      "file": "providers/sqs.json"
+    },
+    {
+      "id": "square",
+      "count": 1,
+      "file": "providers/square.json"
+    },
+    {
+      "id": "ssh",
+      "count": 1,
+      "file": "providers/ssh.json"
+    },
+    {
+      "id": "stagehand",
+      "count": 1,
+      "file": "providers/stagehand.json"
+    },
+    {
+      "id": "start_trigger",
+      "count": 1,
+      "file": "providers/start_trigger.json"
+    },
+    {
+      "id": "starter",
+      "count": 1,
+      "file": "providers/starter.json"
+    },
+    {
+      "id": "stripe",
+      "count": 1,
+      "file": "providers/stripe.json"
+    },
+    {
+      "id": "sts",
+      "count": 1,
+      "file": "providers/sts.json"
+    },
+    {
+      "id": "stt",
+      "count": 2,
+      "file": "providers/stt.json"
+    },
+    {
+      "id": "supabase",
+      "count": 1,
+      "file": "providers/supabase.json"
+    },
+    {
+      "id": "table",
+      "count": 1,
+      "file": "providers/table.json"
+    },
+    {
+      "id": "tailscale",
+      "count": 1,
+      "file": "providers/tailscale.json"
+    },
+    {
+      "id": "tavily",
+      "count": 1,
+      "file": "providers/tavily.json"
+    },
+    {
+      "id": "telegram",
+      "count": 1,
+      "file": "providers/telegram.json"
+    },
+    {
+      "id": "temporal",
+      "count": 1,
+      "file": "providers/temporal.json"
+    },
+    {
+      "id": "textract",
+      "count": 2,
+      "file": "providers/textract.json"
+    },
+    {
+      "id": "thinking",
+      "count": 1,
+      "file": "providers/thinking.json"
+    },
+    {
+      "id": "thrive",
+      "count": 1,
+      "file": "providers/thrive.json"
+    },
+    {
+      "id": "tiktok",
+      "count": 1,
+      "file": "providers/tiktok.json"
+    },
+    {
+      "id": "tinybird",
+      "count": 1,
+      "file": "providers/tinybird.json"
+    },
+    {
+      "id": "translate",
+      "count": 1,
+      "file": "providers/translate.json"
+    },
+    {
+      "id": "trello",
+      "count": 1,
+      "file": "providers/trello.json"
+    },
+    {
+      "id": "trigger_dev",
+      "count": 1,
+      "file": "providers/trigger_dev.json"
+    },
+    {
+      "id": "tts",
+      "count": 1,
+      "file": "providers/tts.json"
+    },
+    {
+      "id": "twilio_sms",
+      "count": 1,
+      "file": "providers/twilio_sms.json"
+    },
+    {
+      "id": "twilio_voice",
+      "count": 1,
+      "file": "providers/twilio_voice.json"
+    },
+    {
+      "id": "typeform",
+      "count": 1,
+      "file": "providers/typeform.json"
+    },
+    {
+      "id": "upstash",
+      "count": 1,
+      "file": "providers/upstash.json"
+    },
+    {
+      "id": "uptimerobot",
+      "count": 1,
+      "file": "providers/uptimerobot.json"
+    },
+    {
+      "id": "vanta",
+      "count": 1,
+      "file": "providers/vanta.json"
+    },
+    {
+      "id": "variables",
+      "count": 1,
+      "file": "providers/variables.json"
+    },
+    {
+      "id": "vercel",
+      "count": 1,
+      "file": "providers/vercel.json"
+    },
+    {
+      "id": "video_generator",
+      "count": 3,
+      "file": "providers/video_generator.json"
+    },
+    {
+      "id": "vision",
+      "count": 2,
+      "file": "providers/vision.json"
+    },
+    {
+      "id": "wait",
+      "count": 1,
+      "file": "providers/wait.json"
+    },
+    {
+      "id": "wealthbox",
+      "count": 1,
+      "file": "providers/wealthbox.json"
+    },
+    {
+      "id": "webflow",
+      "count": 1,
+      "file": "providers/webflow.json"
+    },
+    {
+      "id": "webhook_request",
+      "count": 1,
+      "file": "providers/webhook_request.json"
+    },
+    {
+      "id": "whatsapp",
+      "count": 1,
+      "file": "providers/whatsapp.json"
+    },
+    {
+      "id": "wikipedia",
+      "count": 1,
+      "file": "providers/wikipedia.json"
+    },
+    {
+      "id": "wiza",
+      "count": 1,
+      "file": "providers/wiza.json"
+    },
+    {
+      "id": "wordpress",
+      "count": 1,
+      "file": "providers/wordpress.json"
+    },
+    {
+      "id": "workday",
+      "count": 1,
+      "file": "providers/workday.json"
+    },
+    {
+      "id": "workflow",
+      "count": 1,
+      "file": "providers/workflow.json"
+    },
+    {
+      "id": "workflow_input",
+      "count": 1,
+      "file": "providers/workflow_input.json"
+    },
+    {
+      "id": "x",
+      "count": 1,
+      "file": "providers/x.json"
+    },
+    {
+      "id": "youtube",
+      "count": 1,
+      "file": "providers/youtube.json"
+    },
+    {
+      "id": "zendesk",
+      "count": 1,
+      "file": "providers/zendesk.json"
+    },
+    {
+      "id": "zep",
+      "count": 1,
+      "file": "providers/zep.json"
+    },
+    {
+      "id": "zerobounce",
+      "count": 1,
+      "file": "providers/zerobounce.json"
+    },
+    {
+      "id": "zoom",
+      "count": 1,
+      "file": "providers/zoom.json"
+    },
+    {
+      "id": "zoominfo",
+      "count": 1,
+      "file": "providers/zoominfo.json"
+    }
+  ]
+}

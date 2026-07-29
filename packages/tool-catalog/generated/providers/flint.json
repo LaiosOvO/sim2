@@ -1,0 +1,78 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "flint",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "flint",
+      "legacyIds": [],
+      "provider": "flint",
+      "version": "1",
+      "display": {
+        "name": "Flint",
+        "description": "Run background agent tasks on your Flint sites",
+        "category": "tools",
+        "icon": "FlintIcon",
+        "bgColor": "#F6F54F"
+      },
+      "capabilities": ["flint_create_task", "flint_generate_pages", "flint_get_task"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "siteId",
+          "label": "Site ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templatePageSlug",
+          "label": "Template Page Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "items",
+          "label": "Pages (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "taskId",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publish",
+          "label": "Publish on Completion",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "callbackUrl",
+          "label": "Callback URL",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

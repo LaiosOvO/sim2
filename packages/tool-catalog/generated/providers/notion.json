@@ -1,0 +1,264 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "notion",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "notion",
+      "legacyIds": [],
+      "provider": "notion",
+      "version": "1",
+      "display": {
+        "name": "Notion (Legacy)",
+        "description": "Manage Notion pages",
+        "category": "tools",
+        "icon": "NotionIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "notion_read",
+        "notion_read_database",
+        "notion_write",
+        "notion_create_page",
+        "notion_query_database",
+        "notion_search",
+        "notion_create_database",
+        "notion_add_database_row",
+        "notion_update_page",
+        "notion_append_blocks",
+        "notion_retrieve_block",
+        "notion_retrieve_block_children",
+        "notion_update_block",
+        "notion_delete_block",
+        "notion_create_comment",
+        "notion_list_comments",
+        "notion_list_users",
+        "notion_retrieve_user"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Notion Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Notion Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pageSelector",
+          "label": "Page",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "pageId",
+          "label": "Page ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "databaseSelector",
+          "label": "Database",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "databaseId",
+          "label": "Database ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "parentSelector",
+          "label": "Parent Page",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "parentId",
+          "label": "Parent Page ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Page Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "sorts",
+          "label": "Sort Criteria",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterType",
+          "label": "Filter Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Database Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "properties",
+          "label": "Database Properties",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "properties",
+          "label": "Row Properties",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "properties",
+          "label": "Properties to Update",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "blockId",
+          "label": "Page or Block ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "children",
+          "label": "Block Children",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "after",
+          "label": "Append After Block ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "block",
+          "label": "Block Update",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "archived",
+          "label": "Archive Block",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentParentId",
+          "label": "Page ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "discussionId",
+          "label": "Discussion ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commentContent",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "startCursor",
+          "label": "Start Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "notion_v2",
+      "legacyIds": ["notion", "notion-v2"],
+      "provider": "notion",
+      "version": "2",
+      "display": {
+        "name": "Notion",
+        "description": "Manage Notion pages",
+        "category": "tools",
+        "icon": "NotionIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "notion_read_v2",
+        "notion_read_database_v2",
+        "notion_write_v2",
+        "notion_create_page_v2",
+        "notion_update_page_v2",
+        "notion_query_database_v2",
+        "notion_search_v2",
+        "notion_create_database_v2",
+        "notion_add_database_row_v2",
+        "notion_append_blocks_v2",
+        "notion_retrieve_block_v2",
+        "notion_retrieve_block_children_v2",
+        "notion_update_block_v2",
+        "notion_delete_block_v2",
+        "notion_create_comment_v2",
+        "notion_list_comments_v2",
+        "notion_list_users_v2",
+        "notion_retrieve_user_v2"
+      ],
+      "inputs": []
+    }
+  ]
+}

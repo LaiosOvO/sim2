@@ -1,0 +1,328 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "trello",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "trello",
+      "legacyIds": [],
+      "provider": "trello",
+      "version": "1",
+      "display": {
+        "name": "Trello",
+        "description": "Manage Trello lists, cards, checklists, and activity",
+        "category": "tools",
+        "icon": "TrelloIcon",
+        "bgColor": "#0052CC"
+      },
+      "capabilities": [
+        "trello_list_lists",
+        "trello_list_cards",
+        "trello_search",
+        "trello_create_card",
+        "trello_update_card",
+        "trello_delete_card",
+        "trello_get_actions",
+        "trello_add_comment",
+        "trello_create_board",
+        "trello_get_board",
+        "trello_create_list",
+        "trello_update_list",
+        "trello_get_card",
+        "trello_add_checklist",
+        "trello_add_checklist_item",
+        "trello_update_checklist_item",
+        "trello_add_label",
+        "trello_remove_label",
+        "trello_add_member",
+        "trello_remove_member",
+        "trello_list_members"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Trello Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Trello Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "boardSelector",
+          "label": "Board",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "manualBoardId",
+          "label": "Board ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listId",
+          "label": "List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listFilter",
+          "label": "List Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cardFilter",
+          "label": "Card Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cardId",
+          "label": "Card ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Card Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "desc",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pos",
+          "label": "Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "due",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dueComplete",
+          "label": "Due Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labelIds",
+          "label": "Label IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberIds",
+          "label": "Member IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "closed",
+          "label": "Archive Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "idList",
+          "label": "Move to List ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Action Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Board Action Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Action Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "since",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "boardName",
+          "label": "Board Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "boardDesc",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "idOrganization",
+          "label": "Workspace ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultLists",
+          "label": "Default Lists",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listName",
+          "label": "List Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listPos",
+          "label": "List Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listClosed",
+          "label": "Archive Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "moveListToBoardId",
+          "label": "Move to Board ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checklistName",
+          "label": "Checklist Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "checklistPos",
+          "label": "Checklist Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checklistId",
+          "label": "Checklist ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "itemName",
+          "label": "Item Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "itemPos",
+          "label": "Item Position",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "itemChecked",
+          "label": "Start Checked",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkItemId",
+          "label": "Checklist Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "checkItemState",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "checkItemName",
+          "label": "New Item Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labelId",
+          "label": "Label ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "memberId",
+          "label": "Member ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchModelTypes",
+          "label": "Search Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchBoardIds",
+          "label": "Restrict to Board IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchCardsLimit",
+          "label": "Card Result Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

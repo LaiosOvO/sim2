@@ -1,0 +1,61 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "evaluator",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "evaluator",
+      "legacyIds": [],
+      "provider": "evaluator",
+      "version": "1",
+      "display": {
+        "name": "Evaluator",
+        "description": "Evaluate content",
+        "category": "blocks",
+        "icon": "ChartBarIcon",
+        "bgColor": "#4D5FFF"
+      },
+      "capabilities": [
+        "openai_chat",
+        "anthropic_chat",
+        "google_chat",
+        "xai_chat",
+        "deepseek_chat",
+        "deepseek_reasoner"
+      ],
+      "inputs": [
+        {
+          "key": "metrics",
+          "label": "Evaluation Metrics",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "systemPrompt",
+          "label": "System Prompt",
+          "type": "json",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

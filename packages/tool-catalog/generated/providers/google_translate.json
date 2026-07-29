@@ -1,0 +1,54 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_translate",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_translate",
+      "legacyIds": ["google-translate"],
+      "provider": "google_translate",
+      "version": "1",
+      "display": {
+        "name": "Google Translate",
+        "description": "Translate text using Google Cloud Translation",
+        "category": "tools",
+        "icon": "GoogleTranslateIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": ["google_translate_text", "google_translate_detect"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "target",
+          "label": "Target Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "source",
+          "label": "Source Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

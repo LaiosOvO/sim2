@@ -1,0 +1,300 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "cloudwatch",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "cloudwatch",
+      "legacyIds": [],
+      "provider": "cloudwatch",
+      "version": "1",
+      "display": {
+        "name": "CloudWatch",
+        "description": "Query and monitor AWS CloudWatch logs, metrics, and alarms",
+        "category": "tools",
+        "icon": "CloudWatchIcon",
+        "bgColor": "linear-gradient(45deg, #B0084D 0%, #FF4F8B 100%)"
+      },
+      "capabilities": [
+        "cloudwatch_query_logs",
+        "cloudwatch_filter_log_events",
+        "cloudwatch_describe_log_groups",
+        "cloudwatch_get_log_events",
+        "cloudwatch_describe_log_streams",
+        "cloudwatch_put_log_group_retention",
+        "cloudwatch_list_metrics",
+        "cloudwatch_get_metric_statistics",
+        "cloudwatch_put_metric_data",
+        "cloudwatch_describe_alarms",
+        "cloudwatch_describe_alarm_history",
+        "cloudwatch_mute_alarm",
+        "cloudwatch_unmute_alarm"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "awsRegion",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsAccessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "awsSecretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "logGroupSelector",
+          "label": "Log Group",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "logGroupNamesInput",
+          "label": "Log Group Names",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "queryString",
+          "label": "Query",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "startTime",
+          "label": "Start Time (Unix epoch seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endTime",
+          "label": "End Time (Unix epoch seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prefix",
+          "label": "Log Group Name Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "logGroupNameSelector",
+          "label": "Log Group",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "logGroupNameInput",
+          "label": "Log Group Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "streamPrefix",
+          "label": "Stream Name Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterPattern",
+          "label": "Filter Pattern",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filterLogStreamPrefix",
+          "label": "Log Stream Name Prefix",
+          "type": "string",
+          "required": false,
+          "description": "Only search log streams whose name starts with this prefix"
+        },
+        {
+          "key": "startFromHead",
+          "label": "Return Oldest First",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "retentionInDays",
+          "label": "Retention Period",
+          "type": "string",
+          "required": false,
+          "description": "How long to keep log events. Choose \"Never expire\" to remove any retention limit."
+        },
+        {
+          "key": "logStreamNameSelector",
+          "label": "Log Stream",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "logStreamNameInput",
+          "label": "Log Stream Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricNamespace",
+          "label": "Namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricName",
+          "label": "Metric Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "recentlyActive",
+          "label": "Recently Active Only",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "metricValue",
+          "label": "Value",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricUnit",
+          "label": "Unit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "publishDimensions",
+          "label": "Dimensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricPeriod",
+          "label": "Period (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricStatistics",
+          "label": "Statistics",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "metricDimensions",
+          "label": "Dimensions",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alarmNamePrefix",
+          "label": "Alarm Name Prefix",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "stateValue",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alarmType",
+          "label": "Alarm Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "historyAlarmName",
+          "label": "Alarm Name",
+          "type": "string",
+          "required": false,
+          "description": "Exact alarm name. Omit to retrieve history across all alarms."
+        },
+        {
+          "key": "historyItemType",
+          "label": "History Item Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alarmHistoryStartDate",
+          "label": "Start Date (Unix epoch seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alarmHistoryEndDate",
+          "label": "End Date (Unix epoch seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scanBy",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "muteRuleName",
+          "label": "Mute Rule Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alarmNames",
+          "label": "Alarm Names",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationValue",
+          "label": "Duration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationUnit",
+          "label": "Duration Unit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "muteDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "muteStartDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false,
+          "description": "Unix epoch seconds. Defaults to now (mute starts immediately)."
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

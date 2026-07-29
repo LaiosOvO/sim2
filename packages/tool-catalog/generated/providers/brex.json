@@ -1,0 +1,383 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "brex",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "brex",
+      "legacyIds": [],
+      "provider": "brex",
+      "version": "1",
+      "display": {
+        "name": "Brex",
+        "description": "Manage expenses, receipts, transactions, and team data in Brex",
+        "category": "tools",
+        "icon": "BrexIcon",
+        "bgColor": "#171717"
+      },
+      "capabilities": [
+        "brex_list_expenses",
+        "brex_get_expense",
+        "brex_update_expense",
+        "brex_upload_receipt",
+        "brex_match_receipt",
+        "brex_list_card_transactions",
+        "brex_list_cash_transactions",
+        "brex_list_card_accounts",
+        "brex_list_cash_accounts",
+        "brex_get_cash_account",
+        "brex_list_card_statements",
+        "brex_list_cash_statements",
+        "brex_list_users",
+        "brex_get_user",
+        "brex_get_current_user",
+        "brex_list_departments",
+        "brex_list_locations",
+        "brex_list_titles",
+        "brex_list_cards",
+        "brex_get_company",
+        "brex_list_budgets",
+        "brex_get_budget",
+        "brex_create_budget",
+        "brex_archive_budget",
+        "brex_list_spend_limits",
+        "brex_get_spend_limit",
+        "brex_create_spend_limit",
+        "brex_list_vendors",
+        "brex_get_vendor",
+        "brex_create_vendor",
+        "brex_update_vendor",
+        "brex_list_transfers",
+        "brex_get_transfer",
+        "brex_create_transfer"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "expenseId",
+          "label": "Expense ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memo",
+          "label": "Memo",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadReceiptFile",
+          "label": "Receipt File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "receiptFileReference",
+          "label": "Receipt File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "receiptName",
+          "label": "Receipt Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accountId",
+          "label": "Cash Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "budgetId",
+          "label": "Budget ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spendLimitId",
+          "label": "Spend Limit ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorId",
+          "label": "Vendor ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transferId",
+          "label": "Transfer ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "companyName",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorEmail",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorPhone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorPaymentInstrumentId",
+          "label": "Vendor Payment Instrument ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "amount",
+          "label": "Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "currency",
+          "label": "Currency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalMemo",
+          "label": "External Memo",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "approvalType",
+          "label": "Approval Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isPproEnabled",
+          "label": "Enable Principal Protection (PPRO)",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "resourceName",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentBudgetId",
+          "label": "Parent Budget ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "periodRecurrenceType",
+          "label": "Period Recurrence",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerUserIds",
+          "label": "Owner User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spendLimitPeriodRecurrenceType",
+          "label": "Period Recurrence",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spendType",
+          "label": "Spend Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expenseVisibility",
+          "label": "Expense Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authorizationVisibility",
+          "label": "Authorization Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limitIncreaseSetting",
+          "label": "Limit Increase Requests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoTransferCardsSetting",
+          "label": "Auto Transfer Cards",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoCreateLimitCardsSetting",
+          "label": "Auto Create Limit Cards",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expensePolicyId",
+          "label": "Expense Policy ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseLimitAmount",
+          "label": "Base Limit Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authorizationType",
+          "label": "Authorization Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "rolloverRefreshRate",
+          "label": "Rollover Refresh Rate",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limitBufferPercentage",
+          "label": "Limit Buffer Percentage",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transactionLimitAmount",
+          "label": "Transaction Limit Amount",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "spendLimitMemberUserIds",
+          "label": "Member User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statuses",
+          "label": "Expense Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paymentStatuses",
+          "label": "Payment Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "purchasedAtStart",
+          "label": "Purchased After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "purchasedAtEnd",
+          "label": "Purchased Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "postedAtStart",
+          "label": "Posted After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberUserIds",
+          "label": "Member User IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

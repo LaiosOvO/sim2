@@ -1,0 +1,272 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "ses",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "ses",
+      "legacyIds": ["aws-ses"],
+      "provider": "ses",
+      "version": "1",
+      "display": {
+        "name": "AWS SES",
+        "description": "Send emails and manage templates with AWS Simple Email Service",
+        "category": "tools",
+        "icon": "SESIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "capabilities": [
+        "ses_send_email",
+        "ses_send_templated_email",
+        "ses_send_bulk_email",
+        "ses_list_identities",
+        "ses_get_account",
+        "ses_create_template",
+        "ses_get_template",
+        "ses_list_templates",
+        "ses_delete_template",
+        "ses_update_template",
+        "ses_put_suppressed_destination",
+        "ses_delete_suppressed_destination",
+        "ses_get_suppressed_destination",
+        "ses_list_suppressed_destinations",
+        "ses_create_email_identity",
+        "ses_delete_email_identity",
+        "ses_get_email_identity",
+        "ses_create_configuration_set",
+        "ses_send_custom_verification_email"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromAddress",
+          "label": "From Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "toAddresses",
+          "label": "To Addresses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bodyHtml",
+          "label": "HTML Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bodyText",
+          "label": "Plain Text Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateName",
+          "label": "Template Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "templateData",
+          "label": "Template Data (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "destinations",
+          "label": "Destinations (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "subjectPart",
+          "label": "Subject",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "htmlPart",
+          "label": "HTML Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "textPart",
+          "label": "Plain Text Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ccAddresses",
+          "label": "CC Addresses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bccAddresses",
+          "label": "BCC Addresses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "replyToAddresses",
+          "label": "Reply-To Addresses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "defaultTemplateData",
+          "label": "Default Template Data (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "configurationSetName",
+          "label": "Configuration Set",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nextToken",
+          "label": "Next Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAddress",
+          "label": "Email Address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reason",
+          "label": "Suppression Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reasons",
+          "label": "Reasons Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "startDate",
+          "label": "Start Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "endDate",
+          "label": "End Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailIdentity",
+          "label": "Email Identity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dkimSigningAttributes",
+          "label": "DKIM Signing Attributes (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "newConfigurationSetName",
+          "label": "Configuration Set Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "customRedirectDomain",
+          "label": "Custom Redirect Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "httpsPolicy",
+          "label": "HTTPS Policy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tlsPolicy",
+          "label": "TLS Policy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sendingPoolName",
+          "label": "Dedicated IP Pool",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reputationMetricsEnabled",
+          "label": "Enable Reputation Metrics",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "sendingEnabled",
+          "label": "Enable Sending",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "suppressedReasons",
+          "label": "Auto-Suppress Reasons",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

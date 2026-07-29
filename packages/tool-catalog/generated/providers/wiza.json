@@ -1,0 +1,233 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "wiza",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "wiza",
+      "legacyIds": [],
+      "provider": "wiza",
+      "version": "1",
+      "display": {
+        "name": "Wiza",
+        "description": "Find, enrich, and verify B2B contact data with Wiza",
+        "category": "tools",
+        "icon": "WizaIcon",
+        "bgColor": "#9284BC"
+      },
+      "capabilities": [
+        "wiza_prospect_search",
+        "wiza_company_enrichment",
+        "wiza_individual_reveal",
+        "wiza_get_credits"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Wiza API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "Wiza API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "size",
+          "label": "Sample Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "job_title",
+          "label": "Job Titles",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "job_title_level",
+          "label": "Job Title Levels",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "job_role",
+          "label": "Job Roles",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "job_sub_role",
+          "label": "Job Sub-Roles",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "first_name",
+          "label": "First Names",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "last_name",
+          "label": "Last Names",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "location",
+          "label": "Person Locations",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "skill",
+          "label": "Skills",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "school",
+          "label": "Schools",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "major",
+          "label": "Majors",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "linkedin_slug",
+          "label": "LinkedIn Slugs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "job_company",
+          "label": "Current Companies",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "past_company",
+          "label": "Past Companies",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "company_location",
+          "label": "Company Locations",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "company_industry",
+          "label": "Company Industries",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "company_size",
+          "label": "Company Sizes",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "company_type",
+          "label": "Company Types",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Full Filters Object (overrides above)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "company_name",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_linkedin_id",
+          "label": "Company LinkedIn ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company_linkedin_slug",
+          "label": "Company LinkedIn Slug",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enrichment_level",
+          "label": "Enrichment Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "profile_url",
+          "label": "LinkedIn Profile URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "full_name",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company",
+          "label": "Company",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "domain",
+          "label": "Company Domain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accept_work",
+          "label": "Accept Work Emails",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "accept_personal",
+          "label": "Accept Personal Emails",
+          "type": "boolean",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

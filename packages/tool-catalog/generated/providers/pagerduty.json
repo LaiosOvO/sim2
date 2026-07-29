@@ -1,0 +1,418 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "pagerduty",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "pagerduty",
+      "legacyIds": [],
+      "provider": "pagerduty",
+      "version": "1",
+      "display": {
+        "name": "PagerDuty",
+        "description": "Manage incidents and on-call schedules with PagerDuty",
+        "category": "tools",
+        "icon": "PagerDutyIcon",
+        "bgColor": "#06AC38"
+      },
+      "capabilities": [
+        "pagerduty_list_incidents",
+        "pagerduty_get_incident",
+        "pagerduty_create_incident",
+        "pagerduty_update_incident",
+        "pagerduty_snooze_incident",
+        "pagerduty_merge_incidents",
+        "pagerduty_add_note",
+        "pagerduty_list_incident_alerts",
+        "pagerduty_list_services",
+        "pagerduty_get_service",
+        "pagerduty_list_oncalls",
+        "pagerduty_list_escalation_policies",
+        "pagerduty_list_schedules",
+        "pagerduty_list_users",
+        "pagerduty_send_event"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "routingKey",
+          "label": "Integration Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fromEmail",
+          "label": "From Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statuses",
+          "label": "Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listUrgencies",
+          "label": "Urgencies",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listServiceIds",
+          "label": "Service IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSince",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listUntil",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listSortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "listOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createUrgency",
+          "label": "Urgency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPolicyId",
+          "label": "Escalation Policy ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assigneeId",
+          "label": "Assignee User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "incidentKey",
+          "label": "De-duplication Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateStatus",
+          "label": "Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateResolution",
+          "label": "Resolution Note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateTitle",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateUrgency",
+          "label": "Urgency",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateEscalationLevel",
+          "label": "Escalation Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "snoozeIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "snoozeDuration",
+          "label": "Duration (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeTargetIncidentId",
+          "label": "Target Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mergeSourceIncidentIds",
+          "label": "Source Incident IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "noteContent",
+          "label": "Note Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertsIncidentId",
+          "label": "Incident ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertsStatuses",
+          "label": "Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertsLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "alertsOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "serviceQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "serviceLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "serviceOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getServiceId",
+          "label": "Service ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oncallEscalationPolicyIds",
+          "label": "Escalation Policy IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oncallScheduleIds",
+          "label": "Schedule IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oncallLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oncallSince",
+          "label": "Since",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oncallUntil",
+          "label": "Until",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "oncallOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPolicyQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPolicyLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "escalationPolicyOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scheduleOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userLimit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userOffset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventAction",
+          "label": "Event Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventSummary",
+          "label": "Summary",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventSource",
+          "label": "Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventSeverity",
+          "label": "Severity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventDedupKey",
+          "label": "De-duplication Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventComponent",
+          "label": "Component",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventGroup",
+          "label": "Group",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "eventClass",
+          "label": "Class",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

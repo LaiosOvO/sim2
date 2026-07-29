@@ -7,6 +7,8 @@ import { requestJson } from '@/lib/api/client/request'
 import { listCopilotChatsContract } from '@/lib/api/contracts/copilot'
 import { listKnowledgeBasesContract } from '@/lib/api/contracts/knowledge/base'
 import { listLogsContract } from '@/lib/api/contracts/logs'
+import { getCatalogSummaryItem } from '@/lib/catalog/client'
+import { blockTypeToIconMap } from '@/lib/integrations/icon-mapping'
 import { useCustomBlockOverlayVersion } from '@/blocks/custom/client-overlay'
 import { type IntegrationDescriptor, listIntegrations } from '@/blocks/integration-matcher'
 import { useWorkflows } from '@/hooks/queries/workflows'
@@ -182,34 +184,29 @@ export function useMentionData(props: UseMentionDataProps): MentionDataReturn {
    * Only re-runs when blocks are added/removed (not on position updates)
    */
   useEffect(() => {
-    const syncWorkflowBlocks = async () => {
+    const syncWorkflowBlocks = () => {
       if (!workflowId || blockKeys.length === 0) {
         setWorkflowBlocks([])
         return
       }
 
-      try {
-        // Fetch current blocks from store
-        const workflowStoreBlocks = useWorkflowStore.getState().blocks
-
-        const { registry: blockRegistry } = await import('@/blocks/registry')
-        const mapped = Object.values(workflowStoreBlocks).map((b: any) => {
-          const reg = (blockRegistry as any)[b.type]
-          return {
-            id: b.id,
-            name: b.name || b.id,
-            type: b.type,
-            iconComponent: reg?.icon,
-            bgColor: reg?.bgColor || '#6B7280',
-          }
-        })
-        setWorkflowBlocks(mapped)
-        logger.debug('Synced workflow blocks for mention menu', {
-          count: mapped.length,
-        })
-      } catch (error) {
-        logger.debug('Failed to sync workflow blocks:', error)
-      }
+      // The generated catalog is a data-only projection. This path must never
+      // dynamically import the executable Block/Tool registry.
+      const workflowStoreBlocks = useWorkflowStore.getState().blocks
+      const mapped = Object.values(workflowStoreBlocks).map((block) => {
+        const item = getCatalogSummaryItem(block.type)
+        return {
+          id: block.id,
+          name: block.name || block.id,
+          type: block.type,
+          iconComponent: blockTypeToIconMap[item?.id ?? block.type],
+          bgColor: item?.display.bgColor || '#6B7280',
+        }
+      })
+      setWorkflowBlocks(mapped)
+      logger.debug('Synced workflow blocks for mention menu', {
+        count: mapped.length,
+      })
     }
 
     syncWorkflowBlocks()

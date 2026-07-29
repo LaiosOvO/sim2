@@ -1,0 +1,169 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "tailscale",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "tailscale",
+      "legacyIds": [],
+      "provider": "tailscale",
+      "version": "1",
+      "display": {
+        "name": "Tailscale",
+        "description": "Manage devices and network settings in your Tailscale tailnet",
+        "category": "tools",
+        "icon": "TailscaleIcon",
+        "bgColor": "#2E2D2D"
+      },
+      "capabilities": [
+        "tailscale_list_devices",
+        "tailscale_get_device",
+        "tailscale_delete_device",
+        "tailscale_authorize_device",
+        "tailscale_set_device_tags",
+        "tailscale_get_device_routes",
+        "tailscale_set_device_routes",
+        "tailscale_update_device_key",
+        "tailscale_expire_device_key",
+        "tailscale_list_dns_nameservers",
+        "tailscale_set_dns_nameservers",
+        "tailscale_get_dns_preferences",
+        "tailscale_set_dns_preferences",
+        "tailscale_get_dns_searchpaths",
+        "tailscale_set_dns_searchpaths",
+        "tailscale_list_users",
+        "tailscale_suspend_user",
+        "tailscale_delete_user",
+        "tailscale_create_auth_key",
+        "tailscale_list_auth_keys",
+        "tailscale_get_auth_key",
+        "tailscale_delete_auth_key",
+        "tailscale_get_acl",
+        "tailscale_set_acl"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tailnet",
+          "label": "Tailnet",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "deviceId",
+          "label": "Device ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authorized",
+          "label": "Authorized",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keyExpiryDisabled",
+          "label": "Key Expiry Disabled",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "routes",
+          "label": "Routes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dnsServers",
+          "label": "DNS Nameservers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "magicDNS",
+          "label": "MagicDNS",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchPaths",
+          "label": "Search Paths",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "keyId",
+          "label": "Auth Key ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reusable",
+          "label": "Reusable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ephemeral",
+          "label": "Ephemeral",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "preauthorized",
+          "label": "Preauthorized",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "authKeyDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expirySeconds",
+          "label": "Expiry (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "acl",
+          "label": "ACL Policy",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ifMatch",
+          "label": "If-Match ETag",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

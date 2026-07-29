@@ -1,0 +1,30 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "condition",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "condition",
+      "legacyIds": [],
+      "provider": "condition",
+      "version": "1",
+      "display": {
+        "name": "Condition",
+        "description": "Add a condition",
+        "category": "blocks",
+        "icon": "ConditionalIcon",
+        "bgColor": "#FF752F"
+      },
+      "capabilities": [],
+      "inputs": [
+        {
+          "key": "conditions",
+          "label": "conditions",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

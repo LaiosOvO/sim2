@@ -1,0 +1,456 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "vanta",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "vanta",
+      "legacyIds": [],
+      "provider": "vanta",
+      "version": "1",
+      "display": {
+        "name": "Vanta",
+        "description": "Query compliance status and manage evidence in Vanta",
+        "category": "tools",
+        "icon": "VantaIcon",
+        "bgColor": "#F8F4F3"
+      },
+      "capabilities": [
+        "vanta_list_frameworks",
+        "vanta_get_framework",
+        "vanta_list_framework_controls",
+        "vanta_list_controls",
+        "vanta_get_control",
+        "vanta_list_control_tests",
+        "vanta_list_control_documents",
+        "vanta_list_tests",
+        "vanta_get_test",
+        "vanta_list_test_entities",
+        "vanta_list_documents",
+        "vanta_get_document",
+        "vanta_list_document_uploads",
+        "vanta_upload_document_file",
+        "vanta_download_document_file",
+        "vanta_submit_document",
+        "vanta_list_people",
+        "vanta_get_person",
+        "vanta_list_policies",
+        "vanta_get_policy",
+        "vanta_list_vendors",
+        "vanta_get_vendor",
+        "vanta_list_monitored_computers",
+        "vanta_list_vulnerabilities",
+        "vanta_list_vulnerability_remediations",
+        "vanta_list_vulnerable_assets",
+        "vanta_get_vulnerable_asset",
+        "vanta_list_risk_scenarios",
+        "vanta_get_risk_scenario"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "frameworkId",
+          "label": "Framework ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "controlId",
+          "label": "Control ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "testId",
+          "label": "Test ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "entityStatus",
+          "label": "Entity Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentId",
+          "label": "Document ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadedFileId",
+          "label": "Uploaded File ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadMimeType",
+          "label": "MIME Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadDescription",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "effectiveAtDate",
+          "label": "Effective Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "frameworkMatchesAny",
+          "label": "Framework IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "documentStatusFilter",
+          "label": "Document Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "statusFilter",
+          "label": "Test Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "frameworkFilter",
+          "label": "Framework ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "integrationFilter",
+          "label": "Integration ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "controlFilter",
+          "label": "Control ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerFilter",
+          "label": "Owner User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryFilter",
+          "label": "Test Category",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isInRollout",
+          "label": "In Rollout",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "personId",
+          "label": "Person ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "emailAndNameFilter",
+          "label": "Email or Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "employmentStatus",
+          "label": "Employment Status",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupIdsMatchesAny",
+          "label": "Group IDs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tasksSummaryStatusMatchesAny",
+          "label": "Task Summary Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskTypeMatchesAny",
+          "label": "Task Types",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskStatusMatchesAny",
+          "label": "Task Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "policyId",
+          "label": "Policy ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorId",
+          "label": "Vendor ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorName",
+          "label": "Vendor Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vendorStatusFilter",
+          "label": "Vendor Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "complianceStatusFilterMatchesAny",
+          "label": "Compliance Issues",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchQuery",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "severity",
+          "label": "Severity",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "integrationId",
+          "label": "Integration ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isFixAvailable",
+          "label": "Fix Available",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isDeactivated",
+          "label": "Deactivated",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeVulnerabilitiesWithoutSlas",
+          "label": "Include Without SLAs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "packageIdentifier",
+          "label": "Package Identifier",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalVulnerabilityId",
+          "label": "External Vulnerability ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vulnerableAssetId",
+          "label": "Vulnerable Asset ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slaDeadlineAfterDate",
+          "label": "SLA Deadline After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "slaDeadlineBeforeDate",
+          "label": "SLA Deadline Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isRemediatedOnTime",
+          "label": "Remediated On Time",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "remediatedAfterDate",
+          "label": "Remediated After",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "remediatedBeforeDate",
+          "label": "Remediated Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetType",
+          "label": "Asset Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assetExternalAccountId",
+          "label": "External Account ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "riskScenarioId",
+          "label": "Risk Scenario ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "searchString",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "riskType",
+          "label": "Scenario Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "includeIgnored",
+          "label": "Include Ignored",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ownerMatchesAny",
+          "label": "Owner Emails",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "categoryMatchesAny",
+          "label": "Risk Categories",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ciaCategoryMatchesAny",
+          "label": "CIA Categories",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "treatmentTypeMatchesAny",
+          "label": "Treatments",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "inherentScoreGroupMatchesAny",
+          "label": "Inherent Score Groups",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "residualScoreGroupMatchesAny",
+          "label": "Residual Score Groups",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reviewStatusMatchesAny",
+          "label": "Review Statuses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageCursor",
+          "label": "Page Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientId",
+          "label": "Client ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "clientSecret",
+          "label": "Client Secret",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

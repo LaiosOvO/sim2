@@ -1,0 +1,316 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "discord",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "discord",
+      "legacyIds": [],
+      "provider": "discord",
+      "version": "1",
+      "display": {
+        "name": "Discord",
+        "description": "Interact with Discord",
+        "category": "tools",
+        "icon": "DiscordIcon",
+        "bgColor": "#5865F2"
+      },
+      "capabilities": [
+        "discord_send_message",
+        "discord_get_messages",
+        "discord_get_server",
+        "discord_get_user",
+        "discord_edit_message",
+        "discord_delete_message",
+        "discord_bulk_delete_messages",
+        "discord_add_reaction",
+        "discord_remove_reaction",
+        "discord_pin_message",
+        "discord_unpin_message",
+        "discord_get_pinned_messages",
+        "discord_create_thread",
+        "discord_join_thread",
+        "discord_leave_thread",
+        "discord_archive_thread",
+        "discord_create_channel",
+        "discord_update_channel",
+        "discord_delete_channel",
+        "discord_get_channel",
+        "discord_list_channels",
+        "discord_create_role",
+        "discord_update_role",
+        "discord_delete_role",
+        "discord_assign_role",
+        "discord_remove_role",
+        "discord_list_roles",
+        "discord_kick_member",
+        "discord_ban_member",
+        "discord_unban_member",
+        "discord_get_member",
+        "discord_update_member",
+        "discord_create_invite",
+        "discord_get_invite",
+        "discord_delete_invite",
+        "discord_create_webhook",
+        "discord_execute_webhook",
+        "discord_get_webhook",
+        "discord_delete_webhook"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "botToken",
+          "label": "Bot Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "serverId",
+          "label": "Server ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "channelId",
+          "label": "Channel ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageIds",
+          "label": "Message IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "Message Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Message Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "emoji",
+          "label": "Emoji",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadId",
+          "label": "Thread ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "roleId",
+          "label": "Role ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "webhookId",
+          "label": "Webhook ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "webhookToken",
+          "label": "Webhook Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "inviteCode",
+          "label": "Invite Code",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "archived",
+          "label": "Archived",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "topic",
+          "label": "Topic",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "color",
+          "label": "Color",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nick",
+          "label": "Nickname",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reason",
+          "label": "Reason",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Message Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Pin Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "before",
+          "label": "Before",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoArchiveDuration",
+          "label": "Auto Archive Duration (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "threadVisibility",
+          "label": "Thread Visibility",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "channelType",
+          "label": "Channel Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "parentId",
+          "label": "Parent Category ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hoist",
+          "label": "Display Separately",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mentionable",
+          "label": "Mentionable",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteMessageDays",
+          "label": "Delete Message History",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "mute",
+          "label": "Server Mute",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deaf",
+          "label": "Server Deafen",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxAge",
+          "label": "Invite Expiration",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxUses",
+          "label": "Max Uses",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "temporary",
+          "label": "Temporary Membership",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Override Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Attachments",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "files",
+          "label": "File Attachments",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

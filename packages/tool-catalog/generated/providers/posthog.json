@@ -1,0 +1,493 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "posthog",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "posthog",
+      "legacyIds": [],
+      "provider": "posthog",
+      "version": "1",
+      "display": {
+        "name": "PostHog",
+        "description": "Product analytics and feature management",
+        "category": "tools",
+        "icon": "PosthogIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "posthog_capture_event",
+        "posthog_batch_events",
+        "posthog_list_persons",
+        "posthog_get_person",
+        "posthog_delete_person",
+        "posthog_query",
+        "posthog_list_insights",
+        "posthog_get_insight",
+        "posthog_create_insight",
+        "posthog_update_insight",
+        "posthog_list_dashboards",
+        "posthog_get_dashboard",
+        "posthog_create_dashboard",
+        "posthog_list_actions",
+        "posthog_list_cohorts",
+        "posthog_get_cohort",
+        "posthog_create_cohort",
+        "posthog_update_cohort",
+        "posthog_list_annotations",
+        "posthog_create_annotation",
+        "posthog_list_feature_flags",
+        "posthog_get_feature_flag",
+        "posthog_create_feature_flag",
+        "posthog_update_feature_flag",
+        "posthog_delete_feature_flag",
+        "posthog_evaluate_flags",
+        "posthog_list_experiments",
+        "posthog_get_experiment",
+        "posthog_create_experiment",
+        "posthog_update_experiment",
+        "posthog_list_surveys",
+        "posthog_get_survey",
+        "posthog_create_survey",
+        "posthog_update_survey",
+        "posthog_delete_survey",
+        "posthog_list_session_recordings",
+        "posthog_get_session_recording",
+        "posthog_list_recording_playlists",
+        "posthog_list_event_definitions",
+        "posthog_get_event_definition",
+        "posthog_update_event_definition",
+        "posthog_list_property_definitions",
+        "posthog_get_property_definition",
+        "posthog_update_property_definition",
+        "posthog_list_projects",
+        "posthog_get_project",
+        "posthog_list_organizations",
+        "posthog_get_organization"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Self-Hosted Host",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectApiKey",
+          "label": "Project API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "personalApiKey",
+          "label": "Personal API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "event",
+          "label": "Event Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "distinctId",
+          "label": "Distinct ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "properties",
+          "label": "Properties (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timestamp",
+          "label": "Timestamp (ISO 8601)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groups",
+          "label": "Groups (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "personProperties",
+          "label": "Person Properties (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "groupProperties",
+          "label": "Group Properties (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "batch",
+          "label": "Batch Events (JSON Array)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "values",
+          "label": "Query Values (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "distinctIdFilter",
+          "label": "Distinct ID Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "personId",
+          "label": "Person ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "insightId",
+          "label": "Insight ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dashboardId",
+          "label": "Dashboard ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pinned",
+          "label": "Pinned",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "useTemplate",
+          "label": "Template",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cohortId",
+          "label": "Cohort ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "featureFlagId",
+          "label": "Feature Flag ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "experimentId",
+          "label": "Experiment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "surveyId",
+          "label": "Survey ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "recordingId",
+          "label": "Recording ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "eventDefinitionId",
+          "label": "Event Definition ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "propertyDefinitionId",
+          "label": "Property Definition ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "key",
+          "label": "Flag Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "key",
+          "label": "Flag Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Filters (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insightQuery",
+          "label": "Query (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "dashboards",
+          "label": "Dashboard IDs (comma-separated)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insightTags",
+          "label": "Tags (comma-separated)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "favorited",
+          "label": "Favorited",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "active",
+          "label": "Active",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "rolloutPercentage",
+          "label": "Rollout Percentage",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ensureExperienceContinuity",
+          "label": "Ensure Experience Continuity",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "groups",
+          "label": "Groups (JSON Array)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isStatic",
+          "label": "Static Cohort",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "deleted",
+          "label": "Archive Cohort",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "dateMarker",
+          "label": "Date Marker (ISO 8601)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "scope",
+          "label": "Scope",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "featureFlagKey",
+          "label": "Feature Flag Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "parameters",
+          "label": "Parameters (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "archived",
+          "label": "Archived",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "experimentStartDate",
+          "label": "Start Date (ISO 8601)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "experimentEndDate",
+          "label": "End Date (ISO 8601)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "questions",
+          "label": "Questions (JSON Array)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "questions",
+          "label": "Questions (JSON Array)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "surveyType",
+          "label": "Survey Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "surveyStartDate",
+          "label": "Start Date (ISO 8601)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "surveyEndDate",
+          "label": "End Date (ISO 8601)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "appearance",
+          "label": "Appearance (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "conditions",
+          "label": "Conditions (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetingFlagFilters",
+          "label": "Targeting Flag Filters (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedFlagId",
+          "label": "Linked Feature Flag ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "responsesLimit",
+          "label": "Responses Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags (comma-separated)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "propertyType",
+          "label": "Property Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "projectIdParam",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

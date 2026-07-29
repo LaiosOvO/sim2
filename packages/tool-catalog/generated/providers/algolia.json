@@ -1,0 +1,233 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "algolia",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "algolia",
+      "legacyIds": [],
+      "provider": "algolia",
+      "version": "1",
+      "display": {
+        "name": "Algolia",
+        "description": "Search and manage Algolia indices",
+        "category": "tools",
+        "icon": "AlgoliaIcon",
+        "bgColor": "#003DFF"
+      },
+      "capabilities": [
+        "algolia_search",
+        "algolia_add_record",
+        "algolia_get_record",
+        "algolia_get_records",
+        "algolia_partial_update_record",
+        "algolia_delete_record",
+        "algolia_browse_records",
+        "algolia_batch_operations",
+        "algolia_list_indices",
+        "algolia_get_settings",
+        "algolia_update_settings",
+        "algolia_delete_index",
+        "algolia_copy_move_index",
+        "algolia_clear_records",
+        "algolia_delete_by_filter",
+        "algolia_get_task_status"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "indexName",
+          "label": "Index Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "hitsPerPage",
+          "label": "Hits Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filters",
+          "label": "Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributesToRetrieve",
+          "label": "Attributes to Retrieve",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "facets",
+          "label": "Facets",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getRankingInfo",
+          "label": "Include Ranking Info",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "record",
+          "label": "Record",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "attributes",
+          "label": "Attributes to Update",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "createIfNotExists",
+          "label": "Create If Not Exists",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "requests",
+          "label": "Batch Requests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "settings",
+          "label": "Settings",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "forwardToReplicas",
+          "label": "Forward to Replicas",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "copyMoveOperation",
+          "label": "Copy or Move",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "destination",
+          "label": "Destination Index",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "scope",
+          "label": "Scope (Copy Only)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deleteFilters",
+          "label": "Filter Expression",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "facetFilters",
+          "label": "Facet Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "numericFilters",
+          "label": "Numeric Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tagFilters",
+          "label": "Tag Filters",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aroundLatLng",
+          "label": "Around Lat/Lng",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "aroundRadius",
+          "label": "Around Radius (m)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insideBoundingBox",
+          "label": "Inside Bounding Box",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "insidePolygon",
+          "label": "Inside Polygon",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "getRecordsRequests",
+          "label": "Record Requests",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "taskID",
+          "label": "Task ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "objectID",
+          "label": "Object ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "applicationId",
+          "label": "Application ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

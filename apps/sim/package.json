@@ -116,6 +116,7 @@
     "@sim/runtime-secrets": "workspace:*",
     "@sim/security": "workspace:*",
     "@sim/terminal-protocol": "workspace:*",
+    "@sim/tool-catalog": "workspace:*",
     "@sim/utils": "workspace:*",
     "@sim/workflow-persistence": "workspace:*",
     "@sim/workflow-renderer": "workspace:*",

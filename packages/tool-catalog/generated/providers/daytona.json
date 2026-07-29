@@ -1,0 +1,266 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "daytona",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "daytona",
+      "legacyIds": [],
+      "provider": "daytona",
+      "version": "1",
+      "display": {
+        "name": "Daytona",
+        "description": "Run code and commands in secure cloud sandboxes",
+        "category": "tools",
+        "icon": "DaytonaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "daytona_create_sandbox",
+        "daytona_list_sandboxes",
+        "daytona_get_sandbox",
+        "daytona_start_sandbox",
+        "daytona_stop_sandbox",
+        "daytona_delete_sandbox",
+        "daytona_execute_command",
+        "daytona_run_code",
+        "daytona_upload_file",
+        "daytona_download_file",
+        "daytona_list_files",
+        "daytona_git_clone"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sandboxId",
+          "label": "Sandbox ID",
+          "type": "string",
+          "required": false,
+          "description": "Get, start, stop, and delete also accept the sandbox name; all other operations require the ID"
+        },
+        {
+          "key": "snapshot",
+          "label": "Snapshot",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sandboxName",
+          "label": "Sandbox Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "envVars",
+          "label": "Environment Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sandboxLabels",
+          "label": "Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sandboxUser",
+          "label": "User",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cpu",
+          "label": "CPU Cores",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memory",
+          "label": "Memory (GB)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disk",
+          "label": "Disk (GB)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoStopInterval",
+          "label": "Auto-Stop Interval (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoArchiveInterval",
+          "label": "Auto-Archive Interval (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "autoDeleteInterval",
+          "label": "Auto-Delete Interval (minutes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isPublic",
+          "label": "Public Preview",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "code",
+          "label": "Code",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "command",
+          "label": "Command",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cwd",
+          "label": "Working Directory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "runEnv",
+          "label": "Environment Variables",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFile",
+          "label": "File",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "fileRef",
+          "label": "File",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "destinationPath",
+          "label": "Destination Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uploadFileName",
+          "label": "File Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filePath",
+          "label": "File Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "directoryPath",
+          "label": "Directory Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "repoUrl",
+          "label": "Repository URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clonePath",
+          "label": "Clone Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gitBranch",
+          "label": "Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gitCommitId",
+          "label": "Commit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gitUsername",
+          "label": "Git Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gitPassword",
+          "label": "Git Password / Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "nameFilter",
+          "label": "Name Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labelFilter",
+          "label": "Label Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cursor",
+          "label": "Cursor",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "supabase",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "supabase",
+      "legacyIds": [],
+      "provider": "supabase",
+      "version": "1",
+      "display": {
+        "name": "Supabase",
+        "description": "Use Supabase database",
+        "category": "tools",
+        "icon": "SupabaseIcon",
+        "bgColor": "#1C1C1C"
+      },
+      "capabilities": [
+        "supabase_query",
+        "supabase_insert",
+        "supabase_get_row",
+        "supabase_update",
+        "supabase_delete",
+        "supabase_upsert",
+        "supabase_count",
+        "supabase_text_search",
+        "supabase_vector_search",
+        "supabase_rpc",
+        "supabase_invoke_function",
+        "supabase_introspect",
+        "supabase_storage_upload",
+        "supabase_storage_download",
+        "supabase_storage_list",
+        "supabase_storage_delete",
+        "supabase_storage_move",
+        "supabase_storage_copy",
+        "supabase_storage_create_bucket",
+        "supabase_storage_update_bucket",
+        "supabase_storage_empty_bucket",
+        "supabase_storage_list_buckets",
+        "supabase_storage_delete_bucket",
+        "supabase_storage_get_public_url",
+        "supabase_storage_create_signed_url",
+        "supabase_storage_create_signed_upload_url"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "projectId",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "table",
+          "label": "Table",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "schema",
+          "label": "Schema",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "select",
+          "label": "Select Columns",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Service Role Secret",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": "Data",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "onConflict",
+          "label": "On Conflict (column)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter (PostgREST syntax)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "Filter (PostgREST syntax)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "Filter (PostgREST syntax)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "Filter (PostgREST syntax)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "Order By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionName",
+          "label": "Function Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "queryEmbedding",
+          "label": "Query Embedding",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "matchThreshold",
+          "label": "Match Threshold",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "matchCount",
+          "label": "Match Count",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionName",
+          "label": "Function Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "params",
+          "label": "Parameters (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "functionName",
+          "label": "Function Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": "HTTP Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "functionBody",
+          "label": "Request Body (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "functionHeaders",
+          "label": "Headers (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "schema",
+          "label": "Schema",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "column",
+          "label": "Column to Search",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "searchType",
+          "label": "Search Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter (PostgREST syntax)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "countType",
+          "label": "Count Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bucket",
+          "label": "Bucket Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileName",
+          "label": "File Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Folder Path (optional)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "file",
+          "label": "File",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "fileContent",
+          "label": "File Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "contentType",
+          "label": "Content Type (MIME)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "cacheControl",
+          "label": "Cache Control (seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "upsert",
+          "label": "Upsert (overwrite if exists)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fileName",
+          "label": "File Name Override",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Folder Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortBy",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sortOrder",
+          "label": "Sort Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search",
+          "label": "Search",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "paths",
+          "label": "File Paths (JSON array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "fromPath",
+          "label": "From Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toPath",
+          "label": "To Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fromPath",
+          "label": "From Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "toPath",
+          "label": "To Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "download",
+          "label": "Force Download",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "expiresIn",
+          "label": "Expires In (seconds)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "download",
+          "label": "Force Download",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isPublic",
+          "label": "Public Bucket",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "updateIsPublic",
+          "label": "Public Bucket",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fileSizeLimit",
+          "label": "File Size Limit (bytes)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allowedMimeTypes",
+          "label": "Allowed MIME Types (JSON array)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Destination Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "upsert",
+          "label": "Allow Overwrite",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

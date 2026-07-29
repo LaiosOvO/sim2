@@ -1,0 +1,114 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "perplexity",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "perplexity",
+      "legacyIds": [],
+      "provider": "perplexity",
+      "version": "1",
+      "display": {
+        "name": "Perplexity",
+        "description": "Use Perplexity AI for chat and search",
+        "category": "tools",
+        "icon": "PerplexityIcon",
+        "bgColor": "#20808D"
+      },
+      "capabilities": ["perplexity_chat", "perplexity_search"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "systemPrompt",
+          "label": "System Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "User Prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "model",
+          "label": "Model",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "temperature",
+          "label": "Temperature",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "max_tokens",
+          "label": "Max Tokens",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "max_results",
+          "label": "Max Results",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_domain_filter",
+          "label": "Domain Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "max_tokens_per_page",
+          "label": "Max Page Tokens",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_recency_filter",
+          "label": "Recency Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_after_date",
+          "label": "After Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "search_before_date",
+          "label": "Before Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

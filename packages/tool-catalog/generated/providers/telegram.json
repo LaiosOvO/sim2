@@ -1,0 +1,272 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "telegram",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "telegram",
+      "legacyIds": [],
+      "provider": "telegram",
+      "version": "1",
+      "display": {
+        "name": "Telegram",
+        "description": "Interact with Telegram",
+        "category": "tools",
+        "icon": "TelegramIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "telegram_message",
+        "telegram_delete_message",
+        "telegram_send_photo",
+        "telegram_send_video",
+        "telegram_send_audio",
+        "telegram_send_animation",
+        "telegram_send_document",
+        "telegram_edit_message_text",
+        "telegram_forward_message",
+        "telegram_copy_message",
+        "telegram_send_location",
+        "telegram_send_contact",
+        "telegram_send_poll",
+        "telegram_pin_message",
+        "telegram_unpin_message",
+        "telegram_set_message_reaction",
+        "telegram_send_chat_action",
+        "telegram_get_chat",
+        "telegram_get_chat_member"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "botToken",
+          "label": "Bot Token",
+          "type": "string",
+          "required": true,
+          "description": "Getting Bot Token:\n1. If you haven't already, message \"/newbot\" to @BotFather\n2. Choose a name for your bot\n3. Copy the token it provides and paste it here"
+        },
+        {
+          "key": "chatId",
+          "label": "Chat ID",
+          "type": "string",
+          "required": true,
+          "description": "Getting Chat ID:\n1. Add your bot as a member to desired Telegram channel\n2. Send any message to the channel (e.g. \"I love Sim\")\n3. Visit https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates\n4. Look for the chat field in the JSON response at the very bottom where you'll find the chat ID"
+        },
+        {
+          "key": "text",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "photoFile",
+          "label": "Photo",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "photoRef",
+          "label": "Photo",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "photo",
+          "label": "Photo ID or URL",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Photo. Telegram resolves this string itself."
+        },
+        {
+          "key": "videoFile",
+          "label": "Video",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "videoRef",
+          "label": "Video",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "video",
+          "label": "Video ID or URL",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Video. Telegram resolves this string itself."
+        },
+        {
+          "key": "audioFile",
+          "label": "Audio",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "audioRef",
+          "label": "Audio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "audio",
+          "label": "Audio ID or URL",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Audio. Telegram resolves this string itself."
+        },
+        {
+          "key": "animationFile",
+          "label": "Animation",
+          "type": "file",
+          "required": false
+        },
+        {
+          "key": "animationRef",
+          "label": "Animation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "animation",
+          "label": "Animation ID or URL",
+          "type": "string",
+          "required": false,
+          "description": "Alternative to Animation. Telegram resolves this string itself."
+        },
+        {
+          "key": "attachmentFiles",
+          "label": "Document",
+          "type": "file",
+          "required": false,
+          "description": "Document file to send (PDF, ZIP, DOC, etc.). Max size: 50MB"
+        },
+        {
+          "key": "files",
+          "label": "Document",
+          "type": "string",
+          "required": false,
+          "description": "Reference a document file from a previous block"
+        },
+        {
+          "key": "caption",
+          "label": "Caption",
+          "type": "string",
+          "required": false,
+          "description": "Media caption (optional)"
+        },
+        {
+          "key": "messageId",
+          "label": "Message ID",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the target message"
+        },
+        {
+          "key": "fromChatId",
+          "label": "From Chat ID",
+          "type": "string",
+          "required": false,
+          "description": "The chat ID where the original message currently lives"
+        },
+        {
+          "key": "latitude",
+          "label": "Latitude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "longitude",
+          "label": "Longitude",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phoneNumber",
+          "label": "Phone Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "firstName",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vcard",
+          "label": "vCard",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "question",
+          "label": "Poll Question",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pollOptions",
+          "label": "Poll Options",
+          "type": "string",
+          "required": false,
+          "description": "Enter each answer option on its own line"
+        },
+        {
+          "key": "isAnonymous",
+          "label": "Anonymous Poll",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "allowsMultipleAnswers",
+          "label": "Allow Multiple Answers",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "action",
+          "label": "Chat Action",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reactionEmoji",
+          "label": "Reaction Emoji",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "isBig",
+          "label": "Big Reaction",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "disableNotification",
+          "label": "Silent Pin",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

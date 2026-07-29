@@ -1,0 +1,151 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mongodb",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mongodb",
+      "legacyIds": [],
+      "provider": "mongodb",
+      "version": "1",
+      "display": {
+        "name": "MongoDB",
+        "description": "Connect to MongoDB database",
+        "category": "tools",
+        "icon": "MongoDBIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "mongodb_query",
+        "mongodb_insert",
+        "mongodb_update",
+        "mongodb_delete",
+        "mongodb_execute",
+        "mongodb_introspect"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "host",
+          "label": "Host",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "Port",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "database",
+          "label": "Database Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authSource",
+          "label": "Auth Source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ssl",
+          "label": "SSL Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "collection",
+          "label": "Collection Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Query Filter (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "pipeline",
+          "label": "Aggregation Pipeline (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "documents",
+          "label": "Documents (JSON Array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "Filter (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "update",
+          "label": "Update (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "upsert",
+          "label": "Upsert",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "multi",
+          "label": "Update Multiple",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "multi",
+          "label": "Delete Multiple",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

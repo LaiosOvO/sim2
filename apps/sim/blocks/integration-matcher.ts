@@ -1,7 +1,12 @@
+import type { ComponentType, SVGProps } from 'react'
+import { getAllCatalogSummaryItems } from '@/lib/catalog/client'
 import { LandingPromptStorage } from '@/lib/core/utils/browser-storage'
-import { getCanonicalBlocksByCategory } from '@/blocks/registry'
-import type { BlockIcon } from '@/blocks/types'
-import { registerBlockCacheInvalidator } from '@/blocks/visibility/context'
+import { blockTypeToIconMap } from '@/lib/integrations/icon-mapping'
+import {
+  isHiddenUnder,
+  overlayVisibility,
+  registerBlockCacheInvalidator,
+} from '@/blocks/visibility/context'
 
 /**
  * Public descriptor for a single integration block, exposed to UI surfaces
@@ -14,7 +19,7 @@ export interface IntegrationDescriptor {
   /** Display name with `(Legacy)` / `V2` suffixes stripped. */
   name: string
   /** Brand SVG icon component. */
-  icon: BlockIcon
+  icon: ComponentType<SVGProps<SVGSVGElement>>
   /** Background color hex string used by integration tiles. */
   bgColor: string
 }
@@ -62,17 +67,26 @@ registerBlockCacheInvalidator(clearIntegrationMatcherCache)
 function buildMatcher(): IntegrationMatcher {
   const byName = new Map<string, IntegrationDescriptor>()
   const names: string[] = []
+  const visibility = overlayVisibility()
 
-  for (const block of getCanonicalBlocksByCategory('tools')) {
-    if (!block.name || block.name.trim().length < 2) continue
-    const displayName = normalizeDisplayName(block.name)
+  for (const item of getAllCatalogSummaryItems()) {
+    if (
+      item.display.category !== 'tools' ||
+      item.visibility.hideFromToolbar ||
+      isHiddenUnder(visibility, { type: item.id, preview: item.visibility.preview })
+    ) {
+      continue
+    }
+    const icon = blockTypeToIconMap[item.id]
+    if (!icon || !item.display.name || item.display.name.trim().length < 2) continue
+    const displayName = normalizeDisplayName(item.display.name)
     const key = displayName.toLowerCase()
     if (byName.has(key)) continue
     byName.set(key, {
-      blockType: block.type,
+      blockType: item.id,
       name: displayName,
-      icon: block.icon,
-      bgColor: block.bgColor,
+      icon,
+      bgColor: item.display.bgColor ?? '#6B7280',
     })
     names.push(displayName)
   }
@@ -133,7 +147,7 @@ export function storeCuratedPrompt(prompt: string): boolean {
 /**
  * Lazily builds (once per session) and returns all known integrations sorted
  * alphabetically by display name for menu rendering. Shares the underlying
- * scan with {@link getIntegrationMatcher} so the registry is iterated at most
+ * scan with {@link getIntegrationMatcher} so the generated catalog is iterated at most
  * once per call site.
  */
 export function listIntegrations(): readonly IntegrationDescriptor[] {

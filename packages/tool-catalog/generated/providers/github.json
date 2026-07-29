@@ -1,0 +1,1070 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "github",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "github",
+      "legacyIds": [],
+      "provider": "github",
+      "version": "1",
+      "display": {
+        "name": "GitHub (Legacy)",
+        "description": "Interact with GitHub or trigger workflows from GitHub events",
+        "category": "tools",
+        "icon": "GithubIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [
+        "github_pr",
+        "github_comment",
+        "github_repo_info",
+        "github_latest_commit",
+        "github_issue_comment",
+        "github_list_issue_comments",
+        "github_update_comment",
+        "github_delete_comment",
+        "github_list_pr_comments",
+        "github_create_pr",
+        "github_update_pr",
+        "github_merge_pr",
+        "github_list_prs",
+        "github_get_pr_files",
+        "github_close_pr",
+        "github_request_reviewers",
+        "github_create_pr_review",
+        "github_get_file_content",
+        "github_create_file",
+        "github_update_file",
+        "github_delete_file",
+        "github_get_tree",
+        "github_get_readme",
+        "github_list_tags",
+        "github_list_branches",
+        "github_get_branch",
+        "github_create_branch",
+        "github_delete_branch",
+        "github_get_branch_protection",
+        "github_update_branch_protection",
+        "github_create_issue",
+        "github_update_issue",
+        "github_list_issues",
+        "github_get_issue",
+        "github_close_issue",
+        "github_add_labels",
+        "github_remove_label",
+        "github_add_assignees",
+        "github_create_release",
+        "github_update_release",
+        "github_list_releases",
+        "github_get_release",
+        "github_get_latest_release",
+        "github_delete_release",
+        "github_list_workflows",
+        "github_get_workflow",
+        "github_trigger_workflow",
+        "github_list_workflow_runs",
+        "github_get_workflow_run",
+        "github_cancel_workflow_run",
+        "github_rerun_workflow",
+        "github_list_projects",
+        "github_get_project",
+        "github_create_project",
+        "github_update_project",
+        "github_delete_project",
+        "github_search_code",
+        "github_search_commits",
+        "github_search_issues",
+        "github_search_repos",
+        "github_search_users",
+        "github_list_commits",
+        "github_get_commit",
+        "github_compare_commits",
+        "github_create_gist",
+        "github_get_gist",
+        "github_list_gists",
+        "github_update_gist",
+        "github_delete_gist",
+        "github_fork_gist",
+        "github_star_gist",
+        "github_unstar_gist",
+        "github_fork_repo",
+        "github_list_forks",
+        "github_create_milestone",
+        "github_get_milestone",
+        "github_list_milestones",
+        "github_update_milestone",
+        "github_delete_milestone",
+        "github_create_issue_reaction",
+        "github_delete_issue_reaction",
+        "github_create_comment_reaction",
+        "github_delete_comment_reaction",
+        "github_star_repo",
+        "github_unstar_repo",
+        "github_check_star",
+        "github_list_stargazers"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "owner",
+          "label": "Repository Owner",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "repo",
+          "label": "Repository Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Comment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Comment Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "comment_id",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Updated Comment Text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "comment_id",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "PR Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "head",
+          "label": "Head Branch",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "base",
+          "label": "Base Branch",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "PR Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "draft",
+          "label": "Create as Draft",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "New Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "merge_method",
+          "label": "Merge Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commit_title",
+          "label": "Commit Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reviewers",
+          "label": "Reviewer Usernames",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "team_reviewers",
+          "label": "Team Slugs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ref",
+          "label": "Branch/Tag/Commit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "File Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "message",
+          "label": "Commit Message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "content",
+          "label": "New File Content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "message",
+          "label": "Commit Message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sha",
+          "label": "File SHA",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "message",
+          "label": "Commit Message",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sha",
+          "label": "File SHA",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "Directory Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ref",
+          "label": "Branch/Tag/Commit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "protected",
+          "label": "Filter by Protection",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "New Branch Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sha",
+          "label": "Source Commit SHA",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "branch",
+          "label": "Branch Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "required_status_checks",
+          "label": "Required Status Checks",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "enforce_admins",
+          "label": "Enforce for Admins",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "required_pull_request_reviews",
+          "label": "Required PR Reviews",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Issue Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Issue Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "labels",
+          "label": "Labels",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "assignees",
+          "label": "Assignees",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "New Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "state",
+          "label": "State Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "labels",
+          "label": "Labels",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Label Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "assignees",
+          "label": "Assignees",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tag_name",
+          "label": "Tag Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Release Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "Release Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "draft",
+          "label": "Draft",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "prerelease",
+          "label": "Prerelease",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "release_id",
+          "label": "Release ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "tag_name",
+          "label": "New Tag Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "name",
+          "label": "New Release Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "body",
+          "label": "New Release Notes",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "release_id",
+          "label": "Release ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "release_id",
+          "label": "Release ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflow_id",
+          "label": "Workflow ID or Filename",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "workflow_id",
+          "label": "Workflow ID or Filename",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "ref",
+          "label": "Branch/Tag to Run On",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "inputs",
+          "label": "Workflow Inputs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "workflow_id",
+          "label": "Workflow ID or Filename",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "status",
+          "label": "Status Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "run_id",
+          "label": "Workflow Run ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "run_id",
+          "label": "Workflow Run ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "run_id",
+          "label": "Workflow Run ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "owner_login",
+          "label": "Owner Login",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "owner_type",
+          "label": "Owner Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "project_number",
+          "label": "Project Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "owner_login",
+          "label": "Owner Login",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "owner_type",
+          "label": "Owner Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "owner_id",
+          "label": "Owner ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Project Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "project_id",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "project_public",
+          "label": "Public",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "project_id",
+          "label": "Project ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "q",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "order",
+          "label": "Order",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sha",
+          "label": "SHA or Branch",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "author",
+          "label": "Author Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "since",
+          "label": "Since Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "until",
+          "label": "Until Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ref",
+          "label": "Commit Reference",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "base",
+          "label": "Base Reference",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "head",
+          "label": "Head Reference",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "gist_id",
+          "label": "Gist ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "files",
+          "label": "Files (JSON)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "files",
+          "label": "Files (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "gist_public",
+          "label": "Public",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organization",
+          "label": "Organization",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fork_name",
+          "label": "Fork Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "default_branch_only",
+          "label": "Default Branch Only",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fork_sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestone_title",
+          "label": "Milestone Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "milestone_title",
+          "label": "New Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestone_description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "due_on",
+          "label": "Due Date",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestone_number",
+          "label": "Milestone Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "milestone_state",
+          "label": "State Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "milestone_sort",
+          "label": "Sort By",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "reaction_content",
+          "label": "Reaction",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "issue_number",
+          "label": "Issue Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "reaction_id",
+          "label": "Reaction ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "comment_id",
+          "label": "Comment ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "GitHub Token",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "commentType",
+          "label": "Comment Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "path",
+          "label": "File Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "line",
+          "label": "Line Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pullNumber",
+          "label": "Pull Request Number",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "event",
+          "label": "Review Action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "body",
+          "label": "Review Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commit_id",
+          "label": "Commit SHA",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ref",
+          "label": "Git Reference",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "per_page",
+          "label": "Results Per Page",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "page",
+          "label": "Page Number",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "catalogVersion": 1,
+      "id": "github_v2",
+      "legacyIds": ["github", "github-v2"],
+      "provider": "github",
+      "version": "2",
+      "display": {
+        "name": "GitHub",
+        "description": "Interact with GitHub or trigger workflows from GitHub events",
+        "category": "tools",
+        "icon": "GithubIcon",
+        "bgColor": "#181C1E"
+      },
+      "capabilities": [],
+      "inputs": []
+    }
+  ]
+}

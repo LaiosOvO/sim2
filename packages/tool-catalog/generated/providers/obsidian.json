@@ -1,0 +1,136 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "obsidian",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "obsidian",
+      "legacyIds": [],
+      "provider": "obsidian",
+      "version": "1",
+      "display": {
+        "name": "Obsidian",
+        "description": "Interact with your Obsidian vault via the Local REST API",
+        "category": "tools",
+        "icon": "ObsidianIcon",
+        "bgColor": "#0F0F0F"
+      },
+      "capabilities": [
+        "obsidian_append_active",
+        "obsidian_append_note",
+        "obsidian_append_periodic_note",
+        "obsidian_create_note",
+        "obsidian_delete_note",
+        "obsidian_execute_command",
+        "obsidian_get_active",
+        "obsidian_get_note",
+        "obsidian_get_periodic_note",
+        "obsidian_list_commands",
+        "obsidian_list_files",
+        "obsidian_open_file",
+        "obsidian_patch_active",
+        "obsidian_patch_note",
+        "obsidian_search"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseUrl",
+          "label": "Base URL",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "path",
+          "label": "Directory Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filename",
+          "label": "Note Path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "content",
+          "label": "Content",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "patchOperation",
+          "label": "Patch Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetType",
+          "label": "Target Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetDelimiter",
+          "label": "Target Delimiter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trimTargetWhitespace",
+          "label": "Trim Target Whitespace",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "contextLength",
+          "label": "Context Length",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "commandId",
+          "label": "Command ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "newLeaf",
+          "label": "Open in New Tab",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "period",
+          "label": "Period",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "dropcontact",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "dropcontact",
+      "legacyIds": [],
+      "provider": "dropcontact",
+      "version": "1",
+      "display": {
+        "name": "Dropcontact",
+        "description": "Enrich B2B contacts with verified email, phone, and company data",
+        "category": "tools",
+        "icon": "DropcontactIcon",
+        "bgColor": "#0ABA9F"
+      },
+      "capabilities": ["dropcontact_enrich_contact"],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "first_name",
+          "label": "First Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "last_name",
+          "label": "Last Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "full_name",
+          "label": "Full Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "company",
+          "label": "Company Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "website",
+          "label": "Company Website",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "linkedin",
+          "label": "LinkedIn URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "num_siren",
+          "label": "SIREN Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "country",
+          "label": "Country Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "siren",
+          "label": "Include SIREN Enrichment",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

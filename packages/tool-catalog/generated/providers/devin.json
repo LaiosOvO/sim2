@@ -1,0 +1,108 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "devin",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "devin",
+      "legacyIds": [],
+      "provider": "devin",
+      "version": "1",
+      "display": {
+        "name": "Devin",
+        "description": "Autonomous AI software engineer",
+        "category": "tools",
+        "icon": "DevinIcon",
+        "bgColor": "#12141A"
+      },
+      "capabilities": [
+        "devin_create_session",
+        "devin_get_session",
+        "devin_list_sessions",
+        "devin_send_message",
+        "devin_list_session_messages",
+        "devin_list_session_attachments",
+        "devin_get_session_tags",
+        "devin_append_session_tags",
+        "devin_replace_session_tags",
+        "devin_archive_session",
+        "devin_terminate_session"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "orgId",
+          "label": "Organization ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "prompt",
+          "label": "Prompt",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "playbookId",
+          "label": "Playbook ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "maxAcuLimit",
+          "label": "Max ACU Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sessionId",
+          "label": "Session ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "message",
+          "label": "Message",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "after",
+          "label": "After Cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "terminateArchive",
+          "label": "Archive Instead of Terminate",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

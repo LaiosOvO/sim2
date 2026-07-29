@@ -1,0 +1,148 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "google_forms",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "google_forms",
+      "legacyIds": ["google-forms"],
+      "provider": "google_forms",
+      "version": "1",
+      "display": {
+        "name": "Google Forms",
+        "description": "Manage Google Forms and responses",
+        "category": "tools",
+        "icon": "GoogleFormsIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "google_forms_get_responses",
+        "google_forms_get_form",
+        "google_forms_create_form",
+        "google_forms_batch_update",
+        "google_forms_set_publish_settings",
+        "google_forms_create_watch",
+        "google_forms_list_watches",
+        "google_forms_delete_watch",
+        "google_forms_renew_watch"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Google Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Google Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "formSelector",
+          "label": "Select Form",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualFormId",
+          "label": "Form ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "responseId",
+          "label": "Response ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageSize",
+          "label": "Page Size",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "pageToken",
+          "label": "Page Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "title",
+          "label": "Form Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "documentTitle",
+          "label": "Document Title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "unpublished",
+          "label": "Create Unpublished",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "requests",
+          "label": "Update Requests",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "includeFormInResponse",
+          "label": "Include Form in Response",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "isPublished",
+          "label": "Published",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "isAcceptingResponses",
+          "label": "Accepting Responses",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "eventType",
+          "label": "Event Type",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "topicName",
+          "label": "Pub/Sub Topic",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "watchId",
+          "label": "Watch ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

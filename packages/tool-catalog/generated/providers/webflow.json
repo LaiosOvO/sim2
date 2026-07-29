@@ -1,0 +1,102 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "webflow",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "webflow",
+      "legacyIds": [],
+      "provider": "webflow",
+      "version": "1",
+      "display": {
+        "name": "Webflow",
+        "description": "Manage Webflow CMS collections",
+        "category": "tools",
+        "icon": "WebflowIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "webflow_list_items",
+        "webflow_get_item",
+        "webflow_create_item",
+        "webflow_update_item",
+        "webflow_delete_item"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Webflow Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Webflow Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "siteSelector",
+          "label": "Site",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "manualSiteId",
+          "label": "Site ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "collectionSelector",
+          "label": "Collection",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualCollectionId",
+          "label": "Collection ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "itemSelector",
+          "label": "Item",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "manualItemId",
+          "label": "Item ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "fieldData",
+          "label": "Field Data",
+          "type": "json",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

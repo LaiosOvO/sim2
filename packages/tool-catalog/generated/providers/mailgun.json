@@ -1,0 +1,165 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "mailgun",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "mailgun",
+      "legacyIds": [],
+      "provider": "mailgun",
+      "version": "1",
+      "display": {
+        "name": "Mailgun",
+        "description": "Send emails and manage mailing lists with Mailgun",
+        "category": "tools",
+        "icon": "MailgunIcon",
+        "bgColor": "#C12126"
+      },
+      "capabilities": [
+        "mailgun_send_message",
+        "mailgun_get_message",
+        "mailgun_list_messages",
+        "mailgun_create_mailing_list",
+        "mailgun_get_mailing_list",
+        "mailgun_add_list_member",
+        "mailgun_list_domains",
+        "mailgun_get_domain"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "apiKey",
+          "label": "Mailgun API Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "domain",
+          "label": "Domain",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "from",
+          "label": "From Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "to",
+          "label": "To Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "subject",
+          "label": "Subject",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "text",
+          "label": "Text Body",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "html",
+          "label": "HTML Body",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "cc",
+          "label": "CC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "bcc",
+          "label": "BCC",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "messageKey",
+          "label": "Message Key",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "event",
+          "label": "Event Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "address",
+          "label": "List Address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "List Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "accessLevel",
+          "label": "Access Level",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "memberAddress",
+          "label": "Member Email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "memberName",
+          "label": "Member Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "vars",
+          "label": "Custom Variables",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "subscribed",
+          "label": "Subscribed",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

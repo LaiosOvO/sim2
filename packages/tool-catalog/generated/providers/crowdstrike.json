@@ -1,0 +1,88 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "crowdstrike",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "crowdstrike",
+      "legacyIds": [],
+      "provider": "crowdstrike",
+      "version": "1",
+      "display": {
+        "name": "CrowdStrike",
+        "description": "Query CrowdStrike Identity Protection sensors and documented aggregates",
+        "category": "tools",
+        "icon": "CrowdStrikeIcon",
+        "bgColor": "#E01F3D"
+      },
+      "capabilities": [
+        "crowdstrike_get_sensor_aggregates",
+        "crowdstrike_get_sensor_details",
+        "crowdstrike_query_sensors"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "clientId",
+          "label": "Client ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "clientSecret",
+          "label": "Client Secret",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "cloud",
+          "label": "Cloud Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "Filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "offset",
+          "label": "Offset",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "sort",
+          "label": "Sort",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ids",
+          "label": "Sensor IDs",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "aggregateQuery",
+          "label": "Aggregate Query",
+          "type": "json",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

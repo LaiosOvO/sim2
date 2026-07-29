@@ -1,0 +1,417 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sap_s4hana",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sap_s4hana",
+      "legacyIds": ["sap-s4hana"],
+      "provider": "sap_s4hana",
+      "version": "1",
+      "display": {
+        "name": "SAP S4HANA",
+        "description": "Read and write SAP S4HANA Cloud business data via OData",
+        "category": "tools",
+        "icon": "SapS4HanaIcon",
+        "bgColor": "#FFFFFF"
+      },
+      "capabilities": [
+        "sap_s4hana_list_business_partners",
+        "sap_s4hana_get_business_partner",
+        "sap_s4hana_create_business_partner",
+        "sap_s4hana_update_business_partner",
+        "sap_s4hana_list_customers",
+        "sap_s4hana_get_customer",
+        "sap_s4hana_update_customer",
+        "sap_s4hana_list_suppliers",
+        "sap_s4hana_get_supplier",
+        "sap_s4hana_update_supplier",
+        "sap_s4hana_list_sales_orders",
+        "sap_s4hana_get_sales_order",
+        "sap_s4hana_create_sales_order",
+        "sap_s4hana_update_sales_order",
+        "sap_s4hana_delete_sales_order",
+        "sap_s4hana_list_outbound_deliveries",
+        "sap_s4hana_get_outbound_delivery",
+        "sap_s4hana_list_inbound_deliveries",
+        "sap_s4hana_get_inbound_delivery",
+        "sap_s4hana_list_billing_documents",
+        "sap_s4hana_get_billing_document",
+        "sap_s4hana_list_products",
+        "sap_s4hana_get_product",
+        "sap_s4hana_update_product",
+        "sap_s4hana_list_material_stock",
+        "sap_s4hana_list_material_documents",
+        "sap_s4hana_get_material_document",
+        "sap_s4hana_list_purchase_requisitions",
+        "sap_s4hana_get_purchase_requisition",
+        "sap_s4hana_create_purchase_requisition",
+        "sap_s4hana_update_purchase_requisition",
+        "sap_s4hana_list_purchase_orders",
+        "sap_s4hana_get_purchase_order",
+        "sap_s4hana_create_purchase_order",
+        "sap_s4hana_update_purchase_order",
+        "sap_s4hana_list_supplier_invoices",
+        "sap_s4hana_get_supplier_invoice",
+        "sap_s4hana_odata_query"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "filter",
+          "label": "$filter",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "top",
+          "label": "$top",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "skip",
+          "label": "$skip",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "orderBy",
+          "label": "$orderby",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "select",
+          "label": "$select",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "expand",
+          "label": "$expand",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "businessPartner",
+          "label": "BusinessPartner",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "businessPartnerCategory",
+          "label": "BusinessPartnerCategory",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "businessPartnerGrouping",
+          "label": "BusinessPartnerGrouping",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "firstName",
+          "label": "FirstName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "lastName",
+          "label": "LastName",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "organizationBPName1",
+          "label": "OrganizationBPName1",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "businessPartnerBody",
+          "label": "Additional Fields (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "customer",
+          "label": "Customer",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "salesOrder",
+          "label": "SalesOrder",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "salesOrderType",
+          "label": "SalesOrderType",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "salesOrganization",
+          "label": "SalesOrganization",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "distributionChannel",
+          "label": "DistributionChannel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "organizationDivision",
+          "label": "OrganizationDivision",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "soldToParty",
+          "label": "SoldToParty",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "salesOrderItems",
+          "label": "Items (to_Item, JSON array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "salesOrderBody",
+          "label": "Additional Fields (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "deliveryDocument",
+          "label": "DeliveryDocument",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "billingDocument",
+          "label": "BillingDocument",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "product",
+          "label": "Product",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchaseRequisition",
+          "label": "PurchaseRequisition",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchaseRequisitionType",
+          "label": "PurchaseRequisitionType",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchaseRequisitionItems",
+          "label": "Items (to_PurchaseReqnItem, JSON array)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "purchaseRequisitionBody",
+          "label": "Additional Fields (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "purchaseOrder",
+          "label": "PurchaseOrder",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchaseOrderType",
+          "label": "PurchaseOrderType",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "companyCode",
+          "label": "CompanyCode",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchasingOrganization",
+          "label": "PurchasingOrganization",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchasingGroup",
+          "label": "PurchasingGroup",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "supplier",
+          "label": "Supplier",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "purchaseOrderBody",
+          "label": "Items & Additional Fields (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "materialDocumentYear",
+          "label": "MaterialDocumentYear",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "materialDocument",
+          "label": "MaterialDocument",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "supplierInvoice",
+          "label": "SupplierInvoice",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "fiscalYear",
+          "label": "FiscalYear",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "updateBody",
+          "label": "Fields to Update (JSON)",
+          "type": "json",
+          "required": true
+        },
+        {
+          "key": "updateIfMatch",
+          "label": "If-Match (ETag)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "odataService",
+          "label": "OData Service",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "odataPath",
+          "label": "Entity Path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "odataMethod",
+          "label": "HTTP Method",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "odataQuery",
+          "label": "Query Parameters (JSON or query string)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "odataBody",
+          "label": "Request Body (JSON)",
+          "type": "json",
+          "required": false
+        },
+        {
+          "key": "odataIfMatch",
+          "label": "If-Match (ETag)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "deploymentType",
+          "label": "Deployment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "authType",
+          "label": "Authentication",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "subdomain",
+          "label": "BTP Subdomain",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "BTP Region",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "baseUrl",
+          "label": "Base URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tokenUrl",
+          "label": "OAuth Token URL",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientId",
+          "label": "OAuth Client ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "clientSecret",
+          "label": "OAuth Client Secret",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "password",
+          "label": "Password",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

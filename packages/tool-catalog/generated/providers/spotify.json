@@ -1,0 +1,367 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "spotify",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "spotify",
+      "legacyIds": [],
+      "provider": "spotify",
+      "version": "1",
+      "display": {
+        "name": "Spotify",
+        "description": "Search music, manage playlists, control playback, and access your library",
+        "category": "tools",
+        "icon": "SpotifyIcon",
+        "bgColor": "#000000"
+      },
+      "capabilities": [
+        "spotify_search",
+        "spotify_get_track",
+        "spotify_get_tracks",
+        "spotify_get_album",
+        "spotify_get_albums",
+        "spotify_get_album_tracks",
+        "spotify_get_saved_albums",
+        "spotify_save_albums",
+        "spotify_remove_saved_albums",
+        "spotify_check_saved_albums",
+        "spotify_get_artist",
+        "spotify_get_artists",
+        "spotify_get_artist_albums",
+        "spotify_get_artist_top_tracks",
+        "spotify_follow_artists",
+        "spotify_unfollow_artists",
+        "spotify_get_followed_artists",
+        "spotify_check_following",
+        "spotify_get_show",
+        "spotify_get_shows",
+        "spotify_get_show_episodes",
+        "spotify_get_saved_shows",
+        "spotify_save_shows",
+        "spotify_remove_saved_shows",
+        "spotify_check_saved_shows",
+        "spotify_get_episode",
+        "spotify_get_episodes",
+        "spotify_get_saved_episodes",
+        "spotify_save_episodes",
+        "spotify_remove_saved_episodes",
+        "spotify_check_saved_episodes",
+        "spotify_get_audiobook",
+        "spotify_get_audiobooks",
+        "spotify_get_audiobook_chapters",
+        "spotify_get_saved_audiobooks",
+        "spotify_save_audiobooks",
+        "spotify_remove_saved_audiobooks",
+        "spotify_check_saved_audiobooks",
+        "spotify_get_playlist",
+        "spotify_get_playlist_tracks",
+        "spotify_get_playlist_cover",
+        "spotify_get_user_playlists",
+        "spotify_create_playlist",
+        "spotify_update_playlist",
+        "spotify_add_playlist_cover",
+        "spotify_add_tracks_to_playlist",
+        "spotify_remove_tracks_from_playlist",
+        "spotify_reorder_playlist_items",
+        "spotify_replace_playlist_items",
+        "spotify_follow_playlist",
+        "spotify_unfollow_playlist",
+        "spotify_check_playlist_followers",
+        "spotify_get_current_user",
+        "spotify_get_user_profile",
+        "spotify_get_top_tracks",
+        "spotify_get_top_artists",
+        "spotify_get_saved_tracks",
+        "spotify_save_tracks",
+        "spotify_remove_saved_tracks",
+        "spotify_check_saved_tracks",
+        "spotify_get_recently_played",
+        "spotify_get_new_releases",
+        "spotify_get_categories",
+        "spotify_get_markets",
+        "spotify_get_playback_state",
+        "spotify_get_currently_playing",
+        "spotify_get_devices",
+        "spotify_get_queue",
+        "spotify_play",
+        "spotify_pause",
+        "spotify_skip_next",
+        "spotify_skip_previous",
+        "spotify_seek",
+        "spotify_add_to_queue",
+        "spotify_set_volume",
+        "spotify_set_repeat",
+        "spotify_set_shuffle",
+        "spotify_transfer_playback"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "credential",
+          "label": "Spotify Account",
+          "type": "credential",
+          "required": true
+        },
+        {
+          "key": "manualCredential",
+          "label": "Spotify Account",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "query",
+          "label": "Search Query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Search Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "trackId",
+          "label": "Track ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "trackIds",
+          "label": "Track IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "albumId",
+          "label": "Album ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "albumIds",
+          "label": "Album IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "artistId",
+          "label": "Artist ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "artistIds",
+          "label": "Artist IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "showId",
+          "label": "Show ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "showIds",
+          "label": "Show IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "episodeId",
+          "label": "Episode ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "episodeIds",
+          "label": "Episode IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audiobookId",
+          "label": "Audiobook ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "audiobookIds",
+          "label": "Audiobook IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "followType",
+          "label": "Type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "ids",
+          "label": "IDs to Check",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "userId",
+          "label": "User ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "playlistId",
+          "label": "Playlist ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Playlist Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "newName",
+          "label": "New Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Playlist Description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "public",
+          "label": "Public",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "userIds",
+          "label": "User IDs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "coverImageFile",
+          "label": "Cover Image",
+          "type": "file",
+          "required": true
+        },
+        {
+          "key": "coverImageRef",
+          "label": "Cover Image",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "range_start",
+          "label": "Range Start",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "insert_before",
+          "label": "Insert Before",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "range_length",
+          "label": "Range Length",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uris",
+          "label": "Track URIs",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "country",
+          "label": "Country",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "time_range",
+          "label": "Time Range",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "device_id",
+          "label": "Device ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "context_uri",
+          "label": "Context URI",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "playUris",
+          "label": "Track URIs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "uri",
+          "label": "Track URI",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "volume_percent",
+          "label": "Volume",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "position_ms",
+          "label": "Position (ms)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "state",
+          "label": "Repeat Mode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "shuffle_state",
+          "label": "Shuffle",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "target_device_id",
+          "label": "Target Device ID",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "limit",
+          "label": "Limit",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

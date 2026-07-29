@@ -1,0 +1,145 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "provider": "sts",
+  "items": [
+    {
+      "catalogVersion": 1,
+      "id": "sts",
+      "legacyIds": ["aws-sts"],
+      "provider": "sts",
+      "version": "1",
+      "display": {
+        "name": "AWS STS",
+        "description": "Connect to AWS Security Token Service",
+        "category": "tools",
+        "icon": "STSIcon",
+        "bgColor": "linear-gradient(45deg, #BD0816 0%, #FF5252 100%)"
+      },
+      "capabilities": [
+        "sts_assume_role",
+        "sts_assume_role_with_web_identity",
+        "sts_assume_role_with_saml",
+        "sts_get_caller_identity",
+        "sts_get_session_token",
+        "sts_get_access_key_info"
+      ],
+      "inputs": [
+        {
+          "key": "operation",
+          "label": "Operation",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "region",
+          "label": "AWS Region",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "accessKeyId",
+          "label": "AWS Access Key ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "secretAccessKey",
+          "label": "AWS Secret Access Key",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "roleArn",
+          "label": "Role ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "roleSessionName",
+          "label": "Session Name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "webIdentityToken",
+          "label": "Web Identity Token",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "providerId",
+          "label": "Provider ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "principalArn",
+          "label": "SAML Provider ARN",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "samlAssertion",
+          "label": "SAML Assertion",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Duration (Seconds)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "policy",
+          "label": "Session Policy (JSON)",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "policyArns",
+          "label": "Managed Policy ARNs",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tags",
+          "label": "Session Tags",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "transitiveTagKeys",
+          "label": "Transitive Tag Keys",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "externalId",
+          "label": "External ID",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "serialNumber",
+          "label": "MFA Serial Number",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "tokenCode",
+          "label": "MFA Token Code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "targetAccessKeyId",
+          "label": "Target Access Key ID",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
