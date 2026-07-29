@@ -3,6 +3,7 @@ import {
   createEnvironmentModule,
   type EnvironmentModule,
 } from '@/modules/environment/application/create-environment-module'
+import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
 
 function unavailableEnvironmentModule(): EnvironmentModule {
   return {
@@ -16,10 +17,25 @@ function unavailableEnvironmentModule(): EnvironmentModule {
   }
 }
 
-function unconfiguredOptions(): ApiApplicationOptions {
+async function createExecutionAdmission(): Promise<ExecutionAdmissionModule | undefined> {
+  const baseUrl = process.env.WORKER_ADMISSION_URL?.trim()
+  const internalToken = process.env.INTERNAL_EXECUTION_TOKEN?.trim()
+  if (!baseUrl || !internalToken) return undefined
+  const [{ createExecutionAdmissionModule }, { createHttpWorkerJobSubmitter }] = await Promise.all([
+    import('@/modules/execution/application/create-execution-admission-module'),
+    import('@/modules/execution/infrastructure/http-worker-job-submitter'),
+  ])
+  return createExecutionAdmissionModule({
+    internalToken,
+    submitter: createHttpWorkerJobSubmitter({ baseUrl, internalToken }),
+  })
+}
+
+function unconfiguredOptions(executionAdmission?: ExecutionAdmissionModule): ApiApplicationOptions {
   return {
     serviceName: 'sim-api',
     environment: unavailableEnvironmentModule(),
+    executionAdmission,
     readinessChecks: {
       configuration: async () => false,
       database: async () => false,
@@ -28,13 +44,14 @@ function unconfiguredOptions(): ApiApplicationOptions {
 }
 
 export async function createProductionApiOptions(): Promise<ApiApplicationOptions> {
+  const executionAdmission = await createExecutionAdmission()
   const secret = process.env.BETTER_AUTH_SECRET?.trim()
   const baseURL = process.env.BETTER_AUTH_URL?.trim() ?? process.env.NEXT_PUBLIC_APP_URL?.trim()
   const encryptionKey = process.env.ENCRYPTION_KEY?.trim()
   const configured = Boolean(
     process.env.DATABASE_URL && secret && baseURL && /^[0-9a-f]{64}$/i.test(encryptionKey ?? '')
   )
-  if (!configured) return unconfiguredOptions()
+  if (!configured) return unconfiguredOptions(executionAdmission)
 
   const [
     { db },
@@ -72,6 +89,7 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
   return {
     serviceName: 'sim-api',
     environment,
+    executionAdmission,
     readinessChecks: {
       configuration: async () => true,
       database: async () => {

@@ -19,6 +19,16 @@ import { pageRequestSchema } from '@sim/api-contracts/pagination'
 import { traceContextSchema } from '@sim/api-contracts/tracing'
 import { debugCommandV1Schema, debugSessionV1Schema } from '@sim/execution-contracts/debug'
 import { executionEventV1Schema } from '@sim/execution-contracts/events'
+import {
+  executionCancellationRequestV1Schema,
+  executionCancellationResponseV1Schema,
+  executionJobAdmissionResponseV1Schema,
+  sandboxExecutionCommandV1Schema,
+  sandboxExecutionFailureV1Schema,
+  sandboxExecutionResultV1Schema,
+  sandboxResourcePolicyV1Schema,
+  sandboxTestJobPayloadV1Schema,
+} from '@sim/execution-contracts/job-control'
 import { executionJobV1Schema } from '@sim/execution-contracts/jobs'
 import {
   runtimeToolExecutionErrorV1Schema,
@@ -51,6 +61,14 @@ const schemas: Record<string, JsonSchemaProvider> = {
   TraceContext: traceContextSchema,
   ExecutionJobV1: executionJobV1Schema,
   ExecutionEventV1: executionEventV1Schema,
+  ExecutionJobAdmissionResponseV1: executionJobAdmissionResponseV1Schema,
+  ExecutionCancellationRequestV1: executionCancellationRequestV1Schema,
+  ExecutionCancellationResponseV1: executionCancellationResponseV1Schema,
+  SandboxResourcePolicyV1: sandboxResourcePolicyV1Schema,
+  SandboxTestJobPayloadV1: sandboxTestJobPayloadV1Schema,
+  SandboxExecutionCommandV1: sandboxExecutionCommandV1Schema,
+  SandboxExecutionResultV1: sandboxExecutionResultV1Schema,
+  SandboxExecutionFailureV1: sandboxExecutionFailureV1Schema,
   RuntimeToolInvocationV1: runtimeToolInvocationV1Schema,
   RuntimeToolExecutionErrorV1: runtimeToolExecutionErrorV1Schema,
   RuntimeToolExecutionResultV1: runtimeToolExecutionResultV1Schema,

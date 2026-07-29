@@ -147,6 +147,12 @@ jobs:
       - name: Verify lazy Runtime Provider build
         run: bun run check:runtime-registry-lazy-build
 
+      - name: Verify Worker role build isolation
+        run: bun run check:worker-role-isolation
+
+      - name: Verify Node API to Sandbox execution spine
+        run: bun run check:execution-spine
+
       - name: Verify W1 API route coverage
         run: bun run check:w1-api-coverage
 

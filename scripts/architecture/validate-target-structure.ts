@@ -9,6 +9,7 @@ interface PackageManifest {
   }
   scripts?: {
     start?: string
+    'start:sandbox'?: string
   }
   workspaces?: string[]
 }
@@ -62,6 +63,8 @@ const requiredFiles = [
   'apps/worker/package.json',
   'apps/worker/tsconfig.json',
   'apps/worker/src/index.ts',
+  'apps/worker/src/roles/execution/start-execution-role.ts',
+  'apps/worker/src/roles/sandbox/start-sandbox-role.ts',
   'apps/content-processor/package.json',
   'packages/api-contracts/src/index.ts',
   'packages/execution-contracts/src/index.ts',
@@ -103,6 +106,12 @@ async function validateNodeRuntime(relativePath: string): Promise<string[]> {
   }
   if (!manifest.scripts?.start?.startsWith('node ')) {
     failures.push(`${relativePath}: production start script must invoke node`)
+  }
+  if (
+    relativePath === 'apps/worker/package.json' &&
+    !manifest.scripts?.['start:sandbox']?.startsWith('node ')
+  ) {
+    failures.push(`${relativePath}: production Sandbox start script must invoke node`)
   }
   return failures
 }

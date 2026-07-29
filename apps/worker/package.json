@@ -10,7 +10,9 @@
   "scripts": {
     "build": "bun build src/index.ts --target=node --outdir=dist --splitting",
     "dev": "node --import tsx --watch src/index.ts",
+    "dev:sandbox": "node --import tsx --watch src/index.ts --role=sandbox",
     "start": "node dist/index.js",
+    "start:sandbox": "node dist/index.js --role=sandbox",
     "test": "vitest run",
     "type-check": "tsc --noEmit",
     "lint": "biome check --write --unsafe .",

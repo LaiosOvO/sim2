@@ -2,6 +2,7 @@ import { traceContextSchema } from '@sim/api-contracts/tracing'
 import { describe, expect, it } from 'vitest'
 import { debugCommandV1Schema, debugSessionV1Schema } from '../src/debug'
 import { executionEventV1Schema } from '../src/events'
+import { sandboxTestJobPayloadV1Schema } from '../src/job-control'
 import { executionJobV1Schema } from '../src/jobs'
 import {
   runtimeToolExecutionResultV1Schema,
@@ -89,6 +90,53 @@ describe('Web to API to Worker wire contracts', () => {
       credentialRef: 'credential-1',
       params: { databaseId: 'database-1', properties: { Name: 'Task' } },
     })
+  })
+
+  it('allows only opaque Sandbox credential references', () => {
+    const common = {
+      contractVersion: 1,
+      type: 'sandbox-test',
+      operation: 'echo',
+      policy: {
+        contractVersion: 1,
+        network: 'deny',
+        filesystem: {
+          mode: 'ephemeral',
+          readOnlyMounts: [],
+          writableRoot: '/tmp/job',
+        },
+        cpuTimeMs: 100,
+        memoryMiB: 32,
+        wallClockMs: 1_000,
+        maxInputBytes: 1_024,
+      },
+    }
+    expect(
+      sandboxTestJobPayloadV1Schema.parse({
+        ...common,
+        secrets: undefined,
+        policy: {
+          ...common.policy,
+          secrets: {
+            mode: 'references-only',
+            credentialRefs: ['credential-1'],
+          },
+        },
+      }).policy.secrets.credentialRefs
+    ).toEqual(['credential-1'])
+    expect(() =>
+      sandboxTestJobPayloadV1Schema.parse({
+        ...common,
+        policy: {
+          ...common.policy,
+          secrets: {
+            mode: 'references-only',
+            credentialRefs: ['credential-1'],
+            values: { API_KEY: 'must-not-cross-the-wire' },
+          },
+        },
+      })
+    ).toThrow()
   })
 
   it('version-checks runtime registry failures', () => {

@@ -837,6 +837,31 @@ Node 22 `process.getBuiltinModule('node:async_hooks')` 同步取得 AsyncLocalSt
 6.9 GiB。最终代码使用独立 W1 type graph、API/auth/contracts type-check 和定向 Vitest
 通过，审计中保留该资源限制，不把它冒充为全量成功。
 
+### 19.8 Worker Job 与独立 Sandbox role
+
+Ticket 08 将版本化 job 从文档结构推进到可运行链路。API 新增内部 execution admission
+Module，只依赖 `ExecutionJobSubmitter`；production adapter 通过带共享 token 的 HTTP 将 job
+提交给 execution Worker。API 不 import queue、state、Sandbox 或 Worker 实现。
+
+Worker coordinator 在一个窄接口后隐藏 delivery claim、job ID 幂等、event sequence、
+retry/backoff、cancel、timeout、poison job 与 terminal state。定向测试覆盖 duplicate、
+transient retry、retry exhaustion、active cancel、wall-clock timeout 和 invalid contract
+dead letter。当前内存 queue/state/event journal 只是状态机 adapter，不具备生产持久性；
+正式切流仍要求 durable queue、lease、crash recovery 和 DB event store。
+
+SandboxExecution 的第一个 adapter 是 restricted test Sandbox。它不接收源代码，只支持
+echo/delay/受控失败；network、host filesystem 和 secret value 没有暴露，secret schema
+严格只允许 credential references。input bytes、wall-clock 和 cancel 已实际执行；CPU 和
+memory 当前是 contract budget，待 isolated-vm/E2B/Daytona adapter 施加真实资源限制。
+
+`@sim/worker` 的一个 split build 现在提供 execution 与 sandbox 两个独立 Node role。两者
+拥有独立 liveness/readiness，可通过 HTTP Sandbox adapter 组合。Sandbox role 的独立构建
+闭包为 87,228 gzip bytes，Runtime Registry、Notion Provider、execution coordinator 和
+飞书 SDK marker 为 0。真实 Node smoke 启动 API、execution Worker、Sandbox 三个进程，
+完成 `API -> Worker -> Sandbox -> started/completed`；因此 Bun 继续只是构建与测试工具，
+不是这些生产进程的 runtime。restricted adapter 默认关闭，只有显式测试开关才能启用；
+未配置生产 Sandbox 时 readiness 为 503。全浏览器传递闭包复核后 `api-or-worker` 仍为 0。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -895,3 +920,5 @@ Node 22 `process.getBuiltinModule('node:async_hooks')` 同步取得 AsyncLocalSt
 - API production adapters 改为配置后懒加载，split build startup entry 为 17.37 KB；
   记录 1.98 秒、213.7 MiB RSS 的 Node 冷启动基线。
 - 修复 `@sim/logger` 在 Node ESM 下使用 CommonJS `require` 导致服务无法直接启动的问题。
+- 建立 API -> execution Worker -> 独立 Sandbox role 的版本化执行骨架，覆盖 job 幂等、
+  retry、cancel、timeout、poison dead letter、resource policy audit 与 Node build smoke。

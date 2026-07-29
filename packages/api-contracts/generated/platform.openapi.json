@@ -473,6 +473,11 @@
               "type": {
                 "type": "string",
                 "const": "started"
+              },
+              "attempt": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
               }
             },
             "required": [
@@ -482,6 +487,63 @@
               "sequence",
               "occurredAt",
               "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "contractVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "eventId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "executionId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "occurredAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "type": {
+                "type": "string",
+                "const": "retry-scheduled"
+              },
+              "attempt": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "nextAttempt": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "contractVersion",
+              "eventId",
+              "executionId",
+              "sequence",
+              "occurredAt",
+              "type",
+              "attempt",
+              "nextAttempt",
+              "reason"
             ],
             "additionalProperties": false
           },
@@ -680,8 +742,621 @@
               "type"
             ],
             "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "contractVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "eventId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "executionId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sequence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "occurredAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "type": {
+                "type": "string",
+                "const": "dead-lettered"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "contractVersion",
+              "eventId",
+              "executionId",
+              "sequence",
+              "occurredAt",
+              "type",
+              "reason"
+            ],
+            "additionalProperties": false
           }
         ]
+      },
+      "ExecutionJobAdmissionResponseV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "accepted": {
+            "type": "boolean",
+            "const": true
+          },
+          "jobId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "executionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "duplicate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "contractVersion",
+          "accepted",
+          "jobId",
+          "executionId",
+          "duplicate"
+        ],
+        "additionalProperties": false
+      },
+      "ExecutionCancellationRequestV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "contractVersion"
+        ],
+        "additionalProperties": false
+      },
+      "ExecutionCancellationResponseV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "executionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requested": {
+            "type": "boolean",
+            "const": true
+          },
+          "duplicate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "contractVersion",
+          "executionId",
+          "requested",
+          "duplicate"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxResourcePolicyV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "network": {
+            "type": "string",
+            "const": "deny"
+          },
+          "filesystem": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "type": "string",
+                "const": "ephemeral"
+              },
+              "readOnlyMounts": {
+                "default": [],
+                "maxItems": 16,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^\\/.*"
+                }
+              },
+              "writableRoot": {
+                "default": "/tmp/job",
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^\\/.*"
+              }
+            },
+            "required": [
+              "mode",
+              "readOnlyMounts",
+              "writableRoot"
+            ],
+            "additionalProperties": false
+          },
+          "cpuTimeMs": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 5000
+          },
+          "memoryMiB": {
+            "type": "integer",
+            "minimum": 16,
+            "maximum": 256
+          },
+          "wallClockMs": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 30000
+          },
+          "maxInputBytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1048576
+          },
+          "secrets": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "type": "string",
+                "const": "references-only"
+              },
+              "credentialRefs": {
+                "default": [],
+                "maxItems": 32,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "mode",
+              "credentialRefs"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "contractVersion",
+          "network",
+          "filesystem",
+          "cpuTimeMs",
+          "memoryMiB",
+          "wallClockMs",
+          "maxInputBytes",
+          "secrets"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxTestJobPayloadV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "type": {
+            "type": "string",
+            "const": "sandbox-test"
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "echo",
+              "delay",
+              "transient-failure",
+              "fatal-failure"
+            ]
+          },
+          "input": {},
+          "delayMs": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 30000
+          },
+          "failuresBeforeSuccess": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "policy": {
+            "type": "object",
+            "properties": {
+              "contractVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "network": {
+                "type": "string",
+                "const": "deny"
+              },
+              "filesystem": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "const": "ephemeral"
+                  },
+                  "readOnlyMounts": {
+                    "default": [],
+                    "maxItems": 16,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "^\\/.*"
+                    }
+                  },
+                  "writableRoot": {
+                    "default": "/tmp/job",
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^\\/.*"
+                  }
+                },
+                "required": [
+                  "mode",
+                  "readOnlyMounts",
+                  "writableRoot"
+                ],
+                "additionalProperties": false
+              },
+              "cpuTimeMs": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 5000
+              },
+              "memoryMiB": {
+                "type": "integer",
+                "minimum": 16,
+                "maximum": 256
+              },
+              "wallClockMs": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 30000
+              },
+              "maxInputBytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1048576
+              },
+              "secrets": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "const": "references-only"
+                  },
+                  "credentialRefs": {
+                    "default": [],
+                    "maxItems": 32,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "required": [
+                  "mode",
+                  "credentialRefs"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "contractVersion",
+              "network",
+              "filesystem",
+              "cpuTimeMs",
+              "memoryMiB",
+              "wallClockMs",
+              "maxInputBytes",
+              "secrets"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "contractVersion",
+          "type",
+          "operation",
+          "delayMs",
+          "failuresBeforeSuccess",
+          "policy"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxExecutionCommandV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "executionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "attempt": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "contractVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "type": {
+                "type": "string",
+                "const": "sandbox-test"
+              },
+              "operation": {
+                "type": "string",
+                "enum": [
+                  "echo",
+                  "delay",
+                  "transient-failure",
+                  "fatal-failure"
+                ]
+              },
+              "input": {},
+              "delayMs": {
+                "default": 0,
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 30000
+              },
+              "failuresBeforeSuccess": {
+                "default": 0,
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5
+              },
+              "policy": {
+                "type": "object",
+                "properties": {
+                  "contractVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "network": {
+                    "type": "string",
+                    "const": "deny"
+                  },
+                  "filesystem": {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "type": "string",
+                        "const": "ephemeral"
+                      },
+                      "readOnlyMounts": {
+                        "default": [],
+                        "maxItems": 16,
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "pattern": "^\\/.*"
+                        }
+                      },
+                      "writableRoot": {
+                        "default": "/tmp/job",
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^\\/.*"
+                      }
+                    },
+                    "required": [
+                      "mode",
+                      "readOnlyMounts",
+                      "writableRoot"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cpuTimeMs": {
+                    "type": "integer",
+                    "minimum": 10,
+                    "maximum": 5000
+                  },
+                  "memoryMiB": {
+                    "type": "integer",
+                    "minimum": 16,
+                    "maximum": 256
+                  },
+                  "wallClockMs": {
+                    "type": "integer",
+                    "minimum": 10,
+                    "maximum": 30000
+                  },
+                  "maxInputBytes": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1048576
+                  },
+                  "secrets": {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "type": "string",
+                        "const": "references-only"
+                      },
+                      "credentialRefs": {
+                        "default": [],
+                        "maxItems": 32,
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    },
+                    "required": [
+                      "mode",
+                      "credentialRefs"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "contractVersion",
+                  "network",
+                  "filesystem",
+                  "cpuTimeMs",
+                  "memoryMiB",
+                  "wallClockMs",
+                  "maxInputBytes",
+                  "secrets"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "contractVersion",
+              "type",
+              "operation",
+              "delayMs",
+              "failuresBeforeSuccess",
+              "policy"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "contractVersion",
+          "executionId",
+          "attempt",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxExecutionResultV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "executionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "output": {},
+          "usage": {
+            "type": "object",
+            "properties": {
+              "wallClockMs": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "inputBytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "wallClockMs",
+              "inputBytes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "contractVersion",
+          "executionId",
+          "output",
+          "usage"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxExecutionFailureV1": {
+        "type": "object",
+        "properties": {
+          "contractVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "SANDBOX_INPUT_TOO_LARGE",
+                  "SANDBOX_POLICY_REJECTED",
+                  "SANDBOX_TRANSIENT_FAILURE",
+                  "SANDBOX_FATAL_FAILURE",
+                  "SANDBOX_CANCELLED",
+                  "SANDBOX_TIMEOUT"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              },
+              "retryable": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "retryable"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "contractVersion",
+          "error"
+        ],
+        "additionalProperties": false
       },
       "RuntimeToolInvocationV1": {
         "type": "object",

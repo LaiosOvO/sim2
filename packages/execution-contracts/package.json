@@ -21,6 +21,10 @@
       "types": "./src/jobs.ts",
       "default": "./src/jobs.ts"
     },
+    "./job-control": {
+      "types": "./src/job-control.ts",
+      "default": "./src/job-control.ts"
+    },
     "./runtime-tools": {
       "types": "./src/runtime-tools.ts",
       "default": "./src/runtime-tools.ts"

@@ -10,7 +10,16 @@ const eventBase = z.object({
 })
 
 export const executionEventV1Schema = z.discriminatedUnion('type', [
-  eventBase.extend({ type: z.literal('started') }),
+  eventBase.extend({
+    type: z.literal('started'),
+    attempt: z.number().int().positive().optional(),
+  }),
+  eventBase.extend({
+    type: z.literal('retry-scheduled'),
+    attempt: z.number().int().positive(),
+    nextAttempt: z.number().int().positive(),
+    reason: z.string().min(1),
+  }),
   eventBase.extend({
     type: z.literal('node-progress'),
     nodeId: z.string().min(1),
@@ -29,6 +38,10 @@ export const executionEventV1Schema = z.discriminatedUnion('type', [
   eventBase.extend({
     type: z.literal('cancelled'),
     reason: z.string().min(1).optional(),
+  }),
+  eventBase.extend({
+    type: z.literal('dead-lettered'),
+    reason: z.string().min(1),
   }),
 ])
 

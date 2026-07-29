@@ -42,7 +42,7 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 | `apps/sim/app/workspace` | `apps/sim/app/workspace` | A | 合并画布 UI；禁止恢复浏览器 Executor | canvas/replay E2E |
 | `apps/sim/app/api/**` | `apps/api/src/**` + `apps/sim/app/api/**` compat facade | S | 用 API inventory 定位目标；新行为先入 contract，再加兼容代理 | contract/differential |
 | `apps/sim/app/api/environment`、`health`、`status` | `apps/api/src/modules/environment|system|status` + 原路径 proxy facade | S | W1 已迁移；upstream 行为变化先更新 API contract/adapter，再更新 differential fixture，禁止恢复旧实现 import | W1 C/D/I/P、facade bundle |
-| `apps/sim/background` | `apps/worker/src/jobs` | S | Trigger.dev 任务变化移植到对应 job | job contract、retry |
+| `apps/sim/background` | `apps/worker/src/jobs` | S | Ticket 08 已建立 job delivery/coordinator/内存 adapter；Trigger.dev 变化映射到 queue port，禁止绕过幂等、retry、cancel 与 event journal | job contract、duplicate/retry/poison |
 | `apps/sim/components` | `apps/sim/components` 或 `apps/sim/features/*/components` | A | 通用 UI 同路径合并；业务 UI 进入 feature | visual/component |
 | `apps/sim/hooks` | `apps/sim/hooks` | A | 合并 hook；所有服务端状态必须走 API contract | hook、contract |
 | `apps/sim/stores` | `apps/sim/stores` | A | 合并 UI 状态；拒绝 Executor/credential/snapshot | store、import guard |
@@ -65,8 +65,8 @@ API 的逐路径归属不在此重复，使用规范性 API inventory 中的 `AP
 | `apps/sim/tools` runtime | `apps/worker/src/runtime/providers/*` + `extensions/infra/*` | S | 按 Provider 适配，保留稳定 tool ID；首个 Notion add-database-row 已迁移，legacy ID 指向 v2 canonical ID |
 | `apps/sim/triggers` metadata | `packages/tool-catalog/generated/providers/*`（后续扩展 trigger kind） | S | 保留稳定 trigger ID；Ticket 06 前不允许浏览器读取 runtime trigger registry |
 | `apps/sim/triggers` runtime | `apps/worker/src/runtime/triggers` + `apps/api/src/modules/webhooks` | S | 执行在 Worker，公网 admission 在 API |
-| `apps/sim/executor` | `apps/worker/src/execution` | S | 移植执行语义、snapshot、resume、cancel |
-| `apps/sim/sandbox-tasks` | `apps/worker/src/sandbox` | S | 移植任务；通过 SandboxExecution interface |
+| `apps/sim/executor` | `apps/worker/src/execution` | S | Ticket 08 已建立 submission/cancel/events seam；继续移植执行语义、snapshot、resume，生产 durable state 未完成 |
+| `apps/sim/sandbox-tasks` | `apps/worker/src/sandbox` | S | Ticket 08 已建立 SandboxExecution、HTTP adapter 与独立 Node role；restricted adapter 只用于 seam 测试，后续迁移 isolated-vm/E2B/Daytona |
 | `apps/sim/serializer` | `packages/workflow-types/src/serialization` | S | 保持历史 workflow wire compatibility |
 | `apps/sim/connectors` | `extensions/infra/*` + `apps/worker/src/runtime/integrations` | S | 按 Provider 映射到 adapter/loader |
 | `apps/sim/providers` | `extensions/infra/llm-providers` | S | Provider SDK、凭证、重试留在 Infra |

@@ -1,6 +1,7 @@
 import { API_CONTRACTS_VERSION, apiErrorEnvelopeSchema } from '@sim/api-contracts'
 import { createRequestContext, withApiHeaders } from '@/http/request-context'
 import type { EnvironmentModule } from '@/modules/environment/application/create-environment-module'
+import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
 import {
   createStatusModule,
   type StatusModule,
@@ -15,6 +16,7 @@ export interface ApiApplicationOptions {
   serviceName?: string
   now?: () => Date
   environment?: EnvironmentModule
+  executionAdmission?: ExecutionAdmissionModule
   status?: StatusModule
   readinessChecks?: Readonly<Record<string, () => Promise<boolean>>>
 }
@@ -31,7 +33,12 @@ export function createApiApplication(options: ApiApplicationOptions = {}): ApiAp
     readinessChecks: options.readinessChecks,
   })
   const status = options.status ?? createStatusModule({ now: options.now })
-  const handlers = [system, status, ...(options.environment ? [options.environment] : [])]
+  const handlers = [
+    system,
+    status,
+    ...(options.environment ? [options.environment] : []),
+    ...(options.executionAdmission ? [options.executionAdmission] : []),
+  ]
 
   return {
     async handle(request) {

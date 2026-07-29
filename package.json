@@ -42,6 +42,8 @@
     "check:runtime-catalog": "bun run scripts/runtime/check-runtime-catalog-consistency.ts",
     "check:runtime-registry-boundary": "bun run scripts/architecture/import-boundaries/check-worker-runtime-registry-boundary.ts",
     "check:runtime-registry-lazy-build": "bun run scripts/architecture/build-isolation/check-worker-runtime-lazy-build.ts",
+    "check:worker-role-isolation": "bun run scripts/architecture/build-isolation/check-worker-role-isolation.ts",
+    "check:execution-spine": "bun run scripts/worker/check-execution-spine.ts",
     "check:api-standalone": "bun run scripts/api/check-api-standalone.ts",
     "check:target-module-cycles": "bun run scripts/architecture/import-boundaries/check-target-module-cycles.ts",
     "check:target-structure": "bun run scripts/architecture/validate-target-structure.ts",

@@ -36,6 +36,7 @@
 - [Phase 2 Browser-safe Tool Catalog 检查点](./handoffs/phase-2-tool-catalog.md)
 - [Phase 2 Worker-only Runtime Registry 检查点](./handoffs/phase-2-runtime-registry.md)
 - [Phase 3 W1 独立 API 检查点](./handoffs/phase-3-w1-api.md)
+- [Phase 3 Worker Job 与 Sandbox 骨架检查点](./handoffs/phase-3-worker-sandbox-skeleton.md)
 
 ## 阅读顺序
 
