@@ -38,6 +38,7 @@
         "@sim/biz-identity": "workspace:*",
         "@sim/db": "workspace:*",
         "@sim/execution-contracts": "workspace:*",
+        "@sim/infra-appconfig": "workspace:*",
         "@sim/logger": "workspace:*",
         "@sim/platform-authz": "workspace:*",
         "@sim/security": "workspace:*",
@@ -468,6 +469,17 @@
     "extensions/biz/risk": {
       "name": "@sim/biz-risk",
       "version": "0.1.0",
+      "devDependencies": {
+        "@sim/tsconfig": "workspace:*",
+        "typescript": "^7.0.2",
+      },
+    },
+    "extensions/infra/appconfig": {
+      "name": "@sim/infra-appconfig",
+      "version": "0.1.0",
+      "dependencies": {
+        "@aws-sdk/client-appconfigdata": "3.1032.0",
+      },
       "devDependencies": {
         "@sim/tsconfig": "workspace:*",
         "typescript": "^7.0.2",
@@ -1974,6 +1986,8 @@
     "@sim/emcn": ["@sim/emcn@workspace:packages/emcn"],
 
     "@sim/execution-contracts": ["@sim/execution-contracts@workspace:packages/execution-contracts"],
+
+    "@sim/infra-appconfig": ["@sim/infra-appconfig@workspace:extensions/infra/appconfig"],
 
     "@sim/infra-code-host": ["@sim/infra-code-host@workspace:extensions/infra/code-host"],
 

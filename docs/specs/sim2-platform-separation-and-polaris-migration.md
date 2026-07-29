@@ -984,11 +984,12 @@ packages/*
   `API-0235 /api/organizations/[id]/roster`,
   `API-0241 /api/organizations/[id]/workspaces`,
   `API-0243 /api/permission-groups/user`, `API-0294 /api/stars`,
+  `API-1031 /api/workspaces/[id]/fork/availability`,
   `API-1041 /api/workspaces/[id]/host-context`,
   `API-1057 /api/workspaces/[id]/members`,
   `API-1058 /api/workspaces/[id]/metrics/executions`, and Polaris
   `API-1060 /api/workspaces/[id]/personal-profile`, plus
-  `API-1124 /api/workspaces/invitations` are native, while the other 11 routes currently target a
+  `API-1124 /api/workspaces/invitations` are native, while the other 10 routes currently target a
   fixed pre-refactor legacy origin.
 - The invitations Module owns a token-free V1 response contract, application use case and repository
   port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
@@ -1052,12 +1053,26 @@ packages/*
   validation, drain existence, and bounded newest-first query ordering. The PostgreSQL adapters and
   contract import no Next runtime, Auth implementation, legacy Billing/Data Drain helper,
   destination registry, Executor, or Sandbox. A dedicated boundary gate enforces this closure.
+- The Workspace Forking Module owns API-1031 through a non-sensitive availability interface and
+  three narrow backend ports: active workspace context, Enterprise entitlement, and rollout
+  evaluation. The application preserves donor ordering across self-host deployment flags, hosted
+  billing entitlement, and hosted AppConfig rollout while collapsing gate failures to
+  `{available:false}`. The donor route loaded workspace permission but never inspected
+  `hasAccess`; the native compatibility slice removes that redundant read without changing the
+  observable session + active-workspace behavior. Tightening availability to workspace members is
+  a separate security decision, not an implicit migration change.
+- AWS AppConfig is isolated in the server-only `extensions/infra/appconfig` package. It owns the
+  profile transport, cold-request coalescing, stale-while-revalidate cache, last-good retention, and
+  pure OR-clause rule primitives. It does not own a universal feature registry:
+  `workspace-forking`, its fallback, and admin-resolution scheduling remain inside the Forking
+  composition. The AWS SDK is dynamically loaded only on actual backend profile access and is
+  unreachable from Web facades.
 - API-1011 credit availability and API-1122 usage gate remain legacy until a separate Billing
   read-model foundation versions payer attribution, payer/member usage ledgers, daily refresh,
   plan-limit rules, and enforcement/display projections. Copying `checkAttributedUsageLimits` or
   the legacy Billing Core into either Workspaces or Data Drains is prohibited.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 11 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 10 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope

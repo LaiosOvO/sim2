@@ -138,6 +138,14 @@ export {
   w2TenantReadRouteIdSchema,
 } from './w2-tenant-read'
 export type {
+  ForkWorkspaceIdParamsV1,
+  GetForkAvailabilityResponseV1,
+} from './workspace-forking'
+export {
+  forkWorkspaceIdParamsV1Schema,
+  getForkAvailabilityResponseV1Schema,
+} from './workspace-forking'
+export type {
   ListWorkspaceMembersResponseV1,
   PersonalAccountProfileV1,
   PersonalExternalIdentityV1,

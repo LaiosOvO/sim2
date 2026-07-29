@@ -174,7 +174,7 @@ export const w2TenantReadRouteContracts = [
     pathTemplate: '/api/workspaces/[id]/fork/availability',
     domain: 'workspaces',
     authMode: 'session',
-    backend: 'legacy-origin-compatibility',
+    backend: 'native',
     requiredTests,
   },
   {

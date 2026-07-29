@@ -26,6 +26,7 @@
     "@sim/biz-identity": "workspace:*",
     "@sim/db": "workspace:*",
     "@sim/execution-contracts": "workspace:*",
+    "@sim/infra-appconfig": "workspace:*",
     "@sim/logger": "workspace:*",
     "@sim/platform-authz": "workspace:*",
     "@sim/security": "workspace:*",

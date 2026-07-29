@@ -48,11 +48,12 @@ Ticket 09 的统一 request authenticator，再进入旧服务。旧服务仍会
 ## 尚未完成：原生读模型
 
 兼容读取平面解决 Next 编译边界，但不是 22 条接口的最终后端实现。当前 backend 状态为
-11 条 native（API-0137 invitee invitations、API-0209 data drain runs、
+12 条 native（API-0137 invitee invitations、API-0209 data drain runs、
 API-0235 organization roster、
 API-0241 organization workspaces、API-0243 user permission group、API-0294 stars、
-API-1041 workspace host context、API-1057 workspace members、API-1058 workspace execution
-metrics、API-1060 Polaris personal profile、API-1124 workspace invitation management）和 11 条
+API-1031 fork availability、API-1041 workspace host context、API-1057 workspace members、
+API-1058 workspace execution metrics、API-1060 Polaris personal profile、
+API-1124 workspace invitation management）和 10 条
 legacy-origin-compatibility。完成本 Ticket 仍需：
 
 1. 按领域建立 organization/workspace/user read repository ports；
@@ -67,10 +68,10 @@ legacy-origin-compatibility。完成本 Ticket 仍需：
 | Gate | 结果 |
 | --- | --- |
 | Inventory/coverage | 22/22，C/A/D/I 无遗漏、无重复 |
-| W2 API tests | 100 passed、1 disposable PostgreSQL test 默认跳过 |
+| W2 API tests | 112 passed、1 disposable PostgreSQL test 默认跳过 |
 | W2 Next proxy tests | 25/25 |
 | API Contract tests | 16/16 |
-| Full repository type-check | 43/43 tasks |
+| Full repository type-check | 44/44 tasks |
 | Next facade isolated build | 22 entries；最大 1,485 gzip bytes |
 | Next facade forbidden marker | 0 |
 | Platform Contract | 80 schemas；生成产物 clean |
@@ -78,8 +79,9 @@ legacy-origin-compatibility。完成本 Ticket 仍需：
 | Identity boundary | 3 boundaries / 9 files；0 provider/DB 反向依赖 |
 | Data Drains boundary | 5 module files / 2 adapters / 1 contract；0 violation |
 | Workspaces boundary | 10 module files / 3 adapters / 1 contract；0 violation |
-| Target structure | 53 roots / 70 required files |
-| Target cycles | 22 packages / 154 source nodes；0 cycle |
+| Workspace Forking boundary | 6 module files / 4 adapters / 1 AppConfig Infra / 1 contract；0 violation |
+| Target structure | 57 roots / 85 required files |
+| Target cycles | 23 packages / 167 source nodes；0 cycle |
 
 旧 route 同目录的 8 个测试随实现移出 Next 一并删除；覆盖职责已迁到独立 API 的
 22 路差分/鉴权/集成测试和 HTTP legacy adapter 测试。原生 adapter 替换时必须补回
@@ -139,7 +141,15 @@ projection；三方法 read port 隐藏 workspace-scoped workflow、filtered bou
 空 filter 以及 aggregate timestamp UTC 解码；Workspaces boundary 扩展为覆盖全部 3 个
 PostgreSQL adapters。
 
-其余 11 条仍必须补相应的数据库/Provider integration gate。
+`API-1031` 建立独立 Workspace Forking Module，通过 active-workspace context、
+Enterprise entitlement 和 rollout 三个窄 port 固定 self-host/billing/AppConfig 顺序。
+通用 AppConfig Infra 只拥有 AWS profile transport、并发合并、stale cache、last-good 与纯
+gate rule，不拥有 feature registry；AWS SDK 仅在后端 profile fetch 时懒加载。donor
+虽查询 workspace permission 却未检查 `hasAccess`，原生实现删除该冗余查询并保持 session +
+active workspace 的布尔可见性；成员收紧留给独立安全变更。真实 fixture 验证 context、
+Enterprise、owner billing-block 与 platform admin，浏览器对 Infra/API client roots 仍为 0。
+
+其余 10 条仍必须补相应的数据库/Provider integration gate。
 
 ## Acceptance criteria
 

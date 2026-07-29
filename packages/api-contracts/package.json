@@ -60,6 +60,10 @@
     "./workspaces": {
       "types": "./src/workspaces.ts",
       "default": "./src/workspaces.ts"
+    },
+    "./workspace-forking": {
+      "types": "./src/workspace-forking.ts",
+      "default": "./src/workspace-forking.ts"
     }
   },
   "scripts": {

@@ -1442,7 +1442,7 @@
 | API-1028 | POST | `/api/workspaces/[id]/files/presigned` | 共有同实现 | File/Binary | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth, Storage | API File Module | W3 | High | CADISB |
 | API-1029 | POST | `/api/workspaces/[id]/files/register` | 共有同实现 | File/Binary | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth, Storage | API File Module | W3 | High | CADISB |
 | API-1030 | GET,POST | `/api/workspaces/[id]/files` | 共有已分叉 | File/Binary | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth, Storage | API File Module | W3 | High | CADISB |
-| API-1031 | GET | `/api/workspaces/[id]/fork/availability` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | Auth | API Core Module | W2 | Medium | CADI |
+| API-1031 | GET | `/api/workspaces/[id]/fork/availability` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth, Billing, AWS | API Workspace Forking Module | W2 | Medium | CADI |
 | API-1032 | GET | `/api/workspaces/[id]/fork/diff` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth | API Core Module | W2 | Medium | CADI |
 | API-1033 | PUT | `/api/workspaces/[id]/fork/excluded-workflows` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | DB, Auth | API Core Module | W3 | Medium | CADI |
 | API-1034 | GET | `/api/workspaces/[id]/fork/lineage` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | DB, Auth | API Core Module | W2 | Medium | CADI |

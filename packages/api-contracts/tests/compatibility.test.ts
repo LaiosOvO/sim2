@@ -154,6 +154,7 @@ describe('API contract compatibility', () => {
       'API-0241',
       'API-0243',
       'API-0294',
+      'API-1031',
       'API-1041',
       'API-1057',
       'API-1058',

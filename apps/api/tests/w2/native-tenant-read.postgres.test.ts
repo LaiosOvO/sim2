@@ -25,6 +25,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { createDrizzleWorkspaceExecutionMetricsReadRepository },
       { createDrizzleWorkspaceHostContextReadRepository },
       { createDrizzleWorkspaceMemberReadRepository },
+      { createDrizzleForkEntitlementReader },
+      { createDrizzlePlatformAdminReader },
+      { createDrizzleWorkspaceForkContextReader },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
       import('@sim/db'),
@@ -52,6 +55,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
       ),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
+      import('@/infrastructure/postgres/repositories/drizzle-fork-entitlement-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-platform-admin-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
     ])
 
@@ -587,6 +593,26 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       hosted: true,
     })
     await expect(dataDrainEntitlement.isEntitled('organization-1')).resolves.toBe(true)
+    const forkContexts = createDrizzleWorkspaceForkContextReader()
+    await expect(forkContexts.findActive('workspace-1')).resolves.toEqual({
+      organizationId: 'organization-1',
+    })
+    await expect(forkContexts.findActive('workspace-personal')).resolves.toEqual({
+      organizationId: null,
+    })
+    await expect(forkContexts.findActive('workspace-archived')).resolves.toBeNull()
+    const forkEntitlement = createDrizzleForkEntitlementReader({
+      billingEnabled: true,
+      forkingEnabled: false,
+      accessControlEnabled: false,
+      hosted: true,
+      appConfig: { enabled: false },
+    })
+    await expect(forkEntitlement.isEntitled('organization-1')).resolves.toBe(true)
+    await expect(forkEntitlement.isEntitled('organization-other')).resolves.toBe(false)
+    const platformAdmins = createDrizzlePlatformAdminReader()
+    await expect(platformAdmins.isPlatformAdmin('org-admin-1')).resolves.toBe(true)
+    await expect(platformAdmins.isPlatformAdmin('viewer-1')).resolves.toBe(false)
     const dataDrainRuns = createDrizzleDataDrainRunReadRepository()
     await expect(
       dataDrainRuns.listForOrganization('organization-1', 'drain-1', 1)
@@ -619,6 +645,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
     await db.execute(sql`update user_stats set billing_blocked = true where id = 'stats-owner'`)
     await expect(cloudEntitlement.isEntitled('organization-1')).resolves.toBe(false)
     await expect(dataDrainEntitlement.isEntitled('organization-1')).resolves.toBe(false)
+    await expect(forkEntitlement.isEntitled('organization-1')).resolves.toBe(false)
     await expect(
       createDrizzleOrganizationAccessControlEntitlementReader({
         billingEnabled: true,

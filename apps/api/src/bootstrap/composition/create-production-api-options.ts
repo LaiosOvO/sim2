@@ -1,8 +1,12 @@
 import type { RequestAccessResolver } from '@sim/auth/authorization'
 import type { RequestAuthenticator } from '@sim/auth/request-context'
 import type { PersonalIdentityProfileRepository } from '@sim/biz-identity'
+import type { AppConfigProfileReader } from '@sim/infra-appconfig'
+import { createLogger } from '@sim/logger'
 import type { ApiApplicationOptions } from '@/bootstrap/application/create-api-application'
 import { readDataDrainRuntimeConfig } from '@/config/data-drain-runtime'
+import { readForkingRuntimeConfig } from '@/config/forking-runtime'
+import type { PlatformAdminReader } from '@/infrastructure/appconfig/appconfig-fork-rollout-reader'
 import type { DataDrainEntitlementReader, DataDrainRunReadRepository } from '@/modules/data-drains'
 import {
   createEnvironmentModule,
@@ -22,6 +26,11 @@ import type {
 import type { UserPermissionGroupReadRepository } from '@/modules/permission-groups'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
+import type {
+  ForkEntitlementReader,
+  ForkRolloutReader,
+  WorkspaceForkContextReader,
+} from '@/modules/workspace-forking'
 import type {
   WorkspaceExecutionMetricsReadRepository,
   WorkspaceHostContextReadRepository,
@@ -78,6 +87,7 @@ async function createTenantRead(
 ): Promise<TenantReadModule> {
   const baseUrl = process.env.SIM_LEGACY_API_BASE_URL?.trim()
   const dataDrainRuntime = readDataDrainRuntimeConfig()
+  const forkingRuntime = readForkingRuntimeConfig()
   const [
     { createTenantReadModule },
     { createRoutedTenantReadBackend, createUnavailableTenantReadBackend },
@@ -107,6 +117,9 @@ async function createTenantRead(
     },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
+    { createGetForkAvailabilityHandler, createGetForkAvailabilityUseCase },
+    { createAppConfigForkRolloutReader },
+    { createAwsAppConfigProfileReader },
   ] = await Promise.all([
     import('@/modules/tenant-read/application/create-tenant-read-module'),
     import('@/modules/tenant-read/application/create-routed-tenant-read-backend'),
@@ -119,6 +132,9 @@ async function createTenantRead(
     import('@/modules/workspaces'),
     import('@/modules/identity'),
     import('@sim/biz-identity'),
+    import('@/modules/workspace-forking'),
+    import('@/infrastructure/appconfig/appconfig-fork-rollout-reader'),
+    import('@sim/infra-appconfig'),
   ])
   const fallback = baseUrl
     ? createHttpLegacyTenantReadBackend({ baseUrl })
@@ -199,6 +215,35 @@ async function createTenantRead(
       return null
     },
   }
+  let workspaceForkContexts: WorkspaceForkContextReader = {
+    async findActive() {
+      throw new Error('Workspace fork database is not configured')
+    },
+  }
+  let forkEntitlement: ForkEntitlementReader = {
+    async isEntitled() {
+      return false
+    },
+  }
+  let platformAdmins: PlatformAdminReader = {
+    async isPlatformAdmin() {
+      return false
+    },
+  }
+  const explicitAwsCredentials =
+    process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY
+      ? {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        }
+      : undefined
+  const appConfigProfiles: AppConfigProfileReader = createAwsAppConfigProfileReader({
+    ...(forkingRuntime.appConfig.enabled && forkingRuntime.appConfig.region
+      ? { region: forkingRuntime.appConfig.region }
+      : {}),
+    ...(explicitAwsCredentials ? { credentials: explicitAwsCredentials } : {}),
+    logger: createLogger('AppConfig'),
+  })
   let accessResolver: RequestAccessResolver = {
     async workspacePermission() {
       return null
@@ -224,6 +269,9 @@ async function createTenantRead(
       { createDrizzleUserPermissionGroupReadRepository },
       { createDrizzleWorkspaceExecutionMetricsReadRepository },
       { createDrizzleWorkspaceHostContextReadRepository },
+      { createDrizzleWorkspaceForkContextReader },
+      { createDrizzleForkEntitlementReader },
+      { createDrizzlePlatformAdminReader },
       { createDrizzleAccessResolver },
       { readAccessControlRuntimeConfig },
     ] = await Promise.all([
@@ -249,6 +297,9 @@ async function createTenantRead(
       import(
         '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
       ),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-fork-entitlement-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-platform-admin-reader'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
       import('@/config/enterprise-runtime'),
     ])
@@ -263,11 +314,19 @@ async function createTenantRead(
     userPermissionGroupRepository = createDrizzleUserPermissionGroupReadRepository()
     workspaceExecutionMetricsRepository = createDrizzleWorkspaceExecutionMetricsReadRepository()
     workspaceHostContextRepository = createDrizzleWorkspaceHostContextReadRepository()
+    workspaceForkContexts = createDrizzleWorkspaceForkContextReader()
+    forkEntitlement = createDrizzleForkEntitlementReader(forkingRuntime)
+    platformAdmins = createDrizzlePlatformAdminReader()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
       readAccessControlRuntimeConfig()
     )
     accessResolver = createDrizzleAccessResolver()
   }
+  const forkRollout: ForkRolloutReader = createAppConfigForkRolloutReader({
+    profiles: appConfigProfiles,
+    platformAdmins,
+    runtime: forkingRuntime,
+  })
   const nativeHandlers: Record<
     | 'API-0137'
     | 'API-0209'
@@ -275,6 +334,7 @@ async function createTenantRead(
     | 'API-0241'
     | 'API-0243'
     | 'API-0294'
+    | 'API-1031'
     | 'API-1041'
     | 'API-1057'
     | 'API-1058'
@@ -317,6 +377,14 @@ async function createTenantRead(
     'API-0294': createGitHubStarsHandler({
       ...(githubToken ? { token: githubToken } : {}),
     }),
+    'API-1031': createGetForkAvailabilityHandler(
+      createGetForkAvailabilityUseCase({
+        contexts: workspaceForkContexts,
+        entitlement: forkEntitlement,
+        rollout: forkRollout,
+        runtime: forkingRuntime,
+      })
+    ),
     'API-1041': createGetWorkspaceHostContextHandler(
       createGetWorkspaceHostContextUseCase({
         access: accessResolver,

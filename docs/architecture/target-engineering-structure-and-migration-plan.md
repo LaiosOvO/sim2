@@ -244,6 +244,7 @@ apps/api/
 │  │  ├─ users/
 │  │  ├─ webhooks/
 │  │  ├─ workflows/
+│  │  ├─ workspace-forking/
 │  │  ├─ workflow-execution-admission/
 │  │  ├─ replay-debug/
 │  │  └─ workspaces/
@@ -366,6 +367,51 @@ Entitlement adapter 隐藏部署 flag、owner billing-block 与 active Enterpris
 serializer/dispatcher registry、Next/Auth implementation、Executor 与 Sandbox 均不属于该
 闭包。专用 boundary gate 对 5 个 Module 文件、2 个 adapter 和 1 个纯 contract 逐层
 allowlist。
+
+当前 Workspace Forking foundation 的具体目录为：
+
+```text
+apps/api/src/modules/workspace-forking/
+├─ interface/
+│  └─ create-get-fork-availability-handler.ts
+├─ application/
+│  └─ get-fork-availability.ts
+├─ ports/
+│  ├─ fork-entitlement-reader.ts
+│  ├─ fork-rollout-reader.ts
+│  └─ workspace-fork-context-reader.ts
+└─ index.ts
+
+apps/api/src/infrastructure/
+├─ appconfig/
+│  └─ appconfig-fork-rollout-reader.ts
+└─ postgres/repositories/
+   ├─ drizzle-fork-entitlement-reader.ts
+   ├─ drizzle-platform-admin-reader.ts
+   └─ drizzle-workspace-fork-context-reader.ts
+
+apps/api/src/config/
+└─ forking-runtime.ts
+
+extensions/infra/appconfig/
+├─ package.json
+├─ tsconfig.json
+└─ src/
+   └─ index.ts
+
+packages/api-contracts/src/
+└─ workspace-forking.ts
+
+scripts/architecture/import-boundaries/
+└─ check-workspace-forking-module-boundary.ts
+```
+
+Forking Module 只决定 deployment flag、Enterprise entitlement 与 rollout 的业务顺序。
+PostgreSQL adapters 分别隐藏 active workspace、组织 owner/block/subscription 和 platform-admin
+读取；AppConfig adapter 只求值 `workspace-forking`，不会注册其他 feature。通用 Infra 包
+仅拥有 AWS profile transport、缓存和纯 gate rule 原语，SDK 在真正后端读取时懒加载。
+API-1032/1034/1037 后续复用这些端口，但 lineage/diff/resource read model 仍需独立设计，
+不得把旧 `authz.ts` 或完整 Fork registry 整包复制进来。
 
 `API-1011 credit-availability` 与 `API-1122 usage-gate` 不扩张 Workspaces 或 Data Drains
 Module。它们的目标先建立以下 Billing read-model foundation，再逐路切流：
@@ -574,6 +620,8 @@ extensions/biz/
 
 ```text
 extensions/infra/
+├─ appconfig/
+│  └─ src/{profile-reader,cache,gate-rules,aws-transport}/
 ├─ feishu-channel/
 │  └─ src/{auth,directory,messaging,approval,documents,webhooks,normalization,adapters}/
 ├─ meegle-connector/

@@ -1224,6 +1224,45 @@ Asia/Shanghai 进程两者会相差 8 小时。新 adapter 在 persistence bound
 Workspaces boundary 现在检查 10 个 Module 文件、3 个 adapters 和 1 个 contract，
 0 violation。
 
+### 19.21 W2 原生 Workspace Fork Availability 与 AppConfig 后端边界
+
+第十二条原生替换是
+`API-1031 GET /api/workspaces/[id]/fork/availability`。Sim2 与 Polaris donor route
+SHA-256 相同。旧 route 表面只返回 `{available:boolean}`，但它先 import workspace permission
+utility，再进入 `ee/workspace-forking/lib/lineage/authz.ts`；后者继续耦合 Billing Core、
+environment flags、AppConfig feature registry、platform-admin DB helper、lineage 和 workspace
+creation policy。若从前端 metadata 路径继续复用这个 helper，轻量布尔查询会重新绑定整个
+Fork/Billing/config 服务端闭包。
+
+目标新增独立 Workspace Forking Module。公开 interface 只有
+`GetForkAvailabilityUseCase.execute`，application 通过 active-workspace context、
+Enterprise entitlement、rollout 三个窄 port 固定 donor 顺序：billing 关闭时使用
+`FORKING_ENABLED`/`ENTERPRISE_ENABLED` 三态规则；billing 开启时个人 workspace 拒绝、
+组织 workspace 校验 owner billing-block 和 active Enterprise；仅 hosted 且配置两个
+AppConfig identifier 时应用 `workspace-forking` rollout。entitlement、rollout 或 AppConfig
+失败全部折叠为 `available:false`，workspace persistence 失败仍保持 request-id 500。
+
+审计同时发现 donor 调用了 `checkWorkspaceAccess`，却只判断 `exists/workspace`，从未判断
+`hasAccess`。因此可观察行为是任意 session 对 active workspace id 可读取一个非敏感布尔值。
+原生实现删除了无效 permission query，但保持该响应兼容；若要收紧为 member-readable，
+必须作为独立安全变更并重新做 UI/共享链接差分，不能混入迁移。
+
+`extensions/infra/appconfig` 是新的 server-only 深模块，只拥有 AWS data-plane transport、
+冷请求合并、stale-while-revalidate、last-good retention 和纯 OR-clause gate rule。
+它不拥有通用 feature registry；`workspace-forking` 名称、fallback 和 admin 惰性求值仍由
+Forking composition 所有。AWS SDK 只在实际 profile fetch 时动态加载，构建中形成约
+0.95 MiB 后端 lazy chunk；browser closure 中 Infra Extensions 和 API/Worker 均为 0 个
+client roots，22 个 Next facade 最大仍为 1,485 gzip bytes。
+
+当前 W2 为 native 12/22、legacy 10/22；API 124 passed（1 skipped），W2 focused
+112 passed（1 skipped），API Contract 16/16，真实 disposable PostgreSQL 1/1，
+Platform Contract 80 schemas。API build 为 1,141 modules、entry 33.77 KiB；
+Forking module/AppConfig rollout/entitlement/admin/context chunks 分别约
+3.36/1.24/1.70/0.55/0.64 KiB。目标结构 57 roots/85 required files，目标图
+23 packages/167 source nodes、0 cycle，全仓 TypeScript 44/44 tasks 通过。专用 boundary
+gate 检查 6 个 Module 文件、4 个 adapters、1 个 AppConfig Infra package 和 1 个纯
+contract，0 violation。
+
 ## 20. 更新日志
 
 ### 2026-07-30

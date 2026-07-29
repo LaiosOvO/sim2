@@ -1,0 +1,23 @@
+{
+  "name": "@sim/infra-appconfig",
+  "version": "0.1.0",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aws-sdk/client-appconfigdata": "3.1032.0"
+  },
+  "devDependencies": {
+    "@sim/tsconfig": "workspace:*",
+    "typescript": "^7.0.2"
+  }
+}
