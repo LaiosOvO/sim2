@@ -1,0 +1,29 @@
+# Sim2 Refactor 文档索引
+
+## 正式规格
+
+- [Sim2 前后端分离与 Polaris 能力迁移 Spec](./specs/sim2-platform-separation-and-polaris-migration.md)
+
+## 架构与证据
+
+- [前后端分离与注册表重构审计](./architecture/frontend-backend-separation-audit.md)
+- [目标工程结构与迁移规划](./architecture/target-engineering-structure-and-migration-plan.md)
+- [API 全量兼容与迁移清单](./architecture/api-migration-inventory.md)
+- [Infra/Biz Extension Topology ADR](./architecture/decisions/ADR-0003-infra-biz-extension-topology.md)
+
+## 主线同步与能力对齐
+
+- [Sim2 主线同步与 Polaris 能力迁移对齐表](./migration/module-alignment-matrix.md)
+- [当前 upstream/donor 基线](./migration/upstream-sync-state.json)
+
+## Goal
+
+- [Sim2 Refactor Goal Prompt](./goals/sim2-refactor-goal-prompt.md)
+
+## 阅读顺序
+
+1. 先读正式 Spec，确认目标行为、范围和验收；
+2. 再读目标工程结构，确认具体文件夹；
+3. API 实施时使用全量 API inventory；
+4. 同步 Sim2 `main` 或迁移 Polaris 能力时使用 Module Alignment Matrix；
+5. 发现新耦合、性能证据或行为差异时，先更新审计文档，再更新 Spec/对齐表。

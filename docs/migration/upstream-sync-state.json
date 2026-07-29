@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-30",
+  "sim2Upstream": {
+    "remoteName": "origin",
+    "remoteUrl": "https://github.com/LaiosOvO/sim2.git",
+    "branch": "main",
+    "lastSyncedCommit": "c3ed1e9d7a388929c0acd22b7de39d6ab06adc5c"
+  },
+  "target": {
+    "branch": "codex/frontend-backend-refactor",
+    "worktree": "D:\\workspace\\workflow\\sim2-refactor"
+  },
+  "polarisDonor": {
+    "repository": "git@github.com:LaiosOvO/polaris.git",
+    "worktree": "D:\\polaris",
+    "baselineCommit": "f3d19f2b7ccfd85c28db1df307c86a1aa2adec32",
+    "mode": "behavior-and-test-donor"
+  }
+}
