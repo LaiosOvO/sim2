@@ -39,6 +39,10 @@ Registry 和服务端实现，Next 开发编译器会按访问路由放大该依
 - 编辑器完整配置按 ID 懒加载属于后续独立 seam；Catalog 不承载 Executor 或 Provider
   实现。
 - 框架迁移只有在闭包、API 和数据库问题被排除后才能立项，避免用换 bundler 掩盖架构债。
+- 2026-07-30 的受控 full/minimal 采集在 WSL2 ext4 上均超过 8 GiB 且 Home 未在 60 秒内
+  可用；application-code 仍低于 1 秒。这已满足“闭包清理后 Next 仍超过 10 秒”的立项
+  条件，但不修改本 ADR 的当前实现决定。Workspace/Editor 的 Vite 或独立前端构建方案
+  必须由后续 ADR 单独决策。
 
 ## Rejected alternatives
 

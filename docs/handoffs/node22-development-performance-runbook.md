@@ -60,7 +60,8 @@ bun run perf:dev:seed
 bun run perf:dev:prepare
 ```
 
-停止手工服务后运行受控检查。检查器会为每轮创建独立 Next dist directory，启动/停止四服务：
+停止手工服务后运行受控检查。检查器会为每种模式回收固定的隔离 Next dist directory，
+保证每轮从空缓存开始且不会让历史缓存目录反过来进入文件监听范围；随后启动/停止四服务：
 
 ```powershell
 bun run perf:dev:check
@@ -85,6 +86,10 @@ bun run perf:dev:check
 - Next compile trace、峰值/稳态 RSS 和内存阈值重启；
 - 每条 SLA 的通过状态。
 
+失败轮次同样会进入报告，包含 `status=failed`、错误原因、已取得的 runtime proof 和可用
+Next trace。若操作系统直接终止整个 runner（例如原生编译 RSS 耗尽 WSL），应保留原始日志，
+并在机器可读证据中记录 runner termination；不得继续使用“待采集”占位状态。
+
 ## 验收门槛
 
 完整 Turbopack 模式必须同时满足：
@@ -93,7 +98,7 @@ bun run perf:dev:check
 - Home 与 Editor 首次可用中位数 `<=10s`，单轮 `<=15s`；
 - 两个页面热刷新 P95 `<=2s`；
 - 每个关键接口稳态 P95 `<=1s` 且无 4xx/5xx；
-- Next 峰值 RSS `<=4GiB`；
+- Next 稳定 RSS `<=4GiB`，且不得发生内存阈值重启；
 - 三轮均发现 Next、Realtime、API、Worker 的 Node runtime proof。
 
 minimal 与 webpack 只进入对照报告，不参与最终通过判定。
@@ -126,3 +131,11 @@ bunx vitest run scripts/architecture/performance/performance-metrics.test.ts
   规避；webpack 仍只是诊断入口。
 - 编译结束后 API 仍慢：用报告中的稳态路径直连 API。数据库改动前必须先提交 `EXPLAIN`。
 - 所有依赖边界清理后 Next 冷编译仍超过 10 秒：另立框架迁移 ADR，不在本专项重写前端。
+
+## 当前受控结果
+
+2026-07-30 的 Node 22.20.0 + WSL2 ext4 固定旅程首轮未通过：full/minimal 在 Home 可用前
+分别达到 9,134 MiB/8,277 MiB Next RSS并使 runner 退出。固定账号、数据库、workspace 和
+workflow 均已存在；失败不再归因于缺少 fixture。继续采集三轮不会产生有效的 Home/Editor、
+热刷新或稳态 API 样本，因此应先完成 Workspace 交互式前端构建边界或框架迁移评估，再重新
+执行本手册的完整三轮验收。

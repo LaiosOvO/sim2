@@ -1139,9 +1139,13 @@ packages/*
 - 完整模式的验收门槛为：服务就绪中位数 `<=30s`；Home/Editor 首次可用中位数
   `<=10s` 且单轮 `<=15s`；热刷新 P95 `<=2s`；关键 API P95 `<=1s`；稳定 RSS
   `<=4GiB`。
-- 当前机器可读证据状态为 `awaiting-controlled-node22-capture`。固定账号、数据库、
-  workspace 和 workflow 在受控 Node 22 runner 可用后，草稿 PR 必须用
-  `perf:dev:check` 生成不可漂移证据再进入最终评审。
+- 固定账号、PostgreSQL、workspace 和 workflow 已建立，机器可读证据状态为
+  `failed-controlled-node22-capture`。Node 22.20.0 + WSL2 ext4 首轮中，full/minimal 在
+  Workspace Home 可用前分别达到 9,134 MiB/8,277 MiB Next RSS并使 runner 退出；因此
+  当前不能声明时间 SLA 通过，也不继续执行没有可用页面的三轮热刷新/API 采样。
+- application-code 样本仍低于 1 秒，而总请求耗时为 24-33 秒，Next/Turbopack 编译是剩余
+  主导项。后续需另立 Workspace/Editor 前端构建边界或框架迁移 ADR，再回到同一固定旅程
+  重新进行三轮验收。
 
 ## Out of Scope
 

@@ -1,24 +1,126 @@
 {
-  "schemaVersion": 1,
-  "capturedAt": null,
-  "sourceSha": null,
-  "status": "awaiting-controlled-node22-capture",
-  "requiredRuntime": {
-    "node": ">=22.19.0",
+  "schemaVersion": 2,
+  "capturedAt": "2026-07-30T08:53:15.759Z",
+  "sourceSha": "cdb9cfadaa62214b07cbab715c1219d35104b147",
+  "sourceBranch": "agent/node22-next-performance",
+  "status": "failed-controlled-node22-capture",
+  "machine": {
+    "hostPlatform": "win32",
+    "controlledEnvironment": "WSL2 Ubuntu 22.04 on ext4",
+    "cpuModel": "AMD Ryzen 5 5600H with Radeon Graphics",
+    "logicalCpuCount": 12,
+    "hostMemoryBytes": 17024741376,
+    "captureMemoryLimitBytes": 10737418240,
+    "captureSwapBytes": 6442450944
+  },
+  "runtime": {
+    "node": "22.20.0",
     "bun": "1.3.13",
-    "next": "16.2.11"
+    "next": "16.2.11",
+    "services": ["next", "realtime", "api", "worker"],
+    "allServicesProvedNodeRuntime": true
+  },
+  "environment": {
+    "database": "simstudio_perf",
+    "databaseConfigured": true,
+    "redisConfigured": true,
+    "authSecretConfigured": true,
+    "fixedAccount": "perf-user@example.test",
+    "workspaceId": "927833e4-f4ca-4442-beee-1762a017cfcd",
+    "workflowId": "0528067f-2766-48fd-b3f3-969ad42d05f2",
+    "cacheState": "isolated-empty-directory-per-mode",
+    "sourceFilesystem": "ext4"
   },
   "journey": {
-    "workspaceHome": "/workspace/:workspaceId/home",
-    "workflowEditor": "/workspace/:workspaceId/w/:workflowId",
-    "modes": ["full", "minimal", "webpack"],
-    "roundsPerMode": 3,
+    "workspaceHome": "/workspace/927833e4-f4ca-4442-beee-1762a017cfcd/home",
+    "workflowEditor": "/workspace/927833e4-f4ca-4442-beee-1762a017cfcd/w/0528067f-2766-48fd-b3f3-969ad42d05f2",
+    "requestedRoundsPerMode": 3,
     "warmReloadsPerRoutePerRound": 10,
-    "apiSamplesPerPathPerRound": 30
+    "apiSamplesPerPathPerRound": 30,
+    "completedRounds": 0,
+    "formalThreeRoundCaptureAttempted": false,
+    "reason": "The first independent cold Home round exhausted the controlled runner before the page became usable, so later rounds and Editor/API steady-state samples were not run."
+  },
+  "attempts": [
+    {
+      "mode": "full",
+      "round": 1,
+      "status": "runner-terminated-during-home-compile",
+      "health": {
+        "status": 200,
+        "nextRequestDurationMs": 387
+      },
+      "home": {
+        "status": "not-usable",
+        "compileElapsedLowerBoundMs": 60000
+      },
+      "memorySampleAtOneMinute": {
+        "rssBytes": 9577693184,
+        "heapUsedBytes": 118489088,
+        "rssMiB": 9134,
+        "heapUsedMiB": 113
+      },
+      "runtimeProof": {
+        "next": "node 22.20.0",
+        "realtime": "node 22.20.0",
+        "api": "node 22.20.0",
+        "worker": "node 22.20.0"
+      }
+    },
+    {
+      "mode": "minimal",
+      "round": 1,
+      "status": "runner-terminated-during-home-api-compilation",
+      "health": {
+        "status": 200,
+        "nextRequestDurationMs": 659
+      },
+      "home": {
+        "status": "not-usable",
+        "compileElapsedLowerBoundMs": 60000,
+        "lastObservedCompileTarget": "/api/folders"
+      },
+      "memorySampleAtOneMinute": {
+        "rssBytes": 8679063552,
+        "heapUsedBytes": 255852544,
+        "rssMiB": 8277,
+        "heapUsedMiB": 244
+      },
+      "runtimeProof": {
+        "next": "node 22.20.0",
+        "realtime": "node 22.20.0",
+        "api": "node 22.20.0",
+        "worker": "node 22.20.0"
+      }
+    }
+  ],
+  "prepareDiagnostics": {
+    "sourceSha": "2336b18d607c52b0254af333f344abf45100c586",
+    "requests": [
+      {
+        "path": "/api/auth/get-session",
+        "status": 200,
+        "totalMs": 24800,
+        "applicationCodeMs": 83
+      },
+      {
+        "path": "/api/auth/sign-in/email",
+        "status": 200,
+        "totalMs": 24300,
+        "applicationCodeMs": 437
+      },
+      {
+        "path": "/workspace",
+        "status": 200,
+        "totalMs": 32800,
+        "applicationCodeMs": 103
+      }
+    ],
+    "interpretation": "Application handling remained below one second while Next compilation dominated total latency."
   },
   "acceptance": {
     "passed": false,
-    "reason": "A fixed local account, database, workspace and workflow were not available in the implementation host. Run perf:dev:prepare and perf:dev:check in the controlled Node 22 sandbox before promoting the draft PR.",
+    "reason": "Full Turbopack could not make Workspace Home usable and exceeded the 4 GiB RSS limit during the first cold round.",
     "limits": {
       "serviceReadyMedianMs": 30000,
       "coldRouteMedianMs": 10000,
@@ -26,7 +128,25 @@
       "warmReloadP95Ms": 2000,
       "apiP95Ms": 1000,
       "stableRssBytes": 4294967296
+    },
+    "checks": {
+      "independentColdRounds": false,
+      "homeColdMedian": false,
+      "homeColdMaximum": false,
+      "editorColdMedian": false,
+      "editorColdMaximum": false,
+      "homeWarmP95": false,
+      "editorWarmP95": false,
+      "apiP95": false,
+      "stableRss": false,
+      "runtimeProof": true
     }
+  },
+  "rootCause": {
+    "nextAmplifierConfirmed": true,
+    "databasePrimaryCause": false,
+    "fullRegistryPrimaryCause": false,
+    "evidence": "Full and minimal modes both consumed more than 8 GiB while compiling Workspace Home; V8 heap remained small, so the dominant allocation was Next/Turbopack native compilation state."
   },
   "historicalBaseline": "docs/testing/performance-baseline.json",
   "collector": "scripts/architecture/performance/check-dev-performance.mjs"

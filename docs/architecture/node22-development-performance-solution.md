@@ -106,7 +106,12 @@ Worker 执行侧
 - 将纯 tile 颜色 helper 从 Registry-backed 图标 helper 中拆出；
 - 将相关 UI 消费者改为直接导入纯浏览器叶子模块；
 - Home 首屏使用轻量静态 Suggested Actions；
-- 个性化候选池和 OAuth 弹窗在数据就绪或用户操作后按需加载。
+- 个性化候选池和 OAuth 弹窗在数据就绪或用户操作后按需加载；
+- Monaco、资源预览、集成搜索和导入差异模块按实际访问加载；
+- Workspace/Home 的临界路径改用窄 contract 与叶子模块；
+- 全局 Tailwind 扫描改为预生成 CSS，并用确定性检查防止产物漂移；
+- Auth 会话临界路径不再静态加载邮件、生命周期、PostHog、凭据草稿和 workflow
+  禁用实现。
 
 以上修改不改变：
 
@@ -201,10 +206,19 @@ bun run perf:dev:check
 | 性能采集器和机器可读报告结构 | 已完成 |
 | 首批确定性 Browser/Registry 污染链清理 | 已完成 |
 | 浏览器边界、Catalog、Contract、Worker 和 Realtime 门禁 | 已通过 |
-| 三轮固定账号受控 SLA | 待固定数据库、账号、workspace 和 workflow 后采集 |
+| 固定数据库、账号、workspace 和 workflow | 已完成并可幂等复用 |
+| 受控 full/minimal 首轮 | 已执行，均在 Home 可用前超过 8 GiB 并失败 |
+| 三轮固定账号受控 SLA | 未通过；首轮失败后不继续制造无效样本 |
 
-当前不能声明秒级 SLA 已正式通过。机器可读证据保持
-`awaiting-controlled-node22-capture`，直到受控环境完成三轮独立采集。
+当前不能声明秒级 SLA 已正式通过。机器可读证据已从缺环境的
+`awaiting-controlled-node22-capture` 更新为 `failed-controlled-node22-capture`：full 在一分钟
+时 Next RSS 为 9,134 MiB，minimal 为 8,277 MiB，二者都未在 runner 退出前完成 Home。
+应用处理耗时仍低于 1 秒，主要耗时和内存位于 Next/Turbopack 编译阶段。
+
+这组结果已触发第 6 节第 4 条决策规则。建议另立框架迁移 ADR，评估将 Workspace Home 与
+Workflow Editor 的交互式开发入口迁移到 Vite，或拆为独立前端构建；Next 继续承载营销页、
+SSR 和现有 API 兼容层。迁移必须保持 HTTP API、Tool/Block/Trigger ID 和历史工作流格式不变，
+不在本性能 PR 中直接重写框架。
 
 ## 8. 相关文档
 
