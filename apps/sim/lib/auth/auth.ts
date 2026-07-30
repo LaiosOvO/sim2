@@ -24,20 +24,13 @@ import {
 import { and, count, eq, inArray, sql } from 'drizzle-orm'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
-import {
-  getEmailSubject,
-  renderExistingAccountEmail,
-  renderOTPEmail,
-  renderPasswordResetEmail,
-  renderWelcomeEmail,
-} from '@/components/emails'
+import { getEmailSubject } from '@/components/emails/subjects'
 import { getAccessControlConfig, isEmailBlockedByAccessControl } from '@/lib/auth/access-control'
 import { createAnonymousSession, ensureAnonymousUserExists } from '@/lib/auth/anonymous'
 import { getRequestedSignInProviderId, isSignInProviderAllowed } from '@/lib/auth/constants'
 import { getSessionCookieCacheVersion } from '@/lib/auth/security-policy'
 import { clampExpiryForSession } from '@/lib/auth/session-policy'
 import { guardSubscriptionPlanWrites } from '@/lib/auth/stripe-adapter-guard'
-import { sendPlanWelcomeEmail } from '@/lib/billing'
 import {
   assertPersonalCheckoutAllowed,
   authorizeSubscriptionReference,
@@ -45,10 +38,10 @@ import {
 } from '@/lib/billing/authorization'
 import {
   getOrganizationIdForSubscriptionReference,
+  sendPlanWelcomeEmail,
   syncSubscriptionPlan,
   writeBillingInterval,
 } from '@/lib/billing/core/subscription'
-import { handleNewUser } from '@/lib/billing/core/usage'
 import {
   ensureOrganizationForTeamSubscription,
   syncSubscriptionUsageLimits,
@@ -91,12 +84,9 @@ import {
   readResponseTextWithLimit,
 } from '@/lib/core/utils/stream-limits'
 import { getBaseUrl, isLocalhostUrl, parseOriginList } from '@/lib/core/utils/urls'
-import { processCredentialDraft } from '@/lib/credentials/draft-processor'
-import { sendEmail } from '@/lib/messaging/email/mailer'
 import { getFromEmailAddress, getPersonalEmailFrom } from '@/lib/messaging/email/utils'
 import { quickValidateEmail } from '@/lib/messaging/email/validation'
 import { validateSignupEmailMx } from '@/lib/messaging/email/validation.server'
-import { scheduleLifecycleEmail } from '@/lib/messaging/lifecycle'
 import {
   deriveMicrosoftEmailVerified,
   getMicrosoftRefreshTokenExpiry,
@@ -105,9 +95,6 @@ import {
 import { extractSlackTeamId, fanOutSlackTokenChain } from '@/lib/oauth/slack'
 import { clearDeadFlag } from '@/lib/oauth/terminal-errors'
 import { getCanonicalScopesForProvider } from '@/lib/oauth/utils'
-import { joinInstanceOrganization } from '@/lib/organizations/instance-org'
-import { captureServerEvent, getPostHogClient } from '@/lib/posthog/server'
-import { disableUserResources } from '@/lib/workflows/lifecycle'
 import { SSO_TRUSTED_PROVIDERS } from '@/ee/sso/constants'
 
 const logger = createLogger('Auth')
@@ -320,6 +307,7 @@ export const auth = betterAuth({
           }
 
           try {
+            const { getPostHogClient } = await import('@/lib/posthog/server')
             const client = getPostHogClient()
             if (client) {
               client.identify({
@@ -335,6 +323,7 @@ export const auth = betterAuth({
           }
 
           try {
+            const { handleNewUser } = await import('@/lib/billing/core/usage')
             await handleNewUser(user.id)
           } catch (error) {
             logger.error('[databaseHooks.user.create.after] Failed to initialize user stats', {
@@ -350,10 +339,15 @@ export const auth = betterAuth({
            * unless `INSTANCE_ORG_NAME` is set, and swallows its own failures so
            * organization setup can never block a signup.
            */
+          const { joinInstanceOrganization } = await import('@/lib/organizations/instance-org')
           await joinInstanceOrganization(user.id)
 
           if (isHosted && user.email && user.emailVerified) {
             try {
+              const [{ renderWelcomeEmail }, { sendEmail }] = await Promise.all([
+                import('@/components/emails/render'),
+                import('@/lib/messaging/email/mailer'),
+              ])
               const html = await renderWelcomeEmail(user.name || undefined)
               const { from, replyTo } = getPersonalEmailFrom()
 
@@ -377,6 +371,7 @@ export const auth = betterAuth({
             }
 
             try {
+              const { scheduleLifecycleEmail } = await import('@/lib/messaging/lifecycle')
               await scheduleLifecycleEmail({
                 userId: user.id,
                 type: 'onboarding-followup',
@@ -394,6 +389,7 @@ export const auth = betterAuth({
       update: {
         after: async (user) => {
           if (user.banned) {
+            const { disableUserResources } = await import('@/lib/workflows/lifecycle')
             await disableUserResources(user.id)
           }
         },
@@ -540,6 +536,7 @@ export const auth = betterAuth({
           }
 
           try {
+            const { processCredentialDraft } = await import('@/lib/credentials/draft-processor')
             await processCredentialDraft({
               userId: account.userId,
               providerId: account.providerId,
@@ -579,6 +576,7 @@ export const auth = betterAuth({
                     ? 'sso'
                     : 'oauth'
 
+              const { captureServerEvent } = await import('@/lib/posthog/server')
               captureServerEvent(
                 account.userId,
                 'user_created',
@@ -802,6 +800,10 @@ export const auth = betterAuth({
     afterEmailVerification: async (user) => {
       if (isHosted && user.email) {
         try {
+          const [{ renderWelcomeEmail }, { sendEmail }] = await Promise.all([
+            import('@/components/emails/render'),
+            import('@/lib/messaging/email/mailer'),
+          ])
           const html = await renderWelcomeEmail(user.name || undefined)
           const { from, replyTo } = getPersonalEmailFrom()
 
@@ -825,6 +827,7 @@ export const auth = betterAuth({
         }
 
         try {
+          const { scheduleLifecycleEmail } = await import('@/lib/messaging/lifecycle')
           await scheduleLifecycleEmail({
             userId: user.id,
             type: 'onboarding-followup',
@@ -858,6 +861,10 @@ export const auth = betterAuth({
      */
     onExistingUserSignUp: async ({ user }: { user: User }) => {
       try {
+        const [{ renderExistingAccountEmail }, { sendEmail }] = await Promise.all([
+          import('@/components/emails/render'),
+          import('@/lib/messaging/email/mailer'),
+        ])
         const html = await renderExistingAccountEmail(user.name || '')
         const result = await sendEmail({
           to: user.email,
@@ -910,6 +917,10 @@ export const auth = betterAuth({
     sendResetPassword: async ({ user, url, token }, request) => {
       const username = user.name || ''
 
+      const [{ renderPasswordResetEmail }, { sendEmail }] = await Promise.all([
+        import('@/components/emails/render'),
+        import('@/lib/messaging/email/mailer'),
+      ])
       const html = await renderPasswordResetEmail(username, url)
 
       const result = await sendEmail({
@@ -1083,6 +1094,10 @@ export const auth = betterAuth({
             )
           }
 
+          const [{ renderOTPEmail }, { sendEmail }] = await Promise.all([
+            import('@/components/emails/render'),
+            import('@/lib/messaging/email/mailer'),
+          ])
           const html = await renderOTPEmail(data.otp, data.email, data.type)
 
           const result = await sendEmail({
