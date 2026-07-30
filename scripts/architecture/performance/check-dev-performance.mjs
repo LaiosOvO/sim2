@@ -232,6 +232,7 @@ async function executeRound(config, bunExecutable, mode, roundNumber, capturedAt
   let serviceReadyMs
   let journeys
   let apiSamples
+  let failure
   try {
     serviceReadyMs = await waitForHealth(config.baseUrl, child)
     const browser = await chromium.launch()
@@ -271,6 +272,11 @@ async function executeRound(config, bunExecutable, mode, roundNumber, capturedAt
     } finally {
       await browser.close()
     }
+  } catch (error) {
+    failure = {
+      message: error instanceof Error ? error.message : String(error),
+      name: error instanceof Error ? error.name : 'Error',
+    }
   } finally {
     await stopProcessTree(child)
     await new Promise((resolve) => logStream.end(resolve))
@@ -284,14 +290,16 @@ async function executeRound(config, bunExecutable, mode, roundNumber, capturedAt
   return {
     mode,
     round: roundNumber,
+    status: failure ? 'failed' : 'completed',
+    failure,
     cache: {
       state: 'isolated-empty-directory',
       nextDirectory,
     },
     logPath,
-    serviceReadyMs,
-    journeys,
-    apiSamples,
+    serviceReadyMs: serviceReadyMs ?? null,
+    journeys: journeys ?? null,
+    apiSamples: apiSamples ?? [],
     runtimeProof,
     missingRuntimeProof,
     nextTrace: collectNextTrace(bunExecutable, nextDirectory),
@@ -339,15 +347,28 @@ const simPackage = JSON.parse(
 const modeSummaries = Object.fromEntries(
   config.modes.map((mode) => {
     const modeRounds = rounds.filter((round) => round.mode === mode)
+    const completedRounds = modeRounds.filter((round) => round.status === 'completed')
     return [
       mode,
       {
-        serviceReady: summarizeSamples(modeRounds.map((round) => round.serviceReadyMs)),
-        homeCold: summarizeSamples(modeRounds.map((round) => round.journeys.home.coldUsableMs)),
-        editorCold: summarizeSamples(modeRounds.map((round) => round.journeys.editor.coldUsableMs)),
-        homeWarm: summarizeSamples(modeRounds.flatMap((round) => round.journeys.home.warmReloadMs)),
+        completedRounds: completedRounds.length,
+        failedRounds: modeRounds.length - completedRounds.length,
+        serviceReady: summarizeSamples(
+          modeRounds.flatMap((round) =>
+            round.serviceReadyMs === null ? [] : [round.serviceReadyMs]
+          )
+        ),
+        homeCold: summarizeSamples(
+          completedRounds.map((round) => round.journeys.home.coldUsableMs)
+        ),
+        editorCold: summarizeSamples(
+          completedRounds.map((round) => round.journeys.editor.coldUsableMs)
+        ),
+        homeWarm: summarizeSamples(
+          completedRounds.flatMap((round) => round.journeys.home.warmReloadMs)
+        ),
         editorWarm: summarizeSamples(
-          modeRounds.flatMap((round) => round.journeys.editor.warmReloadMs)
+          completedRounds.flatMap((round) => round.journeys.editor.warmReloadMs)
         ),
         firstCompileTotal: summarizeSamples(
           modeRounds.map((round) => round.nextTrace?.trace?.compilePhases?.first?.totalMs ?? 0)
@@ -356,9 +377,11 @@ const modeSummaries = Object.fromEntries(
           modeRounds.map((round) => round.nextTrace?.trace?.compilePhases?.incremental?.p95Ms ?? 0)
         ),
         peakRssBytes: Math.max(
+          0,
           ...modeRounds.map((round) => round.nextTrace?.trace?.peakRssBytes ?? 0)
         ),
         stableRssBytes: Math.max(
+          0,
           ...modeRounds.map((round) => round.nextTrace?.trace?.stableRssBytes ?? 0)
         ),
       },
@@ -366,10 +389,19 @@ const modeSummaries = Object.fromEntries(
   })
 )
 const fullRounds = rounds.filter((round) => round.mode === 'full')
+const completedFullRounds = fullRounds.filter((round) => round.status === 'completed')
 const acceptance =
   fullRounds.length === 0
     ? { passed: false, error: 'PERF_MODES must include full for SLA acceptance' }
-    : evaluateFullMode(fullRounds)
+    : evaluateFullMode(completedFullRounds)
+if (fullRounds.length > 0) {
+  acceptance.checks.completedRounds =
+    completedFullRounds.length === config.rounds && completedFullRounds.length === fullRounds.length
+  acceptance.failedRounds = fullRounds
+    .filter((round) => round.status === 'failed')
+    .map((round) => ({ round: round.round, failure: round.failure }))
+  acceptance.passed = acceptance.passed && acceptance.checks.completedRounds
+}
 if (
   rounds.some((round) =>
     round.apiSamples.some((sample) => sample.statuses.some((status) => status >= 400))
