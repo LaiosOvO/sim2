@@ -31,7 +31,6 @@ import {
   type MothershipSendMessageDetail,
 } from '@/lib/mothership/events'
 import { captureEvent } from '@/lib/posthog/client'
-import { persistImportedWorkflow } from '@/lib/workflows/operations/import-export'
 import { resourceParam, resourceUrlKeys } from '@/app/workspace/[workspaceId]/home/search-params'
 import { useFolders } from '@/hooks/queries/folders'
 import {
@@ -134,6 +133,7 @@ export function Home({ chatId, userName, userId }: HomeProps) {
   const createWorkflowFromLandingSeed = useCallback(
     async (seed: LandingWorkflowSeed) => {
       try {
+        const { persistImportedWorkflow } = await import('@/lib/workflows/operations/import-export')
         const result = await persistImportedWorkflow({
           content: seed.workflowJson,
           filename: `${seed.workflowName}.json`,
@@ -512,20 +512,22 @@ export function Home({ chatId, userName, userId }: HomeProps) {
         reorderResources={reorderResources}
         collapseResource={collapseResource}
       >
-        <Suspense fallback={null}>
-          <MothershipView
-            ref={mothershipRef}
-            workspaceId={workspaceId}
-            chatId={resolvedChatId}
-            resources={resources}
-            activeResourceId={activeResourceId}
-            isCollapsed={isResourceCollapsed}
-            previewSession={previewSession}
-            isAgentResponding={isSending}
-            genericResourceData={genericResourceData ?? undefined}
-            className={skipResourceTransition ? '!transition-none' : undefined}
-          />
-        </Suspense>
+        {!isResourceCollapsed && (
+          <Suspense fallback={null}>
+            <MothershipView
+              ref={mothershipRef}
+              workspaceId={workspaceId}
+              chatId={resolvedChatId}
+              resources={resources}
+              activeResourceId={activeResourceId}
+              isCollapsed={false}
+              previewSession={previewSession}
+              isAgentResponding={isSending}
+              genericResourceData={genericResourceData ?? undefined}
+              className={skipResourceTransition ? '!transition-none' : undefined}
+            />
+          </Suspense>
+        )}
       </MothershipResourcesProvider>
 
       {isResourceCollapsed && (

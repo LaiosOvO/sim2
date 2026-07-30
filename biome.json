@@ -30,6 +30,7 @@
       "!**/apps/desktop/release",
       "!**/packages/api-contracts/generated",
       "!**/packages/tool-catalog/generated",
+      "!**/apps/sim/app/_styles/tailwind.generated.css",
       "!**/venv",
       "!**/.venv",
       "!**/uploads",

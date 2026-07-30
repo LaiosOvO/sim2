@@ -1,9 +1,6 @@
 import { RepeatIcon, SplitIcon } from 'lucide-react'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { getToolOperationsIndex } from '@/lib/search/tool-operations'
-import { getTriggersForSidebar } from '@/lib/workflows/triggers/trigger-utils'
-import { getAllBlocks } from '@/blocks'
 import type { BlockConfig, SubBlockConfig } from '@/blocks/types'
 import type {
   SearchBlockItem,
@@ -87,7 +84,13 @@ export const useSearchModalStore = create<SearchModalState>()(
         set({ isOpen: false, sections: null, pendingConnect: null })
       },
 
-      initializeData: (filterBlocks) => {
+      initializeData: async (filterBlocks) => {
+        const [{ getToolOperationsIndex }, { getTriggersForSidebar }, { getAllBlocks }] =
+          await Promise.all([
+            import('@/lib/search/tool-operations'),
+            import('@/lib/workflows/triggers/trigger-utils'),
+            import('@/blocks'),
+          ])
         const allBlocks = getAllBlocks()
         const filteredAllBlocks = filterBlocks(allBlocks) as typeof allBlocks
 

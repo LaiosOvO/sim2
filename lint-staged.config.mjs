@@ -3,6 +3,7 @@ import path from 'node:path'
 const generatedRoots = [
   path.resolve('packages/api-contracts/generated'),
   path.resolve('packages/tool-catalog/generated'),
+  path.resolve('apps/sim/app/_styles/tailwind.generated.css'),
 ]
 
 function isGeneratedArtifact(file) {

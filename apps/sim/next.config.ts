@@ -39,15 +39,18 @@ const nextConfig: NextConfig = {
     resolveAlias: minimalRegistryAlias,
   },
   webpack: (config) => {
-    if (useMinimalRegistry) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        '@/tools/registry$': path.resolve(import.meta.dirname, 'tools/registry.minimal.ts'),
-        '@/blocks/registry-maps$': path.resolve(
-          import.meta.dirname,
-          'blocks/registry-maps.minimal.ts'
-        ),
-      }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(import.meta.dirname),
+      ...(useMinimalRegistry
+        ? {
+            '@/tools/registry$': path.resolve(import.meta.dirname, 'tools/registry.minimal.ts'),
+            '@/blocks/registry-maps$': path.resolve(
+              import.meta.dirname,
+              'blocks/registry-maps.minimal.ts'
+            ),
+          }
+        : {}),
     }
     return config
   },

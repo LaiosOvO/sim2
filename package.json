@@ -62,6 +62,7 @@
     "check:runtime-registry-lazy-build": "bun run scripts/architecture/build-isolation/check-worker-runtime-lazy-build.ts",
     "check:worker-role-isolation": "bun run scripts/architecture/build-isolation/check-worker-role-isolation.ts",
     "check:node-runtime-entrypoints": "node scripts/architecture/runtime/check-node-entrypoints.mjs",
+    "check:tailwind-generated": "bun run --cwd apps/sim css:check",
     "check:execution-spine": "bun run scripts/worker/check-execution-spine.ts",
     "check:api-standalone": "bun run scripts/api/check-api-standalone.ts",
     "check:target-module-cycles": "bun run scripts/architecture/import-boundaries/check-target-module-cycles.ts",

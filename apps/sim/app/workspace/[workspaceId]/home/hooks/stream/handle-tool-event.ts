@@ -27,7 +27,7 @@ import {
 } from '@/app/workspace/[workspaceId]/home/hooks/stream/turn-model'
 import { deploymentKeys } from '@/hooks/queries/deployments'
 import { folderKeys } from '@/hooks/queries/utils/folder-keys'
-import { workflowKeys } from '@/hooks/queries/workflows'
+import { workflowKeys } from '@/hooks/queries/utils/workflow-keys'
 
 type ToolEvent = Extract<PersistedStreamEventEnvelope, { type: 'tool' }>
 

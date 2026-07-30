@@ -60,10 +60,7 @@ import {
   WorkflowList,
   WorkspaceHeader,
 } from '@/app/workspace/[workspaceId]/w/components/sidebar/components'
-import {
-  buildConnectedAccountSearchItems,
-  buildIntegrationSearchItems,
-} from '@/app/workspace/[workspaceId]/w/components/sidebar/components/search-modal/integration-search-items'
+import type { IntegrationSearchItem } from '@/app/workspace/[workspaceId]/w/components/sidebar/components/search-modal/utils'
 import { ContextMenu } from '@/app/workspace/[workspaceId]/w/components/sidebar/components/workflow-list/components/context-menu/context-menu'
 import { DeleteModal } from '@/app/workspace/[workspaceId]/w/components/sidebar/components/workflow-list/components/delete-modal/delete-modal'
 import {
@@ -86,7 +83,7 @@ import {
   createSidebarDragGhost,
   groupWorkflowsByFolder,
 } from '@/app/workspace/[workspaceId]/w/components/sidebar/utils'
-import { useImportWorkflow } from '@/app/workspace/[workspaceId]/w/hooks'
+import { useImportWorkflow } from '@/app/workspace/[workspaceId]/w/hooks/use-import-workflow'
 import { useCustomBlockOverlayVersion } from '@/blocks/custom/client-overlay'
 import { useWorkspaceCredentials } from '@/hooks/queries/credentials'
 import { useFolderMap, useFolders } from '@/hooks/queries/folders'
@@ -381,6 +378,9 @@ export const Sidebar = memo(function Sidebar({ isCollapsed }: SidebarProps) {
   const { config: permissionConfig, filterBlocks } = usePermissionConfig()
   const { navigateToSettings, getSettingsHref } = useSettingsNavigation()
   const initializeSearchData = useSearchModalStore((state) => state.initializeData)
+  const isSearchModalOpen = useSearchModalStore((state) => state.isOpen)
+  const setIsSearchModalOpen = useSearchModalStore((state) => state.setOpen)
+  const openSearchModal = useSearchModalStore((state) => state.open)
   const customBlockOverlayVersion = useCustomBlockOverlayVersion()
   const providers = useProvidersStore((state) => state.providers)
   const providerModelSignature = useMemo(
@@ -392,8 +392,16 @@ export const Sidebar = memo(function Sidebar({ isCollapsed }: SidebarProps) {
   )
 
   useEffect(() => {
-    initializeSearchData(filterBlocks)
-  }, [initializeSearchData, filterBlocks, providerModelSignature, customBlockOverlayVersion])
+    if (isSearchModalOpen) {
+      void initializeSearchData(filterBlocks)
+    }
+  }, [
+    initializeSearchData,
+    filterBlocks,
+    providerModelSignature,
+    customBlockOverlayVersion,
+    isSearchModalOpen,
+  ])
 
   const setSidebarWidth = useSidebarStore((state) => state.setSidebarWidth)
   const toggleCollapsed = useSidebarStore((state) => state.toggleCollapsed)
@@ -461,10 +469,6 @@ export const Sidebar = memo(function Sidebar({ isCollapsed }: SidebarProps) {
     return () =>
       window.removeEventListener(SIDEBAR_SCROLL_EVENT, handleScrollToItem as EventListener)
   }, [])
-
-  const isSearchModalOpen = useSearchModalStore((state) => state.isOpen)
-  const setIsSearchModalOpen = useSearchModalStore((state) => state.setOpen)
-  const openSearchModal = useSearchModalStore((state) => state.open)
 
   const {
     workspaces,
@@ -1033,18 +1037,35 @@ export const Sidebar = memo(function Sidebar({ isCollapsed }: SidebarProps) {
     enabled: isOnIntegrationsPage && !permissionConfig.hideIntegrationsTab,
   })
 
-  const searchModalIntegrations = useMemo(
-    () => (permissionConfig.hideIntegrationsTab ? [] : buildIntegrationSearchItems(workspaceId)),
-    [workspaceId, permissionConfig.hideIntegrationsTab]
+  const [searchModalIntegrations, setSearchModalIntegrations] = useState<IntegrationSearchItem[]>(
+    []
   )
+  const [searchModalConnectedAccounts, setSearchModalConnectedAccounts] = useState<
+    IntegrationSearchItem[]
+  >([])
 
-  const searchModalConnectedAccounts = useMemo(
-    () =>
-      permissionConfig.hideIntegrationsTab
-        ? []
-        : buildConnectedAccountSearchItems(fetchedCredentials, workspaceId),
-    [fetchedCredentials, workspaceId, permissionConfig.hideIntegrationsTab]
-  )
+  useEffect(() => {
+    let cancelled = false
+    if (!isSearchModalOpen || permissionConfig.hideIntegrationsTab) {
+      setSearchModalIntegrations([])
+      setSearchModalConnectedAccounts([])
+      return
+    }
+
+    void import(
+      '@/app/workspace/[workspaceId]/w/components/sidebar/components/search-modal/integration-search-items'
+    ).then(({ buildConnectedAccountSearchItems, buildIntegrationSearchItems }) => {
+      if (cancelled) return
+      setSearchModalIntegrations(buildIntegrationSearchItems(workspaceId))
+      setSearchModalConnectedAccounts(
+        buildConnectedAccountSearchItems(fetchedCredentials, workspaceId)
+      )
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [isSearchModalOpen, permissionConfig.hideIntegrationsTab, workspaceId, fetchedCredentials])
 
   const isLoading = workflowsLoading || sessionLoading
   const initialScrollDoneRef = useRef(false)

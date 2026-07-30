@@ -77,18 +77,20 @@ async function waitForHealth(baseUrl, child, timeoutMs = 120_000) {
 
 async function stopProcessTree(child) {
   if (child.exitCode !== null || !child.pid) return
+  if (process.platform === 'win32') {
+    spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true })
+    await Promise.race([new Promise((resolve) => child.once('exit', resolve)), delay(5_000)])
+    return
+  }
+
   child.kill('SIGTERM')
   await Promise.race([new Promise((resolve) => child.once('exit', resolve)), delay(5_000)])
   if (child.exitCode !== null) return
 
-  if (process.platform === 'win32') {
-    spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true })
-  } else {
-    try {
-      process.kill(-child.pid, 'SIGKILL')
-    } catch {
-      child.kill('SIGKILL')
-    }
+  try {
+    process.kill(-child.pid, 'SIGKILL')
+  } catch {
+    child.kill('SIGKILL')
   }
 }
 

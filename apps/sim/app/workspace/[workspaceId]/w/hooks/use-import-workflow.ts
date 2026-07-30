@@ -4,17 +4,10 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { usePostHog } from 'posthog-js/react'
 import { captureEvent } from '@/lib/posthog/client'
-import {
-  extractWorkflowsFromFiles,
-  extractWorkflowsFromZip,
-  persistImportedWorkflow,
-  sanitizePathSegment,
-} from '@/lib/workflows/operations/import-export'
 import { useCreateFolder } from '@/hooks/queries/folders'
 import { folderKeys } from '@/hooks/queries/utils/folder-keys'
 import { invalidateWorkflowLists } from '@/hooks/queries/utils/invalidate-workflow-lists'
 import { useCreateWorkflow } from '@/hooks/queries/workflows'
-import { useWorkflowDiffStore } from '@/stores/workflow-diff/store'
 
 const logger = createLogger('useImportWorkflow')
 
@@ -37,7 +30,6 @@ export function useImportWorkflow({ workspaceId }: UseImportWorkflowProps) {
   const createWorkflowMutation = useCreateWorkflow()
   const queryClient = useQueryClient()
   const createFolderMutation = useCreateFolder()
-  const clearDiff = useWorkflowDiffStore((state) => state.clearDiff)
   const posthog = usePostHog()
   const posthogRef = useRef(posthog)
   posthogRef.current = posthog
@@ -48,7 +40,11 @@ export function useImportWorkflow({ workspaceId }: UseImportWorkflowProps) {
    */
   const importSingleWorkflow = useCallback(
     async (content: string, filename: string, folderId?: string, sortOrder?: number) => {
-      clearDiff()
+      const [{ useWorkflowDiffStore }, { persistImportedWorkflow }] = await Promise.all([
+        import('@/stores/workflow-diff/store'),
+        import('@/lib/workflows/operations/import-export'),
+      ])
+      useWorkflowDiffStore.getState().clearDiff()
       const result = await persistImportedWorkflow({
         content,
         filename,
@@ -68,7 +64,7 @@ export function useImportWorkflow({ workspaceId }: UseImportWorkflowProps) {
 
       return result?.workflowId ?? null
     },
-    [clearDiff, createWorkflowMutation, workspaceId]
+    [createWorkflowMutation, workspaceId]
   )
 
   /**
@@ -81,6 +77,8 @@ export function useImportWorkflow({ workspaceId }: UseImportWorkflowProps) {
 
       setIsImporting(true)
       try {
+        const { extractWorkflowsFromFiles, extractWorkflowsFromZip, sanitizePathSegment } =
+          await import('@/lib/workflows/operations/import-export')
         const fileArray = Array.from(files)
         const hasZip = fileArray.some((f) => f.name.toLowerCase().endsWith('.zip'))
         const jsonFiles = fileArray.filter((f) => f.name.toLowerCase().endsWith('.json'))
