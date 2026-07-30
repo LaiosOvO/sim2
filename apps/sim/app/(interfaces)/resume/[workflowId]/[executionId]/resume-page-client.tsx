@@ -66,13 +66,29 @@ const STATUS_BADGE_VARIANT: Record<string, 'orange' | 'blue' | 'green' | 'red' |
   failed: 'red',
 }
 
-function formatDate(value: string | null): string {
+function formatDate(value: string | null | undefined): string {
   if (!value) return '—'
   try {
     return formatDateTime(new Date(value))
   } catch {
     return value
   }
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null
+}
+
+function getPauseResponseData(pausePoint: PausePointWithQueue): unknown {
+  return asRecord(pausePoint.response)?.data
+}
+
+function getResumeValues(resumeInput: unknown): Record<string, unknown> {
+  const inputRecord = asRecord(resumeInput)
+  if (!inputRecord) return {}
+  return asRecord(inputRecord.submission) ?? inputRecord
 }
 
 function getStatusLabel(status: string): string {
@@ -410,7 +426,7 @@ export default function ResumeExecutionPage({
   )
 
   const renderDisabledFieldInput = useCallback(
-    (field: NormalizedInputField, resumedValues: Record<string, any>) => {
+    (field: NormalizedInputField, resumedValues: Record<string, unknown>) => {
       const rawValue = resumedValues[field.name]
       const value =
         rawValue !== undefined
@@ -440,20 +456,31 @@ export default function ResumeExecutionPage({
     []
   )
 
-  const selectedOperation = useMemo(
-    () => selectedDetail?.pausePoint.response?.data?.operation || 'human',
+  const selectedResponseData = useMemo(
+    () => (selectedDetail ? getPauseResponseData(selectedDetail.pausePoint) : undefined),
     [selectedDetail]
+  )
+  const selectedResponseRecord = useMemo(
+    () => asRecord(selectedResponseData),
+    [selectedResponseData]
+  )
+  const selectedOperation = useMemo(
+    () =>
+      typeof selectedResponseRecord?.operation === 'string'
+        ? selectedResponseRecord.operation
+        : 'human',
+    [selectedResponseRecord]
   )
   const isHumanMode = selectedOperation === 'human'
 
   const inputFormatFields = useMemo(
-    () => normalizeInputFormatFields(selectedDetail?.pausePoint.response?.data?.inputFormat),
-    [normalizeInputFormatFields, selectedDetail]
+    () => normalizeInputFormatFields(selectedResponseRecord?.inputFormat),
+    [normalizeInputFormatFields, selectedResponseRecord]
   )
   const hasInputFormat = inputFormatFields.length > 0
 
   const responseStructureRows = useMemo<ResponseStructureRow[]>(() => {
-    const raw = selectedDetail?.pausePoint.response?.data?.responseStructure
+    const raw = selectedResponseRecord?.responseStructure
     if (!Array.isArray(raw)) return []
     return raw
       .map((entry: any, index: number) => {
@@ -474,19 +501,16 @@ export default function ResumeExecutionPage({
         } as ResponseStructureRow
       })
       .filter((row): row is ResponseStructureRow => row !== null)
-  }, [selectedDetail])
+  }, [selectedResponseRecord])
 
   const seedFormFromDetail = useCallback(
     (detail: PauseContextDetail) => {
-      const responseData = detail.pausePoint.response?.data ?? {}
-      const operation = responseData.operation || 'human'
-      const fetchedInputFields = normalizeInputFormatFields(responseData.inputFormat)
-      const submission =
-        responseData &&
-        typeof responseData.submission === 'object' &&
-        !Array.isArray(responseData.submission)
-          ? (responseData.submission as Record<string, any>)
-          : undefined
+      const responseData = getPauseResponseData(detail.pausePoint)
+      const responseRecord = asRecord(responseData)
+      const operation =
+        typeof responseRecord?.operation === 'string' ? responseRecord.operation : 'human'
+      const fetchedInputFields = normalizeInputFormatFields(responseRecord?.inputFormat)
+      const submission = asRecord(responseRecord?.submission) ?? undefined
       if (operation === 'human' && fetchedInputFields.length > 0) {
         const baseValues = buildInitialFormValues(fetchedInputFields, submission)
         let mergedValues = baseValues
@@ -856,10 +880,9 @@ export default function ResumeExecutionPage({
                             )}
                             {renderDisabledFieldInput(
                               field,
-                              selectedDetail.pausePoint.latestResumeEntry?.resumeInput
-                                ?.submission ??
-                                selectedDetail.pausePoint.latestResumeEntry?.resumeInput ??
-                                {}
+                              getResumeValues(
+                                selectedDetail.pausePoint.latestResumeEntry?.resumeInput
+                              )
                             )}
                           </div>
                         ))
