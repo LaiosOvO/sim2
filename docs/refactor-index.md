@@ -12,6 +12,7 @@
 - [Infra/Biz Extension Topology ADR](./architecture/decisions/ADR-0003-infra-biz-extension-topology.md)
 - [Node Runtime 与飞书长连接隔离 ADR](./architecture/decisions/ADR-0004-node-runtime-and-feishu-ingress-isolation.md)
 - [Node 22、Next 与开发性能边界 ADR](./architecture/decisions/ADR-0005-node22-next-development-performance-boundary.md)
+- [Sim2 Node 22 启动与开发性能解决方案](./architecture/node22-development-performance-solution.md)
 - [Node 22 开发性能问题清单与根因报告](./reviews/node22-development-performance-root-cause.md)
 
 ## 主线同步与能力对齐
