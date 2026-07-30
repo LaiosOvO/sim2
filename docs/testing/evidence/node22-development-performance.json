@@ -3,7 +3,7 @@
   "capturedAt": "2026-07-30T08:53:15.759Z",
   "sourceSha": "cdb9cfadaa62214b07cbab715c1219d35104b147",
   "sourceBranch": "agent/node22-next-performance",
-  "status": "failed-controlled-node22-capture",
+  "status": "workspace-home-vite-passed-editor-next-pending",
   "machine": {
     "hostPlatform": "win32",
     "controlledEnvironment": "WSL2 Ubuntu 22.04 on ext4",
@@ -94,6 +94,29 @@
       }
     }
   ],
+  "workspaceHomeViteAcceptance": {
+    "capturedAt": "2026-07-30T12:57:44.242Z",
+    "sourceSha": "bbaf79bc7d0030539fa2fe0112f40060699c07a7",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "real-authenticated-api",
+    "route": "/workspace/50d395c1-4297-490a-ac1d-f7b55096d493/home",
+    "status": "passed",
+    "serviceReadyMs": 570,
+    "coldUsableMs": 678,
+    "warmReload": {
+      "samples": 10,
+      "p95Ms": 112,
+      "maximumMs": 112
+    },
+    "bootstrapApi": {
+      "samples": 30,
+      "p95Ms": 17,
+      "maximumMs": 23,
+      "successfulStatuses": 30
+    },
+    "scope": "Workspace Home session, workflows, folders, chats, and files. Workflow Editor remains on Next and is not covered by this pass."
+  },
   "prepareDiagnostics": {
     "sourceSha": "2336b18d607c52b0254af333f344abf45100c586",
     "requests": [

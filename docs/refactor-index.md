@@ -36,6 +36,7 @@
 
 ## 实施检查点
 
+- [Sim2 Node 22 与 Next.js 开发性能专项完整改造说明](./handoffs/sim2-node22-performance-complete-change-guide.md)
 - [Phase 1 工程拓扑与边界门禁检查点](./handoffs/phase-1-foundation-checkpoint.md)
 - [Phase 2 Contract Foundation 检查点](./handoffs/phase-2-contract-foundation.md)
 - [Phase 2 Browser-safe Tool Catalog 检查点](./handoffs/phase-2-tool-catalog.md)

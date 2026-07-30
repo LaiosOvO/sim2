@@ -1,0 +1,27 @@
+{
+  "name": "@sim/workspace-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "dev": "SIM_RUNTIME_SERVICE=workspace-vite node --import ../../scripts/runtime/assert-node-22.mjs ../../node_modules/vite/bin/vite.js",
+    "build": "SIM_RUNTIME_SERVICE=workspace-vite-build node --import ../../scripts/runtime/assert-node-22.mjs ../../node_modules/vite/bin/vite.js build",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@sim/tsconfig": "workspace:*",
+    "@types/node": "24.2.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^7.0.2",
+    "vite": "8.0.16"
+  }
+}

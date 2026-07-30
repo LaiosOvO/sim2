@@ -27,6 +27,7 @@ import type {
 import type { UserPermissionGroupReadRepository } from '@/modules/permission-groups'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
+import type { WorkspaceBootstrapModule } from '@/modules/workspace-bootstrap/workspace-bootstrap-module'
 import type {
   ForkEntitlementReader,
   ForkRolloutReader,
@@ -120,6 +121,26 @@ async function createAuthentication(
     sessionAuth: createSessionAuth({ secret, baseURL }),
     internalSecret:
       process.env.INTERNAL_JWT_SECRET?.trim() || process.env.INTERNAL_API_SECRET?.trim(),
+  })
+}
+
+async function createWorkspaceBootstrap(
+  authentication: RequestAuthenticator | undefined
+): Promise<WorkspaceBootstrapModule | undefined> {
+  if (!authentication || !process.env.DATABASE_URL) return undefined
+  const [
+    { createWorkspaceBootstrapModule },
+    { createDrizzleWorkspaceBootstrapReadRepository },
+    { createDrizzleAccessResolver },
+  ] = await Promise.all([
+    import('@/modules/workspace-bootstrap/workspace-bootstrap-module'),
+    import('@/infrastructure/postgres/repositories/drizzle-workspace-bootstrap-read-repository'),
+    import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
+  ])
+  return createWorkspaceBootstrapModule({
+    authentication,
+    access: createDrizzleAccessResolver(),
+    repository: createDrizzleWorkspaceBootstrapReadRepository(),
   })
 }
 
@@ -539,7 +560,8 @@ async function createTenantRead(
 function unconfiguredOptions(
   executionAdmission?: ExecutionAdmissionModule,
   tenantRead?: TenantReadModule,
-  executionRead?: ExecutionReadModule
+  executionRead?: ExecutionReadModule,
+  workspaceBootstrap?: WorkspaceBootstrapModule
 ): ApiApplicationOptions {
   return {
     serviceName: 'sim-api',
@@ -547,6 +569,7 @@ function unconfiguredOptions(
     executionAdmission,
     executionRead,
     tenantRead,
+    workspaceBootstrap,
     readinessChecks: {
       configuration: async () => false,
       database: async () => false,
@@ -569,8 +592,9 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
       : undefined
   const tenantRead = await createTenantRead(authentication)
   const executionRead = await createExecutionRead(authentication)
+  const workspaceBootstrap = await createWorkspaceBootstrap(authentication)
   if (!environmentConfigured) {
-    return unconfiguredOptions(executionAdmission, tenantRead, executionRead)
+    return unconfiguredOptions(executionAdmission, tenantRead, executionRead, workspaceBootstrap)
   }
   if (!authentication) throw new Error('Authentication composition is unavailable')
 
@@ -607,6 +631,7 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
     executionAdmission,
     executionRead,
     tenantRead,
+    workspaceBootstrap,
     readinessChecks: {
       configuration: async () => true,
       database: async () => {

@@ -330,6 +330,15 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     const redirects = []
+    const workspaceViteUrl = process.env.SIM_WORKSPACE_VITE_URL?.replace(/\/$/, '')
+
+    if (workspaceViteUrl) {
+      redirects.push({
+        source: '/workspace/:workspaceId/home',
+        destination: `${workspaceViteUrl}/workspace/:workspaceId/home`,
+        permanent: false,
+      })
+    }
 
     // Social link redirects (used in emails to avoid spam filter issues)
     redirects.push(

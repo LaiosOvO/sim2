@@ -222,6 +222,9 @@ jobs:
       - name: Lightweight client surface ratchet
         run: bun run check:lightweight-client-surfaces
 
+      - name: Verify isolated Vite Workspace
+        run: bun run check:workspace-vite
+
       - name: Validate browser bundle policy
         run: bun run check:browser-bundle-policy
 

@@ -171,6 +171,14 @@ export {
   w2TenantReadRouteIdSchema,
 } from './w2-tenant-read'
 export type {
+  WorkspaceBootstrapQueryV1,
+  WorkspaceBootstrapResponseV1,
+} from './workspace-bootstrap'
+export {
+  workspaceBootstrapQueryV1Schema,
+  workspaceBootstrapResponseV1Schema,
+} from './workspace-bootstrap'
+export type {
   ForkCopyableFileV1,
   ForkCopyableResourceV1,
   ForkDirectionV1,

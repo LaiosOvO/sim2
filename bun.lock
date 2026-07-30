@@ -421,6 +421,23 @@
         "vitest": "^4.1.0",
       },
     },
+    "apps/workspace-web": {
+      "name": "@sim/workspace-web",
+      "version": "0.0.0",
+      "dependencies": {
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
+      },
+      "devDependencies": {
+        "@sim/tsconfig": "workspace:*",
+        "@types/node": "24.2.1",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react": "^4.3.4",
+        "typescript": "^7.0.2",
+        "vite": "8.0.16",
+      },
+    },
     "extensions/biz/approval": {
       "name": "@sim/biz-approval",
       "version": "0.1.0",
@@ -2041,6 +2058,8 @@
     "@sim/workflow-renderer": ["@sim/workflow-renderer@workspace:packages/workflow-renderer"],
 
     "@sim/workflow-types": ["@sim/workflow-types@workspace:packages/workflow-types"],
+
+    "@sim/workspace-web": ["@sim/workspace-web@workspace:apps/workspace-web"],
 
     "@sindresorhus/is": ["@sindresorhus/is@4.6.0", "", {}, "sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw=="],
 

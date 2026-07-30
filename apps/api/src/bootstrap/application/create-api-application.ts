@@ -10,6 +10,7 @@ import {
 } from '@/modules/status/application/create-status-module'
 import { createSystemModule } from '@/modules/system/application/create-system-module'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
+import type { WorkspaceBootstrapModule } from '@/modules/workspace-bootstrap/workspace-bootstrap-module'
 
 export interface ApiApplication {
   handle(request: Request): Promise<Response>
@@ -22,6 +23,7 @@ export interface ApiApplicationOptions {
   executionAdmission?: ExecutionAdmissionModule
   executionRead?: ExecutionReadModule
   tenantRead?: TenantReadModule
+  workspaceBootstrap?: WorkspaceBootstrapModule
   status?: StatusModule
   readinessChecks?: Readonly<Record<string, () => Promise<boolean>>>
 }
@@ -47,6 +49,7 @@ export function createApiApplication(options: ApiApplicationOptions = {}): ApiAp
     status,
     ...(options.environment ? [options.environment] : []),
     ...(options.executionRead ? [options.executionRead] : []),
+    ...(options.workspaceBootstrap ? [options.workspaceBootstrap] : []),
     ...(options.tenantRead ? [options.tenantRead] : []),
     ...(options.executionAdmission ? [options.executionAdmission] : []),
   ]
