@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "private": true,
   "license": "Apache-2.0",
+  "engines": {
+    "bun": ">=1.3.13",
+    "node": ">=22.19.0"
+  },
   "workspaces": [
     "apps/*",
     "packages/*",
@@ -17,9 +21,10 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:sockets": "cd apps/realtime && bun run dev",
-    "dev:full": "bunx concurrently -n \"App,Realtime\" -c \"cyan,magenta\" \"cd apps/sim && bun run dev\" \"cd apps/realtime && bun run dev\"",
-    "dev:full:minimal-registry": "bunx concurrently -n \"App,Realtime\" -c \"cyan,magenta\" \"cd apps/sim && bun run dev:minimal\" \"cd apps/realtime && bun run dev\"",
-    "dev:full:capped": "bunx concurrently -n \"App,Realtime\" -c \"cyan,magenta\" \"cd apps/sim && bun run dev:capped\" \"cd apps/realtime && bun run dev\"",
+    "dev:full": "bunx concurrently -n \"Next,Realtime,API,Worker\" -c \"cyan,magenta,green,yellow\" \"cd apps/sim && bun run dev\" \"cd apps/realtime && bun run dev\" \"cd apps/api && bun run dev\" \"cd apps/worker && bun run dev\"",
+    "dev:full:minimal-registry": "bunx concurrently -n \"Next,Realtime,API,Worker\" -c \"cyan,magenta,green,yellow\" \"cd apps/sim && bun run dev:minimal\" \"cd apps/realtime && bun run dev\" \"cd apps/api && bun run dev\" \"cd apps/worker && bun run dev\"",
+    "dev:full:webpack": "bunx concurrently -n \"Next,Realtime,API,Worker\" -c \"cyan,magenta,green,yellow\" \"cd apps/sim && bun run dev:webpack\" \"cd apps/realtime && bun run dev\" \"cd apps/api && bun run dev\" \"cd apps/worker && bun run dev\"",
+    "dev:full:capped": "bunx concurrently -n \"Next,Realtime,API,Worker\" -c \"cyan,magenta,green,yellow\" \"cd apps/sim && bun run dev:capped\" \"cd apps/realtime && bun run dev\" \"cd apps/api && bun run dev\" \"cd apps/worker && bun run dev\"",
     "test": "turbo run test",
     "format": "turbo run format",
     "format:check": "turbo run format:check",
@@ -56,6 +61,7 @@
     "check:runtime-registry-boundary": "bun run scripts/architecture/import-boundaries/check-worker-runtime-registry-boundary.ts",
     "check:runtime-registry-lazy-build": "bun run scripts/architecture/build-isolation/check-worker-runtime-lazy-build.ts",
     "check:worker-role-isolation": "bun run scripts/architecture/build-isolation/check-worker-role-isolation.ts",
+    "check:node-runtime-entrypoints": "node scripts/architecture/runtime/check-node-entrypoints.mjs",
     "check:execution-spine": "bun run scripts/worker/check-execution-spine.ts",
     "check:api-standalone": "bun run scripts/api/check-api-standalone.ts",
     "check:target-module-cycles": "bun run scripts/architecture/import-boundaries/check-target-module-cycles.ts",

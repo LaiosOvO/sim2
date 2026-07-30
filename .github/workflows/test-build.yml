@@ -150,6 +150,9 @@ jobs:
       - name: Verify Worker role build isolation
         run: bun run check:worker-role-isolation
 
+      - name: Verify Node 22 service entrypoints
+        run: bun run check:node-runtime-entrypoints
+
       - name: Verify Node API to Sandbox execution spine
         run: bun run check:execution-spine
 

@@ -6,11 +6,12 @@
   "type": "module",
   "engines": {
     "bun": ">=1.2.13",
-    "node": ">=20.0.0"
+    "node": ">=22.19.0"
   },
   "scripts": {
-    "dev": "SIM_DB_ROLE=realtime DB_APP_NAME=sim-realtime bun --watch src/index.ts",
-    "start": "SIM_DB_ROLE=realtime DB_APP_NAME=sim-realtime bun src/index.ts",
+    "build": "bun build src/bootstrap.ts --target=node --outdir=dist --splitting",
+    "dev": "SIM_RUNTIME_SERVICE=realtime SIM_DB_ROLE=realtime DB_APP_NAME=sim-realtime node --import ../../scripts/runtime/assert-node-22.mjs --import tsx --watch src/index.ts",
+    "start": "node --import ../../scripts/runtime/assert-node-22.mjs dist/bootstrap.js",
     "type-check": "tsc --noEmit",
     "lint": "biome check --write --unsafe .",
     "lint:check": "biome check .",
@@ -43,6 +44,7 @@
     "@sim/tsconfig": "workspace:*",
     "@types/node": "24.2.1",
     "socket.io-client": "4.8.1",
+    "tsx": "4.22.4",
     "typescript": "^7.0.2",
     "vitest": "^4.1.0"
   }
