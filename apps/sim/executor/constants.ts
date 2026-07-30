@@ -425,7 +425,6 @@ export const PATTERNS = {
   UUID: /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i,
   UUID_V4: /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
   UUID_PREFIX: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i,
-  ENV_VAR_NAME: /^[A-Za-z_][A-Za-z0-9_]*$/,
 } as const
 
 export function isUuid(value: string): boolean {
@@ -438,10 +437,6 @@ export function isUuidV4(value: string): boolean {
 
 export function startsWithUuid(value: string): boolean {
   return PATTERNS.UUID_PREFIX.test(value)
-}
-
-export function isValidEnvVarName(name: string): boolean {
-  return PATTERNS.ENV_VAR_NAME.test(name)
 }
 
 export function sanitizeFileName(fileName: string | null | undefined): string {

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-30T08:53:49.8064834+08:00",
+  "repositoryHeadAtStart": "154c170c1",
+  "branch": "codex/frontend-backend-refactor",
+  "independentReview": {
+    "status": "pending",
+    "policy": "docs/testing/migration-independent-review-policy.md"
+  },
+  "generatedPasswordSurface": {
+    "before": {
+      "rawJavaScriptBytes": 384588,
+      "gzipJavaScriptBytes": 97915,
+      "observedMarkers": ["ENCRYPTION_KEY", "Encryption"]
+    },
+    "after": {
+      "rawJavaScriptBytes": 78144,
+      "gzipJavaScriptBytes": 24834,
+      "ratchetTotalGzipBytes": 25953,
+      "inputCount": 34,
+      "forbiddenInputs": [],
+      "forbiddenOutputMarkers": []
+    }
+  },
+  "browserRuntimeClosure": {
+    "clientRootCount": {
+      "before": 588,
+      "after": 588
+    },
+    "categories": {
+      "executor": {
+        "before": 297,
+        "after": 271
+      },
+      "execution-and-sandbox": {
+        "before": 267,
+        "after": 240
+      },
+      "runtime-tools-blocks-triggers": {
+        "before": 200,
+        "after": 198
+      },
+      "database-auth-secrets": {
+        "before": 71,
+        "after": 71
+      },
+      "server-crypto-and-provider-sdk": {
+        "before": 233,
+        "after": 191
+      },
+      "infra-extensions": {
+        "before": 0,
+        "after": 0
+      },
+      "api-or-worker": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "protectedRoots": {
+      "apps/sim/components/ui/generated-password-input.tsx": {
+        "category": "server-crypto-and-provider-sdk",
+        "budget": 0,
+        "actual": 0
+      },
+      "apps/sim/app/workspace/[workspaceId]/settings/components/secrets/components/secrets-manager/secrets-manager.tsx": {
+        "category": "executor",
+        "budget": 0,
+        "actual": 0
+      }
+    }
+  },
+  "api1037WorkspaceForkSurface": {
+    "beforeFocusedSourceClosureBytes": {
+      "monolithicContract": 35173,
+      "monolithicHook": 11003,
+      "total": 46176
+    },
+    "afterFocusedSourceBytes": {
+      "resourcesContract": 1117,
+      "createContract": 1298,
+      "resourcesHook": 677,
+      "createHook": 1653,
+      "queryKeys": 1135,
+      "total": 5880
+    },
+    "browserBuilds": {
+      "workspaceForkModal": {
+        "gzipBytes": 201819,
+        "inputCount": 383,
+        "maximumGzipBytes": 212000
+      },
+      "workspaceForkResourcesHook": {
+        "gzipBytes": 82609,
+        "inputCount": 105,
+        "maximumGzipBytes": 87000
+      },
+      "workspaceForkCreateHook": {
+        "gzipBytes": 88070,
+        "inputCount": 118,
+        "maximumGzipBytes": 93000
+      }
+    },
+    "forbiddenInputs": [],
+    "forbiddenOutputMarkers": []
+  },
+  "validation": {
+    "lightweightClientSurfaceRatchet": "passed",
+    "browserRuntimeClosureRatchet": "passed",
+    "focusedApplicationTests": {
+      "status": "passed",
+      "files": 3,
+      "tests": 29
+    },
+    "api1037ClientBoundaryTests": {
+      "status": "passed",
+      "files": 2,
+      "tests": 4
+    },
+    "compileTraceMetricTests": {
+      "status": "passed",
+      "files": 1,
+      "tests": 2
+    },
+    "simTypeCheck": {
+      "status": "passed",
+      "nodeMaxOldSpaceSizeMb": 8192
+    }
+  },
+  "compileTiming": {
+    "status": "collector-ready-no-controlled-journey-capture",
+    "claimAllowed": "first-observed and incremental compile events can be classified from a captured Next trace",
+    "claimNotAllowed": "this round does not prove an end-user cold-start or hot-update latency improvement"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "src/config/forking-runtime.ts",
+    "src/infrastructure/postgres/repositories/drizzle-workspace-background-work-reader.ts",
+    "src/modules/workspace-forking/application/evaluate-forking-access.ts",
+    "src/modules/workspace-forking/application/list-workspace-background-work.ts",
+    "src/modules/workspace-forking/interface/create-list-workspace-background-work-handler.ts",
+    "src/modules/workspace-forking/ports/fork-entitlement-reader.ts",
+    "src/modules/workspace-forking/ports/fork-rollout-reader.ts",
+    "src/modules/workspace-forking/ports/workspace-background-work-reader.ts",
+    "src/modules/workspace-forking/ports/workspace-fork-current-access-reader.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

@@ -30,6 +30,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { createDrizzleWorkspaceForkCurrentAccessReader },
       { createDrizzleWorkspaceForkContextReader },
       { createDrizzleWorkspaceForkLineageReader },
+      { createDrizzleWorkspaceForkResourceCatalogReader },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
       import('@sim/db'),
@@ -62,6 +63,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-current-access-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-lineage-reader'),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-workspace-fork-resource-catalog-reader'
+      ),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
     ])
 
@@ -112,7 +116,78 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         user_id text not null,
         workspace_id text,
         folder_id text,
-        name text not null
+        name text not null,
+        is_deployed boolean not null default false,
+        fork_sync_excluded boolean not null default false,
+        archived_at timestamp
+      )`,
+      `create table workflow_deployment_version (
+        id text primary key,
+        workflow_id text not null references workflow(id) on delete cascade,
+        version integer not null,
+        state jsonb not null,
+        is_active boolean not null default false
+      )`,
+      `create table folder (
+        id text primary key,
+        resource_type text not null,
+        name text not null,
+        user_id text not null references "user"(id),
+        workspace_id text not null references workspace(id),
+        deleted_at timestamp
+      )`,
+      `create table workspace_files (
+        id text primary key,
+        key text not null,
+        user_id text not null references "user"(id),
+        workspace_id text references workspace(id),
+        folder_id text,
+        context text not null,
+        original_name text not null,
+        display_name text,
+        deleted_at timestamp
+      )`,
+      `create table user_table_definitions (
+        id text primary key,
+        workspace_id text not null references workspace(id),
+        name text not null,
+        archived_at timestamp
+      )`,
+      `create table knowledge_base (
+        id text primary key,
+        user_id text not null references "user"(id),
+        workspace_id text references workspace(id),
+        name text not null,
+        deleted_at timestamp
+      )`,
+      `create table custom_tools (
+        id text primary key,
+        workspace_id text references workspace(id),
+        title text not null,
+        schema jsonb not null,
+        code text not null
+      )`,
+      `create table skill (
+        id text primary key,
+        workspace_id text references workspace(id),
+        name text not null,
+        description text not null,
+        content text not null
+      )`,
+      `create table mcp_servers (
+        id text primary key,
+        workspace_id text not null references workspace(id),
+        name text not null,
+        oauth_client_secret text,
+        headers jsonb,
+        deleted_at timestamp
+      )`,
+      `create table workflow_mcp_server (
+        id text primary key,
+        workspace_id text not null references workspace(id),
+        created_by text not null references "user"(id),
+        name text not null,
+        deleted_at timestamp
       )`,
       `create table workflow_execution_logs (
         id text primary key,
@@ -293,6 +368,79 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('metrics-workflow-a', 'viewer-1', 'workspace-1', 'folder-a', 'Metrics A'),
          ('metrics-workflow-b', 'viewer-1', 'workspace-1', 'folder-b', 'Metrics B'),
          ('metrics-workflow-other', 'inviter-1', 'workspace-other', 'folder-a', 'Other')`,
+      `insert into folder (id, resource_type, name, user_id, workspace_id, deleted_at) values
+         ('resource-folder-live', 'file', 'Documents', 'viewer-1', 'lineage-current', null),
+         ('resource-folder-deleted', 'file', 'Deleted Folder', 'viewer-1',
+          'lineage-current', '2026-07-20T00:00:00Z'),
+         ('resource-folder-wrong-kind', 'workflow', 'Workflow Folder', 'viewer-1',
+           'lineage-current', null),
+         ('resource-folder-cross-tenant', 'file', 'Must Not Leak', 'inviter-1',
+           'workspace-other', null)`,
+      `insert into workspace_files (
+         id, key, user_id, workspace_id, folder_id, context, original_name, display_name, deleted_at
+       ) values
+         ('resource-file-live', 'resources/live.txt', 'viewer-1', 'lineage-current',
+          'resource-folder-live', 'workspace', 'live.txt', 'Live File', null),
+         ('resource-file-deleted-folder', 'resources/orphan.txt', 'viewer-1',
+          'lineage-current', 'resource-folder-deleted', 'workspace', 'orphan.txt', null, null),
+         ('resource-file-wrong-folder-kind', 'resources/wrong-kind.txt', 'viewer-1',
+           'lineage-current', 'resource-folder-wrong-kind', 'workspace', 'wrong-kind.txt', null, null),
+         ('resource-file-cross-folder', 'resources/cross-folder.txt', 'viewer-1',
+           'lineage-current', 'resource-folder-cross-tenant', 'workspace',
+           'cross-folder.txt', null, null),
+         ('resource-file-deleted', 'resources/deleted.txt', 'viewer-1', 'lineage-current',
+          null, 'workspace', 'deleted.txt', null, '2026-07-20T00:00:00Z'),
+         ('resource-file-chat', 'resources/chat.txt', 'viewer-1', 'lineage-current',
+          null, 'chat', 'chat.txt', null, null),
+         ('resource-file-other', 'resources/other.txt', 'viewer-1', 'workspace-other',
+          null, 'workspace', 'other.txt', null, null)`,
+      `insert into user_table_definitions (id, workspace_id, name, archived_at) values
+         ('resource-table-live', 'lineage-current', 'Live Table', null),
+         ('resource-table-archived', 'lineage-current', 'Archived Table',
+          '2026-07-20T00:00:00Z')`,
+      `insert into knowledge_base (id, user_id, workspace_id, name, deleted_at) values
+         ('resource-kb-live', 'viewer-1', 'lineage-current', 'Live KB', null),
+         ('resource-kb-deleted', 'viewer-1', 'lineage-current', 'Deleted KB',
+          '2026-07-20T00:00:00Z')`,
+      `insert into custom_tools (id, workspace_id, title, schema, code) values
+         ('resource-tool-live', 'lineage-current', 'Live Tool',
+          '{"secretSchema":"must-not-leak"}', 'const secret = "must-not-leak"')`,
+      `insert into skill (id, workspace_id, name, description, content) values
+         ('resource-skill-live', 'lineage-current', 'Live Skill', 'private description',
+          'must-not-leak')`,
+      `insert into mcp_servers (
+         id, workspace_id, name, oauth_client_secret, headers, deleted_at
+       ) values
+         ('resource-mcp-live', 'lineage-current', 'Live MCP', 'must-not-leak',
+          '{"authorization":"must-not-leak"}', null),
+         ('resource-mcp-deleted', 'lineage-current', 'Deleted MCP', 'must-not-leak',
+          '{}', '2026-07-20T00:00:00Z')`,
+      `insert into workflow_mcp_server (
+         id, workspace_id, created_by, name, deleted_at
+       ) values
+         ('resource-workflow-mcp-live', 'lineage-current', 'viewer-1', 'Workflow MCP', null),
+         ('resource-workflow-mcp-deleted', 'lineage-current', 'viewer-1',
+          'Deleted Workflow MCP', '2026-07-20T00:00:00Z')`,
+      `insert into workflow (
+         id, user_id, workspace_id, folder_id, name, is_deployed, fork_sync_excluded, archived_at
+       ) values
+         ('resource-workflow-copyable', 'viewer-1', 'lineage-current', null, 'Copyable',
+          true, false, null),
+         ('resource-workflow-ghost', 'viewer-1', 'lineage-current', null, 'Ghost',
+          true, false, null),
+         ('resource-workflow-excluded', 'viewer-1', 'lineage-current', null, 'Excluded',
+          true, true, null),
+         ('resource-workflow-archived', 'viewer-1', 'lineage-current', null, 'Archived',
+          true, false, '2026-07-20T00:00:00Z'),
+         ('resource-workflow-draft', 'viewer-1', 'lineage-current', null, 'Draft',
+          false, false, null)`,
+      `insert into workflow_deployment_version (
+         id, workflow_id, version, state, is_active
+       ) values
+         ('resource-version-copyable', 'resource-workflow-copyable', 1, '{}', true),
+         ('resource-version-excluded', 'resource-workflow-excluded', 1, '{}', true),
+         ('resource-version-archived', 'resource-workflow-archived', 1, '{}', true),
+         ('resource-version-draft', 'resource-workflow-draft', 1, '{}', true)`,
       `insert into workflow_execution_logs (
          id, workflow_id, execution_id, level, trigger, started_at, ended_at, total_duration_ms
        ) values
@@ -730,6 +878,68 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         direction: 'pull',
       },
     })
+    const forkResources = createDrizzleWorkspaceForkResourceCatalogReader()
+    const resourceCatalog = await forkResources.readCopyable('lineage-current')
+    expect({
+      ...resourceCatalog,
+      files: [...resourceCatalog.files].sort((left, right) => left.id.localeCompare(right.id)),
+    }).toEqual({
+      files: [
+        {
+          id: 'resource-file-cross-folder',
+          label: 'cross-folder.txt',
+          folderId: 'resource-folder-cross-tenant',
+          folderName: null,
+        },
+        {
+          id: 'resource-file-deleted-folder',
+          label: 'orphan.txt',
+          folderId: 'resource-folder-deleted',
+          folderName: null,
+        },
+        {
+          id: 'resource-file-live',
+          label: 'Live File',
+          folderId: 'resource-folder-live',
+          folderName: 'Documents',
+        },
+        {
+          id: 'resource-file-wrong-folder-kind',
+          label: 'wrong-kind.txt',
+          folderId: 'resource-folder-wrong-kind',
+          folderName: null,
+        },
+      ],
+      tables: [{ id: 'resource-table-live', label: 'Live Table' }],
+      knowledgeBases: [{ id: 'resource-kb-live', label: 'Live KB' }],
+      customTools: [{ id: 'resource-tool-live', label: 'Live Tool' }],
+      skills: [{ id: 'resource-skill-live', label: 'Live Skill' }],
+      mcpServers: [{ id: 'resource-mcp-live', label: 'Live MCP' }],
+      workflowMcpServers: [{ id: 'resource-workflow-mcp-live', label: 'Workflow MCP' }],
+      deployedWorkflowCount: 1,
+    })
+    expect(JSON.stringify(resourceCatalog)).not.toContain('must-not-leak')
+    expect(JSON.stringify(resourceCatalog)).not.toContain('Must Not Leak')
+    expect(JSON.stringify(resourceCatalog)).not.toContain('private description')
+    await db.execute(
+      sql.raw(`insert into workspace_files (
+        id, key, user_id, workspace_id, folder_id, context, original_name, display_name, deleted_at
+      )
+      select
+        'resource-cap-' || candidate,
+        'resources/cap-' || candidate || '.txt',
+        'viewer-1',
+        'lineage-current',
+        null,
+        'workspace',
+        'cap-' || candidate || '.txt',
+        null,
+        null
+      from generate_series(1, 1001) candidate`)
+    )
+    const cappedResourceCatalog = await forkResources.readCopyable('lineage-current')
+    expect(cappedResourceCatalog.files).toHaveLength(1000)
+    await db.execute(sql.raw(`delete from workspace_files where id like 'resource-cap-%'`))
     const forkEntitlement = createDrizzleForkEntitlementReader({
       billingEnabled: true,
       forkingEnabled: false,

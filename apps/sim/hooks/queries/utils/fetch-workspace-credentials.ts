@@ -1,5 +1,8 @@
 import { requestJson } from '@/lib/api/client/request'
-import { listWorkspaceCredentialsContract, type WorkspaceCredential } from '@/lib/api/contracts'
+import {
+  listWorkspaceCredentialsContract,
+  type WorkspaceCredential,
+} from '@/lib/api/contracts/credentials'
 
 /**
  * Fetches the workspace credential list.

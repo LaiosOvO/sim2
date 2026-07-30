@@ -29,6 +29,10 @@
       "types": "./src/environment.ts",
       "default": "./src/environment.ts"
     },
+    "./execution-read": {
+      "types": "./src/execution-read.ts",
+      "default": "./src/execution-read.ts"
+    },
     "./identity": {
       "types": "./src/identity.ts",
       "default": "./src/identity.ts"
@@ -64,6 +68,10 @@
     "./workspace-forking": {
       "types": "./src/workspace-forking.ts",
       "default": "./src/workspace-forking.ts"
+    },
+    "./workspace-background-work": {
+      "types": "./src/workspace-background-work.ts",
+      "default": "./src/workspace-background-work.ts"
     }
   },
   "scripts": {

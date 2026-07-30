@@ -3,6 +3,7 @@ import type { ApiRequestContext } from '@/http/request-context'
 import { createRequestContext, withApiHeaders } from '@/http/request-context'
 import type { EnvironmentModule } from '@/modules/environment/application/create-environment-module'
 import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
+import type { ExecutionReadModule } from '@/modules/execution/read/application/create-execution-read-module'
 import {
   createStatusModule,
   type StatusModule,
@@ -19,6 +20,7 @@ export interface ApiApplicationOptions {
   now?: () => Date
   environment?: EnvironmentModule
   executionAdmission?: ExecutionAdmissionModule
+  executionRead?: ExecutionReadModule
   tenantRead?: TenantReadModule
   status?: StatusModule
   readinessChecks?: Readonly<Record<string, () => Promise<boolean>>>
@@ -44,6 +46,7 @@ export function createApiApplication(options: ApiApplicationOptions = {}): ApiAp
     system,
     status,
     ...(options.environment ? [options.environment] : []),
+    ...(options.executionRead ? [options.executionRead] : []),
     ...(options.tenantRead ? [options.tenantRead] : []),
     ...(options.executionAdmission ? [options.executionAdmission] : []),
   ]

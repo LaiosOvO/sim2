@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "surfaces": [
+    {
+      "id": "generated-password-input",
+      "entrypoint": "apps/sim/components/ui/generated-password-input.tsx",
+      "maxTotalGzipBytes": 32768
+    },
+    {
+      "id": "browser-password-helper",
+      "entrypoint": "apps/sim/lib/browser/password.ts",
+      "maxTotalGzipBytes": 1024
+    },
+    {
+      "id": "browser-environment-variable-helper",
+      "entrypoint": "apps/sim/lib/browser/environment-variable.ts",
+      "maxTotalGzipBytes": 512
+    },
+    {
+      "id": "workspace-fork-modal",
+      "entrypoint": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.tsx",
+      "maxTotalGzipBytes": 212000
+    },
+    {
+      "id": "workspace-fork-resources-hook",
+      "entrypoint": "apps/sim/ee/workspace-forking/hooks/use-fork-resources.ts",
+      "maxTotalGzipBytes": 87000
+    },
+    {
+      "id": "workspace-fork-create-hook",
+      "entrypoint": "apps/sim/ee/workspace-forking/hooks/use-fork-workspace.ts",
+      "maxTotalGzipBytes": 93000
+    },
+    {
+      "id": "resume-execution-hook",
+      "entrypoint": "apps/sim/hooks/queries/resume-execution.ts",
+      "maxTotalGzipBytes": 88000
+    },
+    {
+      "id": "resume-execution-contract",
+      "entrypoint": "apps/sim/lib/api/contracts/execution-read.ts",
+      "maxTotalGzipBytes": 68000
+    }
+  ],
+  "forbiddenInputFragments": [
+    "apps/sim/executor/",
+    "apps/sim/tools/registry",
+    "apps/sim/blocks/registry",
+    "apps/sim/lib/execution/",
+    "apps/sim/lib/workflows/executor/",
+    "apps/sim/lib/api/contracts/workflows.ts",
+    "apps/sim/app/api/workflows/middleware",
+    "apps/sim/lib/core/security/encryption",
+    "packages/db/",
+    "packages/auth/",
+    "packages/runtime-secrets/",
+    "extensions/infra/"
+  ],
+  "forbiddenOutputMarkers": [
+    "ENCRYPTION_KEY",
+    "isolated-vm",
+    "@e2b/",
+    "@daytonaio/",
+    "@larksuiteoapi/node-sdk",
+    "node:crypto",
+    "node:fs",
+    "node:child_process"
+  ]
+}

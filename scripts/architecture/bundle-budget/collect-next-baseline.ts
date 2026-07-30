@@ -2,12 +2,13 @@
 import { readdir, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { gzipSync } from 'node:zlib'
+import {
+  type CompileTraceEvent,
+  summarizeCompileTrace,
+  traceDurationToMilliseconds,
+} from './compile-trace-metrics'
 
-interface TraceEvent {
-  name?: string
-  duration?: number
-  tags?: Record<string, string>
-}
+type TraceEvent = CompileTraceEvent
 
 interface ChunkMetric {
   file: string
@@ -78,6 +79,7 @@ async function collectTrace(nextDirectory: string): Promise<object> {
       event.name === 'compile-path' && typeof event.duration === 'number'
   )
   const memoryEvents = events.filter((event) => event.name === 'memory-usage')
+  const compilePhases = summarizeCompileTrace(events)
   const peak = (key: string): number =>
     memoryEvents.reduce((maximum, event) => Math.max(maximum, asNumber(event.tags?.[key]) ?? 0), 0)
 
@@ -86,14 +88,15 @@ async function collectTrace(nextDirectory: string): Promise<object> {
     eventCount: events.length,
     compilePathCount: compileEvents.length,
     compilePathTotalMs:
-      Math.round(compileEvents.reduce((total, event) => total + event.duration, 0) / 100) / 10,
+      Math.round((compilePhases.first.totalMs + compilePhases.incremental.totalMs) * 10) / 10,
     longestCompilePaths: compileEvents
       .map((event) => ({
         trigger: event.tags?.trigger ?? 'unknown',
-        durationMs: Math.round(event.duration / 100) / 10,
+        durationMs: Math.round(traceDurationToMilliseconds(event.duration) * 10) / 10,
       }))
       .sort((a, b) => b.durationMs - a.durationMs)
       .slice(0, 20),
+    compilePhases,
     peakRssBytes: peak('memory.rss'),
     peakHeapUsedBytes: peak('memory.heapUsed'),
     memoryThresholdRestarts: events.filter(

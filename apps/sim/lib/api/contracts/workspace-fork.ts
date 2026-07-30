@@ -1,9 +1,25 @@
 import { z } from 'zod'
 import { nonEmptyIdSchema, workspaceIdSchema } from '@/lib/api/contracts/primitives'
 import { defineRouteContract } from '@/lib/api/contracts/types'
-import { workspaceSchema } from '@/lib/api/contracts/workspaces'
+
+export {
+  type ForkWorkspaceBody,
+  type ForkWorkspaceResponse,
+  forkResourceSelectionSchema,
+  forkWorkspaceBodySchema,
+  forkWorkspaceContract,
+} from '@/lib/api/contracts/workspace-fork-create'
+export {
+  type ForkCopyableFile,
+  type ForkCopyableResource,
+  forkCopyableFileSchema,
+  forkCopyableResourceSchema,
+  type GetForkResourcesResponse,
+  getForkResourcesContract,
+} from '@/lib/api/contracts/workspace-fork-resources'
 
 const workspaceIdParamsSchema = z.object({ id: nonEmptyIdSchema })
+const forkResourceIdList = z.array(nonEmptyIdSchema).max(2000).optional()
 
 export const forkRemapKindSchema = z.enum([
   'credential',
@@ -121,81 +137,6 @@ export const getForkLineageContract = defineRouteContract({
 export type ForkLineageNodeApi = z.output<typeof forkLineageNodeSchema>
 export type ForkLineageChildApi = z.output<typeof forkLineageChildSchema>
 export type GetForkLineageResponse = z.output<typeof getForkLineageContract.response.schema>
-
-const forkResourceIdList = z.array(nonEmptyIdSchema).max(2000).optional()
-
-export const forkResourceSelectionSchema = z.object({
-  files: forkResourceIdList,
-  tables: forkResourceIdList,
-  knowledgeBases: forkResourceIdList,
-  customTools: forkResourceIdList,
-  skills: forkResourceIdList,
-  /**
-   * External MCP servers, copied as config rows (transport/url/headers) so MCP tool selections
-   * in the forked workflows keep working. OAuth tokens are never copied - an oauth-auth server
-   * lands disconnected in the child until re-authorized; tools re-discover on first use.
-   */
-  mcpServers: forkResourceIdList,
-  /** Workflow-publishing MCP servers, copied as config-only shells with no workflows attached. */
-  workflowMcpServers: forkResourceIdList,
-})
-
-export const forkWorkspaceBodySchema = z.object({
-  name: z.string().min(1, 'Name is required').max(100, 'Name is too long').optional(),
-  copy: forkResourceSelectionSchema.optional(),
-})
-export const forkWorkspaceContract = defineRouteContract({
-  method: 'POST',
-  path: '/api/workspaces/[id]/fork',
-  params: workspaceIdParamsSchema,
-  body: forkWorkspaceBodySchema,
-  response: {
-    mode: 'json',
-    schema: z.object({
-      // Full workspace row so the client can merge it into the workspace-list cache
-      // (parity with create), not just the lineage node.
-      workspace: workspaceSchema,
-      workflowsCopied: z.number().int(),
-    }),
-  },
-})
-export type ForkWorkspaceBody = z.input<typeof forkWorkspaceBodySchema>
-export type ForkWorkspaceResponse = z.output<typeof forkWorkspaceContract.response.schema>
-
-export const forkCopyableResourceSchema = z.object({ id: z.string(), label: z.string() })
-export type ForkCopyableResource = z.output<typeof forkCopyableResourceSchema>
-
-/**
- * A copyable workspace file plus its folder grouping. `folderId`/`folderName` are null when
- * the file sits at the workspace root (or its folder was deleted). Files are the only copyable
- * kind that nests in the picker (folder ▸ file); every other kind stays flat at the top level.
- */
-export const forkCopyableFileSchema = forkCopyableResourceSchema.extend({
-  folderId: z.string().nullable(),
-  folderName: z.string().nullable(),
-})
-export type ForkCopyableFile = z.output<typeof forkCopyableFileSchema>
-
-export const getForkResourcesContract = defineRouteContract({
-  method: 'GET',
-  path: '/api/workspaces/[id]/fork/resources',
-  params: workspaceIdParamsSchema,
-  response: {
-    mode: 'json',
-    schema: z.object({
-      files: z.array(forkCopyableFileSchema),
-      tables: z.array(forkCopyableResourceSchema),
-      knowledgeBases: z.array(forkCopyableResourceSchema),
-      customTools: z.array(forkCopyableResourceSchema),
-      skills: z.array(forkCopyableResourceSchema),
-      /** External MCP servers (config rows; OAuth tokens never copied). */
-      mcpServers: z.array(forkCopyableResourceSchema),
-      workflowMcpServers: z.array(forkCopyableResourceSchema),
-      deployedWorkflowCount: z.number().int(),
-    }),
-  },
-})
-export type GetForkResourcesResponse = z.output<typeof getForkResourcesContract.response.schema>
 
 export const forkMappingCandidateSchema = z.object({
   id: z.string(),

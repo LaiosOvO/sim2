@@ -67,6 +67,39 @@ export {
 } from './environment'
 export type { ApiError, ApiErrorEnvelope } from './errors'
 export { apiErrorEnvelopeSchema, apiErrorSchema } from './errors'
+export type {
+  ExecutionReadRouteV1,
+  PausedExecutionDetailV1,
+  PausedExecutionListQueryV1,
+  PausedExecutionListResponseV1,
+  PausedExecutionLoopScopeV1,
+  PausedExecutionParallelScopeV1,
+  PausedExecutionPausePointV1,
+  PausedExecutionResumeLinksV1,
+  PausedExecutionSummaryV1,
+  ResumeExecutionParamsV1,
+  ResumeQueueEntryV1,
+  SerializedPausedExecutionSnapshotV1,
+  WorkflowExecutionParamsV1,
+  WorkflowIdParamsV1,
+} from './execution-read'
+export {
+  executionReadRoutesV1,
+  executionReadRouteV1Schema,
+  pausedExecutionDetailV1Schema,
+  pausedExecutionListQueryV1Schema,
+  pausedExecutionListResponseV1Schema,
+  pausedExecutionLoopScopeV1Schema,
+  pausedExecutionParallelScopeV1Schema,
+  pausedExecutionPausePointV1Schema,
+  pausedExecutionResumeLinksV1Schema,
+  pausedExecutionSummaryV1Schema,
+  resumeExecutionParamsV1Schema,
+  resumeQueueEntryV1Schema,
+  serializedPausedExecutionSnapshotV1Schema,
+  workflowExecutionParamsV1Schema,
+  workflowIdParamsV1Schema,
+} from './execution-read'
 export type { RequestIdentity } from './identity'
 export { requestIdentitySchema } from './identity'
 export type {
@@ -138,6 +171,8 @@ export {
   w2TenantReadRouteIdSchema,
 } from './w2-tenant-read'
 export type {
+  ForkCopyableFileV1,
+  ForkCopyableResourceV1,
   ForkDirectionV1,
   ForkLineageChildV1,
   ForkLineageNodeV1,
@@ -145,8 +180,11 @@ export type {
   ForkWorkspaceIdParamsV1,
   GetForkAvailabilityResponseV1,
   GetForkLineageResponseV1,
+  GetForkResourcesResponseV1,
 } from './workspace-forking'
 export {
+  forkCopyableFileV1Schema,
+  forkCopyableResourceV1Schema,
   forkDirectionV1Schema,
   forkLineageChildV1Schema,
   forkLineageNodeV1Schema,
@@ -154,6 +192,7 @@ export {
   forkWorkspaceIdParamsV1Schema,
   getForkAvailabilityResponseV1Schema,
   getForkLineageResponseV1Schema,
+  getForkResourcesResponseV1Schema,
 } from './workspace-forking'
 export type {
   ListWorkspaceMembersResponseV1,

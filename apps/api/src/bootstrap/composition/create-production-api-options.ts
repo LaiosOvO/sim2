@@ -13,6 +13,7 @@ import {
   type EnvironmentModule,
 } from '@/modules/environment/application/create-environment-module'
 import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
+import type { ExecutionReadModule } from '@/modules/execution/read/application/create-execution-read-module'
 import type {
   InvitationReadRepository,
   WorkspaceInvitationReadRepository,
@@ -29,9 +30,11 @@ import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/
 import type {
   ForkEntitlementReader,
   ForkRolloutReader,
+  WorkspaceBackgroundWorkReader,
   WorkspaceForkContextReader,
   WorkspaceForkCurrentAccessReader,
   WorkspaceForkLineageReader,
+  WorkspaceForkResourceCatalogReader,
 } from '@/modules/workspace-forking'
 import type {
   WorkspaceExecutionMetricsReadRepository,
@@ -62,6 +65,42 @@ async function createExecutionAdmission(): Promise<ExecutionAdmissionModule | un
   return createExecutionAdmissionModule({
     internalToken,
     submitter: createHttpWorkerJobSubmitter({ baseUrl, internalToken }),
+  })
+}
+
+async function createExecutionRead(
+  authentication: RequestAuthenticator | undefined
+): Promise<ExecutionReadModule | undefined> {
+  if (!authentication || !process.env.DATABASE_URL) return undefined
+  const [
+    {
+      createExecutionReadModule,
+      createGetPausedExecutionHandler,
+      createGetPausedExecutionUseCase,
+      createListPausedExecutionsHandler,
+      createListPausedExecutionsUseCase,
+    },
+    { createDrizzlePausedExecutionReader },
+    { createDrizzleWorkflowReadScopeReader },
+    { createPlatformWorkflowReadAuthorizer },
+  ] = await Promise.all([
+    import('@/modules/execution/read'),
+    import('@/infrastructure/postgres/repositories/drizzle-paused-execution-reader'),
+    import('@/infrastructure/postgres/repositories/drizzle-workflow-read-scope-reader'),
+    import('@/infrastructure/postgres/repositories/platform-workflow-read-authorizer'),
+  ])
+  const reader = createDrizzlePausedExecutionReader()
+  const authorizer = createPlatformWorkflowReadAuthorizer({
+    scopes: createDrizzleWorkflowReadScopeReader(),
+  })
+  return createExecutionReadModule({
+    authentication,
+    getPausedExecution: createGetPausedExecutionHandler(
+      createGetPausedExecutionUseCase({ authorizer, reader })
+    ),
+    listPausedExecutions: createListPausedExecutionsHandler(
+      createListPausedExecutionsUseCase({ authorizer, reader })
+    ),
   })
 }
 
@@ -124,6 +163,10 @@ async function createTenantRead(
       createGetForkAvailabilityUseCase,
       createGetForkLineageHandler,
       createGetForkLineageUseCase,
+      createGetForkResourcesHandler,
+      createGetForkResourcesUseCase,
+      createListWorkspaceBackgroundWorkHandler,
+      createListWorkspaceBackgroundWorkUseCase,
     },
     { createAppConfigForkRolloutReader },
     { createAwsAppConfigProfileReader },
@@ -237,6 +280,16 @@ async function createTenantRead(
       throw new Error('Workspace fork database is not configured')
     },
   }
+  let workspaceForkResources: WorkspaceForkResourceCatalogReader = {
+    async readCopyable() {
+      throw new Error('Workspace fork database is not configured')
+    },
+  }
+  let workspaceBackgroundWork: WorkspaceBackgroundWorkReader = {
+    async listInvolving() {
+      throw new Error('Workspace background-work database is not configured')
+    },
+  }
   let forkEntitlement: ForkEntitlementReader = {
     async isEntitled() {
       return false
@@ -289,6 +342,8 @@ async function createTenantRead(
       { createDrizzleWorkspaceForkContextReader },
       { createDrizzleWorkspaceForkCurrentAccessReader },
       { createDrizzleWorkspaceForkLineageReader },
+      { createDrizzleWorkspaceForkResourceCatalogReader },
+      { createDrizzleWorkspaceBackgroundWorkReader },
       { createDrizzleForkEntitlementReader },
       { createDrizzlePlatformAdminReader },
       { createDrizzleAccessResolver },
@@ -319,6 +374,10 @@ async function createTenantRead(
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-current-access-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-lineage-reader'),
+      import(
+        '@/infrastructure/postgres/repositories/drizzle-workspace-fork-resource-catalog-reader'
+      ),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-background-work-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-fork-entitlement-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-platform-admin-reader'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
@@ -338,6 +397,8 @@ async function createTenantRead(
     workspaceForkContexts = createDrizzleWorkspaceForkContextReader()
     workspaceForkCurrentAccess = createDrizzleWorkspaceForkCurrentAccessReader()
     workspaceForkLineage = createDrizzleWorkspaceForkLineageReader()
+    workspaceForkResources = createDrizzleWorkspaceForkResourceCatalogReader()
+    workspaceBackgroundWork = createDrizzleWorkspaceBackgroundWorkReader()
     forkEntitlement = createDrizzleForkEntitlementReader(forkingRuntime)
     platformAdmins = createDrizzlePlatformAdminReader()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
@@ -357,8 +418,10 @@ async function createTenantRead(
     | 'API-0241'
     | 'API-0243'
     | 'API-0294'
+    | 'API-1009'
     | 'API-1031'
     | 'API-1034'
+    | 'API-1037'
     | 'API-1041'
     | 'API-1057'
     | 'API-1058'
@@ -401,6 +464,15 @@ async function createTenantRead(
     'API-0294': createGitHubStarsHandler({
       ...(githubToken ? { token: githubToken } : {}),
     }),
+    'API-1009': createListWorkspaceBackgroundWorkHandler(
+      createListWorkspaceBackgroundWorkUseCase({
+        currentAccess: workspaceForkCurrentAccess,
+        entitlement: forkEntitlement,
+        reader: workspaceBackgroundWork,
+        rollout: forkRollout,
+        runtime: forkingRuntime,
+      })
+    ),
     'API-1031': createGetForkAvailabilityHandler(
       createGetForkAvailabilityUseCase({
         contexts: workspaceForkContexts,
@@ -413,6 +485,15 @@ async function createTenantRead(
       createGetForkLineageUseCase({
         currentAccess: workspaceForkCurrentAccess,
         lineage: workspaceForkLineage,
+        entitlement: forkEntitlement,
+        rollout: forkRollout,
+        runtime: forkingRuntime,
+      })
+    ),
+    'API-1037': createGetForkResourcesHandler(
+      createGetForkResourcesUseCase({
+        currentAccess: workspaceForkCurrentAccess,
+        catalog: workspaceForkResources,
         entitlement: forkEntitlement,
         rollout: forkRollout,
         runtime: forkingRuntime,
@@ -457,12 +538,14 @@ async function createTenantRead(
 
 function unconfiguredOptions(
   executionAdmission?: ExecutionAdmissionModule,
-  tenantRead?: TenantReadModule
+  tenantRead?: TenantReadModule,
+  executionRead?: ExecutionReadModule
 ): ApiApplicationOptions {
   return {
     serviceName: 'sim-api',
     environment: unavailableEnvironmentModule(),
     executionAdmission,
+    executionRead,
     tenantRead,
     readinessChecks: {
       configuration: async () => false,
@@ -485,7 +568,10 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
       ? await createAuthentication(secret, baseURL)
       : undefined
   const tenantRead = await createTenantRead(authentication)
-  if (!environmentConfigured) return unconfiguredOptions(executionAdmission, tenantRead)
+  const executionRead = await createExecutionRead(authentication)
+  if (!environmentConfigured) {
+    return unconfiguredOptions(executionAdmission, tenantRead, executionRead)
+  }
   if (!authentication) throw new Error('Authentication composition is unavailable')
 
   const [
@@ -519,6 +605,7 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
     serviceName: 'sim-api',
     environment,
     executionAdmission,
+    executionRead,
     tenantRead,
     readinessChecks: {
       configuration: async () => true,

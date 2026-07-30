@@ -8,7 +8,7 @@ vi.mock('@/lib/core/config/env', () =>
 )
 
 import { env } from '@/lib/core/config/env'
-import { decryptSecret, encryptSecret, generatePassword } from './encryption'
+import { decryptSecret, encryptSecret } from './encryption'
 
 describe('encryptSecret', () => {
   it('should encrypt a secret and return encrypted value with IV', async () => {
@@ -121,46 +121,6 @@ describe('decryptSecret', () => {
     const tamperedEncrypted = parts.join(':')
 
     await expect(decryptSecret(tamperedEncrypted)).rejects.toThrow()
-  })
-})
-
-describe('generatePassword', () => {
-  it('should generate password with default length of 24', () => {
-    const password = generatePassword()
-    expect(password).toHaveLength(24)
-  })
-
-  it('should generate password with custom length', () => {
-    const password = generatePassword(32)
-    expect(password).toHaveLength(32)
-  })
-
-  it('should generate password with minimum length', () => {
-    const password = generatePassword(1)
-    expect(password).toHaveLength(1)
-  })
-
-  it('should generate different passwords on each call', () => {
-    const passwords = new Set()
-    for (let i = 0; i < 100; i++) {
-      passwords.add(generatePassword())
-    }
-    expect(passwords.size).toBeGreaterThan(90)
-  })
-
-  it('should only contain allowed characters', () => {
-    const allowedChars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+='
-    const password = generatePassword(1000)
-
-    for (const char of password) {
-      expect(allowedChars).toContain(char)
-    }
-  })
-
-  it('should handle zero length', () => {
-    const password = generatePassword(0)
-    expect(password).toBe('')
   })
 })
 

@@ -897,6 +897,7 @@ packages/*
 43. As a test engineer, I want generated contract/auth smoke tests for all handlers, so that full API coverage is affordable.
 44. As a test engineer, I want focused domain, integration, streaming, sandbox, and security tests, so that high-risk behavior is tested at the highest useful seam.
 45. As a product owner, I want implementation to be gradual while scope is complete up front, so that value can ship without losing migration accountability.
+46. As a product owner, I want every completed migration independently reviewed by an agent that did not implement it, so that route counts cannot hide missing behavior or tests.
 
 ## Implementation Decisions
 
@@ -910,6 +911,13 @@ packages/*
   may first remove Next compile coupling through a fixed legacy-origin backend port, but it is not
   considered natively migrated until authorization, repositories, and differential fixtures execute
   inside the independent API.
+- A native migration enters the accepted progress ledger only after a different agent approves the
+  donor behavior, authentication/authorization order, tenant isolation, secret projection,
+  integration evidence, and browser dependency closure. Pending or changes-required reviews do not
+  count toward the 50% target.
+- The 50% milestone is not route-count-only. Browser closure, bundle budgets, cold/incremental
+  compile measurements, and page-open/key-interaction evidence are required because frontend
+  experience is the primary outcome of this refactor.
 - The API is a modular monolith. HTTP transport, middleware, composition, and observability do not own business rules.
 - API routes authenticate before body validation through one versioned request-context seam. Session,
   API key, public token, and internal identities are explicit policies; hybrid policies have no default
@@ -1085,11 +1093,20 @@ packages/*
   `403 Admin access is required for this workspace`. The PostgreSQL read model uses three fixed
   structural reads plus two batched permission/membership reads, independent of parent/child count;
   it does not copy the donor's per-lineage-node effective-permission N+1 loop.
-- W2 is now native 13/22 and legacy 9/22. The API-1034 focused unit suite is 16/16, the full API suite
-  is 131 passed plus 1 skipped, the contract suite is 16/16, and the disposable PostgreSQL fixture is
-  1/1. API/contracts/platform-authz type-checks, W2 22/22 coverage, facade isolation, module/monorepo
+- API-1037 is implemented through a separate copyable-resource catalog interface. The application
+  reuses current workspace access and the shared forking gate, while the PostgreSQL adapter owns
+  eight fixed parallel projections for files, tables, knowledge bases, custom tools, skills, MCP
+  servers, workflow MCP servers, and deployed workflow count. Its V1 contract exposes only IDs,
+  labels, file-folder metadata, and the count; MCP credentials/headers, custom-tool code/schema,
+  Skill content, DB schema, Registry, Executor, and Sandbox remain server-only. The donor's
+  1,000-item unpaginated family limit is preserved in V1 and requires an explicit V2 remediation.
+- The W2 tenant-read subset has 14/22 native implementations and 8/22 legacy implementations.
+  API-1037 remains outside the strict accepted-progress ledger until a different agent completes
+  the independent migration review. Its focused suite is 7/7, the full API suite is 138 passed plus
+  1 skipped, the contract suite is 16/16, and the disposable PostgreSQL fixture is 1/1.
+  API/contracts/platform-authz type-checks, W2 22/22 coverage, facade isolation, module/monorepo
   boundaries, contract purity, target structure/cycles, API validation, standalone Node smoke, and
-  browser-closure ratchets all pass. The API build bundles 1146 modules with a 34.82 KiB entry.
+  browser-closure ratchets all pass. The API build bundles 1,149 modules with a 35.52 KiB entry.
   This metadata path remains server-only and imports neither Feishu ingress nor Executor/Sandbox,
   consistent with the independent Node runtime roles defined above.
 - AWS AppConfig is isolated in the server-only `extensions/infra/appconfig` package. It owns the
@@ -1103,7 +1120,7 @@ packages/*
   plan-limit rules, and enforcement/display projections. Copying `checkAttributedUsageLimits` or
   the legacy Billing Core into either Workspaces or Data Drains is prohibited.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 9 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 8 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope

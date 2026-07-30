@@ -3,7 +3,6 @@
 import type { QueryClient } from '@tanstack/react-query'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { requestJson } from '@/lib/api/client/request'
-import type { ContractBodyInput, ContractQueryInput } from '@/lib/api/contracts'
 import {
   createCredentialDraftContract,
   createWorkspaceCredentialContract,
@@ -18,7 +17,8 @@ import {
   type WorkspaceCredentialMember,
   type WorkspaceCredentialRole,
   type WorkspaceCredentialType,
-} from '@/lib/api/contracts'
+} from '@/lib/api/contracts/credentials'
+import type { ContractBodyInput, ContractQueryInput } from '@/lib/api/contracts/types'
 import { environmentKeys } from '@/hooks/queries/environment'
 import { workspaceCredentialKeys } from '@/hooks/queries/utils/credential-keys'
 import { fetchWorkspaceCredentialList } from '@/hooks/queries/utils/fetch-workspace-credentials'

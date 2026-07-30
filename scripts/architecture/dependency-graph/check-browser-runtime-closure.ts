@@ -7,6 +7,7 @@ import * as ts from '@typescript/typescript6'
 interface Baseline {
   schemaVersion: 1
   maxClientRootsByCategory: Record<string, number>
+  zeroBudgetClientRootsByCategory: Record<string, string[]>
 }
 
 interface Category {
@@ -18,6 +19,7 @@ interface CategoryResult {
   category: string
   clientRoots: string[]
   shortestChain?: string[]
+  chainsByClientRoot: Record<string, string[]>
 }
 
 const root = path.resolve(import.meta.dir, '..', '..', '..')
@@ -291,6 +293,7 @@ function inspectCategory(
 
   const roots = [...graph.clientRoots].filter((file) => visited.has(file)).sort()
   let shortestChain: string[] | undefined
+  const chainsByClientRoot: Record<string, string[]> = {}
   for (const clientRoot of roots) {
     const chain = [clientRoot]
     let current = clientRoot
@@ -299,12 +302,14 @@ function inspectCategory(
       chain.push(current)
     }
     if (!shortestChain || chain.length < shortestChain.length) shortestChain = chain
+    chainsByClientRoot[relative(clientRoot)] = chain.map(relative)
   }
 
   return {
     category: category.id,
     clientRoots: roots.map(relative),
     shortestChain: shortestChain?.map(relative),
+    chainsByClientRoot,
   }
 }
 
@@ -319,13 +324,18 @@ function isZeroBudgetRoot(file: string): boolean {
 
 async function main(): Promise<void> {
   const check = process.argv.includes('--check')
+  const baseline = JSON.parse(await readFile(baselinePath, 'utf8')) as Baseline
   const graph = await buildGraph()
   const results = categories.map((category) => inspectCategory(category, graph))
-  const zeroBudgetViolations = results.flatMap((result) =>
-    result.clientRoots
-      .filter(isZeroBudgetRoot)
-      .map((clientRoot) => `${result.category}: ${clientRoot}`)
-  )
+  const zeroBudgetViolations = results.flatMap((result) => {
+    const protectedRoots = new Set(baseline.zeroBudgetClientRootsByCategory[result.category] ?? [])
+    return result.clientRoots
+      .filter((clientRoot) => isZeroBudgetRoot(clientRoot) || protectedRoots.has(clientRoot))
+      .map((clientRoot) => ({
+        summary: `${result.category}: ${clientRoot}`,
+        chain: result.chainsByClientRoot[clientRoot],
+      }))
+  })
 
   console.log(
     JSON.stringify(
@@ -340,7 +350,7 @@ async function main(): Promise<void> {
             },
           ])
         ),
-        zeroBudgetViolations,
+        zeroBudgetViolations: zeroBudgetViolations.map((violation) => violation.summary),
       },
       null,
       2
@@ -349,8 +359,7 @@ async function main(): Promise<void> {
 
   if (!check) return
 
-  const baseline = JSON.parse(await readFile(baselinePath, 'utf8')) as Baseline
-  const failures: string[] = [...zeroBudgetViolations]
+  const failures: string[] = zeroBudgetViolations.map((violation) => violation.summary)
   for (const result of results) {
     const maximum = baseline.maxClientRootsByCategory[result.category]
     if (maximum === undefined) {
@@ -367,6 +376,13 @@ async function main(): Promise<void> {
 
   console.error('Browser runtime closure violations:')
   for (const failure of failures) console.error(`- ${failure}`)
+  for (const violation of zeroBudgetViolations) {
+    if (!violation.chain) continue
+    console.error(`Protected-root pollution chain for ${violation.summary}:`)
+    for (const [index, file] of violation.chain.entries()) {
+      console.error(`${'  '.repeat(index)}${index === 0 ? '' : '-> '}${file}`)
+    }
+  }
   for (const result of results) {
     if (!result.shortestChain) continue
     console.error(`Shortest ${result.category} pollution chain:`)

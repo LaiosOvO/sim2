@@ -4,7 +4,7 @@ import {
   type BackgroundWorkItem,
   type GetWorkspaceBackgroundWorkResponse,
   getWorkspaceBackgroundWorkContract,
-} from '@/lib/api/contracts/workspace-fork'
+} from '@/lib/api/contracts/workspace-background-work'
 
 export const backgroundWorkKeys = {
   all: ['backgroundWork'] as const,

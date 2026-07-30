@@ -112,7 +112,7 @@
       "apiModule": "apps/api/src/modules/tenant-read",
       "nextFacade": "apps/sim/app/api/workspaces/[id]/background-work/route.ts",
       "tests": ["contract", "auth", "differential", "integration"],
-      "backend": "legacy-origin-compatibility"
+      "backend": "native"
     },
     {
       "inventoryId": "API-1011",
@@ -162,7 +162,7 @@
       "apiModule": "apps/api/src/modules/tenant-read",
       "nextFacade": "apps/sim/app/api/workspaces/[id]/fork/resources/route.ts",
       "tests": ["contract", "auth", "differential", "integration"],
-      "backend": "legacy-origin-compatibility"
+      "backend": "native"
     },
     {
       "inventoryId": "API-1041",

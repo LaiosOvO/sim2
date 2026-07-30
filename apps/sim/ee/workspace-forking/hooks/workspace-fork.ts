@@ -1,12 +1,9 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { requestJson } from '@/lib/api/client/request'
 import {
-  type ForkWorkspaceBody,
-  forkWorkspaceContract,
   getForkDiffContract,
   getForkLineageContract,
   getForkMappingContract,
-  getForkResourcesContract,
   type PromoteForkBody,
   promoteForkContract,
   type RollbackForkBody,
@@ -18,44 +15,23 @@ import {
   updateForkExcludedWorkflowsContract,
   updateForkMappingContract,
 } from '@/lib/api/contracts/workspace-fork'
-import type { WorkspacesResponse } from '@/lib/api/contracts/workspaces'
 import { backgroundWorkKeys } from '@/ee/workspace-forking/hooks/background-work'
+import {
+  type ForkDirection,
+  forkKeys,
+  WORKSPACE_FORK_DIFF_STALE_TIME,
+  WORKSPACE_FORK_LINEAGE_STALE_TIME,
+  WORKSPACE_FORK_MAPPING_STALE_TIME,
+} from '@/ee/workspace-forking/hooks/fork-query-keys'
 import { deploymentKeys } from '@/hooks/queries/deployments'
 import { invalidateWorkflowLists } from '@/hooks/queries/utils/invalidate-workflow-lists'
 import { workflowKeys } from '@/hooks/queries/utils/workflow-keys'
-import { workspaceKeys } from '@/hooks/queries/workspace'
 import type { WorkflowMetadata } from '@/stores/workflows/registry/types'
 
-export type ForkDirection = 'push' | 'pull'
-
-export const forkKeys = {
-  all: ['workspace-fork'] as const,
-  lineages: () => [...forkKeys.all, 'lineage'] as const,
-  lineage: (workspaceId?: string) => [...forkKeys.lineages(), workspaceId ?? ''] as const,
-  mappings: () => [...forkKeys.all, 'mapping'] as const,
-  mapping: (workspaceId?: string, otherWorkspaceId?: string, direction?: ForkDirection) =>
-    [...forkKeys.mappings(), workspaceId ?? '', otherWorkspaceId ?? '', direction ?? ''] as const,
-  diffs: () => [...forkKeys.all, 'diff'] as const,
-  diff: (workspaceId?: string, otherWorkspaceId?: string, direction?: ForkDirection) =>
-    [...forkKeys.diffs(), workspaceId ?? '', otherWorkspaceId ?? '', direction ?? ''] as const,
-  resourcesAll: () => [...forkKeys.all, 'resources'] as const,
-  resources: (workspaceId?: string) => [...forkKeys.resourcesAll(), workspaceId ?? ''] as const,
-}
-
-export const WORKSPACE_FORK_RESOURCES_STALE_TIME = 30 * 1000
-export const WORKSPACE_FORK_LINEAGE_STALE_TIME = 30 * 1000
-export const WORKSPACE_FORK_MAPPING_STALE_TIME = 15 * 1000
-export const WORKSPACE_FORK_DIFF_STALE_TIME = 10 * 1000
-
-export function useForkResources(workspaceId?: string, enabled = true) {
-  return useQuery({
-    queryKey: forkKeys.resources(workspaceId),
-    queryFn: ({ signal }) =>
-      requestJson(getForkResourcesContract, { params: { id: workspaceId as string }, signal }),
-    enabled: Boolean(workspaceId) && enabled,
-    staleTime: WORKSPACE_FORK_RESOURCES_STALE_TIME,
-  })
-}
+export type { ForkDirection } from '@/ee/workspace-forking/hooks/fork-query-keys'
+export { forkKeys } from '@/ee/workspace-forking/hooks/fork-query-keys'
+export { useForkResources } from '@/ee/workspace-forking/hooks/use-fork-resources'
+export { useForkWorkspace } from '@/ee/workspace-forking/hooks/use-fork-workspace'
 
 export function useForkLineage(workspaceId?: string, enabled = true) {
   return useQuery({
@@ -65,35 +41,6 @@ export function useForkLineage(workspaceId?: string, enabled = true) {
     enabled: Boolean(workspaceId) && enabled,
     staleTime: WORKSPACE_FORK_LINEAGE_STALE_TIME,
     placeholderData: keepPreviousData,
-  })
-}
-
-export function useForkWorkspace() {
-  const queryClient = useQueryClient()
-  return useMutation({
-    mutationFn: (vars: { workspaceId: string; body: ForkWorkspaceBody }) =>
-      requestJson(forkWorkspaceContract, { params: { id: vars.workspaceId }, body: vars.body }),
-    onSuccess: (data) => {
-      // Merge the new fork into the active list cache before invalidation so the
-      // immediate navigation into it can't race a stale list and trip the
-      // not-in-workspaces redirect (mirrors useCreateWorkspace).
-      const newWorkspace = data.workspace
-      queryClient.setQueryData<WorkspacesResponse>(workspaceKeys.list('active'), (previous) => {
-        if (!previous) {
-          return { workspaces: [newWorkspace], lastActiveWorkspaceId: null, creationPolicy: null }
-        }
-        if (previous.workspaces.some((w) => w.id === newWorkspace.id)) {
-          return previous
-        }
-        return { ...previous, workspaces: [newWorkspace, ...previous.workspaces] }
-      })
-      queryClient.invalidateQueries({ queryKey: workspaceKeys.lists() })
-      queryClient.invalidateQueries({ queryKey: workspaceKeys.adminLists() })
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: forkKeys.lineages() })
-      queryClient.invalidateQueries({ queryKey: backgroundWorkKeys.lists() })
-    },
   })
 }
 

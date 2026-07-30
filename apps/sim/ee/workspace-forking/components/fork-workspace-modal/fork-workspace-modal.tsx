@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
+import type { GetForkResourcesResponseV1 as GetForkResourcesResponse } from '@sim/api-contracts/workspace-forking'
 import {
   ChipCopyInput,
   ChipInput,
@@ -13,13 +14,13 @@ import {
 } from '@sim/emcn'
 import { AlertTriangle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import type { GetForkResourcesResponse } from '@/lib/api/contracts/workspace-fork'
 import { SettingsSection } from '@/app/workspace/[workspaceId]/settings/components/settings-section/settings-section'
 import {
   FileKindRow,
   ResourceKindRow,
 } from '@/ee/workspace-forking/components/fork-resource-picker/fork-resource-picker'
-import { useForkResources, useForkWorkspace } from '@/ee/workspace-forking/hooks/workspace-fork'
+import { useForkResources } from '@/ee/workspace-forking/hooks/use-fork-resources'
+import { useForkWorkspace } from '@/ee/workspace-forking/hooks/use-fork-workspace'
 
 interface ForkWorkspaceModalProps {
   open: boolean

@@ -216,6 +216,9 @@ jobs:
       - name: Browser runtime closure ratchet
         run: bun run check:browser-runtime-closure
 
+      - name: Lightweight client surface ratchet
+        run: bun run check:lightweight-client-surfaces
+
       - name: Validate browser bundle policy
         run: bun run check:browser-bundle-policy
 

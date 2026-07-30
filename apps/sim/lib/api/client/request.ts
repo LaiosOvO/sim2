@@ -8,7 +8,7 @@ import type {
   ContractParamsInput,
   ContractQueryInput,
   EmptySchemaOutput,
-} from '@/lib/api/contracts'
+} from '@/lib/api/contracts/types'
 
 // Tuple-wrapped to suppress distributive conditionals: when `Value` is a
 // union (e.g. a discriminated union body), naked `Value extends undefined`

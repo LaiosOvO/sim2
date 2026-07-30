@@ -1,5 +1,7 @@
+import { pausedExecutionDetailV1Schema } from '@sim/api-contracts/execution-read'
 import type { Metadata } from 'next'
-import { PauseResumeManager } from '@/lib/workflows/executor/human-in-the-loop-manager'
+import { headers } from 'next/headers'
+import { proxyW6ExecutionReadRequest } from '@/lib/api-proxy/w6-execution-read'
 import ResumeExecutionPage from '@/app/(interfaces)/resume/[workflowId]/[executionId]/resume-page-client'
 
 export const metadata: Metadata = {
@@ -31,15 +33,22 @@ export default async function ResumeExecutionPageWrapper({
     ? initialContextIdParam[0]
     : initialContextIdParam
 
-  const detail = await PauseResumeManager.getPausedExecutionDetail({
-    workflowId,
-    executionId,
-  })
+  const incomingHeaders = await headers()
+  const response = await proxyW6ExecutionReadRequest(
+    new Request(
+      `http://sim-page.local/api/resume/${encodeURIComponent(workflowId)}/${encodeURIComponent(executionId)}`,
+      { headers: incomingHeaders }
+    ),
+    'API-0282'
+  )
+  const detail = response.ok
+    ? pausedExecutionDetailV1Schema.safeParse(await response.json()).data
+    : undefined
 
   return (
     <ResumeExecutionPage
       params={resolvedParams}
-      initialExecutionDetail={detail ? structuredClone(detail) : null}
+      initialExecutionDetail={detail ?? null}
       initialContextId={initialContextId}
     />
   )

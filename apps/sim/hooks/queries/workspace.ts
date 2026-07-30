@@ -2,7 +2,7 @@ import type { QueryClient } from '@tanstack/react-query'
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { ApiClientError } from '@/lib/api/client/errors'
 import { requestJson } from '@/lib/api/client/request'
-import type { ContractBodyInput } from '@/lib/api/contracts'
+import type { ContractBodyInput } from '@/lib/api/contracts/types'
 import {
   createWorkspaceContract,
   deleteWorkspaceContract,
@@ -17,7 +17,7 @@ import {
   type WorkspacePermissions,
   type WorkspaceQueryScope,
   type WorkspacesResponse,
-} from '@/lib/api/contracts'
+} from '@/lib/api/contracts/workspaces'
 import {
   normalizeWorkspace,
   normalizeWorkspacesResponse,

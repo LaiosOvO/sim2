@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "surfaces": [
+    {
+      "id": "generated-password-negative-control",
+      "entrypoint": "apps/sim/components/ui/generated-password-input.tsx",
+      "maxTotalGzipBytes": 1
+    }
+  ],
+  "forbiddenInputFragments": [],
+  "forbiddenOutputMarkers": []
+}

@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "ee/workspace-forking/hooks/background-work.ts",
+    "lib/api/client/request.ts",
+    "lib/api/client/errors.ts",
+    "lib/api/contracts/types.ts",
+    "lib/api/contracts/workspace-background-work.ts",
+    "types/**/*.d.ts",
+    "../../packages/api-contracts/src/workspace-background-work.ts"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

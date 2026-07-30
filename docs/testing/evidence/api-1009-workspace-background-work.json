@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-07-30",
+  "inventoryId": "API-1009",
+  "surface": "workspace background-work activity feed",
+  "legacyDonor": {
+    "runtimeContractPath": "D:/workspace/workflow/sim2/apps/sim/lib/api/contracts/workspace-fork.ts",
+    "sourceBytes": 35173,
+    "sourceLines": 816
+  },
+  "targetMonolithAtMeasurement": {
+    "runtimeContractPath": "apps/sim/lib/api/contracts/workspace-fork.ts",
+    "sourceBytes": 32509,
+    "sourceLines": 757,
+    "api1009HookImportsIt": false
+  },
+  "focused": {
+    "packageContractPath": "packages/api-contracts/src/workspace-background-work.ts",
+    "packageContractSourceBytes": 3877,
+    "simWrapperPath": "apps/sim/lib/api/contracts/workspace-background-work.ts",
+    "simWrapperSourceBytes": 735,
+    "hookPath": "apps/sim/ee/workspace-forking/hooks/background-work.ts",
+    "hookSourceBytes": 2543,
+    "browserClosureGzipBytes": 2908,
+    "browserClosureBudgetBytes": 16384,
+    "focusedTypeCheck": "pass",
+    "focusedTypeCheckWallTimeSeconds": 0.9
+  },
+  "forbiddenClosureMarkers": [
+    "legacy workspace-fork contract",
+    "database",
+    "drizzle",
+    "registry",
+    "executor",
+    "sandbox",
+    "next server",
+    "node crypto"
+  ],
+  "notes": [
+    "The measured browser closure builds the real hook, local defineRouteContract wrapper, and versioned package contract.",
+    "The request client now imports contract types directly instead of opening the full contract barrel.",
+    "The full Sim type-check uses a broader project and is reported separately; focused timing is not presented as a whole-application compile result."
+  ]
+}

@@ -3,9 +3,18 @@ import { isApiClientError } from '@/lib/api/client/errors'
 import { requestJson } from '@/lib/api/client/request'
 import {
   getPauseContextDetailContract,
-  resumeWorkflowExecutionContract,
-} from '@/lib/api/contracts/workflows'
-import type { ResumeStatus } from '@/executor/types'
+  getPausedExecutionDetailContract,
+  type PauseContextDetail,
+  type PausedExecutionDetail,
+} from '@/lib/api/contracts/execution-read'
+
+export type {
+  PauseContextDetail,
+  PausedExecutionDetail,
+  PausedExecutionSummary,
+  PausePointWithQueue,
+  ResumeQueueEntrySummary,
+} from '@/lib/api/contracts/execution-read'
 
 export const RESUME_EXECUTION_DETAIL_STALE_TIME = 30 * 1000
 
@@ -17,71 +26,6 @@ export const resumeKeys = {
   contexts: () => [...resumeKeys.all, 'context'] as const,
   context: (workflowId?: string, executionId?: string, contextId?: string) =>
     [...resumeKeys.contexts(), workflowId ?? '', executionId ?? '', contextId ?? ''] as const,
-}
-
-export interface ResumeLinks {
-  apiUrl: string
-  uiUrl: string
-  contextId: string
-  executionId: string
-  workflowId: string
-}
-
-export interface ResumeQueueEntrySummary {
-  id: string
-  contextId: string
-  status: string
-  queuedAt: string | null
-  claimedAt: string | null
-  completedAt: string | null
-  failureReason: string | null
-  newExecutionId: string
-  resumeInput: any
-}
-
-export interface PausePointWithQueue {
-  contextId: string
-  triggerBlockId?: string
-  blockId?: string
-  response: any
-  registeredAt: string
-  resumeStatus: ResumeStatus
-  automaticResumeWaitingReason?: string
-  snapshotReady: boolean
-  resumeLinks?: ResumeLinks
-  queuePosition?: number | null
-  latestResumeEntry?: ResumeQueueEntrySummary | null
-  parallelScope?: any
-  loopScope?: any
-  pauseKind?: 'human' | 'time'
-  resumeAt?: string
-}
-
-export interface PausedExecutionSummary {
-  id: string
-  workflowId: string
-  executionId: string
-  status: string
-  totalPauseCount: number
-  resumedCount: number
-  pausedAt: string | null
-  updatedAt: string | null
-  expiresAt: string | null
-  metadata: Record<string, any> | null
-  triggerIds: string[]
-  pausePoints: PausePointWithQueue[]
-}
-
-export interface PausedExecutionDetail extends PausedExecutionSummary {
-  executionSnapshot: any
-  queue: ResumeQueueEntrySummary[]
-}
-
-export interface PauseContextDetail {
-  execution: PausedExecutionSummary
-  pausePoint: PausePointWithQueue
-  queue: ResumeQueueEntrySummary[]
-  activeResumeEntry?: ResumeQueueEntrySummary | null
 }
 
 export interface ResumeContextResult {
@@ -104,8 +48,7 @@ interface ResumeContextVariables {
 
 /**
  * Loads the paused execution detail (all pause points for an execution). The
- * contract models pause points loosely (`z.record`); the resume UI works against
- * the richer `PausedExecutionDetail` interface, hence the bridging cast.
+ * The focused shared contract is the browser/server handoff for API-0282.
  */
 export function useResumeExecutionDetail(
   workflowId: string,
@@ -115,12 +58,10 @@ export function useResumeExecutionDetail(
   return useQuery({
     queryKey: resumeKeys.execution(workflowId, executionId),
     queryFn: async ({ signal }): Promise<PausedExecutionDetail> => {
-      const raw = await requestJson(resumeWorkflowExecutionContract, {
+      return requestJson(getPausedExecutionDetailContract, {
         params: { workflowId, executionId },
         signal,
       })
-      // double-cast-allowed: contract models pause points as z.record; the resume UI uses the richer PausedExecutionDetail interface
-      return raw as unknown as PausedExecutionDetail
     },
     enabled: Boolean(workflowId && executionId),
     staleTime: RESUME_EXECUTION_DETAIL_STALE_TIME,

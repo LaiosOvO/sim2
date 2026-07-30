@@ -3,14 +3,20 @@
   "generatedAt": "2026-07-30",
   "source": "apps/sim TypeScript runtime import graph",
   "maxClientRootsByCategory": {
-    "executor": 297,
-    "execution-and-sandbox": 267,
-    "runtime-tools-blocks-triggers": 200,
+    "executor": 271,
+    "execution-and-sandbox": 240,
+    "runtime-tools-blocks-triggers": 198,
     "database-auth-secrets": 71,
-    "server-crypto-and-provider-sdk": 233,
+    "server-crypto-and-provider-sdk": 191,
     "infra-extensions": 0,
     "api-or-worker": 0
   },
+  "zeroBudgetClientRootsByCategory": {
+    "executor": [
+      "apps/sim/app/workspace/[workspaceId]/settings/components/secrets/components/secrets-manager/secrets-manager.tsx"
+    ],
+    "server-crypto-and-provider-sdk": ["apps/sim/components/ui/generated-password-input.tsx"]
+  },
   "target": 0,
-  "policy": "Existing counts are a non-regression ratchet. New browser-facing feature, api-client, browser, and catalog roots have a zero budget."
+  "policy": "Existing counts are a non-regression ratchet. New browser-facing feature, api-client, browser, and catalog roots have a zero budget. Migrated roots listed by category also have a permanent zero budget for that heavy dependency."
 }

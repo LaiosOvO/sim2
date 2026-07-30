@@ -11,13 +11,19 @@ const adapterPaths = [
   'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-current-access-reader.ts',
   'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader.ts',
   'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-lineage-reader.ts',
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-background-work-reader.ts',
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-resource-catalog-reader.ts',
 ].map((file) => path.join(root, file))
-const contractPath = path.join(root, 'packages/api-contracts/src/workspace-forking.ts')
+const contractPaths = [
+  'packages/api-contracts/src/workspace-forking.ts',
+  'packages/api-contracts/src/workspace-background-work.ts',
+].map((file) => path.join(root, file))
 const appConfigDirectory = path.join(root, 'extensions/infra/appconfig/src')
 const importPattern = /\b(?:from\s+|import\s*\(\s*|require\s*\(\s*)['"]([^'"]+)['"]/g
 
 const allowedModuleImports = new Set([
   '@sim/api-contracts/auth',
+  '@sim/api-contracts/workspace-background-work',
   '@sim/api-contracts/workspace-forking',
   '@sim/logger',
   '@/config/forking-runtime',
@@ -95,9 +101,13 @@ async function main(): Promise<void> {
     }
   }
 
-  for (const specifier of imports(await readFile(contractPath, 'utf8'))) {
-    if (specifier !== 'zod') {
-      failures.push(`${path.relative(root, contractPath)}: forbidden contract import ${specifier}`)
+  for (const contractPath of contractPaths) {
+    for (const specifier of imports(await readFile(contractPath, 'utf8'))) {
+      if (specifier !== 'zod') {
+        failures.push(
+          `${path.relative(root, contractPath)}: forbidden contract import ${specifier}`
+        )
+      }
     }
   }
 
@@ -108,7 +118,7 @@ async function main(): Promise<void> {
   }
 
   console.log(
-    `Workspace Forking module boundary OK: ${moduleFiles.length} module files, ${adapterPaths.length} adapters, 1 AppConfig infra package, 1 contract`
+    `Workspace Forking module boundary OK: ${moduleFiles.length} module files, ${adapterPaths.length} adapters, 1 AppConfig infra package, ${contractPaths.length} contracts`
   )
 }
 

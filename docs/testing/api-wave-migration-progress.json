@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "inventoryTotal": 1126,
+  "acceptance": [
+    "native implementation owns the behavior",
+    "versioned contract or protocol is frozen",
+    "auth and tenant isolation are tested",
+    "differential or equivalent compatibility evidence exists",
+    "integration evidence exists for I/O paths",
+    "browser and runtime boundary gates pass",
+    "an independent agent review is approved"
+  ],
+  "independentReviewGate": {
+    "enforcedFrom": "2026-07-30",
+    "routes": [
+      {
+        "inventoryId": "API-1009",
+        "status": "pending",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": null,
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-workspace-background-work.md",
+        "reviewEvidence": null
+      },
+      {
+        "inventoryId": "API-1037",
+        "status": "changes-required",
+        "implementationAgent": "fork_reads_shared_design",
+        "reviewerAgent": "api1037_donor_audit",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-workspace-fork-resources.md",
+        "reviewEvidence": "docs/reviews/API-1037-workspace-fork-resources.md"
+      },
+      {
+        "inventoryId": "API-0282",
+        "status": "changes-required",
+        "implementationAgent": "api1037_donor_audit",
+        "reviewerAgent": "w6_group_a_independent_review",
+        "implementationEvidence": ".scratch/sim2-platform-separation/issues/11-w6-read-control-plane.md",
+        "reviewEvidence": "docs/reviews/W6-group-a-paused-execution-read.md"
+      },
+      {
+        "inventoryId": "API-0996",
+        "status": "changes-required",
+        "implementationAgent": "api1037_donor_audit",
+        "reviewerAgent": "w6_group_a_independent_review",
+        "implementationEvidence": ".scratch/sim2-platform-separation/issues/11-w6-read-control-plane.md",
+        "reviewEvidence": "docs/reviews/W6-group-a-paused-execution-read.md"
+      },
+      {
+        "inventoryId": "API-0997",
+        "status": "changes-required",
+        "implementationAgent": "api1037_donor_audit",
+        "reviewerAgent": "w6_group_a_independent_review",
+        "implementationEvidence": ".scratch/sim2-platform-separation/issues/11-w6-read-control-plane.md",
+        "reviewEvidence": "docs/reviews/W6-group-a-paused-execution-read.md"
+      }
+    ]
+  },
+  "waves": [
+    {
+      "wave": "W1",
+      "plannedCount": 3,
+      "halfTarget": 2,
+      "completedInventoryIds": ["API-0102", "API-0127", "API-0295"]
+    },
+    {
+      "wave": "W2",
+      "plannedCount": 95,
+      "halfTarget": 48,
+      "completedInventoryIds": [
+        "API-0137",
+        "API-0209",
+        "API-0235",
+        "API-0241",
+        "API-0243",
+        "API-0294",
+        "API-1031",
+        "API-1034",
+        "API-1041",
+        "API-1057",
+        "API-1058",
+        "API-1060",
+        "API-1124"
+      ]
+    },
+    {
+      "wave": "W3",
+      "plannedCount": 263,
+      "halfTarget": 132,
+      "completedInventoryIds": []
+    },
+    {
+      "wave": "W4",
+      "plannedCount": 555,
+      "halfTarget": 278,
+      "completedInventoryIds": []
+    },
+    {
+      "wave": "W5",
+      "plannedCount": 29,
+      "halfTarget": 15,
+      "completedInventoryIds": []
+    },
+    {
+      "wave": "W6",
+      "plannedCount": 11,
+      "halfTarget": 6,
+      "completedInventoryIds": []
+    },
+    {
+      "wave": "W7",
+      "plannedCount": 61,
+      "halfTarget": 31,
+      "completedInventoryIds": []
+    },
+    {
+      "wave": "W8",
+      "plannedCount": 109,
+      "halfTarget": 55,
+      "completedInventoryIds": []
+    }
+  ]
+}
