@@ -71,6 +71,7 @@
     "contracts:check": "bun run scripts/contracts/generate-platform-contracts.ts --check",
     "contracts:generate": "bun run scripts/contracts/generate-platform-contracts.ts",
     "measure:next-baseline": "bun run scripts/architecture/bundle-budget/collect-next-baseline.ts",
+    "perf:dev:seed": "node --import ./scripts/runtime/assert-node-22.mjs scripts/architecture/performance/seed-dev-journey.mjs",
     "perf:dev:prepare": "node --import ./scripts/runtime/assert-node-22.mjs scripts/architecture/performance/prepare-dev-journey.mjs",
     "perf:dev:check": "node --import ./scripts/runtime/assert-node-22.mjs scripts/architecture/performance/check-dev-performance.mjs",
     "check:api-validation": "bun run scripts/check-api-validation-contracts.ts --check",
@@ -135,7 +136,8 @@
     "@next/swc-darwin-arm64": "16.2.11",
     "@next/swc-darwin-x64": "16.2.11",
     "@next/swc-linux-arm64-gnu": "16.2.11",
-    "@next/swc-linux-x64-gnu": "16.2.11"
+    "@next/swc-linux-x64-gnu": "16.2.11",
+    "@next/swc-win32-x64-msvc": "16.2.11"
   },
   "devDependencies": {
     "@typescript/typescript6": "^6.0.2",

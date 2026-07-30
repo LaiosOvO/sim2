@@ -6,7 +6,7 @@ import { createHttpServer } from '@/bootstrap/lifecycle/create-http-server'
 const logger = createLogger('ApiBootstrap')
 const application = createApiApplication(await createProductionApiOptions())
 const server = createHttpServer(application)
-const port = Number.parseInt(process.env.API_PORT ?? '3002', 10)
+const port = Number.parseInt(process.env.API_PORT ?? '3012', 10)
 
 server.listen(port, () => {
   logger.info('API server listening', { port })

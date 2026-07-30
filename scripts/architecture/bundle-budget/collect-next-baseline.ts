@@ -82,6 +82,13 @@ async function collectTrace(nextDirectory: string): Promise<object> {
   const compilePhases = summarizeCompileTrace(events)
   const peak = (key: string): number =>
     memoryEvents.reduce((maximum, event) => Math.max(maximum, asNumber(event.tags?.[key]) ?? 0), 0)
+  const latest = (key: string): number => {
+    for (let index = memoryEvents.length - 1; index >= 0; index -= 1) {
+      const value = asNumber(memoryEvents[index].tags?.[key])
+      if (value !== undefined) return value
+    }
+    return 0
+  }
 
   return {
     traceBytes: (await stat(tracePath)).size,
@@ -99,6 +106,8 @@ async function collectTrace(nextDirectory: string): Promise<object> {
     compilePhases,
     peakRssBytes: peak('memory.rss'),
     peakHeapUsedBytes: peak('memory.heapUsed'),
+    stableRssBytes: latest('memory.rss'),
+    stableHeapUsedBytes: latest('memory.heapUsed'),
     memoryThresholdRestarts: events.filter(
       (event) => event.name === 'server-restart-close-to-memory-threshold'
     ).length,

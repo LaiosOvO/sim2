@@ -43,7 +43,7 @@ export function evaluateFullMode(rounds) {
   const api = Object.fromEntries(
     [...apiGroups.entries()].map(([path, samples]) => [path, summarizeSamples(samples)])
   )
-  const rssBytes = rounds.map((round) => round.nextTrace?.trace?.peakRssBytes ?? 0)
+  const rssBytes = rounds.map((round) => round.nextTrace?.trace?.stableRssBytes ?? 0)
   const rssCaptured = rssBytes.length > 0 && rssBytes.every((value) => value > 0)
   const maximumRssBytes = rssCaptured ? Math.max(...rssBytes) : null
   const memoryThresholdRestarts = rounds.reduce(

@@ -25,11 +25,29 @@ const browser = await chromium.launch()
 try {
   const context = await browser.newContext()
   const page = await context.newPage()
-  await page.goto(`${config.baseUrl}/login`, { waitUntil: 'domcontentloaded' })
-  await page.locator('#email').fill(email)
-  await page.locator('#password').fill(password)
-  await page.getByRole('button', { name: 'Sign in', exact: true }).click()
-  await page.waitForURL((url) => url.pathname.startsWith('/workspace/'), { timeout: 30_000 })
+  await page.goto(`${config.baseUrl}/login`, {
+    waitUntil: 'domcontentloaded',
+    timeout: 120_000,
+  })
+  const emailInput = page.locator('#email')
+  const passwordInput = page.locator('#password')
+  const signInButton = page.getByRole('button', { name: 'Sign in', exact: true })
+  for (let attempt = 1; attempt <= 120; attempt += 1) {
+    await emailInput.fill('')
+    await passwordInput.fill('')
+    await emailInput.fill(email)
+    await passwordInput.fill(password)
+    await page.waitForTimeout(250)
+    if (await signInButton.isEnabled()) break
+  }
+  if (!(await signInButton.isEnabled())) {
+    throw new Error('Sign in form did not become interactive after hydration')
+  }
+  await signInButton.click({ timeout: 120_000 })
+  await page.waitForURL(
+    (url) => url.pathname === '/workspace' || url.pathname.startsWith('/workspace/'),
+    { timeout: 120_000, waitUntil: 'commit' }
+  )
   await context.storageState({ path: storageStatePath })
   await access(storageStatePath)
   process.stdout.write(`[perf] browser storage state saved to ${storageStatePath}\n`)

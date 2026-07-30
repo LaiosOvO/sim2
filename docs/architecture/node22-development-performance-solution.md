@@ -137,13 +137,13 @@ Worker 执行侧
 ```powershell
 $env:PERF_EMAIL = 'perf-user@example.test'
 $env:PERF_PASSWORD = '<local-only>'
-$env:PERF_WORKSPACE_ID = '<fixed-workspace-id>'
-$env:PERF_WORKFLOW_ID = '<fixed-workflow-id>'
 
+bun run perf:dev:seed
 bun run perf:dev:prepare
 ```
 
-浏览器会话、日志和临时缓存写入被 Git 忽略的 `.perf/`。
+`perf:dev:seed` 幂等创建或复用固定账号、workspace 和 workflow；密码始终只存在于进程
+环境变量。资源 ID、浏览器会话、日志和临时缓存写入被 Git 忽略的 `.perf/`。
 
 ### 5.2 执行受控旅程
 
@@ -212,4 +212,3 @@ bun run perf:dev:check
 - [Node 22、Next 与开发性能边界 ADR](./decisions/ADR-0005-node22-next-development-performance-boundary.md)
 - [重构与运行手册](../handoffs/node22-development-performance-runbook.md)
 - [机器可读性能证据](../testing/evidence/node22-development-performance.json)
-

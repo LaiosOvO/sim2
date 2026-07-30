@@ -9,7 +9,7 @@
 - 新增 `check:node-runtime-entrypoints`，CI 验证版本、入口和四服务拓扑。
 - 开发端口固定为 Next 3000、Realtime 3002、API 3012、Worker 3013，避免 Realtime/API
   同占 3002；所有端口仍可由环境变量覆盖。
-- 新增 `perf:dev:prepare` 与 `perf:dev:check`。
+- 新增 `perf:dev:seed`、`perf:dev:prepare` 与 `perf:dev:check`。
 - 浏览器会话和原始日志保存在被忽略的 `.perf/`。
 - 权限 metadata、Workspace Home integration icon 和 tile color helper 已切断确定性的
   Runtime Registry 展示链。
@@ -21,7 +21,8 @@
 - Node.js `22.19.0` 或更高的 Node 22 版本；
 - Bun `1.3.13`；
 - 可用的 PostgreSQL、Auth secret 和项目要求的其他本地环境变量；
-- 固定测试账号、workspace 与 workflow；
+- 一个仅供本地性能测试使用的固定邮箱和密码；`perf:dev:seed` 会幂等创建或复用
+  workspace 与 workflow；
 - Playwright Chromium：首次执行可运行 `bunx playwright install chromium`。
 
 账号密码只放在进程环境变量中：
@@ -29,9 +30,11 @@
 ```powershell
 $env:PERF_EMAIL = 'perf-user@example.test'
 $env:PERF_PASSWORD = '<local-only>'
-$env:PERF_WORKSPACE_ID = '<fixed-workspace-id>'
-$env:PERF_WORKFLOW_ID = '<fixed-workflow-id>'
 ```
+
+`PERF_PASSWORD` 不会写入磁盘。`perf:dev:seed` 只将 workspace/workflow ID 和本地浏览器
+会话写入已被 Git 忽略的 `.perf/`。仍可用 `PERF_WORKSPACE_ID`、`PERF_WORKFLOW_ID`
+显式覆盖自动生成的旅程。
 
 可选变量：
 
@@ -49,10 +52,11 @@ $env:PERF_WORKFLOW_ID = '<fixed-workflow-id>'
 
 ## 采集步骤
 
-先启动完整开发拓扑并准备一次登录态：
+先启动完整开发拓扑，幂等创建固定账号、workspace、workflow，再用真实浏览器验证登录态：
 
 ```powershell
 bun run dev:full
+bun run perf:dev:seed
 bun run perf:dev:prepare
 ```
 
@@ -78,7 +82,7 @@ bun run perf:dev:check
 - health 就绪时间；
 - Home/Editor 冷可用时间和热刷新原始样本；
 - 页面 API waterfall、状态码及关键接口 30 次样本；
-- Next compile trace、峰值 RSS 和内存阈值重启；
+- Next compile trace、峰值/稳态 RSS 和内存阈值重启；
 - 每条 SLA 的通过状态。
 
 ## 验收门槛

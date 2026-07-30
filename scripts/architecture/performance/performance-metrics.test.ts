@@ -17,7 +17,7 @@ function passingRound() {
       { path: '/api/health', samplesMs: Array.from({ length: 30 }, () => 100) },
       { path: '/api/workspaces', samplesMs: Array.from({ length: 30 }, () => 120) },
     ],
-    nextTrace: { trace: { peakRssBytes: 1024 } },
+    nextTrace: { trace: { peakRssBytes: 1024, stableRssBytes: 1024 } },
     runtimeProof: ['next', 'realtime', 'api', 'worker'].map((service) => ({
       service,
       runtime: 'node',
@@ -41,5 +41,13 @@ describe('development performance metrics', () => {
     const result = evaluateFullMode([passingRound(), passingRound(), round])
     expect(result.checks.editorColdMaximum).toBe(false)
     expect(result.passed).toBe(false)
+  })
+
+  it('checks stable RSS without treating a transient compile peak as stable usage', () => {
+    const round = passingRound()
+    round.nextTrace.trace.peakRssBytes = PERFORMANCE_LIMITS.stableRssBytes + 1
+    const result = evaluateFullMode([passingRound(), passingRound(), round])
+    expect(result.checks.stableRss).toBe(true)
+    expect(result.passed).toBe(true)
   })
 })

@@ -16,7 +16,7 @@ async function sandboxFromEnvironment(): Promise<SandboxExecution | undefined> {
 }
 
 export async function startExecutionRole(): Promise<StartedWorkerRole> {
-  const port = Number.parseInt(process.env.WORKER_PORT ?? '3003', 10)
+  const port = Number.parseInt(process.env.WORKER_PORT ?? '3013', 10)
   const internalToken = process.env.INTERNAL_EXECUTION_TOKEN?.trim()
   const remoteSandbox = await sandboxFromEnvironment()
   const restrictedSandboxEnabled = process.env.ENABLE_RESTRICTED_TEST_SANDBOX === '1'

@@ -358,6 +358,9 @@ const modeSummaries = Object.fromEntries(
         peakRssBytes: Math.max(
           ...modeRounds.map((round) => round.nextTrace?.trace?.peakRssBytes ?? 0)
         ),
+        stableRssBytes: Math.max(
+          ...modeRounds.map((round) => round.nextTrace?.trace?.stableRssBytes ?? 0)
+        ),
       },
     ]
   })

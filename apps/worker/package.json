@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "bun build src/index.ts --target=node --outdir=dist --splitting",
-    "dev": "SIM_RUNTIME_SERVICE=worker WORKER_PORT=${WORKER_PORT:-3013} node --import ../../scripts/runtime/assert-node-22.mjs --import tsx --watch src/index.ts",
+    "dev": "SIM_RUNTIME_SERVICE=worker node --import ../../scripts/runtime/assert-node-22.mjs --import tsx --watch src/index.ts",
     "dev:sandbox": "SIM_RUNTIME_SERVICE=worker-sandbox node --import ../../scripts/runtime/assert-node-22.mjs --import tsx --watch src/index.ts --role=sandbox",
     "start": "node --import ../../scripts/runtime/assert-node-22.mjs dist/index.js",
     "start:sandbox": "node --import ../../scripts/runtime/assert-node-22.mjs dist/index.js --role=sandbox",

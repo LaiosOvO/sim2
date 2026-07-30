@@ -102,7 +102,7 @@ export async function proxyW1Request(
   }
 
   const fetcher = overrides.fetcher ?? fetch
-  const apiBaseUrl = overrides.apiBaseUrl ?? process.env.SIM_API_BASE_URL ?? 'http://127.0.0.1:3002'
+  const apiBaseUrl = overrides.apiBaseUrl ?? process.env.SIM_API_BASE_URL ?? 'http://127.0.0.1:3012'
   const legacyBaseUrl = overrides.legacyBaseUrl ?? process.env.SIM_LEGACY_API_BASE_URL
   const timeoutMs = overrides.timeoutMs ?? timeoutFromEnvironment()
   const fallbackToLegacy =

@@ -1,8 +1,12 @@
+import { readFileSync } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
 import path from 'node:path'
 
 export const repositoryRoot = path.resolve(import.meta.dirname, '..', '..', '..')
 export const performanceDirectory = path.join(repositoryRoot, '.perf')
+export const journeyStatePath =
+  process.env.PERF_JOURNEY_STATE ??
+  path.join(performanceDirectory, 'journey', 'controlled-journey.json')
 export const storageStatePath =
   process.env.PERF_STORAGE_STATE ?? path.join(performanceDirectory, 'auth', 'storage-state.json')
 
@@ -15,10 +19,23 @@ function positiveInteger(name, fallback) {
 }
 
 export function readJourneyConfig() {
-  const workspaceId = process.env.PERF_WORKSPACE_ID?.trim()
-  const workflowId = process.env.PERF_WORKFLOW_ID?.trim()
+  let journeyState = {}
+  try {
+    journeyState = JSON.parse(readFileSync(journeyStatePath, 'utf8'))
+  } catch (error) {
+    if (error?.code !== 'ENOENT') {
+      throw new Error(`Failed to read performance journey state: ${journeyStatePath}`, {
+        cause: error,
+      })
+    }
+  }
+
+  const workspaceId = process.env.PERF_WORKSPACE_ID?.trim() || journeyState.workspaceId
+  const workflowId = process.env.PERF_WORKFLOW_ID?.trim() || journeyState.workflowId
   if (!workspaceId || !workflowId) {
-    throw new Error('PERF_WORKSPACE_ID and PERF_WORKFLOW_ID are required')
+    throw new Error(
+      `PERF_WORKSPACE_ID and PERF_WORKFLOW_ID are required. Set them explicitly or run perf:dev:seed to create ${journeyStatePath}`
+    )
   }
 
   return {
@@ -41,6 +58,7 @@ export function readJourneyConfig() {
 export async function ensurePerformanceDirectories() {
   await Promise.all([
     mkdir(path.dirname(storageStatePath), { recursive: true }),
+    mkdir(path.dirname(journeyStatePath), { recursive: true }),
     mkdir(path.join(performanceDirectory, 'logs'), { recursive: true }),
     mkdir(path.join(performanceDirectory, 'reports'), { recursive: true }),
   ])
