@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": null,
+  "sourceSha": null,
+  "status": "awaiting-controlled-node22-capture",
+  "requiredRuntime": {
+    "node": ">=22.19.0",
+    "bun": "1.3.13",
+    "next": "16.2.11"
+  },
+  "journey": {
+    "workspaceHome": "/workspace/:workspaceId/home",
+    "workflowEditor": "/workspace/:workspaceId/w/:workflowId",
+    "modes": ["full", "minimal", "webpack"],
+    "roundsPerMode": 3,
+    "warmReloadsPerRoutePerRound": 10,
+    "apiSamplesPerPathPerRound": 30
+  },
+  "acceptance": {
+    "passed": false,
+    "reason": "A fixed local account, database, workspace and workflow were not available in the implementation host. Run perf:dev:prepare and perf:dev:check in the controlled Node 22 sandbox before promoting the draft PR.",
+    "limits": {
+      "serviceReadyMedianMs": 30000,
+      "coldRouteMedianMs": 10000,
+      "coldRouteMaximumMs": 15000,
+      "warmReloadP95Ms": 2000,
+      "apiP95Ms": 1000,
+      "stableRssBytes": 4294967296
+    }
+  },
+  "historicalBaseline": "docs/testing/performance-baseline.json",
+  "collector": "scripts/architecture/performance/check-dev-performance.mjs"
+}

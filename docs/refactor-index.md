@@ -11,6 +11,8 @@
 - [API 全量兼容与迁移清单](./architecture/api-migration-inventory.md)
 - [Infra/Biz Extension Topology ADR](./architecture/decisions/ADR-0003-infra-biz-extension-topology.md)
 - [Node Runtime 与飞书长连接隔离 ADR](./architecture/decisions/ADR-0004-node-runtime-and-feishu-ingress-isolation.md)
+- [Node 22、Next 与开发性能边界 ADR](./architecture/decisions/ADR-0005-node22-next-development-performance-boundary.md)
+- [Node 22 开发性能问题清单与根因报告](./reviews/node22-development-performance-root-cause.md)
 
 ## 主线同步与能力对齐
 
@@ -24,6 +26,7 @@
 - [浏览器 Bundle 策略](./testing/browser-bundle-policy.json)
 - [W1 API 路由覆盖](./testing/api-w1-route-coverage.json)
 - [W1 API Node 冷启动基线](./testing/api-w1-performance-baseline.json)
+- [Node 22 开发性能机器可读证据](./testing/evidence/node22-development-performance.json)
 - [W2 租户只读接口覆盖](./testing/api-w2-tenant-read-coverage.json)
 
 ## Goal
@@ -39,6 +42,7 @@
 - [Phase 3 W1 独立 API 检查点](./handoffs/phase-3-w1-api.md)
 - [Phase 3 Worker Job 与 Sandbox 骨架检查点](./handoffs/phase-3-worker-sandbox-skeleton.md)
 - [Phase 3 认证与请求上下文 seam 检查点](./handoffs/phase-3-auth-request-context.md)
+- [Node 22 开发性能重构与运行手册](./handoffs/node22-development-performance-runbook.md)
 - [Phase 4 W2 租户只读兼容平面检查点](./handoffs/phase-4-w2-tenant-read-compatibility.md)
 - [Phase 4 W2 原生路由与 Stars 检查点](./handoffs/phase-4-w2-native-stars.md)
 - [Phase 4 W2 原生邀请读取检查点](./handoffs/phase-4-w2-native-invitations.md)

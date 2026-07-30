@@ -1,6 +1,6 @@
 # Sim2 前后端分离与 Polaris 能力迁移 Spec
 
-> 状态：Draft，架构与迁移范围已冻结，量化性能门槛待最终确认
+> 状态：Draft，架构与迁移范围已冻结，开发性能门槛已冻结且待受控 Node 22 证据验收
 > 日期：2026-07-30
 > 目标平台：Sim2 refactor worktree
 > 迁移来源：Polaris donor
@@ -1122,6 +1122,26 @@ packages/*
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
   fixtures for the other 8 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
+
+## Node 22 Development Performance Checkpoint
+
+- 根目录、Next、Realtime、API 和 Worker 的应用 runtime 统一为 Node.js `>=22.19.0`。
+  Bun 仍负责安装、构建、测试和脚本编排，不直接执行四个服务的应用入口。
+- Next 16 + Turbopack 保持默认。minimal registry 与 webpack 仅作为依赖闭包和 bundler
+  归因对照，不能作为功能精简的默认方案。
+- `dev:full` 同时启动 Next、Realtime、API 和 Worker；每个服务启动时输出可审计的 Node
+  version 与 `execPath`。确定性 CI 门禁检查版本、入口和四服务拓扑。
+- 浏览器权限 metadata 已改为读取 `@sim/tool-catalog`，纯 tile 颜色 helper 已与
+  registry-backed icon helper 分离，Workspace Home integration chip 通过 Catalog
+  projection 和按需 icon module 渲染，不再同步导入 Runtime Registry。
+- 受控旅程覆盖 health、Workspace Home、Workflow Editor、页面 API waterfall、稳态 API、
+  Next trace 与 RSS；同一源码、机器和隔离缓存下运行 full、minimal 和 webpack。
+- 完整模式的验收门槛为：服务就绪中位数 `<=30s`；Home/Editor 首次可用中位数
+  `<=10s` 且单轮 `<=15s`；热刷新 P95 `<=2s`；关键 API P95 `<=1s`；稳定 RSS
+  `<=4GiB`。
+- 当前机器可读证据状态为 `awaiting-controlled-node22-capture`。固定账号、数据库、
+  workspace 和 workflow 在受控 Node 22 runner 可用后，草稿 PR 必须用
+  `perf:dev:check` 生成不可漂移证据再进入最终评审。
 
 ## Out of Scope
 
