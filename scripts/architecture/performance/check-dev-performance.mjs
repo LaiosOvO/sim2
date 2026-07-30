@@ -1,6 +1,6 @@
 import { spawn, spawnSync } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
-import { access, readFile, stat, writeFile } from 'node:fs/promises'
+import { access, readFile, rm, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import { performance } from 'node:perf_hooks'
@@ -200,16 +200,14 @@ function collectNextTrace(bunExecutable, nextDirectory) {
 
 async function executeRound(config, bunExecutable, mode, roundNumber, capturedAt) {
   const runId = `${capturedAt.replaceAll(/[:.]/g, '-')}-${mode}-${roundNumber}`
-  const relativeCacheDirectory = `.next-perf/${runId}`
+  const relativeCacheDirectory = `.next-perf/current-${mode}`
   const nextDirectory = path.join(repositoryRoot, 'apps', 'sim', relativeCacheDirectory, 'dev')
   const cacheRoot = path.dirname(nextDirectory)
-  const cacheAlreadyExists = await stat(cacheRoot).then(
-    () => true,
-    () => false
-  )
-  if (cacheAlreadyExists) {
-    throw new Error(`isolated Next cache already exists: ${cacheRoot}`)
+  const performanceCacheRoot = path.join(repositoryRoot, 'apps', 'sim', '.next-perf')
+  if (!cacheRoot.startsWith(`${performanceCacheRoot}${path.sep}`)) {
+    throw new Error(`refusing to recycle cache outside ${performanceCacheRoot}: ${cacheRoot}`)
   }
+  await rm(cacheRoot, { recursive: true, force: true })
   const logPath = path.join(performanceDirectory, 'logs', `${runId}.log`)
   const logStream = createWriteStream(logPath, { flags: 'wx' })
   let log = ''
