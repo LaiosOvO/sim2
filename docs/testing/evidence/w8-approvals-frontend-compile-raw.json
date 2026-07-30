@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "inventoryGroup": "W8-APPROVALS",
+  "capturedAt": "2026-07-30T03:46:25.240Z",
+  "runner": {
+    "kind": "bun-browser-build",
+    "bunVersion": "1.3.11",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "entrypoint": "apps/sim/app/workspace/[workspaceId]/approvals/page.tsx",
+  "configuration": {
+    "target": "browser",
+    "minify": true,
+    "external": ["next/*", "react", "react/*", "@tanstack/react-query"]
+  },
+  "sourceClosure": [
+    {
+      "path": "apps/sim/app/workspace/[workspaceId]/approvals/page.tsx",
+      "bytes": 3051,
+      "sha256": "14b68010df4ed9e4795c87fd8e6347d8397f8d008f315fa4727b7db2d8cc6bb8"
+    },
+    {
+      "path": "apps/sim/hooks/queries/approvals.ts",
+      "bytes": 5666,
+      "sha256": "5dd4a14b9a4dd3beef2e1d6c4bd72dcf8df2f3157b1fb66841453329a3d02950"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/approvals.ts",
+      "bytes": 3834,
+      "sha256": "bc2b56dbb13979dfa07f4f237644ce4d404135e25eb72f0b14f8650d251be869"
+    },
+    {
+      "path": "packages/api-contracts/src/approvals.ts",
+      "bytes": 13469,
+      "sha256": "59bc077107079d95e491c9a73fa2916f7b09a5674fc2774c2805608b9d9ae4c1"
+    }
+  ],
+  "samples": {
+    "coldCompileMs": 32.5,
+    "rawBundleBytes": 283004,
+    "gzipBundleBytes": 68214
+  },
+  "closureAudit": {
+    "forbiddenTokens": [
+      "@sim/db",
+      "drizzle-orm",
+      "PauseResumeManager",
+      "block-executor",
+      "toolRegistry",
+      "Feishu",
+      "Meegle"
+    ],
+    "hits": [],
+    "passed": true
+  }
+}

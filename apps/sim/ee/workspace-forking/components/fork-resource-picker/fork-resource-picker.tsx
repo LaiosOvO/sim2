@@ -1,7 +1,7 @@
 'use client'
 
 import { useId, useMemo, useState } from 'react'
-import { Checkbox, ChevronDown, cn } from '@sim/emcn'
+import { Checkbox, ChevronDown, cn } from '@sim/emcn/workspace-fork'
 import {
   ForkFileTree,
   type ForkFlatFile,

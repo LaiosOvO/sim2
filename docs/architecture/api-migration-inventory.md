@@ -581,16 +581,16 @@
 
 | ID | Methods | Path | 来源 | 类型 | Auth | Contract | 当前测试 | 依赖 | Target | Wave | Risk | 必测 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| API-0270 | GET | `/api/providers/base/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Core Module | W2 | Medium | CADI |
-| API-0271 | GET | `/api/providers/baseten/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth | API Core Module | W2 | Medium | CADI |
-| API-0272 | GET | `/api/providers/fireworks/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | Auth | API Core Module | W2 | Medium | CADI |
-| API-0273 | GET | `/api/providers/litellm/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Core Module | W2 | Medium | CADI |
-| API-0274 | GET | `/api/providers/ollama-cloud/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth | API Core Module | W2 | Medium | CADI |
-| API-0275 | GET | `/api/providers/ollama/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Core Module | W2 | Medium | CADI |
-| API-0276 | GET | `/api/providers/openrouter/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Core Module | W2 | Medium | CADI |
+| API-0270 | GET | `/api/providers/base/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0271 | GET | `/api/providers/baseten/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0272 | GET | `/api/providers/fireworks/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | Auth | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0273 | GET | `/api/providers/litellm/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0274 | GET | `/api/providers/ollama-cloud/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0275 | GET | `/api/providers/ollama/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0276 | GET | `/api/providers/openrouter/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
 | API-0277 | POST | `/api/providers` | 共有同实现 | Streaming | Internal/Hybrid | S✓/P✓ | S✓/P✓ | DB, Auth, Executor, Stream | API Streaming | W3 | Medium | CADIEP |
-| API-0278 | GET | `/api/providers/together/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth | API Core Module | W2 | Medium | CADI |
-| API-0279 | GET | `/api/providers/vllm/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Core Module | W2 | Medium | CADI |
+| API-0278 | GET | `/api/providers/together/models` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | Auth | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
+| API-0279 | GET | `/api/providers/vllm/models` | 共有同实现 | Core Command/Query | Manual review | S✓/P✓ | S–/P– | Pure/other | API Provider Model Discovery Module（native，pending review） | W2 | Medium | CADI |
 
 ### proxy
 

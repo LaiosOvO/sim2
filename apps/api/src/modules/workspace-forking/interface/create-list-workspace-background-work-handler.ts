@@ -25,6 +25,15 @@ function pathWorkspaceId(request: Request): string {
   }
 }
 
+function scalarQueryValue(
+  searchParams: URLSearchParams,
+  name: string
+): string | string[] | undefined {
+  const values = searchParams.getAll(name)
+  if (values.length === 0) return undefined
+  return values.length === 1 ? values[0] : values
+}
+
 export function createListWorkspaceBackgroundWorkHandler(
   useCase: ListWorkspaceBackgroundWorkUseCase
 ): ListWorkspaceBackgroundWorkHandler {
@@ -38,10 +47,12 @@ export function createListWorkspaceBackgroundWorkHandler(
 
     const url = new URL(request.url)
     const workspaceId = pathWorkspaceId(request)
+    const cursor = scalarQueryValue(url.searchParams, 'cursor')
+    const limit = scalarQueryValue(url.searchParams, 'limit')
     try {
       const result = await useCase.execute(authenticationContext, workspaceId, {
-        ...(url.searchParams.has('cursor') ? { cursor: url.searchParams.get('cursor') ?? '' } : {}),
-        ...(url.searchParams.has('limit') ? { limit: url.searchParams.get('limit') ?? '' } : {}),
+        ...(cursor !== undefined ? { cursor } : {}),
+        ...(limit !== undefined ? { limit } : {}),
       })
       if (result.ok) return Response.json(result.value)
       if (result.reason === 'validation-error') {

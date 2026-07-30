@@ -13,9 +13,21 @@
       "types": "./src/debug.ts",
       "default": "./src/debug.ts"
     },
+    "./approval-resume": {
+      "types": "./src/approval-resume.ts",
+      "default": "./src/approval-resume.ts"
+    },
+    "./approval-effects": {
+      "types": "./src/approval-effects.ts",
+      "default": "./src/approval-effects.ts"
+    },
     "./events": {
       "types": "./src/events.ts",
       "default": "./src/events.ts"
+    },
+    "./execution-object-read": {
+      "types": "./src/execution-object-read.ts",
+      "default": "./src/execution-object-read.ts"
     },
     "./jobs": {
       "types": "./src/jobs.ts",
@@ -28,6 +40,10 @@
     "./runtime-tools": {
       "types": "./src/runtime-tools.ts",
       "default": "./src/runtime-tools.ts"
+    },
+    "./resume-poll": {
+      "types": "./src/resume-poll.ts",
+      "default": "./src/resume-poll.ts"
     }
   },
   "scripts": {

@@ -52,9 +52,9 @@
 import * as React from 'react'
 import { DismissableLayerBranch } from '@radix-ui/react-dismissable-layer'
 import * as PopoverPrimitive from '@radix-ui/react-popover'
-import { Check, ChevronLeft, ChevronRight, Search } from 'lucide-react'
 import { createPortal } from 'react-dom'
 import { cn } from '../../lib/cn'
+import { Check, ChevronLeft, ChevronRight, Search } from '../../lib/lucide-icons'
 
 type PopoverSize = 'sm' | 'md'
 type PopoverColorScheme = 'default' | 'inverted'

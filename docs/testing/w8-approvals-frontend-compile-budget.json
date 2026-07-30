@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "inventoryGroup": "W8-APPROVALS",
+  "runner": "bun-browser-build",
+  "budgets": {
+    "coldCompileMs": 2000,
+    "rawBundleBytes": 350000,
+    "gzipBundleBytes": 80000
+  },
+  "policy": {
+    "targetColdCompileMs": 10000,
+    "updateRule": "Raising a ceiling requires new source-bound evidence and independent performance review."
+  }
+}

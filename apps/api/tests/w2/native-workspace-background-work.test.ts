@@ -197,6 +197,41 @@ describe('native workspace background work', () => {
     })
   })
 
+  it.each([
+    ['cursor', '?cursor=cursor-1&cursor=cursor-2'],
+    ['limit', '?limit=1&limit=100'],
+  ])('rejects repeated %s values after authentication and before access', async (_name, query) => {
+    const access = currentAccess()
+    const backgroundWork = reader()
+    const response = await handler({ currentAccess: access, reader: backgroundWork })({
+      authenticationContext: sessionContext,
+      request: request('workspace-1', query),
+      requestId: 'request-1009',
+    })
+
+    expect(response.status).toBe(400)
+    expect(await response.json()).toMatchObject({
+      error: 'Validation error',
+      details: [expect.objectContaining({ code: 'invalid_type' })],
+    })
+    expect(access.findActiveForViewer).not.toHaveBeenCalled()
+    expect(backgroundWork.listInvolving).not.toHaveBeenCalled()
+  })
+
+  it('authenticates before rejecting repeated scalar query values', async () => {
+    const access = currentAccess()
+    const backgroundWork = reader()
+    const response = await handler({ currentAccess: access, reader: backgroundWork })({
+      request: request('workspace-1', '?limit=1&limit=100'),
+      requestId: 'request-1009',
+    })
+
+    expect(response.status).toBe(401)
+    expect(await response.json()).toEqual({ error: 'Unauthorized' })
+    expect(access.findActiveForViewer).not.toHaveBeenCalled()
+    expect(backgroundWork.listInvolving).not.toHaveBeenCalled()
+  })
+
   it('preserves workspace-not-found and request-id error shape', async () => {
     const backgroundWork = reader()
     const response = await handler({ reader: backgroundWork })({

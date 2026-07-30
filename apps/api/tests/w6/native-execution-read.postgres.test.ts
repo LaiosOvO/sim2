@@ -145,4 +145,85 @@ describe.runIf(disposableDatabaseEnabled)('native W6 execution-read PostgreSQL a
     await expect(reader.readDetail('workflow-1', 'execution-time')).resolves.toBeNull()
     await expect(reader.readDetail('workflow-1', 'execution-other')).resolves.toBeNull()
   })
+
+  it('hides archived workspace and personal workflows before credential-scope authorization', async () => {
+    const [
+      { db },
+      { sql },
+      { createDrizzleWorkflowReadScopeReader },
+      { createPlatformWorkflowReadAuthorizer },
+    ] = await Promise.all([
+      import('@sim/db'),
+      import('drizzle-orm'),
+      import('@/infrastructure/postgres/repositories/drizzle-workflow-read-scope-reader'),
+      import('@/infrastructure/postgres/repositories/platform-workflow-read-authorizer'),
+    ])
+
+    for (const statement of [
+      `create table if not exists workflow (
+        id text primary key,
+        user_id text not null,
+        workspace_id text,
+        folder_id text,
+        name text not null,
+        is_deployed boolean not null default false,
+        fork_sync_excluded boolean not null default false,
+        archived_at timestamp
+      )`,
+      `insert into workflow (
+        id, user_id, workspace_id, name, archived_at
+      ) values
+        ('w6-active-workflow', 'user-w6', 'workspace-w6', 'Active', null),
+        (
+          'w6-archived-workspace', 'user-w6', 'workspace-other', 'Archived workspace',
+          '2026-07-30T00:00:00Z'
+        ),
+        (
+          'w6-archived-personal', 'user-w6', null, 'Archived personal',
+          '2026-07-30T00:00:00Z'
+        )`,
+    ]) {
+      await db.execute(sql.raw(statement))
+    }
+
+    const scopes = createDrizzleWorkflowReadScopeReader()
+    await expect(scopes.readScope('w6-active-workflow')).resolves.toEqual({
+      workspaceId: 'workspace-w6',
+    })
+    await expect(scopes.readScope('w6-archived-workspace')).resolves.toBeNull()
+    await expect(scopes.readScope('w6-archived-personal')).resolves.toBeNull()
+
+    const authorizer = createPlatformWorkflowReadAuthorizer({ scopes })
+    const workspaceKeyContext = {
+      authContextVersion: 1 as const,
+      authenticationMethod: 'api-key' as const,
+      actor: { id: 'user-w6', type: 'user' as const },
+      requestId: 'request-w6-archived-workspace',
+      credentialId: 'key-w6',
+      keyType: 'workspace' as const,
+      workspaceId: 'workspace-w6',
+      permissions: [],
+    }
+    const sessionContext = {
+      authContextVersion: 1 as const,
+      authenticationMethod: 'session' as const,
+      actor: { id: 'user-w6', type: 'user' as const },
+      requestId: 'request-w6-archived-personal',
+      activeOrganizationId: null,
+      permissions: [],
+    }
+
+    await expect(
+      authorizer.authorize(workspaceKeyContext, 'w6-archived-workspace')
+    ).resolves.toEqual({
+      allowed: false,
+      status: 404,
+      message: 'Workflow not found',
+    })
+    await expect(authorizer.authorize(sessionContext, 'w6-archived-personal')).resolves.toEqual({
+      allowed: false,
+      status: 404,
+      message: 'Workflow not found',
+    })
+  })
 })

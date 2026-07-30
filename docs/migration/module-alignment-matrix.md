@@ -189,6 +189,13 @@ upstream 不能覆盖，但 upstream contract/type 变化必须通过本表的 S
 | `components/polaris/pm` | `apps/sim/features/pm` | D | PM UI | 直接 import Biz repository/Infra |
 | `components/polaris/hr` | `apps/sim/features/hr` | D | HR UI | 直接 import Feishu/DB |
 | `lib/api/contracts/polaris` | `packages/api-contracts/src/polaris` | D | PM/HR 等 wire contract | Route/client 重复 schema |
+
+## Provider model discovery native alignment
+
+| Sim2 / Polaris donor | Target ownership | Strategy | Upstream sync action | Verification |
+| --- | --- | --- | --- | --- |
+| `apps/sim/app/api/providers/{base,baseten,fireworks,litellm,ollama-cloud,ollama,openrouter,together,vllm}/models/route.ts` | `packages/api-contracts/src/provider-model-discovery*.ts` + `apps/api/src/modules/provider-model-discovery/**` + HTTP/BYOK/catalog adapters + original-path proxy facades | S | API-0270/0271/0272/0273/0274/0275/0276/0278/0279 已 native、等待独立审查。upstream 修改 provider/model blacklist、BYOK/env fallback、URL、TTL、wire projection、Together type filter 或 OpenRouter pricing/modelInfo 时，先更新 donor matrix、V1 contract 与 focused fixture，再更新 use case/adapter；不得把旧 provider utils、registry、Executor、Sandbox、DB 或加密实现合回 Next route/hook | 9/9 C/A/D/I/HTTP coverage、generated catalog hash、optional-session order、tenant/provider credential isolation、bounded HTTP、focused browser build、1,019-byte facade ceiling、independent review |
+| `apps/sim/hooks/queries/providers.ts` + `apps/sim/lib/api/contracts/providers.ts` 中的 model discovery 部分 | focused Web wrapper `apps/sim/lib/api/contracts/provider-model-discovery.ts` + schema-free route metadata subpath | S | upstream 修改 hook cache/query semantics 时只适配 focused wrapper；旧 providers monolith 可继续承载尚未迁移的 execution contract，但 model-discovery consumer 不得重新导入它 | focused TypeScript、browser closure、forbidden-import gate |
 | `app/api/polaris/**` | API transport +对应 Biz Module | D | 23 条 event/notification/risk/todo Route | 业务逻辑留在 handler |
 | `app/api/workspaces/[id]/pm/**` | API transport + PM/其他 Biz | D | 52 条 W8 PM Route | 用 URL 层级决定内部所有权 |
 | `app/api/workspaces/[id]/hr/**` | API transport + HR Biz | D | 9 条 W8 + 3 条 W3 文件 Route | 文件逻辑复制进 HR |
@@ -196,6 +203,15 @@ upstream 不能覆盖，但 upstream contract/type 变化必须通过本表的 S
 | `apps/content-processor` | `apps/content-processor` | D | MarkItDown 与 vision extraction sidecar | 合并进 Web 进程 |
 | `apps/mothership` | API Copilot Module + Worker | D/S | model/chat/stream/resume/abort/MAT chat | 将 Go 服务直接当目标后端 |
 | `apps/operations-agent` | Operations Biz + Worker | D/S | task、gate、release、rollback、test | 保留第二套业务状态真相 |
+
+## W8 Approval native alignment
+
+| Sim2 / Polaris donor | Target ownership | Strategy | Upstream sync action | Verification |
+| --- | --- | --- | --- | --- |
+| `lib/polaris/approvals` definition/version/state-machine code | `extensions/biz/approval` + `apps/api/src/modules/approvals` | D/S | 上游修改节点图、approve/reject/timeout/any/all 或发布生命周期时，先更新纯 Biz fixture，再更新 API orchestration；不得把 Provider ID、Feishu/Meegle client 或 HTTP request 变成领域主键/对象 | state-machine tests、donor parity、API module tests |
+| approval persistence, audit and access policy | `packages/db` approval tables + API Drizzle adapters | S | 上游修改幂等键、decision 唯一性、审计字段、workspace/org/data-scope 语义时，更新 schema/migration/PG fixture；`project_member` 必须等待 PM 稳定 port，当前 fail-closed | full migration、native PostgreSQL fixture、tenant/auth tests |
+| approval resume and notification side effects | `packages/execution-contracts` + Worker approval jobs/effect outbox | D/S | 上游修改 resume payload、retry/claim 或通知行为时，版本化 command；Feishu/Meegle 只实现 Worker outbound adapter，不得回流 API/Biz/浏览器 | command contract tests、Worker tests、import boundary |
+| `/api/approvals/**` and approval Web consumer | focused `apps/sim/lib/api/contracts/approvals.ts`, proxy, query and feature page | S | 上游修改 wire schema、status projection、query key 或 metadata 时，同步 `@sim/api-contracts` 和 focused facade；不得重新导入旧 approvals monolith、registry、Executor、Sandbox、DB、加密或 Provider runtime | strict Zod `8/8`、proxy tests、browser closure、compile budget |
 
 ## 8. 定期同步流程
 

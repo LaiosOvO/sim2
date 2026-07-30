@@ -31,6 +31,14 @@ function observed(response: Response, inventoryId: Route['inventoryId']): Respon
   })
 }
 
+function withoutBody(response: Response): Response {
+  return new Response(null, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: response.headers,
+  })
+}
+
 /**
  * Three-route W6 read boundary. It owns exact route selection and the shared
  * hybrid identity policy while detail/list behavior remains behind two deep
@@ -62,7 +70,18 @@ export function createExecutionReadModule(
       const pathname = new URL(request.url).pathname
       const route = routes.find((candidate) => candidate.pattern.test(pathname))
       if (!route) return undefined
-      if (request.method !== 'GET') return undefined
+      if (request.method === 'OPTIONS') {
+        return observed(
+          new Response(null, {
+            status: 204,
+            headers: { allow: 'GET, HEAD, OPTIONS' },
+          }),
+          route.inventoryId
+        )
+      }
+      if (request.method !== 'GET' && request.method !== 'HEAD') {
+        return observed(new Response(null, { status: 405 }), route.inventoryId)
+      }
 
       const authentication = await dependencies.authentication.authenticate({
         request,
@@ -88,7 +107,10 @@ export function createExecutionReadModule(
         authenticationContext: authentication.context,
         requestId: context.requestId,
       })
-      return observed(response, route.inventoryId)
+      return observed(
+        request.method === 'HEAD' ? withoutBody(response) : response,
+        route.inventoryId
+      )
     },
   }
 }

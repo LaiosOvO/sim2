@@ -1,10 +1,27 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-30T08:53:49.8064834+08:00",
-  "repositoryHeadAtStart": "154c170c1",
+  "capturedAt": "2026-07-30T09:22:00+08:00",
+  "repositoryHeadAtStart": "acd7c56335a90f89edf7c8e8ec57d05f980a2aed",
+  "measuredSourceCommit": "acd7c56335a90f89edf7c8e8ec57d05f980a2aed",
   "branch": "codex/frontend-backend-refactor",
+  "runtime": {
+    "bunVersion": "1.3.11",
+    "nodeMajor": 22,
+    "nextVersion": "16.2.11",
+    "bundler": "Turbopack"
+  },
+  "sourceBinding": {
+    "normalizedInputManifest": {
+      "path": "docs/testing/evidence/frontend-experience-round-1-inputs.json",
+      "sha256": "d7297100ffecef6e48b4fb6a3f40222e680708928aa92aaeab79e5043299c2ec"
+    },
+    "lightweightBaselineSha256": "25869790fe4cdd6739e093801e4c6e4aac6eecf8a85a667c0e530a6ac2e290ab",
+    "lightweightCheckerSha256": "ab63b12c71eb748c727f15ea1cc129dbe9bc7906ac8d0aba2409d9f928b2caa6",
+    "ciWorkflowSha256": "f14abaca61e948e39bf65abfcb3dea9a4586c51774035bda95824867e6980e3a",
+    "compileMetricSha256": "2d0056725170361f23760a4fa835e3cb138af9df4e0b62060dcc9c06aea68cc8"
+  },
   "independentReview": {
-    "status": "pending",
+    "status": "changes-required-fixes-ready-for-re-review",
     "policy": "docs/testing/migration-independent-review-policy.md"
   },
   "generatedPasswordSurface": {
@@ -86,8 +103,8 @@
     },
     "browserBuilds": {
       "workspaceForkModal": {
-        "gzipBytes": 201819,
-        "inputCount": 383,
+        "gzipBytes": 200533,
+        "inputCount": 384,
         "maximumGzipBytes": 212000
       },
       "workspaceForkResourcesHook": {
@@ -96,7 +113,7 @@
         "maximumGzipBytes": 87000
       },
       "workspaceForkCreateHook": {
-        "gzipBytes": 88070,
+        "gzipBytes": 86705,
         "inputCount": 118,
         "maximumGzipBytes": 93000
       }
@@ -114,13 +131,20 @@
     },
     "api1037ClientBoundaryTests": {
       "status": "passed",
-      "files": 2,
-      "tests": 4
+      "files": 3,
+      "tests": 8
     },
     "compileTraceMetricTests": {
       "status": "passed",
       "files": 1,
-      "tests": 2
+      "tests": 3,
+      "durationUnitsPerMillisecond": 1000,
+      "multiDevServerColdReset": true
+    },
+    "lightweightNegativeControl": {
+      "status": "passed",
+      "fixtureMaximumGzipBytes": 1,
+      "observedExitCode": 1
     },
     "simTypeCheck": {
       "status": "passed",
@@ -128,8 +152,21 @@
     }
   },
   "compileTiming": {
-    "status": "collector-ready-no-controlled-journey-capture",
-    "claimAllowed": "first-observed and incremental compile events can be classified from a captured Next trace",
-    "claimNotAllowed": "this round does not prove an end-user cold-start or hot-update latency improvement"
+    "status": "controlled-resume-journey-captured",
+    "environment": {
+      "platform": "Windows",
+      "port": 3108,
+      "apiMode": "off",
+      "nextCache": "shared .next/dev cache; route compiled once per fresh dev-server session"
+    },
+    "resumePage": {
+      "coldCompileMs": [17808.8, 17057],
+      "firstValidRequestMs": 19768.8,
+      "warmRequestMs": [166.8, 134.4],
+      "httpStatus": 200
+    },
+    "resumeApiFacadeColdCompileMs": 230.6,
+    "claimAllowed": "warm resume page requests are below 1 second and the page/hook no longer reach Executor or the monolithic workflow contract",
+    "claimNotAllowed": "cold resume compile remains above the 10 second target and no code-edit incremental compile event was captured"
   }
 }

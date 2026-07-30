@@ -15,43 +15,171 @@
     "routes": [
       {
         "inventoryId": "API-1009",
-        "status": "pending",
+        "status": "approved",
         "implementationAgent": "api1032_donor_audit",
-        "reviewerAgent": null,
+        "reviewerAgent": "api1009_independent_rereview",
         "implementationEvidence": "docs/handoffs/phase-4-w2-native-workspace-background-work.md",
-        "reviewEvidence": null
+        "reviewEvidence": "docs/reviews/API-1009-workspace-background-work.md"
+      },
+      {
+        "inventoryId": "API-0270",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0271",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0272",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0273",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0274",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0275",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0276",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0278",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
+      },
+      {
+        "inventoryId": "API-0279",
+        "status": "approved",
+        "implementationAgent": "api1032_donor_audit",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-4-w2-native-provider-model-discovery.md",
+        "reviewEvidence": "docs/reviews/W2-provider-model-discovery.md"
       },
       {
         "inventoryId": "API-1037",
-        "status": "changes-required",
+        "status": "approved",
         "implementationAgent": "fork_reads_shared_design",
-        "reviewerAgent": "api1037_donor_audit",
+        "reviewerAgent": "api1037_independent_rereview",
         "implementationEvidence": "docs/handoffs/phase-4-w2-native-workspace-fork-resources.md",
         "reviewEvidence": "docs/reviews/API-1037-workspace-fork-resources.md"
       },
       {
+        "inventoryId": "API-0045",
+        "status": "approved",
+        "implementationAgent": "w5_custom_blocks_native",
+        "reviewerAgent": "api1037_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w5-native-custom-blocks.md",
+        "reviewEvidence": "docs/reviews/W5-custom-blocks.md"
+      },
+      {
+        "inventoryId": "API-0094",
+        "status": "approved",
+        "implementationAgent": "w5_custom_blocks_native",
+        "reviewerAgent": "api1037_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w5-native-custom-blocks.md",
+        "reviewEvidence": "docs/reviews/W5-custom-blocks.md"
+      },
+      {
+        "inventoryId": "API-0095",
+        "status": "approved",
+        "implementationAgent": "w5_custom_blocks_native",
+        "reviewerAgent": "api1037_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w5-native-custom-blocks.md",
+        "reviewEvidence": "docs/reviews/W5-custom-blocks.md"
+      },
+      {
+        "inventoryId": "API-0096",
+        "status": "approved",
+        "implementationAgent": "w5_custom_blocks_native",
+        "reviewerAgent": "api1037_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w5-native-custom-blocks.md",
+        "reviewEvidence": "docs/reviews/W5-custom-blocks.md"
+      },
+      {
         "inventoryId": "API-0282",
-        "status": "changes-required",
+        "status": "approved",
         "implementationAgent": "api1037_donor_audit",
-        "reviewerAgent": "w6_group_a_independent_review",
+        "reviewerAgent": "api1009_independent_rereview",
         "implementationEvidence": ".scratch/sim2-platform-separation/issues/11-w6-read-control-plane.md",
         "reviewEvidence": "docs/reviews/W6-group-a-paused-execution-read.md"
       },
       {
         "inventoryId": "API-0996",
-        "status": "changes-required",
+        "status": "approved",
         "implementationAgent": "api1037_donor_audit",
-        "reviewerAgent": "w6_group_a_independent_review",
+        "reviewerAgent": "api1009_independent_rereview",
         "implementationEvidence": ".scratch/sim2-platform-separation/issues/11-w6-read-control-plane.md",
         "reviewEvidence": "docs/reviews/W6-group-a-paused-execution-read.md"
       },
       {
         "inventoryId": "API-0997",
-        "status": "changes-required",
+        "status": "approved",
         "implementationAgent": "api1037_donor_audit",
-        "reviewerAgent": "w6_group_a_independent_review",
+        "reviewerAgent": "api1009_independent_rereview",
         "implementationEvidence": ".scratch/sim2-platform-separation/issues/11-w6-read-control-plane.md",
         "reviewEvidence": "docs/reviews/W6-group-a-paused-execution-read.md"
+      },
+      {
+        "inventoryId": "API-0138",
+        "status": "changes-required",
+        "implementationAgent": "api1009_independent_rereview",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w6-group-b-execution-control.md",
+        "reviewEvidence": "docs/reviews/W6-group-b-execution-control.md"
+      },
+      {
+        "inventoryId": "API-0283",
+        "status": "changes-required",
+        "implementationAgent": "api1009_independent_rereview",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w6-group-b-execution-control.md",
+        "reviewEvidence": "docs/reviews/W6-group-b-execution-control.md"
+      },
+      {
+        "inventoryId": "API-0993",
+        "status": "changes-required",
+        "implementationAgent": "api1009_independent_rereview",
+        "reviewerAgent": "provider_discovery_independent_rereview",
+        "implementationEvidence": "docs/handoffs/phase-5-w6-group-b-execution-control.md",
+        "reviewEvidence": "docs/reviews/W6-group-b-execution-control.md"
       }
     ]
   },
@@ -72,9 +200,20 @@
         "API-0235",
         "API-0241",
         "API-0243",
+        "API-0270",
+        "API-0271",
+        "API-0272",
+        "API-0273",
+        "API-0274",
+        "API-0275",
+        "API-0276",
+        "API-0278",
+        "API-0279",
         "API-0294",
+        "API-1009",
         "API-1031",
         "API-1034",
+        "API-1037",
         "API-1041",
         "API-1057",
         "API-1058",
@@ -98,13 +237,13 @@
       "wave": "W5",
       "plannedCount": 29,
       "halfTarget": 15,
-      "completedInventoryIds": []
+      "completedInventoryIds": ["API-0045", "API-0094", "API-0095", "API-0096"]
     },
     {
       "wave": "W6",
       "plannedCount": 11,
       "halfTarget": 6,
-      "completedInventoryIds": []
+      "completedInventoryIds": ["API-0282", "API-0996", "API-0997"]
     },
     {
       "wave": "W7",

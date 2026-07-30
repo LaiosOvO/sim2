@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W6-GROUP-B",
+  "runner": "focused-vite-watch",
+  "budgets": {
+    "coldCompileMs": 5000,
+    "incrementalCompileMs": 1500
+  }
+}

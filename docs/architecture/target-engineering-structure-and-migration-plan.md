@@ -1128,3 +1128,57 @@ sequenceDiagram
 3. 独立 API 第一阶段是否与 Web 同域反向代理，还是直接跨域部署；
 4. live Replay 是否只允许特定角色，是否需要二次确认和额外审计保留期。
 5. API/Worker 分离完成并通过性能验收后，是否另立项目将 Next Web 迁移到 Vite。
+
+## 11. Provider model discovery 已落地目录
+
+API-0270/0271/0272/0273/0274/0275/0276/0278/0279 已按以下具体目录落位：
+
+```text
+packages/api-contracts/
+├─ src/
+│  ├─ provider-model-discovery.ts
+│  └─ provider-model-discovery-routes.ts
+└─ tests/
+   └─ provider-model-discovery.test.ts
+
+apps/api/src/
+├─ modules/provider-model-discovery/
+│  ├─ application/
+│  │  ├─ create-provider-model-discovery-module.ts
+│  │  └─ discover-provider-models.ts
+│  ├─ ports/
+│  │  ├─ base-provider-model-catalog.ts
+│  │  ├─ provider-model-credential-reader.ts
+│  │  └─ provider-model-source.ts
+│  └─ index.ts
+└─ infrastructure/
+   ├─ generated/
+   │  ├─ base-provider-model-catalog.generated.ts
+   │  └─ generated-base-provider-model-catalog.ts
+   ├─ http/
+   │  └─ http-provider-model-source.ts
+   └─ postgres/repositories/
+      └─ drizzle-provider-model-credential-reader.ts
+
+apps/sim/
+├─ hooks/queries/providers.ts
+├─ lib/api/contracts/provider-model-discovery.ts
+├─ lib/api-proxy/
+│  ├─ provider-model-discovery.ts
+│  └─ provider-model-discovery.test.ts
+├─ app/api/providers/{provider}/models/route.ts
+└─ tsconfig.provider-model-discovery-client.json
+
+scripts/
+├─ api/
+│  ├─ generate-base-provider-model-catalog.ts
+│  └─ check-provider-model-discovery-coverage.ts
+└─ architecture/
+   ├─ build-isolation/check-provider-model-discovery-client.ts
+   └─ import-boundaries/check-provider-model-discovery-module-boundary.ts
+```
+
+Application 只暴露一次 discovery 操作，并通过三个窄 port 隐藏外部 HTTP、授权后的
+BYOK 解密和静态 base catalog。schema-free routing subpath 专供 9 个服务端 facade，
+避免每个 facade 为读取 path metadata 都打包 Zod response schema；实际浏览器 hook 只消费
+focused contract，不能到达 provider execution 大合同、Registry、Executor 或 Sandbox。

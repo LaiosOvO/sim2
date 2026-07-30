@@ -1,5 +1,6 @@
 import { createLogger } from '@sim/logger'
 import { isRecordLike } from '@sim/utils/object'
+import { isCustomBlockType } from '@/lib/custom-blocks/metadata'
 import { extractInputFieldsFromBlocks } from '@/lib/workflows/input-format'
 import {
   buildCanonicalIndex,
@@ -11,7 +12,7 @@ import {
   resolveCanonicalMode,
   type SubBlockCondition,
 } from '@/lib/workflows/subblocks/visibility'
-import { isCustomBlockType, RESERVED_PARAMS } from '@/blocks/custom/build-config'
+import { RESERVED_PARAMS } from '@/blocks/custom/build-config'
 import type {
   BlockConfig as AppBlockConfig,
   SubBlockConfig as BlockSubBlockConfig,

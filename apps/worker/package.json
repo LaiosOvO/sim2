@@ -21,8 +21,11 @@
     "format:check": "biome format ."
   },
   "dependencies": {
+    "@sim/db": "workspace:*",
     "@sim/execution-contracts": "workspace:*",
-    "@sim/logger": "workspace:*"
+    "@sim/logger": "workspace:*",
+    "@sim/utils": "workspace:*",
+    "drizzle-orm": "^0.45.2"
   },
   "devDependencies": {
     "@sim/tsconfig": "workspace:*",

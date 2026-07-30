@@ -1,8 +1,8 @@
 import { forwardRef, type HTMLAttributes } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { AlertTriangle } from 'lucide-react'
 import { Check, Loader, Square, X } from '../../icons'
 import { cn } from '../../lib/cn'
+import { AlertTriangle } from '../../lib/lucide-icons'
 
 const progressItemVariants = cva('flex items-start gap-2.5 px-3 py-3 text-[12px]', {
   variants: {

@@ -3,7 +3,10 @@
 # dependencies
 /node_modules
 /apps/**/node_modules
+/apps/sim/lib/execution/sandbox/bundles/.entries/
+/.scratch/sim2-platform-separation/evidence/w6-group-b-bundle/
 /packages/**/node_modules
+/extensions/**/node_modules
 /scripts/node_modules
 
 # bun specific

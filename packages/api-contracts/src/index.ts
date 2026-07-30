@@ -68,6 +68,26 @@ export {
 export type { ApiError, ApiErrorEnvelope } from './errors'
 export { apiErrorEnvelopeSchema, apiErrorSchema } from './errors'
 export type {
+  JobStatusResponseV1,
+  JobStatusV1,
+  ResumePollResponseV1,
+  WorkflowExecutionStatusQueryV1,
+  WorkflowExecutionStatusResponseV1,
+} from './execution-control'
+export {
+  executionControlRoutesV1,
+  jobStatusParamsV1Schema,
+  jobStatusResponseV1Schema,
+  jobStatusV1Schema,
+  resumePollFailureV1Schema,
+  resumePollResponseV1Schema,
+  workflowExecutionPausedDetailV1Schema,
+  workflowExecutionStatusParamsV1Schema,
+  workflowExecutionStatusQueryV1Schema,
+  workflowExecutionStatusResponseV1Schema,
+  workflowExecutionStatusV1Schema,
+} from './execution-control'
+export type {
   ExecutionReadRouteV1,
   PausedExecutionDetailV1,
   PausedExecutionListQueryV1,

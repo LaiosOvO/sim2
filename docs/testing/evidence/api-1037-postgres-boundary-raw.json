@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "API-1037",
+  "capturedAt": "2026-07-30T02:27:05.000Z",
+  "database": {
+    "engine": "PostgreSQL",
+    "majorVersion": 16,
+    "disposableFixture": true
+  },
+  "sourceBinding": [
+    {
+      "path": "apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-resource-catalog-reader.ts",
+      "bytes": 4434,
+      "sha256": "4ee601adcc0098130581d2e111c5f779170c902709ddf18e2b72145d24da2d17"
+    },
+    {
+      "path": "apps/api/tests/w2/native-tenant-read.postgres.test.ts",
+      "bytes": 51851,
+      "sha256": "b27de080f7587b9b7b206462d9c0a5ba18dd3c69aa8a053865e87ec397d2dbef"
+    }
+  ],
+  "tenantFixture": {
+    "sourceWorkspaceFile": "resource-file-cross-folder",
+    "referencedFolder": "resource-folder-cross-tenant",
+    "referencedFolderWorkspace": "lineage-other",
+    "expectedFolderId": "resource-folder-cross-tenant",
+    "expectedFolderName": null,
+    "passed": true
+  },
+  "queryCount": {
+    "definition": "postgres.js debug callback count for one WorkspaceForkResourceCatalogReader.readCopyable call",
+    "expectedSelectsPerRead": 8,
+    "scenarios": [
+      {
+        "eligibleFiles": 4,
+        "observedSelects": 8
+      },
+      {
+        "eligibleFiles": 1000,
+        "observedSelects": 8,
+        "returnedFiles": 1000
+      },
+      {
+        "eligibleFiles": 1001,
+        "observedSelects": 8,
+        "returnedFiles": 1000
+      }
+    ]
+  },
+  "result": "passed"
+}

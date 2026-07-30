@@ -31,6 +31,7 @@ import {
   X,
 } from 'lucide-react'
 import { createPortal } from 'react-dom'
+import { isCustomBlockType } from '@/lib/custom-blocks/metadata'
 import type { TraceSpan } from '@/lib/logs/types'
 import {
   adjustBgForContrast,
@@ -46,7 +47,6 @@ import {
   isIterationType,
   parseTime,
 } from '@/app/workspace/[workspaceId]/logs/components/log-details/utils'
-import { isCustomBlockType } from '@/blocks/custom/build-config'
 import { useCodeViewerFeatures } from '@/hooks/use-code-viewer'
 
 const DEFAULT_TREE_PANE_WIDTH = 240

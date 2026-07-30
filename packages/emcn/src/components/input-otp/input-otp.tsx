@@ -28,8 +28,8 @@
 
 import * as React from 'react'
 import { OTPInput, OTPInputContext } from 'input-otp'
-import { Minus } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { Minus } from '../../lib/lucide-icons'
 
 /**
  * Root OTP input component. Manages the overall input state and layout.

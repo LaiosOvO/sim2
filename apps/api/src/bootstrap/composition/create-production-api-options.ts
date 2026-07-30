@@ -7,12 +7,15 @@ import type { ApiApplicationOptions } from '@/bootstrap/application/create-api-a
 import { readDataDrainRuntimeConfig } from '@/config/data-drain-runtime'
 import { readForkingRuntimeConfig } from '@/config/forking-runtime'
 import type { PlatformAdminReader } from '@/infrastructure/appconfig/appconfig-fork-rollout-reader'
+import type { ApprovalsModule } from '@/modules/approvals'
+import type { CustomBlockModule } from '@/modules/custom-blocks'
 import type { DataDrainEntitlementReader, DataDrainRunReadRepository } from '@/modules/data-drains'
 import {
   createEnvironmentModule,
   type EnvironmentModule,
 } from '@/modules/environment/application/create-environment-module'
 import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
+import type { ExecutionControlModule } from '@/modules/execution/control'
 import type { ExecutionReadModule } from '@/modules/execution/read/application/create-execution-read-module'
 import type {
   InvitationReadRepository,
@@ -25,6 +28,7 @@ import type {
   OrganizationWorkspaceReadRepository,
 } from '@/modules/organizations'
 import type { UserPermissionGroupReadRepository } from '@/modules/permission-groups'
+import type { ProviderModelDiscoveryModule } from '@/modules/provider-model-discovery'
 import type { TenantReadModule } from '@/modules/tenant-read/application/create-tenant-read-module'
 import type { NativeTenantReadHandler } from '@/modules/tenant-read/application/ports'
 import type {
@@ -68,6 +72,47 @@ async function createExecutionAdmission(): Promise<ExecutionAdmissionModule | un
   })
 }
 
+async function createApprovals(
+  authentication: RequestAuthenticator | undefined
+): Promise<ApprovalsModule | undefined> {
+  const workerBaseUrl =
+    process.env.WORKER_ADMISSION_URL?.trim() ?? process.env.SIM_WORKER_URL?.trim()
+  const internalToken = process.env.INTERNAL_EXECUTION_TOKEN?.trim()
+  if (!authentication || !process.env.DATABASE_URL || !workerBaseUrl || !internalToken) {
+    return undefined
+  }
+  const [
+    { createApprovalsModule },
+    { createDrizzleApprovalAccess },
+    { createDrizzleApprovalRepository },
+    { createDrizzleApprovalAudit },
+    { createHttpWorkerApprovalResumeCommand },
+    { createHttpWorkerApprovalEffects },
+  ] = await Promise.all([
+    import('@/modules/approvals'),
+    import('@/modules/approvals/infrastructure/drizzle-approval-access'),
+    import('@/modules/approvals/infrastructure/drizzle-approval-repository'),
+    import('@/modules/approvals/infrastructure/drizzle-approval-audit'),
+    import('@/modules/approvals/infrastructure/http-worker-approval-resume-command'),
+    import('@/modules/approvals/infrastructure/http-worker-approval-effects'),
+  ])
+  const repository = createDrizzleApprovalRepository()
+  return createApprovalsModule({
+    authentication,
+    access: createDrizzleApprovalAccess(),
+    repository,
+    audit: createDrizzleApprovalAudit(repository),
+    resume: createHttpWorkerApprovalResumeCommand({
+      baseUrl: workerBaseUrl,
+      internalToken,
+    }),
+    effects: createHttpWorkerApprovalEffects({
+      baseUrl: workerBaseUrl,
+      internalToken,
+    }),
+  })
+}
+
 async function createExecutionRead(
   authentication: RequestAuthenticator | undefined
 ): Promise<ExecutionReadModule | undefined> {
@@ -104,6 +149,72 @@ async function createExecutionRead(
   })
 }
 
+async function createExecutionControl(
+  authentication: RequestAuthenticator | undefined
+): Promise<ExecutionControlModule | undefined> {
+  const workerBaseUrl =
+    process.env.WORKER_ADMISSION_URL?.trim() ?? process.env.SIM_WORKER_URL?.trim()
+  const internalToken = process.env.INTERNAL_EXECUTION_TOKEN?.trim()
+  if (!authentication || !process.env.DATABASE_URL || !workerBaseUrl || !internalToken) {
+    return undefined
+  }
+  const [
+    { createExecutionControlModule },
+    { createDrizzleJobStatusReader },
+    { createTriggerJobStatusReader },
+    { createDrizzleExecutionStatusReader },
+    { createObjectStoreExecutionPayloadMaterializer },
+    { createHttpExecutionObjectStore },
+    { createUnavailableExecutionObjectStore },
+    { createHttpWorkerResumePollCommand },
+    { createDrizzleWorkflowReadScopeReader },
+    { createPlatformWorkflowReadAuthorizer },
+  ] = await Promise.all([
+    import('@/modules/execution/control'),
+    import('@/modules/execution/control/infrastructure/drizzle-job-status-reader'),
+    import('@/modules/execution/control/infrastructure/trigger-job-status-reader'),
+    import('@/modules/execution/control/infrastructure/drizzle-execution-status-reader'),
+    import(
+      '@/modules/execution/control/infrastructure/object-store-execution-payload-materializer'
+    ),
+    import('@/modules/execution/control/infrastructure/http-execution-object-store'),
+    import('@/modules/execution/control/infrastructure/unavailable-execution-object-store'),
+    import('@/modules/execution/control/infrastructure/http-worker-resume-poll-command'),
+    import('@/infrastructure/postgres/repositories/drizzle-workflow-read-scope-reader'),
+    import('@/infrastructure/postgres/repositories/platform-workflow-read-authorizer'),
+  ])
+  return createExecutionControlModule({
+    authentication,
+    workflowAuthorizer: createPlatformWorkflowReadAuthorizer({
+      scopes: createDrizzleWorkflowReadScopeReader(),
+    }),
+    jobs:
+      ['1', 'true'].includes(process.env.TRIGGER_DEV_ENABLED?.toLowerCase() ?? '') &&
+      process.env.TRIGGER_SECRET_KEY
+        ? createTriggerJobStatusReader({
+            secretKey: process.env.TRIGGER_SECRET_KEY,
+            baseUrl: process.env.TRIGGER_API_URL,
+          })
+        : createDrizzleJobStatusReader(),
+    executions: createDrizzleExecutionStatusReader(),
+    payloads: createObjectStoreExecutionPayloadMaterializer(
+      process.env.EXECUTION_OBJECT_STORE_URL?.trim()
+        ? createHttpExecutionObjectStore({
+            baseUrl: process.env.EXECUTION_OBJECT_STORE_URL.trim(),
+            internalToken,
+          })
+        : createUnavailableExecutionObjectStore(
+            'Configure EXECUTION_OBJECT_STORE_URL before reading externalized execution payloads'
+          )
+    ),
+    resumePoll: createHttpWorkerResumePollCommand({
+      baseUrl: workerBaseUrl,
+      internalToken,
+    }),
+    cronSecret: process.env.CRON_SECRET?.trim(),
+  })
+}
+
 async function createAuthentication(
   secret: string | undefined,
   baseURL: string | undefined
@@ -120,6 +231,143 @@ async function createAuthentication(
     sessionAuth: createSessionAuth({ secret, baseURL }),
     internalSecret:
       process.env.INTERNAL_JWT_SECRET?.trim() || process.env.INTERNAL_API_SECRET?.trim(),
+  })
+}
+
+async function createProviderModelDiscovery(
+  authentication: RequestAuthenticator | undefined
+): Promise<ProviderModelDiscoveryModule> {
+  const [
+    { createDiscoverProviderModelsUseCase, createProviderModelDiscoveryModule },
+    { createHttpProviderModelSource },
+    { createGeneratedBaseProviderModelCatalog },
+  ] = await Promise.all([
+    import('@/modules/provider-model-discovery'),
+    import('@/infrastructure/http/http-provider-model-source'),
+    import('@/infrastructure/generated/generated-base-provider-model-catalog'),
+  ])
+
+  let credentials
+  const encryptionKey = process.env.ENCRYPTION_KEY?.trim()
+  if (process.env.DATABASE_URL && encryptionKey) {
+    const [{ createDrizzleProviderModelCredentialReader }, { createDrizzleAccessResolver }] =
+      await Promise.all([
+        import('@/infrastructure/postgres/repositories/drizzle-provider-model-credential-reader'),
+        import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
+      ])
+    credentials = createDrizzleProviderModelCredentialReader({
+      access: createDrizzleAccessResolver(),
+      encryptionKey,
+    })
+  }
+
+  const timeoutMs = Number.parseInt(process.env.PROVIDER_MODEL_HTTP_TIMEOUT_MS ?? '5000', 10)
+  const maxResponseBytes = Number.parseInt(
+    process.env.PROVIDER_MODEL_MAX_RESPONSE_BYTES ?? String(2 * 1024 * 1024),
+    10
+  )
+  const source = createHttpProviderModelSource({
+    litellmBaseUrl: process.env.LITELLM_BASE_URL,
+    maxResponseBytes,
+    ollamaBaseUrl: process.env.OLLAMA_URL,
+    timeoutMs,
+    vllmBaseUrl: process.env.VLLM_BASE_URL,
+  })
+  const discover = createDiscoverProviderModelsUseCase({
+    baseCatalog: createGeneratedBaseProviderModelCatalog(),
+    ...(credentials ? { credentials } : {}),
+    runtime: {
+      basetenApiKey: process.env.BASETEN_API_KEY,
+      blacklistedModels: process.env.BLACKLISTED_MODELS,
+      blacklistedProviders: process.env.BLACKLISTED_PROVIDERS,
+      fireworksApiKey: process.env.FIREWORKS_API_KEY,
+      litellmApiKey: process.env.LITELLM_API_KEY,
+      togetherApiKey: process.env.TOGETHER_API_KEY,
+      vllmApiKey: process.env.VLLM_API_KEY,
+    },
+    source,
+  })
+  return createProviderModelDiscoveryModule({
+    ...(authentication ? { authentication } : {}),
+    discover,
+  })
+}
+
+function truthy(value: string | undefined): boolean {
+  return ['1', 'true', 'yes', 'on'].includes(value?.trim().toLowerCase() ?? '')
+}
+
+function isHostedApplication(): boolean {
+  try {
+    const hostname = new URL(process.env.NEXT_PUBLIC_APP_URL ?? '').hostname
+    return hostname === 'sim.ai' || hostname.endsWith('.sim.ai')
+  } catch {
+    return false
+  }
+}
+
+async function createCustomBlocks(
+  authentication: RequestAuthenticator | undefined
+): Promise<CustomBlockModule | undefined> {
+  if (!authentication || !process.env.DATABASE_URL) return undefined
+  const [
+    { createCustomBlockModule },
+    { createDrizzleCustomBlockRepository },
+    { createDrizzleCustomBlockEntitlement },
+    { createDrizzleAccessResolver },
+    { createDrizzlePlatformAdminReader },
+    { createAuditCustomBlockSink },
+    { createAppConfigCustomBlockPolicy },
+    { createAwsAppConfigProfileReader },
+  ] = await Promise.all([
+    import('@/modules/custom-blocks'),
+    import('@/infrastructure/postgres/repositories/drizzle-custom-block-repository'),
+    import('@/infrastructure/postgres/repositories/drizzle-custom-block-entitlement'),
+    import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
+    import('@/infrastructure/postgres/repositories/drizzle-platform-admin-reader'),
+    import('@/modules/custom-blocks/infrastructure/audit-custom-block-sink'),
+    import('@/infrastructure/appconfig/appconfig-custom-block-policy'),
+    import('@sim/infra-appconfig'),
+  ])
+  const hosted = isHostedApplication()
+  const application = process.env.APPCONFIG_APPLICATION?.trim()
+  const environment = process.env.APPCONFIG_ENVIRONMENT?.trim()
+  const explicitAwsCredentials =
+    process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY
+      ? {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        }
+      : undefined
+  const profiles = createAwsAppConfigProfileReader({
+    ...(process.env.AWS_REGION ? { region: process.env.AWS_REGION } : {}),
+    ...(explicitAwsCredentials ? { credentials: explicitAwsCredentials } : {}),
+    logger: createLogger('CustomBlockAppConfig'),
+  })
+  const platformAdmins = createDrizzlePlatformAdminReader()
+  const policy = createAppConfigCustomBlockPolicy({
+    profiles,
+    ...(hosted && application && environment ? { identifiers: { application, environment } } : {}),
+    deployAsBlockFallback: truthy(process.env.DEPLOY_AS_BLOCK),
+    previewBlocksFallback: (process.env.PREVIEW_BLOCKS ?? '')
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean),
+    platformAdmins,
+  })
+  return createCustomBlockModule({
+    authentication,
+    access: createDrizzleAccessResolver(),
+    repository: createDrizzleCustomBlockRepository(),
+    feature: policy.feature,
+    visibility: policy.visibility,
+    entitlement: createDrizzleCustomBlockEntitlement({
+      billingEnabled: truthy(process.env.BILLING_ENABLED),
+      accessControlEnabled: truthy(process.env.ACCESS_CONTROL_ENABLED),
+      hosted,
+    }),
+    platformAdmins,
+    audit: createAuditCustomBlockSink(),
   })
 }
 
@@ -539,13 +787,21 @@ async function createTenantRead(
 function unconfiguredOptions(
   executionAdmission?: ExecutionAdmissionModule,
   tenantRead?: TenantReadModule,
-  executionRead?: ExecutionReadModule
+  executionRead?: ExecutionReadModule,
+  executionControl?: ExecutionControlModule,
+  providerModelDiscovery?: ProviderModelDiscoveryModule,
+  customBlocks?: CustomBlockModule,
+  approvals?: ApprovalsModule
 ): ApiApplicationOptions {
   return {
     serviceName: 'sim-api',
     environment: unavailableEnvironmentModule(),
+    customBlocks,
+    approvals,
     executionAdmission,
+    executionControl,
     executionRead,
+    providerModelDiscovery,
     tenantRead,
     readinessChecks: {
       configuration: async () => false,
@@ -569,8 +825,20 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
       : undefined
   const tenantRead = await createTenantRead(authentication)
   const executionRead = await createExecutionRead(authentication)
+  const executionControl = await createExecutionControl(authentication)
+  const providerModelDiscovery = await createProviderModelDiscovery(authentication)
+  const customBlocks = await createCustomBlocks(authentication)
+  const approvals = await createApprovals(authentication)
   if (!environmentConfigured) {
-    return unconfiguredOptions(executionAdmission, tenantRead, executionRead)
+    return unconfiguredOptions(
+      executionAdmission,
+      tenantRead,
+      executionRead,
+      executionControl,
+      providerModelDiscovery,
+      customBlocks,
+      approvals
+    )
   }
   if (!authentication) throw new Error('Authentication composition is unavailable')
 
@@ -603,9 +871,13 @@ export async function createProductionApiOptions(): Promise<ApiApplicationOption
 
   return {
     serviceName: 'sim-api',
+    approvals,
     environment,
+    customBlocks,
     executionAdmission,
+    executionControl,
     executionRead,
+    providerModelDiscovery,
     tenantRead,
     readinessChecks: {
       configuration: async () => true,

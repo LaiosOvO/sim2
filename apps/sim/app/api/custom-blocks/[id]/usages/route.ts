@@ -1,26 +1,16 @@
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
-import { getCustomBlockUsageCountsContract } from '@/lib/api/contracts/custom-blocks'
-import { parseRequest } from '@/lib/api/server'
-import { getSession } from '@/lib/auth'
-import { withRouteHandler } from '@/lib/core/utils/with-route-handler'
-import { getCustomBlockUsageCounts } from '@/lib/workflows/custom-blocks/operations'
-import { authorizeManage } from '@/app/api/custom-blocks/[id]/authorize-manage'
+import { proxyW5CustomBlockRequest } from '@/lib/api-proxy/w5-custom-blocks'
 
-type RouteContext = { params: Promise<{ id: string }> }
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 
-export const GET = withRouteHandler(async (request: NextRequest, context: RouteContext) => {
-  const session = await getSession()
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+export async function GET(request: Request) {
+  return proxyW5CustomBlockRequest(request, 'API-0095')
+}
 
-  const parsed = await parseRequest(getCustomBlockUsageCountsContract, request, context)
-  if (!parsed.success) return parsed.response
+export async function HEAD(request: Request) {
+  return proxyW5CustomBlockRequest(request, 'API-0095')
+}
 
-  const authz = await authorizeManage(session.user.id, parsed.data.params.id)
-  if (authz.error) return authz.error
-
-  const counts = await getCustomBlockUsageCounts(authz.ctx.organizationId, authz.ctx.type)
-  return NextResponse.json(counts)
-})
+export async function OPTIONS(request: Request) {
+  return proxyW5CustomBlockRequest(request, 'API-0095')
+}

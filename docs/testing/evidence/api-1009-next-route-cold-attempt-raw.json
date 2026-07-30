@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "API-1009",
+  "capturedAt": "2026-07-30T01:34:33Z",
+  "runner": {
+    "nextVersion": "16.2.11",
+    "bundler": "Turbopack",
+    "bunVersion": "1.3.11",
+    "platform": "win32",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz",
+    "logicalCpuCount": 8,
+    "totalMemoryBytes": 34272227328
+  },
+  "scenario": {
+    "entrypoint": "/workspace/[workspaceId]/settings/[section]",
+    "requestPath": "/workspace/api1009-perf/settings/forks",
+    "sourceChain": [
+      "apps/sim/app/workspace/[workspaceId]/settings/[section]/settings.tsx",
+      "apps/sim/ee/workspace-forking/components/forks.tsx",
+      "apps/sim/ee/workspace-forking/components/fork-activity-panel/fork-activity-panel.tsx",
+      "apps/sim/ee/workspace-forking/hooks/background-work.ts",
+      "apps/sim/lib/api/contracts/workspace-background-work.ts",
+      "packages/api-contracts/src/workspace-background-work.ts"
+    ],
+    "serverCommand": "DISABLE_AUTH=true DATABASE_URL=postgresql://sim:sim@127.0.0.1:1/sim_api1009_perf NEXT_TELEMETRY_DISABLED=1 bunx next dev --port 3049",
+    "requestCommand": "curl.exe -sS -o NUL -D - --max-time 300 -w \"elapsed=%{time_total}s status=%{http_code} bytes=%{size_download}\" http://127.0.0.1:3049/workspace/api1009-perf/settings/forks"
+  },
+  "sourceBinding": [
+    {
+      "path": "apps/sim/ee/workspace-forking/hooks/background-work.ts",
+      "bytes": 2543,
+      "sha256": "c2dca5ab8eb286bf19d02312dbb07a7dbee5f1a12d578474bee0001974201c5a"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/workspace-background-work.ts",
+      "bytes": 735,
+      "sha256": "8092d050ef0df65d3994d995aecbc8fd30bb03b5909c505c0cf0aa7657ae0537"
+    },
+    {
+      "path": "packages/api-contracts/src/workspace-background-work.ts",
+      "bytes": 3873,
+      "sha256": "daccbf18dba7786cbc1a20198f480a036e2865c5ece6d1813f75a8a367d60af9"
+    }
+  ],
+  "rawResult": {
+    "requestElapsedMs": 92907.36,
+    "httpStatus": 500,
+    "responseBytes": 6134,
+    "nextLog": "GET /workspace/api1009-perf/settings/forks 500 in 90s (next.js: 89s, proxy.ts: 312ms, application-code: 157ms)",
+    "traceSessionStart": {
+      "name": "start-dev-server",
+      "durationTraceUnits": 6170216,
+      "durationMs": 6170.2,
+      "timestamp": 192359294079
+    },
+    "traceCompile": {
+      "name": "compile-path",
+      "trigger": "/workspace/[workspaceId]/settings/[section]",
+      "durationTraceUnits": 84067228,
+      "durationMs": 84067.2,
+      "timestamp": 192366495597
+    },
+    "traceRequest": {
+      "name": "handle-request",
+      "durationTraceUnits": 89487463,
+      "durationMs": 89487.5,
+      "timestamp": 192366489459
+    },
+    "traceMemory": {
+      "url": "/workspace/api1009-perf/settings/forks",
+      "rssBytes": 9109176320,
+      "heapUsedBytes": 125887184,
+      "heapTotalBytes": 151662592
+    }
+  },
+  "completion": {
+    "coldCompileCaptured": true,
+    "successfulPageOpen": false,
+    "incrementalNextCompileCaptured": false,
+    "keyInteractionCaptured": false,
+    "blocker": "The route's shared server layout reached apps/sim/lib/execution/remote-sandbox/daytona.ts through auth and workflow lifecycle, then failed because the local @daytona/sdk installation contains no esm/cjs payload. The failed cold route does not provide a defensible Next incremental or browser-interaction sample.",
+    "claimLimit": "This evidence proves the current whole-page cold path remains heavy and blocked. It must not be presented as a successful page-open or as proof that the Next route meets the 10-second target."
+  }
+}

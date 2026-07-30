@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "API-1037",
+  "capturedAt": "2026-07-30T02:59:25.024Z",
+  "runner": {
+    "kind": "focused-vite-watch",
+    "viteVersion": "8.0.16",
+    "bunVersion": "1.3.11",
+    "platform": "win32",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz",
+    "logicalCpuCount": 8,
+    "totalMemoryBytes": 34272227328
+  },
+  "entrypoint": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.tsx",
+  "measurementTool": {
+    "path": "scripts/architecture/performance/api-1037-frontend-compile-ratchet.ts",
+    "bytes": 12099,
+    "sha256": "bd1cf62c77ce5b7cacddfa9f649ae7e1eb32c1994c85c7d3902cee8316725f62"
+  },
+  "configuration": {
+    "coldDefinition": "first Vite watch bundle of the real fork modal in a fresh process with no in-process transform cache",
+    "incrementalDefinition": "next watch bundle after appending a valid TSDoc probe to the real fork modal source",
+    "externalPackages": ["react", "react-dom", "next/navigation"]
+  },
+  "measurementQuality": {
+    "stableMachineBaseline": false,
+    "use": "source-bound local sample plus a fixed non-regression ceiling",
+    "limitation": "The focused Vite measurement isolates source compilation; the authenticated Next page journey remains a separate frontend milestone."
+  },
+  "sourceClosure": [
+    {
+      "path": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.tsx",
+      "bytes": 11483,
+      "sha256": "8957497c47a896a6e51c24c12a71b0025bd959436b73ecc7788123bdf1eb9d67"
+    },
+    {
+      "path": "apps/sim/ee/workspace-forking/components/fork-resource-picker/fork-resource-picker.tsx",
+      "bytes": 6648,
+      "sha256": "ae2d3c4718fadb5607bd0ead31e866c903acfb9dcd6cd1f9a703c0e3e72fbde2"
+    },
+    {
+      "path": "apps/sim/ee/workspace-forking/components/fork-file-tree/fork-file-tree.tsx",
+      "bytes": 6076,
+      "sha256": "88240d01aa87c2630f05f1d56526a9c82ba49695e4d2a2f15607c3d725c5d034"
+    },
+    {
+      "path": "apps/sim/ee/workspace-forking/hooks/use-fork-resources.ts",
+      "bytes": 677,
+      "sha256": "74ed6d8af603eb24c86350027993128e14fc7b89b8972e4898c9a2699174ffa7"
+    },
+    {
+      "path": "apps/sim/ee/workspace-forking/hooks/use-fork-workspace.ts",
+      "bytes": 1653,
+      "sha256": "82fcfada26456838cebc43be0d61636e588dcc62270df7869b3e51372fa9e5e9"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/workspace-fork-resources.ts",
+      "bytes": 1117,
+      "sha256": "63638c84e4f5e1185b5cd890deaa22b7523c0717c1bab04b86c26bbfd97ff2a4"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/workspace-fork-create.ts",
+      "bytes": 1298,
+      "sha256": "fe45232afa34dcb8c9e2a91dfa0d0a621ba1c6384819e15f057d3df09fd34c75"
+    },
+    {
+      "path": "packages/api-contracts/src/workspace-forking.ts",
+      "bytes": 2469,
+      "sha256": "775b7901a67742b2140f80cc780923efe40662c80934ac98ed2886b5e6a3f853"
+    },
+    {
+      "path": "packages/emcn/src/workspace-fork.ts",
+      "bytes": 702,
+      "sha256": "9a91578f687499eb316c8ece2e55c1c7432c49bcf54f01b80131c52bf4bfea60"
+    },
+    {
+      "path": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.interaction.test.tsx",
+      "bytes": 7015,
+      "sha256": "304ea4afecc9b59c219ee11a20bb6c1678f66fe5d72e01d474156ca7c8d06434"
+    }
+  ],
+  "interactionJourney": {
+    "testPath": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.interaction.test.tsx",
+    "command": "bunx vitest run ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.interaction.test.tsx",
+    "assertions": [
+      "modal hydrates the focused resource response and defaults all returned resources selected",
+      "a user deselection reaches the exact create-fork copy payload",
+      "Fork remains disabled until the focused resource query resolves",
+      "successful submission closes the modal and exposes the Open fork action"
+    ]
+  },
+  "invalidation": {
+    "editedPath": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.tsx",
+    "operation": "append-probe-comment-then-restore",
+    "originalSha256": "8957497c47a896a6e51c24c12a71b0025bd959436b73ecc7788123bdf1eb9d67",
+    "editedSha256": "a8d9265f53488da9308d670786f52cc7b1cdbe0dde2d0a13a466d0b59290dab7",
+    "restoredSha256": "8957497c47a896a6e51c24c12a71b0025bd959436b73ecc7788123bdf1eb9d67"
+  },
+  "samples": {
+    "cold": {
+      "durationMs": 1094,
+      "sourceSha256": "8957497c47a896a6e51c24c12a71b0025bd959436b73ecc7788123bdf1eb9d67"
+    },
+    "incremental": {
+      "durationMs": 354,
+      "sourceSha256": "a8d9265f53488da9308d670786f52cc7b1cdbe0dde2d0a13a466d0b59290dab7"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "app/workspace/[workspaceId]/providers/provider-models-loader.tsx",
+    "hooks/queries/providers.ts",
+    "lib/api/contracts/provider-model-discovery.ts",
+    "lib/api-proxy/provider-model-discovery.ts",
+    "stores/modals/search/open-state.ts",
+    "stores/providers/index.ts",
+    "stores/providers/store.ts",
+    "stores/providers/types.ts",
+    "app/api/providers/base/models/route.ts",
+    "app/api/providers/baseten/models/route.ts",
+    "app/api/providers/fireworks/models/route.ts",
+    "app/api/providers/litellm/models/route.ts",
+    "app/api/providers/ollama-cloud/models/route.ts",
+    "app/api/providers/ollama/models/route.ts",
+    "app/api/providers/openrouter/models/route.ts",
+    "app/api/providers/together/models/route.ts",
+    "app/api/providers/vllm/models/route.ts"
+  ],
+  "exclude": ["node_modules", ".next", "dist"]
+}

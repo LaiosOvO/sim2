@@ -5,9 +5,15 @@ import {
   sandboxExecutionCommandV1Schema,
   sandboxExecutionFailureV1Schema,
 } from '@sim/execution-contracts/job-control'
+import {
+  resumeExecutionCommandV1Schema,
+  resumeExecutionResultV1Schema,
+} from '@sim/execution-contracts/resume-poll'
+import type { ResumeExecutionRunner } from '@/jobs/resume/resume-execution-runner'
 import { type SandboxExecution, SandboxExecutionFailure } from '@/sandbox/interface/types'
 
 const maximumBodyBytes = 1024 * 1024
+const maximumResumeBodyBytes = 40 * 1024 * 1024
 
 function authorized(request: IncomingMessage, expectedToken: string | undefined): boolean {
   if (!expectedToken) return false
@@ -18,13 +24,16 @@ function authorized(request: IncomingMessage, expectedToken: string | undefined)
   return actual.byteLength === expected.byteLength && timingSafeEqual(actual, expected)
 }
 
-async function readJson(request: IncomingMessage): Promise<unknown> {
+async function readJson(
+  request: IncomingMessage,
+  maximumBytes = maximumBodyBytes
+): Promise<unknown> {
   const chunks: Buffer[] = []
   let size = 0
   for await (const chunk of request) {
     const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)
     size += buffer.byteLength
-    if (size > maximumBodyBytes) throw new Error('request_body_too_large')
+    if (size > maximumBytes) throw new Error('request_body_too_large')
     chunks.push(buffer)
   }
   return JSON.parse(Buffer.concat(chunks).toString('utf8'))
@@ -38,6 +47,7 @@ function json(response: ServerResponse, status: number, body: unknown): void {
 
 export interface SandboxHttpServerOptions {
   sandbox: SandboxExecution
+  resumeExecution?: ResumeExecutionRunner
   internalToken?: string
 }
 
@@ -59,6 +69,24 @@ export function createSandboxHttpServer(options: SandboxHttpServerOptions): Serv
       }
       if (!authorized(request, options.internalToken)) {
         json(response, 401, { error: 'Unauthorized' })
+        return
+      }
+      if (request.method === 'POST' && url.pathname === '/internal/resume/execute') {
+        const command = resumeExecutionCommandV1Schema.safeParse(
+          await readJson(request, maximumResumeBodyBytes)
+        )
+        if (!command.success) {
+          json(response, 400, { error: 'RESUME_EXECUTION_COMMAND_INVALID' })
+          return
+        }
+        if (!options.resumeExecution) {
+          json(response, 503, { error: 'Resume execution engine is unavailable' })
+          return
+        }
+        const result = resumeExecutionResultV1Schema.parse(
+          await options.resumeExecution.execute(command.data)
+        )
+        json(response, result.ok || !result.retryable ? 200 : 503, result)
         return
       }
       if (request.method !== 'POST' || url.pathname !== '/internal/sandbox/execute') {

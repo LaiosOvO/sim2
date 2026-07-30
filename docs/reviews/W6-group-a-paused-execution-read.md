@@ -1,315 +1,287 @@
-# W6 Group A paused-execution read 独立审查
+# W6 Group A paused-execution read final independent review
 
-Result: **changes-required**
+Result: **approved**
 
-范围：
+Approval scope: **functional route approval only**
 
-- API-0282 `GET /api/resume/[workflowId]/[executionId]`
-- API-0996 `GET /api/workflows/[id]/paused/[executionId]`
-- API-0997 `GET /api/workflows/[id]/paused`
+Routes:
 
-实现 agent：`/root/api1037_donor_audit`  
-独立 reviewer：`/root/api1037_donor_audit/w6_group_a_independent_review`  
-审查日期：2026-07-30
+- API-0282 `GET /api/resume/[workflowId]/[executionId]`;
+- API-0996 `GET /api/workflows/[id]/paused/[executionId]`;
+- API-0997 `GET /api/workflows/[id]/paused`.
 
-reviewer 没有实现本组代码。本报告按
-`docs/testing/migration-independent-review-policy.md` 审查了 Sim2、Polaris donor、target
-contracts/deep Module/adapters/tests，以及 production API 与实际 resume 页面闭包。
+Implementation agent: `/root/api1037_donor_audit`
 
-三条路由不得进入 accepted ledger。当前不是“已完成、只差登记”：production API 不能命中
-这些 handler，现有 resume 页面仍直接 import `PauseResumeManager`，真实 PostgreSQL fixture
-也会失败。
+Earlier remediation/review agent:
+`/root/api1037_donor_audit/w6_group_a_independent_review`
 
-## 必须修改的问题
+Final independent reviewer: `/root/api1009_independent_rereview`
 
-### 1. native slice 没有挂入 production API，构建产物中不存在三条路由
+Review date: 2026-07-30
 
-Priority: critical
+The final reviewer did not implement W6 Group A and did not modify the accepted-route ledger or
+Git index. This decision follows `docs/testing/migration-independent-review-policy.md`.
 
-`apps/api/src/bootstrap/application/create-api-application.ts:17-24` 没有 execution-read
-module option，`createApiApplication()` 的 handler chain（同文件 `43-49`）也没有该模块。
-`apps/api/src/bootstrap/composition/create-production-api-options.ts` 没有创建：
+API-0282, API-0996, and API-0997 are eligible to enter the accepted API-route ledger. This approval
+does **not** approve the overall frontend-performance milestone. The recorded Next cold journey is
+still above 10 seconds, and a successful final-source whole-page incremental/key-interaction
+measurement remains outstanding.
 
-- `createDrizzlePausedExecutionReader()`；
-- `createPlatformWorkflowReadAuthorizer()`；
-- 两个 use case/handler；
-- 三条 route 的 method/path/auth manifest。
+## Final decision
 
-独立执行 `bun --cwd apps/api build` 虽然成功，但在 `apps/api/dist/**/*.js` 搜索
-`PausedExecutionDetailAPI`、`createDrizzlePausedExecutionReader` 和 `/api/resume/` 均无
-结果。这个 build 没有编译 W6 slice，不能作为本组 production build 证据。
+Every functional blocker from the previous reviews is closed:
 
-必须新增一个拥有 exact route selection、GET method gate、authentication policy 和
-observation headers 的 execution-read transport module，并在 configured/unconfigured
-composition 中明确接线。还必须加 production application test，证明三个 exact path
-返回 native 响应，错误 method 不会落进 handler，其他 path 仍走 404/后续 module。
+1. the execution-read module and its PostgreSQL adapters are installed in production composition
+   and present in the API build;
+2. resume queue reads require both the requested parent execution and the authorized paused-row ID;
+3. the real Resume page and query hook use focused contracts and no longer reach
+   `PauseResumeManager`, Executor, or the monolithic workflow contract;
+4. the disposable PostgreSQL fixture is valid and covers cross-workflow queue isolation plus
+   archived-workflow precedence;
+5. workflow/API-key/personal/internal actor and malformed-parameter precedence is frozen;
+6. persisted dynamic JSON is explicitly projected through strict public DTOs;
+7. GET, HEAD, OPTIONS, unsupported-method, and unrelated-path behavior matches the donor;
+8. final-source cold/incremental evidence, fixed budgets, package scripts, CI enforcement, bundle
+   budgets, and browser-closure checks all pass.
 
-### 2. resume queue 查询没有绑定已授权的 paused row，可跨 workflow 混入敏感数据
+No new route behavior, tenant-isolation, secret-projection, production-composition, method-parity,
+or final-consumer dependency defect was found.
 
-Priority: critical
+## Donor compatibility
 
-`apps/api/src/infrastructure/postgres/repositories/drizzle-paused-execution-reader.ts:39-55`
-在已经找到 `workflowId + executionId` 的 paused row 后，只按：
+The review reused the direct donor comparison against:
 
-```ts
-eq(resumeQueue.parentExecutionId, executionId)
-```
+- `D:\workspace\workflow\sim2`;
+- `D:\polaris`.
 
-读取 queue。`resume_queue.paused_execution_id` 才是指向 `paused_executions.id` 的外键；
-`parent_execution_id` 没有外键约束。一个属于其他 workflow 的 queue row 只要错误地或被
-恶意地写入相同 `parentExecutionId`，其 `resumeInput`、failure reason、new execution ID
-就会进入当前已授权 workflow 的 detail 响应。
+The three donor routes and workflow middleware remain equivalent between Sim2 and Polaris.
 
-Sim2/Polaris donor 也只有 `parentExecutionId` 条件，但独立审查门禁要求修掉继承的数据
-隔离缺陷，不能以 donor 同样存在为由保留。查询至少应同时约束：
-
-```text
-resume_queue.parent_execution_id = executionId
-AND resume_queue.paused_execution_id = authorizedPausedRow.id
-```
-
-真实 PostgreSQL fixture 必须增加反例：为 workflow-2 的 paused row 插入
-`parentExecutionId = workflow-1 executionId` 的 queue row，并证明 workflow-1 detail
-绝不返回该 row。
-
-### 3. 项目的主要前端性能目标尚未落地，resume 页面仍直接编译完整 Executor 链
-
-Priority: critical
-
-target 的实际页面
-`apps/sim/app/(interfaces)/resume/[workflowId]/[executionId]/page.tsx:2` 仍直接 import：
-
-```ts
-@/lib/workflows/executor/human-in-the-loop-manager
-```
-
-并在同文件 `34-37` 直接调用 `PauseResumeManager.getPausedExecutionDetail()`。因此打开
-resume 页面时，Next server-page compile 仍会解析包含 Executor、execution payload、
-billing、provider/streaming 等依赖的 2,000+ 行 manager；新 deep Module 并没有替换实际
-页面读路径。
-
-`apps/sim/hooks/queries/resume-execution.ts:4-8` 也仍使用旧的超大 workflow contract 与
-`@/executor/types`，并在 `22-78` 重复维护含多个 `any` 的 ad-hoc wire types。没有任何
-browser consumer import `@sim/api-contracts/execution-read`。
-
-同时，`packages/api-contracts/package.json:7-67` 没有 `./execution-read` subpath export。
-当前只能经 contracts 根 barrel 取类型/schema，无法建立交接文档声称的 focused browser
-entry。
-
-必须：
-
-1. 增加 `@sim/api-contracts/execution-read` subpath；
-2. 让 resume detail hook/facade 直接使用该 subpath 的命名类型和 schema；
-3. 让页面通过已鉴权的 API/BFF read seam 获取 initial data，移除页面对
-   `PauseResumeManager`/Executor 的 import；
-4. 为 resume page/hook 增加永久零预算的 dependency-closure gate；
-5. 在 `docs/testing/evidence/` 保存 cold compile、incremental compile、page-open 和关键
-   interaction 测量，并设置不可自动抬高的回归 ratchet。
-
-当前全局 browser closure gate 虽然通过，但 baseline 仍允许 271 个 client roots 触达
-Executor，且 lightweight surface baseline 根本没有 resume surface；这不是本组验收
-证据。
-
-### 4. 真实 PostgreSQL fixture 当前会在插入阶段失败
-
-Priority: high
-
-独立 reviewer 在临时 `postgres:16-alpine` 容器中设置：
-
-```text
-SIM_REQUIRE_POSTGRES_TEST=1
-SIM_TEST_DATABASE_DISPOSABLE=1
-DATABASE_URL=<disposable PostgreSQL 16>
-```
-
-并执行：
-
-```text
-bun --cwd apps/api test tests/w6/native-execution-read.postgres.test.ts
-```
-
-结果为 `1 failed`。失败发生在
-`apps/api/tests/w6/native-execution-read.postgres.test.ts:54`：TypeScript template
-literal 中的 `\"` 在发送 SQL 前已经变成 `"`，最终 JSONB 文本为：
-
-```text
-{"snapshot":"{"serverOnly":"authorized-detail-state"}","triggerIds":["trigger-1"]}
-```
-
-PostgreSQL 返回 `22P02 invalid input syntax for type json`。因此交接文档所列 queue
-ordering、status filter、tenant isolation、narrow snapshot 等真实 I/O 断言一项都没有
-运行。
-
-应改用参数化 insert（首选）或正确构造 JSON 值，禁止继续用多层手写 SQL/JSON escaping。
-修复后除现有断言外，还要加入第 2 项的 cross-workflow queue 反例。临时审查容器已清理。
-
-### 5. workspace API key 的错误优先级与 donor 不一致，兼容矩阵没有记录
-
-Priority: medium
-
-donor `validateWorkflowAccess()` 的顺序是：
-
-1. 查 workflow；
-2. hybrid authentication；
-3. 若 workspace key 的 `workspaceId` 不匹配，返回
-   `API key is not authorized for this workspace`；
-4. 再调用 canonical workflow permission。
-
-target
-`apps/api/src/infrastructure/postgres/repositories/platform-workflow-read-authorizer.ts:20-31`
-先返回 canonical denial，只有 canonical allowed 后才在 `42-48` 检查 workspace-key
-mismatch。若 key 跨 workspace 且 key 的 user 同时没有目标 workflow 权限，target 会返回
-canonical access-denied message，而 donor 返回 workspace-key mismatch message。
-
-现有 test 只覆盖 “canonical allowed + workspace mismatch”，没有覆盖上述分支。应在
-canonical result 带有 workflow/workspace 时先执行 credential workspace scope 检查，
-或把这一差异作为版本化行为变更明确批准，并冻结精确错误 body。
-
-另一个未覆盖差异是 personal/unattached workflow：donor 先读取 workflow，明确返回 403
-deprecation message；canonical `getActiveWorkflowContext()` 使用 workspace inner join，
-可能把该记录折叠为 404。必须增加真实 auth/repository fixture，决定并冻结 403/404 行为，
-不能保留当前不可达的 `if (!workspaceId)` 分支作为证据。
-
-### 6. strict contract 与 projection 之间仍有可用性缺口
-
-Priority: medium
-
-contract 将 resume links、loop/parallel scopes 与 snapshot 外层设为 `.strict()` 是合理的
-敏感字段防线；summary/queue 也基本按字段构造。但
-`paused-execution-projection.ts:57-63` 的 `normalizeResumeLinks()` 仍先 spread 持久化对象，
-再交给 strict schema。旧数据若多一个字段会导致整个 detail 500，而不是安全地只投影五个
-公开字段。这与交接文档“projection 逐字段构建 DTO”的说法不一致。
-
-`executionSnapshot` 也在 `189-193` 原样交给 strict schema。应显式构造
-`{ snapshot, triggerIds }`，并对历史/畸形 row 采用已决定的兼容策略。需要 fixture 覆盖：
-
-- resumeLinks/scope/snapshot 外层含额外持久化字段时不泄漏；
-- 合法动态 JSON（primitive、array、object、null）仍保持 wire value；
-- 非 JSON 数据或历史缺字段时的错误策略；
-- 超大 snapshot 的响应预算与后续 lazy V2 策略。
-
-## Donor 核对结果
-
-reviewer 直接读取了只读参考仓库：
-
-- `D:\workspace\workflow\sim2`
-- `D:\polaris`
-
-两套 donor 的三条 route 和 `apps/sim/app/api/workflows/middleware.ts` 一致；Polaris 的
-`PauseResumeManager` 对本组三个 read 行为也与 Sim2 相同。
-
-| 行为 | donor | target slice | 审查 |
+| Concern | Donor behavior | Target behavior | Decision |
 | --- | --- | --- | --- |
-| detail key | `workflowId + executionId` | 相同 | match |
-| queue order | `parentExecutionId`, `queuedAt ASC` | 相同 | 行为 match，但 tenant filter 必须加固 |
-| list key/order | `workflowId`, `pausedAt DESC`, 无 limit | 相同 | match |
-| status query | 任意 string；逗号 split + trim；空串不筛选 | 相同 | match |
-| time-only | detail 404/list 隐藏 | 相同 | match |
-| pause summary | human point 数量，按 point 重算 resumed | 相同 | match |
-| block ID | 删除所有 `_loop\d+` | 相同 | match |
-| resume UI URL | 去掉 query | 相同 | match |
-| queue position | pending 全局顺序、每 context 首个 | 相同 | match |
-| latest queue | 每 context 最新 `queuedAt`，相等时后者胜 | 相同 | match |
-| list snapshot | donor 读整行 | target 只读 `execution_snapshot -> 'triggerIds'` | 正确优化 |
-| detail snapshot | 完整 serialized snapshot | 相同 | 高敏授权数据，需 payload evidence |
-| API-0282 unexpected 500 | 泄漏 caught `error.message` | safe 500 + requestId | 可接受的安全升级 |
-| API-0996/0997 unexpected 500 | wrapper safe 500 + requestId | safe 500 + requestId | match |
-| unauth/validation precedence | donor params → workflow lookup → auth | target auth → params → workflow auth | 已记录的安全升级，需 production test 冻结 |
+| API-0282 path | exact resume detail path | exact native route | match |
+| API-0996 path | exact paused detail path | exact native route | match |
+| API-0997 path | exact paused list path | exact native route | match |
+| GET | invokes route behavior | invokes native handler | match |
+| HEAD | automatic GET semantics, body omitted | GET auth/handler semantics, body omitted | match |
+| OPTIONS | 204, `Allow: GET, HEAD, OPTIONS` | same | match |
+| unsupported method | 405 without `Allow` | same | match |
+| unrelated path | route does not match | module falls through | match |
+| authentication | hybrid session/API-key/internal | same policy | match |
+| service actor | authenticated but rejected at user-only seam | same | match |
+| malformed params | authenticated request reaches 400 validation | same | match |
+| workflow visibility | missing/archived returns 404 before scope disclosure | same | match |
+| personal workflow | active unattached workflow returns frozen 403 | same | match |
+| workspace-key mismatch | frozen 403 before canonical permission denial | same | match |
+| detail lookup | workflow + execution | same | match |
+| queue isolation | inherited donor used parent execution only | parent execution + authorized paused-row ID | approved hardening |
+| list order | `pausedAt DESC`, no artificial limit | same | match |
+| status query | comma split/trim; empty means no filter | same | match |
+| time-only pause | detail 404/list hidden | same | match |
+| pause summary | point count and resumed count recalculated | same | match |
+| loop block ID | removes all `_loop\d+` suffixes | same | match |
+| resume UI URL | query removed | same | match |
+| unexpected error | donor detail could expose message | safe 500 + request ID | approved hardening |
 
-target contract 没有直接声明 persistence-only fields，list SQL 也只选择必要列；这部分方向
-正确。detail 的 `snapshot`、queue `resumeInput`、pause response 和 metadata 仍可能承载
-workflow input、variables、block output、credential ID 或用户敏感数据，不能描述为“无
-敏感数据”。它们的安全性完全依赖 workflow auth、workspace scope 和 queue tenant
-isolation。
+The observation headers `x-sim-api-module`, `x-sim-api-inventory-id`, and
+`x-sim-api-backend=native` are an approved operational addition.
 
-## 已通过的证据
+## Authorization and PostgreSQL isolation
+
+Production composition creates:
+
+- `createExecutionReadModule`;
+- `createDrizzlePausedExecutionReader`;
+- `createDrizzleWorkflowReadScopeReader`;
+- `createPlatformWorkflowReadAuthorizer`;
+- detail/list use cases and handlers.
+
+The application module owns exact route selection and the shared identity policy behind one small
+`handle()` interface. Detail and list behavior remain behind two deep handlers. PostgreSQL and
+in-memory adapters exercise the same application seam.
+
+The final reviewer reran the integration suite against a dedicated disposable
+`postgres:16-alpine` database with `SIM_TEST_DATABASE_DISPOSABLE=1` and
+`SIM_REQUIRE_POSTGRES_TEST=1`. The container was removed after the test.
+
+The passing fixture proves:
+
+- active workflow scope resolves normally;
+- archived workspace and archived personal workflows return 404 before credential-scope or
+  personal-workflow disclosure;
+- detail queue rows require both
+  `resume_queue.parent_execution_id = executionId` and
+  `resume_queue.paused_execution_id = authorizedPausedRow.id`;
+- a malicious row owned by another workflow but reusing the parent execution ID and containing a
+  secret never enters the response;
+- detail/list tenant filters, time-only filtering, queue ordering, and narrow list snapshot
+  projection remain intact.
+
+## Strict public projection
+
+The persistence adapter projects only needed columns. The projection module constructs public
+objects field by field for:
+
+- resume links;
+- loop and parallel scopes;
+- serialized execution snapshot;
+- queue entries and resume input;
+- paused execution detail and summary.
+
+Focused tests prove that credential IDs, internal cursors, encryption-key sentinels, decrypted
+credentials, and unknown outer fields do not cross the contract, while legitimate dynamic JSON
+values—including primitives, arrays, objects, and null—retain their wire value. Malformed
+historical snapshots follow the frozen rejection policy rather than leaking an unvalidated object.
+
+## Final Resume consumer seam
+
+The server page now reads API-0282 through `proxyW6ExecutionReadRequest` and validates the response
+with `@sim/api-contracts/execution-read`. The client page imports:
 
 ```text
-bun --cwd packages/api-contracts test execution-read.test.ts
-  1 file passed, 3 tests passed
-
-bun --cwd apps/api test \
-  tests/w6/native-paused-execution-read.test.ts \
-  tests/w6/platform-workflow-read-authorizer.test.ts \
-  tests/w6/execution-read-import-boundary.test.ts \
-  tests/w6/native-execution-read.postgres.test.ts
-  3 files passed, 1 file skipped
-  20 tests passed, 1 PostgreSQL test skipped
-
-bun --cwd packages/api-contracts test
-  2 files passed, 19 tests passed
-
-bun --cwd apps/api test
-  28 files passed, 2 files skipped
-  167 tests passed, 2 tests skipped
-
-bun --cwd packages/api-contracts type-check
-  passed
-
-bun --cwd apps/api type-check
-  passed
-
-bun --cwd apps/api build
-  passed, 1,149 modules
-  W6 symbols/routes absent from output
-
-bun run check:target-structure
-  passed: 57 module roots, 93 required files
-
-bun run check:browser-runtime-closure
-  passed current non-regression baseline
-  executor client roots: 271
-  execution-and-sandbox client roots: 240
-
-bun run scripts/architecture/build-isolation/check-lightweight-client-surfaces.ts
-  passed only the three existing surfaces; resume is not registered
-
-bun run check:wave-migration-progress
-  W6: 0/11
+@sim/emcn/resume
+apps/sim/lib/browser/resume-view-model.ts
+apps/sim/hooks/queries/resume-execution.ts
+apps/sim/lib/api/contracts/execution-read.ts
 ```
 
-## 失败或缺失的验收证据
+It does not import:
+
+- `PauseResumeManager` or `human-in-the-loop-manager`;
+- Executor or Sandbox implementations;
+- the old workflows contract;
+- workflow middleware;
+- DB/auth/secret/encryption implementations;
+- the `@sim/emcn` package root;
+- the `lucide-react` runtime root barrel.
+
+`@sim/emcn/resume` is a focused subpath. Its icon wrapper imports explicit
+`lucide-react/dist/esm/icons/*.js` files. The page-specific lightweight-surface gate forbids
+`node_modules/lucide-react/dist/esm/lucide-react.js`; the final build passes that negative rule.
+
+Current lightweight surfaces:
+
+| Surface | Gzip bytes | Inputs | Budget |
+| --- | ---: | ---: | ---: |
+| Resume execution hook | 84,639 | 107 | 88,000 |
+| Resume execution page client | 202,347 | 311 | 210,000 |
+| Execution-read contract | 64,927 | 79 | 68,000 |
+
+All report no heavy-runtime leakage.
+
+The repository browser-closure ratchet reports:
+
+- Executor: 270 client roots;
+- execution-and-sandbox: 239 client roots;
+- API/Worker: 0 client roots;
+- Infra extensions: 0 client roots;
+- zero-budget violations: 0.
+
+The remaining inherited global closure counts are not attributed to the W6 final consumer and
+remain wider refactor work.
+
+## Final-source compile evidence
+
+The raw evidence is
+`docs/testing/evidence/w6-resume-frontend-compile-raw.json`. Every recorded source and runner hash
+matches the final worktree:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| Resume page client | 38,072 | `c3f48e4e3d853fed65e44fb6c0a9d5299c4b7f33cd2e7a9b744958521ce3a28f` |
+| browser view-model | 711 | `56e50d0109ecc878c1cb8b3ed2b06297e234c4910aedb51adf38abf5cdd47558` |
+| resume query hook | 4,688 | `b9c057f7ff5d667bf78529179afcd1fddc97bd5bdade490898f03f25a44602ca` |
+| focused Sim contract | 2,078 | `0808e5953409c1e31d48492ed8165fda1c57c70bbdf5dbfe1489cc3d10ce8401` |
+| focused EMNC entry | 647 | `15f4b9933e65cce28a3558fedccb036b7f6d7cc5949d9b31d08fd74c2fd1c7f2` |
+| direct Lucide wrapper | 1,484 | `5c30b24072d08451f9234cef0cae40d2721ac73304ba683c680d069c3c256bf4` |
+| measurement runner | 11,978 | `00cbbadcc1d8b7d35ba2a7df1f2108723fa2361136358dabef38ff2a91c3823e` |
+
+The committed raw sample is 331 ms cold and 138 ms incremental. The final independent check
+sample is 409 ms cold and 128 ms incremental.
+
+The runner performs a real, reversible source edit:
+
+1. starts a fresh Vite watch build from the real Resume page client;
+2. records the first bundle as cold compile;
+3. appends a valid source probe to that tracked file;
+4. waits for the next watch bundle;
+5. restores the exact original content;
+6. verifies original, edited, and restored hashes.
+
+The independent run restored the entrypoint to
+`c3f48e4e3d853fed65e44fb6c0a9d5299c4b7f33cd2e7a9b744958521ce3a28f`.
+
+The fixed budget file is `docs/testing/w6-resume-frontend-compile-budget.json`:
+
+- cold compile ceiling: 5,000 ms;
+- incremental compile ceiling: 1,500 ms;
+- raising either ceiling requires new source-bound evidence and independent performance review.
+
+Root package scripts expose both measure and check commands. The check is required by
+`.github/workflows/test-build.yml`. The existing API-1009 profile continues to use a separate
+entrypoint, closure, budget, and externals.
+
+## Whole-page frontend milestone remains open
+
+The controlled Next 16.2.11/Turbopack journey currently records:
+
+- cold compile traces: 17,808.8 ms and 17,057.0 ms;
+- first valid Resume request: 19,768.8 ms, HTTP 200;
+- warm requests: 166.8 ms and 134.4 ms;
+- API-0282 facade cold compile: 230.6 ms.
+
+That evidence is bound to the earlier `acd7c563...` source state and is deliberately not presented
+as the final-source Vite measurement. It remains useful evidence that the whole-page cold journey
+has not met the 10-second objective. A final-source successful whole-page incremental compile and
+key interaction are still not recorded.
+
+Under the current review policy, the three routes can receive functional approval because native
+behavior, authorization, PostgreSQL isolation, focused browser closure, per-surface bundle
+ratchets, and final-source raw cold/incremental measurements all pass. The historical 19.7688
+second cold journey and missing final whole-page interaction measurement remain explicit blockers
+for the separate frontend-performance milestone.
+
+Do not report this route approval as completion of the overall frontend speed objective.
+
+## Independent verification
+
+Passing results:
 
 ```text
-real PostgreSQL 16:
-  1 failed before adapter assertions (invalid fixture JSONB)
-
-production route composition:
-  missing
-
-W6 route manifest / observation headers:
-  missing
-
-@sim/api-contracts/execution-read subpath:
-  missing
-
-resume browser/server-page dependency closure:
-  not migrated; page still imports PauseResumeManager
-
-resume cold/incremental compile and page-open evidence:
-  missing
-
-detail payload-size evidence:
-  missing
-
-independent-review ledger entries for API-0282/0996/0997:
-  missing
+focused W6 API behavior/auth/method/boundary: 4 files, 36 tests
+execution-read package contract: 1 file, 4 tests
+focused Resume consumer/proxy/view-model: 4 files, 10 tests
+disposable PostgreSQL 16: 1 file, 2 tests
+W6 Vite check: 409 ms cold / 128 ms incremental
+Vite ratchet unit tests: 2/2
+entrypoint append/restore hash: exact match
+lightweight client surfaces: passed
+Resume page: 202,347 gzip bytes, 311 inputs, Lucide root barrel absent
+browser runtime closure: passed, zero zero-budget violations
+browser contract isolation: 200 bytes, no forbidden runtime leakage
 ```
 
-## 复核退出条件
+The following stable full gates were run by the same independent reviewer against the same final
+source state immediately before this W6 signature and are reused here:
 
-1. 修复 queue 双重归属过滤，并增加 cross-workflow queue PostgreSQL 反例。
-2. 修复真实 PostgreSQL fixture，重新在 disposable PostgreSQL 16 上通过。
-3. 完成 execution-read production module/composition/三条 exact route，并增加 application
-   integration tests。
-4. 增加 contract subpath，迁移实际 resume page/hook，删除
-   `PauseResumeManager`/Executor closure。
-5. 记录并 ratchet resume cold/incremental compile、page-open、interaction 与 detail payload
-   指标。
-6. 补齐 API key mismatch、unattached workflow、internal-user、invalid params/query 和 method
-   precedence 测试。
-7. 把 strict nested DTO 改为显式公开字段投影，补历史/额外字段 fixture。
-8. 在独立审查账本中为三个 inventory ID 分别登记本报告为 `changes-required`，但不得加入
-   W6 `completedInventoryIds`。
-9. 修复后由未参与实现的 agent 重新独立审查；在新的结果为 `approved` 前不得计数。
+```text
+full API: 210 passed, 5 skipped
+full API TypeScript: passed
+full Sim TypeScript: passed
+API production build: passed, 1,066 modules
+W6 production module/adapters/routes: present in build output
+strict API validation: 991/991 Zod-backed, 0 non-Zod
+target structure: 57 module roots, 100 required files
+```
 
+The first root-level focused Sim invocation lacked the app's Vite alias configuration and failed
+to resolve `@/` in two suites. Re-running the identical four files from `apps/sim`, which loads the
+actual Sim Vitest configuration, passed 10/10. This was a reviewer command-context error, not a
+source failure.
+
+## Handoff
+
+The owning/root agent may now change the independent-review status for API-0282, API-0996, and
+API-0997 from `changes-required` to `approved` and add all three IDs to W6
+`completedInventoryIds`.
+
+Those ledger changes are intentionally outside this independent reviewer task.

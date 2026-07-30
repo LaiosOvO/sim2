@@ -111,7 +111,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         created_by text references "user"(id) on delete set null,
         created_at timestamp not null default now()
       )`,
-      `create table workflow (
+      `create table if not exists workflow (
         id text primary key,
         user_id text not null,
         workspace_id text,
@@ -878,51 +878,76 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         direction: 'pull',
       },
     })
-    const forkResources = createDrizzleWorkspaceForkResourceCatalogReader()
-    const resourceCatalog = await forkResources.readCopyable('lineage-current')
-    expect({
-      ...resourceCatalog,
-      files: [...resourceCatalog.files].sort((left, right) => left.id.localeCompare(right.id)),
-    }).toEqual({
-      files: [
-        {
-          id: 'resource-file-cross-folder',
-          label: 'cross-folder.txt',
-          folderId: 'resource-folder-cross-tenant',
-          folderName: null,
-        },
-        {
-          id: 'resource-file-deleted-folder',
-          label: 'orphan.txt',
-          folderId: 'resource-folder-deleted',
-          folderName: null,
-        },
-        {
-          id: 'resource-file-live',
-          label: 'Live File',
-          folderId: 'resource-folder-live',
-          folderName: 'Documents',
-        },
-        {
-          id: 'resource-file-wrong-folder-kind',
-          label: 'wrong-kind.txt',
-          folderId: 'resource-folder-wrong-kind',
-          folderName: null,
-        },
-      ],
-      tables: [{ id: 'resource-table-live', label: 'Live Table' }],
-      knowledgeBases: [{ id: 'resource-kb-live', label: 'Live KB' }],
-      customTools: [{ id: 'resource-tool-live', label: 'Live Tool' }],
-      skills: [{ id: 'resource-skill-live', label: 'Live Skill' }],
-      mcpServers: [{ id: 'resource-mcp-live', label: 'Live MCP' }],
-      workflowMcpServers: [{ id: 'resource-workflow-mcp-live', label: 'Workflow MCP' }],
-      deployedWorkflowCount: 1,
+    const [{ default: postgres }, { drizzle }, databaseSchema] = await Promise.all([
+      import('postgres'),
+      import('drizzle-orm/postgres-js'),
+      import('@sim/db/schema'),
+    ])
+    const observedResourceQueries: string[] = []
+    const countedClient = postgres(process.env.DATABASE_URL!, {
+      prepare: false,
+      fetch_types: false,
+      max: 10,
+      debug(_connection, query) {
+        observedResourceQueries.push(query)
+      },
     })
-    expect(JSON.stringify(resourceCatalog)).not.toContain('must-not-leak')
-    expect(JSON.stringify(resourceCatalog)).not.toContain('Must Not Leak')
-    expect(JSON.stringify(resourceCatalog)).not.toContain('private description')
-    await db.execute(
-      sql.raw(`insert into workspace_files (
+    const countedDatabase = drizzle(countedClient, { schema: databaseSchema }) as typeof db
+    const forkResources = createDrizzleWorkspaceForkResourceCatalogReader(countedDatabase)
+
+    try {
+      const emptyCatalogQueryOffset = observedResourceQueries.length
+      const resourceCatalog = await forkResources.readCopyable('lineage-current')
+      expect(observedResourceQueries.slice(emptyCatalogQueryOffset)).toHaveLength(8)
+      expect(
+        observedResourceQueries
+          .slice(emptyCatalogQueryOffset)
+          .every((query) => query.trimStart().toLowerCase().startsWith('select'))
+      ).toBe(true)
+      expect({
+        ...resourceCatalog,
+        files: [...resourceCatalog.files].sort((left, right) => left.id.localeCompare(right.id)),
+      }).toEqual({
+        files: [
+          {
+            id: 'resource-file-cross-folder',
+            label: 'cross-folder.txt',
+            folderId: 'resource-folder-cross-tenant',
+            folderName: null,
+          },
+          {
+            id: 'resource-file-deleted-folder',
+            label: 'orphan.txt',
+            folderId: 'resource-folder-deleted',
+            folderName: null,
+          },
+          {
+            id: 'resource-file-live',
+            label: 'Live File',
+            folderId: 'resource-folder-live',
+            folderName: 'Documents',
+          },
+          {
+            id: 'resource-file-wrong-folder-kind',
+            label: 'wrong-kind.txt',
+            folderId: 'resource-folder-wrong-kind',
+            folderName: null,
+          },
+        ],
+        tables: [{ id: 'resource-table-live', label: 'Live Table' }],
+        knowledgeBases: [{ id: 'resource-kb-live', label: 'Live KB' }],
+        customTools: [{ id: 'resource-tool-live', label: 'Live Tool' }],
+        skills: [{ id: 'resource-skill-live', label: 'Live Skill' }],
+        mcpServers: [{ id: 'resource-mcp-live', label: 'Live MCP' }],
+        workflowMcpServers: [{ id: 'resource-workflow-mcp-live', label: 'Workflow MCP' }],
+        deployedWorkflowCount: 1,
+      })
+      expect(JSON.stringify(resourceCatalog)).not.toContain('must-not-leak')
+      expect(JSON.stringify(resourceCatalog)).not.toContain('Must Not Leak')
+      expect(JSON.stringify(resourceCatalog)).not.toContain('private description')
+
+      await db.execute(
+        sql.raw(`insert into workspace_files (
         id, key, user_id, workspace_id, folder_id, context, original_name, display_name, deleted_at
       )
       select
@@ -935,11 +960,36 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         'cap-' || candidate || '.txt',
         null,
         null
-      from generate_series(1, 1001) candidate`)
-    )
-    const cappedResourceCatalog = await forkResources.readCopyable('lineage-current')
-    expect(cappedResourceCatalog.files).toHaveLength(1000)
-    await db.execute(sql.raw(`delete from workspace_files where id like 'resource-cap-%'`))
+      from generate_series(1, 996) candidate`)
+      )
+      const boundary1000QueryOffset = observedResourceQueries.length
+      const boundary1000Catalog = await forkResources.readCopyable('lineage-current')
+      expect(boundary1000Catalog.files).toHaveLength(1000)
+      expect(observedResourceQueries.slice(boundary1000QueryOffset)).toHaveLength(8)
+
+      await db.execute(
+        sql.raw(`insert into workspace_files (
+        id, key, user_id, workspace_id, folder_id, context, original_name, display_name, deleted_at
+      ) values (
+        'resource-cap-997',
+        'resources/cap-997.txt',
+        'viewer-1',
+        'lineage-current',
+        null,
+        'workspace',
+        'cap-997.txt',
+        null,
+        null
+      )`)
+      )
+      const boundary1001QueryOffset = observedResourceQueries.length
+      const boundary1001Catalog = await forkResources.readCopyable('lineage-current')
+      expect(boundary1001Catalog.files).toHaveLength(1000)
+      expect(observedResourceQueries.slice(boundary1001QueryOffset)).toHaveLength(8)
+      await db.execute(sql.raw(`delete from workspace_files where id like 'resource-cap-%'`))
+    } finally {
+      await countedClient.end({ timeout: 1 })
+    }
     const forkEntitlement = createDrizzleForkEntitlementReader({
       billingEnabled: true,
       forkingEnabled: false,

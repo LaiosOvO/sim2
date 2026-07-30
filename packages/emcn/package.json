@@ -21,6 +21,14 @@
       "types": "./src/icons/index.ts",
       "default": "./src/icons/index.ts"
     },
+    "./resume": {
+      "types": "./src/resume.ts",
+      "default": "./src/resume.ts"
+    },
+    "./workspace-fork": {
+      "types": "./src/workspace-fork.ts",
+      "default": "./src/workspace-fork.ts"
+    },
     "./*": {
       "types": "./src/*",
       "default": "./src/*"

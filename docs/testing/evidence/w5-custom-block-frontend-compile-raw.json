@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W5-CUSTOM-BLOCKS",
+  "capturedAt": "2026-07-30T03:29:33.935Z",
+  "runner": {
+    "kind": "focused-vite-watch",
+    "viteVersion": "8.0.16",
+    "bunVersion": "1.3.11",
+    "platform": "win32",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz",
+    "logicalCpuCount": 8,
+    "totalMemoryBytes": 34272227328
+  },
+  "entrypoint": "apps/sim/hooks/queries/custom-blocks.ts",
+  "measurementTool": {
+    "path": "scripts/architecture/performance/provider-model-discovery-frontend-compile-ratchet.ts",
+    "bytes": 12619,
+    "sha256": "a0bcc5e3d4bf886fb34b398b4c24020684b972444cc43b266bd1da07958e7c52"
+  },
+  "configuration": {
+    "coldDefinition": "first Vite watch bundle in a fresh process with no in-process transform cache",
+    "incrementalDefinition": "next watch bundle after appending a valid TSDoc probe to the final W5-CUSTOM-BLOCKS consumer entrypoint",
+    "externalPackages": ["react", "react-dom", "next/navigation", "@tanstack/react-query"]
+  },
+  "measurementQuality": {
+    "stableMachineBaseline": false,
+    "use": "source-bound local sample plus a fixed non-regression ceiling",
+    "limitation": "This shared integration worktree may run other agent processes concurrently; the sample is a regression ratchet, not a cross-machine SLO."
+  },
+  "sourceClosure": [
+    {
+      "path": "apps/sim/hooks/queries/custom-blocks.ts",
+      "bytes": 3741,
+      "sha256": "fdd351d79d13afd13521032bdefb08b28efa0285de665c0fddd6ef488d85ca73"
+    },
+    {
+      "path": "apps/sim/lib/api/client/request.ts",
+      "bytes": 8926,
+      "sha256": "0e001981547296eb5dac2a9cab1a85133a91d37d4ebe3dbe025d677c863b73a8"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/custom-blocks.ts",
+      "bytes": 2514,
+      "sha256": "94f9b6860c3f25f8c579a52625bd5cf176f95e0d7a4b51412bca80241bb22d0b"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/types.ts",
+      "bytes": 4665,
+      "sha256": "83e899296ae37d3719550e92f0b1d65dc0e4a85e083d9d19606e3ab5db31387d"
+    },
+    {
+      "path": "apps/sim/lib/custom-blocks/metadata.ts",
+      "bytes": 911,
+      "sha256": "3d9725164404c12bf8df8785021faaaf1613e5dfbc60066fe5c64e615e463dfb"
+    },
+    {
+      "path": "apps/sim/lib/custom-blocks/output-names.ts",
+      "bytes": 447,
+      "sha256": "b9dba2945f72d113e4170f5a8cfc61173efe92ec0ffb9b28198d76128334f3a8"
+    },
+    {
+      "path": "packages/api-contracts/src/custom-blocks.ts",
+      "bytes": 5251,
+      "sha256": "d8cd53ab572c88c15f9eb569ef7b3bde617a623d2525739dce8d4e463aeb7783"
+    }
+  ],
+  "invalidation": {
+    "editedPath": "apps/sim/hooks/queries/custom-blocks.ts",
+    "operation": "append-probe-comment-then-restore",
+    "originalSha256": "fdd351d79d13afd13521032bdefb08b28efa0285de665c0fddd6ef488d85ca73",
+    "editedSha256": "036d926a17c1116483df845c484ce0abbaf68a0102dcaf09f805ee6263b4805e",
+    "restoredSha256": "fdd351d79d13afd13521032bdefb08b28efa0285de665c0fddd6ef488d85ca73"
+  },
+  "samples": {
+    "cold": {
+      "durationMs": 85,
+      "sourceSha256": "fdd351d79d13afd13521032bdefb08b28efa0285de665c0fddd6ef488d85ca73"
+    },
+    "incremental": {
+      "durationMs": 30,
+      "sourceSha256": "036d926a17c1116483df845c484ce0abbaf68a0102dcaf09f805ee6263b4805e"
+    }
+  }
+}

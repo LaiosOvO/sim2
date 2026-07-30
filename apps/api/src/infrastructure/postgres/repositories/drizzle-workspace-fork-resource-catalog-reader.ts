@@ -19,12 +19,14 @@ import type {
 
 const CANDIDATE_LIMIT = 1000
 
-export function createDrizzleWorkspaceForkResourceCatalogReader(): WorkspaceForkResourceCatalogReader {
+export function createDrizzleWorkspaceForkResourceCatalogReader(
+  database: typeof db = db
+): WorkspaceForkResourceCatalogReader {
   return {
     async readCopyable(workspaceId) {
       const [files, tables, knowledgeBases, tools, skills, externalServers, servers, deployed] =
         await Promise.all([
-          db
+          database
             .select({
               id: workspaceFiles.id,
               label: sql<string>`coalesce(${workspaceFiles.displayName}, ${workspaceFiles.originalName})`,
@@ -49,7 +51,7 @@ export function createDrizzleWorkspaceForkResourceCatalogReader(): WorkspaceFork
               )
             )
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ id: userTableDefinitions.id, label: userTableDefinitions.name })
             .from(userTableDefinitions)
             .where(
@@ -59,27 +61,27 @@ export function createDrizzleWorkspaceForkResourceCatalogReader(): WorkspaceFork
               )
             )
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ id: knowledgeBase.id, label: knowledgeBase.name })
             .from(knowledgeBase)
             .where(and(eq(knowledgeBase.workspaceId, workspaceId), isNull(knowledgeBase.deletedAt)))
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ id: customTools.id, label: customTools.title })
             .from(customTools)
             .where(eq(customTools.workspaceId, workspaceId))
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ id: skill.id, label: skill.name })
             .from(skill)
             .where(eq(skill.workspaceId, workspaceId))
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ id: mcpServers.id, label: mcpServers.name })
             .from(mcpServers)
             .where(and(eq(mcpServers.workspaceId, workspaceId), isNull(mcpServers.deletedAt)))
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ id: workflowMcpServer.id, label: workflowMcpServer.name })
             .from(workflowMcpServer)
             .where(
@@ -89,7 +91,7 @@ export function createDrizzleWorkspaceForkResourceCatalogReader(): WorkspaceFork
               )
             )
             .limit(CANDIDATE_LIMIT),
-          db
+          database
             .select({ value: count() })
             .from(workflow)
             .where(
@@ -99,7 +101,7 @@ export function createDrizzleWorkspaceForkResourceCatalogReader(): WorkspaceFork
                 eq(workflow.forkSyncExcluded, false),
                 isNull(workflow.archivedAt),
                 exists(
-                  db
+                  database
                     .select({ one: sql`1` })
                     .from(workflowDeploymentVersion)
                     .where(

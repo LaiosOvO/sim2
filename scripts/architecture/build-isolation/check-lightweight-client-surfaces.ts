@@ -7,6 +7,7 @@ interface SurfaceBudget {
   id: string
   entrypoint: string
   maxTotalGzipBytes: number
+  forbiddenInputFragments?: string[]
 }
 
 interface LightweightSurfaceBaseline {
@@ -48,9 +49,10 @@ async function inspectSurface(
   }
 
   const inputs = Object.keys(result.metafile.inputs).map(normalize)
-  const forbiddenInputs = baseline.forbiddenInputFragments.filter((fragment) =>
-    inputs.some((input) => input.includes(fragment))
-  )
+  const forbiddenInputs = [
+    ...baseline.forbiddenInputFragments,
+    ...(surface.forbiddenInputFragments ?? []),
+  ].filter((fragment) => inputs.some((input) => input.includes(fragment)))
   const outputTexts = await Promise.all(result.outputs.map((output) => output.text()))
   const forbiddenMarkers = baseline.forbiddenOutputMarkers.filter((marker) =>
     outputTexts.some((output) => output.includes(marker))

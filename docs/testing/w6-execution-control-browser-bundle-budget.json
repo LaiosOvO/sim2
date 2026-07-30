@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W6-GROUP-B",
+  "entrypoint": "apps/sim/hooks/queries/execution-control.ts",
+  "budgets": {
+    "maximumModules": 90,
+    "maximumBytes": 500000
+  },
+  "forbiddenClosureTerms": [
+    "registry",
+    "executor",
+    "sandbox",
+    "encryption",
+    "@sim/db",
+    "drizzle",
+    "redis",
+    "feishu",
+    "meegle"
+  ]
+}

@@ -5,11 +5,11 @@ import {
   getServiceAccountConnectNoun,
   getServiceAccountGatingBlockType,
 } from '@/lib/credentials/service-account-provider-ids'
+import { isCustomBlockType } from '@/lib/custom-blocks/metadata'
 import { type FilterFieldType, getOperatorsForFieldType } from '@/lib/knowledge/filters/types'
 import { getServiceAccountProviderForProviderId } from '@/lib/oauth/utils'
 import { isSubBlockHidden } from '@/lib/workflows/subblocks/visibility'
 import { getBlock } from '@/blocks'
-import { isCustomBlockType } from '@/blocks/custom/build-config'
 import type { BlockConfig, SubBlockConfig } from '@/blocks/types'
 import { isHiddenUnder } from '@/blocks/visibility/context'
 import { DYNAMIC_MODEL_PROVIDERS, PROVIDER_DEFINITIONS } from '@/providers/models'

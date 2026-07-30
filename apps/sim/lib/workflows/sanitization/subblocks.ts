@@ -1,8 +1,8 @@
 import { createLogger } from '@sim/logger'
 import { isPlainRecord } from '@sim/utils/object'
 import { DEFAULT_SUBBLOCK_TYPE } from '@sim/workflow-persistence/subblocks'
+import { isCustomBlockType } from '@/lib/custom-blocks/metadata'
 import { getBlock } from '@/blocks'
-import { isCustomBlockType } from '@/blocks/custom/build-config'
 import type { BlockState } from '@/stores/workflows/workflow/types'
 
 const logger = createLogger('WorkflowSubblockSanitization')

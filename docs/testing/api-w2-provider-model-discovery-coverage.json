@@ -1,0 +1,90 @@
+{
+  "inventoryCount": 9,
+  "routes": [
+    {
+      "inventoryId": "API-0270",
+      "method": "GET",
+      "path": "/api/providers/base/models",
+      "provider": "base",
+      "authMode": "public",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0271",
+      "method": "GET",
+      "path": "/api/providers/baseten/models",
+      "provider": "baseten",
+      "authMode": "public-with-optional-workspace-session",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0272",
+      "method": "GET",
+      "path": "/api/providers/fireworks/models",
+      "provider": "fireworks",
+      "authMode": "public-with-optional-workspace-session",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0273",
+      "method": "GET",
+      "path": "/api/providers/litellm/models",
+      "provider": "litellm",
+      "authMode": "public",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0274",
+      "method": "GET",
+      "path": "/api/providers/ollama-cloud/models",
+      "provider": "ollama-cloud",
+      "authMode": "public-with-optional-workspace-session",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0275",
+      "method": "GET",
+      "path": "/api/providers/ollama/models",
+      "provider": "ollama",
+      "authMode": "public",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0276",
+      "method": "GET",
+      "path": "/api/providers/openrouter/models",
+      "provider": "openrouter",
+      "authMode": "public",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0278",
+      "method": "GET",
+      "path": "/api/providers/together/models",
+      "provider": "together",
+      "authMode": "public-with-optional-workspace-session",
+      "backend": "native-pending-review"
+    },
+    {
+      "inventoryId": "API-0279",
+      "method": "GET",
+      "path": "/api/providers/vllm/models",
+      "provider": "vllm",
+      "authMode": "public",
+      "backend": "native-pending-review"
+    }
+  ],
+  "evidence": {
+    "contract": "packages/api-contracts/tests/provider-model-discovery.test.ts",
+    "authDifferentialAndRouting": "apps/api/tests/w2/native-provider-model-discovery.test.ts",
+    "externalHttpIntegration": "apps/api/tests/w2/native-provider-model-discovery.http.test.ts",
+    "postgresIntegration": "apps/api/tests/w2/native-provider-model-discovery.postgres.test.ts",
+    "nextProxy": "apps/sim/lib/api-proxy/provider-model-discovery.test.ts",
+    "realConsumer": "apps/sim/app/workspace/[workspaceId]/providers/provider-models-loader.test.tsx",
+    "browserClosure": "scripts/architecture/build-isolation/check-provider-model-discovery-client.ts",
+    "moduleBoundary": "scripts/architecture/import-boundaries/check-provider-model-discovery-module-boundary.ts",
+    "catalogParity": "scripts/api/check-base-provider-model-catalog-parity.ts",
+    "compileEvidence": "docs/testing/evidence/w2-provider-model-discovery-frontend-compile-raw.json",
+    "compileBudget": "docs/testing/w2-provider-model-discovery-frontend-compile-budget.json"
+  }
+}

@@ -111,6 +111,7 @@
     "@sim/browser-protocol": "workspace:*",
     "@sim/desktop-bridge": "workspace:*",
     "@sim/emcn": "workspace:*",
+    "@sim/execution-contracts": "workspace:*",
     "@sim/logger": "workspace:*",
     "@sim/platform-authz": "workspace:*",
     "@sim/realtime-protocol": "workspace:*",

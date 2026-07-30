@@ -4047,6 +4047,425 @@ export const userTableRows = pgTable(
   })
 )
 
+export const businessDataScopeEnum = pgEnum('business_data_scope', [
+  'all',
+  'organization',
+  'workspace',
+  'project_member',
+  'assigned',
+  'self',
+  'custom',
+])
+
+export type BusinessDataScope = (typeof businessDataScopeEnum.enumValues)[number]
+
+export interface BusinessDataPolicy {
+  projectIds?: string[]
+  moduleCodes?: string[]
+  ownerField?: string
+  allowedFields?: string[]
+  deniedFields?: string[]
+  conditions?: Array<{
+    field: string
+    operator: 'eq' | 'in' | 'contains'
+    value: string | string[]
+  }>
+}
+
+export const businessRole = pgTable(
+  'business_role',
+  {
+    id: text('id').primaryKey(),
+    organizationId: text('organization_id')
+      .notNull()
+      .references(() => organization.id, { onDelete: 'cascade' }),
+    code: text('code').notNull(),
+    name: text('name').notNull(),
+    description: text('description'),
+    enabled: boolean('enabled').notNull().default(true),
+    builtIn: boolean('built_in').notNull().default(false),
+    createdBy: text('created_by').references(() => user.id, { onDelete: 'set null' }),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    organizationCodeUnique: uniqueIndex('business_role_organization_code_unique').on(
+      table.organizationId,
+      table.code
+    ),
+    organizationIdx: index('business_role_organization_id_idx').on(table.organizationId),
+  })
+)
+
+export const businessRolePermission = pgTable(
+  'business_role_permission',
+  {
+    id: text('id').primaryKey(),
+    roleId: text('role_id')
+      .notNull()
+      .references(() => businessRole.id, { onDelete: 'cascade' }),
+    permissionCode: text('permission_code').notNull(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    rolePermissionUnique: uniqueIndex('business_role_permission_unique').on(
+      table.roleId,
+      table.permissionCode
+    ),
+    roleIdx: index('business_role_permission_role_id_idx').on(table.roleId),
+    permissionCodeIdx: index('business_role_permission_code_idx').on(table.permissionCode),
+  })
+)
+
+export const businessMenu = pgTable(
+  'business_menu',
+  {
+    id: text('id').primaryKey(),
+    parentId: text('parent_id'),
+    code: text('code').notNull().unique(),
+    label: text('label').notNull(),
+    path: text('path'),
+    icon: text('icon'),
+    order: integer('order').notNull().default(0),
+    source: text('source').notNull().default('core'),
+    enabled: boolean('enabled').notNull().default(true),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    parentIdx: index('business_menu_parent_id_idx').on(table.parentId),
+    sourceIdx: index('business_menu_source_idx').on(table.source),
+  })
+)
+
+export const businessRoleMenu = pgTable(
+  'business_role_menu',
+  {
+    id: text('id').primaryKey(),
+    roleId: text('role_id')
+      .notNull()
+      .references(() => businessRole.id, { onDelete: 'cascade' }),
+    menuId: text('menu_id')
+      .notNull()
+      .references(() => businessMenu.id, { onDelete: 'cascade' }),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    roleMenuUnique: uniqueIndex('business_role_menu_unique').on(table.roleId, table.menuId),
+    roleIdx: index('business_role_menu_role_id_idx').on(table.roleId),
+    menuIdx: index('business_role_menu_menu_id_idx').on(table.menuId),
+  })
+)
+
+export const businessUserRole = pgTable(
+  'business_user_role',
+  {
+    id: text('id').primaryKey(),
+    organizationId: text('organization_id')
+      .notNull()
+      .references(() => organization.id, { onDelete: 'cascade' }),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    roleId: text('role_id')
+      .notNull()
+      .references(() => businessRole.id, { onDelete: 'cascade' }),
+    workspaceId: text('workspace_id').references(() => workspace.id, { onDelete: 'cascade' }),
+    dataScope: businessDataScopeEnum('data_scope').notNull().default('workspace'),
+    dataPolicy: jsonb('data_policy').$type<BusinessDataPolicy>().notNull().default({}),
+    createdBy: text('created_by').references(() => user.id, { onDelete: 'set null' }),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    organizationUserIdx: index('business_user_role_organization_user_idx').on(
+      table.organizationId,
+      table.userId
+    ),
+    workspaceUserIdx: index('business_user_role_workspace_user_idx').on(
+      table.workspaceId,
+      table.userId
+    ),
+    roleIdx: index('business_user_role_role_id_idx').on(table.roleId),
+    organizationBindingUnique: uniqueIndex('business_user_role_organization_binding_unique')
+      .on(table.organizationId, table.userId, table.roleId)
+      .where(sql`${table.workspaceId} IS NULL`),
+    workspaceBindingUnique: uniqueIndex('business_user_role_workspace_binding_unique')
+      .on(table.organizationId, table.userId, table.roleId, table.workspaceId)
+      .where(sql`${table.workspaceId} IS NOT NULL`),
+  })
+)
+
+export const approvalStatusEnum = pgEnum('approval_status', [
+  'pending',
+  'approved',
+  'rejected',
+  'returned',
+  'withdrawn',
+  'escalated',
+  'cancelled',
+  'expired',
+])
+export const approvalModeEnum = pgEnum('approval_mode', ['any', 'all'])
+export const approvalTaskStatusEnum = pgEnum('approval_task_status', [
+  'pending',
+  'approved',
+  'rejected',
+  'transferred',
+  'skipped',
+  'cancelled',
+])
+
+export const approvalDefinition = pgTable(
+  'approval_definition',
+  {
+    id: text('id').primaryKey(),
+    workspaceId: text('workspace_id')
+      .notNull()
+      .references(() => workspace.id, { onDelete: 'cascade' }),
+    code: text('code').notNull(),
+    name: text('name').notNull(),
+    description: text('description'),
+    enabled: boolean('enabled').notNull().default(true),
+    createdBy: text('created_by').references(() => user.id, { onDelete: 'set null' }),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    workspaceCodeUnique: uniqueIndex('approval_definition_workspace_code_unique').on(
+      table.workspaceId,
+      table.code
+    ),
+    workspaceEnabledIdx: index('approval_definition_workspace_enabled_idx').on(
+      table.workspaceId,
+      table.enabled
+    ),
+  })
+)
+
+export const approvalDefinitionVersion = pgTable(
+  'approval_definition_version',
+  {
+    id: text('id').primaryKey(),
+    definitionId: text('definition_id')
+      .notNull()
+      .references(() => approvalDefinition.id, { onDelete: 'cascade' }),
+    version: integer('version').notNull(),
+    status: text('status', { enum: ['draft', 'published', 'retired'] })
+      .notNull()
+      .default('draft'),
+    spec: jsonb('spec').$type<Record<string, unknown>>().notNull(),
+    createdBy: text('created_by').references(() => user.id, { onDelete: 'set null' }),
+    publishedAt: timestamp('published_at'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    definitionVersionUnique: uniqueIndex('approval_definition_version_unique').on(
+      table.definitionId,
+      table.version
+    ),
+    definitionStatusIdx: index('approval_definition_version_status_idx').on(
+      table.definitionId,
+      table.status
+    ),
+  })
+)
+
+export const approvalInstance = pgTable(
+  'approval_instance',
+  {
+    id: text('id').primaryKey(),
+    workspaceId: text('workspace_id')
+      .notNull()
+      .references(() => workspace.id, { onDelete: 'cascade' }),
+    workflowId: text('workflow_id')
+      .notNull()
+      .references(() => workflow.id, { onDelete: 'cascade' }),
+    definitionVersionId: text('definition_version_id').references(
+      () => approvalDefinitionVersion.id,
+      { onDelete: 'restrict' }
+    ),
+    executionId: text('execution_id').notNull(),
+    contextId: text('context_id').notNull(),
+    businessType: text('business_type').notNull().default('workflow'),
+    businessId: text('business_id'),
+    title: text('title').notNull(),
+    content: text('content').notNull(),
+    mode: approvalModeEnum('mode').notNull().default('any'),
+    status: approvalStatusEnum('status').notNull().default('pending'),
+    resumeStatus: text('resume_status', {
+      enum: ['pending', 'starting', 'started', 'failed'],
+    })
+      .notNull()
+      .default('pending'),
+    resumeExecutionId: text('resume_execution_id'),
+    resumeError: text('resume_error'),
+    state: jsonb('state').$type<Record<string, unknown>>().notNull().default({}),
+    versionNo: integer('version_no').notNull().default(0),
+    requestedBy: text('requested_by').references(() => user.id, { onDelete: 'set null' }),
+    decidedAt: timestamp('decided_at'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    pausePointUnique: uniqueIndex('approval_instance_pause_point_unique').on(
+      table.executionId,
+      table.contextId
+    ),
+    workspaceStatusIdx: index('approval_instance_workspace_status_idx').on(
+      table.workspaceId,
+      table.status
+    ),
+    businessIdx: index('approval_instance_business_idx').on(
+      table.workspaceId,
+      table.businessType,
+      table.businessId
+    ),
+  })
+)
+
+export const approvalStepInstance = pgTable(
+  'approval_step_instance',
+  {
+    id: text('id').primaryKey(),
+    approvalId: text('approval_id')
+      .notNull()
+      .references(() => approvalInstance.id, { onDelete: 'cascade' }),
+    definitionVersionId: text('definition_version_id')
+      .notNull()
+      .references(() => approvalDefinitionVersion.id, { onDelete: 'restrict' }),
+    nodeId: text('node_id').notNull(),
+    nodeName: text('node_name').notNull(),
+    mode: approvalModeEnum('mode').notNull().default('any'),
+    round: integer('round').notNull().default(1),
+    status: text('status', {
+      enum: ['pending', 'approved', 'rejected', 'returned', 'escalated', 'cancelled'],
+    })
+      .notNull()
+      .default('pending'),
+    dueAt: timestamp('due_at'),
+    escalationLevel: integer('escalation_level').notNull().default(0),
+    startedAt: timestamp('started_at').notNull().defaultNow(),
+    completedAt: timestamp('completed_at'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    approvalNodeRoundUnique: uniqueIndex('approval_step_instance_node_round_unique').on(
+      table.approvalId,
+      table.nodeId,
+      table.round
+    ),
+    pendingDueIdx: index('approval_step_instance_pending_due_idx').on(table.status, table.dueAt),
+  })
+)
+
+export const approvalTask = pgTable(
+  'approval_task',
+  {
+    id: text('id').primaryKey(),
+    approvalId: text('approval_id')
+      .notNull()
+      .references(() => approvalInstance.id, { onDelete: 'cascade' }),
+    stepInstanceId: text('step_instance_id').references(() => approvalStepInstance.id, {
+      onDelete: 'cascade',
+    }),
+    channel: text('channel').notNull().default('feishu'),
+    receiveIdType: text('receive_id_type').notNull(),
+    reviewerExternalId: text('reviewer_external_id').notNull(),
+    reviewerUserId: text('reviewer_user_id').references(() => user.id, { onDelete: 'set null' }),
+    reviewerRoleCode: text('reviewer_role_code'),
+    decisionToken: uuid('decision_token').notNull().defaultRandom(),
+    status: approvalTaskStatusEnum('status').notNull().default('pending'),
+    messageId: text('message_id'),
+    decidedByExternalId: text('decided_by_external_id'),
+    decidedAt: timestamp('decided_at'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    decisionTokenUnique: uniqueIndex('approval_task_decision_token_unique').on(table.decisionToken),
+    approvalReviewerUnique: uniqueIndex('approval_task_reviewer_unique')
+      .on(table.approvalId, table.channel, table.reviewerExternalId)
+      .where(sql`${table.stepInstanceId} IS NULL`),
+    stepReviewerUnique: uniqueIndex('approval_task_step_reviewer_unique')
+      .on(table.stepInstanceId, table.channel, table.reviewerExternalId)
+      .where(sql`${table.stepInstanceId} IS NOT NULL`),
+    approvalStatusIdx: index('approval_task_approval_status_idx').on(
+      table.approvalId,
+      table.status
+    ),
+  })
+)
+
+export const approvalDecision = pgTable(
+  'approval_decision',
+  {
+    id: text('id').primaryKey(),
+    approvalId: text('approval_id')
+      .notNull()
+      .references(() => approvalInstance.id, { onDelete: 'cascade' }),
+    taskId: text('task_id')
+      .notNull()
+      .references(() => approvalTask.id, { onDelete: 'cascade' }),
+    action: text('action', {
+      enum: [
+        'approve',
+        'reject',
+        'return',
+        'transfer',
+        'add_sign',
+        'comment',
+        'timeout',
+        'escalate',
+      ],
+    }).notNull(),
+    actorExternalId: text('actor_external_id'),
+    comment: text('comment'),
+    payload: jsonb('payload').$type<Record<string, unknown>>().notNull().default({}),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    approvalCreatedIdx: index('approval_decision_approval_created_idx').on(
+      table.approvalId,
+      table.createdAt
+    ),
+    taskIdx: index('approval_decision_task_id_idx').on(table.taskId),
+  })
+)
+
+export const approvalEffectOutbox = pgTable(
+  'approval_effect_outbox',
+  {
+    id: text('id').primaryKey(),
+    idempotencyKey: text('idempotency_key').notNull(),
+    event: text('event').notNull(),
+    approvalId: text('approval_id')
+      .notNull()
+      .references(() => approvalInstance.id, { onDelete: 'cascade' }),
+    payload: jsonb('payload').$type<Record<string, unknown>>().notNull().default({}),
+    status: text('status', {
+      enum: ['pending', 'processing', 'delivered', 'failed'],
+    })
+      .notNull()
+      .default('pending'),
+    attempts: integer('attempts').notNull().default(0),
+    lastError: text('last_error'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    idempotencyUnique: uniqueIndex('approval_effect_outbox_idempotency_unique').on(
+      table.idempotencyKey
+    ),
+    statusCreatedIdx: index('approval_effect_outbox_status_created_idx').on(
+      table.status,
+      table.createdAt
+    ),
+  })
+)
+
 /**
  * Background data-mutation jobs on a user table (CSV import, bulk filtered delete). One row per
  * job. A detached worker streams progress into `rows_processed` and flips `status` to a terminal

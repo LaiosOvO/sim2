@@ -5,6 +5,7 @@ import { getToolOperationsIndex } from '@/lib/search/tool-operations'
 import { getTriggersForSidebar } from '@/lib/workflows/triggers/trigger-utils'
 import { getAllBlocks } from '@/blocks'
 import type { BlockConfig, SubBlockConfig } from '@/blocks/types'
+import { setSearchModalOpen } from './open-state'
 import type {
   SearchBlockItem,
   SearchData,
@@ -203,3 +204,9 @@ export const useSearchModalStore = create<SearchModalState>()(
     { name: 'search-modal-store' }
   )
 )
+
+useSearchModalStore.subscribe((state, previousState) => {
+  if (state.isOpen !== previousState.isOpen) {
+    setSearchModalOpen(state.isOpen)
+  }
+})

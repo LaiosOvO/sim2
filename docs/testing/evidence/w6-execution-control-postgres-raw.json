@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-30T04:01:13.000Z",
+  "database": {
+    "containerImage": "postgres:16",
+    "serverVersion": "PostgreSQL 16.14 (Debian 16.14-1.pgdg13+1)",
+    "disposable": true,
+    "removedAfterRun": true
+  },
+  "command": "SIM_TEST_DATABASE_DISPOSABLE=1 SIM_REQUIRE_POSTGRES_TEST=1 vitest run tests/w6/native-execution-control.postgres.test.ts",
+  "result": {
+    "testFilesPassed": 1,
+    "testsPassed": 2,
+    "durationMs": 1760
+  },
+  "api0993HandlerMatrix": [
+    {
+      "case": "ordinary externalized status",
+      "sqlQueries": 1,
+      "objectHttpReads": 0,
+      "status": 200
+    },
+    {
+      "case": "includeOutput with 1.5MB materialized object",
+      "sqlQueries": 1,
+      "objectHttpReads": 1,
+      "status": 200
+    },
+    {
+      "case": "recursive selectedOutputs with 1.5MB materialized object",
+      "sqlQueries": 1,
+      "objectHttpReads": 1,
+      "status": 200
+    },
+    {
+      "case": "failed execution error materialization",
+      "sqlQueries": 1,
+      "objectHttpReads": 1,
+      "status": 200
+    },
+    {
+      "case": "missing execution object",
+      "sqlQueries": 1,
+      "objectHttpReads": 1,
+      "status": 200
+    },
+    {
+      "case": "unavailable execution object service",
+      "sqlQueries": 1,
+      "objectHttpReads": 1,
+      "status": 503
+    }
+  ],
+  "integrationBoundary": "API-0993 application handler -> one-query Drizzle reader -> API HTTP object client -> real Node HTTP server -> actual Sim internal execution-object handler"
+}

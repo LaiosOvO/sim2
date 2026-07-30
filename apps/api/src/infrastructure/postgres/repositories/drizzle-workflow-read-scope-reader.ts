@@ -1,6 +1,6 @@
 import { db } from '@sim/db'
 import { workflow } from '@sim/db/schema'
-import { eq } from 'drizzle-orm'
+import { and, eq, isNull } from 'drizzle-orm'
 import type { WorkflowReadScopeReader } from '@/modules/execution/read'
 
 /**
@@ -14,7 +14,7 @@ export function createDrizzleWorkflowReadScopeReader(): WorkflowReadScopeReader 
       const [row] = await db
         .select({ workspaceId: workflow.workspaceId })
         .from(workflow)
-        .where(eq(workflow.id, workflowId))
+        .where(and(eq(workflow.id, workflowId), isNull(workflow.archivedAt)))
         .limit(1)
       return row ?? null
     },

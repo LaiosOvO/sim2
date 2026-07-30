@@ -2,6 +2,7 @@ import { db } from '@sim/db'
 import { workflow, workflowBlocks } from '@sim/db/schema'
 import { and, eq, inArray, isNull, or, sql } from 'drizzle-orm'
 import type { ReferenceNode } from '@/lib/api/contracts/workflow-references'
+import { CUSTOM_BLOCK_TYPE_PREFIX } from '@/lib/custom-blocks/metadata'
 import { MAX_CALL_CHAIN_DEPTH } from '@/lib/execution/call-chain'
 import { getCustomBlockRowsForWorkspace } from '@/lib/workflows/custom-blocks/operations'
 import { coerceObjectArray, isRecord } from '@/lib/workflows/persistence/remap-internal-ids'
@@ -11,7 +12,6 @@ import {
   resolveActiveCanonicalValue,
   scopeCanonicalModesForTool,
 } from '@/lib/workflows/subblocks/visibility'
-import { CUSTOM_BLOCK_TYPE_PREFIX } from '@/blocks/custom/build-config'
 import { BlockType, isWorkflowBlockType } from '@/executor/constants'
 
 /**

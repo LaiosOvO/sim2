@@ -2,6 +2,7 @@ import { createLogger } from '@sim/logger'
 import { toError } from '@sim/utils/errors'
 import { generateId } from '@sim/utils/id'
 import type { Edge } from 'reactflow'
+import { isCustomBlockType } from '@/lib/custom-blocks/metadata'
 import type { CanonicalModeOverrides } from '@/lib/workflows/subblocks/visibility'
 import {
   buildCanonicalIndex,
@@ -15,7 +16,7 @@ import {
   resolveCanonicalMode,
 } from '@/lib/workflows/subblocks/visibility'
 import { getBlock } from '@/blocks'
-import { isCustomBlockType, RESERVED_PARAMS } from '@/blocks/custom/build-config'
+import { RESERVED_PARAMS } from '@/blocks/custom/build-config'
 import type { SubBlockConfig } from '@/blocks/types'
 import type { SerializedBlock, SerializedWorkflow } from '@/serializer/types'
 import type { BlockState, Loop, Parallel } from '@/stores/workflows/workflow/types'

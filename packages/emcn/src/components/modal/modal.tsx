@@ -39,9 +39,9 @@
 import * as React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '../../lib/cn'
+import { X } from '../../lib/lucide-icons'
 import { Button } from '../button/button'
 import { focusFirstTextInput, focusFirstTextInputIn } from './auto-focus'
 

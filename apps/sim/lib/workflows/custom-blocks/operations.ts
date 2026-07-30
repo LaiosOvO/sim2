@@ -11,11 +11,15 @@ import { generateId, generateShortId } from '@sim/utils/id'
 import { and, eq, isNull, sql } from 'drizzle-orm'
 import { isOrganizationOnEnterprisePlan } from '@/lib/billing/core/subscription'
 import { isFeatureEnabled } from '@/lib/core/config/feature-flags'
+import {
+  CUSTOM_BLOCK_TYPE_PREFIX,
+  type CustomBlockOutput,
+  type CustomBlockRow,
+} from '@/lib/custom-blocks/metadata'
+import { isReservedCustomBlockOutputName } from '@/lib/custom-blocks/output-names'
 import { extractInputFieldsFromBlocks, type WorkflowInputField } from '@/lib/workflows/input-format'
 import { loadDeployedWorkflowState } from '@/lib/workflows/persistence/utils'
 import { getWorkspaceWithOwner } from '@/lib/workspaces/permissions/utils'
-import type { CustomBlockOutput, CustomBlockRow } from '@/blocks/custom/build-config'
-import { CUSTOM_BLOCK_TYPE_PREFIX, isReservedOutputName } from '@/blocks/custom/build-config'
 
 const logger = createLogger('CustomBlocksOperations')
 
@@ -399,7 +403,7 @@ export class CustomBlockValidationError extends Error {
  * check: also covers callers that bypass the HTTP contract (copilot handler).
  */
 function assertNoReservedOutputNames(exposedOutputs: CustomBlockOutput[] | undefined): void {
-  const reserved = exposedOutputs?.find((o) => isReservedOutputName(o.name))
+  const reserved = exposedOutputs?.find((o) => isReservedCustomBlockOutputName(o.name))
   if (reserved) {
     throw new CustomBlockValidationError(
       `"${reserved.name}" is a reserved output name (success, error, cost)`

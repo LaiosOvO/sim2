@@ -219,6 +219,42 @@ jobs:
       - name: Lightweight client surface ratchet
         run: bun run check:lightweight-client-surfaces
 
+      - name: Provider model discovery boundary and catalog ratchets
+        run: |
+          bun run check:provider-model-discovery-coverage
+          bun run check:provider-model-discovery-boundary
+          bun run check:provider-model-discovery-client
+          bun run check:provider-model-discovery-client-types
+          bun run provider-model-catalog:check
+          bun run check:provider-model-catalog-parity
+          bun run test:provider-model-discovery-architecture
+
+      - name: Provider model discovery focused frontend compile ratchet
+        run: bun run check:provider-model-discovery-compile
+
+      - name: W5 custom-block coverage and module boundary
+        run: |
+          bun run check:w5-custom-block-coverage
+          bun run check:w5-custom-block-boundary
+
+      - name: W5 custom-block focused frontend compile ratchet
+        run: bun run check:w5-custom-block-frontend-compile
+
+      - name: API-1009 focused frontend compile ratchet
+        run: bun run check:api-1009-frontend-compile
+
+      - name: API-1037 fork-modal focused frontend compile ratchet
+        run: bun run check:api-1037-frontend-compile
+
+      - name: W6 resume-page focused frontend compile ratchet
+        run: bun run check:w6-resume-frontend-compile
+
+      - name: W6 execution-control focused frontend compile ratchet
+        run: bun run check:w6-execution-control-frontend-compile
+
+      - name: W8 approvals browser compile, bundle, and closure ratchet
+        run: bun run check:w8-approvals-client
+
       - name: Validate browser bundle policy
         run: bun run check:browser-bundle-policy
 

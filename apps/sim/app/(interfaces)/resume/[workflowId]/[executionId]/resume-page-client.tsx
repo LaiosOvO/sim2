@@ -10,6 +10,7 @@ import {
   Code,
   cn,
   Label,
+  RefreshCw,
   Table,
   TableBody,
   TableCell,
@@ -17,11 +18,16 @@ import {
   TableHeader,
   TableRow,
   Tooltip,
-} from '@sim/emcn'
+} from '@sim/emcn/resume'
 import { formatDateTime } from '@sim/utils/formatting'
 import { useQueryClient } from '@tanstack/react-query'
-import { RefreshCw } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import {
+  asJsonObject,
+  pauseResponseData,
+  submittedResumeValues,
+} from '@/lib/browser/resume-view-model'
+import { useWorkflowExecutionStatus } from '@/hooks/queries/execution-control'
 import {
   type PauseContextDetail,
   type PausedExecutionDetail,
@@ -59,11 +65,15 @@ interface ResumeExecutionPageProps {
 }
 
 const STATUS_BADGE_VARIANT: Record<string, 'orange' | 'blue' | 'green' | 'red' | 'gray'> = {
+  pending: 'blue',
+  running: 'blue',
   paused: 'orange',
   queued: 'blue',
   resuming: 'blue',
   resumed: 'green',
+  completed: 'green',
   failed: 'red',
+  cancelled: 'gray',
 }
 
 function formatDate(value: string | null): string {
@@ -167,6 +177,11 @@ export default function ResumeExecutionPage({
     isFetching: refreshingExecution,
     refetch: refetchExecutionDetail,
   } = useResumeExecutionDetail(workflowId, executionId, initialExecutionDetail ?? undefined)
+  const {
+    data: workflowExecutionStatus,
+    isFetching: refreshingWorkflowExecution,
+    refetch: refetchWorkflowExecutionStatus,
+  } = useWorkflowExecutionStatus(workflowId, executionId)
   const pausePoints = executionDetail?.pausePoints ?? []
 
   const defaultContextId = useMemo(() => {
@@ -440,20 +455,25 @@ export default function ResumeExecutionPage({
     []
   )
 
-  const selectedOperation = useMemo(
-    () => selectedDetail?.pausePoint.response?.data?.operation || 'human',
-    [selectedDetail]
-  )
+  const selectedResponseData = useMemo(() => {
+    return pauseResponseData(selectedDetail?.pausePoint.response).object
+  }, [selectedDetail])
+  const latestResumeValues = useMemo(() => {
+    return submittedResumeValues(selectedDetail?.pausePoint.latestResumeEntry?.resumeInput)
+  }, [selectedDetail])
+
+  const selectedOperation =
+    typeof selectedResponseData?.operation === 'string' ? selectedResponseData.operation : 'human'
   const isHumanMode = selectedOperation === 'human'
 
   const inputFormatFields = useMemo(
-    () => normalizeInputFormatFields(selectedDetail?.pausePoint.response?.data?.inputFormat),
-    [normalizeInputFormatFields, selectedDetail]
+    () => normalizeInputFormatFields(selectedResponseData?.inputFormat),
+    [normalizeInputFormatFields, selectedResponseData]
   )
   const hasInputFormat = inputFormatFields.length > 0
 
   const responseStructureRows = useMemo<ResponseStructureRow[]>(() => {
-    const raw = selectedDetail?.pausePoint.response?.data?.responseStructure
+    const raw = selectedResponseData?.responseStructure
     if (!Array.isArray(raw)) return []
     return raw
       .map((entry: any, index: number) => {
@@ -474,21 +494,19 @@ export default function ResumeExecutionPage({
         } as ResponseStructureRow
       })
       .filter((row): row is ResponseStructureRow => row !== null)
-  }, [selectedDetail])
+  }, [selectedResponseData])
 
   const seedFormFromDetail = useCallback(
     (detail: PauseContextDetail) => {
-      const responseData = detail.pausePoint.response?.data ?? {}
-      const operation = responseData.operation || 'human'
+      const { raw: rawResponseData, object: responseData } = pauseResponseData(
+        detail.pausePoint.response
+      )
+      const operation =
+        typeof responseData.operation === 'string' ? responseData.operation : 'human'
       const fetchedInputFields = normalizeInputFormatFields(responseData.inputFormat)
-      const submission =
-        responseData &&
-        typeof responseData.submission === 'object' &&
-        !Array.isArray(responseData.submission)
-          ? (responseData.submission as Record<string, any>)
-          : undefined
+      const submission = asJsonObject(responseData.submission)
       if (operation === 'human' && fetchedInputFields.length > 0) {
-        const baseValues = buildInitialFormValues(fetchedInputFields, submission)
+        const baseValues = buildInitialFormValues(fetchedInputFields, submission ?? undefined)
         let mergedValues = baseValues
         setFormValuesByContext((prev) => {
           const existingValues = prev[detail.pausePoint.contextId]
@@ -503,9 +521,9 @@ export default function ResumeExecutionPage({
         setResumeInput('')
       } else {
         const initialValue =
-          typeof responseData === 'string'
-            ? responseData
-            : JSON.stringify(responseData ?? {}, null, 2)
+          typeof rawResponseData === 'string'
+            ? rawResponseData
+            : JSON.stringify(rawResponseData ?? {}, null, 2)
         if (resumeInputsRef.current[detail.pausePoint.contextId] !== undefined) {
           setResumeInput(resumeInputsRef.current[detail.pausePoint.contextId])
         } else {
@@ -530,13 +548,16 @@ export default function ResumeExecutionPage({
   }, [selectedDetail, seedFormFromDetail])
 
   const handleRefreshExecution = useCallback(async () => {
-    const { data } = await refetchExecutionDetail()
+    const [{ data }] = await Promise.all([
+      refetchExecutionDetail(),
+      refetchWorkflowExecutionStatus(),
+    ])
     if (!selectedContextId) {
       const firstPaused =
         data?.pausePoints.find((point) => point.resumeStatus === 'paused')?.contextId ?? null
       setSelectedContextId(firstPaused)
     }
-  }, [refetchExecutionDetail, selectedContextId])
+  }, [refetchExecutionDetail, refetchWorkflowExecutionStatus, selectedContextId])
 
   const handleResume = useCallback(
     async () => {
@@ -731,22 +752,32 @@ export default function ResumeExecutionPage({
               Select a pause point to review and resume
             </p>
           </div>
-          <Tooltip.Root>
-            <Tooltip.Trigger asChild>
-              <Button
-                variant='outline'
-                size='sm'
-                onClick={handleRefreshExecution}
-                disabled={refreshingExecution}
-                className='gap-1.5 px-2.5'
-                aria-label='Refresh execution details'
-              >
-                <RefreshCw className={cn('size-[14px]', refreshingExecution && 'animate-spin')} />
-                Refresh
-              </Button>
-            </Tooltip.Trigger>
-            <Tooltip.Content>Refresh</Tooltip.Content>
-          </Tooltip.Root>
+          <div className='flex items-center gap-2'>
+            <div aria-live='polite' aria-label='Overall execution status'>
+              <StatusBadge status={workflowExecutionStatus?.status ?? 'paused'} />
+            </div>
+            <Tooltip.Root>
+              <Tooltip.Trigger asChild>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  onClick={handleRefreshExecution}
+                  disabled={refreshingExecution || refreshingWorkflowExecution}
+                  className='gap-1.5 px-2.5'
+                  aria-label='Refresh execution details'
+                >
+                  <RefreshCw
+                    className={cn(
+                      'size-[14px]',
+                      (refreshingExecution || refreshingWorkflowExecution) && 'animate-spin'
+                    )}
+                  />
+                  Refresh
+                </Button>
+              </Tooltip.Trigger>
+              <Tooltip.Content>Refresh</Tooltip.Content>
+            </Tooltip.Root>
+          </div>
         </div>
 
         {/* Main Layout */}
@@ -806,7 +837,7 @@ export default function ResumeExecutionPage({
                   <div>
                     <Label>{getBlockName(selectedDetail.pausePoint)}</Label>
                     <p className='mt-[2px] text-[12px] text-[var(--text-muted)]'>
-                      Paused at {formatDate(selectedDetail.pausePoint.registeredAt)}
+                      Paused at {formatDate(selectedDetail.pausePoint.registeredAt ?? null)}
                     </p>
                   </div>
                   <div className='flex items-center gap-2'>
@@ -854,13 +885,7 @@ export default function ResumeExecutionPage({
                                 {field.description}
                               </p>
                             )}
-                            {renderDisabledFieldInput(
-                              field,
-                              selectedDetail.pausePoint.latestResumeEntry?.resumeInput
-                                ?.submission ??
-                                selectedDetail.pausePoint.latestResumeEntry?.resumeInput ??
-                                {}
-                            )}
+                            {renderDisabledFieldInput(field, latestResumeValues)}
                           </div>
                         ))
                       ) : selectedDetail.pausePoint.latestResumeEntry?.resumeInput ? (

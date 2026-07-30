@@ -1926,6 +1926,13 @@
       "when": 1785361226408,
       "tag": "0275_polaris_external_identity_read_model",
       "breakpoints": true
+    },
+    {
+      "idx": 276,
+      "version": "7",
+      "when": 1785383333695,
+      "tag": "0276_approval_domain",
+      "breakpoints": true
     }
   ]
 }

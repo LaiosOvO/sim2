@@ -2,6 +2,7 @@ import { createLogger } from '@sim/logger'
 import { getErrorMessage } from '@sim/utils/errors'
 import { useQuery } from '@tanstack/react-query'
 import { requestJson } from '@/lib/api/client/request'
+import type { ProviderModelDiscoveryProviderV1 as ProviderName } from '@/lib/api/contracts/provider-model-discovery'
 import {
   getBaseProviderModelsContract,
   getBasetenProviderModelsContract,
@@ -13,8 +14,7 @@ import {
   getTogetherProviderModelsContract,
   getVllmProviderModelsContract,
   type ProviderModelsResponse,
-} from '@/lib/api/contracts/providers'
-import type { ProviderName } from '@/stores/providers'
+} from '@/lib/api/contracts/provider-model-discovery'
 
 const logger = createLogger('ProviderModelsQuery')
 

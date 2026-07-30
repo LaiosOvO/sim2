@@ -82,6 +82,55 @@ export function createWorkerHttpServer(options: WorkerHttpServerOptions): Server
         }
         return
       }
+      if (request.method === 'POST' && url.pathname === '/internal/resume/poll') {
+        try {
+          json(response, 200, await options.application.runResumePoll(await readJson(request)))
+        } catch (error) {
+          if (error instanceof WorkerJobAdmissionFailure) {
+            json(response, error.code === 'EXECUTION_JOB_INVALID' ? 400 : 503, {
+              error: error.code,
+              message: error.message,
+            })
+            return
+          }
+          throw error
+        }
+        return
+      }
+      if (request.method === 'POST' && url.pathname === '/internal/approvals/resume') {
+        try {
+          json(response, 202, await options.application.resumeApproval(await readJson(request)))
+        } catch (error) {
+          if (error instanceof WorkerJobAdmissionFailure) {
+            json(response, error.code === 'EXECUTION_JOB_INVALID' ? 400 : 503, {
+              error: error.code,
+              message: error.message,
+            })
+            return
+          }
+          throw error
+        }
+        return
+      }
+      if (request.method === 'POST' && url.pathname === '/internal/approvals/effects') {
+        try {
+          json(
+            response,
+            202,
+            await options.application.enqueueApprovalEffect(await readJson(request))
+          )
+        } catch (error) {
+          if (error instanceof WorkerJobAdmissionFailure) {
+            json(response, error.code === 'EXECUTION_JOB_INVALID' ? 400 : 503, {
+              error: error.code,
+              message: error.message,
+            })
+            return
+          }
+          throw error
+        }
+        return
+      }
 
       const cancellation = /^\/internal\/executions\/([^/]+)\/cancel$/.exec(url.pathname)
       if (request.method === 'POST' && cancellation) {

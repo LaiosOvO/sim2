@@ -1,13 +1,7 @@
-import { NextResponse } from 'next/server'
-import { providerModelsResponseSchema } from '@/lib/api/contracts/providers'
-import { withRouteHandler } from '@/lib/core/utils/with-route-handler'
-import { getBaseModelProviders } from '@/providers/utils'
+import { proxyProviderModelDiscoveryRequest } from '@/lib/api-proxy/provider-model-discovery'
 
-export const GET = withRouteHandler(async () => {
-  try {
-    const allModels = Object.keys(getBaseModelProviders())
-    return NextResponse.json(providerModelsResponseSchema.parse({ models: allModels }))
-  } catch (error) {
-    return NextResponse.json({ models: [], error: 'Failed to fetch models' }, { status: 500 })
-  }
-})
+export const dynamic = 'force-dynamic'
+
+export function GET(request: Request): Promise<Response> {
+  return proxyProviderModelDiscoveryRequest(request, 'API-0270')
+}

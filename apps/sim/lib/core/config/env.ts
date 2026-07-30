@@ -47,6 +47,7 @@ export const env = createEnv({
     ENCRYPTION_KEY:                        z.string().min(32),                     // Key for encrypting sensitive data
     API_ENCRYPTION_KEY:                    z.string().min(32).optional(),          // Dedicated key for encrypting API keys (optional for OSS)
     INTERNAL_API_SECRET:                   z.string().min(32),                     // Secret for internal API authentication
+    INTERNAL_EXECUTION_TOKEN:              z.string().min(32).optional(),          // Dedicated API/Worker execution-service bearer (falls back to INTERNAL_API_SECRET during cutover)
     INTERNAL_JWT_SECRET:                   z.string().min(32).optional(),          // Dedicated signing key for internal JWTs (falls back to INTERNAL_API_SECRET); separating limits blast radius if one leaks
 
     // Copilot

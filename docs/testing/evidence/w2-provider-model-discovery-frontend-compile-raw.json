@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W2-PROVIDER-MODEL-DISCOVERY",
+  "capturedAt": "2026-07-30T02:21:39.712Z",
+  "runner": {
+    "kind": "focused-vite-watch",
+    "viteVersion": "8.0.16",
+    "bunVersion": "1.3.11",
+    "platform": "win32",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz",
+    "logicalCpuCount": 8,
+    "totalMemoryBytes": 34272227328
+  },
+  "entrypoint": "apps/sim/app/workspace/[workspaceId]/providers/provider-models-loader.tsx",
+  "measurementTool": {
+    "path": "scripts/architecture/performance/provider-model-discovery-frontend-compile-ratchet.ts",
+    "bytes": 11582,
+    "sha256": "886780ad0f6cd309537b74a94687ca13672a8a92b0c9b221b24dfb1ebec653ea"
+  },
+  "configuration": {
+    "coldDefinition": "first Vite watch bundle in a fresh process with no in-process transform cache",
+    "incrementalDefinition": "next watch bundle after appending a valid TSDoc probe to the final ProviderModelsLoader entrypoint",
+    "externalPackages": ["react", "react-dom", "next/navigation", "@tanstack/react-query"]
+  },
+  "measurementQuality": {
+    "stableMachineBaseline": false,
+    "use": "source-bound local sample plus a fixed non-regression ceiling",
+    "limitation": "This shared integration worktree may run other agent processes concurrently; the sample is a regression ratchet, not a cross-machine SLO."
+  },
+  "sourceClosure": [
+    {
+      "path": "apps/sim/app/workspace/[workspaceId]/providers/provider-models-loader.tsx",
+      "bytes": 2759,
+      "sha256": "8c7d1421dfb349c5e9b1afb4ee3e6d1e0af1b66d2c734fe9a11ebd700dcc7970"
+    },
+    {
+      "path": "apps/sim/hooks/queries/providers.ts",
+      "bytes": 3209,
+      "sha256": "754a4e22c97ad93c9f13cec7adc1339dc653968ecaef1ec1389149411fa23afc"
+    },
+    {
+      "path": "apps/sim/lib/api/client/request.ts",
+      "bytes": 8926,
+      "sha256": "0e001981547296eb5dac2a9cab1a85133a91d37d4ebe3dbe025d677c863b73a8"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/provider-model-discovery.ts",
+      "bytes": 1628,
+      "sha256": "3cb2e027b28561319ad5f5ada44303fff14a97ba6da82671fc5a81e14c48453b"
+    },
+    {
+      "path": "apps/sim/lib/api/contracts/types.ts",
+      "bytes": 4665,
+      "sha256": "83e899296ae37d3719550e92f0b1d65dc0e4a85e083d9d19606e3ab5db31387d"
+    },
+    {
+      "path": "apps/sim/stores/modals/search/open-state.ts",
+      "bytes": 559,
+      "sha256": "d0b93fa01bc24e281273818993ad60a028196f0fc5e531ee432e8ee63ce73244"
+    },
+    {
+      "path": "apps/sim/stores/providers/index.ts",
+      "bytes": 88,
+      "sha256": "02e2424459e5b26b11275f5c8b19f7e85c55824292c73b87fa707c6ce56d912e"
+    },
+    {
+      "path": "apps/sim/stores/providers/store.ts",
+      "bytes": 1859,
+      "sha256": "83a4123788b69617e1bbf1d93f1b639f1ff55fadbb34a43ed498b01c1e47d02f"
+    },
+    {
+      "path": "apps/sim/stores/providers/types.ts",
+      "bytes": 936,
+      "sha256": "bc4d2d38cf91e185ec31ebbf4413fa5c9f125c879469cbf8b64e7aea47ea8fe3"
+    },
+    {
+      "path": "packages/api-contracts/src/provider-model-discovery.ts",
+      "bytes": 3344,
+      "sha256": "7d09bde564b6ef4e5a7f1ab9ac2adff2a25b4992af2f68498bcd0a41378d405e"
+    },
+    {
+      "path": "packages/api-contracts/src/provider-model-discovery-routes.ts",
+      "bytes": 1976,
+      "sha256": "0cb5a023a1999436da84b24085c934a823a7670d4c576b47793735e4f091ee35"
+    }
+  ],
+  "invalidation": {
+    "editedPath": "apps/sim/app/workspace/[workspaceId]/providers/provider-models-loader.tsx",
+    "operation": "append-probe-comment-then-restore",
+    "originalSha256": "8c7d1421dfb349c5e9b1afb4ee3e6d1e0af1b66d2c734fe9a11ebd700dcc7970",
+    "editedSha256": "9772b75380bde27066bbe870fcd71ee0222b6858867fd862f625819f8ab03f01",
+    "restoredSha256": "8c7d1421dfb349c5e9b1afb4ee3e6d1e0af1b66d2c734fe9a11ebd700dcc7970"
+  },
+  "samples": {
+    "cold": {
+      "durationMs": 81,
+      "sourceSha256": "8c7d1421dfb349c5e9b1afb4ee3e6d1e0af1b66d2c734fe9a11ebd700dcc7970"
+    },
+    "incremental": {
+      "durationMs": 35,
+      "sourceSha256": "9772b75380bde27066bbe870fcd71ee0222b6858867fd862f625819f8ab03f01"
+    }
+  }
+}

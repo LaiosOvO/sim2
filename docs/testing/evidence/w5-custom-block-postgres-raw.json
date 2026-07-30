@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W5-CUSTOM-BLOCKS",
+  "capturedAt": "2026-07-30T03:27:21.000Z",
+  "database": {
+    "engine": "PostgreSQL",
+    "majorVersion": 16,
+    "image": "postgres:16-alpine",
+    "disposable": true,
+    "databaseName": "sim_w5"
+  },
+  "command": "SIM_TEST_DATABASE_DISPOSABLE=1 SIM_REQUIRE_POSTGRES_TEST=1 vitest run tests/w5/native-custom-blocks.postgres.test.ts",
+  "result": {
+    "testFilesPassed": 1,
+    "testsPassed": 2,
+    "testsFailed": 0,
+    "durationMs": 1190
+  },
+  "coverage": [
+    "active immutable deployment input projection",
+    "all five donor input trigger types",
+    "current and legacy input locations",
+    "input placeholder and required override merge",
+    "workspace organization lookup",
+    "organization-isolated live usage query",
+    "organization-isolated active-deployment usage query",
+    "live/deployed workflow de-duplication",
+    "cross-organization exclusion",
+    "cross-tenant workflow binding is unreadable and immutable",
+    "source-workspace publish validation",
+    "update and delete persistence",
+    "query counts remain constant as rows grow"
+  ],
+  "queryRatchets": {
+    "listHydrationQueries": 1,
+    "workspaceOrganizationQueries": 1,
+    "usageQueries": 2,
+    "perRowDeploymentQueriesAllowed": 0
+  },
+  "sourceClosure": [
+    {
+      "path": "apps/api/src/infrastructure/postgres/repositories/drizzle-custom-block-repository.ts",
+      "bytes": 10719,
+      "sha256": "61acc1b9ee3d75e303b86aac61496e84f60be45250ebd78aa5ffbd1a75d8d042"
+    },
+    {
+      "path": "apps/api/src/modules/custom-blocks/application/project-custom-block-inputs.ts",
+      "bytes": 1866,
+      "sha256": "b47e5fdbc93a2cdace67733b056eabe01c078a533a46737b6c66488fc483f44c"
+    },
+    {
+      "path": "apps/api/tests/w5/native-custom-blocks.postgres.test.ts",
+      "bytes": 14064,
+      "sha256": "9863cfee3fcd5517312a3d3b6d35d2b8919c5937935116abf62b8c4631519aed"
+    }
+  ]
+}

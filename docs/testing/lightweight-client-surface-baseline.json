@@ -19,7 +19,13 @@
     {
       "id": "workspace-fork-modal",
       "entrypoint": "apps/sim/ee/workspace-forking/components/fork-workspace-modal/fork-workspace-modal.tsx",
-      "maxTotalGzipBytes": 212000
+      "maxTotalGzipBytes": 205000,
+      "forbiddenInputFragments": [
+        "apps/sim/ee/workspace-forking/hooks/workspace-fork.ts",
+        "apps/sim/lib/api/contracts/workspace-fork.ts",
+        "node_modules/lucide-react/dist/esm/lucide-react.js",
+        "packages/emcn/src/index.ts"
+      ]
     },
     {
       "id": "workspace-fork-resources-hook",
@@ -37,9 +43,44 @@
       "maxTotalGzipBytes": 88000
     },
     {
+      "id": "resume-execution-page-client",
+      "entrypoint": "apps/sim/app/(interfaces)/resume/[workflowId]/[executionId]/resume-page-client.tsx",
+      "maxTotalGzipBytes": 210000,
+      "forbiddenInputFragments": [
+        "node_modules/lucide-react/dist/esm/lucide-react.js",
+        "apps/sim/background/",
+        "apps/sim/lib/queues/",
+        "apps/sim/lib/redis/",
+        "apps/sim/lib/auth/"
+      ]
+    },
+    {
       "id": "resume-execution-contract",
       "entrypoint": "apps/sim/lib/api/contracts/execution-read.ts",
       "maxTotalGzipBytes": 68000
+    },
+    {
+      "id": "custom-blocks-query-hook",
+      "entrypoint": "apps/sim/hooks/queries/custom-blocks.ts",
+      "maxTotalGzipBytes": 92000,
+      "forbiddenInputFragments": ["apps/sim/blocks/custom/build-config.ts"]
+    },
+    {
+      "id": "custom-blocks-contract",
+      "entrypoint": "apps/sim/lib/api/contracts/custom-blocks.ts",
+      "maxTotalGzipBytes": 72000,
+      "forbiddenInputFragments": ["apps/sim/blocks/custom/build-config.ts"]
+    },
+    {
+      "id": "w6-execution-control-hook",
+      "entrypoint": "apps/sim/hooks/queries/execution-control.ts",
+      "maxTotalGzipBytes": 90000,
+      "forbiddenInputFragments": [
+        "apps/sim/background/",
+        "apps/sim/lib/queues/",
+        "apps/sim/lib/redis/",
+        "apps/sim/lib/auth/"
+      ]
     }
   ],
   "forbiddenInputFragments": [

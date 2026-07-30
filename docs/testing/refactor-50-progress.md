@@ -8,35 +8,53 @@
 浏览器边界门禁，并通过独立 agent 审查的功能。路由占位、空 handler、只生成 manifest、
 mock-only adapter、仅保留 legacy proxy 均不计入完成数。
 
-API-1037、W6 Group A 已完成第一轮修复但仍等待独立复核；API-1009 已完成实现侧闭环并
-正在独立审查。以上接口在 reviewer 明确 `approved` 前都不进入严格完成数。
+API-1009、API-1037、W6 Group A 与 9 条 provider model discovery 路由已通过独立功能
+路由审查；W6 Group B 终审已关闭 8 项中的 6 项，外置 payload 可部署闭环和完整 handler
+查询预算两项仍在整改。未获 reviewer 明确 `approved` 的接口不进入严格完成数。
 
 ## 路由阶段
 
 | 阶段 | 全量 | 50% 目标 | 严格完成 | 待审/复核 | 距离 50% |
 |---|---:|---:|---:|---:|---:|
 | W1 | 3 | 2 | 3 | 0 | 0 |
-| W2 | 95 | 48 | 13 | 2 | 35 |
+| W2 | 95 | 48 | 24 | 0 | 24 |
 | W3 | 263 | 132 | 0 | 0 | 132 |
 | W4 | 555 | 278 | 0 | 0 | 278 |
-| W5 | 29 | 15 | 0 | 0 | 15 |
-| W6 | 11 | 6 | 0 | 3 | 6 |
+| W5 | 29 | 15 | 4 | 0 | 11 |
+| W6 | 11 | 6 | 3 | 3 | 3 |
 | W7 | 61 | 31 | 0 | 0 | 31 |
 | W8 | 109 | 55 | 0 | 0 | 55 |
 
-严格完成合计为 16/1126；API-1009/API-1037 只有在各自独立审查通过后才可逐条计数。
+严格完成合计为 34/1126；W6 Group B 只有在独立审查通过后才可逐条计数。
 
 ## 当前并发实施
 
-- W2：API-1037 fork resources 已收到独立审查修改要求；API-1009 background work 已完成
-  native deep module、真实 PostgreSQL fixture、focused browser contract 和生产组合，等待未参与
-  agent 独立审查。
+- W2：API-1009 background work 已通过独立功能路由审查；source-bound Vite raw 为
+  97 ms cold / 36 ms incremental。9 条 provider model discovery 路由已通过独立审查，
+  关闭真实 consumer、条件懒加载、缓存、URL 容错、有序 wire parity 和 HTTP method parity。
+  API-1037 fork resources 已关闭跨租户 folder join、错误体、1000/1001 边界及前端大合同
+  问题，并通过独立功能路由审查。
 - W4：正在建立生成式 provider adapter/handler/harness；只有绑定真实 provider 语义并完成
   auth、behavior、integration 证据的路由才可计数。
+- W5：API-0045/0094/0095/0096 已关闭组织一致性、donor wire 语义、五类 trigger
+  projection、真实 query ratchet、method parity、production ownership 和 CI 问题，并通过
+  最终独立复审。custom-block hook 为 84,572 gzip bytes，最终复审 compile 为
+  132/35 ms；4 条接口已进入严格完成账本。
 - W6：API-0282/API-0996/API-0997 已实现真实 read module、production composition、三条薄
-  Next facade 与 focused browser contract。第一轮独立审查发现的 queue 跨 workflow 混入、
-  auth precedence、DTO 投影、真实 PG fixture 和页面 Executor import 均已修复，正在复核。
-  API-0993/API-0138/API-0283 仍未实现；带写副作用的 resume poll 必须走 Worker command。
+  Next facade 与 focused browser contract，并已通过最终独立功能路由审查。第一轮审查发现的
+  queue 跨 workflow 混入、auth precedence、DTO 投影、真实 PG fixture、页面 Executor import
+  及 final-source-bound 性能证据均已关闭。
+  API-0993/API-0138/API-0283 已完成 durable Worker resume 状态推进、真实 API→Worker→
+  Sandbox/PG 链、外置 payload 恢复、单 SQL 查询预算、真实页面 consumer 与过渡期
+  server-only Executor bridge。最终独立复审已确认其中 6/8 项闭合，但外置 payload 尚缺
+  可部署 server endpoint/真实 HTTP 集成，查询预算尚未覆盖完整 payload handler 路径；
+  当前按 `changes-required` 整改，批准前仍不计完成。
+- W8：Polaris Approvals 的共享契约、Biz 状态机、数据库迁移、API/Worker 生产组合和严格
+  Zod proxy 已冻结；8 条 Next facade、focused 页面 consumer、真实 PostgreSQL fixture、
+  27 个 focused tests、1000/1000 strict validation 与轻量前端闭包均通过作者验证。独立审查
+  已发现 workspace/organization 权限隔离、donor 状态机约束、`canAct`、`pending_for_me`
+  过滤顺序、resume/effect 幂等和生产 resume 接收端等阻断，当前为 `changes-required`；
+  W8 仍为 0 条严格完成。
 - 前端：正在建立冷编译/增量编译、bundle 和 browser dependency closure 基线，并切断一条
   实际的 browser 到 server-heavy module 的依赖链。
 
@@ -46,11 +64,11 @@ API-1037、W6 Group A 已完成第一轮修复但仍等待独立复核；API-100
 
 | 重依赖类别 | 可达 client roots | 当前要求 |
 |---|---:|---|
-| Executor | 271 | 持续下降；最终前端不可达实现，只允许 data-only constants/contracts |
-| Execution/Sandbox | 240 | 持续下降；Sandbox 仅 Node Worker |
-| Runtime Tools/Blocks/Triggers | 198 | 前端只保留生成的 metadata catalog |
+| Executor | 270 | 持续下降；最终前端不可达实现，只允许 data-only constants/contracts |
+| Execution/Sandbox | 239 | 持续下降；Sandbox 仅 Node Worker |
+| Runtime Tools/Blocks/Triggers | 197 | 前端只保留生成的 metadata catalog |
 | Database/Auth/Secrets | 71 | 降为 0 |
-| Server Crypto/Provider SDK | 191 | 降为 0 |
+| Server Crypto/Provider SDK | 190 | 降为 0 |
 | Infra extensions | 0 | 保持 0 的硬门禁 |
 | API or Worker implementation | 0 | 保持 0 的硬门禁 |
 
@@ -63,6 +81,11 @@ API-1037 检查点的后端 build 为 1,149 modules、35.52 KiB entry。这个�
 closure 为 84,639 gzip bytes / 107 inputs，且不再触达 Executor、旧 workflow 大合同或
 workflow auth middleware。Next trace collector 的单位错误也已修为 1000 units/ms，并按每次
 `start-dev-server` 重置 cold classification。
+
+最终 Resume client 的 source-bound Vite raw 为 416 ms cold / 149 ms incremental，
+当前 ratchet 复跑为 385/131 ms；轻量客户端为 202,347 gzip bytes / 311 inputs，并有专门门禁禁止
+重新导入 `lucide-react` 根 barrel。该 focused compile 已达门禁，但 Next 整页 19.77 秒冷启动
+仍是未完成的前端体验里程碑。
 
 ## 下一验收点
 

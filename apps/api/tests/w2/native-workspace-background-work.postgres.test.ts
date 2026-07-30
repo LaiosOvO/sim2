@@ -11,7 +11,7 @@ if (process.env.SIM_REQUIRE_POSTGRES_TEST === '1' && !disposableDatabaseEnabled)
 describe.runIf(disposableDatabaseEnabled)(
   'native workspace background-work PostgreSQL adapter',
   () => {
-    it('preserves tenant scope, involvement rules, cursor precision, and metadata boundary', async () => {
+    it('preserves tenant scope, cursor precision, metadata boundary, and fixed query count', async () => {
       const [{ db }, { sql }, { createDrizzleWorkspaceBackgroundWorkReader }] = await Promise.all([
         import('@sim/db'),
         import('drizzle-orm'),
@@ -63,6 +63,24 @@ describe.runIf(disposableDatabaseEnabled)(
             '2026-07-30 10:00:00.123456'
           ),
           (
+            'job-same-z', 'workspace-parent', null, 'fork_sync', 'completed',
+            'Same timestamp z', null, '{}',
+            '2026-07-30 10:00:00.123456', '2026-07-30 10:00:01',
+            '2026-07-30 10:00:00.123456'
+          ),
+          (
+            'job-same-y', 'workspace-parent', null, 'fork_sync', 'completed',
+            'Same timestamp y', null, '{}',
+            '2026-07-30 10:00:00.123456', '2026-07-30 10:00:01',
+            '2026-07-30 10:00:00.123456'
+          ),
+          (
+            'job-micro-older', 'workspace-parent', null, 'fork_sync', 'completed',
+            'One microsecond older', null, '{}',
+            '2026-07-30 10:00:00.123455', '2026-07-30 10:00:01',
+            '2026-07-30 10:00:00.123455'
+          ),
+          (
             'job-child-metadata', 'workspace-other', null, 'fork_content_copy', 'completed',
             'Created child', null, '{"childWorkspaceId":"workspace-parent"}',
             '2026-07-30 09:00:00', '2026-07-30 09:00:01', '2026-07-30 09:00:00'
@@ -97,33 +115,66 @@ describe.runIf(disposableDatabaseEnabled)(
       }
 
       const reader = createDrizzleWorkspaceBackgroundWorkReader()
-      const first = await reader.listInvolving({ limit: 2, workspaceId: 'workspace-parent' })
-      expect(first.records.map((record) => record.id)).toEqual(['job-direct', 'job-child-metadata'])
-      expect(first.nextCursor).not.toBeNull()
-      expect(JSON.parse(Buffer.from(first.nextCursor as string, 'base64').toString())).toEqual({
-        id: 'job-child-metadata',
-        updatedAt: '2026-07-30 09:00:00',
-      })
-
-      const second = await reader.listInvolving({
-        cursor: first.nextCursor as string,
-        limit: 2,
+      const sameTimestampFirst = await reader.listInvolving({
+        limit: 1,
         workspaceId: 'workspace-parent',
       })
-      expect(second.records.map((record) => record.id)).toEqual([
+      expect(sameTimestampFirst.records.map((record) => record.id)).toEqual(['job-same-z'])
+      expect(
+        JSON.parse(Buffer.from(sameTimestampFirst.nextCursor as string, 'base64').toString())
+      ).toEqual({
+        id: 'job-same-z',
+        updatedAt: '2026-07-30 10:00:00.123456',
+      })
+      const sameTimestampSecond = await reader.listInvolving({
+        cursor: sameTimestampFirst.nextCursor as string,
+        limit: 1,
+        workspaceId: 'workspace-parent',
+      })
+      expect(sameTimestampSecond.records.map((record) => record.id)).toEqual(['job-same-y'])
+
+      const microsecondFirst = await reader.listInvolving({
+        limit: 3,
+        workspaceId: 'workspace-parent',
+      })
+      expect(microsecondFirst.records.map((record) => record.id)).toEqual([
+        'job-same-z',
+        'job-same-y',
+        'job-direct',
+      ])
+      expect(
+        JSON.parse(Buffer.from(microsecondFirst.nextCursor as string, 'base64').toString())
+      ).toEqual({
+        id: 'job-direct',
+        updatedAt: '2026-07-30 10:00:00.123456',
+      })
+      const microsecondSecond = await reader.listInvolving({
+        cursor: microsecondFirst.nextCursor as string,
+        limit: 1,
+        workspaceId: 'workspace-parent',
+      })
+      expect(microsecondSecond.records.map((record) => record.id)).toEqual(['job-micro-older'])
+      expect(microsecondFirst.records[2]?.startedAt.getTime()).toBe(
+        microsecondSecond.records[0]?.startedAt.getTime()
+      )
+
+      const allRows = await reader.listInvolving({
+        limit: 100,
+        workspaceId: 'workspace-parent',
+      })
+      expect(allRows.records.map((record) => record.id)).toEqual([
+        'job-same-z',
+        'job-same-y',
+        'job-direct',
+        'job-micro-older',
+        'job-child-metadata',
         'job-other-metadata',
         'job-live-child-sync',
       ])
-      expect(second.nextCursor).toBeNull()
-      expect(JSON.stringify([...first.records, ...second.records])).not.toContain(
-        'must-not-cross-tenant'
-      )
-      expect(JSON.stringify([...first.records, ...second.records])).not.toContain(
-        'job-live-child-unrelated-kind'
-      )
-      expect(JSON.stringify([...first.records, ...second.records])).not.toContain(
-        'job-archived-child-sync'
-      )
+      expect(allRows.nextCursor).toBeNull()
+      expect(JSON.stringify(allRows.records)).not.toContain('must-not-cross-tenant')
+      expect(JSON.stringify(allRows.records)).not.toContain('job-live-child-unrelated-kind')
+      expect(JSON.stringify(allRows.records)).not.toContain('job-archived-child-sync')
 
       const invalidCursor = await reader.listInvolving({
         cursor: Buffer.from(
@@ -132,21 +183,79 @@ describe.runIf(disposableDatabaseEnabled)(
         limit: 2,
         workspaceId: 'workspace-parent',
       })
-      expect(invalidCursor.records.map((record) => record.id)).toEqual([
-        'job-direct',
-        'job-child-metadata',
-      ])
+      expect(invalidCursor.records.map((record) => record.id)).toEqual(['job-same-z', 'job-same-y'])
 
       const parsed = listWorkspaceBackgroundWorkResponseV1Schema.parse({
-        items: first.records.map((record) => ({
+        items: microsecondFirst.records.map((record) => ({
           ...record,
           completedAt: record.completedAt?.toISOString() ?? null,
           startedAt: record.startedAt.toISOString(),
         })),
-        nextCursor: first.nextCursor,
+        nextCursor: microsecondFirst.nextCursor,
       })
       expect(JSON.stringify(parsed)).not.toContain('must-not-leak')
-      expect(parsed.items[0].metadata).toEqual({ actorName: 'Ada' })
+      expect(parsed.items[2].metadata).toEqual({ actorName: 'Ada' })
+
+      type QueryLogger = {
+        logQuery(query: string, parameters: unknown[]): void
+      }
+      const session = (
+        db as unknown as {
+          _: { session: { logger: QueryLogger } }
+        }
+      )._.session
+      async function observeReaderQueries(run: () => Promise<unknown>): Promise<readonly string[]> {
+        const previous = session.logger
+        const queries: string[] = []
+        session.logger = {
+          logQuery(query) {
+            queries.push(query)
+          },
+        }
+        try {
+          await run()
+          return queries
+        } finally {
+          session.logger = previous
+        }
+      }
+
+      const smallSetQueries = await observeReaderQueries(() =>
+        reader.listInvolving({ limit: 1, workspaceId: 'workspace-parent' })
+      )
+      expect(smallSetQueries).toHaveLength(2)
+      expect(smallSetQueries.filter((query) => query.includes('from "workspace"'))).toHaveLength(1)
+      expect(
+        smallSetQueries.filter((query) => query.includes('from "background_work_status"'))
+      ).toHaveLength(1)
+
+      await db.execute(
+        sql.raw(`insert into background_work_status (
+          id, workspace_id, workflow_id, kind, status, message, error, metadata,
+          started_at, completed_at, updated_at
+        )
+        select
+          'bulk-' || lpad(value::text, 3, '0'),
+          'workspace-parent',
+          null,
+          'fork_sync',
+          'completed',
+          'Bulk row',
+          null,
+          '{}',
+          '2026-07-29 00:00:00',
+          '2026-07-29 00:00:01',
+          '2026-07-29 00:00:00'
+        from generate_series(1, 250) as value`)
+      )
+      const largeSetQueries = await observeReaderQueries(() =>
+        reader.listInvolving({ limit: 100, workspaceId: 'workspace-parent' })
+      )
+      expect(largeSetQueries).toHaveLength(2)
+      expect(largeSetQueries.filter((query) => query.includes('from "workspace"'))).toHaveLength(1)
+      expect(
+        largeSetQueries.filter((query) => query.includes('from "background_work_status"'))
+      ).toHaveLength(1)
     })
   }
 )

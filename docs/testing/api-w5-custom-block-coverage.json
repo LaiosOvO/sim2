@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-30T03:33:25.000Z",
+  "status": "pending-independent-review",
+  "acceptedLedgerUpdated": false,
+  "inventory": ["API-0045", "API-0094", "API-0095", "API-0096"],
+  "routes": 4,
+  "methodPathPairs": 6,
+  "tests": {
+    "moduleBehavior": {
+      "passed": 11,
+      "failed": 0
+    },
+    "appConfigPolicy": {
+      "passed": 5,
+      "failed": 0
+    },
+    "contracts": {
+      "passed": 3,
+      "failed": 0
+    },
+    "proxy": {
+      "passed": 3,
+      "failed": 0
+    },
+    "inputProjection": {
+      "passed": 11,
+      "failed": 0
+    },
+    "productionComposition": {
+      "passed": 2,
+      "failed": 0
+    },
+    "disposablePostgres16": {
+      "passed": 2,
+      "failed": 0
+    }
+  },
+  "frontend": {
+    "hookGzipBytes": 84572,
+    "hookInputs": 107,
+    "contractGzipBytes": 65119,
+    "contractInputs": 79,
+    "sourceBoundCompileMs": {
+      "cold": 85,
+      "incremental": 30
+    },
+    "heavyRuntimeLeakage": 0
+  },
+  "requiredReviewVerdict": "approved"
+}

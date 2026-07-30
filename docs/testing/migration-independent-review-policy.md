@@ -57,3 +57,17 @@ improve:
 Raw measurements are stored under `docs/testing/evidence/`; ratchets must fail on regression rather
 than silently updating the baseline.
 
+### Functional-route approval versus frontend milestone approval
+
+The accepted API-route ledger and the frontend-performance milestone answer different questions:
+
+- A route may receive **functional approval** when its native behavior, authorization, real-I/O
+  integration, focused browser closure, bundle ratchet, and raw performance evidence all pass. A
+  page-level cold-start target that is still unmet must remain visible, but it does not rewrite an
+  otherwise-correct backend route as behaviorally incomplete.
+- The frontend-performance milestone remains **blocked** until its cold compile, incremental
+  compile, page-open, and key-interaction targets pass. Functional route approval must never be
+  reported as completion of this milestone or of the overall frontend speed objective.
+- Missing raw measurements, a silently raised budget, frontend heavy-runtime leakage, or a
+  regressing bundle still blocks both approvals. Only an explicitly unmet page SLO may be tracked
+  separately, and its evidence and owner must be recorded in the progress document.

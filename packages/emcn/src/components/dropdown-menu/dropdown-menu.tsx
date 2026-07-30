@@ -22,8 +22,8 @@
 
 import * as React from 'react'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-import { Check, ChevronRight, Circle, Search } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { Check, ChevronRight, Circle, Search } from '../../lib/lucide-icons'
 import { chipFieldSurfaceClass } from '../chip/chip-chrome'
 import { InsideModalContext } from '../modal/modal'
 

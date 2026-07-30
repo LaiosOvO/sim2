@@ -17,9 +17,17 @@
       "types": "./src/auth.ts",
       "default": "./src/auth.ts"
     },
+    "./approvals": {
+      "types": "./src/approvals.ts",
+      "default": "./src/approvals.ts"
+    },
     "./core": {
       "types": "./src/core.ts",
       "default": "./src/core.ts"
+    },
+    "./custom-blocks": {
+      "types": "./src/custom-blocks.ts",
+      "default": "./src/custom-blocks.ts"
     },
     "./data-drains": {
       "types": "./src/data-drains.ts",
@@ -32,6 +40,10 @@
     "./execution-read": {
       "types": "./src/execution-read.ts",
       "default": "./src/execution-read.ts"
+    },
+    "./execution-control": {
+      "types": "./src/execution-control.ts",
+      "default": "./src/execution-control.ts"
     },
     "./identity": {
       "types": "./src/identity.ts",
@@ -48,6 +60,14 @@
     "./permission-groups": {
       "types": "./src/permission-groups.ts",
       "default": "./src/permission-groups.ts"
+    },
+    "./provider-model-discovery": {
+      "types": "./src/provider-model-discovery.ts",
+      "default": "./src/provider-model-discovery.ts"
+    },
+    "./provider-model-discovery-routes": {
+      "types": "./src/provider-model-discovery-routes.ts",
+      "default": "./src/provider-model-discovery-routes.ts"
     },
     "./pagination": {
       "types": "./src/pagination.ts",

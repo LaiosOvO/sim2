@@ -11,6 +11,7 @@ import {
   normalizeStringRecord,
   normalizeWorkflowVariables,
 } from '@/lib/core/utils/records'
+import { isCustomBlockType } from '@/lib/custom-blocks/metadata'
 import type { CustomBlockToolBinding } from '@/lib/workflows/custom-blocks/operations'
 import { isFileFieldType, type WorkflowInputField } from '@/lib/workflows/input-format'
 import {
@@ -21,7 +22,7 @@ import {
   resolveActiveCanonicalValue,
   scopeCanonicalModesForTool,
 } from '@/lib/workflows/subblocks/visibility'
-import { assembleCustomBlockInputMapping, isCustomBlockType } from '@/blocks/custom/build-config'
+import { assembleCustomBlockInputMapping } from '@/blocks/custom/build-config'
 import { isCustomTool } from '@/executor/constants'
 import {
   getComputerUseModels,

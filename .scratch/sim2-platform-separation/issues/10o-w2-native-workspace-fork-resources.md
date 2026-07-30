@@ -3,7 +3,7 @@
 接口清单编号：API-1037  
 接口：`GET /api/workspaces/[id]/fork/resources`
 
-状态：donor 审计与原生迁移设计已冻结；尚未实现。
+状态：原生迁移与 independent-review changes-required 已整改完成；等待新的独立复审。
 
 ## 1. 审计范围与结论
 
@@ -560,3 +560,41 @@ GetForkResourcesResponseV1
 7. 将“无序静默截断”登记为后续 V2 必修项；V2 才增加 total/truncated/cursor 和稳定排序。
 8. GET 只是预览；fork POST 必须重新授权、校验 workspace ownership 与资源存在性。
 
+## 12. 2026-07-30 changes-required 整改记录
+
+本轮没有扩大 application interface。`WorkspaceForkResourceCatalogReader.readCopyable()` 仍是
+唯一深读取 seam，生产 adapter 只增加了可选 database 注入点，默认仍使用生产 `db`。这个
+注入点让真实 PostgreSQL fixture 能通过 postgres.js `debug` 回调统计实际 SQL，而不把
+query 计数、Drizzle 或测试 hook 泄漏到 application。
+
+已关闭的 review finding：
+
+1. file-folder left join 同时要求 folder id、`folder.workspaceId = workspaceId`、
+   `resourceType='file'` 和 active 状态。跨 workspace folder 保留原始 `folderId`，但
+   `folderName=null`。
+2. donor typed 403/404 body 已恢复 `{error, requestId}`；401 与 validation 400 仍不添加
+   body requestId。
+3. 真实 `ForkWorkspaceModal` 直接使用 `use-fork-resources.ts`、
+   `workspace-fork-resources.ts` 和 `@sim/api-contracts/workspace-forking`，不再通过
+   816 行 `workspace-fork.ts`。Fork 专用 `@sim/emcn/workspace-fork` 入口同时切断 EMCN
+   与 Lucide root barrel。
+4. jsdom 交互 journey 覆盖 focused response hydrate、默认全选、用户取消一项、精确 copy
+   payload、加载完成前禁用 Fork，以及成功关闭 modal。
+5. disposable PostgreSQL 16 fixture 冻结跨租户 folder、恰好 1000、超过 1000，以及三种
+   数据规模都固定 8 条 SELECT。原始证据保存于
+   `docs/testing/evidence/api-1037-postgres-boundary-raw.json`。
+6. 真实 modal entrypoint 的 Vite watch runner 会 append 有效 TSDoc probe，等待下一次
+   bundle，然后逐字恢复并验证 original/edited/restored SHA-256。原始样本为
+   1,094 ms cold / 354 ms incremental；最终 ratchet 复跑为 529 / 192 ms，
+   CI ceiling 为 5,000 / 1,000 ms。
+
+性能文件：
+
+- runner：`scripts/architecture/performance/api-1037-frontend-compile-ratchet.ts`
+- raw：`docs/testing/evidence/api-1037-frontend-compile-raw.json`
+- budget：`docs/testing/api-1037-frontend-compile-budget.json`
+- package scripts：`measure:api-1037-frontend-compile`、
+  `check:api-1037-frontend-compile`
+- CI：`.github/workflows/test-build.yml`
+
+本节只是 implementation remediation 记录，不是独立批准，也不授权修改 accepted ledger。

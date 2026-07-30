@@ -39,9 +39,9 @@
 'use client'
 
 import * as React from 'react'
-import { X } from 'lucide-react'
 import { Loader } from '../../icons'
 import { cn } from '../../lib/cn'
+import { X } from '../../lib/lucide-icons'
 import { Button } from '../button/button'
 import { Chip, type ChipProps } from '../chip/chip'
 import { chipContentIconClass, chipContentLabelClass } from '../chip/chip-chrome'

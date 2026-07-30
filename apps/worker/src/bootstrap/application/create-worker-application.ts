@@ -4,12 +4,23 @@ import {
   executionJobV1Schema,
   type RuntimeToolExecutionResultV1,
 } from '@sim/execution-contracts'
+import {
+  type ApprovalEffectResultV1,
+  approvalEffectCommandV1Schema,
+} from '@sim/execution-contracts/approval-effects'
+import {
+  type ApprovalResumeResultV1,
+  approvalResumeCommandV1Schema,
+} from '@sim/execution-contracts/approval-resume'
 import type { ExecutionCancellationResponseV1 } from '@sim/execution-contracts/job-control'
 import { createWorkerRuntimeRegistry } from '@/bootstrap/composition/create-runtime-registry'
+import type { ApprovalEffectsSink } from '@/jobs/approval/effects'
+import type { ApprovalResumeRunner } from '@/jobs/approval/types'
 import { createExecutionJobCoordinator } from '@/jobs/execution/create-execution-job-coordinator'
 import { executeRuntimeToolJob } from '@/jobs/execution/execute-runtime-tool-job'
 import { createInMemoryExecutionJobQueue } from '@/jobs/queue/in-memory-execution-job-queue'
 import type { ExecutionJobCoordinator, ExecutionJobQueue } from '@/jobs/queue/types'
+import type { ResumePoller } from '@/jobs/resume/types'
 import { createInMemoryExecutionState } from '@/jobs/state/in-memory-execution-state'
 import type {
   ExecutionEventReader,
@@ -31,6 +42,11 @@ export interface WorkerApplication {
     executionId: string
   ): Promise<readonly import('@sim/execution-contracts').ExecutionEventV1[]>
   executeToolJob(job: ExecutionJobV1, signal?: AbortSignal): Promise<RuntimeToolExecutionResultV1>
+  runResumePoll(
+    candidate: unknown
+  ): Promise<import('@sim/execution-contracts/resume-poll').ResumePollResultV1>
+  resumeApproval(candidate: unknown): Promise<ApprovalResumeResultV1>
+  enqueueApprovalEffect(candidate: unknown): Promise<ApprovalEffectResultV1>
 }
 
 export interface WorkerApplicationOptions {
@@ -41,6 +57,9 @@ export interface WorkerApplicationOptions {
   eventReader?: ExecutionEventReader
   sandbox?: SandboxExecution
   coordinator?: ExecutionJobCoordinator
+  resumePoller?: ResumePoller
+  approvalResume?: ApprovalResumeRunner
+  approvalEffects?: ApprovalEffectsSink
   maxAttempts?: number
 }
 
@@ -122,6 +141,49 @@ export function createWorkerApplication(options: WorkerApplicationOptions = {}):
     },
     executeToolJob(job, signal) {
       return executeRuntimeToolJob(job, runtimeRegistry, signal)
+    },
+    async runResumePoll(candidate) {
+      if (currentStatus !== 'running') {
+        throw new WorkerJobAdmissionFailure('WORKER_NOT_RUNNING', 'Worker is not running')
+      }
+      const { resumePollCommandV1Schema } = await import('@sim/execution-contracts/resume-poll')
+      const parsed = resumePollCommandV1Schema.safeParse(candidate)
+      if (!parsed.success) {
+        throw new WorkerJobAdmissionFailure(
+          'EXECUTION_JOB_INVALID',
+          'Resume poll command does not match the versioned contract'
+        )
+      }
+      if (!options.resumePoller) throw new Error('Resume poller is not configured')
+      return options.resumePoller.run(parsed.data)
+    },
+    async resumeApproval(candidate) {
+      if (currentStatus !== 'running') {
+        throw new WorkerJobAdmissionFailure('WORKER_NOT_RUNNING', 'Worker is not running')
+      }
+      const parsed = approvalResumeCommandV1Schema.safeParse(candidate)
+      if (!parsed.success) {
+        throw new WorkerJobAdmissionFailure(
+          'EXECUTION_JOB_INVALID',
+          'Approval resume command does not match the versioned contract'
+        )
+      }
+      if (!options.approvalResume) throw new Error('Approval resume runner is not configured')
+      return options.approvalResume.execute(parsed.data)
+    },
+    async enqueueApprovalEffect(candidate) {
+      if (currentStatus !== 'running') {
+        throw new WorkerJobAdmissionFailure('WORKER_NOT_RUNNING', 'Worker is not running')
+      }
+      const parsed = approvalEffectCommandV1Schema.safeParse(candidate)
+      if (!parsed.success) {
+        throw new WorkerJobAdmissionFailure(
+          'EXECUTION_JOB_INVALID',
+          'Approval effect command does not match the versioned contract'
+        )
+      }
+      if (!options.approvalEffects) throw new Error('Approval effects sink is not configured')
+      return options.approvalEffects.enqueue(parsed.data)
     },
   }
 }

@@ -9,8 +9,8 @@ const QUERY_HOOKS_DIR = path.join(ROOT, 'apps/sim/hooks/queries')
 const SELECTOR_HOOKS_DIR = path.join(ROOT, 'apps/sim/hooks/selectors')
 
 const BASELINE = {
-  totalRoutes: 991,
-  zodRoutes: 991,
+  totalRoutes: 1001,
+  zodRoutes: 1001,
   nonZodRoutes: 0,
 } as const
 
@@ -97,6 +97,10 @@ const INDIRECT_ZOD_ROUTES = new Set([
   // Deprecated v1 headless copilot chat API: gated to always return 410 Gone
   // and consumes no client-supplied input.
   'apps/sim/app/api/v1/copilot/chat/route.ts',
+  // Internal server-only execution-object reader. The thin Next route delegates
+  // body parsing to createInternalExecutionObjectReadHandler, which validates
+  // the versioned @sim/execution-contracts command before reading storage.
+  'apps/sim/app/api/internal/execution-objects/read/route.ts',
 ])
 
 /**
@@ -146,8 +150,10 @@ const RAW_JSON_BASELINE_ROUTES = new Set([
 ])
 
 const CONTRACT_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api\/contracts(?:\/[^'"]*)?['"]/
-const VERSIONED_PROXY_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api-proxy\/(?:w1|w2-tenant-read)['"]/
-const VERSIONED_PROXY_CALL_PATTERN = /\bproxy(?:W1Request|W2TenantReadRequest)\(/
+const VERSIONED_PROXY_IMPORT_PATTERN =
+  /\bfrom\s+['"]@\/lib\/api-proxy\/(?:w1|w2-tenant-read|provider-model-discovery|w5-custom-blocks|w6-execution-read|w6-execution-control|w8-approvals)['"]/
+const VERSIONED_PROXY_CALL_PATTERN =
+  /\bproxy(?:W1Request|W2TenantReadRequest|ProviderModelDiscoveryRequest|W5CustomBlockRequest|W6ExecutionReadRequest|W6ExecutionControlRequest|W8ApprovalRequest)\(/
 const SERVER_VALIDATION_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api\/server(?:\/validation)?['"]/
 const SCHEMA_PARSE_PATTERN = /\b\w+Schema\.(?:safeParse|parse)\(/
 const CONTRACT_SERVER_HELPER_PATTERN = /\bparseToolRequest\(/

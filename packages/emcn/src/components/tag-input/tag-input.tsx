@@ -39,9 +39,9 @@
 
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { Paperclip, Plus, X } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { handleKeyboardActivation } from '../../lib/keyboard'
+import { Paperclip, Plus, X } from '../../lib/lucide-icons'
 import { ChipTag, chipTagVariants } from '../chip-tag/chip-tag'
 import { Tooltip } from '../tooltip/tooltip'
 

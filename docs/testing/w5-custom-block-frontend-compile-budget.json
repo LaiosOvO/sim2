@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W5-CUSTOM-BLOCKS",
+  "runner": "focused-vite-watch",
+  "budgets": {
+    "coldCompileMs": 5000,
+    "incrementalCompileMs": 1500
+  },
+  "targets": {
+    "coldCompileMs": 1000,
+    "incrementalCompileMs": 500
+  },
+  "updateRule": "Tighten ceilings only after three source-bound samples on an otherwise idle CI runner; never raise them to absorb a regression."
+}

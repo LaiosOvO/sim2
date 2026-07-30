@@ -22,6 +22,7 @@ vi.mock('@/lib/workflows/triggers/trigger-utils', () => ({
   getTriggersForSidebar: mockGetTriggersForSidebar,
 }))
 
+import { useSearchModalOpenStore } from '@/stores/modals/search/open-state'
 import {
   buildCommandSearchableOptionSearchValue,
   useSearchModalStore,
@@ -73,6 +74,14 @@ describe('search modal store', () => {
         isInitialized: false,
       },
     })
+  })
+
+  it('projects visibility into the browser-light open-state store', () => {
+    useSearchModalStore.getState().open()
+    expect(useSearchModalOpenStore.getState().isOpen).toBe(true)
+
+    useSearchModalStore.getState().close()
+    expect(useSearchModalOpenStore.getState().isOpen).toBe(false)
   })
 
   describe('buildCommandSearchableOptionSearchValue', () => {

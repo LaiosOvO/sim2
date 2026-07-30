@@ -1,9 +1,13 @@
 import { API_CONTRACTS_VERSION, apiErrorEnvelopeSchema } from '@sim/api-contracts'
 import type { ApiRequestContext } from '@/http/request-context'
 import { createRequestContext, withApiHeaders } from '@/http/request-context'
+import type { ApprovalsModule } from '@/modules/approvals'
+import type { CustomBlockModule } from '@/modules/custom-blocks'
 import type { EnvironmentModule } from '@/modules/environment/application/create-environment-module'
 import type { ExecutionAdmissionModule } from '@/modules/execution/application/create-execution-admission-module'
+import type { ExecutionControlModule } from '@/modules/execution/control'
 import type { ExecutionReadModule } from '@/modules/execution/read/application/create-execution-read-module'
+import type { ProviderModelDiscoveryModule } from '@/modules/provider-model-discovery'
 import {
   createStatusModule,
   type StatusModule,
@@ -18,9 +22,13 @@ export interface ApiApplication {
 export interface ApiApplicationOptions {
   serviceName?: string
   now?: () => Date
+  approvals?: ApprovalsModule
+  customBlocks?: CustomBlockModule
   environment?: EnvironmentModule
   executionAdmission?: ExecutionAdmissionModule
+  executionControl?: ExecutionControlModule
   executionRead?: ExecutionReadModule
+  providerModelDiscovery?: ProviderModelDiscoveryModule
   tenantRead?: TenantReadModule
   status?: StatusModule
   readinessChecks?: Readonly<Record<string, () => Promise<boolean>>>
@@ -45,8 +53,12 @@ export function createApiApplication(options: ApiApplicationOptions = {}): ApiAp
   const handlers: ApiHandler[] = [
     system,
     status,
+    ...(options.approvals ? [options.approvals] : []),
+    ...(options.customBlocks ? [options.customBlocks] : []),
     ...(options.environment ? [options.environment] : []),
+    ...(options.executionControl ? [options.executionControl] : []),
     ...(options.executionRead ? [options.executionRead] : []),
+    ...(options.providerModelDiscovery ? [options.providerModelDiscovery] : []),
     ...(options.tenantRead ? [options.tenantRead] : []),
     ...(options.executionAdmission ? [options.executionAdmission] : []),
   ]

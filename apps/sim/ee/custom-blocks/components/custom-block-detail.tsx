@@ -20,6 +20,8 @@ import {
 } from '@sim/emcn'
 import { getErrorMessage } from '@sim/utils/errors'
 import { ArrowLeft, ChevronDown, Image as ImageIcon, X } from 'lucide-react'
+import type { CustomBlockInput, CustomBlockOutput } from '@/lib/custom-blocks/metadata'
+import { isReservedCustomBlockOutputName } from '@/lib/custom-blocks/output-names'
 import {
   type FlattenOutputsBlockInput,
   type FlattenOutputsEdgeInput,
@@ -32,11 +34,6 @@ import { saveDiscardActions } from '@/app/workspace/[workspaceId]/settings/compo
 import { SettingsPanel } from '@/app/workspace/[workspaceId]/settings/components/settings-panel'
 import { useProfilePictureUpload } from '@/app/workspace/[workspaceId]/settings/hooks/use-profile-picture-upload'
 import { useSettingsUnsavedGuard } from '@/app/workspace/[workspaceId]/settings/hooks/use-settings-unsaved-guard'
-import {
-  type CustomBlockInput,
-  type CustomBlockOutput,
-  isReservedOutputName,
-} from '@/blocks/custom/build-config'
 import { SettingRow } from '@/ee/components/setting-row'
 import {
   useCustomBlocks,
@@ -65,7 +62,7 @@ function deriveOutputName(path: string, taken: Set<string>): string {
   const base = (path.split('.').pop() || path).replace(/[^a-zA-Z0-9_]/g, '_')
   let name = base
   let n = 2
-  while (taken.has(name) || isReservedOutputName(name)) name = `${base}_${n++}`
+  while (taken.has(name) || isReservedCustomBlockOutputName(name)) name = `${base}_${n++}`
   taken.add(name)
   return name
 }
@@ -364,7 +361,7 @@ export function CustomBlockDetail({ blockId, workspaceId, onBack }: CustomBlockD
       setError('Output names must be unique')
       return
     }
-    const reserved = exposedOutputs.find((o) => isReservedOutputName(o.name))
+    const reserved = exposedOutputs.find((o) => isReservedCustomBlockOutputName(o.name))
     if (reserved) {
       setError(`"${reserved.name}" is a reserved output name (success, error, cost)`)
       return

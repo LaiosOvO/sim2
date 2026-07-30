@@ -28,11 +28,16 @@ export type ListWorkspaceBackgroundWorkResult =
         | 'admin-required'
     }
 
+export interface WorkspaceBackgroundWorkRawQuery {
+  readonly cursor?: string | readonly string[]
+  readonly limit?: string | readonly string[]
+}
+
 export interface ListWorkspaceBackgroundWorkUseCase {
   execute(
     context: AuthenticatedRequestContext,
     workspaceId: string,
-    query: { readonly cursor?: string; readonly limit?: string }
+    query: WorkspaceBackgroundWorkRawQuery
   ): Promise<ListWorkspaceBackgroundWorkResult>
 }
 

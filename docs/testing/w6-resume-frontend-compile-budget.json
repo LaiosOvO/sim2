@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "inventoryId": "W6-GROUP-A",
+  "runner": "focused-vite-watch",
+  "budgets": {
+    "coldCompileMs": 5000,
+    "incrementalCompileMs": 1500
+  },
+  "policy": {
+    "targetColdCompileMs": 10000,
+    "targetIncrementalCompileMs": 1000,
+    "updateRule": "The committed ceilings are a non-regression ratchet. Raising them requires new source-bound raw evidence and independent performance review."
+  }
+}

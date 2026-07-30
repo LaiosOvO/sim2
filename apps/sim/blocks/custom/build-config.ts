@@ -1,53 +1,26 @@
 import type { SubBlockType } from '@sim/workflow-types/blocks'
+import type { CustomBlockOutput, CustomBlockRow } from '@/lib/custom-blocks/metadata'
 import type { WorkflowInputField } from '@/lib/workflows/input-format'
 import type { BlockConfig, BlockIcon, SubBlockConfig } from '@/blocks/types'
+
+export {
+  CUSTOM_BLOCK_TYPE_PREFIX,
+  type CustomBlockInput,
+  type CustomBlockOutput,
+  type CustomBlockRow,
+  isCustomBlockType,
+} from '@/lib/custom-blocks/metadata'
+export {
+  isReservedCustomBlockOutputName as isReservedOutputName,
+  RESERVED_CUSTOM_BLOCK_OUTPUT_NAMES as RESERVED_OUTPUT_NAMES,
+} from '@/lib/custom-blocks/output-names'
 
 /**
  * The block-type prefix that identifies a custom (deploy-as-block) block. Shared
  * by the registry overlay, the executor handler dispatch, and access control.
  */
-export const CUSTOM_BLOCK_TYPE_PREFIX = 'custom_block_'
-
-/** Whether a block type is a published custom block. */
-export function isCustomBlockType(type: string | undefined | null): type is string {
-  return typeof type === 'string' && type.startsWith(CUSTOM_BLOCK_TYPE_PREFIX)
-}
-
 /** Tile background for custom-block icons (the uploaded image renders on top). */
 export const CUSTOM_BLOCK_TILE_COLOR = '#6F6F6F'
-
-/** A curated output exposed on the block, mapped from a child block output. */
-export interface CustomBlockOutput {
-  blockId: string
-  path: string
-  name: string
-}
-
-/**
- * A curated input the admin chose to expose on the block, keyed by the source
- * Start field's stable `id`, with optional consumer-facing hints.
- */
-export interface CustomBlockInput {
-  id: string
-  name: string
-  type: string
-  placeholder?: string
-  description?: string
-  required?: boolean
-}
-
-/**
- * The DB-backed identity + presentation of a custom block. `workflowId` is the
- * bound source workflow whose LATEST deployment this block always executes.
- */
-export interface CustomBlockRow {
-  type: string
-  name: string
-  description: string
-  workflowId: string
-  /** Curated exposed outputs; empty/absent exposes the child's whole `result`. */
-  exposedOutputs?: CustomBlockOutput[]
-}
 
 /**
  * Params that carry the block's own wiring rather than a mapped Start input.
@@ -61,20 +34,6 @@ export const RESERVED_PARAMS = new Set([
   'triggerMode',
   'advancedMode',
 ])
-
-/**
- * Output names the block projects itself (`success`/`error` from `buildOutputs`,
- * `cost` from the executor's billing aggregation). A user-named exposed output
- * must never shadow these — an output literally named `cost` would clobber the
- * billed cost. `result` is deliberately NOT reserved: it only exists as a system
- * field when no outputs are curated, which cannot co-occur with a named output.
- */
-export const RESERVED_OUTPUT_NAMES = new Set(['success', 'error', 'cost'])
-
-/** Whether an exposed-output name collides with a system output field. */
-export function isReservedOutputName(name: string): boolean {
-  return RESERVED_OUTPUT_NAMES.has(name.trim().toLowerCase())
-}
 
 /**
  * Collect a custom block's per-field param values into the child `inputMapping`

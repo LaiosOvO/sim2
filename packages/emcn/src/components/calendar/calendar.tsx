@@ -1,8 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { ChevronLeft, ChevronRight } from '../../lib/lucide-icons'
 import { Chip, chipVariants } from '../chip/chip'
 import { chipContentLabelClass } from '../chip/chip-chrome'
 import { ChipTimePicker } from '../chip-time-picker/chip-time-picker'

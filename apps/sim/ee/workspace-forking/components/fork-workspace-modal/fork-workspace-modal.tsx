@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { GetForkResourcesResponseV1 as GetForkResourcesResponse } from '@sim/api-contracts/workspace-forking'
 import {
+  AlertTriangle,
   ChipCopyInput,
   ChipInput,
   ChipModal,
@@ -11,8 +12,7 @@ import {
   ChipModalFooter,
   ChipModalHeader,
   toast,
-} from '@sim/emcn'
-import { AlertTriangle } from 'lucide-react'
+} from '@sim/emcn/workspace-fork'
 import { useRouter } from 'next/navigation'
 import { SettingsSection } from '@/app/workspace/[workspaceId]/settings/components/settings-section/settings-section'
 import {
