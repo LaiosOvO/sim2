@@ -27,6 +27,7 @@ const minimalRegistryAlias: Record<string, string> = useMinimalRegistry
   : {}
 
 const nextConfig: NextConfig = {
+  distDir: process.env.SIM_NEXT_DIST_DIR || '.next',
   devIndicators: false,
   poweredByHeader: false,
   // Safe here since this repo's source is already fully public on GitHub -

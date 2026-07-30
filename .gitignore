@@ -18,11 +18,13 @@ package-lock.json
 # testing
 /coverage
 /apps/**/coverage
+/.perf/
 
 # next.js
 /.next/
 /apps/**/out/
 /apps/**/.next/
+/apps/sim/.next-perf/
 /apps/**/build
 # apps/desktop/build holds electron-builder INPUTS (icon, entitlements), not outputs
 !/apps/desktop/build
