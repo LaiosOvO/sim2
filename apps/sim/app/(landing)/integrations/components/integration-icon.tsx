@@ -1,6 +1,6 @@
 import type { ComponentType, ElementType, HTMLAttributes, SVGProps } from 'react'
 import { cn } from '@sim/emcn'
-import { getTileIconColorClass } from '@/blocks/icon-color'
+import { getTileIconColorClass } from '@/blocks/tile-icon-color'
 
 interface IntegrationIconProps extends HTMLAttributes<HTMLElement> {
   bgColor: string

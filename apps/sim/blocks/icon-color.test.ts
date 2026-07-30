@@ -2,7 +2,7 @@
  * @vitest-environment node
  */
 import { describe, expect, it } from 'vitest'
-import { getTileIconColorClass, isLightTileColor } from '@/blocks/icon-color'
+import { getTileIconColorClass, isLightTileColor } from '@/blocks/tile-icon-color'
 
 describe('isLightTileColor', () => {
   it('treats clearly light tiles (white, Mailchimp/Infisical/Linkup) as light', () => {

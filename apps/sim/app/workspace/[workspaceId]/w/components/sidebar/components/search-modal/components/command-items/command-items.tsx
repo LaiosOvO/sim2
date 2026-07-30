@@ -7,7 +7,7 @@ import { File, Workflow } from '@sim/emcn/icons'
 import { Command } from 'cmdk'
 import type { CommandItemProps } from '@/app/workspace/[workspaceId]/w/components/sidebar/components/search-modal/utils'
 import { COMMAND_ITEM_CLASSNAME } from '@/app/workspace/[workspaceId]/w/components/sidebar/components/search-modal/utils'
-import { getTileIconColorClass } from '@/blocks/icon-color'
+import { getTileIconColorClass } from '@/blocks/tile-icon-color'
 
 export const MemoizedCommandItem = memo(
   function CommandItem({

@@ -12,9 +12,8 @@ import {
 } from '@sim/emcn/icons'
 import { AgentSkillsIcon, McpIcon } from '@/components/icons'
 import { getDocumentIcon } from '@/components/icons/document-icons'
+import { CatalogIcon } from '@/lib/catalog/catalog-icon'
 import type { ChatContextKind, ChatMessageContext } from '@/app/workspace/[workspaceId]/home/types'
-import { getBareIconStyle } from '@/blocks/icon-color'
-import { registry as blockRegistry } from '@/blocks/registry'
 
 interface RenderIconArgs {
   context: ChatMessageContext
@@ -41,10 +40,7 @@ function renderWorkflowIcon({ className }: RenderIconArgs): ReactNode | null {
 function renderIntegrationTile({ context, className }: RenderIconArgs): ReactNode | null {
   if (context.kind !== 'integration') return null
   if (!context.blockType) return null
-  const block = blockRegistry[context.blockType]
-  if (!block) return null
-  const Icon = block.icon
-  return <Icon className={className} style={getBareIconStyle(Icon)} />
+  return <CatalogIcon id={context.blockType} className={className} />
 }
 
 /**

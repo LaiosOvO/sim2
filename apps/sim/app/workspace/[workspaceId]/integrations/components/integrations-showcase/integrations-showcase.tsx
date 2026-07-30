@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react'
 import { cn } from '@sim/emcn'
 import { getBlock } from '@/blocks'
-import { getTileIconColorClass } from '@/blocks/icon-color'
+import { getTileIconColorClass } from '@/blocks/tile-icon-color'
 
 /**
  * URL-encoded SVG used as a mask to carve the bottom-right notch out of the

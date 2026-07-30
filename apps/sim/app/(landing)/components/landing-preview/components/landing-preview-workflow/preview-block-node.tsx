@@ -40,7 +40,7 @@ import {
   EASE_OUT,
   type PreviewTool,
 } from '@/app/(landing)/components/landing-preview/components/landing-preview-workflow/workflow-data'
-import { getTileIconColorClass } from '@/blocks/icon-color'
+import { getTileIconColorClass } from '@/blocks/tile-icon-color'
 
 /** Map block type strings to their icon components. */
 const BLOCK_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {

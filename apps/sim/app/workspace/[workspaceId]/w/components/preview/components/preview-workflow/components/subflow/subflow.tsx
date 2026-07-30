@@ -5,7 +5,7 @@ import { Badge, cn } from '@sim/emcn'
 import { HANDLE_POSITIONS } from '@sim/workflow-renderer'
 import { RepeatIcon, SplitIcon } from 'lucide-react'
 import { Handle, type NodeProps, Position } from 'reactflow'
-import { getTileIconColorClass } from '@/blocks/icon-color'
+import { getTileIconColorClass } from '@/blocks/tile-icon-color'
 
 /** Execution status for subflows in preview mode */
 type ExecutionStatus = 'success' | 'error' | 'not-executed'
