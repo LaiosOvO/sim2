@@ -138,12 +138,22 @@ export {
   w2TenantReadRouteIdSchema,
 } from './w2-tenant-read'
 export type {
+  ForkDirectionV1,
+  ForkLineageChildV1,
+  ForkLineageNodeV1,
+  ForkLineageUndoableRunV1,
   ForkWorkspaceIdParamsV1,
   GetForkAvailabilityResponseV1,
+  GetForkLineageResponseV1,
 } from './workspace-forking'
 export {
+  forkDirectionV1Schema,
+  forkLineageChildV1Schema,
+  forkLineageNodeV1Schema,
+  forkLineageUndoableRunV1Schema,
   forkWorkspaceIdParamsV1Schema,
   getForkAvailabilityResponseV1Schema,
+  getForkLineageResponseV1Schema,
 } from './workspace-forking'
 export type {
   ListWorkspaceMembersResponseV1,

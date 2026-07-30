@@ -30,6 +30,8 @@ import type {
   ForkEntitlementReader,
   ForkRolloutReader,
   WorkspaceForkContextReader,
+  WorkspaceForkCurrentAccessReader,
+  WorkspaceForkLineageReader,
 } from '@/modules/workspace-forking'
 import type {
   WorkspaceExecutionMetricsReadRepository,
@@ -117,7 +119,12 @@ async function createTenantRead(
     },
     { createGetPersonalProfileHandler, createGetPersonalProfileUseCase },
     { createPersonalIdentityProfileService },
-    { createGetForkAvailabilityHandler, createGetForkAvailabilityUseCase },
+    {
+      createGetForkAvailabilityHandler,
+      createGetForkAvailabilityUseCase,
+      createGetForkLineageHandler,
+      createGetForkLineageUseCase,
+    },
     { createAppConfigForkRolloutReader },
     { createAwsAppConfigProfileReader },
   ] = await Promise.all([
@@ -220,6 +227,16 @@ async function createTenantRead(
       throw new Error('Workspace fork database is not configured')
     },
   }
+  let workspaceForkCurrentAccess: WorkspaceForkCurrentAccessReader = {
+    async findActiveForViewer() {
+      throw new Error('Workspace fork database is not configured')
+    },
+  }
+  let workspaceForkLineage: WorkspaceForkLineageReader = {
+    async readForViewer() {
+      throw new Error('Workspace fork database is not configured')
+    },
+  }
   let forkEntitlement: ForkEntitlementReader = {
     async isEntitled() {
       return false
@@ -270,6 +287,8 @@ async function createTenantRead(
       { createDrizzleWorkspaceExecutionMetricsReadRepository },
       { createDrizzleWorkspaceHostContextReadRepository },
       { createDrizzleWorkspaceForkContextReader },
+      { createDrizzleWorkspaceForkCurrentAccessReader },
+      { createDrizzleWorkspaceForkLineageReader },
       { createDrizzleForkEntitlementReader },
       { createDrizzlePlatformAdminReader },
       { createDrizzleAccessResolver },
@@ -298,6 +317,8 @@ async function createTenantRead(
         '@/infrastructure/postgres/repositories/drizzle-workspace-host-context-read-repository'
       ),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-current-access-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-lineage-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-fork-entitlement-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-platform-admin-reader'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
@@ -315,6 +336,8 @@ async function createTenantRead(
     workspaceExecutionMetricsRepository = createDrizzleWorkspaceExecutionMetricsReadRepository()
     workspaceHostContextRepository = createDrizzleWorkspaceHostContextReadRepository()
     workspaceForkContexts = createDrizzleWorkspaceForkContextReader()
+    workspaceForkCurrentAccess = createDrizzleWorkspaceForkCurrentAccessReader()
+    workspaceForkLineage = createDrizzleWorkspaceForkLineageReader()
     forkEntitlement = createDrizzleForkEntitlementReader(forkingRuntime)
     platformAdmins = createDrizzlePlatformAdminReader()
     organizationEntitlement = createDrizzleOrganizationAccessControlEntitlementReader(
@@ -335,6 +358,7 @@ async function createTenantRead(
     | 'API-0243'
     | 'API-0294'
     | 'API-1031'
+    | 'API-1034'
     | 'API-1041'
     | 'API-1057'
     | 'API-1058'
@@ -380,6 +404,15 @@ async function createTenantRead(
     'API-1031': createGetForkAvailabilityHandler(
       createGetForkAvailabilityUseCase({
         contexts: workspaceForkContexts,
+        entitlement: forkEntitlement,
+        rollout: forkRollout,
+        runtime: forkingRuntime,
+      })
+    ),
+    'API-1034': createGetForkLineageHandler(
+      createGetForkLineageUseCase({
+        currentAccess: workspaceForkCurrentAccess,
+        lineage: workspaceForkLineage,
         entitlement: forkEntitlement,
         rollout: forkRollout,
         runtime: forkingRuntime,

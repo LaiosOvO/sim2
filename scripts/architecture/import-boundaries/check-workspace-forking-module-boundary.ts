@@ -8,7 +8,9 @@ const adapterPaths = [
   'apps/api/src/infrastructure/appconfig/appconfig-fork-rollout-reader.ts',
   'apps/api/src/infrastructure/postgres/repositories/drizzle-fork-entitlement-reader.ts',
   'apps/api/src/infrastructure/postgres/repositories/drizzle-platform-admin-reader.ts',
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-current-access-reader.ts',
   'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader.ts',
+  'apps/api/src/infrastructure/postgres/repositories/drizzle-workspace-fork-lineage-reader.ts',
 ].map((file) => path.join(root, file))
 const contractPath = path.join(root, 'packages/api-contracts/src/workspace-forking.ts')
 const appConfigDirectory = path.join(root, 'extensions/infra/appconfig/src')

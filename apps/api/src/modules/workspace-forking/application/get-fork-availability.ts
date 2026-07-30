@@ -5,6 +5,7 @@ import {
   getForkAvailabilityResponseV1Schema,
 } from '@sim/api-contracts/workspace-forking'
 import type { ForkingRuntimeConfig } from '@/config/forking-runtime'
+import { evaluateForkingAccess } from '@/modules/workspace-forking/application/evaluate-forking-access'
 import type { ForkEntitlementReader } from '@/modules/workspace-forking/ports/fork-entitlement-reader'
 import type { ForkRolloutReader } from '@/modules/workspace-forking/ports/fork-rollout-reader'
 import type { WorkspaceForkContextReader } from '@/modules/workspace-forking/ports/workspace-fork-context-reader'
@@ -28,33 +29,6 @@ export interface GetForkAvailabilityDependencies {
   runtime: ForkingRuntimeConfig
 }
 
-async function resolveAvailability(
-  dependencies: GetForkAvailabilityDependencies,
-  userId: string,
-  organizationId: string | null
-): Promise<boolean> {
-  try {
-    if (!dependencies.runtime.billingEnabled && !dependencies.runtime.forkingEnabled) {
-      return false
-    }
-    if (dependencies.runtime.billingEnabled) {
-      if (!organizationId) return false
-      if (!(await dependencies.entitlement.isEntitled(organizationId))) return false
-    }
-    if (
-      dependencies.runtime.appConfig.enabled &&
-      !(await dependencies.rollout.isEnabled({ userId, organizationId }))
-    ) {
-      return false
-    }
-    return true
-  } catch {
-    // The donor availability helper collapses entitlement, rollout and AppConfig
-    // failures into a non-sensitive false verdict.
-    return false
-  }
-}
-
 export function createGetForkAvailabilityUseCase(
   dependencies: GetForkAvailabilityDependencies
 ): GetForkAvailabilityUseCase {
@@ -72,11 +46,20 @@ export function createGetForkAvailabilityUseCase(
       const workspace = await dependencies.contexts.findActive(params.data.id)
       if (!workspace) return { ok: false, reason: 'workspace-not-found' }
 
-      const available = await resolveAvailability(
-        dependencies,
-        context.actor.id,
-        workspace.organizationId
-      )
+      let available = false
+      try {
+        const decision = await evaluateForkingAccess(dependencies, {
+          userId: context.actor.id,
+          organizationId: workspace.organizationId,
+        })
+        available = decision.available
+      } catch {
+        /**
+         * The donor availability helper collapses entitlement, rollout and
+         * AppConfig failures into a non-sensitive false verdict.
+         */
+        available = false
+      }
       return {
         ok: true,
         value: getForkAvailabilityResponseV1Schema.parse({ available }),

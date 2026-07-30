@@ -1263,6 +1263,47 @@ Forking module/AppConfig rollout/entitlement/admin/context chunks 分别约
 gate 检查 6 个 Module 文件、4 个 adapters、1 个 AppConfig Infra package 和 1 个纯
 contract，0 violation。
 
+### 19.22 W2 原生 Workspace Fork Lineage 与固定批次权限投影
+
+第十三条原生替换是
+`API-1034 GET /api/workspaces/[id]/fork/lineage`。Sim2 与 Polaris donor route 及其
+lineage/authz/promote-store helpers 的 SHA-256 均相同。旧 route 在通过 workspace admin
+检查后读取 active parent、active direct children 和最新 target promote run；随后针对每个
+parent/child 单独调用 effective-permission helper。因而 lineage 节点越多，显式 workspace
+permission 与 organization membership 查询越多，形成数据相关的 N+1；若直接复用旧 helper，
+还会重新引入 Billing、AppConfig、platform-admin 与 lineage store 的宽服务端闭包。
+
+Workspace Forking Module 现在由 API-1031 和 API-1034 共享一个 application-owned forking
+gate。该 gate 只返回 `available`、`deployment-disabled` 或 `enterprise-required` 三类结果：
+availability 将后两类折叠为 `{available:false}`，lineage 则保留 donor 错误。新的
+`WorkspaceForkCurrentAccessReader` 是 current-access seam，在 gate 之前一次读取 active
+workspace、organization id 和 viewer effective permission；它避免 lineage use case
+重新查找当前 workspace，也让“当前对象授权”和“关联节点展示权限”成为两个独立概念。
+
+`WorkspaceForkLineageReader.readForViewer` 是 viewer-specific deep read model。其 PostgreSQL
+adapter 在一个接口后隐藏 active parent self-join、按 `createdAt DESC` 排序的 active direct
+children、最新 target promote run 到 source workspace 的投影，以及关联节点的可见性计算。
+结构数据固定为三批读取，关联访问权固定为一批 explicit workspace permissions 和一批
+organization memberships；查询批次数不随 parent/child 数量增长，从而消除 donor 的逐节点
+N+1。父 workspace 被归档时返回 `parent:null`，归档 child 被排除；promote source 名称查询
+保留 donor 的“不过滤 archived”语义，缺失名称回退为 `workspace`。
+
+兼容顺序固定为：authentication -> validation -> current active workspace -> shared forking
+gate -> admin requirement -> lineage projection。因此错误优先级是：
+
+1. 当前 active workspace 不存在：`404 Workspace not found`；
+2. deployment/rollout 禁用：`404 Workspace forking is not enabled on this deployment`；
+3. 未满足 Enterprise：`403 Workspace forking is available on Enterprise plans only`；
+4. gate 已通过但 viewer 非 admin：`403 Admin access is required for this workspace`。
+
+当前 W2 为 native 13/22、legacy 9/22。API-1034 focused unit suite 为 16/16，全 API 为
+131 passed + 1 skipped，contract 为 16/16，真实 disposable PostgreSQL fixture 为 1/1。
+API/contracts/platform-authz type-check、W2 22/22 coverage、facade isolation、module/monorepo
+boundary、contract purity、target structure/cycles、API validation、standalone Node smoke 与
+browser-closure ratchet 全部通过；API build 为 1146 modules，entry 34.82 KiB。
+该 metadata read path 不依赖飞书长连接、Executor 或 Sandbox；飞书 ingress 与 Sandbox
+继续遵守 19.3 的独立 Node 22.19+ role 边界，Bun 仅承担 install/build/test/script。
+
 ## 20. 更新日志
 
 ### 2026-07-30
@@ -1372,3 +1413,7 @@ contract，0 violation。
   port 隐藏 workflow/log/paused SQL，在 Application 内保留 all-time、bucket、success 与
   percentile 语义；真实 Postgres 同时发现并固定 aggregate timestamp UTC 边界；当前
   native 11/22、legacy 11/22，Workspaces boundary 扩展为覆盖 3 个 adapters。
+- 将 `API-1034 workspace fork lineage` 切为原生 Workspace Forking read model；与
+  API-1031 共享 forking gate，以 current-access seam 固定错误优先级，并用三批结构读取加
+  两批权限读取消除 donor 的逐节点 N+1；focused unit 16/16、真实 Postgres 1/1，当前
+  native 13/22、legacy 9/22。

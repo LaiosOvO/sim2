@@ -1,6 +1,6 @@
 import { db } from '@sim/db'
 import { member, permissions } from '@sim/db/schema'
-import { and, eq } from 'drizzle-orm'
+import { and, eq, inArray } from 'drizzle-orm'
 import { isOrgAdminRole, type PermissionType } from './predicates'
 
 export * from './predicates'
@@ -52,4 +52,63 @@ export async function resolveEffectiveWorkspacePermission(
   }
 
   return explicit
+}
+
+export interface WorkspacePermissionSubject {
+  id: string
+  organizationId: string | null
+}
+
+/**
+ * Resolves which workspace subjects are accessible to a viewer in a fixed
+ * number of queries. Explicit grants of any level and organization owner/admin
+ * inheritance both confer access.
+ */
+export async function resolveAccessibleWorkspaceIds(
+  userId: string,
+  subjects: readonly WorkspacePermissionSubject[]
+): Promise<ReadonlySet<string>> {
+  const byId = new Map(subjects.map((subject) => [subject.id, subject]))
+  if (byId.size === 0) return new Set()
+
+  const workspaceIds = [...byId.keys()]
+  const organizationIds = [
+    ...new Set(
+      [...byId.values()]
+        .map((subject) => subject.organizationId)
+        .filter((organizationId): organizationId is string => organizationId !== null)
+    ),
+  ]
+
+  const [permissionRows, membershipRows] = await Promise.all([
+    db
+      .select({ workspaceId: permissions.entityId })
+      .from(permissions)
+      .where(
+        and(
+          eq(permissions.userId, userId),
+          eq(permissions.entityType, 'workspace'),
+          inArray(permissions.entityId, workspaceIds)
+        )
+      ),
+    organizationIds.length > 0
+      ? db
+          .select({ organizationId: member.organizationId, role: member.role })
+          .from(member)
+          .where(and(eq(member.userId, userId), inArray(member.organizationId, organizationIds)))
+      : Promise.resolve([]),
+  ])
+
+  const adminOrganizationIds = new Set(
+    membershipRows
+      .filter((membership) => isOrgAdminRole(membership.role))
+      .map((membership) => membership.organizationId)
+  )
+  const accessible = new Set(permissionRows.map((permission) => permission.workspaceId))
+  for (const subject of byId.values()) {
+    if (subject.organizationId && adminOrganizationIds.has(subject.organizationId)) {
+      accessible.add(subject.id)
+    }
+  }
+  return accessible
 }

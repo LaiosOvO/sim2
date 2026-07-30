@@ -27,7 +27,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       { createDrizzleWorkspaceMemberReadRepository },
       { createDrizzleForkEntitlementReader },
       { createDrizzlePlatformAdminReader },
+      { createDrizzleWorkspaceForkCurrentAccessReader },
       { createDrizzleWorkspaceForkContextReader },
+      { createDrizzleWorkspaceForkLineageReader },
       { createDrizzleAccessResolver },
     ] = await Promise.all([
       import('@sim/db'),
@@ -57,7 +59,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       import('@/infrastructure/postgres/repositories/drizzle-workspace-member-read-repository'),
       import('@/infrastructure/postgres/repositories/drizzle-fork-entitlement-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-platform-admin-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-current-access-reader'),
       import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-context-reader'),
+      import('@/infrastructure/postgres/repositories/drizzle-workspace-fork-lineage-reader'),
       import('@/middleware/authorization/infrastructure/drizzle-access-resolver'),
     ])
 
@@ -68,6 +72,7 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       `create type permission_type as enum ('admin', 'write', 'read')`,
       `create type data_drain_run_status as enum ('running', 'success', 'failed')`,
       `create type data_drain_run_trigger as enum ('cron', 'manual')`,
+      `create type workspace_fork_promote_direction as enum ('push', 'pull')`,
       `create table "user" (
         id text primary key,
         name text not null,
@@ -88,7 +93,19 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
         organization_id text references organization(id),
         workspace_mode text not null,
         billed_account_user_id text not null references "user"(id),
-        archived_at timestamp
+        archived_at timestamp,
+        forked_from_workspace_id text references workspace(id) on delete set null,
+        created_at timestamp not null default now()
+      )`,
+      `create table workspace_fork_promote_run (
+        id text primary key,
+        child_workspace_id text not null references workspace(id) on delete cascade,
+        source_workspace_id text not null,
+        target_workspace_id text not null,
+        direction workspace_fork_promote_direction not null,
+        snapshot jsonb not null,
+        created_by text references "user"(id) on delete set null,
+        created_at timestamp not null default now()
       )`,
       `create table workflow (
         id text primary key,
@@ -219,7 +236,9 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       `insert into organization (id, name)
        values
          ('organization-1', 'Platform'),
-         ('organization-other', 'Other')`,
+         ('organization-other', 'Other'),
+         ('organization-lineage', 'Lineage'),
+         ('organization-lineage-derived', 'Lineage Derived')`,
       `insert into workspace (
          id, name, owner_id, organization_id, workspace_mode, billed_account_user_id, archived_at
        ) values
@@ -232,6 +251,27 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('workspace-other', 'Other Secret', 'inviter-1', 'organization-other', 'organization',
           'inviter-1', null),
          ('workspace-personal', 'Personal', 'member-1', null, 'personal', 'member-1', null)`,
+      `insert into workspace (
+         id, name, owner_id, organization_id, workspace_mode, billed_account_user_id,
+         archived_at, forked_from_workspace_id, created_at
+       ) values
+         ('lineage-parent', 'Lineage Parent', 'org-owner-1', 'organization-lineage',
+          'organization', 'org-owner-1', null, null, '2026-07-20T00:00:00Z'),
+         ('lineage-current', 'Lineage Current', 'org-owner-1', 'organization-lineage',
+          'organization', 'org-owner-1', null, 'lineage-parent', '2026-07-21T00:00:00Z'),
+         ('lineage-child-hidden', 'Hidden Child', 'org-owner-1', null, 'personal',
+          'org-owner-1', null, 'lineage-current', '2026-07-22T00:00:00Z'),
+         ('lineage-child-inherited', 'Inherited Child', 'org-owner-1',
+          'organization-lineage-derived', 'organization', 'org-owner-1', null,
+          'lineage-current', '2026-07-23T00:00:00Z'),
+         ('lineage-child-explicit', 'Explicit Child', 'org-owner-1', 'organization-lineage',
+          'organization', 'org-owner-1', null, 'lineage-current', '2026-07-24T00:00:00Z'),
+         ('lineage-child-archived', 'Archived Child', 'org-owner-1', 'organization-lineage',
+          'organization', 'org-owner-1', '2026-07-25T00:00:00Z', 'lineage-current',
+          '2026-07-25T00:00:00Z'),
+         ('lineage-source-archived', 'Archived Source', 'org-owner-1',
+          'organization-lineage', 'organization', 'org-owner-1', '2026-07-26T00:00:00Z',
+          null, '2026-07-19T00:00:00Z')`,
       `insert into permissions (
          id, user_id, entity_type, entity_id, permission_type, created_at
        ) values
@@ -242,7 +282,13 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('permission-personal-viewer', 'viewer-1', 'workspace', 'workspace-personal', 'read',
           '2026-07-10T00:00:00Z'),
          ('permission-archived', 'viewer-1', 'workspace', 'workspace-archived', 'admin',
-          '2026-07-07T00:00:00Z')`,
+          '2026-07-07T00:00:00Z'),
+         ('permission-lineage-current', 'viewer-1', 'workspace', 'lineage-current', 'admin',
+          '2026-07-20T00:00:00Z'),
+         ('permission-lineage-parent', 'viewer-1', 'workspace', 'lineage-parent', 'read',
+          '2026-07-20T00:00:00Z'),
+         ('permission-lineage-child', 'viewer-1', 'workspace', 'lineage-child-explicit',
+          'write', '2026-07-20T00:00:00Z')`,
       `insert into workflow (id, user_id, workspace_id, folder_id, name) values
          ('metrics-workflow-a', 'viewer-1', 'workspace-1', 'folder-a', 'Metrics A'),
          ('metrics-workflow-b', 'viewer-1', 'workspace-1', 'folder-b', 'Metrics B'),
@@ -266,7 +312,16 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
          ('membership-admin', 'org-admin-1', 'organization-1', 'admin',
           '2026-07-04T00:00:00Z'),
          ('membership-owner', 'org-owner-1', 'organization-1', 'owner',
-          '2026-07-05T00:00:00Z')`,
+          '2026-07-05T00:00:00Z'),
+         ('membership-lineage-viewer', 'viewer-1', 'organization-lineage-derived', 'admin',
+          '2026-07-20T00:00:00Z')`,
+      `insert into workspace_fork_promote_run (
+         id, child_workspace_id, source_workspace_id, target_workspace_id, direction,
+         snapshot, created_by, created_at
+       ) values (
+         'lineage-promote-run', 'lineage-current', 'lineage-source-archived',
+         'lineage-current', 'pull', '{}', 'viewer-1', '2026-07-29T00:00:00Z'
+       )`,
       `insert into permission_group (
          id, organization_id, name, config, created_by, created_at, is_default
        ) values
@@ -601,6 +656,80 @@ describe.runIf(disposableDatabaseEnabled)('native W2 PostgreSQL adapters', () =>
       organizationId: null,
     })
     await expect(forkContexts.findActive('workspace-archived')).resolves.toBeNull()
+    const forkCurrentAccess = createDrizzleWorkspaceForkCurrentAccessReader()
+    await expect(
+      forkCurrentAccess.findActiveForViewer('lineage-current', 'viewer-1')
+    ).resolves.toEqual({
+      organizationId: 'organization-lineage',
+      permission: 'admin',
+    })
+    await expect(
+      forkCurrentAccess.findActiveForViewer('workspace-archived', 'viewer-1')
+    ).resolves.toBeNull()
+
+    const forkLineage = createDrizzleWorkspaceForkLineageReader()
+    await expect(forkLineage.readForViewer('lineage-current', 'viewer-1')).resolves.toEqual({
+      parent: {
+        id: 'lineage-parent',
+        name: 'Lineage Parent',
+        organizationId: 'organization-lineage',
+        viewerAccessible: true,
+      },
+      children: [
+        {
+          id: 'lineage-child-explicit',
+          name: 'Explicit Child',
+          organizationId: 'organization-lineage',
+          viewerAccessible: true,
+          createdAt: '2026-07-24T00:00:00.000Z',
+        },
+        {
+          id: 'lineage-child-inherited',
+          name: 'Inherited Child',
+          organizationId: 'organization-lineage-derived',
+          viewerAccessible: true,
+          createdAt: '2026-07-23T00:00:00.000Z',
+        },
+        {
+          id: 'lineage-child-hidden',
+          name: 'Hidden Child',
+          organizationId: null,
+          viewerAccessible: false,
+          createdAt: '2026-07-22T00:00:00.000Z',
+        },
+      ],
+      undoableRun: {
+        otherWorkspaceId: 'lineage-source-archived',
+        otherName: 'Archived Source',
+        direction: 'pull',
+      },
+    })
+    await db.execute(
+      sql`update workspace set archived_at = '2026-07-30T00:00:00Z' where id = 'lineage-parent'`
+    )
+    await expect(forkLineage.readForViewer('lineage-current', 'viewer-1')).resolves.toMatchObject({
+      parent: null,
+    })
+    await db.execute(sql`update workspace set archived_at = null where id = 'lineage-parent'`)
+    await db.execute(sql`update workspace set name = '' where id = 'lineage-parent'`)
+    await expect(forkLineage.readForViewer('lineage-current', 'viewer-1')).resolves.toMatchObject({
+      parent: {
+        id: 'lineage-parent',
+        name: '',
+      },
+    })
+    await db.execute(sql`update workspace set name = 'Lineage Parent' where id = 'lineage-parent'`)
+    await db.execute(
+      sql`update workspace_fork_promote_run set source_workspace_id = 'lineage-source-missing'
+          where id = 'lineage-promote-run'`
+    )
+    await expect(forkLineage.readForViewer('lineage-current', 'viewer-1')).resolves.toMatchObject({
+      undoableRun: {
+        otherWorkspaceId: 'lineage-source-missing',
+        otherName: 'workspace',
+        direction: 'pull',
+      },
+    })
     const forkEntitlement = createDrizzleForkEntitlementReader({
       billingEnabled: true,
       forkingEnabled: false,

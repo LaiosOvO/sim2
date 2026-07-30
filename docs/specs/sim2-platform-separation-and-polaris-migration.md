@@ -994,11 +994,12 @@ packages/*
   `API-0241 /api/organizations/[id]/workspaces`,
   `API-0243 /api/permission-groups/user`, `API-0294 /api/stars`,
   `API-1031 /api/workspaces/[id]/fork/availability`,
+  `API-1034 /api/workspaces/[id]/fork/lineage`,
   `API-1041 /api/workspaces/[id]/host-context`,
   `API-1057 /api/workspaces/[id]/members`,
   `API-1058 /api/workspaces/[id]/metrics/executions`, and Polaris
   `API-1060 /api/workspaces/[id]/personal-profile`, plus
-  `API-1124 /api/workspaces/invitations` are native, while the other 10 routes currently target a
+  `API-1124 /api/workspaces/invitations` are native, while the other 9 routes currently target a
   fixed pre-refactor legacy origin.
 - The invitations Module owns a token-free V1 response contract, application use case and repository
   port. Its PostgreSQL adapter uses two batched queries and has passed a disposable PostgreSQL 16
@@ -1070,6 +1071,27 @@ packages/*
   `hasAccess`; the native compatibility slice removes that redundant read without changing the
   observable session + active-workspace behavior. Tightening availability to workspace members is
   a separate security decision, not an implicit migration change.
+- The Workspace Forking Module also owns API-1034 through a viewer-specific lineage read interface.
+  API-1031 and API-1034 reuse one application-owned forking gate: availability collapses its typed
+  deployment-disabled and enterprise-required outcomes to `{available:false}`, while lineage maps
+  those same outcomes to the donor-compatible HTTP errors. A dedicated current-access port reads the
+  active workspace and viewer permission once before the gate; a deep lineage read-model port then
+  hides active-parent lookup, newest-first active children, latest target-promote projection, and
+  batched effective-access resolution.
+- API-1034 preserves the order `authentication -> validation -> current active workspace ->
+  forking gate -> admin requirement -> lineage projection`. The resulting precedence is
+  `404 Workspace not found`, then `404 Workspace forking is not enabled on this deployment`, then
+  `403 Workspace forking is available on Enterprise plans only`, then
+  `403 Admin access is required for this workspace`. The PostgreSQL read model uses three fixed
+  structural reads plus two batched permission/membership reads, independent of parent/child count;
+  it does not copy the donor's per-lineage-node effective-permission N+1 loop.
+- W2 is now native 13/22 and legacy 9/22. The API-1034 focused unit suite is 16/16, the full API suite
+  is 131 passed plus 1 skipped, the contract suite is 16/16, and the disposable PostgreSQL fixture is
+  1/1. API/contracts/platform-authz type-checks, W2 22/22 coverage, facade isolation, module/monorepo
+  boundaries, contract purity, target structure/cycles, API validation, standalone Node smoke, and
+  browser-closure ratchets all pass. The API build bundles 1146 modules with a 34.82 KiB entry.
+  This metadata path remains server-only and imports neither Feishu ingress nor Executor/Sandbox,
+  consistent with the independent Node runtime roles defined above.
 - AWS AppConfig is isolated in the server-only `extensions/infra/appconfig` package. It owns the
   profile transport, cold-request coalescing, stale-while-revalidate cache, last-good retention, and
   pure OR-clause rule primitives. It does not own a universal feature registry:
@@ -1081,7 +1103,7 @@ packages/*
   plan-limit rules, and enforcement/display projections. Copying `checkAttributedUsageLimits` or
   the legacy Billing Core into either Workspaces or Data Drains is prohibited.
 - Remaining W2 native read repositories, workspace/organization tenant authorization, real database
-  fixtures for the other 10 routes, and removal of the legacy-origin dependency are incomplete; the
+  fixtures for the other 9 routes, and removal of the legacy-origin dependency are incomplete; the
   normative per-route status is `docs/testing/api-w2-tenant-read-coverage.json`.
 
 ## Out of Scope

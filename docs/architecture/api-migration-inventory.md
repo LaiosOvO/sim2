@@ -1445,7 +1445,7 @@
 | API-1031 | GET | `/api/workspaces/[id]/fork/availability` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth, Billing, AWS | API Workspace Forking Module | W2 | Medium | CADI |
 | API-1032 | GET | `/api/workspaces/[id]/fork/diff` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth | API Core Module | W2 | Medium | CADI |
 | API-1033 | PUT | `/api/workspaces/[id]/fork/excluded-workflows` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | DB, Auth | API Core Module | W3 | Medium | CADI |
-| API-1034 | GET | `/api/workspaces/[id]/fork/lineage` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | DB, Auth | API Core Module | W2 | Medium | CADI |
+| API-1034 | GET | `/api/workspaces/[id]/fork/lineage` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S✓/P✓ | DB, Auth | API Workspace Forking Module（native） | W2 | Medium | CADI |
 | API-1035 | GET,PUT | `/api/workspaces/[id]/fork/mapping` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth | API Core Module | W3 | Medium | CADI |
 | API-1036 | POST | `/api/workspaces/[id]/fork/promote` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth | API Core Module | W3 | Medium | CADI |
 | API-1037 | GET | `/api/workspaces/[id]/fork/resources` | 共有同实现 | Core Command/Query | Session/Middleware | S✓/P✓ | S–/P– | DB, Auth | API Core Module | W2 | Medium | CADI |
