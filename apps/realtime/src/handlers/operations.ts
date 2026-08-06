@@ -88,6 +88,10 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
       const validatedOperation = WorkflowOperationSchema.parse(data)
       operationId = validatedOperation.operationId
       const { operation, target, payload, timestamp } = validatedOperation
+      // Keep the originating ID on the broadcast so every client observes the
+      // same operation identity. Older clients may omit it, so retain a server
+      // fallback for backwards compatibility.
+      const broadcastOperationId = operationId ?? generateId()
 
       // For position updates, preserve client timestamp to maintain ordering
       // For other operations, use server timestamp for consistency
@@ -179,7 +183,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           userName: session.userName,
           metadata: {
             workflowId,
-            operationId: generateId(),
+            operationId: broadcastOperationId,
             isPositionUpdate: true,
           },
         }
@@ -233,7 +237,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId(), isBatchPositionUpdate: true },
+          metadata: { workflowId, operationId: broadcastOperationId, isBatchPositionUpdate: true },
         })
 
         try {
@@ -289,7 +293,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           userName: session.userName,
           metadata: {
             workflowId,
-            operationId: generateId(),
+            operationId: broadcastOperationId,
           },
         }
 
@@ -329,7 +333,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           userName: session.userName,
           metadata: {
             workflowId,
-            operationId: generateId(),
+            operationId: broadcastOperationId,
           },
         }
 
@@ -364,7 +368,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -396,7 +400,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -425,7 +429,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -457,7 +461,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -489,7 +493,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -521,7 +525,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -550,7 +554,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
           senderId: socket.id,
           userId: session.userId,
           userName: session.userName,
-          metadata: { workflowId, operationId: generateId() },
+          metadata: { workflowId, operationId: broadcastOperationId },
         })
 
         if (operationId) {
@@ -581,7 +585,7 @@ export function setupOperationsHandlers(socket: AuthenticatedSocket, roomManager
         userName: session.userName,
         metadata: {
           workflowId,
-          operationId: generateId(),
+          operationId: broadcastOperationId,
         },
       }
 

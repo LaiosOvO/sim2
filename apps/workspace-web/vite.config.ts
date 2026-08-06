@@ -8,8 +8,14 @@ const repositoryRoot = path.resolve(appDirectory, '..', '..')
 const nextBaseUrl = process.env.SIM_NEXT_BASE_URL ?? 'http://127.0.0.1:3000'
 const apiBaseUrl = process.env.SIM_API_BASE_URL ?? 'http://127.0.0.1:3012'
 const realtimeBaseUrl = process.env.SIM_REALTIME_BASE_URL ?? 'http://127.0.0.1:3002'
+const e2bEnabled = process.env.NEXT_PUBLIC_E2B_ENABLED ?? 'false'
 
 export default defineConfig({
+  cacheDir: process.env.SIM_WORKSPACE_VITE_CACHE_DIR,
+  define: {
+    'import.meta.env.VITE_NEXT_BASE_URL': JSON.stringify(nextBaseUrl),
+    'import.meta.env.VITE_E2B_ENABLED': JSON.stringify(e2bEnabled),
+  },
   plugins: [react()],
   resolve: {
     dedupe: ['react', 'react-dom'],

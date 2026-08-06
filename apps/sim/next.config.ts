@@ -337,6 +337,13 @@ const nextConfig: NextConfig = {
         source: '/workspace/:workspaceId/home',
         destination: `${workspaceViteUrl}/workspace/:workspaceId/home`,
         permanent: false,
+        missing: [{ type: 'query' as const, key: 'runtime', value: 'next' }],
+      })
+      redirects.push({
+        source: '/workspace/:workspaceId/w/:workflowId',
+        destination: `${workspaceViteUrl}/workspace/:workspaceId/w/:workflowId`,
+        permanent: false,
+        missing: [{ type: 'query' as const, key: 'runtime', value: 'next' }],
       })
     }
 

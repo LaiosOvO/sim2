@@ -9,11 +9,15 @@
   "scripts": {
     "dev": "SIM_RUNTIME_SERVICE=workspace-vite node --import ../../scripts/runtime/assert-node-22.mjs ../../node_modules/vite/bin/vite.js",
     "build": "SIM_RUNTIME_SERVICE=workspace-vite-build node --import ../../scripts/runtime/assert-node-22.mjs ../../node_modules/vite/bin/vite.js build",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "bunx vitest run"
   },
   "dependencies": {
+    "@sim/tool-catalog": "workspace:*",
+    "@sim/utils": "workspace:*",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "socket.io-client": "4.8.1"
   },
   "devDependencies": {
     "@sim/tsconfig": "workspace:*",

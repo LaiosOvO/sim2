@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { type ChatToolCall, normalizePersistedToolCalls } from './chat-stream'
 
 export interface SessionPayload {
   user?: {
@@ -44,6 +45,17 @@ export interface ChatMessage {
   id: string
   role: 'user' | 'assistant'
   content: string
+  attachments?: ChatAttachment[]
+  toolCalls?: ChatToolCall[]
+}
+
+export interface ChatAttachment {
+  id: string
+  key?: string
+  filename: string
+  mediaType: string
+  size: number
+  path?: string
 }
 
 export interface WorkspaceBootstrapPayload {
@@ -148,6 +160,39 @@ function messageText(value: unknown): string {
   return ''
 }
 
+function optionalString(value: unknown): string | undefined {
+  return typeof value === 'string' && value.length > 0 ? value : undefined
+}
+
+function normalizeAttachments(message: Record<string, unknown>): ChatAttachment[] {
+  if (!Array.isArray(message.fileAttachments)) return []
+  return message.fileAttachments.flatMap((value, index) => {
+    if (!value || typeof value !== 'object') return []
+    const attachment = value as Record<string, unknown>
+    const filename =
+      optionalString(attachment.filename) ??
+      optionalString(attachment.name) ??
+      `Attachment ${index + 1}`
+    const size =
+      typeof attachment.size === 'number' && Number.isFinite(attachment.size) ? attachment.size : 0
+    return [
+      {
+        id:
+          optionalString(attachment.id) ?? optionalString(attachment.key) ?? `attachment-${index}`,
+        filename,
+        mediaType:
+          optionalString(attachment.media_type) ??
+          optionalString(attachment.mediaType) ??
+          optionalString(attachment.type) ??
+          'application/octet-stream',
+        size,
+        ...(optionalString(attachment.key) ? { key: optionalString(attachment.key) } : {}),
+        ...(optionalString(attachment.path) ? { path: optionalString(attachment.path) } : {}),
+      },
+    ]
+  })
+}
+
 export function normalizeMessages(payload: unknown): ChatMessage[] {
   if (!payload || typeof payload !== 'object') return []
   const root = payload as Record<string, unknown>
@@ -160,59 +205,17 @@ export function normalizeMessages(payload: unknown): ChatMessage[] {
     const record = message as Record<string, unknown>
     const role = record.role === 'assistant' ? 'assistant' : record.role === 'user' ? 'user' : null
     const content = messageText(record)
-    if (!role || !content) return []
+    const attachments = normalizeAttachments(record)
+    const toolCalls = normalizePersistedToolCalls(record)
+    if (!role || (!content && attachments.length === 0 && toolCalls.length === 0)) return []
     return [
       {
         id: typeof record.id === 'string' ? record.id : `${role}-${index}`,
         role,
         content,
+        ...(attachments.length > 0 ? { attachments } : {}),
+        ...(toolCalls.length > 0 ? { toolCalls } : {}),
       },
     ]
   })
-}
-
-function eventText(value: unknown): string {
-  if (typeof value === 'string') return value
-  if (!value || typeof value !== 'object') return ''
-  const record = value as Record<string, unknown>
-  for (const key of ['delta', 'textDelta', 'text', 'content']) {
-    if (typeof record[key] === 'string') return record[key] as string
-  }
-  return ''
-}
-
-export async function consumeChatResponse(
-  response: Response,
-  onText: (text: string) => void
-): Promise<void> {
-  if (!response.ok) {
-    const payload = await response.json().catch(() => null)
-    throw new Error(
-      payload && typeof payload === 'object' && 'error' in payload
-        ? String(payload.error)
-        : `${response.status} ${response.statusText}`
-    )
-  }
-
-  if (!response.body) return
-  const reader = response.body.getReader()
-  const decoder = new TextDecoder()
-  let buffer = ''
-
-  while (true) {
-    const { done, value } = await reader.read()
-    if (done) break
-    buffer += decoder.decode(value, { stream: true })
-    const lines = buffer.split(/\r?\n/)
-    buffer = lines.pop() ?? ''
-    for (const line of lines) {
-      if (!line.startsWith('data:')) continue
-      const data = line.slice(5).trim()
-      if (!data || data === '[DONE]') continue
-      try {
-        const text = eventText(JSON.parse(data))
-        if (text) onText(text)
-      } catch {}
-    }
-  }
 }
