@@ -86,17 +86,22 @@ RUN --mount=type=cache,id=next-cache-${TARGETPLATFORM},target=/app/apps/sim/.nex
 # (@sim/runtime-secrets, AWS SDK) are inlined here rather than resolved from the
 # pruned standalone node_modules. The dynamic import of ./server.js stays a
 # runtime import.
-RUN bun build apps/sim/bootstrap.ts --target=bun --outfile=apps/sim/bootstrap.js
+RUN bun build apps/sim/bootstrap.ts --target=node --outfile=apps/sim/bootstrap.js
 
 # ========================================
 # Runner Stage: Run the actual app
 # ========================================
 
-FROM base AS runner
+FROM node:22.20.0-bookworm-slim AS runner
 WORKDIR /app
 
-# Node.js 22, Python, ffmpeg, etc. are already installed in base stage
-ENV NODE_ENV=production
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip python3-venv curl ca-certificates ffmpeg
+
+ENV NODE_ENV=production \
+    SIM_RUNTIME_SERVICE=next
 
 # Create non-root user and group
 RUN groupadd -g 1001 nodejs && \
@@ -110,6 +115,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/.next/static ./apps/sim/
 # Self-contained secrets-loading bootstrap (bundled in the builder stage). Runs
 # before the standalone server.js to hydrate process.env from the runtime secret.
 COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/bootstrap.js ./apps/sim/bootstrap.js
+COPY --from=builder --chown=nextjs:nodejs /app/scripts/runtime/assert-node-22.mjs ./scripts/runtime/assert-node-22.mjs
 
 # Copy blog/author content for runtime filesystem reads (not part of the JS bundle)
 COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/content ./apps/sim/content
@@ -140,4 +146,4 @@ EXPOSE 3000
 ENV PORT=3000 \
     HOSTNAME="0.0.0.0"
 
-CMD ["bun", "apps/sim/bootstrap.js"]
+CMD ["node", "--import", "./scripts/runtime/assert-node-22.mjs", "apps/sim/bootstrap.js"]

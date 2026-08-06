@@ -3,10 +3,13 @@ services:
     env_file:
       - path: .env
         required: false
-    image: ghcr.io/simstudioai/simstudio:latest
+    build:
+      context: .
+      dockerfile: docker/app.Dockerfile
+    image: sim2/simstudio:node22
     restart: unless-stopped
-    ports:
-      - '3000:3000'
+    expose:
+      - '3000'
     deploy:
       resources:
         limits:
@@ -58,14 +61,92 @@ services:
       retries: 3
       start_period: 10s
 
+  workspace-gateway:
+    build:
+      context: .
+      dockerfile: docker/workspace-gateway.Dockerfile
+    restart: unless-stopped
+    ports:
+      - '3000:8080'
+    environment:
+      # Set to 0 only after Home and Editor equivalence/SLA evidence passes.
+      - WORKSPACE_NEXT_FALLBACK=${WORKSPACE_NEXT_FALLBACK:-1}
+    depends_on:
+      simstudio:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+      realtime:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8080/healthz']
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/node-service.Dockerfile
+      args:
+        SIM_SERVICE: api
+    restart: unless-stopped
+    expose:
+      - '3012'
+    environment:
+      - NODE_ENV=production
+      - API_PORT=3012
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-simstudio}
+      - BETTER_AUTH_URL=${BETTER_AUTH_URL:-http://workspace-gateway:8080}
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - INTERNAL_API_SECRET=${INTERNAL_API_SECRET}
+      - SIM_LEGACY_API_BASE_URL=http://simstudio:3000
+      - WORKER_ADMISSION_URL=http://worker:3013
+      - INTERNAL_EXECUTION_TOKEN=${INTERNAL_EXECUTION_TOKEN:-}
+    depends_on:
+      db:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3012/api/health').then(r=>{if(!r.ok)process.exit(1)})"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  worker:
+    build:
+      context: .
+      dockerfile: docker/node-service.Dockerfile
+      args:
+        SIM_SERVICE: worker
+    restart: unless-stopped
+    expose:
+      - '3013'
+    environment:
+      - NODE_ENV=production
+      - WORKER_PORT=3013
+      - INTERNAL_EXECUTION_TOKEN=${INTERNAL_EXECUTION_TOKEN:-}
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3013/health').then(r=>{if(!r.ok)process.exit(1)})"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
   realtime:
     env_file:
       - path: .env
         required: false
-    image: ghcr.io/simstudioai/realtime:latest
+    build:
+      context: .
+      dockerfile: docker/realtime.Dockerfile
+    image: sim2/realtime:node22
     restart: unless-stopped
-    ports:
-      - '3002:3002'
+    expose:
+      - '3002'
     deploy:
       resources:
         limits:

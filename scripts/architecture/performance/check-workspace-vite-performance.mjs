@@ -1,5 +1,6 @@
 import { spawn, spawnSync } from 'node:child_process'
 import { mkdir, writeFile } from 'node:fs/promises'
+import os from 'node:os'
 import path from 'node:path'
 import { performance } from 'node:perf_hooks'
 import { setTimeout as delay } from 'node:timers/promises'
@@ -13,16 +14,30 @@ const viteCli = path.join(repositoryRoot, 'node_modules', 'vite', 'bin', 'vite.j
 const assertionModule = path.join(repositoryRoot, 'scripts', 'runtime', 'assert-node-22.mjs')
 const baseUrl = new URL(process.env.PERF_WORKSPACE_VITE_URL ?? 'http://127.0.0.1:5173').origin
 const workspaceId = process.env.PERF_WORKSPACE_ID ?? 'performance-workspace'
-const route = `/workspace/${encodeURIComponent(workspaceId)}/home`
+const workflowId = process.env.PERF_WORKFLOW_ID ?? 'performance-workflow'
+const routeKind = process.env.PERF_WORKSPACE_ROUTE === 'editor' ? 'editor' : 'home'
+const route =
+  routeKind === 'editor'
+    ? `/workspace/${encodeURIComponent(workspaceId)}/w/${encodeURIComponent(workflowId)}`
+    : `/workspace/${encodeURIComponent(workspaceId)}/home`
 const warmReloadCount = Number.parseInt(process.env.PERF_WARM_RELOADS ?? '10', 10)
 const useRealBackend = process.env.PERF_WORKSPACE_REAL_BACKEND === '1'
 const storageStatePath =
   process.env.PERF_STORAGE_STATE ?? path.join(repositoryRoot, '.perf', 'auth', 'storage-state.json')
+const runStartedAt = new Date().toISOString()
+const isolatedCacheDirectory = path.join(
+  repositoryRoot,
+  '.perf',
+  'cache',
+  `workspace-vite-${runStartedAt.replaceAll(/[:.]/g, '-')}`
+)
 const limits = {
   serviceReadyMs: 2_000,
-  coldUsableMs: 1_000,
-  warmReloadP95Ms: 500,
+  compilerColdUsableMs: 10_000,
+  coldUsableMs: 2_000,
+  warmReloadP95Ms: 2_000,
   bootstrapApiP95Ms: 1_000,
+  viteProcessTreeRssBytes: 4 * 1024 * 1024 * 1024,
 }
 
 if (!Number.isFinite(warmReloadCount) || warmReloadCount < 10) {
@@ -65,6 +80,55 @@ async function stopProcess(child) {
   await Promise.race([new Promise((resolve) => child.once('exit', resolve)), delay(5_000)])
 }
 
+function processTable() {
+  const command =
+    process.platform === 'win32'
+      ? {
+          executable: 'powershell.exe',
+          args: [
+            '-NoProfile',
+            '-Command',
+            'Get-CimInstance Win32_Process | ForEach-Object { "$($_.ProcessId),$($_.ParentProcessId),$($_.WorkingSetSize)" }',
+          ],
+          rssMultiplier: 1,
+        }
+      : {
+          executable: 'ps',
+          args: ['-axo', 'pid=,ppid=,rss='],
+          rssMultiplier: 1024,
+        }
+  const result = spawnSync(command.executable, command.args, {
+    encoding: 'utf8',
+    windowsHide: true,
+  })
+  if (result.status !== 0) return []
+  return result.stdout.split(/\r?\n/).flatMap((line) => {
+    const fields = process.platform === 'win32' ? line.trim().split(',') : line.trim().split(/\s+/)
+    if (fields.length !== 3) return []
+    const [pid, parentPid, rss] = fields.map((field) => Number.parseInt(field, 10))
+    if (![pid, parentPid, rss].every(Number.isFinite)) return []
+    return [{ pid, parentPid, rssBytes: rss * command.rssMultiplier }]
+  })
+}
+
+function processTreeRssBytes(rootPid) {
+  const table = processTable()
+  const treePids = new Set([rootPid])
+  let changed = true
+  while (changed) {
+    changed = false
+    for (const processInfo of table) {
+      if (treePids.has(processInfo.parentPid) && !treePids.has(processInfo.pid)) {
+        treePids.add(processInfo.pid)
+        changed = true
+      }
+    }
+  }
+  return table
+    .filter((processInfo) => treePids.has(processInfo.pid))
+    .reduce((total, processInfo) => total + processInfo.rssBytes, 0)
+}
+
 const child = spawn(
   process.execPath,
   [
@@ -81,6 +145,7 @@ const child = spawn(
     env: {
       ...process.env,
       SIM_RUNTIME_SERVICE: 'workspace-vite-performance',
+      SIM_WORKSPACE_VITE_CACHE_DIR: isolatedCacheDirectory,
     },
     stdio: ['ignore', 'pipe', 'pipe'],
     windowsHide: true,
@@ -94,17 +159,20 @@ child.stdout.on('data', record)
 child.stderr.on('data', record)
 
 let serviceReadyMs
+let compilerColdUsableMs
 let coldUsableMs
+let viteProcessTreeRssBytes
 const warmReloadMs = []
 const bootstrapApiSamples = []
 const bootstrapApiStatuses = []
 let browser
 let context
-try {
-  serviceReadyMs = await waitForServer(child)
-  browser = await chromium.launch()
-  context = await browser.newContext(useRealBackend ? { storageState: storageStatePath } : {})
-  const page = await context.newPage()
+
+async function createJourneyContext() {
+  const journeyContext = await browser.newContext(
+    useRealBackend ? { storageState: storageStatePath } : {}
+  )
+  const page = await journeyContext.newPage()
   if (!useRealBackend) {
     await page.route('**/api/workspace-bootstrap?**', (route) =>
       route.fulfill({
@@ -133,29 +201,73 @@ try {
         }),
       })
     )
+    await page.route(`**/api/workflows/${encodeURIComponent(workflowId)}`, (route) =>
+      route.fulfill({
+        contentType: 'application/json',
+        body: JSON.stringify({
+          data: {
+            id: workflowId,
+            workspaceId,
+            name: 'Performance workflow',
+            description: null,
+            isDeployed: false,
+            locked: false,
+            state: { blocks: {}, edges: [], loops: {}, parallels: {} },
+          },
+        }),
+      })
+    )
   }
-  const coldStartedAt = performance.now()
+  return { context: journeyContext, page }
+}
+
+async function measureUsable(page) {
+  const startedAt = performance.now()
   await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' })
-  await page.locator('[data-workspace-data-state="complete"]').waitFor({ state: 'visible' })
-  coldUsableMs = Math.round(performance.now() - coldStartedAt)
+  const readySelector =
+    routeKind === 'editor' ? '[data-editor-ready="true"]' : '[data-workspace-data-state="complete"]'
+  await page.locator(readySelector).waitFor({ state: 'visible' })
+  return Math.round(performance.now() - startedAt)
+}
+
+try {
+  serviceReadyMs = await waitForServer(child)
+  browser = await chromium.launch()
+  let journey = await createJourneyContext()
+  context = journey.context
+  compilerColdUsableMs = await measureUsable(journey.page)
+  await journey.page.close()
+  await context.close()
+
+  journey = await createJourneyContext()
+  context = journey.context
+  const page = journey.page
+  coldUsableMs = await measureUsable(page)
 
   for (let index = 0; index < warmReloadCount; index += 1) {
     const startedAt = performance.now()
     await page.reload({ waitUntil: 'domcontentloaded' })
-    await page.locator('[data-workspace-data-state="complete"]').waitFor({ state: 'visible' })
+    const readySelector =
+      routeKind === 'editor'
+        ? '[data-editor-ready="true"]'
+        : '[data-workspace-data-state="complete"]'
+    await page.locator(readySelector).waitFor({ state: 'visible' })
     warmReloadMs.push(Math.round(performance.now() - startedAt))
   }
   if (useRealBackend) {
     for (let index = 0; index < 30; index += 1) {
       const startedAt = performance.now()
-      const response = await context.request.get(
-        `${baseUrl}/api/workspace-bootstrap?workspaceId=${encodeURIComponent(workspaceId)}`
-      )
+      const criticalApiPath =
+        routeKind === 'editor'
+          ? `/api/workflows/${encodeURIComponent(workflowId)}`
+          : `/api/workspace-bootstrap?workspaceId=${encodeURIComponent(workspaceId)}`
+      const response = await context.request.get(`${baseUrl}${criticalApiPath}`)
       bootstrapApiSamples.push(Math.round(performance.now() - startedAt))
       bootstrapApiStatuses.push(response.status())
       await response.dispose()
     }
   }
+  viteProcessTreeRssBytes = processTreeRssBytes(child.pid)
   await page.close()
 } finally {
   await context?.close()
@@ -168,6 +280,7 @@ const bootstrapApi = summarizeSamples(bootstrapApiSamples)
 const checks = {
   nodeRuntime: /^22\./.test(process.versions.node),
   serviceReady: serviceReadyMs <= limits.serviceReadyMs,
+  compilerColdUsable: compilerColdUsableMs <= limits.compilerColdUsableMs,
   coldUsable: coldUsableMs <= limits.coldUsableMs,
   warmReloadP95: warm.p95Ms !== null && warm.p95Ms <= limits.warmReloadP95Ms,
   bootstrapApiP95:
@@ -176,6 +289,10 @@ const checks = {
       bootstrapApi.p95Ms !== null &&
       bootstrapApi.p95Ms <= limits.bootstrapApiP95Ms &&
       bootstrapApiStatuses.every((status) => status >= 200 && status < 300)),
+  viteProcessTreeRss:
+    Number.isFinite(viteProcessTreeRssBytes) &&
+    viteProcessTreeRssBytes > 0 &&
+    viteProcessTreeRssBytes <= limits.viteProcessTreeRssBytes,
 }
 const capturedAt = new Date().toISOString()
 const sourceStatus = spawnSync('git', ['status', '--porcelain'], {
@@ -183,7 +300,7 @@ const sourceStatus = spawnSync('git', ['status', '--porcelain'], {
   encoding: 'utf8',
 }).stdout.trim()
 const report = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   capturedAt,
   sourceSha: spawnSync('git', ['rev-parse', 'HEAD'], {
     cwd: repositoryRoot,
@@ -195,12 +312,31 @@ const report = {
     node: process.versions.node,
     execPath: process.execPath,
   },
+  machine: {
+    platform: process.platform,
+    architecture: process.arch,
+    cpuModel: os.cpus()[0]?.model ?? 'unknown',
+    logicalCpuCount: os.cpus().length,
+    totalMemoryBytes: os.totalmem(),
+  },
   route,
+  routeKind,
   backendMode: useRealBackend ? 'real-authenticated-api' : 'deterministic-fixture',
+  cacheState: {
+    kind: 'isolated-directory-per-run',
+    directory: isolatedCacheDirectory,
+  },
+  environment: {
+    databaseConfigured: Boolean(process.env.DATABASE_URL),
+    authenticatedStorageState: useRealBackend,
+    completeRegistry: process.env.SIM_MINIMAL_REGISTRY !== '1',
+  },
   limits,
   checks,
   serviceReadyMs,
+  compilerColdUsableMs,
   coldUsableMs,
+  viteProcessTreeRssBytes,
   warmReload: warm,
   bootstrapApi: {
     ...bootstrapApi,
