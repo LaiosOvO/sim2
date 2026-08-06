@@ -12,6 +12,7 @@
 - [Infra/Biz Extension Topology ADR](./architecture/decisions/ADR-0003-infra-biz-extension-topology.md)
 - [Node Runtime 与飞书长连接隔离 ADR](./architecture/decisions/ADR-0004-node-runtime-and-feishu-ingress-isolation.md)
 - [Node 22、Next 与开发性能边界 ADR](./architecture/decisions/ADR-0005-node22-next-development-performance-boundary.md)
+- [Workspace Vite 渐进式前后端分离 ADR](./architecture/decisions/ADR-0006-workspace-vite-progressive-separation.md)
 - [Sim2 Node 22 启动与开发性能解决方案](./architecture/node22-development-performance-solution.md)
 - [Node 22 开发性能问题清单与根因报告](./reviews/node22-development-performance-root-cause.md)
 
@@ -45,6 +46,8 @@
 - [Phase 3 Worker Job 与 Sandbox 骨架检查点](./handoffs/phase-3-worker-sandbox-skeleton.md)
 - [Phase 3 认证与请求上下文 seam 检查点](./handoffs/phase-3-auth-request-context.md)
 - [Node 22 开发性能重构与运行手册](./handoffs/node22-development-performance-runbook.md)
+- [Workspace Vite 生产网关运行手册](./handoffs/workspace-vite-production-gateway.md)
+- [Workspace Vite 客户环境验收交付说明](./handoffs/workspace-vite-customer-acceptance.md)
 - [Phase 4 W2 租户只读兼容平面检查点](./handoffs/phase-4-w2-tenant-read-compatibility.md)
 - [Phase 4 W2 原生路由与 Stars 检查点](./handoffs/phase-4-w2-native-stars.md)
 - [Phase 4 W2 原生邀请读取检查点](./handoffs/phase-4-w2-native-invitations.md)

@@ -1,9 +1,29 @@
 {
   "schemaVersion": 2,
-  "capturedAt": "2026-07-30T08:53:15.759Z",
-  "sourceSha": "cdb9cfadaa62214b07cbab715c1219d35104b147",
+  "capturedAt": "2026-08-03T11:00:41.333Z",
+  "deliveryPreparedAt": "2026-08-03T12:52:34.5699010Z",
+  "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
   "sourceBranch": "agent/node22-next-performance",
-  "status": "workspace-home-vite-passed-editor-next-pending",
+  "status": "development-complete-customer-acceptance-ready",
+  "deliveryDisposition": {
+    "developmentStatus": "complete",
+    "githubDeliveryStatus": "ready-to-push",
+    "customerAcceptanceStatus": "ready-to-run-in-customer-environment",
+    "realEnvironmentEvidence": "to-be-captured-by-customer",
+    "compatibilityFallback": "WORKSPACE_NEXT_FALLBACK=1-until-customer-acceptance",
+    "claimBoundary": "Implementation and deterministic verification are complete. Uncollected customer-environment SLA, Desktop and Docker results are not represented as measured passes.",
+    "finalGateVerification": {
+      "status": "passed",
+      "runtime": "node 22.20.0",
+      "workspaceViteTests": "16 files, 56 cases passed",
+      "realtimeTests": "7 files, 135 cases passed",
+      "simSelectorAndTransportTests": "4 files, 10 cases passed",
+      "toolCatalogSerializationTests": "1 file, 4 cases passed",
+      "apiValidation": "992 of 992 routes Zod-backed",
+      "catalog": "313 items verified",
+      "boundaries": "Workspace, production gateway, browser closure, Catalog, Contract, Runtime Registry, Worker and Realtime gates passed"
+    }
+  },
   "machine": {
     "hostPlatform": "win32",
     "controlledEnvironment": "WSL2 Ubuntu 22.04 on ext4",
@@ -116,6 +136,401 @@
       "successfulStatuses": 30
     },
     "scope": "Workspace Home session, workflows, folders, chats, and files. Workflow Editor remains on Next and is not covered by this pass."
+  },
+  "workspaceHomeViteIncrementalAcceptance": {
+    "capturedAt": "2026-07-31T09:15:03.220Z",
+    "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "deterministic-fixture-isolated-vite-cache",
+    "route": "/workspace/performance-workspace/home",
+    "status": "passed",
+    "serviceReadyMs": 478,
+    "compilerColdUsableMs": 1516,
+    "coldUsableMs": 225,
+    "warmReload": {
+      "samples": 10,
+      "p95Ms": 100,
+      "maximumMs": 100
+    },
+    "bundle": {
+      "buildMs": 642,
+      "entryGzipKiB": 64.73,
+      "toolCallLazyChunkGzipKiB": 0.52,
+      "advancedCapabilitiesLazyChunkGzipKiB": 0.67
+    },
+    "scope": "Workspace Home core data and chat, generic canonical and persisted tool-call lifecycle rendering, and an on-demand Next complete-Home compatibility path. Rich tool cards and Workflow Editor remain on Next."
+  },
+  "workspaceHomeViteAdvancedAcceptance": {
+    "capturedAt": "2026-07-31T09:39:07.736Z",
+    "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "deterministic-fixture-isolated-vite-cache",
+    "route": "/workspace/performance-workspace/home",
+    "status": "passed",
+    "serviceReadyMs": 567,
+    "compilerColdUsableMs": 1699,
+    "coldUsableMs": 243,
+    "warmReload": {
+      "samples": 10,
+      "p95Ms": 135,
+      "maximumMs": 135
+    },
+    "tests": {
+      "files": 5,
+      "cases": 10,
+      "status": "passed"
+    },
+    "bundle": {
+      "buildMs": 338,
+      "entryGzipKiB": 66.02,
+      "speechLazyChunkGzipKiB": 0.4,
+      "attachmentListLazyChunkGzipKiB": 0.52,
+      "attachmentUploadLazyChunkGzipKiB": 1.06,
+      "toolCallLazyChunkGzipKiB": 0.71,
+      "desktopRuntimeLazyChunkGzipKiB": 1.62,
+      "advancedCapabilitiesLazyChunkGzipKiB": 0.73
+    },
+    "browserJourney": {
+      "attachmentControl": "passed",
+      "speechPermissionError": "passed",
+      "advancedCapabilityBoundary": "passed",
+      "completeHomeRuntimeBypass": "passed"
+    },
+    "scope": "Workspace Home native chat attachments, browser speech input, categorized tool lifecycle cards, and non-interactive Browser/Terminal execution through the Sim Desktop bridge. Browser takeover, terminal handoff, approvals, deep integration cards, and Workflow Editor retain the Next compatibility path."
+  },
+  "workspaceViteEditorShellAcceptance": {
+    "capturedAt": "2026-07-31T13:48:59.945Z",
+    "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "deterministic-fixture-isolated-vite-cache",
+    "status": "fixture-passed-real-backend-pending",
+    "home": {
+      "route": "/workspace/performance-workspace/home",
+      "serviceReadyMs": 608,
+      "compilerColdUsableMs": 2475,
+      "coldUsableMs": 1008,
+      "viteProcessTreeRssBytes": 380960768,
+      "warmReload": {
+        "samples": 10,
+        "p95Ms": 420,
+        "maximumMs": 420
+      }
+    },
+    "editor": {
+      "route": "/workspace/performance-workspace/w/performance-workflow",
+      "serviceReadyMs": 530,
+      "compilerColdUsableMs": 2322,
+      "coldUsableMs": 487,
+      "viteProcessTreeRssBytes": 373547008,
+      "warmReload": {
+        "samples": 10,
+        "p95Ms": 931,
+        "maximumMs": 931
+      }
+    },
+    "diagnosticObservation": {
+      "homeCompilerColdUsableAfterTimedOutFullTypeCheckMs": 9748,
+      "homeCompilerColdUsableAfterResourceRecoveryMs": 2475,
+      "interpretation": "The Vite route stayed within the 10 second fixture limit under memory pressure and returned to the normal 2.5 second range after the unrelated 6.4 GiB full Sim type-check process was stopped."
+    },
+    "tests": {
+      "files": 10,
+      "cases": 31,
+      "status": "passed"
+    },
+    "bundle": {
+      "buildMs": 750,
+      "entryGzipKiB": 61.22,
+      "homeShellLazyChunkGzipKiB": 5.83,
+      "editorShellLazyChunkGzipKiB": 4.01,
+      "editorInspectorLazyChunkGzipKiB": 2.28,
+      "editorBasicFieldsLazyChunkGzipKiB": 2.09,
+      "editorStateLazyChunkGzipKiB": 2.98,
+      "toolCatalogLazyChunkGzipKiB": 14.16,
+      "editorTemplateCount": 313,
+      "editorTemplateShardCount": 16,
+      "editorTemplateShardMinimumGzipKiB": 13.28,
+      "editorTemplateShardMaximumGzipKiB": 33.48,
+      "editorRunLazyChunkGzipKiB": 1.86,
+      "editorActivityLazyChunkGzipKiB": 1.52,
+      "editorCollaborationLazyChunkGzipKiB": 1.67,
+      "socketIoLazyChunkGzipKiB": 12.88,
+      "desktopResourcePanelLazyChunkGzipKiB": 1.46,
+      "toolActionsLazyChunkGzipKiB": 0.5
+    },
+    "browserJourney": {
+      "homeAdvancedPanel": "passed",
+      "editorMinimalCanvas": "passed",
+      "editorInspectorRenameToggle": "passed",
+      "editorConnectionRemoveCreate": "passed",
+      "editorCatalogCreateApiBlock": "passed",
+      "editorBasicFieldConfiguration": "passed",
+      "editorAdvancedFieldConfiguration": "test-passed-browser-pending",
+      "editorTriggerCreationContract": "test-passed-browser-pending",
+      "editorAll313CreationTemplates": "passed",
+      "editorFileUpload": "implementation-passed-real-storage-pending",
+      "editorLoopParallelContainers": "test-passed-browser-pending",
+      "editorDraftSseRun": "implementation-passed-real-worker-pending",
+      "editorSelectedBlockExecution": "implementation-passed-real-worker-pending",
+      "editorDeployUndeploy": "implementation-passed-real-database-pending",
+      "editorDeploymentVersions": "implementation-passed-real-database-pending",
+      "editorExecutionDetail": "implementation-passed-real-database-pending",
+      "editorRealtimePresence": "implementation-passed-real-realtime-pending",
+      "editorRealtimeCursorSelection": "implementation-passed-real-realtime-pending",
+      "editorCreatedBlockSavePayload": "passed",
+      "editorSave": "passed",
+      "toolCatalog313Entries": "passed",
+      "toolCatalogSearch": "passed",
+      "nextCompatibilityLinks": "passed",
+      "simDesktopNativeDevice": "not-run"
+    },
+    "scope": "Historical snapshot at capture time. It covered Vite Home generic advanced interactions and the Vite Editor common feature slice; later deep-builder, structured HITL and conflict-aware operation work is recorded in workspaceViteDeepEditorAcceptance.",
+    "supersededBy": "workspaceViteDeepEditorAcceptance"
+  },
+  "workspaceViteEditorFunctionalMigrationAcceptance": {
+    "capturedAt": "2026-08-01T10:54:21.358Z",
+    "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "deterministic-fixture-isolated-vite-cache",
+    "status": "fixture-passed-real-backend-pending",
+    "home": {
+      "route": "/workspace/performance-workspace/home",
+      "serviceReadyMs": 644,
+      "compilerColdUsableMs": 8816,
+      "coldUsableMs": 1000,
+      "viteProcessTreeRssBytes": 328630272,
+      "warmReload": {
+        "samples": 10,
+        "p95Ms": 933,
+        "maximumMs": 933
+      }
+    },
+    "editor": {
+      "route": "/workspace/performance-workspace/w/performance-workflow",
+      "serviceReadyMs": 638,
+      "compilerColdUsableMs": 2370,
+      "coldUsableMs": 481,
+      "viteProcessTreeRssBytes": 375091200,
+      "warmReload": {
+        "samples": 10,
+        "p95Ms": 907,
+        "maximumMs": 907
+      }
+    },
+    "tests": {
+      "files": 12,
+      "cases": 38,
+      "status": "passed"
+    },
+    "fullSimTypeCheck": {
+      "command": "bunx tsc --noEmit --pretty false",
+      "status": "passed",
+      "durationMs": 269700,
+      "diagnosticCount": 0,
+      "nodeMaxOldSpaceSizeMiB": 8192
+    },
+    "bundle": {
+      "buildMs": 1320,
+      "entryGzipKiB": 61.22,
+      "homeShellLazyChunkGzipKiB": 5.83,
+      "editorShellLazyChunkGzipKiB": 5.45,
+      "editorInspectorLazyChunkGzipKiB": 2.28,
+      "editorBasicFieldsLazyChunkGzipKiB": 2.34,
+      "editorStructuredFieldLazyChunkGzipKiB": 2.2,
+      "editorStateLazyChunkGzipKiB": 2.98,
+      "toolCatalogLazyChunkGzipKiB": 14.16,
+      "editorRunLazyChunkGzipKiB": 2.64,
+      "editorActivityLazyChunkGzipKiB": 1.53,
+      "editorCollaborationLazyChunkGzipKiB": 1.9,
+      "socketIoLazyChunkGzipKiB": 12.88
+    },
+    "functionalChecks": {
+      "structuredBuilderFamilies": 11,
+      "legacyStringBackedBuilderSerialization": "test-passed",
+      "serverExecutionCancellation": "implementation-passed-real-worker-pending",
+      "pauseContextJsonResume": "implementation-passed-real-worker-pending",
+      "narrowRealtimeOperations": "test-passed-real-realtime-pending",
+      "subblockExpectedValueConflictDetection": "test-passed-real-realtime-pending",
+      "localUndoRedo": "implementation-passed-browser-pending"
+    },
+    "remainingCompatibilityScope": [
+      "provider-specific assisted resource selectors",
+      "runtime-schema-dependent Table, Tool, Skill and MCP builders",
+      "structured HITL resume forms",
+      "cross-client collaborative undo/redo"
+    ],
+    "scope": "Historical snapshot at capture time. Later Table, Tool, Skill and MCP builders, structured HITL forms and remote inverse-operation application are recorded in workspaceViteDeepEditorAcceptance.",
+    "supersededBy": "workspaceViteDeepEditorAcceptance"
+  },
+  "workspaceViteDeepEditorAcceptance": {
+    "capturedAt": "2026-08-03T11:51:29.000Z",
+    "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "deterministic-fixture-isolated-vite-cache",
+    "status": "six-cold-rounds-passed-real-backend-pending",
+    "home": {
+      "rounds": 3,
+      "serviceReadySamplesMs": [529, 537, 536],
+      "serviceReadyMedianMs": 536,
+      "compilerColdUsableSamplesMs": [2360, 2186, 2238],
+      "compilerColdUsableMedianMs": 2238,
+      "coldUsableSamplesMs": [1002, 996, 996],
+      "coldUsableMedianMs": 996,
+      "coldUsableMaximumMs": 1002,
+      "warmReloadWorstRoundP95Ms": 921,
+      "viteProcessTreeMaximumRssBytes": 377708544
+    },
+    "editor": {
+      "rounds": 3,
+      "serviceReadySamplesMs": [652, 544, 529],
+      "serviceReadyMedianMs": 544,
+      "compilerColdUsableSamplesMs": [1871, 1699, 1708],
+      "compilerColdUsableMedianMs": 1708,
+      "coldUsableSamplesMs": [987, 464, 470],
+      "coldUsableMedianMs": 470,
+      "coldUsableMaximumMs": 987,
+      "warmReloadWorstRoundP95Ms": 917,
+      "viteProcessTreeMaximumRssBytes": 385556480
+    },
+    "diagnosticOutlier": {
+      "serviceReadyMs": 2508,
+      "compilerColdUsableMs": 8687,
+      "coldUsableMs": 1000,
+      "warmReloadP95Ms": 907,
+      "viteProcessTreeRssBytes": 376168448,
+      "status": "failed-only-strict-2s-service-ready-check",
+      "context": "Captured immediately after a default-heap full Sim type-check OOM. Three subsequent isolated Home rounds and three Editor rounds did not reproduce the startup delay. The raw failed report remains in .perf/reports."
+    },
+    "tests": {
+      "files": 16,
+      "cases": 56,
+      "status": "passed"
+    },
+    "fullSimTypeCheck": {
+      "defaultHeap": {
+        "status": "failed-node-heap-oom",
+        "attempts": 2,
+        "heapLimitMiB": 4096,
+        "diagnosticCountBeforeTermination": 0
+      },
+      "diagnosticRun": {
+        "command": "node --max-old-space-size=8192 node_modules/typescript/bin/tsc --noEmit -p apps/sim/tsconfig.json --pretty false",
+        "status": "passed",
+        "durationMs": 14800,
+        "diagnosticCount": 0,
+        "previousExtendedDiagnosticsMemoryKiB": 6879447
+      }
+    },
+    "bundle": {
+      "buildMs": 681,
+      "entryGzipKiB": 61.26,
+      "editorShellLazyChunkGzipKiB": 6.7,
+      "editorBasicFieldsLazyChunkGzipKiB": 2.57,
+      "editorResourceFieldLazyChunkGzipKiB": 2.46,
+      "editorDeepFieldLazyChunkGzipKiB": 4.05,
+      "agentToolOptionsSharedLazyChunkGzipKiB": 25.58,
+      "editorPauseFormLazyChunkGzipKiB": 2.03,
+      "editorRunPanelLazyChunkGzipKiB": 2.7,
+      "toolCatalogLazyChunkGzipKiB": 14.16,
+      "toolCallListLazyChunkGzipKiB": 1.49
+    },
+    "functionalChecks": {
+      "nativeResourceSelectors": [
+        "credential",
+        "workflow",
+        "knowledge-base",
+        "table",
+        "column",
+        "mcp-server",
+        "mcp-tool"
+      ],
+      "runtimeSchemaBuilders": ["table", "tool", "skill", "input-mapping", "mcp-dynamic-args"],
+      "agentToolCatalogOptionCount": 284,
+      "structuredHitlResume": "unit-and-type-passed-real-worker-pending",
+      "remoteNarrowOperationApplication": "unit-passed-real-realtime-pending",
+      "remoteInverseUndoApplication": "unit-passed-real-realtime-pending",
+      "perUserCollaborativeHistory": "remote-operations-rebased-across-local-undo-redo-snapshots-and-superseded-steps-pruned",
+      "expectedValueConflictProtection": "unit-passed-real-realtime-pending",
+      "providerSelectorGateway": {
+        "status": "unit-type-boundary-passed-real-provider-pending",
+        "delegatedSelectorKeys": 55,
+        "delegatedTemplateFields": 138,
+        "security": "authenticated workspace-scoped POST contract; credentials and environment references remain server-side",
+        "loading": "provider definition and Vite selector UI are interaction-lazy",
+        "search": "250ms debounced server-side query with manual ID fallback"
+      },
+      "integrationToolCallPresentation": {
+        "status": "unit-type-boundary-passed-real-provider-pending",
+        "catalogCapabilities": 4235,
+        "behavior": "browser-safe integration brand and operation labels, including delegated call_integration_tool; allow-once, allow-chat, always-allow and skip decisions"
+      },
+      "collaborativeOperationIdentity": "originating-operation-id-preserved-end-to-end",
+      "apiValidationRoutes": "992-of-992-passed"
+    },
+    "remainingCompatibilityScope": [
+      "real database, Worker, Realtime, Sim Desktop and Docker production acceptance"
+    ]
+  },
+  "latestPostFunctionalMigrationFixtureVerification": {
+    "capturedAt": "2026-08-03T11:53:45.421Z",
+    "sourceSha": "7684a75206ae66915156ab2691606671d970bc6f",
+    "sourceDirty": true,
+    "runtime": "node 22.20.0",
+    "backendMode": "deterministic-fixture-isolated-vite-cache",
+    "status": "passed",
+    "roundsPerRoute": 1,
+    "home": {
+      "serviceReadyMs": 598,
+      "compilerColdUsableMs": 6102,
+      "coldUsableMs": 1010,
+      "warmReloadP95Ms": 918,
+      "viteProcessTreeRssBytes": 376541184
+    },
+    "editor": {
+      "serviceReadyMs": 524,
+      "compilerColdUsableMs": 2252,
+      "coldUsableMs": 469,
+      "warmReloadP95Ms": 912,
+      "viteProcessTreeRssBytes": 367157248
+    },
+    "scope": "One-round regression verification after per-user collaborative history rebasing and Catalog-backed integration Tool Call presentation. It does not replace the earlier three-round-per-route fixture baseline and is not real-backend SLA evidence."
+  },
+  "realWorkspaceSlaGate": {
+    "capturedAt": "2026-07-31T11:26:49.507Z",
+    "status": "blocked-before-sampling",
+    "requestedRounds": 3,
+    "registryMode": "full-required",
+    "collectorCapabilities": [
+      "three isolated Home and Editor rounds",
+      "aggregate median/maximum/P95 checks",
+      "30 critical API samples per route and round",
+      "machine and source metadata",
+      "Vite process-tree RSS"
+    ],
+    "reason": "The controlled browser storage state and journey files exist, but the current process has no DATABASE_URL and no local non-example env file provides one. Account and journey freshness therefore cannot be verified against a live database. The strict collector failed immediately with: DATABASE_URL is required for the real Workspace SLA gate.",
+    "claimedPassed": false
+  },
+  "workspaceAcceptanceReadiness": {
+    "capturedAt": "2026-08-03T11:43:23.919Z",
+    "status": "blocked",
+    "checks": {
+      "node22": true,
+      "databaseConfigured": false,
+      "authenticatedStorageState": true,
+      "controlledWorkspace": true,
+      "controlledWorkflow": true,
+      "completeRegistry": true,
+      "simDesktopReady": false,
+      "dockerCli": false,
+      "dockerDaemon": false
+    },
+    "blockingChecks": ["databaseConfigured", "simDesktopReady", "dockerCli", "dockerDaemon"],
+    "claimedPassed": false
   },
   "prepareDiagnostics": {
     "sourceSha": "2336b18d607c52b0254af333f344abf45100c586",

@@ -517,6 +517,10 @@ bunx tsgo --noEmit -p apps/sim/tsconfig.json
 bun run --cwd apps/realtime type-check
 ```
 
+在约 16 GiB 内存的 Windows 开发机上，全量 Sim `tsc` 可能先触及 Node 默认约 4 GiB 堆
+上限；此时仅为验证进程设置 `$env:NODE_OPTIONS='--max-old-space-size=8192'` 后重跑。该设置
+不用于 Vite/Next 性能采样，也不改变 4 GiB 的开发服务 RSS 门槛。
+
 本专项已验证：
 
 - Node 22 四服务入口检查通过；
@@ -550,14 +554,201 @@ Node 22.20、固定本地账号、`simstudio_perf` 数据库、真实 session co
 `data-workspace-data-state="complete"`，即 session、Workflows、Folders、Chats 和 Files
 已经由独立 API 返回并完成 React 渲染。
 
-### 尚未宣称通过的范围
+### 渐进迁移第二批改进
 
-- Workflow Editor 仍运行在 Next，尚未迁移到 Vite；
-- 原 Home 中的 Browser/Terminal 资源面板、文件上传、语音输入、富 Tool Call 卡片等高级交互
-  尚未全部迁入新的轻量 Home；当前通过的是核心聊天、历史会话、Workflow 导航和首屏数据；
-- Next 原完整模式的 Editor 冷启动和 RSS 门槛仍未通过；
+2026-07-31 的增量改进没有把原 Home 重型组件复制到 Vite，而是增加了可回退、可度量的
+迁移边界：
+
+- Vite 能解析 canonical SSE 和历史消息中的 Tool Call 生命周期；
+- 通用 Tool Call 状态组件只在消息实际包含工具调用时动态加载；
+- `awaiting_approval` 工具调用直接提供 `Review` 链接，进入同一聊天的完整 Home 完成授权；
+- 高级能力说明面板只在用户点击 `Advanced` 时动态加载；
+- `Open complete Home` 使用 `?runtime=next` 进入原 Next Home，保留需要用户接管、审批
+  和完整资源面板的富交互；
+- Next 重定向只处理缺少 `runtime=next` 的 Home 请求，避免兼容入口产生重定向循环；
+- CI 要求两个高级模块保持动态导入，并运行 Vite 专属 Vitest、类型和构建门禁。
+
+Node 22.20、隔离 Vite 缓存的确定性旅程结果：
+
+| 指标 | 结果 | 门槛 |
+| --- | ---: | ---: |
+| 服务就绪 | 478 ms | 2,000 ms |
+| 隔离缓存编译冷可用 | 1,516 ms | 10,000 ms |
+| 编译后新上下文冷可用 | 225 ms | 1,000 ms |
+| 10 次热刷新 P95 | 100 ms | 500 ms |
+| Vite 生产构建 | 642 ms | 通过 |
+| 默认入口 JS gzip | 64.73 KiB | 保持轻量 |
+| Tool Call 异步 chunk gzip | 0.52 KiB | 不进入默认入口 |
+| 高级面板异步 chunk gzip | 0.67 KiB | 不进入默认入口 |
+
+性能脚本报告 schema 升级为 2，显式区分首次模块转换的 `compilerColdUsableMs` 和编译完成后
+空浏览器缓存的 `coldUsableMs`，不再把两种冷启动混成一个不稳定指标。
+
+### 渐进迁移第三批：Home 高级能力
+
+本批继续使用窄接口和动态 chunk，没有复制 Next Home 的上传 hook、桌面 Store 或重型工具
+渲染树：
+
+- 附件选择后按现有 `/api/files/presigned` 契约直传对象存储，本地开发自动回退
+  `/api/files/upload`；支持部分成功、错误回显、发送和历史附件展示；
+- 麦克风按点击动态加载 Web Speech，支持连续和临时转写，权限拒绝或浏览器不支持时给出
+  明确错误；
+- Tool Call 卡片按 Browser、Terminal、Workflow、File、Integration 分类，仍不渲染任意
+  参数和工具输出；
+- Sim Desktop 桥存在且设备开关开启时，Vite 向聊天请求声明 Browser/Terminal 能力，并对
+  非交互客户端工具执行、去重和回传 `/api/copilot/confirm`；
+- `browser_request_takeover`、Terminal `handoff` 和 `awaiting_approval` 继续进入完整 Home，
+  避免在没有原生资源面板时隐式执行；
+- CI 要求附件列表、上传、语音、桌面执行、Tool Call 和高级面板都保持动态导入。
+
+Node 22.20、隔离缓存的第三批验收结果：
+
+| 指标 | 结果 | 门槛 |
+| --- | ---: | ---: |
+| 服务就绪 | 567 ms | 2,000 ms |
+| 隔离缓存编译冷可用 | 1,699 ms | 10,000 ms |
+| 编译后新上下文冷可用 | 243 ms | 1,000 ms |
+| 10 次热刷新 P95 | 135 ms | 500 ms |
+| Vite 生产构建 | 338 ms | 通过 |
+| 默认入口 JS gzip | 66.02 KiB | 保持轻量 |
+| 语音异步 chunk gzip | 0.40 KiB | 不进入默认入口 |
+| 附件列表/上传异步 chunk gzip | 0.52 / 1.06 KiB | 不进入默认入口 |
+| Tool Call 异步 chunk gzip | 0.71 KiB | 不进入默认入口 |
+| 桌面执行异步 chunk gzip | 1.62 KiB | 不进入默认入口 |
+| 高级面板异步 chunk gzip | 0.73 KiB | 不进入默认入口 |
+
+Playwright 真实浏览器旅程确认附件、麦克风和 Advanced 入口可访问，Advanced 正确显示
+Native/Hybrid 边界，麦克风权限拒绝能够回显，完整 Home 链接仍携带 `runtime=next`。
+
+### 渐进迁移第四批：Home 交互补齐与 Editor Shell
+
+本批把此前保留在 Next 回退中的通用交互继续拆成窄接口和异步 chunk：
+
+- Browser takeover 和 Terminal handoff 通过 Sim Desktop bridge 执行，并等待用户显式交回；
+- Browser/Terminal 资源面板仅在用户打开 Advanced 后再动态加载，支持浏览器导航、刷新、
+  面板边界同步、Terminal 标签页、输入和 scrollback；
+- `awaiting_approval` Tool Call 可直接执行 Allow/Skip，并复用现有
+  `/api/copilot/tool-permission` 契约；
+- Vite Editor 读取现有 `/api/workflows/:id`，渲染最小节点/连线画布，并通过
+  `/api/workflows/:id/state` 保存位置、名称、启停和连线；
+- 节点 Inspector 按选择动态加载，支持名称冲突检查、安全删除、移除连线、创建无环连线，
+  并阻止删除仍拥有子节点的容器；
+- 节点重命名遵守与 Next 相同的规范化、保留名和重复名规则，并递归更新下游
+  `<旧节点.output>` 引用，避免保存后破坏历史表达式；
+- 单节点锁会阻止拖动、属性修改、删除和断连；保存请求期间产生的新编辑通过版本戳继续保持
+  `Unsaved`，不会被较早的请求响应错误清除；
+- 读取和回写保留未知 block/edge 字段，避免位置或属性保存损坏历史 Workflow 高级配置；
+- Tool Catalog 从 `@sim/tool-catalog/generated/browser-summary` 动态加载，313 项
+  browser-safe metadata 不进入首屏 chunk；
+- Catalog 生成器产出 313/313 个可静态证明安全的 Block 创建模板；构建期解析同文件继承、
+  Service Account/Provider Credential 共享字段，并用受控 recipe 对齐 Slack/Linear/Grain、
+  文档输入 V2、Enrichment、Guardrails、Pi、Video V3 和 11 个独立 Trigger；
+- 模板按 16 个稳定分片加载，单次创建只下载 13.28–33.48 KiB gzip，不导入 Block Registry、
+  Executor、DB、Auth 或 Provider SDK；环境相关的 Pi/E2B、Schedule 时区和 Webhook token
+  以浏览器运行时 sentinel 安全实例化；
+- Inspector 支持 Basic/Advanced 双模式、静态和多选选项、条件显隐、数字范围、时间输入、
+  动态资源手工 ID、JSON Builder 回退、Input/Response Format 独立 ID，以及基于现有上传
+  契约的 file-upload；Start/API/Input 的动态 outputs 会随输入格式和 run metadata 同步；
+- Loop/Parallel 作为 Catalog 之外的专用容器迁入 Vite，支持创建、模式/次数/集合/条件/
+  batch size 配置、子节点归属、绝对/相对坐标转换，并同步现有 `loops`/`parallels` 保存结构；
+- 草稿运行面板按需调用现有 `/api/workflows/:id/execute` SSE 契约，支持完整运行、运行到选中
+  节点和从最近执行快照恢复选中节点，并展示最近 100 个执行事件；停止操作调用服务端
+  `/cancel` 契约，不再仅中断浏览器流；执行暂停后可在 Vite 面板加载 pause context、提交通用
+  JSON 恢复输入，也可按 `inputFormat` 动态渲染 string、number、boolean、array、object、files
+  和 options 表单，校验 required/JSON 后以 `{ submission }` 恢复；
+  部署面板复用现有 deploy/undeploy API，并在存在未保存修改时禁止发布旧状态；
+- 版本与执行面板按需读取部署版本和最近日志，可查看执行详情并显式恢复历史部署版本；
+  Realtime 模块按需连接 Socket.IO room，显示在线 presence，并按既有协议同步区块位置、名称、
+  启停、父容器、字段值、边、区块增删和 Subflow 配置；字段更新携带 `expectedValue`，服务端
+  拒绝覆盖过期值时显示冲突，本地存在未保存修改时也不静默套用远端状态；画布支持最多 50 步
+  Undo/Redo，保存会等待已发送操作确认，离线或确认超时后仍以 HTTP 全量保存作为最终兜底；
+- Input/Response Format、Messages、Variables、Filter、Sort、Condition、Router、Knowledge Tag、
+  Document Tag 和 Eval 已改为按需加载的可视 Builder；其中 Condition/Router/Knowledge/Document
+  Tag 继续按历史约定写 JSON 字符串，其他 Builder 写数组，避免 Vite 编辑破坏旧工作流格式；
+- Catalog 字段现在携带浏览器安全的 `columns`、`selectorKey`、`serviceId` 和 `dependsOn` 元数据。
+  Credential、Workflow、Knowledge Base、Table、Column、MCP Server/Tool 使用现有窄 API 动态选择；Table、Skill、
+  子工作流 Input Mapping、MCP JSON Schema Arguments 和 Tool Input 使用独立深层 Builder。Tool Input
+  的 284 组 Catalog capability 另存为懒加载制品，也能读取 workspace custom tool 与 MCP tool；
+- Credential 和依赖上下文就绪后，138 个模板字段使用 55 个稳定 Provider Selector key 访问新的
+  `/api/selectors/query`。该 POST 契约验证登录态和 workspace 权限，仅返回 `{id,label}`，在服务端解析
+  环境变量引用并按 Provider 动态导入 selector definition，不把 Provider SDK、凭据、DB/Auth 或解密逻辑
+  带入浏览器。Vite 资源字段提供 250 ms 防抖服务端搜索和手工 ID 回退，并继续保持独立动态 chunk；
+- Realtime 收到 Vite 能产生的窄操作时直接更新本地快照，远端 undo/redo 作为正常逆操作传播；
+  subblock 的 `expectedValue` 不匹配或本地存在未保存修改时停止套用并显示冲突。各客户端仍保留
+  自己的历史栈，不把“逆操作可同步”误称为“共享历史栈”。服务端广播现已保留发起端
+  `operationId`，为幂等提供稳定身份。进一步核对原 Next 语义后，Vite 已把远端操作重放到 undo/redo
+  快照：无关历史继续保留，同一字段被远端覆盖后形成的空步骤自动剪除，远端删除导致失效的实体
+  不会被本地撤销意外恢复；
+- Home Tool Call 继续采用原 Next 的统一生命周期行，不存在每个 Provider 一套独立结果卡片。
+  Vite 使用浏览器安全 Catalog 将 4,235 个 capability 映射为集成品牌和操作名，支持代理
+  `call_integration_tool`，并提供单次允许、本次聊天允许、始终允许和跳过；Browser/Terminal
+  继续使用独立动态交互；
+- Home 与 Editor 都保留 `?runtime=next`，作为真实数据库、Desktop、Worker/Realtime 和生产部署
+  验收完成前的兼容回退。
+
+Node 22.20、隔离 Vite 缓存的确定性夹具旅程结果：
+
+| 路由 | 服务就绪 | 隔离缓存编译冷可用 | 编译后页面冷可用 | 10 次热刷新 P95 |
+| --- | ---: | ---: | ---: | ---: |
+| Home（三轮中位） | 536 ms | 2,238 ms | 996 ms | 最差轮 921 ms |
+| Editor Shell（三轮中位） | 544 ms | 1,708 ms | 470 ms | 最差轮 917 ms |
+
+Home 和 Editor 各执行了三轮独立冷缓存，六轮全部通过。紧接默认 4 GiB heap 的全量 TypeScript
+OOM 后曾出现一次 Vite ready 2,508 ms；该轮页面冷可用 1,000 ms、热刷新 P95 907 ms、RSS
+376,168,448 bytes，只有内部更严格的 2 秒 ready 探针失败。随后三轮 Home ready 为
+529/537/536 ms、三轮 Editor 为 652/544/529 ms，未复现该波动；失败和通过报告均保留，
+没有只挑最快结果。
+
+完成协作历史重放和 Catalog 品牌 Tool Call 后，又执行了一轮隔离缓存回归：Home ready 598 ms、
+冷编译可用 6,102 ms、编译后可用 1,010 ms、热刷新 P95 918 ms、RSS 376,541,184 bytes；Editor
+分别为 524 ms、2,252 ms、469 ms、912 ms、367,157,248 bytes，均通过确定性门槛。这一轮只用于
+确认新增的动态功能没有破坏秒级路径，不替代上面的三轮基线，也不作为真实后端 SLA。
+
+当前构建的默认入口为 61.26 KiB gzip；Editor Shell 6.70 KiB、通用配置面板 2.57 KiB、
+核心与 Provider 资源选择器 2.46 KiB、深层 Builder 4.05 KiB、共享 Tool capability 目录 25.58 KiB、结构化 HITL
+表单 2.03 KiB、Tool Catalog 14.16 KiB、创建模板分片 13.42–33.63 KiB、运行面板 2.70 KiB、
+Realtime Bridge 1.90 KiB、Socket.IO 客户端
+12.88 KiB、Desktop Resource Panel 1.47 KiB、Tool Call 品牌与审批面板 1.49 KiB、Tool Action 0.50 KiB，非首屏能力均为
+独立异步 chunk。16 个 Workspace Vitest 文件共 56 个用例通过，
+Workspace 独立类型检查、
+边界检查和生产构建通过。全量 `apps/sim` 在 Node 默认约 4 GiB heap 下两次无诊断 OOM；使用
+`--max-old-space-size=8192` 后以 0 个诊断通过，本轮缓存后复核耗时 14.800 秒；此前 extended diagnostics
+报告使用约 6,879,447 KiB。该值属于全量编译器类型图，不是开发服务 RSS；但它证明类型门禁
+本身仍是重型任务，不应与冷启动性能采集并行运行，也不能把默认 heap 检查标成通过。
+
+Playwright 旅程确认 Home Advanced 动态面板、Vite Editor 两节点画布、313 项 Catalog
+及 Slack 搜索可用；Editor 旅程确认节点重命名、启停、移除/重建连线和保存状态，并完成
+“搜索 Catalog → 新增 API Block → 填写 URL/Method → 连线 → 保存”的端到端验证。
+普通浏览器没有 Sim Desktop bridge 时资源面板会明确显示 unavailable；桌面原生窗口的最终
+验收仍需在 Sim Desktop 中执行。
+
+### 研发完成与客户环境验收范围
+
+- Workflow Editor 已完成 313/313 个 Block/Trigger 创建、通用 Basic/Advanced 配置、上传、
+  11 类结构化可视 Builder、Loop/Parallel、草稿全流程与选中节点运行/恢复、服务端取消、通用
+  与结构化 pause context 恢复、部署/下线、版本恢复、执行详情、核心资源选择、Table/Tool/Skill/
+  MCP 深层 Builder、Credential 与 Provider Selector、冲突感知逐操作同步、本地 undo/redo、远端逆操作
+  应用及每用户历史重放/剪枝。原 Next 同样采用每用户本地撤销栈，不需要全局 revision/operation-log；
+- Browser/Terminal、语音、上传、完整审批决策和带 Catalog 品牌的 Tool Call 生命周期已迁入 Vite。
+  代码、类型、构建和确定性门禁层面的功能迁移已收口；真实 Sim Desktop、Provider、Worker/Realtime
+  回归作为客户环境验收项交付；
+- 固定账号、workspace/workflow、三轮冷启动、热刷新、关键 API 与 RSS 的严格采集器已经实现。
+  交付方当前没有客户 `DATABASE_URL` 和可验证账号，因此真实数据由客户按验收手册采集；该限制
+  不再标记为研发未完成，但确定性 fixture 数据也不会冒充客户环境 SLA；
+- Next 原完整模式的冷启动和 RSS 门槛仍未通过，也不再作为 Workspace 默认性能路径；
 - `dev:full:vite` 是性能专项入口；默认 `dev:full` 仍保留原 Next 完整功能；
-- 本阶段不把轻量 Home 的性能通过结果冒充原 Home 100% 功能等价或 Editor 验收。
+- 生产网关配置和 Node 22 镜像已实现；镜像构建、部署级 WebSocket、Cookie、上传和健康检查
+  由客户在其 Docker 环境验收；
+- `WORKSPACE_NEXT_FALLBACK` 默认保持 `1`，这是已完成的交付安全策略。客户验收通过后可按
+  运行手册切换为 `0`，无需修改迁移实现。
+
+真实三轮测试在交付方环境没有执行，不是因为遗漏了实现或测试步骤。严格采集器会先运行 readiness：当前 Node
+进程没有 `DATABASE_URL`，仓库根目录也没有 `.env*`；虽然 `.perf/auth/storage-state.json` 与固定
+journey 文件存在，但二者最后写入于 2026-07-30，无法在无数据库连接时验证账号会话、workspace 和
+workflow 仍有效；当前机器同时没有 Docker CLI/Daemon，Sim Desktop bridge 也未就绪。采集器因此在
+发出第一条性能请求前 fail-fast。强行跳过预检只会把数据库失败、失效登录或缺失 Desktop 能力记录成
+页面耗时，不能作为真实 SLA 证据，所以确定性 fixture 与客户真实验收始终分开报告。项目以
+“研发交付完成、客户环境验收待执行”的状态交付。
 
 ## 10. 停止零散 Next 优化后的落地决策
 
@@ -568,20 +759,26 @@ Next 受控对照满足停止条件：冷路由远超 10 秒，完整模式 RSS 
 Next 3000
   保留登录、SSR/兼容页面和未迁移写接口
 
-Workspace Vite 5173
+Workspace Vite 5173（仅开发）
   独立 React 入口，不导入 apps/sim、Next 或任何 @sim 服务端包
 
 Node API 3012
   GET /api/workspace-bootstrap
   一次鉴权、一次 workspace 授权、四组数据库查询并行执行
+
+Production Gateway 3000
+  同域提供 Vite 静态资源，转发 API 和 WebSocket；不暴露 5173
 ```
 
-Next 在 `SIM_WORKSPACE_VITE_URL` 存在时把 Workspace Home 重定向到 Vite。Vite 对
+Next 在 `SIM_WORKSPACE_VITE_URL` 存在且请求未携带 `runtime=next` 时把 Workspace Home
+重定向到 Vite；`runtime=next` 是迁移期完整功能兼容入口。Vite 对
 `/api/workspace-bootstrap` 单独代理到 Node API，其余尚未迁移的 `/api` 继续代理到 Next，
 所以本阶段不改变既有产品写接口、Tool/Block/Trigger ID 或历史 Workflow 格式。
 
-新增门禁确保 Vite 源码不能导入 `next`、`@/`、`@sim/*`、Node 内置模块或逃逸到
-`apps/sim`。CI 同时执行边界检查、独立类型检查和 Vite 生产构建。
+新增门禁确保 Vite 源码不能导入 `next`、`@/`、`@sim/*` 服务端实现、Node 内置模块或
+逃逸到 `apps/sim`；只允许 `@sim/tool-catalog` 的 type-only contract 和生成 JSON，
+并强制 creation template 保持动态分片。CI 同时执行边界检查、独立类型检查和 Vite
+生产构建。
 
 开发与验证命令：
 
@@ -589,15 +786,23 @@ Next 在 `SIM_WORKSPACE_VITE_URL` 存在时把 Workspace Home 重定向到 Vite�
 bun run dev:full:vite
 bun run check:workspace-vite
 bun run perf:workspace:vite
+bun run perf:workspace:readiness
+bun run perf:workspace:real
 ```
 
-真实后端验收还需要先完成 `perf:dev:seed`，并在 Next 与独立 API 已启动时执行：
+真实后端验收需要 `DATABASE_URL`、认证 storage state、固定 workspace/workflow，并以完整
+注册表执行三轮。缺少任一前置条件时脚本直接失败，不生成“通过”结果：
 
 ```powershell
-$env:PERF_WORKSPACE_REAL_BACKEND = '1'
-$env:PERF_WORKSPACE_ID = '<controlled-workspace-id>'
-bun run perf:workspace:vite
+bun run perf:dev:seed
+bun run perf:dev:prepare
+bun run perf:workspace:real
 ```
+
+`perf:workspace:readiness` 会生成不含密钥的机器可读前置报告。本机当前结果为：
+storage state、固定 workspace/workflow、Node 22 和完整注册表已就绪；`DATABASE_URL`、
+Sim Desktop 实机确认、Docker CLI/daemon 尚未就绪，因此真实 SLA、桌面和生产部署验收
+仍保持 blocked。
 
 无论选择哪种方案，都必须保持：
 
@@ -629,6 +834,7 @@ bun run perf:workspace:vite
 - [开发性能解决方案](../architecture/node22-development-performance-solution.md)
 - [问题清单与根因报告](../reviews/node22-development-performance-root-cause.md)
 - [Node 22 与 Next 性能边界 ADR](../architecture/decisions/ADR-0005-node22-next-development-performance-boundary.md)
+- [Workspace Vite 渐进式前后端分离 ADR](../architecture/decisions/ADR-0006-workspace-vite-progressive-separation.md)
 - [性能重构运行手册](./node22-development-performance-runbook.md)
 - [机器可读性能证据](../testing/evidence/node22-development-performance.json)
 - [平台分离与迁移 Spec](../specs/sim2-platform-separation-and-polaris-migration.md)

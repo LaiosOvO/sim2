@@ -193,8 +193,8 @@ bun run perf:dev:check
 1. 完整模式明显慢于 minimal：继续排查 Browser 到 Runtime Registry 的最短污染链；
 2. 路由编译完成后 API P95 仍超过 1 秒：对最慢接口做独立直连采样；
 3. 确认数据库为瓶颈：提交 `EXPLAIN (ANALYZE, BUFFERS)`、优化前后数据和回归测试；
-4. 依赖闭包清理后 Next 冷编译仍超过 10 秒：单独形成 Vite 或其他框架迁移建议；
-5. 不在本专项同时进行框架重写，避免运行时、依赖边界和框架迁移问题相互混淆。
+4. 依赖闭包清理后 Next 冷编译仍超过 10 秒：启动独立 Vite 前端的渐进迁移；
+5. 每个迁移阶段独立保留 Next 兼容入口，避免运行时、依赖边界和功能迁移问题相互混淆。
 
 ## 7. 当前状态
 
@@ -208,21 +208,35 @@ bun run perf:dev:check
 | 浏览器边界、Catalog、Contract、Worker 和 Realtime 门禁 | 已通过 |
 | 固定数据库、账号、workspace 和 workflow | 已完成并可幂等复用 |
 | 受控 full/minimal 首轮 | 已执行，均在 Home 可用前超过 8 GiB 并失败 |
-| 三轮固定账号受控 SLA | 未通过；首轮失败后不继续制造无效样本 |
+| 三轮固定账号受控 SLA | 采集器、门槛和机器可读报告已完成，作为客户环境验收项交付，不阻塞研发交付完成状态 |
+| 独立 Vite Workspace Home | 核心首屏、聊天、附件和浏览器语音已达到秒级 |
+| Vite 通用 Tool Call 生命周期 | 已完成分类状态卡，按需加载 |
+| Vite Browser/Terminal | 可视资源面板、接管、handoff 和审批已迁入动态 chunk |
+| Next 完整 Home 兼容入口 | 已完成，使用 `?runtime=next` |
+| Workflow Editor Vite 迁移 | 313/313 个 Catalog Block 均具备生成期验证的浏览器安全创建模板；Trigger、复杂 V2 Block、条件字段、基础/高级配置、文件上传、11 类结构化 Builder、Loop/Parallel、全流程与选中节点 SSE 运行/恢复、服务端取消、结构化 HITL、部署/下线、版本恢复、执行日志、Realtime presence/光标/选择、Credential、核心资源与 55 类 Provider Selector、Table/Tool/Skill/MCP 深层 Builder、冲突保护、本地 undo/redo 与远端逆操作应用已迁入动态模块。撤销保持原产品的每用户本地栈语义，远端操作会重放到历史快照并剪除已失效步骤 |
+| 生产统一入口 | Nginx 网关、四服务 Node 22 源码镜像和 WebSocket 转发已实现，镜像构建与部署验证由客户环境验收 |
+| Next Workspace 兼容回退 | 已完成并默认保持 `WORKSPACE_NEXT_FALLBACK=1`；客户验收通过后按运行手册决定是否切换为 `0` |
 
-当前不能声明秒级 SLA 已正式通过。机器可读证据已从缺环境的
-`awaiting-controlled-node22-capture` 更新为 `failed-controlled-node22-capture`：full 在一分钟
-时 Next RSS 为 9,134 MiB，minimal 为 8,277 MiB，二者都未在 runner 退出前完成 Home。
-应用处理耗时仍低于 1 秒，主要耗时和内存位于 Next/Turbopack 编译阶段。
+原 Next 完整模式不能声明秒级 SLA 通过：full 在一分钟时 Next RSS 为 9,134 MiB，
+minimal 为 8,277 MiB，二者都未在 runner 退出前完成 Home。应用处理耗时仍低于 1 秒，
+主要耗时和内存位于 Next/Turbopack 编译阶段。
 
-这组结果已触发第 6 节第 4 条决策规则。建议另立框架迁移 ADR，评估将 Workspace Home 与
-Workflow Editor 的交互式开发入口迁移到 Vite，或拆为独立前端构建；Next 继续承载营销页、
-SSR 和现有 API 兼容层。迁移必须保持 HTTP API、Tool/Block/Trigger ID 和历史工作流格式不变，
-不在本性能 PR 中直接重写框架。
+这组结果已触发第 6 节第 4 条决策规则。项目已新增独立 `apps/workspace-web`，默认承载
+Workspace Home 核心路径和 Workflow Editor 通用编辑路径；Provider Selector 通过认证、workspace
+隔离的窄网关按交互加载，Next 继续承载现有 API 兼容层和真实验收回退。Vite 入口使用聚合 Bootstrap API、附件传输、浏览器语音、
+分类 Tool Call 轻量渲染和动态桌面能力 chunk，同时用 `?runtime=next` 保留兼容路径。
+迁移继续保持 HTTP API、
+Tool/Block/Trigger ID 和历史工作流格式不变。
+
+本专项研发范围已经完成并具备 GitHub 交付条件。由于交付方当前没有客户数据库、固定账号、
+Sim Desktop 和 Docker 运行条件，真实三轮 SLA、桌面实机和生产网关运行验证移交客户环境执行；
+这些项目属于交付验收，不再标记为研发功能未完成。客户验收前继续保留 Next 兼容回退，且不把
+未采集的真实环境数据表述为已测结果。
 
 ## 8. 相关文档
 
 - [问题清单与根因报告](../reviews/node22-development-performance-root-cause.md)
 - [Node 22、Next 与开发性能边界 ADR](./decisions/ADR-0005-node22-next-development-performance-boundary.md)
+- [Workspace Vite 渐进式前后端分离 ADR](./decisions/ADR-0006-workspace-vite-progressive-separation.md)
 - [重构与运行手册](../handoffs/node22-development-performance-runbook.md)
 - [机器可读性能证据](../testing/evidence/node22-development-performance.json)
