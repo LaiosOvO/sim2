@@ -1,4 +1,5 @@
 import { ApiClientError } from '@/lib/api/client/errors'
+import { apiRequestFetch } from '@/lib/api/client/transport'
 import type {
   AnyApiRouteContract,
   ApiSchema,
@@ -197,7 +198,7 @@ export async function requestJson<C extends AnyApiRouteContract>(
   const url = appendQuery(replacePathParams(contract.path, parsedParams), parsedQuery)
   const hasBody = parsedBody !== undefined && contract.method !== 'GET'
 
-  const response = await fetch(url, {
+  const response = await apiRequestFetch(url, {
     method: contract.method,
     headers: buildHeaders(parsedHeaders, hasBody),
     body: hasBody ? JSON.stringify(parsedBody) : undefined,
@@ -250,7 +251,7 @@ export async function requestRaw<C extends AnyApiRouteContract>(
     ...options.headers,
   }
 
-  const response = await fetch(url, {
+  const response = await apiRequestFetch(url, {
     method: contract.method,
     headers,
     body: hasBody ? JSON.stringify(parsedBody) : undefined,

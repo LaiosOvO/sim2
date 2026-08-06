@@ -1,5 +1,12 @@
+import { readdirSync, readFileSync } from 'node:fs'
+import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { toolCatalogItemV1Schema } from '../src'
+import {
+  agentToolOptionsDocumentV1Schema,
+  type EditorBlockTemplateV1,
+  editorBlockTemplateDocumentV1Schema,
+  toolCatalogItemV1Schema,
+} from '../src'
 import { createCatalogSummaryReader } from '../src/browser'
 
 describe('browser-safe tool catalog contract', () => {
@@ -47,7 +54,7 @@ describe('browser-safe tool catalog contract', () => {
             category: 'tools',
             bgColor: '#611f69',
           },
-          visibility: { hideFromToolbar: false, preview: false },
+          visibility: { hideFromToolbar: false, preview: false, editorCreatable: true },
         },
         {
           id: 'gmail',
@@ -59,7 +66,7 @@ describe('browser-safe tool catalog contract', () => {
             description: 'Send email',
             category: 'tools',
           },
-          visibility: { hideFromToolbar: false, preview: false },
+          visibility: { hideFromToolbar: false, preview: false, editorCreatable: false },
         },
       ],
     })
@@ -69,6 +76,64 @@ describe('browser-safe tool catalog contract', () => {
     expect(reader.search({ provider: 'slack', query: 'message', limit: 1 })).toMatchObject({
       items: [{ id: 'slack_v2' }],
       nextCursor: null,
+    })
+  })
+
+  it('ships only serializable, registry-free editor creation templates', () => {
+    const directory = path.join(import.meta.dirname, '..', 'generated', 'editor-block-templates')
+    const templates = readdirSync(directory)
+      .sort()
+      .flatMap((file): EditorBlockTemplateV1[] => {
+        const document = editorBlockTemplateDocumentV1Schema.parse(
+          JSON.parse(readFileSync(path.join(directory, file), 'utf8'))
+        )
+        return document.templates
+      })
+    expect(templates).toHaveLength(313)
+    expect(templates.find((template) => template.type === 'api')).toMatchObject({
+      name: 'API',
+      fields: expect.arrayContaining([
+        expect.objectContaining({ id: 'url', type: 'short-input', initialValue: null }),
+        expect.objectContaining({
+          id: 'method',
+          options: expect.arrayContaining([{ id: 'GET', label: 'GET' }]),
+        }),
+      ]),
+      outputs: expect.objectContaining({ data: { type: 'json' } }),
+    })
+    for (const type of ['fireflies_v2', 'stt_v2']) {
+      const template = templates.find((candidate) => candidate.type === type)
+      expect(template, `${type} template`).toBeDefined()
+      expect(template?.fields.some((field) => field.id === 'audioUrl')).toBe(false)
+    }
+    expect(templates.find((template) => template.type === 'start_trigger')).toMatchObject({
+      kind: 'trigger',
+      outputs: expect.objectContaining({ input: { type: 'string' } }),
+    })
+    expect(templates.find((template) => template.type === 'mcp')).toMatchObject({
+      fields: expect.arrayContaining([
+        expect.objectContaining({ id: 'tool', dependsOn: ['server'] }),
+      ]),
+    })
+    for (const template of templates) {
+      expect(new Set(template.fields.map((field) => field.id)).size).toBe(template.fields.length)
+    }
+    expect(JSON.stringify(templates)).not.toMatch(/"(?:execute|providerSdk|runtimeRegistry)"\s*:/i)
+  })
+
+  it('ships agent tool capabilities as a separate lazy browser artifact', () => {
+    const document = agentToolOptionsDocumentV1Schema.parse(
+      JSON.parse(
+        readFileSync(
+          path.join(import.meta.dirname, '..', 'generated', 'agent-tool-options.json'),
+          'utf8'
+        )
+      )
+    )
+    expect(document.items.length).toBeGreaterThan(250)
+    expect(document.items.find((item) => item.type === 'airtable')).toMatchObject({
+      title: 'Airtable',
+      capabilities: expect.arrayContaining(['airtable_list_records']),
     })
   })
 })

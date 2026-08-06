@@ -9,8 +9,8 @@ const QUERY_HOOKS_DIR = path.join(ROOT, 'apps/sim/hooks/queries')
 const SELECTOR_HOOKS_DIR = path.join(ROOT, 'apps/sim/hooks/selectors')
 
 const BASELINE = {
-  totalRoutes: 991,
-  zodRoutes: 991,
+  totalRoutes: 992,
+  zodRoutes: 992,
   nonZodRoutes: 0,
 } as const
 
@@ -146,8 +146,10 @@ const RAW_JSON_BASELINE_ROUTES = new Set([
 ])
 
 const CONTRACT_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api\/contracts(?:\/[^'"]*)?['"]/
-const VERSIONED_PROXY_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api-proxy\/(?:w1|w2-tenant-read)['"]/
-const VERSIONED_PROXY_CALL_PATTERN = /\bproxy(?:W1Request|W2TenantReadRequest)\(/
+const VERSIONED_PROXY_IMPORT_PATTERN =
+  /\bfrom\s+['"]@\/lib\/api-proxy\/(?:w1|w2-tenant-read|w6-execution-read)['"]/
+const VERSIONED_PROXY_CALL_PATTERN =
+  /\bproxy(?:W1Request|W2TenantReadRequest|W6ExecutionReadRequest)\(/
 const SERVER_VALIDATION_IMPORT_PATTERN = /\bfrom\s+['"]@\/lib\/api\/server(?:\/validation)?['"]/
 const SCHEMA_PARSE_PATTERN = /\b\w+Schema\.(?:safeParse|parse)\(/
 const CONTRACT_SERVER_HELPER_PATTERN = /\bparseToolRequest\(/

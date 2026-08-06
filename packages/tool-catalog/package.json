@@ -16,6 +16,13 @@
     "./generated/browser-summary": {
       "default": "./generated/browser-summary.json"
     },
+    "./generated/agent-tool-options": {
+      "types": "./src/agent-tool-options.d.ts",
+      "default": "./generated/agent-tool-options.json"
+    },
+    "./generated/editor-block-templates/*": {
+      "default": "./generated/editor-block-templates/*.json"
+    },
     "./generated/manifest": {
       "default": "./generated/catalog.manifest.json"
     },

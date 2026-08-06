@@ -1,0 +1,7191 @@
+{
+  "catalogVersion": 1,
+  "catalogHash": "sha256:18ffa91faaf8b0911ce6d8cc90451d2e324ed382b134124d4340f08449d6d53b",
+  "templates": [
+    {
+      "catalogVersion": 1,
+      "type": "cursor",
+      "name": "Cursor (Legacy)",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "cursor_launch_agent",
+              "label": "Launch Agent"
+            },
+            {
+              "id": "cursor_add_followup",
+              "label": "Add Follow-up"
+            },
+            {
+              "id": "cursor_get_agent",
+              "label": "Get Agent Status"
+            },
+            {
+              "id": "cursor_get_conversation",
+              "label": "Get Conversation"
+            },
+            {
+              "id": "cursor_list_agents",
+              "label": "List Agents"
+            },
+            {
+              "id": "cursor_stop_agent",
+              "label": "Stop Agent"
+            },
+            {
+              "id": "cursor_delete_agent",
+              "label": "Delete Agent"
+            },
+            {
+              "id": "cursor_list_artifacts",
+              "label": "List Artifacts"
+            },
+            {
+              "id": "cursor_download_artifact",
+              "label": "Download Artifact"
+            },
+            {
+              "id": "cursor_list_models",
+              "label": "List Models"
+            },
+            {
+              "id": "cursor_list_repositories",
+              "label": "List Repositories"
+            },
+            {
+              "id": "cursor_get_api_key_info",
+              "label": "Get API Key Info"
+            }
+          ],
+          "initialValue": "cursor_launch_agent"
+        },
+        {
+          "id": "repository",
+          "title": "Repository URL",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "https://github.com/your-org/your-repo",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ref",
+          "title": "Branch/Ref",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "main (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "promptText",
+          "title": "Prompt",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Describe the task for the agent...",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "promptImages",
+          "title": "Prompt Images",
+          "type": "long-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "[{\"data\": \"base64...\", \"dimension\": {\"width\": 1024, \"height\": 768}}]",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "cursor_launch_agent",
+              "cursor_add_followup"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "model",
+          "title": "Model",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Auto-selection by default",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "branchName",
+          "title": "Branch Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Custom branch name (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "autoCreatePr",
+          "title": "Auto Create PR",
+          "type": "switch",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "openAsCursorGithubApp",
+          "title": "Open as Cursor GitHub App",
+          "type": "switch",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "skipReviewerRequest",
+          "title": "Skip Reviewer Request",
+          "type": "switch",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_launch_agent"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "agentId",
+          "title": "Agent ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "e.g., bc_abc123",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "cursor_get_agent",
+              "cursor_get_conversation",
+              "cursor_add_followup",
+              "cursor_stop_agent",
+              "cursor_delete_agent",
+              "cursor_list_artifacts",
+              "cursor_download_artifact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "path",
+          "title": "Artifact Path",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "/opt/cursor/artifacts/screenshot.png",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_download_artifact"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "followupPromptText",
+          "title": "Follow-up Prompt",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Additional instructions for the agent...",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_add_followup"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "prUrl",
+          "title": "PR URL Filter",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Filter by pull request URL (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_list_agents"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "limit",
+          "title": "Limit",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "20 (default, max 100)",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_list_agents"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "cursor",
+          "title": "Pagination Cursor",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Cursor from previous response",
+          "condition": {
+            "field": "operation",
+            "value": "cursor_list_agents"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "apiKey",
+          "title": "API Key",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter Cursor API Key",
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "content": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "json"
+        }
+      },
+      "canonicalModes": {}
+    },
+    {
+      "catalogVersion": 1,
+      "type": "icypeas",
+      "name": "Icypeas",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "icypeas_find_email",
+              "label": "Find Email"
+            },
+            {
+              "id": "icypeas_verify_email",
+              "label": "Verify Email"
+            }
+          ],
+          "initialValue": "icypeas_find_email"
+        },
+        {
+          "id": "fe_firstname",
+          "title": "First Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "John",
+          "condition": {
+            "field": "operation",
+            "value": "icypeas_find_email"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "fe_lastname",
+          "title": "Last Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Doe",
+          "condition": {
+            "field": "operation",
+            "value": "icypeas_find_email"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "fe_domainOrCompany",
+          "title": "Company Domain or Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "stripe.com",
+          "condition": {
+            "field": "operation",
+            "value": "icypeas_find_email"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ve_email",
+          "title": "Email Address",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "john@stripe.com",
+          "condition": {
+            "field": "operation",
+            "value": "icypeas_verify_email"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "apiKey",
+          "title": "API Key",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter your Icypeas API key",
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "searchId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "boolean"
+        },
+        "item": {
+          "type": "json"
+        }
+      },
+      "canonicalModes": {}
+    },
+    {
+      "catalogVersion": 1,
+      "type": "identity_center",
+      "name": "AWS Identity Center",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "list_instances",
+              "label": "List Instances"
+            },
+            {
+              "id": "list_accounts",
+              "label": "List Accounts"
+            },
+            {
+              "id": "describe_account",
+              "label": "Describe Account"
+            },
+            {
+              "id": "list_permission_sets",
+              "label": "List Permission Sets"
+            },
+            {
+              "id": "get_user",
+              "label": "Get User"
+            },
+            {
+              "id": "get_group",
+              "label": "Get Group"
+            },
+            {
+              "id": "list_groups",
+              "label": "List Groups"
+            },
+            {
+              "id": "create_account_assignment",
+              "label": "Create Account Assignment"
+            },
+            {
+              "id": "delete_account_assignment",
+              "label": "Delete Account Assignment"
+            },
+            {
+              "id": "check_assignment_status",
+              "label": "Check Assignment Status"
+            },
+            {
+              "id": "check_assignment_deletion_status",
+              "label": "Check Assignment Deletion Status"
+            },
+            {
+              "id": "list_account_assignments",
+              "label": "List Account Assignments"
+            }
+          ],
+          "initialValue": "list_instances"
+        },
+        {
+          "id": "region",
+          "title": "AWS Region",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "us-east-1",
+          "initialValue": null
+        },
+        {
+          "id": "accessKeyId",
+          "title": "AWS Access Key ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "AKIA...",
+          "initialValue": null
+        },
+        {
+          "id": "secretAccessKey",
+          "title": "AWS Secret Access Key",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Your secret access key",
+          "initialValue": null
+        },
+        {
+          "id": "instanceArn",
+          "title": "Instance ARN",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "arn:aws:sso:::instance/ssoins-...",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_instances",
+              "list_accounts",
+              "get_user",
+              "get_group",
+              "describe_account",
+              "list_groups"
+            ],
+            "not": true
+          },
+          "initialValue": null
+        },
+        {
+          "id": "identityStoreId",
+          "title": "Identity Store ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "d-1234567890",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_user",
+              "get_group",
+              "list_groups"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "email",
+          "title": "Email Address",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "user@example.com",
+          "condition": {
+            "field": "operation",
+            "value": "get_user"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "displayName",
+          "title": "Group Display Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Engineering-Admins",
+          "condition": {
+            "field": "operation",
+            "value": "get_group"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "accountId",
+          "title": "AWS Account ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "123456789012",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_account_assignment",
+              "delete_account_assignment",
+              "describe_account"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "permissionSetArn",
+          "title": "Permission Set ARN",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "arn:aws:sso:::permissionSet/ssoins-.../ps-...",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_account_assignment",
+              "delete_account_assignment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "principalType",
+          "title": "Principal Type",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_account_assignment",
+              "delete_account_assignment",
+              "list_account_assignments"
+            ]
+          },
+          "options": [
+            {
+              "id": "USER",
+              "label": "User"
+            },
+            {
+              "id": "GROUP",
+              "label": "Group"
+            }
+          ],
+          "initialValue": "USER"
+        },
+        {
+          "id": "principalId",
+          "title": "Principal ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Identity Store user or group ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_account_assignment",
+              "delete_account_assignment",
+              "list_account_assignments"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "requestId",
+          "title": "Request ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Request ID from Create or Delete Assignment",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "check_assignment_status",
+              "check_assignment_deletion_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "maxResults",
+          "title": "Max Results",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "20",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_instances",
+              "list_accounts",
+              "list_permission_sets",
+              "list_account_assignments",
+              "list_groups"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "nextToken",
+          "title": "Pagination Token",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Next page token from previous request",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_instances",
+              "list_accounts",
+              "list_permission_sets",
+              "list_account_assignments",
+              "list_groups"
+            ]
+          },
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "message": {
+          "type": "string"
+        },
+        "instances": {
+          "type": "json"
+        },
+        "accounts": {
+          "type": "json"
+        },
+        "permissionSets": {
+          "type": "json"
+        },
+        "groups": {
+          "type": "json"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "arn": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "permissionSetArn": {
+          "type": "string"
+        },
+        "principalType": {
+          "type": "string"
+        },
+        "principalId": {
+          "type": "string"
+        },
+        "failureReason": {
+          "type": "string"
+        },
+        "createdDate": {
+          "type": "string"
+        },
+        "joinedTimestamp": {
+          "type": "string"
+        },
+        "assignments": {
+          "type": "json"
+        },
+        "nextToken": {
+          "type": "string"
+        },
+        "count": {
+          "type": "number"
+        }
+      },
+      "canonicalModes": {}
+    },
+    {
+      "catalogVersion": 1,
+      "type": "intercom_v2",
+      "name": "Intercom",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "create_contact",
+              "label": "Create Contact"
+            },
+            {
+              "id": "get_contact",
+              "label": "Get Contact"
+            },
+            {
+              "id": "update_contact",
+              "label": "Update Contact"
+            },
+            {
+              "id": "list_contacts",
+              "label": "List Contacts"
+            },
+            {
+              "id": "search_contacts",
+              "label": "Search Contacts"
+            },
+            {
+              "id": "delete_contact",
+              "label": "Delete Contact"
+            },
+            {
+              "id": "create_company",
+              "label": "Create Company"
+            },
+            {
+              "id": "get_company",
+              "label": "Get Company"
+            },
+            {
+              "id": "list_companies",
+              "label": "List Companies"
+            },
+            {
+              "id": "get_conversation",
+              "label": "Get Conversation"
+            },
+            {
+              "id": "list_conversations",
+              "label": "List Conversations"
+            },
+            {
+              "id": "reply_conversation",
+              "label": "Reply to Conversation"
+            },
+            {
+              "id": "search_conversations",
+              "label": "Search Conversations"
+            },
+            {
+              "id": "create_ticket",
+              "label": "Create Ticket"
+            },
+            {
+              "id": "get_ticket",
+              "label": "Get Ticket"
+            },
+            {
+              "id": "update_ticket",
+              "label": "Update Ticket"
+            },
+            {
+              "id": "create_message",
+              "label": "Create Message"
+            },
+            {
+              "id": "list_admins",
+              "label": "List Admins"
+            },
+            {
+              "id": "close_conversation",
+              "label": "Close Conversation"
+            },
+            {
+              "id": "open_conversation",
+              "label": "Open Conversation"
+            },
+            {
+              "id": "snooze_conversation",
+              "label": "Snooze Conversation"
+            },
+            {
+              "id": "assign_conversation",
+              "label": "Assign Conversation"
+            },
+            {
+              "id": "list_tags",
+              "label": "List Tags"
+            },
+            {
+              "id": "create_tag",
+              "label": "Create Tag"
+            },
+            {
+              "id": "tag_contact",
+              "label": "Tag Contact"
+            },
+            {
+              "id": "untag_contact",
+              "label": "Untag Contact"
+            },
+            {
+              "id": "tag_conversation",
+              "label": "Tag Conversation"
+            },
+            {
+              "id": "create_note",
+              "label": "Create Note"
+            },
+            {
+              "id": "create_event",
+              "label": "Create Event"
+            },
+            {
+              "id": "attach_contact_to_company",
+              "label": "Attach Contact to Company"
+            },
+            {
+              "id": "detach_contact_from_company",
+              "label": "Detach Contact from Company"
+            }
+          ],
+          "initialValue": "create_contact"
+        },
+        {
+          "id": "accessToken",
+          "title": "Access Token",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter your Intercom access token",
+          "initialValue": null
+        },
+        {
+          "id": "role",
+          "title": "Role",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "options": [
+            {
+              "id": "lead",
+              "label": "Lead"
+            },
+            {
+              "id": "user",
+              "label": "User"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "contactId",
+          "title": "Contact ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Contact ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_contact",
+              "update_contact",
+              "delete_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "email",
+          "title": "Email",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Contact email",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "external_id",
+          "title": "External ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "External identifier for the contact",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "phone",
+          "title": "Phone",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Contact phone number",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Contact name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "avatar",
+          "title": "Avatar URL",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Avatar image URL",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "signed_up_at",
+          "title": "Signed Up At",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "last_seen_at",
+          "title": "Last Seen At",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "owner_id",
+          "title": "Owner ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Admin ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "unsubscribed_from_emails",
+          "title": "Unsubscribed from Emails",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "True"
+            },
+            {
+              "id": "false",
+              "label": "False"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "custom_attributes",
+          "title": "Custom Attributes",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "JSON object with custom attributes",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "contact_company_id",
+          "title": "Company ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Company ID to associate with contact",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_contact",
+              "update_contact"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "query",
+          "title": "Search Query",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "JSON search query or text",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "search_contacts",
+              "search_conversations"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "sort_field",
+          "title": "Sort Field",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Field to sort by (e.g., name, created_at)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "search_contacts",
+              "search_conversations"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "sort_order",
+          "title": "Sort Order",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "search_contacts",
+              "search_conversations"
+            ]
+          },
+          "options": [
+            {
+              "id": "descending",
+              "label": "Descending"
+            },
+            {
+              "id": "ascending",
+              "label": "Ascending"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "companyId",
+          "title": "Company ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Intercom company ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "company_id",
+          "title": "Company ID (External)",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Your unique identifier for the company",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "company_name",
+          "title": "Company Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Company name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "website",
+          "title": "Website",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Company website",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "plan",
+          "title": "Plan",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Subscription plan",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "size",
+          "title": "Size",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Number of employees",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "industry",
+          "title": "Industry",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Company industry",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "monthly_spend",
+          "title": "Monthly Spend",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Revenue amount",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "remote_created_at",
+          "title": "Remote Created At",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp when company was created",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "conversationId",
+          "title": "Conversation ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Conversation ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_conversation",
+              "reply_conversation",
+              "close_conversation",
+              "open_conversation",
+              "snooze_conversation",
+              "assign_conversation",
+              "tag_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "display_as",
+          "title": "Display As",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_conversation"
+            ]
+          },
+          "options": [
+            {
+              "id": "html",
+              "label": "HTML"
+            },
+            {
+              "id": "plaintext",
+              "label": "Plain Text"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "include_translations",
+          "title": "Include Translations",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_conversation"
+            ]
+          },
+          "options": [
+            {
+              "id": "false",
+              "label": "False"
+            },
+            {
+              "id": "true",
+              "label": "True"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "sort",
+          "title": "Sort By",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Field to sort by (e.g., waiting_since, updated_at)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_conversations"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "order",
+          "title": "Order",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_conversations"
+            ]
+          },
+          "options": [
+            {
+              "id": "desc",
+              "label": "Descending"
+            },
+            {
+              "id": "asc",
+              "label": "Ascending"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "message_type",
+          "title": "Message Type",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "reply_conversation"
+            ]
+          },
+          "options": [
+            {
+              "id": "comment",
+              "label": "Comment"
+            },
+            {
+              "id": "note",
+              "label": "Note"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "body",
+          "title": "Message Body",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Message text",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "reply_conversation",
+              "create_message"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "admin_id",
+          "title": "Admin ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "ID of the admin performing the action",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "reply_conversation",
+              "close_conversation",
+              "open_conversation",
+              "snooze_conversation",
+              "assign_conversation",
+              "tag_conversation",
+              "create_note",
+              "update_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "attachment_urls",
+          "title": "Attachment URLs",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Comma-separated image URLs (max 10)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "reply_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "reply_created_at",
+          "title": "Created At",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp for reply creation time",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "reply_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticketId",
+          "title": "Ticket ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Ticket ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_ticket",
+              "update_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticket_type_id",
+          "title": "Ticket Type ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "ID of the ticket type",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "contacts",
+          "title": "Contacts",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "JSON array of contact identifiers",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticket_attributes",
+          "title": "Ticket Attributes",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "JSON object with ticket attributes",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticket_company_id",
+          "title": "Company ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Company ID to associate with ticket",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticket_created_at",
+          "title": "Created At",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp for ticket creation time",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "conversation_to_link_id",
+          "title": "Conversation to Link",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "ID of conversation to link to ticket",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "disable_notifications",
+          "title": "Disable Notifications",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_ticket"
+            ]
+          },
+          "options": [
+            {
+              "id": "false",
+              "label": "False"
+            },
+            {
+              "id": "true",
+              "label": "True"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "message_type_msg",
+          "title": "Message Type",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "options": [
+            {
+              "id": "inapp",
+              "label": "In-App"
+            },
+            {
+              "id": "email",
+              "label": "Email"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "template",
+          "title": "Template",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "options": [
+            {
+              "id": "plain",
+              "label": "Plain"
+            },
+            {
+              "id": "personal",
+              "label": "Personal"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "subject",
+          "title": "Subject",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Email subject (for email type)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "from_type",
+          "title": "From Type",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "options": [
+            {
+              "id": "admin",
+              "label": "Admin"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "from_id",
+          "title": "From ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Admin ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "to_type",
+          "title": "To Type",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "options": [
+            {
+              "id": "contact",
+              "label": "Contact"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "to_id",
+          "title": "To ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Contact ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "message_created_at",
+          "title": "Created At",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp for message creation time",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_message"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "per_page",
+          "title": "Per Page",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Results per page (max: 150)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_contacts",
+              "search_contacts",
+              "list_companies",
+              "list_conversations",
+              "search_conversations"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "starting_after",
+          "title": "Starting After",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Cursor for pagination",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_contacts",
+              "search_contacts",
+              "list_companies",
+              "list_conversations",
+              "search_conversations"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "page",
+          "title": "Page",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Page number",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_companies"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "close_body",
+          "title": "Closing Message",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Optional message to add when closing",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "close_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "snoozed_until",
+          "title": "Snooze Until",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Unix timestamp when conversation should reopen",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "snooze_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "assignee_id",
+          "title": "Assignee ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Admin or team ID to assign to (0 to unassign)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "assign_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "assign_body",
+          "title": "Assignment Message",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Optional message when assigning",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "assign_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "update_ticket_attributes",
+          "title": "Ticket Attributes",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "JSON object with ticket attributes to update",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "update_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticket_open",
+          "title": "Ticket Open",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "update_ticket"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Keep Open"
+            },
+            {
+              "id": "false",
+              "label": "Close Ticket"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "ticket_is_shared",
+          "title": "Ticket Visible to Users",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "update_ticket"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "ticket_snoozed_until",
+          "title": "Snooze Ticket Until",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp when ticket should reopen",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "update_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "ticket_assignee_id",
+          "title": "Ticket Assignee ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Admin or team ID to assign to (0 to unassign)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "update_ticket"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tagId",
+          "title": "Tag ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "ID of the tag",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "tag_contact",
+              "untag_contact",
+              "tag_conversation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tag_name",
+          "title": "Tag Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Name of the tag to create",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_tag"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tag_id_update",
+          "title": "Tag ID (for update)",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "ID of existing tag to update (leave empty to create new)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_tag"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tag_contact_id",
+          "title": "Contact ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "ID of the contact",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "tag_contact",
+              "untag_contact",
+              "create_note",
+              "attach_contact_to_company",
+              "detach_contact_from_company"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "note_body",
+          "title": "Note Content",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Text content of the note",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_note"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "event_name",
+          "title": "Event Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Event name (e.g., order-completed)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_event"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "event_user_id",
+          "title": "User ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Your identifier for the user",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_event"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "event_email",
+          "title": "User Email",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Email address of the user",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_event"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "event_contact_id",
+          "title": "Contact ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Intercom contact ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_event"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "event_metadata",
+          "title": "Event Metadata",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "JSON object with event metadata (max 10 keys)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_event"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "event_created_at",
+          "title": "Event Time",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Unix timestamp when event occurred",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "create_event"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "attach_company_id",
+          "title": "Company ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "ID of the company to attach/detach",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "attach_contact_to_company",
+              "detach_contact_from_company"
+            ]
+          },
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "contact": {
+          "type": "json"
+        },
+        "contactId": {
+          "type": "string"
+        },
+        "contacts": {
+          "type": "array"
+        },
+        "company": {
+          "type": "json"
+        },
+        "companyId": {
+          "type": "string"
+        },
+        "companies": {
+          "type": "array"
+        },
+        "conversation": {
+          "type": "json"
+        },
+        "conversationId": {
+          "type": "string"
+        },
+        "conversations": {
+          "type": "array"
+        },
+        "state": {
+          "type": "string"
+        },
+        "ticket": {
+          "type": "json"
+        },
+        "ticketId": {
+          "type": "string"
+        },
+        "ticket_state": {
+          "type": "string"
+        },
+        "message": {
+          "type": "json"
+        },
+        "messageId": {
+          "type": "string"
+        },
+        "admins": {
+          "type": "array"
+        },
+        "tags": {
+          "type": "array"
+        },
+        "tag": {
+          "type": "json"
+        },
+        "tagId": {
+          "type": "string"
+        },
+        "note": {
+          "type": "json"
+        },
+        "noteId": {
+          "type": "string"
+        },
+        "event_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "total_count": {
+          "type": "number"
+        },
+        "pages": {
+          "type": "json"
+        },
+        "id": {
+          "type": "string"
+        },
+        "deleted": {
+          "type": "boolean"
+        }
+      },
+      "canonicalModes": {}
+    },
+    {
+      "catalogVersion": 1,
+      "type": "launchdarkly",
+      "name": "LaunchDarkly",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "list_flags",
+              "label": "List Flags"
+            },
+            {
+              "id": "get_flag",
+              "label": "Get Flag"
+            },
+            {
+              "id": "create_flag",
+              "label": "Create Flag"
+            },
+            {
+              "id": "update_flag",
+              "label": "Update Flag"
+            },
+            {
+              "id": "toggle_flag",
+              "label": "Toggle Flag"
+            },
+            {
+              "id": "delete_flag",
+              "label": "Delete Flag"
+            },
+            {
+              "id": "get_flag_status",
+              "label": "Get Flag Status"
+            },
+            {
+              "id": "list_projects",
+              "label": "List Projects"
+            },
+            {
+              "id": "list_environments",
+              "label": "List Environments"
+            },
+            {
+              "id": "list_segments",
+              "label": "List Segments"
+            },
+            {
+              "id": "list_members",
+              "label": "List Members"
+            },
+            {
+              "id": "get_audit_log",
+              "label": "Get Audit Log"
+            }
+          ],
+          "initialValue": "list_flags"
+        },
+        {
+          "id": "apiKey",
+          "title": "API Key",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter your LaunchDarkly API key",
+          "initialValue": null
+        },
+        {
+          "id": "projectKey",
+          "title": "Project Key",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "my-project",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_projects",
+              "list_members",
+              "get_audit_log"
+            ],
+            "not": true
+          },
+          "initialValue": null
+        },
+        {
+          "id": "flagKey",
+          "title": "Flag Key",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "my-feature-flag",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "get_flag",
+              "toggle_flag",
+              "delete_flag",
+              "update_flag",
+              "get_flag_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "environmentKey",
+          "title": "Environment Key",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "production",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_flags",
+              "get_flag",
+              "toggle_flag",
+              "get_flag_status",
+              "list_segments"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "enabled",
+          "title": "Enable Flag",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "toggle_flag"
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "On"
+            },
+            {
+              "id": "false",
+              "label": "Off"
+            }
+          ],
+          "initialValue": "true"
+        },
+        {
+          "id": "flagName",
+          "title": "Flag Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "My Feature Flag",
+          "condition": {
+            "field": "operation",
+            "value": "create_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "newFlagKey",
+          "title": "Flag Key",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "my-feature-flag",
+          "condition": {
+            "field": "operation",
+            "value": "create_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "description",
+          "title": "Description",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Description of the feature flag",
+          "condition": {
+            "field": "operation",
+            "value": "create_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tags",
+          "title": "Tags",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "tag1, tag2",
+          "condition": {
+            "field": "operation",
+            "value": "create_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "temporary",
+          "title": "Temporary",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "create_flag"
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "true"
+        },
+        {
+          "id": "updateName",
+          "title": "New Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Updated flag name",
+          "condition": {
+            "field": "operation",
+            "value": "update_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "updateDescription",
+          "title": "New Description",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Updated description",
+          "condition": {
+            "field": "operation",
+            "value": "update_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "addTags",
+          "title": "Add Tags",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "tag1, tag2",
+          "condition": {
+            "field": "operation",
+            "value": "update_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "removeTags",
+          "title": "Remove Tags",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "old-tag1, old-tag2",
+          "condition": {
+            "field": "operation",
+            "value": "update_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "archive",
+          "title": "Archive/Restore",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "update_flag"
+          },
+          "options": [
+            {
+              "id": "",
+              "label": "No Change"
+            },
+            {
+              "id": "true",
+              "label": "Archive"
+            },
+            {
+              "id": "false",
+              "label": "Restore"
+            }
+          ],
+          "initialValue": ""
+        },
+        {
+          "id": "comment",
+          "title": "Comment",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Reason for update",
+          "condition": {
+            "field": "operation",
+            "value": "update_flag"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "spec",
+          "title": "Filter",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "proj/*:env/*:flag/*",
+          "condition": {
+            "field": "operation",
+            "value": "get_audit_log"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tag",
+          "title": "Filter by Tag",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "tag-name",
+          "condition": {
+            "field": "operation",
+            "value": "list_flags"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "limit",
+          "title": "Limit",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "20",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "list_flags",
+              "list_projects",
+              "list_environments",
+              "list_segments",
+              "list_members",
+              "get_audit_log"
+            ]
+          },
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "flags": {
+          "type": "json"
+        },
+        "totalCount": {
+          "type": "number"
+        },
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "temporary": {
+          "type": "boolean"
+        },
+        "archived": {
+          "type": "boolean"
+        },
+        "deprecated": {
+          "type": "boolean"
+        },
+        "creationDate": {
+          "type": "number"
+        },
+        "tags": {
+          "type": "json"
+        },
+        "variations": {
+          "type": "json"
+        },
+        "maintainerId": {
+          "type": "string"
+        },
+        "maintainerEmail": {
+          "type": "string"
+        },
+        "on": {
+          "type": "boolean"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "projects": {
+          "type": "json"
+        },
+        "environments": {
+          "type": "json"
+        },
+        "segments": {
+          "type": "json"
+        },
+        "members": {
+          "type": "json"
+        },
+        "entries": {
+          "type": "json"
+        },
+        "lastRequested": {
+          "type": "string"
+        },
+        "defaultVal": {
+          "type": "string"
+        }
+      },
+      "canonicalModes": {}
+    },
+    {
+      "catalogVersion": 1,
+      "type": "linear_v2",
+      "name": "Linear",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "linear_read_issues",
+              "label": "Read Issues"
+            },
+            {
+              "id": "linear_get_issue",
+              "label": "Get Issue"
+            },
+            {
+              "id": "linear_create_issue",
+              "label": "Create Issue"
+            },
+            {
+              "id": "linear_update_issue",
+              "label": "Update Issue"
+            },
+            {
+              "id": "linear_archive_issue",
+              "label": "Archive Issue"
+            },
+            {
+              "id": "linear_unarchive_issue",
+              "label": "Unarchive Issue"
+            },
+            {
+              "id": "linear_delete_issue",
+              "label": "Delete Issue"
+            },
+            {
+              "id": "linear_search_issues",
+              "label": "Search Issues"
+            },
+            {
+              "id": "linear_add_label_to_issue",
+              "label": "Add Label to Issue"
+            },
+            {
+              "id": "linear_remove_label_from_issue",
+              "label": "Remove Label from Issue"
+            },
+            {
+              "id": "linear_create_comment",
+              "label": "Create Comment"
+            },
+            {
+              "id": "linear_update_comment",
+              "label": "Update Comment"
+            },
+            {
+              "id": "linear_delete_comment",
+              "label": "Delete Comment"
+            },
+            {
+              "id": "linear_list_comments",
+              "label": "List Comments"
+            },
+            {
+              "id": "linear_list_projects",
+              "label": "List Projects"
+            },
+            {
+              "id": "linear_get_project",
+              "label": "Get Project"
+            },
+            {
+              "id": "linear_create_project",
+              "label": "Create Project"
+            },
+            {
+              "id": "linear_update_project",
+              "label": "Update Project"
+            },
+            {
+              "id": "linear_archive_project",
+              "label": "Archive Project"
+            },
+            {
+              "id": "linear_list_users",
+              "label": "List Users"
+            },
+            {
+              "id": "linear_list_teams",
+              "label": "List Teams"
+            },
+            {
+              "id": "linear_get_viewer",
+              "label": "Get Viewer"
+            },
+            {
+              "id": "linear_list_labels",
+              "label": "List Labels"
+            },
+            {
+              "id": "linear_create_label",
+              "label": "Create Label"
+            },
+            {
+              "id": "linear_update_label",
+              "label": "Update Label"
+            },
+            {
+              "id": "linear_archive_label",
+              "label": "Archive Label"
+            },
+            {
+              "id": "linear_list_workflow_states",
+              "label": "List Workflow States"
+            },
+            {
+              "id": "linear_create_workflow_state",
+              "label": "Create Workflow State"
+            },
+            {
+              "id": "linear_update_workflow_state",
+              "label": "Update Workflow State"
+            },
+            {
+              "id": "linear_list_cycles",
+              "label": "List Cycles"
+            },
+            {
+              "id": "linear_get_cycle",
+              "label": "Get Cycle"
+            },
+            {
+              "id": "linear_create_cycle",
+              "label": "Create Cycle"
+            },
+            {
+              "id": "linear_get_active_cycle",
+              "label": "Get Active Cycle"
+            },
+            {
+              "id": "linear_create_attachment",
+              "label": "Create Attachment"
+            },
+            {
+              "id": "linear_list_attachments",
+              "label": "List Attachments"
+            },
+            {
+              "id": "linear_update_attachment",
+              "label": "Update Attachment"
+            },
+            {
+              "id": "linear_delete_attachment",
+              "label": "Delete Attachment"
+            },
+            {
+              "id": "linear_create_issue_relation",
+              "label": "Create Issue Relation"
+            },
+            {
+              "id": "linear_list_issue_relations",
+              "label": "List Issue Relations"
+            },
+            {
+              "id": "linear_delete_issue_relation",
+              "label": "Delete Issue Relation"
+            },
+            {
+              "id": "linear_create_favorite",
+              "label": "Create Favorite"
+            },
+            {
+              "id": "linear_list_favorites",
+              "label": "List Favorites"
+            },
+            {
+              "id": "linear_create_project_update",
+              "label": "Create Project Update"
+            },
+            {
+              "id": "linear_list_project_updates",
+              "label": "List Project Updates"
+            },
+            {
+              "id": "linear_list_notifications",
+              "label": "List Notifications"
+            },
+            {
+              "id": "linear_update_notification",
+              "label": "Update Notification"
+            },
+            {
+              "id": "linear_create_customer",
+              "label": "Create Customer"
+            },
+            {
+              "id": "linear_list_customers",
+              "label": "List Customers"
+            },
+            {
+              "id": "linear_create_customer_request",
+              "label": "Create Customer Request"
+            },
+            {
+              "id": "linear_update_customer_request",
+              "label": "Update Customer Request"
+            },
+            {
+              "id": "linear_list_customer_requests",
+              "label": "List Customer Requests"
+            },
+            {
+              "id": "linear_get_customer",
+              "label": "Get Customer"
+            },
+            {
+              "id": "linear_update_customer",
+              "label": "Update Customer"
+            },
+            {
+              "id": "linear_delete_customer",
+              "label": "Delete Customer"
+            },
+            {
+              "id": "linear_merge_customers",
+              "label": "Merge Customers"
+            },
+            {
+              "id": "linear_create_customer_status",
+              "label": "Create Customer Status"
+            },
+            {
+              "id": "linear_update_customer_status",
+              "label": "Update Customer Status"
+            },
+            {
+              "id": "linear_delete_customer_status",
+              "label": "Delete Customer Status"
+            },
+            {
+              "id": "linear_list_customer_statuses",
+              "label": "List Customer Statuses"
+            },
+            {
+              "id": "linear_create_customer_tier",
+              "label": "Create Customer Tier"
+            },
+            {
+              "id": "linear_update_customer_tier",
+              "label": "Update Customer Tier"
+            },
+            {
+              "id": "linear_delete_customer_tier",
+              "label": "Delete Customer Tier"
+            },
+            {
+              "id": "linear_list_customer_tiers",
+              "label": "List Customer Tiers"
+            },
+            {
+              "id": "linear_delete_project",
+              "label": "Delete Project"
+            },
+            {
+              "id": "linear_create_project_label",
+              "label": "Create Project Label"
+            },
+            {
+              "id": "linear_update_project_label",
+              "label": "Update Project Label"
+            },
+            {
+              "id": "linear_delete_project_label",
+              "label": "Delete Project Label"
+            },
+            {
+              "id": "linear_list_project_labels",
+              "label": "List Project Labels"
+            },
+            {
+              "id": "linear_add_label_to_project",
+              "label": "Add Label to Project"
+            },
+            {
+              "id": "linear_remove_label_from_project",
+              "label": "Remove Label from Project"
+            },
+            {
+              "id": "linear_create_project_milestone",
+              "label": "Create Project Milestone"
+            },
+            {
+              "id": "linear_update_project_milestone",
+              "label": "Update Project Milestone"
+            },
+            {
+              "id": "linear_delete_project_milestone",
+              "label": "Delete Project Milestone"
+            },
+            {
+              "id": "linear_list_project_milestones",
+              "label": "List Project Milestones"
+            },
+            {
+              "id": "linear_create_project_status",
+              "label": "Create Project Status"
+            },
+            {
+              "id": "linear_update_project_status",
+              "label": "Update Project Status"
+            },
+            {
+              "id": "linear_delete_project_status",
+              "label": "Delete Project Status"
+            },
+            {
+              "id": "linear_list_project_statuses",
+              "label": "List Project Statuses"
+            }
+          ],
+          "initialValue": "linear_read_issues"
+        },
+        {
+          "id": "credential",
+          "title": "Linear Account",
+          "type": "oauth-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select Linear account",
+          "canonicalParamId": "oauthCredential",
+          "serviceId": "linear",
+          "initialValue": null
+        },
+        {
+          "id": "manualCredential",
+          "title": "Linear Account",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "Enter credential ID",
+          "canonicalParamId": "oauthCredential",
+          "initialValue": null
+        },
+        {
+          "id": "teamId",
+          "title": "Team",
+          "type": "project-selector",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Select a team",
+          "canonicalParamId": "teamId",
+          "selectorKey": "linear.teams",
+          "serviceId": "linear",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_create_issue",
+              "linear_search_issues",
+              "linear_list_projects",
+              "linear_create_project",
+              "linear_list_labels",
+              "linear_list_workflow_states",
+              "linear_create_workflow_state",
+              "linear_list_cycles",
+              "linear_create_cycle",
+              "linear_get_active_cycle",
+              "linear_list_project_labels"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "manualTeamId",
+          "title": "Team ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Enter Linear team ID",
+          "canonicalParamId": "teamId",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_create_issue",
+              "linear_search_issues",
+              "linear_list_projects",
+              "linear_create_project",
+              "linear_list_labels",
+              "linear_list_workflow_states",
+              "linear_create_workflow_state",
+              "linear_list_cycles",
+              "linear_create_cycle",
+              "linear_get_active_cycle",
+              "linear_list_project_labels"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectId",
+          "title": "Project",
+          "type": "project-selector",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Select a project",
+          "canonicalParamId": "projectId",
+          "selectorKey": "linear.projects",
+          "serviceId": "linear",
+          "dependsOn": [
+            "credential",
+            "teamId"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_create_issue",
+              "linear_get_project",
+              "linear_update_project",
+              "linear_archive_project",
+              "linear_delete_project",
+              "linear_create_project_update",
+              "linear_list_project_updates",
+              "linear_list_project_labels"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "manualProjectId",
+          "title": "Project ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Enter Linear project ID",
+          "canonicalParamId": "projectId",
+          "dependsOn": [
+            "credential",
+            "teamId"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_create_issue",
+              "linear_get_project",
+              "linear_update_project",
+              "linear_archive_project",
+              "linear_delete_project",
+              "linear_create_project_update",
+              "linear_list_project_updates",
+              "linear_list_project_labels"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "issueId",
+          "title": "Issue ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter Linear issue ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_get_issue",
+              "linear_update_issue",
+              "linear_archive_issue",
+              "linear_unarchive_issue",
+              "linear_delete_issue",
+              "linear_add_label_to_issue",
+              "linear_remove_label_from_issue",
+              "linear_create_comment",
+              "linear_list_comments",
+              "linear_create_attachment",
+              "linear_list_attachments",
+              "linear_create_issue_relation",
+              "linear_list_issue_relations"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "title",
+          "title": "Title",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter issue title",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue",
+              "linear_update_issue"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "description",
+          "title": "Description",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter description",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue",
+              "linear_update_issue",
+              "linear_create_project",
+              "linear_update_project"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "body",
+          "title": "Comment",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter comment text",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_comment",
+              "linear_update_comment",
+              "linear_create_project_update"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "commentId",
+          "title": "Comment ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter comment ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_comment",
+              "linear_delete_comment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "labelId",
+          "title": "Label ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter label ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_add_label_to_issue",
+              "linear_remove_label_from_issue",
+              "linear_update_label",
+              "linear_archive_label"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_label",
+              "linear_update_label",
+              "linear_create_project",
+              "linear_update_project",
+              "linear_create_workflow_state",
+              "linear_update_workflow_state",
+              "linear_create_cycle"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "color",
+          "title": "Color (hex)",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "#5E6AD2",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_label",
+              "linear_update_label",
+              "linear_create_workflow_state",
+              "linear_update_workflow_state"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "stateId",
+          "title": "State ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter workflow state ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_issue",
+              "linear_update_workflow_state"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "assigneeId",
+          "title": "Assignee ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter user ID to assign",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue",
+              "linear_update_issue"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "priority",
+          "title": "Priority",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue",
+              "linear_update_issue",
+              "linear_create_project"
+            ]
+          },
+          "options": [
+            {
+              "id": "0",
+              "label": "No Priority"
+            },
+            {
+              "id": "1",
+              "label": "Urgent"
+            },
+            {
+              "id": "2",
+              "label": "High"
+            },
+            {
+              "id": "3",
+              "label": "Normal"
+            },
+            {
+              "id": "4",
+              "label": "Low"
+            }
+          ],
+          "initialValue": "0"
+        },
+        {
+          "id": "estimate",
+          "title": "Estimate",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter estimate points",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue",
+              "linear_update_issue"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "query",
+          "title": "Search Query",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter search query",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_search_issues"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "includeArchived",
+          "title": "Include Archived",
+          "type": "switch",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_search_issues",
+              "linear_list_projects"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "labelIds",
+          "title": "Label IDs",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Array of label IDs to filter by",
+          "condition": {
+            "field": "operation",
+            "value": "linear_read_issues"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "createdAfter",
+          "title": "Created After",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Filter issues created after this date (ISO 8601 format)",
+          "condition": {
+            "field": "operation",
+            "value": "linear_read_issues"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "updatedAfter",
+          "title": "Updated After",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Filter issues updated after this date (ISO 8601 format)",
+          "condition": {
+            "field": "operation",
+            "value": "linear_read_issues"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "orderBy",
+          "title": "Order By",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Sort order: \"createdAt\" or \"updatedAt\" (default: \"updatedAt\")",
+          "condition": {
+            "field": "operation",
+            "value": "linear_read_issues"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "cycleId",
+          "title": "Cycle ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter cycle ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_get_cycle"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "startDate",
+          "title": "Start Date",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "YYYY-MM-DD",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_cycle",
+              "linear_create_project"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "endDate",
+          "title": "End Date",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "YYYY-MM-DD",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_cycle"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "targetDate",
+          "title": "Target Date",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "YYYY-MM-DD",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project",
+              "linear_update_project"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "attachmentFileUpload",
+          "title": "Attachment",
+          "type": "file-upload",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Upload attachment",
+          "canonicalParamId": "file",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_attachment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "file",
+          "title": "File Reference",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "File reference from previous block",
+          "canonicalParamId": "file",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_attachment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "url",
+          "title": "URL",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Enter URL",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_attachment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "attachmentTitle",
+          "title": "Title",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter attachment title",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_attachment",
+              "linear_update_attachment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "attachmentId",
+          "title": "Attachment ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter attachment ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_attachment",
+              "linear_delete_attachment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "relationType",
+          "title": "Relation Type",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue_relation"
+            ]
+          },
+          "options": [
+            {
+              "id": "blocks",
+              "label": "Blocks"
+            },
+            {
+              "id": "blocked",
+              "label": "Blocked by"
+            },
+            {
+              "id": "duplicate",
+              "label": "Duplicate"
+            },
+            {
+              "id": "related",
+              "label": "Related"
+            }
+          ],
+          "initialValue": "related"
+        },
+        {
+          "id": "relatedIssueId",
+          "title": "Related Issue ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter related issue ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_issue_relation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "relationId",
+          "title": "Relation ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter relation ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_delete_issue_relation"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "favoriteType",
+          "title": "Favorite Type",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_favorite"
+            ]
+          },
+          "options": [
+            {
+              "id": "issue",
+              "label": "Issue"
+            },
+            {
+              "id": "project",
+              "label": "Project"
+            },
+            {
+              "id": "cycle",
+              "label": "Cycle"
+            },
+            {
+              "id": "label",
+              "label": "Label"
+            }
+          ],
+          "initialValue": "issue"
+        },
+        {
+          "id": "favoriteTargetId",
+          "title": "Target ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter ID to favorite",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_favorite"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "first",
+          "title": "Limit",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Number of items to return (default: 50)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_search_issues",
+              "linear_list_comments",
+              "linear_list_projects",
+              "linear_list_users",
+              "linear_list_teams",
+              "linear_list_labels",
+              "linear_list_workflow_states",
+              "linear_list_cycles",
+              "linear_list_attachments",
+              "linear_list_issue_relations",
+              "linear_list_favorites",
+              "linear_list_project_updates",
+              "linear_list_notifications",
+              "linear_list_customer_statuses",
+              "linear_list_customer_tiers",
+              "linear_list_customers",
+              "linear_list_customer_requests",
+              "linear_list_project_labels",
+              "linear_list_project_milestones",
+              "linear_list_project_statuses"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "after",
+          "title": "After Cursor",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Cursor for pagination",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_read_issues",
+              "linear_search_issues",
+              "linear_list_comments",
+              "linear_list_projects",
+              "linear_list_users",
+              "linear_list_teams",
+              "linear_list_labels",
+              "linear_list_workflow_states",
+              "linear_list_cycles",
+              "linear_list_attachments",
+              "linear_list_issue_relations",
+              "linear_list_favorites",
+              "linear_list_project_updates",
+              "linear_list_notifications",
+              "linear_list_customers",
+              "linear_list_customer_requests",
+              "linear_list_customer_statuses",
+              "linear_list_customer_tiers",
+              "linear_list_project_labels",
+              "linear_list_project_milestones",
+              "linear_list_project_statuses"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "health",
+          "title": "Project Health",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_update"
+            ]
+          },
+          "options": [
+            {
+              "id": "onTrack",
+              "label": "On Track"
+            },
+            {
+              "id": "atRisk",
+              "label": "At Risk"
+            },
+            {
+              "id": "offTrack",
+              "label": "Off Track"
+            }
+          ],
+          "initialValue": "onTrack"
+        },
+        {
+          "id": "notificationId",
+          "title": "Notification ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter notification ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_notification"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "markAsRead",
+          "title": "Mark as Read",
+          "type": "switch",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_notification"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "workflowType",
+          "title": "Workflow Type",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_workflow_state"
+            ]
+          },
+          "options": [
+            {
+              "id": "backlog",
+              "label": "Backlog"
+            },
+            {
+              "id": "unstarted",
+              "label": "Unstarted"
+            },
+            {
+              "id": "started",
+              "label": "Started"
+            },
+            {
+              "id": "completed",
+              "label": "Completed"
+            },
+            {
+              "id": "canceled",
+              "label": "Canceled"
+            }
+          ],
+          "initialValue": "started"
+        },
+        {
+          "id": "leadId",
+          "title": "Lead ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter user ID for project lead",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project",
+              "linear_update_project"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectState",
+          "title": "Project State",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter project state",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_project"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerName",
+          "title": "Customer Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter customer name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerDomains",
+          "title": "Domains",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter domains (comma-separated)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerExternalIds",
+          "title": "External IDs",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter external IDs (comma-separated)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerLogoUrl",
+          "title": "Logo URL",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter logo URL",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerOwnerId",
+          "title": "Owner User ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter owner user ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerRevenue",
+          "title": "Annual Revenue",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter annual revenue (number)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerSize",
+          "title": "Organization Size",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter organization size (number)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer",
+              "linear_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerId",
+          "title": "Customer ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter customer ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_request",
+              "linear_update_customer_request"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerNeedId",
+          "title": "Customer Request ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter customer request ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_customer_request"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "requestBody",
+          "title": "Request Description",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter customer request description",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_request",
+              "linear_update_customer_request"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerRequestPriority",
+          "title": "Urgency",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_request",
+              "linear_update_customer_request"
+            ]
+          },
+          "options": [
+            {
+              "id": "0",
+              "label": "Not Important (0)"
+            },
+            {
+              "id": "1",
+              "label": "Important (1)"
+            }
+          ],
+          "initialValue": "0"
+        },
+        {
+          "id": "linkedIssueId",
+          "title": "Link to Issue",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter issue ID to link",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_request",
+              "linear_update_customer_request"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerIdTarget",
+          "title": "Customer ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter customer ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_get_customer",
+              "linear_update_customer",
+              "linear_delete_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "sourceCustomerId",
+          "title": "Source Customer ID (to merge from)",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Customer ID to merge and delete",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_merge_customers"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "targetCustomerId",
+          "title": "Target Customer ID (to merge into)",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Customer ID to keep",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_merge_customers"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "statusName",
+          "title": "Status Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter status name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "statusColor",
+          "title": "Status Color",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter hex color (e.g., #FF0000)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_status",
+              "linear_create_customer_tier",
+              "linear_create_project_status",
+              "linear_create_project_label"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "statusId",
+          "title": "Status ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter status ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_customer_status",
+              "linear_delete_customer_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tierName",
+          "title": "Tier Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter tier name (e.g., Enterprise, Pro)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_customer_tier"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tierId",
+          "title": "Tier ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter tier ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_customer_tier",
+              "linear_delete_customer_tier"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectLabelName",
+          "title": "Label Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter project label name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_label",
+              "linear_update_project_label"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectLabelDescription",
+          "title": "Label Description",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter project label description",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_label",
+              "linear_update_project_label"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectLabelIsGroup",
+          "title": "Is Label Group",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_label"
+            ]
+          },
+          "options": [
+            {
+              "id": "false",
+              "label": "No"
+            },
+            {
+              "id": "true",
+              "label": "Yes"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "projectLabelParentId",
+          "title": "Parent Label ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter parent label ID (for nested labels)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_label"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectLabelId",
+          "title": "Label ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter project label ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_project_label",
+              "linear_delete_project_label",
+              "linear_add_label_to_project",
+              "linear_remove_label_from_project"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "milestoneName",
+          "title": "Milestone Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter milestone name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_milestone"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "milestoneDescription",
+          "title": "Milestone Description",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter milestone description",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_milestone",
+              "linear_update_project_milestone"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "milestoneId",
+          "title": "Milestone ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter milestone ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_project_milestone",
+              "linear_delete_project_milestone"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "milestoneTargetDate",
+          "title": "Target Date",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "YYYY-MM-DD",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_milestone",
+              "linear_update_project_milestone"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectStatusName",
+          "title": "Status Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter project status name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectStatusType",
+          "title": "Status Type",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_status"
+            ]
+          },
+          "options": [
+            {
+              "id": "backlog",
+              "label": "Backlog"
+            },
+            {
+              "id": "planned",
+              "label": "Planned"
+            },
+            {
+              "id": "started",
+              "label": "Started"
+            },
+            {
+              "id": "paused",
+              "label": "Paused"
+            },
+            {
+              "id": "completed",
+              "label": "Completed"
+            },
+            {
+              "id": "canceled",
+              "label": "Canceled"
+            }
+          ],
+          "initialValue": "started"
+        },
+        {
+          "id": "projectStatusPosition",
+          "title": "Position",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter position (e.g. 0, 1, 2...)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectStatusId",
+          "title": "Status ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter project status ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_update_project_status",
+              "linear_delete_project_status"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "projectStatusIndefinite",
+          "title": "Can Stay Indefinitely",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_status",
+              "linear_update_project_status"
+            ]
+          },
+          "options": [
+            {
+              "id": "false",
+              "label": "No"
+            },
+            {
+              "id": "true",
+              "label": "Yes"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "projectIdForMilestone",
+          "title": "Project ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter project ID",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "linear_create_project_milestone",
+              "linear_list_project_milestones",
+              "linear_add_label_to_project",
+              "linear_remove_label_from_project"
+            ]
+          },
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "issues": {
+          "type": "json"
+        },
+        "issue": {
+          "type": "json"
+        },
+        "issueId": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "json"
+        },
+        "comments": {
+          "type": "json"
+        },
+        "project": {
+          "type": "json"
+        },
+        "projects": {
+          "type": "json"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "users": {
+          "type": "json"
+        },
+        "teams": {
+          "type": "json"
+        },
+        "user": {
+          "type": "json"
+        },
+        "viewer": {
+          "type": "json"
+        },
+        "label": {
+          "type": "json"
+        },
+        "labels": {
+          "type": "json"
+        },
+        "labelId": {
+          "type": "string"
+        },
+        "state": {
+          "type": "json"
+        },
+        "states": {
+          "type": "json"
+        },
+        "cycle": {
+          "type": "json"
+        },
+        "cycles": {
+          "type": "json"
+        },
+        "attachment": {
+          "type": "json"
+        },
+        "attachments": {
+          "type": "json"
+        },
+        "relation": {
+          "type": "json"
+        },
+        "relations": {
+          "type": "json"
+        },
+        "favorite": {
+          "type": "json"
+        },
+        "favorites": {
+          "type": "json"
+        },
+        "update": {
+          "type": "json"
+        },
+        "updates": {
+          "type": "json"
+        },
+        "notification": {
+          "type": "json"
+        },
+        "notifications": {
+          "type": "json"
+        },
+        "customer": {
+          "type": "json"
+        },
+        "customers": {
+          "type": "json"
+        },
+        "customerNeed": {
+          "type": "json"
+        },
+        "customerNeeds": {
+          "type": "json"
+        },
+        "customerStatus": {
+          "type": "json"
+        },
+        "customerStatuses": {
+          "type": "json"
+        },
+        "customerTier": {
+          "type": "json"
+        },
+        "customerTiers": {
+          "type": "json"
+        },
+        "projectLabel": {
+          "type": "json"
+        },
+        "projectLabels": {
+          "type": "json"
+        },
+        "projectMilestone": {
+          "type": "json"
+        },
+        "projectMilestones": {
+          "type": "json"
+        },
+        "projectStatus": {
+          "type": "json"
+        },
+        "projectStatuses": {
+          "type": "json"
+        },
+        "pageInfo": {
+          "type": "json"
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "action": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "webhookId": {
+          "type": "string"
+        },
+        "webhookTimestamp": {
+          "type": "number"
+        },
+        "organizationId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "actor": {
+          "type": "json"
+        },
+        "data": {
+          "type": "json"
+        },
+        "updatedFrom": {
+          "type": "json"
+        }
+      },
+      "canonicalModes": {
+        "oauthCredential": "basic",
+        "teamId": "basic",
+        "projectId": "basic",
+        "file": "basic"
+      }
+    },
+    {
+      "catalogVersion": 1,
+      "type": "microsoft_excel",
+      "name": "Microsoft Excel (Legacy)",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "read",
+              "label": "Read Data"
+            },
+            {
+              "id": "write",
+              "label": "Write/Update Data"
+            },
+            {
+              "id": "table_add",
+              "label": "Add to Table"
+            },
+            {
+              "id": "worksheet_add",
+              "label": "Add Worksheet"
+            },
+            {
+              "id": "clear_range",
+              "label": "Clear Range"
+            },
+            {
+              "id": "format_range",
+              "label": "Format Range"
+            },
+            {
+              "id": "create_table",
+              "label": "Create Table"
+            },
+            {
+              "id": "sort_range",
+              "label": "Sort Range"
+            },
+            {
+              "id": "delete_worksheet",
+              "label": "Delete Worksheet"
+            }
+          ],
+          "initialValue": "read"
+        },
+        {
+          "id": "credential",
+          "title": "Microsoft Account",
+          "type": "oauth-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select Microsoft account",
+          "canonicalParamId": "oauthCredential",
+          "serviceId": "microsoft-excel",
+          "initialValue": null
+        },
+        {
+          "id": "manualCredential",
+          "title": "Microsoft Account",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "Enter credential ID",
+          "canonicalParamId": "oauthCredential",
+          "initialValue": null
+        },
+        {
+          "id": "spreadsheetId",
+          "title": "Select Sheet",
+          "type": "file-selector",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Select a spreadsheet",
+          "canonicalParamId": "spreadsheetId",
+          "selectorKey": "microsoft.excel",
+          "serviceId": "microsoft-excel",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "dependsOn": [
+            "credential"
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "driveId",
+          "title": "Drive ID (SharePoint)",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Leave empty for OneDrive, or enter drive ID for SharePoint",
+          "initialValue": null
+        },
+        {
+          "id": "manualSpreadsheetId",
+          "title": "Spreadsheet ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Enter spreadsheet ID",
+          "canonicalParamId": "spreadsheetId",
+          "dependsOn": [
+            "credential"
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "range",
+          "title": "Range",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Sheet name and cell range (e.g., Sheet1!A1:D10)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "read",
+              "write",
+              "update",
+              "clear_range",
+              "format_range",
+              "create_table",
+              "sort_range"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tableName",
+          "title": "Table Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Name of the Excel table",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "table_add"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "worksheetName",
+          "title": "Worksheet Name",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Name of the worksheet (max 31 characters)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "worksheet_add",
+              "delete_worksheet"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "values",
+          "title": "Values",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter values as JSON array of arrays (e.g., [[\"A1\", \"B1\"], [\"A2\", \"B2\"]]) or an array of objects (e.g., [{\"name\":\"John\", \"age\":30}, {\"name\":\"Jane\", \"age\":25}])",
+          "condition": {
+            "field": "operation",
+            "value": "table_add"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "valueInputOption",
+          "title": "Value Input Option",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "write"
+          },
+          "options": [
+            {
+              "id": "USER_ENTERED",
+              "label": "User Entered (Parse formulas)"
+            },
+            {
+              "id": "RAW",
+              "label": "Raw (Don't parse formulas)"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "applyTo",
+          "title": "Clear",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "clear_range"
+          },
+          "options": [
+            {
+              "id": "All",
+              "label": "All (contents and formats)"
+            },
+            {
+              "id": "Contents",
+              "label": "Contents only"
+            },
+            {
+              "id": "Formats",
+              "label": "Formats only"
+            }
+          ],
+          "initialValue": "All"
+        },
+        {
+          "id": "fillColor",
+          "title": "Fill Color",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Hex color (e.g., #FFFF00)",
+          "condition": {
+            "field": "operation",
+            "value": "format_range"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "fontBold",
+          "title": "Bold",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "format_range"
+          },
+          "options": [
+            {
+              "id": "",
+              "label": "No change"
+            },
+            {
+              "id": "true",
+              "label": "Bold"
+            },
+            {
+              "id": "false",
+              "label": "Not bold"
+            }
+          ],
+          "initialValue": ""
+        },
+        {
+          "id": "fontColor",
+          "title": "Font Color",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Hex color (e.g., #FF0000)",
+          "condition": {
+            "field": "operation",
+            "value": "format_range"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "fontItalic",
+          "title": "Italic",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "format_range"
+          },
+          "options": [
+            {
+              "id": "",
+              "label": "No change"
+            },
+            {
+              "id": "true",
+              "label": "Italic"
+            },
+            {
+              "id": "false",
+              "label": "Not italic"
+            }
+          ],
+          "initialValue": ""
+        },
+        {
+          "id": "fontSize",
+          "title": "Font Size",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Font size in points (e.g., 12)",
+          "condition": {
+            "field": "operation",
+            "value": "format_range"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "fontName",
+          "title": "Font Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Font name (e.g., Calibri)",
+          "condition": {
+            "field": "operation",
+            "value": "format_range"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tableHasHeaders",
+          "title": "First Row Has Headers",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "create_table"
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "true"
+        },
+        {
+          "id": "sortTableName",
+          "title": "Table Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Optional: sort a table instead of the cell range",
+          "condition": {
+            "field": "operation",
+            "value": "sort_range"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "sortColumn",
+          "title": "Sort Column Index",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Zero-based column index (0 = first column)",
+          "condition": {
+            "field": "operation",
+            "value": "sort_range"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "sortAscending",
+          "title": "Sort Order",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "sort_range"
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Ascending"
+            },
+            {
+              "id": "false",
+              "label": "Descending"
+            }
+          ],
+          "initialValue": "true"
+        },
+        {
+          "id": "sortHasHeaders",
+          "title": "Range Has Header Row",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "sort_range"
+          },
+          "options": [
+            {
+              "id": "false",
+              "label": "No"
+            },
+            {
+              "id": "true",
+              "label": "Yes"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "sortMatchCase",
+          "title": "Match Case",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "sort_range"
+          },
+          "options": [
+            {
+              "id": "false",
+              "label": "No"
+            },
+            {
+              "id": "true",
+              "label": "Yes"
+            }
+          ],
+          "initialValue": "false"
+        }
+      ],
+      "outputs": {
+        "data": {
+          "type": "json"
+        },
+        "metadata": {
+          "type": "json"
+        },
+        "updatedRange": {
+          "type": "string"
+        },
+        "updatedRows": {
+          "type": "number"
+        },
+        "updatedColumns": {
+          "type": "number"
+        },
+        "updatedCells": {
+          "type": "number"
+        },
+        "index": {
+          "type": "number"
+        },
+        "values": {
+          "type": "json"
+        },
+        "worksheet": {
+          "type": "json"
+        },
+        "cleared": {
+          "type": "boolean"
+        },
+        "applyTo": {
+          "type": "string"
+        },
+        "formatted": {
+          "type": "boolean"
+        },
+        "fill": {
+          "type": "json"
+        },
+        "font": {
+          "type": "json"
+        },
+        "table": {
+          "type": "json"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "worksheetName": {
+          "type": "string"
+        },
+        "sorted": {
+          "type": "boolean"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "canonicalModes": {
+        "oauthCredential": "basic",
+        "spreadsheetId": "basic"
+      }
+    },
+    {
+      "catalogVersion": 1,
+      "type": "notion_v2",
+      "name": "Notion",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "notion_read",
+              "label": "Read Page"
+            },
+            {
+              "id": "notion_read_database",
+              "label": "Read Database"
+            },
+            {
+              "id": "notion_create_page",
+              "label": "Create Page"
+            },
+            {
+              "id": "notion_update_page",
+              "label": "Update Page Properties"
+            },
+            {
+              "id": "notion_create_database",
+              "label": "Create Database"
+            },
+            {
+              "id": "notion_add_database_row",
+              "label": "Add Database Row"
+            },
+            {
+              "id": "notion_write",
+              "label": "Append Content"
+            },
+            {
+              "id": "notion_append_blocks",
+              "label": "Append Block Children"
+            },
+            {
+              "id": "notion_retrieve_block",
+              "label": "Retrieve Block"
+            },
+            {
+              "id": "notion_retrieve_block_children",
+              "label": "Retrieve Block Children"
+            },
+            {
+              "id": "notion_update_block",
+              "label": "Update Block"
+            },
+            {
+              "id": "notion_delete_block",
+              "label": "Delete Block"
+            },
+            {
+              "id": "notion_create_comment",
+              "label": "Create Comment"
+            },
+            {
+              "id": "notion_list_comments",
+              "label": "List Comments"
+            },
+            {
+              "id": "notion_list_users",
+              "label": "List Users"
+            },
+            {
+              "id": "notion_retrieve_user",
+              "label": "Retrieve User"
+            },
+            {
+              "id": "notion_query_database",
+              "label": "Query Database"
+            },
+            {
+              "id": "notion_search",
+              "label": "Search Workspace"
+            }
+          ],
+          "initialValue": "notion_read"
+        },
+        {
+          "id": "credential",
+          "title": "Notion Account",
+          "type": "oauth-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select Notion account",
+          "canonicalParamId": "oauthCredential",
+          "serviceId": "notion",
+          "initialValue": null
+        },
+        {
+          "id": "manualCredential",
+          "title": "Notion Account",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "Enter credential ID",
+          "canonicalParamId": "oauthCredential",
+          "initialValue": null
+        },
+        {
+          "id": "pageSelector",
+          "title": "Page",
+          "type": "file-selector",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select Notion page",
+          "canonicalParamId": "pageId",
+          "selectorKey": "notion.pages",
+          "serviceId": "notion",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_write",
+              "notion_update_page"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "pageId",
+          "title": "Page ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "Enter Notion page ID",
+          "canonicalParamId": "pageId",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_write",
+              "notion_update_page"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "databaseSelector",
+          "title": "Database",
+          "type": "project-selector",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select Notion database",
+          "canonicalParamId": "databaseId",
+          "selectorKey": "notion.databases",
+          "serviceId": "notion",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read_database",
+              "notion_query_database",
+              "notion_add_database_row"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "databaseId",
+          "title": "Database ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "Enter Notion database ID",
+          "canonicalParamId": "databaseId",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read_database",
+              "notion_query_database",
+              "notion_add_database_row"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "parentSelector",
+          "title": "Parent Page",
+          "type": "file-selector",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select parent page",
+          "canonicalParamId": "parentId",
+          "selectorKey": "notion.pages",
+          "serviceId": "notion",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_create_page",
+              "notion_create_database"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "parentId",
+          "title": "Parent Page ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "ID of parent page",
+          "canonicalParamId": "parentId",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_create_page",
+              "notion_create_database"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "title",
+          "title": "Database Title",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Title for the new database",
+          "condition": {
+            "field": "operation",
+            "value": "notion_create_database"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "content",
+          "title": "Content",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter content to add to the page",
+          "condition": {
+            "field": "operation",
+            "value": "notion_create_page"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "filter",
+          "title": "Filter",
+          "type": "code",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter filter conditions as JSON (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "notion_query_database"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "sorts",
+          "title": "Sort Criteria",
+          "type": "code",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter sort criteria as JSON array (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "notion_query_database"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "pageSize",
+          "title": "Page Size",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Number of results (default: 100, max: 100)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_query_database",
+              "notion_retrieve_block_children",
+              "notion_list_comments",
+              "notion_list_users",
+              "notion_search"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "query",
+          "title": "Search Query",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter search terms (leave empty for all pages)",
+          "condition": {
+            "field": "operation",
+            "value": "notion_search"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "filterType",
+          "title": "Filter Type",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": "notion_search"
+          },
+          "options": [
+            {
+              "id": "all",
+              "label": "All"
+            },
+            {
+              "id": "page",
+              "label": "Pages Only"
+            },
+            {
+              "id": "database",
+              "label": "Databases Only"
+            }
+          ],
+          "initialValue": null
+        },
+        {
+          "id": "properties",
+          "title": "Properties to Update",
+          "type": "code",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter page properties as JSON object",
+          "condition": {
+            "field": "operation",
+            "value": "notion_update_page"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "blockId",
+          "title": "Page or Block ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter Notion page or block ID",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_append_blocks",
+              "notion_retrieve_block",
+              "notion_retrieve_block_children",
+              "notion_update_block",
+              "notion_delete_block",
+              "notion_list_comments"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "children",
+          "title": "Block Children",
+          "type": "code",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter an array of Notion block objects as JSON",
+          "condition": {
+            "field": "operation",
+            "value": "notion_append_blocks"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "after",
+          "title": "Append After Block ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "UUID of the block to append after (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "notion_append_blocks"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "block",
+          "title": "Block Update",
+          "type": "code",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter the block-type fields to update as JSON",
+          "condition": {
+            "field": "operation",
+            "value": "notion_update_block"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "archived",
+          "title": "Archive Block",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": "notion_update_block"
+          },
+          "options": [
+            {
+              "id": "unchanged",
+              "label": "Leave unchanged"
+            },
+            {
+              "id": "false",
+              "label": "No (restore)"
+            },
+            {
+              "id": "true",
+              "label": "Yes (archive)"
+            }
+          ],
+          "initialValue": "unchanged"
+        },
+        {
+          "id": "commentParentId",
+          "title": "Page ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "UUID of the page to comment on",
+          "dependsOn": [
+            "credential"
+          ],
+          "condition": {
+            "field": "operation",
+            "value": "notion_create_comment"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "discussionId",
+          "title": "Discussion ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "UUID of an existing discussion thread (optional)",
+          "condition": {
+            "field": "operation",
+            "value": "notion_create_comment"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "commentContent",
+          "title": "Comment",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter the comment text",
+          "condition": {
+            "field": "operation",
+            "value": "notion_create_comment"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "userId",
+          "title": "User ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "UUID of the Notion user to retrieve",
+          "condition": {
+            "field": "operation",
+            "value": "notion_retrieve_user"
+          },
+          "initialValue": null
+        },
+        {
+          "id": "startCursor",
+          "title": "Start Cursor",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Pagination cursor from a previous response (optional)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_retrieve_block_children",
+              "notion_list_comments",
+              "notion_list_users",
+              "notion_query_database",
+              "notion_search"
+            ]
+          },
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "content": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_create_comment"
+            ]
+          }
+        },
+        "title": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_create_page",
+              "notion_update_page",
+              "notion_create_database",
+              "notion_read_database",
+              "notion_add_database_row"
+            ]
+          }
+        },
+        "url": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_create_page",
+              "notion_update_page",
+              "notion_create_database",
+              "notion_read_database",
+              "notion_add_database_row"
+            ]
+          }
+        },
+        "id": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_create_page",
+              "notion_create_database",
+              "notion_add_database_row",
+              "notion_read_database",
+              "notion_update_page",
+              "notion_retrieve_block",
+              "notion_update_block",
+              "notion_delete_block",
+              "notion_create_comment",
+              "notion_retrieve_user"
+            ]
+          }
+        },
+        "created_time": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_create_page",
+              "notion_create_database",
+              "notion_read_database",
+              "notion_add_database_row",
+              "notion_create_comment"
+            ]
+          }
+        },
+        "last_edited_time": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read",
+              "notion_create_page",
+              "notion_update_page",
+              "notion_read_database",
+              "notion_add_database_row"
+            ]
+          }
+        },
+        "results": {
+          "type": "array",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_query_database",
+              "notion_search",
+              "notion_append_blocks",
+              "notion_retrieve_block_children",
+              "notion_list_comments",
+              "notion_list_users"
+            ]
+          }
+        },
+        "has_more": {
+          "type": "boolean",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_query_database",
+              "notion_search",
+              "notion_append_blocks",
+              "notion_retrieve_block_children",
+              "notion_list_comments",
+              "notion_list_users"
+            ]
+          }
+        },
+        "next_cursor": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_query_database",
+              "notion_search",
+              "notion_append_blocks",
+              "notion_retrieve_block_children",
+              "notion_list_comments",
+              "notion_list_users"
+            ]
+          }
+        },
+        "total_results": {
+          "type": "number",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_query_database",
+              "notion_search"
+            ]
+          }
+        },
+        "properties": {
+          "type": "json",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_read_database",
+              "notion_create_database"
+            ]
+          }
+        },
+        "appended": {
+          "type": "boolean",
+          "condition": {
+            "field": "operation",
+            "value": "notion_write"
+          }
+        },
+        "type": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_retrieve_block",
+              "notion_update_block"
+            ]
+          }
+        },
+        "block": {
+          "type": "json",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_retrieve_block",
+              "notion_update_block"
+            ]
+          }
+        },
+        "has_children": {
+          "type": "boolean",
+          "condition": {
+            "field": "operation",
+            "value": "notion_retrieve_block"
+          }
+        },
+        "archived": {
+          "type": "boolean",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "notion_retrieve_block",
+              "notion_update_block",
+              "notion_delete_block"
+            ]
+          }
+        },
+        "discussion_id": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": "notion_create_comment"
+          }
+        },
+        "name": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": "notion_retrieve_user"
+          }
+        },
+        "avatar_url": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": "notion_retrieve_user"
+          }
+        },
+        "email": {
+          "type": "string",
+          "condition": {
+            "field": "operation",
+            "value": "notion_retrieve_user"
+          }
+        }
+      },
+      "canonicalModes": {
+        "oauthCredential": "basic",
+        "pageId": "basic",
+        "databaseId": "basic",
+        "parentId": "basic"
+      }
+    },
+    {
+      "catalogVersion": 1,
+      "type": "shopify",
+      "name": "Shopify",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "operation",
+          "title": "Operation",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "shopify_create_product",
+              "label": "Create Product"
+            },
+            {
+              "id": "shopify_get_product",
+              "label": "Get Product"
+            },
+            {
+              "id": "shopify_list_products",
+              "label": "List Products"
+            },
+            {
+              "id": "shopify_update_product",
+              "label": "Update Product"
+            },
+            {
+              "id": "shopify_delete_product",
+              "label": "Delete Product"
+            },
+            {
+              "id": "shopify_get_order",
+              "label": "Get Order"
+            },
+            {
+              "id": "shopify_list_orders",
+              "label": "List Orders"
+            },
+            {
+              "id": "shopify_update_order",
+              "label": "Update Order"
+            },
+            {
+              "id": "shopify_cancel_order",
+              "label": "Cancel Order"
+            },
+            {
+              "id": "shopify_create_customer",
+              "label": "Create Customer"
+            },
+            {
+              "id": "shopify_get_customer",
+              "label": "Get Customer"
+            },
+            {
+              "id": "shopify_list_customers",
+              "label": "List Customers"
+            },
+            {
+              "id": "shopify_update_customer",
+              "label": "Update Customer"
+            },
+            {
+              "id": "shopify_delete_customer",
+              "label": "Delete Customer"
+            },
+            {
+              "id": "shopify_list_inventory_items",
+              "label": "List Inventory Items"
+            },
+            {
+              "id": "shopify_get_inventory_level",
+              "label": "Get Inventory Level"
+            },
+            {
+              "id": "shopify_adjust_inventory",
+              "label": "Adjust Inventory"
+            },
+            {
+              "id": "shopify_list_locations",
+              "label": "List Locations"
+            },
+            {
+              "id": "shopify_create_fulfillment",
+              "label": "Create Fulfillment"
+            },
+            {
+              "id": "shopify_list_collections",
+              "label": "List Collections"
+            },
+            {
+              "id": "shopify_get_collection",
+              "label": "Get Collection"
+            }
+          ],
+          "initialValue": "shopify_list_products"
+        },
+        {
+          "id": "credential",
+          "title": "Shopify Account",
+          "type": "oauth-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Select Shopify account",
+          "canonicalParamId": "oauthCredential",
+          "serviceId": "shopify",
+          "initialValue": null
+        },
+        {
+          "id": "manualCredential",
+          "title": "Shopify Account",
+          "type": "short-input",
+          "required": true,
+          "mode": "advanced",
+          "placeholder": "Enter credential ID",
+          "canonicalParamId": "oauthCredential",
+          "initialValue": null
+        },
+        {
+          "id": "shopDomain",
+          "title": "Shop Domain",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Auto-detected from OAuth or enter manually",
+          "initialValue": null
+        },
+        {
+          "id": "productId",
+          "title": "Product ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "gid://shopify/Product/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_product",
+              "shopify_update_product",
+              "shopify_delete_product"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "title",
+          "title": "Product Title",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter product title",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_product",
+              "shopify_update_product"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "descriptionHtml",
+          "title": "Description (HTML)",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter product description",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_product",
+              "shopify_update_product"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "productType",
+          "title": "Product Type",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "e.g., Shoes, Electronics",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_product",
+              "shopify_update_product"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "vendor",
+          "title": "Vendor",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter vendor name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_product",
+              "shopify_update_product"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "tags",
+          "title": "Tags",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "tag1, tag2, tag3 (comma-separated)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_product",
+              "shopify_update_product"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "status",
+          "title": "Status",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_product",
+              "shopify_update_product"
+            ]
+          },
+          "options": [
+            {
+              "id": "ACTIVE",
+              "label": "Active"
+            },
+            {
+              "id": "DRAFT",
+              "label": "Draft"
+            },
+            {
+              "id": "ARCHIVED",
+              "label": "Archived"
+            }
+          ],
+          "initialValue": "ACTIVE"
+        },
+        {
+          "id": "productQuery",
+          "title": "Search Query",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Filter products (optional)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_products"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerQuery",
+          "title": "Search Query",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "e.g., first_name:John OR email:*@gmail.com",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_customers"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "inventoryQuery",
+          "title": "Search Query",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "e.g., sku:ABC123",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_inventory_items"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "first",
+          "title": "Max Results",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Defaults to 50, max 250",
+          "initialValue": null
+        },
+        {
+          "id": "orderId",
+          "title": "Order ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "gid://shopify/Order/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_order",
+              "shopify_update_order",
+              "shopify_cancel_order"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "orderStatus",
+          "title": "Order Status",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_orders"
+            ]
+          },
+          "options": [
+            {
+              "id": "any",
+              "label": "Any"
+            },
+            {
+              "id": "open",
+              "label": "Open"
+            },
+            {
+              "id": "closed",
+              "label": "Closed"
+            },
+            {
+              "id": "cancelled",
+              "label": "Cancelled"
+            }
+          ],
+          "initialValue": "any"
+        },
+        {
+          "id": "orderQuery",
+          "title": "Search Query",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "e.g., financial_status:paid OR email:customer@example.com",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_orders"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "orderNote",
+          "title": "Order Note",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter order note",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_update_order"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "orderEmail",
+          "title": "Customer Email",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "customer@example.com",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_update_order"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "orderTags",
+          "title": "Order Tags",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "tag1, tag2, tag3 (comma-separated)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_update_order"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "cancelReason",
+          "title": "Cancel Reason",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_cancel_order"
+            ]
+          },
+          "options": [
+            {
+              "id": "CUSTOMER",
+              "label": "Customer Request"
+            },
+            {
+              "id": "DECLINED",
+              "label": "Declined Payment"
+            },
+            {
+              "id": "FRAUD",
+              "label": "Fraud"
+            },
+            {
+              "id": "INVENTORY",
+              "label": "Inventory Issue"
+            },
+            {
+              "id": "STAFF",
+              "label": "Staff Error"
+            },
+            {
+              "id": "OTHER",
+              "label": "Other"
+            }
+          ],
+          "initialValue": "OTHER"
+        },
+        {
+          "id": "staffNote",
+          "title": "Staff Note",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Internal note about this cancellation",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_cancel_order"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "restock",
+          "title": "Restock Inventory",
+          "type": "dropdown",
+          "required": true,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_cancel_order"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "cancelNotifyCustomer",
+          "title": "Notify Customer",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_cancel_order"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "refundOriginalPayment",
+          "title": "Refund to Original Payment Method",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_cancel_order"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "customerId",
+          "title": "Customer ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "gid://shopify/Customer/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_customer",
+              "shopify_update_customer",
+              "shopify_delete_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerEmail",
+          "title": "Email",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "customer@example.com",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_customer",
+              "shopify_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "firstName",
+          "title": "First Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter first name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_customer",
+              "shopify_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "lastName",
+          "title": "Last Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter last name",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_customer",
+              "shopify_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "phone",
+          "title": "Phone",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "+1234567890",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_customer",
+              "shopify_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerNote",
+          "title": "Customer Note",
+          "type": "long-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter note about customer",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_customer",
+              "shopify_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "customerTags",
+          "title": "Customer Tags",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "vip, wholesale (comma-separated)",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_customer",
+              "shopify_update_customer"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "inventoryItemId",
+          "title": "Inventory Item ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "gid://shopify/InventoryItem/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_inventory_level",
+              "shopify_adjust_inventory"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "locationId",
+          "title": "Location ID",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "gid://shopify/Location/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_inventory_level",
+              "shopify_adjust_inventory"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "delta",
+          "title": "Quantity Change",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Positive to add, negative to subtract",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_adjust_inventory"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "fulfillmentOrderId",
+          "title": "Fulfillment Order ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "gid://shopify/FulfillmentOrder/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_fulfillment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "trackingNumber",
+          "title": "Tracking Number",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Enter tracking number",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_fulfillment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "trackingCompany",
+          "title": "Shipping Carrier",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "e.g., UPS, FedEx, USPS, DHL",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_fulfillment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "trackingUrl",
+          "title": "Tracking URL",
+          "type": "short-input",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "https://...",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_fulfillment"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "notifyCustomer",
+          "title": "Notify Customer",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_create_fulfillment"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "true"
+        },
+        {
+          "id": "includeInactive",
+          "title": "Include Inactive Locations",
+          "type": "dropdown",
+          "required": false,
+          "mode": "advanced",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_locations"
+            ]
+          },
+          "options": [
+            {
+              "id": "true",
+              "label": "Yes"
+            },
+            {
+              "id": "false",
+              "label": "No"
+            }
+          ],
+          "initialValue": "false"
+        },
+        {
+          "id": "collectionId",
+          "title": "Collection ID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "gid://shopify/Collection/123456789",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_collection"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "collectionQuery",
+          "title": "Search Query",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "e.g., title:Summer OR collection_type:smart",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_list_collections"
+            ]
+          },
+          "initialValue": null
+        },
+        {
+          "id": "productsFirst",
+          "title": "Max Products In Collection",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Defaults to 50, max 250",
+          "condition": {
+            "field": "operation",
+            "value": [
+              "shopify_get_collection"
+            ]
+          },
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "product": {
+          "type": "json"
+        },
+        "products": {
+          "type": "json"
+        },
+        "order": {
+          "type": "json"
+        },
+        "orders": {
+          "type": "json"
+        },
+        "customer": {
+          "type": "json"
+        },
+        "customers": {
+          "type": "json"
+        },
+        "inventoryItems": {
+          "type": "json"
+        },
+        "inventoryLevel": {
+          "type": "json"
+        },
+        "locations": {
+          "type": "json"
+        },
+        "fulfillment": {
+          "type": "json"
+        },
+        "collection": {
+          "type": "json"
+        },
+        "collections": {
+          "type": "json"
+        },
+        "pageInfo": {
+          "type": "json"
+        },
+        "deletedId": {
+          "type": "string"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "canonicalModes": {
+        "oauthCredential": "basic"
+      }
+    },
+    {
+      "catalogVersion": 1,
+      "type": "smtp",
+      "name": "SMTP",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "smtpHost",
+          "title": "SMTP Host",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "smtp.gmail.com, smtp.example.com",
+          "initialValue": null
+        },
+        {
+          "id": "smtpPort",
+          "title": "SMTP Port",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "587",
+          "initialValue": "587"
+        },
+        {
+          "id": "smtpUsername",
+          "title": "SMTP Username",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "your-email@example.com",
+          "initialValue": null
+        },
+        {
+          "id": "smtpPassword",
+          "title": "SMTP Password",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Your SMTP password",
+          "initialValue": null
+        },
+        {
+          "id": "smtpSecure",
+          "title": "Security Mode",
+          "type": "dropdown",
+          "required": true,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "TLS",
+              "label": "TLS (Port 587)"
+            },
+            {
+              "id": "SSL",
+              "label": "SSL (Port 465)"
+            },
+            {
+              "id": "None",
+              "label": "None (Port 25)"
+            }
+          ],
+          "initialValue": "TLS"
+        },
+        {
+          "id": "from",
+          "title": "From",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "sender@example.com",
+          "initialValue": null
+        },
+        {
+          "id": "to",
+          "title": "To",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "recipient@example.com",
+          "initialValue": null
+        },
+        {
+          "id": "subject",
+          "title": "Subject",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Email subject",
+          "initialValue": null
+        },
+        {
+          "id": "body",
+          "title": "Body",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Email content",
+          "initialValue": null
+        },
+        {
+          "id": "contentType",
+          "title": "Content Type",
+          "type": "dropdown",
+          "required": false,
+          "mode": "basic",
+          "options": [
+            {
+              "id": "text",
+              "label": "Plain Text"
+            },
+            {
+              "id": "html",
+              "label": "HTML"
+            }
+          ],
+          "initialValue": "text"
+        },
+        {
+          "id": "attachmentFiles",
+          "title": "Attachments",
+          "type": "file-upload",
+          "required": false,
+          "mode": "basic",
+          "placeholder": "Upload files to attach",
+          "canonicalParamId": "attachments",
+          "initialValue": null
+        },
+        {
+          "id": "attachments",
+          "title": "Attachments",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Reference files from previous blocks",
+          "canonicalParamId": "attachments",
+          "initialValue": null
+        },
+        {
+          "id": "fromName",
+          "title": "From Name",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "Display name for sender",
+          "initialValue": null
+        },
+        {
+          "id": "cc",
+          "title": "CC",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "cc1@example.com, cc2@example.com",
+          "initialValue": null
+        },
+        {
+          "id": "bcc",
+          "title": "BCC",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "bcc1@example.com, bcc2@example.com",
+          "initialValue": null
+        },
+        {
+          "id": "replyTo",
+          "title": "Reply To",
+          "type": "short-input",
+          "required": false,
+          "mode": "advanced",
+          "placeholder": "reply@example.com",
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "success": {
+          "type": "boolean"
+        },
+        "messageId": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "canonicalModes": {
+        "attachments": "basic"
+      }
+    },
+    {
+      "catalogVersion": 1,
+      "type": "twilio_sms",
+      "name": "Twilio SMS",
+      "kind": "action",
+      "singleInstance": false,
+      "fields": [
+        {
+          "id": "phoneNumbers",
+          "title": "Recipient Phone Numbers",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Enter phone numbers with country code (one per line, e.g., +1234567890)",
+          "initialValue": null
+        },
+        {
+          "id": "message",
+          "title": "Message",
+          "type": "long-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "e.g. \"Hello! This is a test message.\"",
+          "initialValue": null
+        },
+        {
+          "id": "accountSid",
+          "title": "Twilio Account SID",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Your Twilio Account SID",
+          "initialValue": null
+        },
+        {
+          "id": "authToken",
+          "title": "Auth Token",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "Your Twilio Auth Token",
+          "initialValue": null
+        },
+        {
+          "id": "fromNumber",
+          "title": "From Twilio Phone Number",
+          "type": "short-input",
+          "required": true,
+          "mode": "basic",
+          "placeholder": "e.g. +1234567890",
+          "initialValue": null
+        }
+      ],
+      "outputs": {
+        "success": {
+          "type": "boolean"
+        },
+        "messageId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "canonicalModes": {}
+    }
+  ]
+}
